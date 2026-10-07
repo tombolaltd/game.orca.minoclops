@@ -1,0 +1,303 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "stepsd_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "The board has settled: next free spin, bonus trigger, or settle the round.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "stepsd_001",
+        "title": "getGameModelProperty",
+        "x": 1166,
+        "y": 497,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "roundInfo"
+        }
+      },
+      {
+        "id": "stepsd_002",
+        "title": "parseObject",
+        "x": 1528,
+        "y": 497,
+        "rootType": "objectOps",
+        "friendlyTitle": "Parse Object",
+        "color": "#607d8b",
+        "icon": "🔎",
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "tier",
+            "type": "int",
+            "path": "BonusTier"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "stepsd_003",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "stepsDone"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "stepsd_004",
+        "title": "getGameModelProperty",
+        "x": 442,
+        "y": 204,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "inBonus"
+        }
+      },
+      {
+        "id": "stepsd_005",
+        "title": "branch",
+        "x": 804,
+        "y": 120,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "In free spins?"
+      },
+      {
+        "id": "stepsd_006",
+        "title": "fireCustomEvent",
+        "x": 2252,
+        "y": 120,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusSpinEnd",
+          "propertyNames": []
+        }
+      },
+      {
+        "id": "stepsd_007",
+        "title": "greaterThan",
+        "x": 1890,
+        "y": 497,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "b": 0
+        }
+      },
+      {
+        "id": "stepsd_008",
+        "title": "branch",
+        "x": 2252,
+        "y": 413,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "Bonus triggered?"
+      },
+      {
+        "id": "stepsd_009",
+        "title": "fireCustomEvent",
+        "x": 2614,
+        "y": 413,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusTrigger",
+          "propertyNames": []
+        }
+      },
+      {
+        "id": "stepsd_010",
+        "title": "fireCustomEvent",
+        "x": 2614,
+        "y": 736,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "settleRound",
+          "propertyNames": []
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l_stepsd_1",
+        "from": "stepsd_001",
+        "to": "stepsd_002",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "l_stepsd_2",
+        "from": "stepsd_004",
+        "to": "stepsd_005",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_stepsd_3",
+        "from": "stepsd_002",
+        "to": "stepsd_007",
+        "propertyType": "float",
+        "propertyName": "a",
+        "sourceOutputName": "tier"
+      },
+      {
+        "id": "l_stepsd_4",
+        "from": "stepsd_007",
+        "to": "stepsd_008",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_stepsd_5",
+        "from": "stepsd_008",
+        "to": "stepsd_009",
+        "outIdx": 0
+      },
+      {
+        "id": "l_stepsd_6",
+        "from": "stepsd_008",
+        "to": "stepsd_010",
+        "outIdx": 1
+      },
+      {
+        "id": "l_stepsd_7",
+        "from": "stepsd_005",
+        "to": "stepsd_006",
+        "outIdx": 0
+      },
+      {
+        "id": "l_stepsd_8",
+        "from": "stepsd_005",
+        "to": "stepsd_008",
+        "outIdx": 1
+      },
+      {
+        "id": "l_stepsd_9",
+        "from": "stepsd_003",
+        "to": "stepsd_005"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

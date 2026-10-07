@@ -1,0 +1,3658 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "bonuss_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Bonus stacking split: a whole reel is the hotspot; each symbol on it splits xN (x2 per copy) across the board.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "bonuss_013",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusSplit"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "bonuss_057",
+        "title": "fireCustomEvent",
+        "x": 1362,
+        "y": 120,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "showStep",
+          "propertyNames": []
+        }
+      },
+      {
+        "id": "bonuss_058",
+        "x": 442,
+        "y": 120,
+        "title": "State",
+        "displayName": "Reel hotspot",
+        "isState": true,
+        "entryTargetId": "bonuss_016",
+        "exitSourceId": "bonuss_019",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonuss_059",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonuss_014",
+              "title": "multiply",
+              "x": 1034,
+              "y": 204,
+              "rootType": "math",
+              "color": "#16a085",
+              "icon": "✖️",
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "float"
+                },
+                {
+                  "name": "b",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "b": 182
+              }
+            },
+            {
+              "id": "bonuss_015",
+              "title": "add",
+              "x": 1396,
+              "y": 204,
+              "rootType": "math",
+              "color": "#16a085",
+              "icon": "➕",
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "T"
+                },
+                {
+                  "name": "b",
+                  "type": "T"
+                }
+              ],
+              "propertyValues": {
+                "a": -364
+              }
+            },
+            {
+              "id": "bonuss_016",
+              "title": "setNodePosition",
+              "x": 1758,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "x",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "y",
+                  "type": "float",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "x": 0,
+                "y": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reel_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Over the reel"
+            },
+            {
+              "id": "bonuss_017",
+              "title": "playSound",
+              "x": 2120,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "soundName",
+                  "type": "audioRef"
+                },
+                {
+                  "name": "volume",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "pitch",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "fadeIn",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "pan",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "bus",
+                  "type": "string",
+                  "default": "",
+                  "optionsFrom": "project.audio.buses"
+                }
+              ],
+              "propertyValues": {
+                "volume": 0.7,
+                "loop": false,
+                "pitch": 1,
+                "fadeIn": 0,
+                "pan": 0,
+                "bus": "",
+                "soundName": {
+                  "kind": "audioRef",
+                  "path": "assets/audio/sfx/lock.mp3"
+                }
+              },
+              "displayName": "Lock on"
+            },
+            {
+              "id": "bonuss_018",
+              "title": "tweenNodeAlpha",
+              "x": 2482,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1,
+                "durationMS": 400,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reel_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hotspot fades in"
+            },
+            {
+              "id": "bonuss_019",
+              "title": "delay",
+              "x": 2844,
+              "y": 120,
+              "rootType": "delay",
+              "friendlyTitle": "Wait",
+              "color": "#8e44ad",
+              "icon": "⏱️",
+              "properties": [
+                {
+                  "name": "seconds",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "seconds": 0.2
+              }
+            },
+            {
+              "id": "bonuss_070",
+              "title": "parseObject",
+              "x": 672,
+              "y": 204,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "reel",
+                  "type": "int",
+                  "path": "HotspotReel"
+                },
+                {
+                  "name": "selections",
+                  "type": "ObjectArray",
+                  "path": "Selections"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_071",
+              "title": "getGameModelProperty",
+              "x": 310,
+              "y": 204,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "bonusSpin"
+              }
+            },
+            {
+              "id": "bonuss_060",
+              "x": 3206,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonuss_11",
+              "from": "bonuss_070",
+              "to": "bonuss_014",
+              "propertyType": "float",
+              "propertyName": "a",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_12",
+              "from": "bonuss_014",
+              "to": "bonuss_015",
+              "propertyType": "T",
+              "propertyName": "b"
+            },
+            {
+              "id": "l_bonuss_13",
+              "from": "bonuss_015",
+              "to": "bonuss_016",
+              "propertyType": "float",
+              "propertyName": "x"
+            },
+            {
+              "id": "l_bonuss_57",
+              "from": "bonuss_016",
+              "to": "bonuss_017"
+            },
+            {
+              "id": "l_bonuss_58",
+              "from": "bonuss_017",
+              "to": "bonuss_018"
+            },
+            {
+              "id": "l_bonuss_59",
+              "from": "bonuss_018",
+              "to": "bonuss_019"
+            },
+            {
+              "id": "l_bonuss_60",
+              "from": "bonuss_059",
+              "to": "bonuss_016"
+            },
+            {
+              "id": "l_bonuss_61",
+              "from": "bonuss_019",
+              "to": "bonuss_060"
+            },
+            {
+              "id": "l_bonuss_101",
+              "from": "bonuss_071",
+              "to": "bonuss_070",
+              "propertyType": "object",
+              "propertyName": "source"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bonuss_061",
+        "x": 672,
+        "y": 120,
+        "title": "State",
+        "displayName": "Split cards",
+        "isState": true,
+        "entryTargetId": "bonuss_020",
+        "exitSourceId": "bonuss_003",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonuss_062",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonuss_001",
+              "title": "getGameModelProperty",
+              "x": 2120,
+              "y": 204,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "bonusSpin"
+              }
+            },
+            {
+              "id": "bonuss_002",
+              "title": "parseObject",
+              "x": 2482,
+              "y": 204,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "reel",
+                  "type": "int",
+                  "path": "HotspotReel"
+                },
+                {
+                  "name": "selections",
+                  "type": "ObjectArray",
+                  "path": "Selections"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_003",
+              "title": "loop",
+              "x": 2844,
+              "y": 120,
+              "rootType": "loop",
+              "friendlyTitle": "Repeat For Each",
+              "color": "#9b59b6",
+              "icon": "🔁",
+              "properties": [
+                {
+                  "name": "items",
+                  "type": "TArray"
+                },
+                {
+                  "name": "count",
+                  "type": "int",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "count": 1
+              }
+            },
+            {
+              "id": "bonuss_004",
+              "title": "parseObject",
+              "x": 4654,
+              "y": 545,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "symbol",
+                  "type": "int",
+                  "path": "Symbol"
+                },
+                {
+                  "name": "badge",
+                  "type": "string",
+                  "path": "Badge"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_005",
+              "title": "stringBuilder",
+              "x": 3206,
+              "y": 545,
+              "rootType": "string",
+              "friendlyTitle": "String Builder",
+              "color": "#c0392b",
+              "icon": "🧱",
+              "properties": [
+                {
+                  "name": "part0",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part1",
+                  "type": "T",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "part0": "Card",
+                "part1": ""
+              }
+            },
+            {
+              "id": "bonuss_006",
+              "title": "findChildNode",
+              "x": 3568,
+              "y": 545,
+              "rootType": "getters",
+              "friendlyTitle": "Find Child Node",
+              "color": "#0e7c86",
+              "icon": "🔍",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "path": "",
+                "parent": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_panel",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonuss_007",
+              "title": "findChildNode",
+              "x": 3930,
+              "y": 545,
+              "rootType": "getters",
+              "friendlyTitle": "Find Child Node",
+              "color": "#0e7c86",
+              "icon": "🔍",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "path": "Icons"
+              }
+            },
+            {
+              "id": "bonuss_020",
+              "title": "hideNode",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_card_0",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hide card 1"
+            },
+            {
+              "id": "bonuss_021",
+              "title": "hideNode",
+              "x": 672,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_card_1",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hide card 2"
+            },
+            {
+              "id": "bonuss_022",
+              "title": "hideNode",
+              "x": 1034,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_card_2",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hide card 3"
+            },
+            {
+              "id": "bonuss_023",
+              "title": "setNodeScale",
+              "x": 1396,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1,
+                "scaleY": 1,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_panel",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonuss_024",
+              "title": "showNode",
+              "x": 1758,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_panel",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Show split panel"
+            },
+            {
+              "id": "bonuss_025",
+              "title": "setChildrenVisible",
+              "x": 4292,
+              "y": 461,
+              "rootType": "Action",
+              "friendlyTitle": "Set Children Visible",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": false
+                }
+              ],
+              "propertyValues": {
+                "visible": false
+              },
+              "displayName": "Clear icon"
+            },
+            {
+              "id": "bonuss_026",
+              "title": "getChildNode",
+              "x": 5016,
+              "y": 545,
+              "rootType": "getters",
+              "friendlyTitle": "Get Child Node",
+              "color": "#0e7c86",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "index",
+                  "type": "int",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "index": 0
+              }
+            },
+            {
+              "id": "bonuss_027",
+              "title": "showNode",
+              "x": 5378,
+              "y": 461,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {},
+              "displayName": "Card icon"
+            },
+            {
+              "id": "bonuss_028",
+              "title": "findChildNode",
+              "x": 5740,
+              "y": 545,
+              "rootType": "getters",
+              "friendlyTitle": "Find Child Node",
+              "color": "#0e7c86",
+              "icon": "🔍",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "path": "Mult"
+              }
+            },
+            {
+              "id": "bonuss_029",
+              "title": "setText",
+              "x": 6102,
+              "y": 461,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "text"
+                },
+                {
+                  "name": "value",
+                  "type": "string"
+                }
+              ],
+              "propertyValues": {},
+              "displayName": "Card multiple"
+            },
+            {
+              "id": "bonuss_030",
+              "title": "setNodeScale",
+              "x": 6464,
+              "y": 461,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 0.8,
+                "scaleY": 0.8
+              }
+            },
+            {
+              "id": "bonuss_031",
+              "title": "showNode",
+              "x": 6826,
+              "y": 461,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {},
+              "displayName": "Show card"
+            },
+            {
+              "id": "bonuss_032",
+              "title": "tweenNodeScale",
+              "x": 7188,
+              "y": 461,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1,
+                "scaleY": 1,
+                "durationMS": 260,
+                "ease": "back.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete"
+              },
+              "displayName": "Card pops"
+            },
+            {
+              "id": "bonuss_063",
+              "x": 7550,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonuss_1",
+              "from": "bonuss_001",
+              "to": "bonuss_002",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l_bonuss_2",
+              "from": "bonuss_002",
+              "to": "bonuss_003",
+              "propertyType": "TArray",
+              "propertyName": "items",
+              "sourceOutputName": "selections"
+            },
+            {
+              "id": "l_bonuss_3",
+              "from": "bonuss_003",
+              "to": "bonuss_004",
+              "propertyType": "object",
+              "propertyName": "source",
+              "sourceOutputName": "item"
+            },
+            {
+              "id": "l_bonuss_4",
+              "from": "bonuss_003",
+              "to": "bonuss_005",
+              "propertyType": "T",
+              "propertyName": "part1",
+              "sourceOutputName": "index"
+            },
+            {
+              "id": "l_bonuss_5",
+              "from": "bonuss_005",
+              "to": "bonuss_006",
+              "propertyType": "string",
+              "propertyName": "path"
+            },
+            {
+              "id": "l_bonuss_6",
+              "from": "bonuss_006",
+              "to": "bonuss_007",
+              "propertyType": "nodeRef",
+              "propertyName": "parent"
+            },
+            {
+              "id": "l_bonuss_14",
+              "from": "bonuss_007",
+              "to": "bonuss_025",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_15",
+              "from": "bonuss_007",
+              "to": "bonuss_026",
+              "propertyType": "nodeRef",
+              "propertyName": "parent"
+            },
+            {
+              "id": "l_bonuss_16",
+              "from": "bonuss_004",
+              "to": "bonuss_026",
+              "propertyType": "int",
+              "propertyName": "index",
+              "sourceOutputName": "symbol"
+            },
+            {
+              "id": "l_bonuss_17",
+              "from": "bonuss_026",
+              "to": "bonuss_027",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_18",
+              "from": "bonuss_006",
+              "to": "bonuss_028",
+              "propertyType": "nodeRef",
+              "propertyName": "parent"
+            },
+            {
+              "id": "l_bonuss_19",
+              "from": "bonuss_028",
+              "to": "bonuss_029",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_20",
+              "from": "bonuss_004",
+              "to": "bonuss_029",
+              "propertyType": "string",
+              "propertyName": "value",
+              "sourceOutputName": "badge"
+            },
+            {
+              "id": "l_bonuss_21",
+              "from": "bonuss_006",
+              "to": "bonuss_030",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_22",
+              "from": "bonuss_006",
+              "to": "bonuss_031",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_23",
+              "from": "bonuss_006",
+              "to": "bonuss_032",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_63",
+              "from": "bonuss_020",
+              "to": "bonuss_021"
+            },
+            {
+              "id": "l_bonuss_64",
+              "from": "bonuss_021",
+              "to": "bonuss_022"
+            },
+            {
+              "id": "l_bonuss_65",
+              "from": "bonuss_022",
+              "to": "bonuss_023"
+            },
+            {
+              "id": "l_bonuss_66",
+              "from": "bonuss_023",
+              "to": "bonuss_024"
+            },
+            {
+              "id": "l_bonuss_67",
+              "from": "bonuss_025",
+              "to": "bonuss_027"
+            },
+            {
+              "id": "l_bonuss_68",
+              "from": "bonuss_027",
+              "to": "bonuss_029"
+            },
+            {
+              "id": "l_bonuss_69",
+              "from": "bonuss_029",
+              "to": "bonuss_030"
+            },
+            {
+              "id": "l_bonuss_70",
+              "from": "bonuss_030",
+              "to": "bonuss_031"
+            },
+            {
+              "id": "l_bonuss_71",
+              "from": "bonuss_031",
+              "to": "bonuss_032"
+            },
+            {
+              "id": "l_bonuss_72",
+              "from": "bonuss_024",
+              "to": "bonuss_003"
+            },
+            {
+              "id": "l_bonuss_73",
+              "from": "bonuss_003",
+              "to": "bonuss_025",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonuss_74",
+              "from": "bonuss_062",
+              "to": "bonuss_020"
+            },
+            {
+              "id": "l_bonuss_75",
+              "from": "bonuss_003",
+              "to": "bonuss_063",
+              "outIdx": 1
+            }
+          ]
+        }
+      },
+      {
+        "id": "bonuss_064",
+        "x": 902,
+        "y": 120,
+        "title": "State",
+        "displayName": "Stack splits",
+        "isState": true,
+        "entryTargetId": "bonuss_033",
+        "exitSourceId": "bonuss_011",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonuss_065",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonuss_008",
+              "title": "getGameModelProperty",
+              "x": 672,
+              "y": 204,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "steps"
+              }
+            },
+            {
+              "id": "bonuss_009",
+              "title": "at",
+              "x": 1034,
+              "y": 204,
+              "rootType": "array",
+              "friendlyTitle": "Get",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ],
+              "propertyValues": {
+                "index": 0
+              }
+            },
+            {
+              "id": "bonuss_010",
+              "title": "parseObject",
+              "x": 1396,
+              "y": 204,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "cells",
+                  "type": "ObjectArray",
+                  "path": "NewSplitCells"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_011",
+              "title": "loop",
+              "x": 1758,
+              "y": 120,
+              "rootType": "loop",
+              "friendlyTitle": "Repeat For Each",
+              "color": "#9b59b6",
+              "icon": "🔁",
+              "properties": [
+                {
+                  "name": "items",
+                  "type": "TArray"
+                },
+                {
+                  "name": "count",
+                  "type": "int",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "count": 1
+              }
+            },
+            {
+              "id": "bonuss_012",
+              "title": "parseObject",
+              "x": 2482,
+              "y": 718,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "reel",
+                  "type": "int",
+                  "path": "Reel"
+                },
+                {
+                  "name": "row",
+                  "type": "int",
+                  "path": "Row"
+                },
+                {
+                  "name": "variant",
+                  "type": "int",
+                  "path": "Variant"
+                },
+                {
+                  "name": "badge",
+                  "type": "string",
+                  "path": "Badge"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_033",
+              "title": "playSound",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "soundName",
+                  "type": "audioRef"
+                },
+                {
+                  "name": "volume",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "pitch",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "fadeIn",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "pan",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "bus",
+                  "type": "string",
+                  "default": "",
+                  "optionsFrom": "project.audio.buses"
+                }
+              ],
+              "propertyValues": {
+                "volume": 0.85,
+                "loop": false,
+                "pitch": 1,
+                "fadeIn": 0,
+                "pan": 0,
+                "bus": "",
+                "soundName": {
+                  "kind": "audioRef",
+                  "path": "assets/audio/sfx/boost.mp3"
+                }
+              },
+              "displayName": "Split swish"
+            },
+            {
+              "id": "bonuss_034",
+              "title": "equals",
+              "x": 2844,
+              "y": 718,
+              "rootType": "math",
+              "friendlyTitle": "Equal",
+              "color": "#16a085",
+              "icon": "🟰",
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "T"
+                },
+                {
+                  "name": "b",
+                  "type": "T"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_035",
+              "title": "branch",
+              "x": 3206,
+              "y": 634,
+              "rootType": "branch",
+              "color": "#d4a72c",
+              "icon": "🔀",
+              "properties": [
+                {
+                  "name": "condition",
+                  "type": "bool",
+                  "default": false
+                }
+              ],
+              "propertyValues": {
+                "condition": false
+              },
+              "displayName": "On the hotspot reel?"
+            },
+            {
+              "id": "bonuss_036",
+              "title": "stringBuilder",
+              "x": 3568,
+              "y": 718,
+              "rootType": "string",
+              "friendlyTitle": "String Builder",
+              "color": "#c0392b",
+              "icon": "🧱",
+              "properties": [
+                {
+                  "name": "part0",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part1",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part2",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part3",
+                  "type": "T",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "part0": "Slash",
+                "part2": "_",
+                "part1": ""
+              }
+            },
+            {
+              "id": "bonuss_037",
+              "title": "findChildNode",
+              "x": 3930,
+              "y": 718,
+              "rootType": "getters",
+              "friendlyTitle": "Find Child Node",
+              "color": "#0e7c86",
+              "icon": "🔍",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "path": "",
+                "parent": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_slashes",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonuss_038",
+              "title": "setNodeScale",
+              "x": 4292,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 0.5,
+                "scaleY": 0.5
+              }
+            },
+            {
+              "id": "bonuss_039",
+              "title": "setNodeAlpha",
+              "x": 4654,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1
+              }
+            },
+            {
+              "id": "bonuss_040",
+              "title": "tweenNodeScale",
+              "x": 5016,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1.1,
+                "scaleY": 1.1,
+                "durationMS": 350,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete"
+              },
+              "displayName": "Slash"
+            },
+            {
+              "id": "bonuss_041",
+              "title": "tweenNodeAlpha",
+              "x": 5378,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 300,
+                "ease": "power2.in",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate"
+              },
+              "displayName": "Slash fades"
+            },
+            {
+              "id": "bonuss_042",
+              "title": "setSymbolAt",
+              "x": 5740,
+              "y": 634,
+              "rootType": "Action",
+              "friendlyTitle": "Set Symbol At",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "symbolIndex",
+                  "type": "int",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "symbolIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Split symbol"
+            },
+            {
+              "id": "bonuss_043",
+              "title": "setSymbolText",
+              "x": 6102,
+              "y": 634,
+              "rootType": "Action",
+              "friendlyTitle": "Set Symbol Text",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "textIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "text",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "textIndex": 0,
+                "text": "",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Split badge"
+            },
+            {
+              "id": "bonuss_044",
+              "title": "getReelSymbolNode",
+              "x": 6464,
+              "y": 718,
+              "rootType": "getters",
+              "friendlyTitle": "Get Reel Symbol Node",
+              "color": "#0e7c86",
+              "icon": "🎰",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonuss_045",
+              "title": "setNodeScale",
+              "x": 6826,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1.2,
+                "scaleY": 1.2
+              },
+              "displayName": "Symbol pops"
+            },
+            {
+              "id": "bonuss_046",
+              "title": "tweenNodeScale",
+              "x": 7188,
+              "y": 634,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1,
+                "scaleY": 1,
+                "durationMS": 320,
+                "ease": "back.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete"
+              },
+              "displayName": "Symbol settles"
+            },
+            {
+              "id": "bonuss_047",
+              "title": "stringBuilder",
+              "x": 3568,
+              "y": 1294,
+              "rootType": "string",
+              "friendlyTitle": "String Builder",
+              "color": "#c0392b",
+              "icon": "🧱",
+              "properties": [
+                {
+                  "name": "part0",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part1",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part2",
+                  "type": "T",
+                  "default": ""
+                },
+                {
+                  "name": "part3",
+                  "type": "T",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "part0": "Slash",
+                "part2": "_",
+                "part1": ""
+              }
+            },
+            {
+              "id": "bonuss_048",
+              "title": "findChildNode",
+              "x": 3930,
+              "y": 1294,
+              "rootType": "getters",
+              "friendlyTitle": "Find Child Node",
+              "color": "#0e7c86",
+              "icon": "🔍",
+              "properties": [
+                {
+                  "name": "parent",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "path",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "path": "",
+                "parent": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_slashes",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonuss_049",
+              "title": "setNodeScale",
+              "x": 4292,
+              "y": 1210,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 0.5,
+                "scaleY": 0.5
+              }
+            },
+            {
+              "id": "bonuss_050",
+              "title": "setNodeAlpha",
+              "x": 4654,
+              "y": 1210,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1
+              }
+            },
+            {
+              "id": "bonuss_051",
+              "title": "tweenNodeScale",
+              "x": 5016,
+              "y": 1210,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1,
+                "scaleY": 1,
+                "durationMS": 240,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate"
+              },
+              "displayName": "Slash"
+            },
+            {
+              "id": "bonuss_052",
+              "title": "tweenNodeAlpha",
+              "x": 5378,
+              "y": 1210,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 360,
+                "ease": "power2.in",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate"
+              },
+              "displayName": "Slash fades"
+            },
+            {
+              "id": "bonuss_053",
+              "title": "setSymbolAt",
+              "x": 5740,
+              "y": 1210,
+              "rootType": "Action",
+              "friendlyTitle": "Set Symbol At",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "symbolIndex",
+                  "type": "int",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "symbolIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Split symbol"
+            },
+            {
+              "id": "bonuss_054",
+              "title": "setSymbolText",
+              "x": 6102,
+              "y": 1210,
+              "rootType": "Action",
+              "friendlyTitle": "Set Symbol Text",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "textIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "text",
+                  "type": "string",
+                  "default": ""
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "textIndex": 0,
+                "text": "",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Split badge"
+            },
+            {
+              "id": "bonuss_055",
+              "title": "delay",
+              "x": 6826,
+              "y": 1210,
+              "rootType": "delay",
+              "friendlyTitle": "Wait",
+              "color": "#8e44ad",
+              "icon": "⏱️",
+              "properties": [
+                {
+                  "name": "seconds",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "seconds": 0.06
+              }
+            },
+            {
+              "id": "bonuss_072",
+              "title": "parseObject",
+              "x": 2482,
+              "y": 953,
+              "rootType": "objectOps",
+              "friendlyTitle": "Parse Object",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "reel",
+                  "type": "int",
+                  "path": "HotspotReel"
+                },
+                {
+                  "name": "selections",
+                  "type": "ObjectArray",
+                  "path": "Selections"
+                }
+              ],
+              "propertyValues": {}
+            },
+            {
+              "id": "bonuss_073",
+              "title": "getGameModelProperty",
+              "x": 2120,
+              "y": 953,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "bonusSpin"
+              }
+            },
+            {
+              "id": "bonuss_066",
+              "x": 7550,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonuss_7",
+              "from": "bonuss_008",
+              "to": "bonuss_009",
+              "propertyType": "TArray",
+              "propertyName": "array"
+            },
+            {
+              "id": "l_bonuss_8",
+              "from": "bonuss_009",
+              "to": "bonuss_010",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l_bonuss_9",
+              "from": "bonuss_010",
+              "to": "bonuss_011",
+              "propertyType": "TArray",
+              "propertyName": "items",
+              "sourceOutputName": "cells"
+            },
+            {
+              "id": "l_bonuss_10",
+              "from": "bonuss_011",
+              "to": "bonuss_012",
+              "propertyType": "object",
+              "propertyName": "source",
+              "sourceOutputName": "item"
+            },
+            {
+              "id": "l_bonuss_24",
+              "from": "bonuss_012",
+              "to": "bonuss_034",
+              "propertyType": "T",
+              "propertyName": "a",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_25",
+              "from": "bonuss_072",
+              "to": "bonuss_034",
+              "propertyType": "T",
+              "propertyName": "b",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_26",
+              "from": "bonuss_034",
+              "to": "bonuss_035",
+              "propertyType": "bool",
+              "propertyName": "condition"
+            },
+            {
+              "id": "l_bonuss_27",
+              "from": "bonuss_012",
+              "to": "bonuss_036",
+              "propertyType": "T",
+              "propertyName": "part1",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_28",
+              "from": "bonuss_012",
+              "to": "bonuss_036",
+              "propertyType": "T",
+              "propertyName": "part3",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_29",
+              "from": "bonuss_036",
+              "to": "bonuss_037",
+              "propertyType": "string",
+              "propertyName": "path"
+            },
+            {
+              "id": "l_bonuss_30",
+              "from": "bonuss_037",
+              "to": "bonuss_038",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_31",
+              "from": "bonuss_037",
+              "to": "bonuss_039",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_32",
+              "from": "bonuss_037",
+              "to": "bonuss_040",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_33",
+              "from": "bonuss_037",
+              "to": "bonuss_041",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_34",
+              "from": "bonuss_012",
+              "to": "bonuss_042",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_35",
+              "from": "bonuss_012",
+              "to": "bonuss_042",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_36",
+              "from": "bonuss_012",
+              "to": "bonuss_042",
+              "propertyType": "int",
+              "propertyName": "symbolIndex",
+              "sourceOutputName": "variant"
+            },
+            {
+              "id": "l_bonuss_37",
+              "from": "bonuss_012",
+              "to": "bonuss_043",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_38",
+              "from": "bonuss_012",
+              "to": "bonuss_043",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_39",
+              "from": "bonuss_012",
+              "to": "bonuss_043",
+              "propertyType": "string",
+              "propertyName": "text",
+              "sourceOutputName": "badge"
+            },
+            {
+              "id": "l_bonuss_40",
+              "from": "bonuss_012",
+              "to": "bonuss_044",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_41",
+              "from": "bonuss_012",
+              "to": "bonuss_044",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_42",
+              "from": "bonuss_044",
+              "to": "bonuss_045",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_43",
+              "from": "bonuss_044",
+              "to": "bonuss_046",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_44",
+              "from": "bonuss_012",
+              "to": "bonuss_047",
+              "propertyType": "T",
+              "propertyName": "part1",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_45",
+              "from": "bonuss_012",
+              "to": "bonuss_047",
+              "propertyType": "T",
+              "propertyName": "part3",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_46",
+              "from": "bonuss_047",
+              "to": "bonuss_048",
+              "propertyType": "string",
+              "propertyName": "path"
+            },
+            {
+              "id": "l_bonuss_47",
+              "from": "bonuss_048",
+              "to": "bonuss_049",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_48",
+              "from": "bonuss_048",
+              "to": "bonuss_050",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_49",
+              "from": "bonuss_048",
+              "to": "bonuss_051",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_50",
+              "from": "bonuss_048",
+              "to": "bonuss_052",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonuss_51",
+              "from": "bonuss_012",
+              "to": "bonuss_053",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_52",
+              "from": "bonuss_012",
+              "to": "bonuss_053",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_53",
+              "from": "bonuss_012",
+              "to": "bonuss_053",
+              "propertyType": "int",
+              "propertyName": "symbolIndex",
+              "sourceOutputName": "variant"
+            },
+            {
+              "id": "l_bonuss_54",
+              "from": "bonuss_012",
+              "to": "bonuss_054",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "reel"
+            },
+            {
+              "id": "l_bonuss_55",
+              "from": "bonuss_012",
+              "to": "bonuss_054",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "row"
+            },
+            {
+              "id": "l_bonuss_56",
+              "from": "bonuss_012",
+              "to": "bonuss_054",
+              "propertyType": "string",
+              "propertyName": "text",
+              "sourceOutputName": "badge"
+            },
+            {
+              "id": "l_bonuss_77",
+              "from": "bonuss_038",
+              "to": "bonuss_039"
+            },
+            {
+              "id": "l_bonuss_78",
+              "from": "bonuss_039",
+              "to": "bonuss_040"
+            },
+            {
+              "id": "l_bonuss_79",
+              "from": "bonuss_040",
+              "to": "bonuss_041"
+            },
+            {
+              "id": "l_bonuss_80",
+              "from": "bonuss_041",
+              "to": "bonuss_042"
+            },
+            {
+              "id": "l_bonuss_81",
+              "from": "bonuss_042",
+              "to": "bonuss_043"
+            },
+            {
+              "id": "l_bonuss_82",
+              "from": "bonuss_043",
+              "to": "bonuss_045"
+            },
+            {
+              "id": "l_bonuss_83",
+              "from": "bonuss_045",
+              "to": "bonuss_046"
+            },
+            {
+              "id": "l_bonuss_84",
+              "from": "bonuss_049",
+              "to": "bonuss_050"
+            },
+            {
+              "id": "l_bonuss_85",
+              "from": "bonuss_050",
+              "to": "bonuss_051"
+            },
+            {
+              "id": "l_bonuss_86",
+              "from": "bonuss_051",
+              "to": "bonuss_052"
+            },
+            {
+              "id": "l_bonuss_87",
+              "from": "bonuss_052",
+              "to": "bonuss_053"
+            },
+            {
+              "id": "l_bonuss_88",
+              "from": "bonuss_053",
+              "to": "bonuss_054"
+            },
+            {
+              "id": "l_bonuss_89",
+              "from": "bonuss_054",
+              "to": "bonuss_055"
+            },
+            {
+              "id": "l_bonuss_90",
+              "from": "bonuss_035",
+              "to": "bonuss_038",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonuss_91",
+              "from": "bonuss_035",
+              "to": "bonuss_049",
+              "outIdx": 1
+            },
+            {
+              "id": "l_bonuss_92",
+              "from": "bonuss_033",
+              "to": "bonuss_011"
+            },
+            {
+              "id": "l_bonuss_93",
+              "from": "bonuss_011",
+              "to": "bonuss_035",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonuss_94",
+              "from": "bonuss_065",
+              "to": "bonuss_033"
+            },
+            {
+              "id": "l_bonuss_95",
+              "from": "bonuss_011",
+              "to": "bonuss_066",
+              "outIdx": 1
+            },
+            {
+              "id": "l_bonuss_102",
+              "from": "bonuss_073",
+              "to": "bonuss_072",
+              "propertyType": "object",
+              "propertyName": "source"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bonuss_067",
+        "x": 1132,
+        "y": 120,
+        "title": "State",
+        "displayName": "Hotspot out",
+        "isState": true,
+        "entryTargetId": "bonuss_056",
+        "exitSourceId": "bonuss_056",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonuss_068",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonuss_056",
+              "title": "tweenNodeAlpha",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 300,
+                "ease": "power2.in",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reel_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hotspot fades"
+            },
+            {
+              "id": "bonuss_069",
+              "x": 672,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonuss_97",
+              "from": "bonuss_068",
+              "to": "bonuss_056"
+            },
+            {
+              "id": "l_bonuss_98",
+              "from": "bonuss_056",
+              "to": "bonuss_069"
+            }
+          ]
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l_bonuss_62",
+        "from": "bonuss_058",
+        "to": "bonuss_061"
+      },
+      {
+        "id": "l_bonuss_76",
+        "from": "bonuss_061",
+        "to": "bonuss_064"
+      },
+      {
+        "id": "l_bonuss_96",
+        "from": "bonuss_064",
+        "to": "bonuss_067"
+      },
+      {
+        "id": "l_bonuss_99",
+        "from": "bonuss_067",
+        "to": "bonuss_057"
+      },
+      {
+        "id": "l_bonuss_100",
+        "from": "bonuss_013",
+        "to": "bonuss_058"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

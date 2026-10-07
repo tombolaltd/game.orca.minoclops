@@ -1,0 +1,113 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "reelst_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "A thud as each reel lands.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "reelst_001",
+        "title": "reelStop",
+        "displayName": "Reel landed",
+        "friendlyTitle": "On Reel Stop",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "▶️",
+        "isStarter": true,
+        "starterNodeType": "reels",
+        "properties": [],
+        "propertyValues": {},
+        "outputs": [
+          {
+            "name": "reelIndex",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "reelst_002",
+        "title": "playSound",
+        "displayName": "Reel thud",
+        "x": 314,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "soundName",
+            "type": "audioRef"
+          },
+          {
+            "name": "volume",
+            "type": "float",
+            "default": 1
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "pitch",
+            "type": "float",
+            "default": 1
+          },
+          {
+            "name": "fadeIn",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "pan",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "bus",
+            "type": "string",
+            "default": "",
+            "optionsFrom": "project.audio.buses"
+          }
+        ],
+        "propertyValues": {
+          "volume": 0.5,
+          "loop": false,
+          "pitch": 1,
+          "fadeIn": 0,
+          "pan": 0,
+          "bus": "",
+          "soundName": {
+            "kind": "audioRef",
+            "path": "assets/audio/sfx/reel-stop.mp3"
+          }
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l_reelst_1",
+        "from": "reelst_001",
+        "to": "reelst_002"
+      }
+    ],
+    "groups": [],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

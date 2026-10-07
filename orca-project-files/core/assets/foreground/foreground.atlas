@@ -1,0 +1,16 @@
+foreground.webp
+size: 1024, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+foreground/back
+  bounds: 3, 1089, 250, 250
+foreground/backGradient
+  bounds: 3, 3, 1000, 1000
+foreground/circle
+  bounds: 3, 1343, 146, 146
+foreground/INTRO
+  bounds: 624, 1007, 306, 78
+foreground/TRANSITION
+  bounds: 3, 1007, 617, 78

@@ -1,0 +1,48 @@
+{
+  "name": "splittingsymbols",
+  "version": "1.0.0",
+  "description": "Ticket Fetcher for CS Admin",
+  "author": "Arcade <TombolaArcade@tombola.com>",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently 'npm run watch' 'npm run serve'",
+    "build": "browserify src/main.ts -p [ tsify --project 'tsconfig.json' --noImplicitAny ] > .build/ticketfetcher.js && npm run copy-css && echo 'ticket fetcher compiled'",
+    "build:dev": "browserify --debug src/main.ts -p [ tsify --project 'tsconfig.json' --noImplicitAny ] > .build/ticketfetcher.js && npm run copy-css && echo 'ticket fetcher compiled'",
+    "copy-css": "cp node_modules/@arcade-client/base-ticketfetcher-package/dist/style.css .build/style.css",
+    "start": "npm run build:dev && open http://localhost:5000 && echo \"\\033[32mInspect and set Device to Responsive (1000x700)\"",
+    "serve": "pushd .build; python3 -m http.server 5000; popd",
+    "lint": "npx eslint './src/**/*.ts'",
+    "lintfix": "npx eslint './src/**/*.ts' --fix",
+    "watch": "npm run start && watch 'npm run build:dev' src"
+  },
+  "dependencies": {
+    "@arcade-client/base-ticketfetcher-package": "^2.8.2",
+    "inversify": "^5.1.1",
+    "pixi.js-legacy": "6.1.0",
+    "pixi-scrollbox": "^2.3.1",
+    "pixi-spine": "3.1.0",
+    "pixi-viewport": "^4.38.0",
+    "reflect-metadata": "0.1.13"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.4.0",
+    "@typescript-eslint/parser": "^5.4.0",
+    "browserify": "^16.3.0",
+    "concurrently": "^4.1.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "ts-loader": "^3.5.0",
+    "tsify": "^4.0.1",
+    "typescript": "~4.3.0",
+    "watch": "^1.0.2"
+  },
+  "engines": {
+    "node": ">= 14.17.3",
+    "npm": ">= 7.20.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
+}

@@ -1,0 +1,4 @@
+src/core/services/orca/flowstate.ts(7,39): error TS2307: Cannot find module './generated-skin-flows' or its corresponding type declarations.
+src/core/services/orca/scene-manager.ts(66,29): error TS2307: Cannot find module './generated-skin-scenes' or its corresponding type declarations.
+src/core/services/orca/scene-manager.ts(1084,27): error TS2367: This comparison appears to be unintentional because the types '""' and '"skin"' have no overlap.
+src/core/services/orca/scene-manager.ts(1084,59): error TS2367: This comparison appears to be unintentional because the types '""' and '"core"' have no overlap.

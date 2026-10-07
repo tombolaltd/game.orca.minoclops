@@ -1,0 +1,14 @@
+{
+  "name": "minoclops",
+  "skinName": "samsplitjp",
+  "category": "slots",
+  "defaultSkin": "samsplitjp",
+  "lastOpenedSkin": "samsplitjp",
+  "mainOrcaPath": "orca-project-files/main.orca",
+  "createdWith": "0.5.1",
+  "version": 1,
+  "createdFromExample": {
+    "id": "splitting-symbols",
+    "version": 1
+  }
+}

@@ -1,0 +1,11 @@
+tease.webp
+size: 600, 383
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+tease/backHotspot
+  bounds: 403, 12, 185, 185
+tease/frame
+  bounds: 12, 12, 359, 359
+  offsets: 37, 39, 430, 430

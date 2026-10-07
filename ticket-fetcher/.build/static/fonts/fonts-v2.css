@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Lato-Regular';
+    src: url('./Lato-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Lato-Lig';
+    src: url('./Lato-Lig.ttf');
+}
+
+@font-face {
+    font-family: 'Lato-Bold';
+    src: url('./Lato-Bold.ttf');
+}

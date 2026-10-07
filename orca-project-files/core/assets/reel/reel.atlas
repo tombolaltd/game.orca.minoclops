@@ -1,0 +1,57 @@
+reel.webp
+size: 2048, 4096
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+reel/back
+  bounds: 1942, 695, 129, 79
+  rotate: 90
+reel/backGuide
+  bounds: 1942, 836, 125, 75
+  rotate: 90
+reel/divider
+  bounds: 2018, 21, 4, 74
+reel/frame 2
+  bounds: 1942, 973, 43, 43
+reel/frame
+  bounds: 1942, 545, 138, 85
+  rotate: 90
+reel/frame1
+  bounds: 21, 1596, 646, 214
+reel/frame2
+  bounds: 1772, 1726, 296, 253
+  rotate: 90
+reel/hotspot
+  bounds: 21, 995, 589, 1370
+  rotate: 90
+reel/Reel copy
+  bounds: 679, 1596, 646, 214
+reel/Reel
+  bounds: 21, 21, 1461, 962
+reel/symbols/h1 2
+  bounds: 1494, 545, 376, 436
+  rotate: 90
+reel/symbols/h1
+  bounds: 1494, 933, 376, 436
+  rotate: 90
+reel/symbols/h2
+  bounds: 1403, 1321, 393, 427
+  rotate: 90
+reel/symbols/h3
+  bounds: 1337, 1726, 423, 396
+reel/symbols/l1
+  bounds: 21, 1822, 326, 355
+  rotate: 90
+reel/symbols/l2
+  bounds: 743, 2100, 296, 314
+  rotate: 90
+reel/symbols/l3
+  bounds: 388, 1822, 343, 314
+reel/symbols/l4
+  bounds: 1772, 2034, 226, 317
+reel/symbols/l5
+  bounds: 743, 1822, 266, 322
+  rotate: 90
+reel/symbols/wild
+  bounds: 1494, 21, 512, 512

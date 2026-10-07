@@ -1,0 +1,21 @@
+bonus.webp
+size: 4096, 4096
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+bonus/back
+  bounds: 3, 3671, 250, 250
+bonus/circle
+  bounds: 3, 3925, 146, 146
+bonus/Clouids
+  bounds: 3008, 3, 3001, 587
+  rotate: 90
+bonus/Foreground
+  bounds: 3, 3, 3001, 1660
+bonus/Maze
+  bounds: 3599, 3, 1435, 491
+  rotate: 90
+bonus/Mountains
+  bounds: 3, 1667, 2000, 1107
+  rotate: 90

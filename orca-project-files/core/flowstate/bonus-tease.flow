@@ -1,0 +1,801 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "bonust_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Honest tease: two BONUS really landed, so pulse them and say one more wins free spins.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "bonust_004",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusTease"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "bonust_012",
+        "x": 442,
+        "y": 120,
+        "title": "State",
+        "displayName": "Tease message",
+        "isState": true,
+        "entryTargetId": "bonust_005",
+        "exitSourceId": "bonust_006",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonust_013",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonust_005",
+              "title": "setText",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "text"
+                },
+                {
+                  "name": "value",
+                  "type": "string"
+                }
+              ],
+              "propertyValues": {
+                "target": null,
+                "value": "2 BONUS! 1 MORE FOR FREE SPINS"
+              },
+              "displayName": "Tease header"
+            },
+            {
+              "id": "bonust_006",
+              "title": "playSound",
+              "x": 672,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "soundName",
+                  "type": "audioRef"
+                },
+                {
+                  "name": "volume",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "pitch",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "fadeIn",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "pan",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "bus",
+                  "type": "string",
+                  "default": "",
+                  "optionsFrom": "project.audio.buses"
+                }
+              ],
+              "propertyValues": {
+                "volume": 0.6,
+                "loop": false,
+                "pitch": 1,
+                "fadeIn": 0,
+                "pan": 0,
+                "bus": "",
+                "soundName": {
+                  "kind": "audioRef",
+                  "path": "assets/audio/sfx/feature-unlock.mp3"
+                }
+              },
+              "displayName": "Tease sting"
+            },
+            {
+              "id": "bonust_014",
+              "x": 1034,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonust_9",
+              "from": "bonust_005",
+              "to": "bonust_006"
+            },
+            {
+              "id": "l_bonust_10",
+              "from": "bonust_013",
+              "to": "bonust_005"
+            },
+            {
+              "id": "l_bonust_11",
+              "from": "bonust_006",
+              "to": "bonust_014"
+            }
+          ]
+        }
+      },
+      {
+        "id": "bonust_015",
+        "x": 672,
+        "y": 120,
+        "title": "State",
+        "displayName": "Pulse BONUS",
+        "isState": true,
+        "entryTargetId": "bonust_002",
+        "exitSourceId": "bonust_002",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "bonust_016",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "bonust_001",
+              "title": "getGameModelProperty",
+              "x": 310,
+              "y": 204,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "reelSymbols"
+              }
+            },
+            {
+              "id": "bonust_002",
+              "title": "loop",
+              "x": 672,
+              "y": 120,
+              "rootType": "loop",
+              "friendlyTitle": "Repeat For Each",
+              "color": "#9b59b6",
+              "icon": "🔁",
+              "properties": [
+                {
+                  "name": "items",
+                  "type": "TArray"
+                },
+                {
+                  "name": "count",
+                  "type": "int",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "count": 1
+              }
+            },
+            {
+              "id": "bonust_003",
+              "title": "loop",
+              "x": 1034,
+              "y": 428,
+              "rootType": "loop",
+              "friendlyTitle": "Repeat For Each",
+              "color": "#9b59b6",
+              "icon": "🔁",
+              "properties": [
+                {
+                  "name": "items",
+                  "type": "TArray"
+                },
+                {
+                  "name": "count",
+                  "type": "int",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "count": 1
+              }
+            },
+            {
+              "id": "bonust_007",
+              "title": "equals",
+              "x": 1396,
+              "y": 820,
+              "rootType": "math",
+              "friendlyTitle": "Equal",
+              "color": "#16a085",
+              "icon": "🟰",
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "T"
+                },
+                {
+                  "name": "b",
+                  "type": "T"
+                }
+              ],
+              "propertyValues": {
+                "b": 1
+              }
+            },
+            {
+              "id": "bonust_008",
+              "title": "branch",
+              "x": 1758,
+              "y": 736,
+              "rootType": "branch",
+              "color": "#d4a72c",
+              "icon": "🔀",
+              "properties": [
+                {
+                  "name": "condition",
+                  "type": "bool",
+                  "default": false
+                }
+              ],
+              "propertyValues": {
+                "condition": false
+              },
+              "displayName": "BONUS here?"
+            },
+            {
+              "id": "bonust_009",
+              "title": "getReelSymbolNode",
+              "x": 2120,
+              "y": 820,
+              "rootType": "getters",
+              "friendlyTitle": "Get Reel Symbol Node",
+              "color": "#0e7c86",
+              "icon": "🎰",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "bonust_010",
+              "title": "tweenNodeScale",
+              "x": 2482,
+              "y": 736,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1.2,
+                "scaleY": 1.2,
+                "durationMS": 180,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete"
+              },
+              "displayName": "Swell"
+            },
+            {
+              "id": "bonust_011",
+              "title": "tweenNodeScale",
+              "x": 2844,
+              "y": 736,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "scaleX",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "scaleY",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "scaleX": 1,
+                "scaleY": 1,
+                "durationMS": 220,
+                "ease": "back.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete"
+              },
+              "displayName": "Settle"
+            },
+            {
+              "id": "bonust_017",
+              "x": 3206,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_bonust_1",
+              "from": "bonust_001",
+              "to": "bonust_002",
+              "propertyType": "TArray",
+              "propertyName": "items"
+            },
+            {
+              "id": "l_bonust_2",
+              "from": "bonust_002",
+              "to": "bonust_003",
+              "propertyType": "TArray",
+              "propertyName": "items",
+              "sourceOutputName": "item"
+            },
+            {
+              "id": "l_bonust_3",
+              "from": "bonust_003",
+              "to": "bonust_007",
+              "propertyType": "T",
+              "propertyName": "a",
+              "sourceOutputName": "item"
+            },
+            {
+              "id": "l_bonust_4",
+              "from": "bonust_007",
+              "to": "bonust_008",
+              "propertyType": "bool",
+              "propertyName": "condition"
+            },
+            {
+              "id": "l_bonust_5",
+              "from": "bonust_002",
+              "to": "bonust_009",
+              "propertyType": "int",
+              "propertyName": "reelIndex",
+              "sourceOutputName": "index"
+            },
+            {
+              "id": "l_bonust_6",
+              "from": "bonust_003",
+              "to": "bonust_009",
+              "propertyType": "int",
+              "propertyName": "rowIndex",
+              "sourceOutputName": "index"
+            },
+            {
+              "id": "l_bonust_7",
+              "from": "bonust_009",
+              "to": "bonust_010",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonust_8",
+              "from": "bonust_009",
+              "to": "bonust_011",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l_bonust_13",
+              "from": "bonust_010",
+              "to": "bonust_011"
+            },
+            {
+              "id": "l_bonust_14",
+              "from": "bonust_008",
+              "to": "bonust_010",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonust_15",
+              "from": "bonust_003",
+              "to": "bonust_008",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonust_16",
+              "from": "bonust_002",
+              "to": "bonust_003",
+              "outIdx": 0
+            },
+            {
+              "id": "l_bonust_17",
+              "from": "bonust_016",
+              "to": "bonust_002"
+            },
+            {
+              "id": "l_bonust_18",
+              "from": "bonust_002",
+              "to": "bonust_017",
+              "outIdx": 1
+            }
+          ]
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l_bonust_12",
+        "from": "bonust_012",
+        "to": "bonust_015"
+      },
+      {
+        "id": "l_bonust_19",
+        "from": "bonust_004",
+        "to": "bonust_012"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

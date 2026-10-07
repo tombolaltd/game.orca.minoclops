@@ -1,0 +1,243 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "bonuss_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Short pause between free spins, then the next spin or the end of the bonus.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "bonuss_001",
+        "title": "getGameModelProperty",
+        "x": 804,
+        "y": 204,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "roundInfo"
+        }
+      },
+      {
+        "id": "bonuss_002",
+        "title": "parseObject",
+        "x": 1166,
+        "y": 204,
+        "rootType": "objectOps",
+        "friendlyTitle": "Parse Object",
+        "color": "#607d8b",
+        "icon": "🔎",
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "complete",
+            "type": "bool",
+            "path": "GameComplete"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "bonuss_003",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusSpinEnd"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "bonuss_004",
+        "title": "delay",
+        "x": 442,
+        "y": 120,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.5
+        }
+      },
+      {
+        "id": "bonuss_005",
+        "title": "not",
+        "x": 1528,
+        "y": 204,
+        "rootType": "logic",
+        "friendlyTitle": "NOT",
+        "color": "#3f51b5",
+        "icon": "!",
+        "properties": [
+          {
+            "name": "value",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "value": false
+        }
+      },
+      {
+        "id": "bonuss_006",
+        "title": "branch",
+        "x": 1890,
+        "y": 120,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "Spins left?"
+      },
+      {
+        "id": "bonuss_007",
+        "title": "fireCustomEvent",
+        "x": 2252,
+        "y": 120,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusSpin",
+          "propertyNames": []
+        }
+      },
+      {
+        "id": "bonuss_008",
+        "title": "fireCustomEvent",
+        "x": 2252,
+        "y": 443,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusEnd",
+          "propertyNames": []
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l_bonuss_1",
+        "from": "bonuss_001",
+        "to": "bonuss_002",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "l_bonuss_2",
+        "from": "bonuss_002",
+        "to": "bonuss_005",
+        "propertyType": "bool",
+        "propertyName": "value",
+        "sourceOutputName": "complete"
+      },
+      {
+        "id": "l_bonuss_3",
+        "from": "bonuss_005",
+        "to": "bonuss_006",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_bonuss_4",
+        "from": "bonuss_004",
+        "to": "bonuss_006"
+      },
+      {
+        "id": "l_bonuss_5",
+        "from": "bonuss_006",
+        "to": "bonuss_007",
+        "outIdx": 0
+      },
+      {
+        "id": "l_bonuss_6",
+        "from": "bonuss_006",
+        "to": "bonuss_008",
+        "outIdx": 1
+      },
+      {
+        "id": "l_bonuss_7",
+        "from": "bonuss_003",
+        "to": "bonuss_004"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

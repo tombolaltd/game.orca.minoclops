@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Wallop';
+    src: url('./tombolawallop-textregular.ttf');
+}
+
+@font-face {
+    font-family: 'Wallop-Bold';
+    src: url('./tombolawallop-textbold.ttf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('./Inter.ttf');
+}
