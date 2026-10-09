@@ -20,11 +20,11 @@ import {
     ILoggingService,
     IRandomNumberGenerator,
 } from './core/interfaces';
-import { BaseArcadeRequest } from './core/models/BaseArcadeRequest';
+import { BaseArcadeRequest, DebugJackpotData } from './core/models/BaseArcadeRequest';
 import { BaseArcadeResponse, GameSettings, RngStatus } from './core/models/BaseArcadeResponse';
 import { GameInternalData } from './core/models/GameInternalData';
 import { GameTicketDetails } from './core/models/GameTicketDetails';
-import { PlayMode, RequestType, SkinName, Territory } from './core/models/enums';
+import { PlayMode, PotTier, RequestType, SkinName, Territory } from './core/models/enums';
 import {
     DEFAULT_OPERATOR_FLOW_SETTINGS,
     DefaultGameFlowHandler,
@@ -40,6 +40,7 @@ import {
 } from './flow/GameFlowHandlerBase';
 import { GameRegistration, GameTypeRegistry } from './registry/GameTypeRegistry';
 import { MockJackpotConfig, MockJackpotService, MockJackpotSnapshot } from './jackpot/MockJackpotService';
+import { toClientJackpotResponse } from './jackpot/ClientJackpotResponse';
 import { RandomHelpers } from './rng/RandomHelpers';
 import { DEFAULT_RNG_SEED, SeededRandomNumberGenerator } from './rng/SeededRandomNumberGenerator';
 import { createDefaultSessionConfig, MockGameSessionHandler, MockSessionConfig } from './session/MockGameSessionHandler';
@@ -263,6 +264,7 @@ export class MockEngine {
             response.RequestType = requestType;
 
             await this.dispatch(game, requestType, request.PlayMode);
+            attachClientJackpot(game.response, this.jackpotService);
             return game.response;
         } catch (error) {
             this.logger.logError(`Unhandled exception while processing ${requestType} request. ${describeError(error)}`);
@@ -352,6 +354,7 @@ export class MockEngine {
             BeginGameData: (registration.beginGameData ?? passthrough)(raw.BeginGameData),
             ContextPassthrough: raw.ContextPassthrough,
             DebugGameData: GameTypeRegistry.getDebugDataType(registration.game)(raw.DebugGameData ?? topLevelDebugData(raw)),
+            DebugJackpotData: requestedJackpotDebug(raw),
             BonusRoundData: (registration.bonusRoundData ?? passthrough)(bonusRoundSource),
             AuthToken: raw.AuthToken ?? this.sessionConfig.authToken,
             GamingSessionToken: raw.GamingSessionToken ?? this.sessionConfig.gamingSessionToken,
@@ -479,6 +482,9 @@ const passthrough = (raw: unknown): unknown => raw;
 /** Request flags arcade-base adds in debug builds; they are not game debug data. */
 const CLIENT_DEBUG_FLAGS = new Set(['DebugGameData', 'DebugNotification', 'DebugVersion']);
 
+/** Request fields that force a jackpot win (see `requestedJackpotDebug`); not game debug data either. */
+const JACKPOT_DEBUG_FIELDS = new Set(['DebugJackpotData', 'DebugJackpotTier', 'DebugJackpotForceWin']);
+
 /**
  * The arcade client merges its debug data into the TOP LEVEL of the request body
  * (arcade-base assigns `debugModel.debugServerData` onto it: `DebugStops`, `ForceBonus`, …),
@@ -489,11 +495,54 @@ function topLevelDebugData(raw: MockArcadeRequest): Record<string, unknown> | un
     const out: Record<string, unknown> = {};
     let found = false;
     for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
-        if (!/^(Debug|Force)/.test(key) || CLIENT_DEBUG_FLAGS.has(key) || value === undefined) continue;
+        if (!/^(Debug|Force)/.test(key) || CLIENT_DEBUG_FLAGS.has(key) || JACKPOT_DEBUG_FIELDS.has(key) || value === undefined) continue;
         out[key] = value;
         found = true;
     }
     return found ? out : undefined;
+}
+
+/**
+ * The jackpot win a request forces: its `DebugJackpotData`, else the arcade client's older
+ * `DebugJackpotTier` ('Low' / 'Mid' / 'High') with `DebugJackpotForceWin` (default true).
+ * MOCK: the C# binds only `DebugJackpotData`; reading the older pair as well lets a client built
+ * for either engine generation force a win from its Debug menu.
+ */
+function requestedJackpotDebug(raw: MockArcadeRequest): DebugJackpotData | undefined {
+    const body = raw as Record<string, unknown>;
+    const explicit = body.DebugJackpotData;
+    if (typeof explicit === 'object' && explicit !== null) {
+        const data = explicit as Record<string, unknown>;
+        return typeof data.WinningPotTierId === 'number'
+            ? { ForceWin: data.ForceWin === true, WinningPotTierId: data.WinningPotTierId }
+            : { ForceWin: data.ForceWin === true };
+    }
+    if (body.DebugJackpotForceWin === false) return undefined;
+    const tierId = potTierNamed(body.DebugJackpotTier);
+    return tierId === undefined ? undefined : { ForceWin: true, WinningPotTierId: tierId };
+}
+
+function potTierNamed(name: unknown): PotTier | undefined {
+    switch (typeof name === 'string' ? name.trim().toLowerCase() : '') {
+        case 'low':
+            return PotTier.Low;
+        case 'mid':
+            return PotTier.Mid;
+        case 'high':
+            return PotTier.High;
+        default:
+            return undefined;
+    }
+}
+
+/**
+ * MOCK: every reply carrying `Jackpot` also gets it in the shape the arcade client reads
+ * (`JackpotResponse`), the pots as they stand after the request filling in for the ones begin
+ * leaves empty. Nothing is added while jackpots are off.
+ */
+function attachClientJackpot(response: BaseArcadeResponse, service: MockJackpotService): void {
+    if (response.Jackpot === undefined || !service.enabled) return;
+    response.JackpotResponse = toClientJackpotResponse(response.Jackpot, service.currentPotValues());
 }
 
 function clone<T>(value: T): T {

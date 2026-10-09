@@ -2,6 +2,7 @@ import { eventEmitter, IBaseDebugModel, IDebugSettingType } from '@game-studio/a
 import { orcaFireDebugEvent, ORCA_DEBUG_EVENT_BUTTONS, ORCA_DEBUG_MODEL_PROPERTY_SETTINGS, ORCA_DEBUG_TICKET_OPTIONS, orcaDebugServerSettingOptions, orcaDebugServerDataActive, orcaDebugServerData } from '../services/orca/generated-debug-options';
 import { setGameModelProperty, setSettingsModelProperty } from '../services/orca/methods/model';
 import { IS_JACKPOT } from '../services/orca/active-skin';
+import { jackpotDebugSettingOptions, jackpotWinDebugData } from '../services/jackpots/jackpots-runtime';
 
 // This should describe the structure the Server is expecting to force game states
 export interface IDebugData {
@@ -96,15 +97,15 @@ export class DebugModel implements IBaseDebugModel {
             currentValue: 0,
             onChange: (s: any) => {
                 const tier = s.availableValues[s.currentValue];
-                this.currentJackpotDebug = tier === 'None'
-                    ? null
-                    : { DebugJackpotTier: tier, DebugJackpotForceWin: true };
+                this.currentJackpotDebug = jackpotWinDebugData(tier);
             },
             type: 'enum'
         } as unknown as IDebugSettingType] : []),
         // Server debug settings from the Debug Panel: dropdowns / sliders that
         // build the debug data sent to the server (see debugServerData).
         ...(orcaDebugServerSettingOptions() as unknown as IDebugSettingType[]),
+        // Jackpot skins: buttons that play a jackpot round now, without the server.
+        ...jackpotDebugSettingOptions(),
     ];
 
     // Initialise to the empty option

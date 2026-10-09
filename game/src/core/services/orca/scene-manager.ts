@@ -478,8 +478,8 @@ export interface OrcaLayoutEntry {
  * descendant in its subtree may have a per-mode override keyed by node id.
  */
 export interface OrcaLayoutManager {
-    enabledModes: { portrait: boolean; landscape: boolean; desktop: boolean };
-    modes: Partial<Record<'portrait' | 'landscape' | 'desktop', { entries: Record<string, OrcaLayoutEntry> }>>;
+    enabledModes: { portrait: boolean; portraitChat?: boolean; landscape: boolean; desktop: boolean };
+    modes: Partial<Record<'portrait' | 'portraitChat' | 'landscape' | 'desktop', { entries: Record<string, OrcaLayoutEntry> }>>;
 }
 
 export type OrcaActiveLayoutMode = 'portrait' | 'landscape' | 'desktop';
@@ -837,7 +837,7 @@ export interface OrcaSceneNode {
     symbols?: string[];
     symbolStaticsImage?: string;
     symbolStaticsAtlas?: string;
-    symbolEntries?: Array<{ sprite: string; spineAnimation?: string; skin?: string; animatedSpriteAsset?: string }>;
+    symbolEntries?: Array<{ sprite: string; spineAnimation?: string; skin?: string; animatedSpriteAsset?: string; winAudio?: string }>;
     // The editor exports `'sprite'`; `'animatedSprite'` is a legacy alias
     // (treated identically at runtime). `'spine'` selects per-symbol spine skins.
     symbolMode?: 'spine' | 'sprite' | 'animatedSprite';
@@ -1786,6 +1786,31 @@ class SceneManager {
 
         await this.preloadSceneSpineAssets();
         await this.preloadSceneTextureAssets();
+    }
+
+    /**
+     * Every reel symbol's win sound in the registered scenes, scope-qualified
+     * exactly as the reels play it (preloaded while the game loads).
+     */
+    public audioPaths(): string[] {
+        const out = new Set<string>();
+        for (const scene of this.scenesByIndex) {
+            const origin: SceneOrigin = scene.origin ?? 'core';
+            const visit = (node: OrcaSceneNode): void => {
+                if (node.type === 'reels' && Array.isArray(node.symbolEntries)) {
+                    for (const entry of node.symbolEntries) {
+                        const raw = typeof entry?.winAudio === 'string' ? entry.winAudio.trim() : '';
+                        const normalized = raw ? this.normalizeSceneAssetPath(raw) : '';
+                        if (normalized) out.add(this.scopeQualifyRef(normalized, origin));
+                    }
+                }
+                if (Array.isArray(node.children)) {
+                    for (const child of node.children) visit(child);
+                }
+            };
+            for (const node of scene.nodes ?? []) visit(node);
+        }
+        return Array.from(out);
     }
 
     /**
@@ -2754,10 +2779,12 @@ class SceneManager {
         // device singleton's orientation can — which is also why we don't
         // subscribe to GLOBAL_ORIENTATION_CHANGE here.
         const activeMode = this.resolveActiveLayoutMode(viewportWidth, viewportHeight);
+        // Selects a LayoutManager's optional `portraitChat` bucket while the chat is docked.
+        const portraitChatOpen = this.chatBandShowing(viewportHeight);
 
         if (!camera) {
             this.scene3dLayer?.setFrame(null, viewportWidth, viewportHeight);
-            const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, activeMode);
+            const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, activeMode, portraitChatOpen);
             this.currentContainer.position.set(0, 0);
             this.currentContainer.scale.set(1);
             // Reset counter-scale to identity when there's no camera state.
@@ -2805,7 +2832,7 @@ class SceneManager {
         // Frame mode (activeMode) still drives transposition and the crop gate; only the override bucket may differ.
         const overrideMode = resolveChatBandLayoutMode(frameWidth, frameHeight, chatBandRatio, activeMode);
         const cropLandscape = isChatBandLandscape(frameWidth, frameHeight, chatBandRatio);
-        const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, overrideMode);
+        const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, overrideMode, portraitChatOpen);
 
         // Resolve effective camera transform (LayoutManager override merges
         // shallowly over the camera's own transform).
@@ -5699,12 +5726,16 @@ class SceneManager {
     private resolveLayoutManagerMode(
         layoutManager: OrcaLayoutManager,
         activeMode: OrcaActiveLayoutMode,
-    ): OrcaActiveLayoutMode | null {
+        portraitChatOpen: boolean,
+    ): OrcaActiveLayoutMode | 'portraitChat' | null {
         const enabled = layoutManager.enabledModes;
         if (!enabled) return null;
 
         const modes = layoutManager.modes ?? {};
         const isUsable = (k: OrcaActiveLayoutMode): boolean => Boolean(enabled[k] && modes[k]);
+
+        if (activeMode === 'portrait' && portraitChatOpen
+            && enabled.portraitChat === true && modes.portraitChat) return 'portraitChat';
 
         if (isUsable(activeMode)) return activeMode;
 
@@ -5730,13 +5761,14 @@ class SceneManager {
     private buildLayoutOverrideMap(
         roots: OrcaSceneNode[],
         activeMode: OrcaActiveLayoutMode,
+        portraitChatOpen: boolean,
     ): Map<string, OrcaLayoutEntry> {
         const overrides = new Map<string, OrcaLayoutEntry>();
 
         const walk = (node: OrcaSceneNode, activeEntries: Record<string, OrcaLayoutEntry> | null): void => {
             let nextActiveEntries = activeEntries;
             if (node.layoutManager) {
-                const resolvedMode = this.resolveLayoutManagerMode(node.layoutManager, activeMode);
+                const resolvedMode = this.resolveLayoutManagerMode(node.layoutManager, activeMode, portraitChatOpen);
                 nextActiveEntries = resolvedMode
                     ? (node.layoutManager.modes[resolvedMode]?.entries ?? null)
                     : null;

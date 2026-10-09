@@ -35,9 +35,10 @@
  * thing still read from the authoring tree, and purely to pick which
  * skin's mirror to serve. main.orca is OPTIONAL here: a build that runs where
  * it is unreachable (CI building only `game/`, another checkout layout) falls
- * back to the committed game folder — `DEFAULT_SKIN` in the generated
- * `game/src/core/services/orca/active-skin.ts` for the active skin, and the
- * `game/src/skins/<folder>/assets` dirs on disk for the per-skin prod copy.
+ * back to the committed game folder — the skin table in the generated
+ * `game/src/core/services/orca/active-skin.ts` (`readGameSkinTable`,
+ * `DEFAULT_SKIN` for the active skin), plus the `game/src/skins/<folder>/assets`
+ * dirs on disk for the per-skin prod copy.
  *
  * The active skin's mirror is listed FIRST so that on a name
  * collision it overrides core (matching the runtime's
@@ -126,6 +127,38 @@ function listOnDiskSkinFolders() {
     }
   }
   return folders.sort();
+}
+
+/**
+ * The bundle's skin table from the editor-generated `active-skin.ts`, for a
+ * build of `game/` on its own (a CI checkout without `orca-project-files/`),
+ * where main.orca cannot name the skins and every skin's assets used to be
+ * left out of the build without a word. Null when the file is missing.
+ *
+ * @returns {{ defaultSkin: string, skins: Array<{ folder: string, realName: string, isJackpot: boolean }> } | null}
+ */
+function readGameSkinTable() {
+  let source;
+  try {
+    source = fs.readFileSync(ACTIVE_SKIN_TS_PATH, 'utf-8');
+  } catch (err) {
+    return null;
+  }
+  const skins = [];
+  const row = /(['"])([A-Za-z0-9_.-]+)\1\s*:\s*\{\s*realName:\s*(['"])([^'"]*)\3[^}]*?\bisJackpot:\s*(true|false)/g;
+  for (let match = row.exec(source); match; match = row.exec(source)) {
+    skins.push({ folder: match[2], realName: match[4], isJackpot: match[5] === 'true' });
+  }
+  const declared = (source.match(/\brealName:\s*['"]/g) || []).length;
+  if (declared !== skins.length) {
+    // A skin left out here is a skin whose assets the build leaves out.
+    warnOnce(
+      `Read ${skins.length} of the ${declared} skins in ${ACTIVE_SKIN_TS_REL}. ` +
+      'The file may come from a newer editor: open the project in Orca to update game/build/.'
+    );
+  }
+  const fallback = source.match(/\bDEFAULT_SKIN\s*:\s*string\s*=\s*(['"])([^'"]*)\1/);
+  return { defaultSkin: fallback ? fallback[2] : '', skins };
 }
 
 /**
@@ -607,7 +640,7 @@ const ORCA_ASSET_IGNORE_PATTERNS = [
 // assets into (preserving the package's `<operator>/...` layout), served at
 // the `/static/shared-jackpots-assets/` publicPath the runtime fetches from.
 const JACKPOTS_PUBLIC_PATH = '/static/shared-jackpots-assets';
-const JACKPOTS_STATIC_DIR = path.join(PROJECT_ROOT, 'game', 'static', 'shared-jackpots-assets');
+const JACKPOTS_STATIC_DIR = path.resolve(__dirname, '..', 'static', 'shared-jackpots-assets');
 
 /**
  * Build an Express-style dev-server middleware that serves
@@ -706,6 +739,8 @@ module.exports = {
   readActiveSkin,
   readActiveSkinCached,
   getAllSkinFolders,
+  effectiveSkinFolder,
+  readGameSkinTable,
   getActiveSkinAssetDirsFresh,
   createOrcaAssetsDevMiddleware,
   createJackpotsAssetsDevMiddleware,

@@ -1,5 +1,7 @@
 import { container } from "@game-studio/arcade-base";
 
+import { enterJackpotsRuntime } from '../../jackpots/jackpots-runtime';
+
 /**
  * Cabinet Methods for FlowState (generic cabinet/chrome).
  *
@@ -20,7 +22,12 @@ class CabinetMethods {
         });
     }
     public cancelCabinetPostGameTimeout(): void { container.cabinet.cancelPostGameTimeout(); }
-    public endCabinetGame(): Promise<void> { return container.cabinet.endGame(); }
+    // A jackpot the game won plays its round first (jackpot skins only), so it
+    // follows the game's own presentation and bonuses; then the game ends.
+    public async endCabinetGame(): Promise<void> {
+        await enterJackpotsRuntime();
+        return container.cabinet.endGame();
+    }
 
     // -- Messages ---------------------------------------------------
     public setCabinetMessage(messagePortrait: string, messageLandscape: string, flash: boolean, instant: boolean): void {

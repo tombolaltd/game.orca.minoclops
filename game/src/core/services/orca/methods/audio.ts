@@ -1,4 +1,5 @@
 import { AssetManager, container, Sound } from "@game-studio/arcade-base";
+import { Assets, checkExtension, DOMAdapter, extensions, ExtensionType, LoaderParserPriority } from "pixi.js";
 import {
     ORCA_AUDIO_DEFAULT_MUSIC_BUS,
     ORCA_AUDIO_DEFAULT_SFX_BUS,
@@ -38,10 +39,13 @@ import {
  * ----------------
  * Sound/music nodes authored in the editor may reference an audio binary by a
  * bucket-relative path (e.g. `sounds/win.mp3` or `assets/win.wav`) instead of a
- * short alias pre-registered via per-skin `data-list.ts`. When a name looks like
- * such a path, it is lazily registered with the sound manager once (deduped by
- * path) and played by that alias. Plain short aliases are passed straight
- * through, preserving full backward-compatibility with `data-list.ts`.
+ * short alias pre-registered via per-skin `data-list.ts`. Such a file is loaded
+ * ONCE through the Pixi loader (`Assets`, the `orcaAudio` parser below) and the
+ * sound manager plays it from those loaded bytes, so playing it never touches
+ * the network. Every file the graphs and the reels name is preloaded while the
+ * game loads (`preloadOrcaAudio`); a path met only at play time loads the same
+ * way on first use. Plain short aliases are passed straight through,
+ * preserving full backward-compatibility with `data-list.ts`.
  *
  * Scope-qualified paths
  * ---------------------
@@ -73,18 +77,47 @@ import {
 /** Audio file extensions that mark a name as a bucket-relative asset path. */
 const AUDIO_PATH_EXT_RE = /\.(mp3|wav|ogg|m4a|aac)$/i;
 
+/** The Pixi loader parser that fetches an audio file's bytes (`Assets` caches them). */
+const ORCA_AUDIO_PARSER = "orcaAudio";
+
+/** Files loaded (fetched and decoded) at once while preloading. */
+const PRELOAD_CONCURRENCY = 6;
+
+let audioParserRegistered = false;
+
+/**
+ * Register the `orcaAudio` loader with Pixi once. Loads name it explicitly, so
+ * an `.ogg` never reaches Pixi's video loader.
+ */
+function ensureAudioParser(): void {
+    if (audioParserRegistered) return;
+    audioParserRegistered = true;
+    extensions.add({
+        name: ORCA_AUDIO_PARSER,
+        id: ORCA_AUDIO_PARSER,
+        extension: { type: ExtensionType.LoadParser, priority: LoaderParserPriority.Low, name: ORCA_AUDIO_PARSER },
+        test: (url: string): boolean => checkExtension(url, [".mp3", ".wav", ".ogg", ".m4a", ".aac"]),
+        async load(url: string): Promise<Blob> {
+            const response = await DOMAdapter.get().fetch(url);
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.blob();
+        },
+    });
+}
+
 
 /**
  * Dedup registry: maps a bucket-relative audio path to an in-flight (or settled)
  * Promise that resolves once the sound manager has finished loading/decoding the
  * alias for that path. The alias IS the path, so it is deterministic and shared
  * across every node that references the same file — guaranteeing the underlying
- * audio binary is loaded (decoded) at most once. Awaiting this promise BEFORE
+ * audio binary is fetched and decoded at most once. Awaiting this promise BEFORE
  * the first `play(...)` eliminates the decode race that would otherwise let a
  * play land on a half-loaded `Howl`.
  *
  * The promise resolves to the alias on success, or `null` when the file failed
- * to load (so callers no-op with a warning instead of crashing the flow).
+ * to load. A failure is remembered for the session: the file is not fetched
+ * again on every play.
  */
 const registeredAudioPaths = new Map<string, Promise<string | null>>();
 
@@ -131,11 +164,14 @@ function audioAliasExists(name: string): boolean {
 /**
  * Ensure an audio path is loaded/decoded and return its playable alias.
  *
- * Registers the path ONCE under the path as a stable alias and AWAITS the
- * decode, so the buffer is fully ready before the first `play(...)`. Concurrent
- * calls for the same path share the single in-flight promise; a settled path
- * fast-paths without re-adding. Resolves to the alias on success, or `null` on
- * load error (logged) so callers no-op instead of crashing the flow.
+ * The file's bytes come through the Pixi loader (`Assets.load` with the
+ * `orcaAudio` parser, cached by Pixi) and the `Sound` (a howler `Howl`) is
+ * built from them through an object URL, so howler decodes the loaded bytes
+ * instead of requesting the file itself. Registers the path ONCE under the
+ * path as a stable alias and AWAITS the decode, so the buffer is fully ready
+ * before the first `play(...)`. Concurrent calls for the same path share the
+ * single in-flight promise. Resolves to the alias on success, or `null` on
+ * load error (logged once) so callers no-op instead of crashing the flow.
  *
  * Registers straight into `AssetManager.sounds` rather than going through
  * `AssetManager.load(...)`: that loader skips any alias already present (so a
@@ -158,20 +194,65 @@ function ensureAudioRegistered(name: string): Promise<string | null> {
 
     const loadPromise = (async (): Promise<string | null> => {
         try {
-            const sound = new Sound({ name: alias, src: [toAudioAssetUrl(name)] });
+            ensureAudioParser();
+            const bytes = await Assets.load<Blob>({ src: toAudioAssetUrl(name), parser: ORCA_AUDIO_PARSER });
+            const format = (AUDIO_PATH_EXT_RE.exec(name.split("?")[0].split("#")[0])?.[1] ?? "mp3").toLowerCase();
+            // The object URL has no extension, so howler needs the format named.
+            const sound = new Sound({ name: alias, src: [URL.createObjectURL(bytes)], format: [format] });
             await sound.load();
             AssetManager.sounds[alias] = sound;
             return alias;
         } catch (err) {
             console.warn("[FlowState audio] failed to load audio path, skipping:", name, err);
-            // Drop the failed cache entry so a later attempt can retry.
-            registeredAudioPaths.delete(name);
             return null;
         }
     })();
 
     registeredAudioPaths.set(name, loadPromise);
     return loadPromise;
+}
+
+/**
+ * Load every audio file in `paths` through the Pixi loader and decode it, so
+ * playing any of them later fetches nothing. Run while the game loads. Never
+ * rejects: a file that fails to load is logged and stays silent.
+ */
+export async function preloadOrcaAudio(paths: Iterable<string>): Promise<void> {
+    const queue = Array.from(new Set(paths)).filter(looksLikeAudioPath);
+    let next = 0;
+    const worker = async (): Promise<void> => {
+        while (next < queue.length) await ensureAudioRegistered(queue[next++]);
+    };
+    const workers: Array<Promise<void>> = [];
+    for (let i = 0; i < Math.min(PRELOAD_CONCURRENCY, queue.length); i++) workers.push(worker());
+    await Promise.all(workers);
+}
+
+/**
+ * Every audio file `data` names in a node property's value (a string, or a
+ * list of them for random sounds and playlists), at any depth — graphs,
+ * subgraphs and the nodes inside them alike. Added to `out` and returned.
+ */
+export function collectOrcaAudioPaths(data: unknown, out: Set<string> = new Set<string>()): Set<string> {
+    const visit = (value: unknown, depth: number): void => {
+        if (depth > 64 || value === null || typeof value !== "object") return;
+        if (Array.isArray(value)) {
+            for (const item of value) visit(item, depth + 1);
+            return;
+        }
+        const record = value as Record<string, unknown>;
+        if (Array.isArray(record.properties)) {
+            for (const property of record.properties) {
+                const raw = property !== null && typeof property === "object" ? (property as { value?: unknown }).value : undefined;
+                for (const candidate of Array.isArray(raw) ? raw : [raw]) {
+                    if (typeof candidate === "string" && looksLikeAudioPath(candidate)) out.add(candidate);
+                }
+            }
+        }
+        for (const key of Object.keys(record)) visit(record[key], depth + 1);
+    };
+    visit(data, 0);
+    return out;
 }
 
 /**

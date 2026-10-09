@@ -1,0 +1,558 @@
+hotspot.webp
+size: 4096, 4096
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+hotspot/base/0000
+  bounds: 3875, 1184, 247, 206
+  offsets: 118, 0, 480, 480
+  rotate: 90
+hotspot/base/0001
+  bounds: 3086, 3835, 258, 219
+  offsets: 112, 0, 480, 480
+  rotate: 90
+hotspot/base/0002
+  bounds: 3303, 3017, 268, 235
+  offsets: 107, 0, 480, 480
+  rotate: 90
+hotspot/base/0003
+  bounds: 2385, 2799, 275, 253
+  offsets: 103, 0, 480, 480
+  rotate: 90
+hotspot/base/0004
+  bounds: 3194, 2730, 283, 274
+  offsets: 100, 0, 480, 480
+  rotate: 90
+hotspot/base/0005
+  bounds: 2899, 2730, 291, 295
+  offsets: 95, 0, 480, 480
+hotspot/base/0006
+  bounds: 1443, 3126, 315, 395
+  offsets: 84, 0, 480, 480
+hotspot/base/0007
+  bounds: 484, 2317, 333, 472
+  offsets: 71, 0, 480, 480
+  rotate: 90
+hotspot/base/0008
+  bounds: 971, 1838, 339, 480
+  offsets: 74, 0, 480, 480
+  rotate: 90
+hotspot/base/0009
+  bounds: 2907, 2278, 381, 480
+  offsets: 50, 0, 480, 480
+  rotate: 90
+hotspot/base/0010
+  bounds: 1446, 2181, 421, 466
+  offsets: 30, 0, 480, 480
+  rotate: 90
+hotspot/base/0011
+  bounds: 484, 1844, 477, 469
+  offsets: 1, 0, 480, 480
+hotspot/base/0012
+  bounds: 1939, 1836, 480, 439
+  offsets: 0, 0, 480, 480
+hotspot/base/0013
+  bounds: 2907, 1389, 480, 441
+  offsets: 0, 0, 480, 480
+hotspot/base/0014
+  bounds: 2907, 1834, 480, 440
+  offsets: 0, 0, 480, 480
+hotspot/base/0015
+  bounds: 1939, 1388, 480, 444
+  offsets: 0, 0, 480, 480
+hotspot/base/0016
+  bounds: 3, 1393, 480, 447
+  offsets: 0, 0, 480, 480
+hotspot/base/0017
+  bounds: 971, 933, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/0018
+  bounds: 2907, 931, 480, 454
+  offsets: 0, 0, 480, 480
+hotspot/base/0019
+  bounds: 971, 1386, 480, 448
+  offsets: 0, 0, 480, 480
+hotspot/base/0020
+  bounds: 1939, 475, 480, 456
+  offsets: 0, 0, 480, 480
+hotspot/base/0021
+  bounds: 971, 3, 480, 471
+  offsets: 0, 0, 480, 480
+hotspot/base/0022
+  bounds: 2907, 3, 480, 463
+  offsets: 0, 0, 480, 480
+hotspot/base/0023
+  bounds: 1939, 3, 480, 468
+  offsets: 0, 0, 480, 480
+hotspot/base/0024
+  bounds: 3, 3, 480, 479
+  offsets: 0, 0, 480, 480
+hotspot/base/0025
+  bounds: 1455, 933, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/0026
+  bounds: 3, 486, 480, 450
+  offsets: 0, 0, 480, 480
+hotspot/base/0027
+  bounds: 971, 478, 480, 451
+  offsets: 0, 0, 480, 480
+hotspot/base/0028
+  bounds: 3, 940, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/0029
+  bounds: 2907, 470, 480, 457
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0000
+  bounds: 3875, 1435, 247, 206
+  offsets: 118, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0001
+  bounds: 3711, 2663, 258, 219
+  offsets: 112, 0, 480, 480
+hotspot/base/hotspot/hotspot_0002
+  bounds: 3472, 2730, 268, 235
+  offsets: 107, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0003
+  bounds: 2642, 2799, 275, 253
+  offsets: 103, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0004
+  bounds: 3268, 3328, 283, 274
+  offsets: 100, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0005
+  bounds: 3008, 3029, 291, 295
+  offsets: 95, 0, 480, 480
+hotspot/base/hotspot/hotspot_0006
+  bounds: 1542, 3525, 315, 395
+  offsets: 84, 0, 480, 480
+hotspot/base/hotspot/hotspot_0007
+  bounds: 3, 2325, 333, 472
+  offsets: 71, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0008
+  bounds: 1455, 1838, 339, 480
+  offsets: 74, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0009
+  bounds: 3391, 2278, 381, 480
+  offsets: 50, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0010
+  bounds: 1916, 2279, 421, 466
+  offsets: 30, 0, 480, 480
+  rotate: 90
+hotspot/base/hotspot/hotspot_0011
+  bounds: 965, 2181, 477, 469
+  offsets: 1, 0, 480, 480
+hotspot/base/hotspot/hotspot_0012
+  bounds: 2423, 1836, 480, 439
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0013
+  bounds: 3391, 1389, 480, 441
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0014
+  bounds: 3391, 1834, 480, 440
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0015
+  bounds: 2423, 1388, 480, 444
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0016
+  bounds: 487, 1393, 480, 447
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0017
+  bounds: 487, 940, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0018
+  bounds: 3391, 931, 480, 454
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0019
+  bounds: 1455, 1386, 480, 448
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0020
+  bounds: 2423, 475, 480, 456
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0021
+  bounds: 1455, 3, 480, 471
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0022
+  bounds: 3391, 3, 480, 463
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0023
+  bounds: 2423, 3, 480, 468
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0024
+  bounds: 487, 3, 480, 479
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0025
+  bounds: 1939, 935, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0026
+  bounds: 487, 486, 480, 450
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0027
+  bounds: 1455, 478, 480, 451
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0028
+  bounds: 2423, 935, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/base/hotspot/hotspot_0029
+  bounds: 3391, 470, 480, 457
+  offsets: 0, 0, 480, 480
+hotspot/blur_circ
+  bounds: 3, 1844, 477, 477
+hotspot/highlights/0000
+  bounds: 4059, 2289, 38, 25
+  offsets: 222, 75, 480, 480
+  rotate: 90
+hotspot/highlights/0001
+  bounds: 4050, 2475, 44, 40
+  offsets: 217, 73, 480, 480
+  rotate: 90
+hotspot/highlights/0002
+  bounds: 1331, 2840, 52, 48
+  offsets: 215, 72, 480, 480
+hotspot/highlights/0003
+  bounds: 4032, 2638, 60, 88
+  offsets: 210, 72, 480, 480
+hotspot/highlights/0004
+  bounds: 1331, 2654, 63, 110
+  offsets: 212, 72, 480, 480
+  rotate: 90
+hotspot/highlights/0005
+  bounds: 2812, 2532, 85, 133
+  offsets: 199, 67, 480, 480
+hotspot/highlights/0006
+  bounds: 3875, 2475, 107, 171
+  offsets: 188, 64, 480, 480
+  rotate: 90
+hotspot/highlights/0007
+  bounds: 1843, 3924, 123, 282
+  offsets: 177, 62, 480, 480
+  rotate: 90
+hotspot/highlights/0008
+  bounds: 1542, 3924, 130, 297
+  offsets: 179, 61, 480, 480
+  rotate: 90
+hotspot/highlights/0009
+  bounds: 3875, 2077, 167, 201
+  offsets: 155, 61, 480, 480
+  rotate: 90
+hotspot/highlights/0010
+  bounds: 3875, 984, 214, 196
+  offsets: 132, 61, 480, 480
+hotspot/highlights/0011
+  bounds: 2050, 2964, 283, 117
+  offsets: 100, 61, 480, 480
+hotspot/highlights/0012
+  bounds: 2899, 3457, 365, 374
+  offsets: 56, 62, 480, 480
+hotspot/highlights/0013
+  bounds: 3875, 1686, 387, 203
+  offsets: 51, 59, 480, 480
+  rotate: 90
+hotspot/highlights/0014
+  bounds: 523, 3594, 410, 220
+  offsets: 35, 56, 480, 480
+  rotate: 90
+hotspot/highlights/0015
+  bounds: 916, 3174, 406, 241
+  offsets: 38, 55, 480, 480
+  rotate: 90
+hotspot/highlights/0016
+  bounds: 747, 3594, 407, 247
+  offsets: 38, 56, 480, 480
+  rotate: 90
+hotspot/highlights/0017
+  bounds: 998, 3584, 403, 263
+  offsets: 41, 56, 480, 480
+  rotate: 90
+hotspot/highlights/0018
+  bounds: 1161, 3174, 402, 278
+  offsets: 41, 57, 480, 480
+  rotate: 90
+hotspot/highlights/0019
+  bounds: 1265, 3580, 400, 273
+  offsets: 42, 58, 480, 480
+  rotate: 90
+hotspot/highlights/0020
+  bounds: 1762, 3126, 392, 245
+  offsets: 45, 58, 480, 480
+  rotate: 90
+hotspot/highlights/0021
+  bounds: 523, 3174, 389, 416
+  offsets: 44, 58, 480, 480
+hotspot/highlights/0022
+  bounds: 2358, 3477, 387, 261
+  offsets: 45, 60, 480, 480
+  rotate: 90
+hotspot/highlights/0023
+  bounds: 2266, 3085, 388, 230
+  offsets: 45, 59, 480, 480
+  rotate: 90
+hotspot/highlights/0024
+  bounds: 2116, 3499, 388, 238
+  offsets: 45, 58, 480, 480
+  rotate: 90
+hotspot/highlights/0025
+  bounds: 1861, 3522, 389, 251
+  offsets: 45, 57, 480, 480
+  rotate: 90
+hotspot/highlights/0026
+  bounds: 2011, 3107, 388, 251
+  offsets: 46, 57, 480, 480
+  rotate: 90
+hotspot/highlights/0027
+  bounds: 2500, 3078, 377, 263
+  offsets: 56, 59, 480, 480
+  rotate: 90
+hotspot/highlights/0028
+  bounds: 2623, 3459, 375, 272
+  offsets: 58, 62, 480, 480
+  rotate: 90
+hotspot/highlights/0029
+  bounds: 2767, 3078, 375, 237
+  offsets: 56, 58, 480, 480
+  rotate: 90
+hotspot/noColour/0000
+  bounds: 3875, 1435, 247, 206
+  offsets: 118, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0001
+  bounds: 3711, 2663, 258, 219
+  offsets: 112, 0, 480, 480
+hotspot/noColour/0002
+  bounds: 3472, 2730, 268, 235
+  offsets: 107, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0003
+  bounds: 2642, 2799, 275, 253
+  offsets: 103, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0004
+  bounds: 3268, 3328, 283, 274
+  offsets: 100, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0005
+  bounds: 3008, 3029, 291, 295
+  offsets: 95, 0, 480, 480
+hotspot/noColour/0006
+  bounds: 1542, 3525, 315, 395
+  offsets: 84, 0, 480, 480
+hotspot/noColour/0007
+  bounds: 3, 2325, 333, 472
+  offsets: 71, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0008
+  bounds: 1455, 1838, 339, 480
+  offsets: 74, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0009
+  bounds: 3391, 2278, 381, 480
+  offsets: 50, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0010
+  bounds: 1916, 2279, 421, 466
+  offsets: 30, 0, 480, 480
+  rotate: 90
+hotspot/noColour/0011
+  bounds: 965, 2181, 477, 469
+  offsets: 1, 0, 480, 480
+hotspot/noColour/0012
+  bounds: 2423, 1836, 480, 439
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0013
+  bounds: 3391, 1389, 480, 441
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0014
+  bounds: 3391, 1834, 480, 440
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0015
+  bounds: 2423, 1388, 480, 444
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0016
+  bounds: 487, 1393, 480, 447
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0017
+  bounds: 487, 940, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0018
+  bounds: 3391, 931, 480, 454
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0019
+  bounds: 1455, 1386, 480, 448
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0020
+  bounds: 2423, 475, 480, 456
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0021
+  bounds: 1455, 3, 480, 471
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0022
+  bounds: 3391, 3, 480, 463
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0023
+  bounds: 2423, 3, 480, 468
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0024
+  bounds: 487, 3, 480, 479
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0025
+  bounds: 1939, 935, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0026
+  bounds: 487, 486, 480, 450
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0027
+  bounds: 1455, 478, 480, 451
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0028
+  bounds: 2423, 935, 480, 449
+  offsets: 0, 0, 480, 480
+hotspot/noColour/0029
+  bounds: 3391, 470, 480, 457
+  offsets: 0, 0, 480, 480
+hotspot/outline/0000
+  bounds: 4059, 2248, 37, 29
+  offsets: 126, 41, 288, 288
+  rotate: 90
+hotspot/outline/0001
+  bounds: 4050, 2523, 39, 36
+  offsets: 125, 41, 288, 288
+hotspot/outline/0002
+  bounds: 429, 2662, 44, 48
+  offsets: 123, 40, 288, 288
+hotspot/outline/0003
+  bounds: 4032, 2586, 48, 61
+  offsets: 121, 39, 288, 288
+  rotate: 90
+hotspot/outline/0004
+  bounds: 1331, 2783, 53, 76
+  offsets: 119, 39, 288, 288
+  rotate: 90
+hotspot/outline/0005
+  bounds: 1331, 2721, 58, 92
+  offsets: 116, 38, 288, 288
+  rotate: 90
+hotspot/outline/0006
+  bounds: 3875, 2586, 73, 153
+  offsets: 108, 36, 288, 288
+  rotate: 90
+hotspot/outline/0007
+  bounds: 2298, 2704, 83, 220
+  offsets: 101, 35, 288, 288
+hotspot/outline/0008
+  bounds: 2812, 2279, 87, 249
+  offsets: 103, 35, 288, 288
+hotspot/outline/0009
+  bounds: 2129, 3891, 115, 232
+  offsets: 87, 35, 288, 288
+  rotate: 90
+hotspot/outline/0010
+  bounds: 1813, 2964, 139, 233
+  offsets: 75, 35, 288, 288
+  rotate: 90
+hotspot/outline/0011
+  bounds: 3875, 2248, 180, 223
+  offsets: 55, 35, 288, 288
+hotspot/outline/0012
+  bounds: 3875, 741, 239, 215
+  offsets: 26, 31, 288, 288
+  rotate: 90
+hotspot/outline/0013
+  bounds: 3875, 247, 239, 218
+  offsets: 26, 30, 288, 288
+  rotate: 90
+hotspot/outline/0014
+  bounds: 3551, 3779, 241, 219
+  offsets: 25, 29, 288, 288
+  rotate: 90
+hotspot/outline/0015
+  bounds: 2608, 3868, 242, 221
+  offsets: 24, 29, 288, 288
+hotspot/outline/0016
+  bounds: 3770, 3333, 244, 219
+  offsets: 23, 30, 288, 288
+hotspot/outline/0017
+  bounds: 3770, 3556, 244, 219
+  offsets: 23, 31, 288, 288
+hotspot/outline/0018
+  bounds: 3775, 3110, 245, 219
+  offsets: 23, 32, 288, 288
+hotspot/outline/0019
+  bounds: 3775, 2886, 246, 220
+  offsets: 22, 32, 288, 288
+hotspot/outline/0020
+  bounds: 3875, 490, 247, 217
+  offsets: 22, 31, 288, 288
+  rotate: 90
+hotspot/outline/0021
+  bounds: 3542, 3002, 248, 229
+  offsets: 22, 31, 288, 288
+  rotate: 90
+hotspot/outline/0022
+  bounds: 2854, 3838, 249, 228
+  offsets: 21, 30, 288, 288
+  rotate: 90
+hotspot/outline/0023
+  bounds: 3309, 3615, 238, 233
+  offsets: 27, 30, 288, 288
+  rotate: 90
+hotspot/outline/0024
+  bounds: 3309, 3857, 238, 235
+  offsets: 27, 30, 288, 288
+hotspot/outline/0025
+  bounds: 3546, 3497, 238, 220
+  offsets: 27, 30, 288, 288
+  rotate: 90
+hotspot/outline/0026
+  bounds: 3774, 3779, 238, 220
+  offsets: 27, 30, 288, 288
+  rotate: 90
+hotspot/outline/0027
+  bounds: 3546, 3254, 239, 220
+  offsets: 26, 30, 288, 288
+  rotate: 90
+hotspot/outline/0028
+  bounds: 3875, 3, 240, 218
+  offsets: 25, 31, 288, 288
+  rotate: 90
+hotspot/outline/0029
+  bounds: 2365, 3868, 239, 225
+  offsets: 26, 31, 288, 288
+hotspot/skullsFire/0000
+  bounds: 1446, 2606, 422, 256
+hotspot/skullsFire/0001
+  bounds: 2386, 2279, 422, 256
+hotspot/skullsFire/0002
+  bounds: 2386, 2539, 422, 256
+hotspot/skullsFire/0003
+  bounds: 1872, 2704, 422, 256
+hotspot/skullsFire/0004
+  bounds: 479, 2654, 422, 256
+hotspot/skullsFire/0005
+  bounds: 3, 2662, 422, 256
+hotspot/skullsFire/0006
+  bounds: 905, 2654, 422, 256
+hotspot/skullsFire/0007
+  bounds: 1387, 2866, 422, 256
+hotspot/skullsFire/0008
+  bounds: 429, 2914, 422, 256
+hotspot/skullsFire/0009
+  bounds: 3, 2922, 422, 256
+hotspot/skullsFire/0010
+  bounds: 855, 2914, 422, 256
+hotspot/skullsFire/0011
+  bounds: 3, 3182, 422, 256
+  rotate: 90
+hotspot/skullsFire/0012
+  bounds: 3, 3608, 422, 256
+  rotate: 90
+hotspot/skullsFire/0013
+  bounds: 263, 3182, 422, 256
+  rotate: 90
+hotspot/skullsFire/0014
+  bounds: 263, 3608, 422, 256
+  rotate: 90

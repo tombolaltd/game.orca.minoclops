@@ -96,6 +96,16 @@ With it on, `resume` / `potvalues` carry `ConfigVersion` + `CurrentPotValues` an
 `begin` carries `ConfigVersion` + `JackpotWin` (plus `JackpotPrize` / `WinningPot` /
 `WinningTicket` / `WinningDetails` on a win); `continue` is unaffected.
 
+Every reply carrying `Jackpot` also carries **`JackpotResponse`** — the same jackpot in
+the shape the arcade client reads (`jackpot/ClientJackpotResponse.ts`): `low` / `mid` /
+`high` tiers with `PrizeValue`s, begin's empty pot list filled from the pots as they stand,
+the won pot showing the prize it paid and `NextPotValue` its reseeded value. It is what
+lets a game previewed against the mock play its jackpot rounds and lets the jackpots
+panel's poller (which posts to `potvalues`) read the mock's pots. A forced win comes from
+the request's `DebugJackpotData` or, failing that, from the older client fields
+`DebugJackpotTier` (`'Low'` / `'Mid'` / `'High'`) + `DebugJackpotForceWin`; none of the
+three reaches a mechanic's own debug data.
+
 `createDefaultJackpotPots()` owns the per-tier numeric defaults — a caller supplies
 **sparse** `MockJackpotPotConfig` overrides keyed by `TierId` and the caller is
 responsible for merging them over those defaults, because `normalisePots` defaults

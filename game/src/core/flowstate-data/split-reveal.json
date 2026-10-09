@@ -239,7 +239,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "splitr_020",
-      "exitSourceId": "naaayjad",
+      "exitSourceId": "n4k6y93d",
       "subgraph": {
         "nodes": [
           {
@@ -369,7 +369,13 @@
             "properties": [
               {
                 "name": "target",
-                "type": "nodeRef"
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
               },
               {
                 "name": "reelIndex",

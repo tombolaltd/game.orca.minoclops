@@ -38,6 +38,13 @@ export interface BaseArcadeResponse {
 
     Jackpot?: JackpotDetails;
 
+    /**
+     * MOCK: `Jackpot` again, in the shape the arcade client reads (lowercase tiers and
+     * `PrizeValue`s, as the real engine's begin / resume / potvalues replies carry it).
+     * Present exactly when `Jackpot` is; see jackpot/ClientJackpotResponse.ts.
+     */
+    JackpotResponse?: ClientJackpotResponse;
+
     Timestamps?: Timestamps;
 
     GameSettings: GameSettings;
@@ -212,6 +219,22 @@ export class JackpotTicket {
     constructor(layout: number[][][]) {
         this.GemLayouts = layout;
     }
+}
+
+/** MOCK: a reply's jackpot as the arcade client (`@game-studio/jackpots`) reads it. */
+export interface ClientJackpotResponse {
+    CurrentPotValues: ClientJackpotPrize[];
+    JackpotWin: boolean;
+    WinningPot?: ClientJackpotPrize;
+    NextPotValue?: ClientJackpotPrize;
+    WinningTicket?: JackpotTicket;
+    WinningDetails?: JackpotWinDetails;
+}
+
+/** MOCK: one pot as the arcade client reads it: `low` / `mid` / `high` and its value in minor units. */
+export interface ClientJackpotPrize {
+    Tier: string;
+    PrizeValue: number;
 }
 
 export interface Tokens {

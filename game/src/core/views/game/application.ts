@@ -11,6 +11,7 @@ import {
 import { Flowstate } from '../../services/orca/flowstate';
 import animationPlayer from '../../services/orca/animation-player';
 import { installGameFeelProbe } from '../../services/orca/game-feel-probe';
+import { preloadOrcaAudio } from '../../services/orca/methods/audio';
 import sceneManager from '../../services/orca/scene-manager';
 import { gameEventEmitter } from '@/src/events';
 
@@ -65,6 +66,9 @@ export class GameApplication implements IGameApp {
     public async preInit(): Promise<void> {
         Flowstate.eventTriggers.application.onApplicationPreInit();
         await sceneManager.buildScenes();
+        // Every sound the graphs and the reels play, through the Pixi loader:
+        // none is fetched once the game is playing.
+        await preloadOrcaAudio([...Flowstate.audioPaths(), ...sceneManager.audioPaths()]);
 
         // Register Animation Timeline clips (core + active skin). gsap drives
         // its own ticker, so no per-frame hook is needed.
@@ -233,10 +237,10 @@ export class GameApplication implements IGameApp {
     }
 
     public enterJackpot(): void {
-        Flowstate.eventTriggers.application.onEnterJackpot();
-        // Enter the (gated) jackpot round. No-op for a non-jackpot skin, when
-        // jackpots never initialised, or when the player has no active
-        // jackpot (`jackpotGameModel.hasJackpot`). Fire-and-forget.
+        // Play the jackpot round the game won, if it has not played yet (it
+        // dispatches `onEnterJackpot` as it starts). No-op for a non-jackpot
+        // skin, before jackpots initialise, or when nothing was won.
+        // `endCabinetGame` plays it anyway before the game ends.
         void enterJackpotsRuntime();
     }
 

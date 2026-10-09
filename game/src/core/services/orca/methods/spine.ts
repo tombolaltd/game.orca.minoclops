@@ -4,7 +4,12 @@ import * as PIXI from "pixi.js";
 import { Physics, Spine } from "@esotericsoftware/spine-pixi-v8";
 import sceneManager from "../scene-manager";
 import type { NodeRefLike } from "./node-ref";
-import { resolveNode, resolveNodeDeferred } from "./node-ref";
+import { describeNodeRef, resolveNode, resolveNodeDeferred } from "./node-ref";
+import { describeFlowError, emitFlowConsole } from "./flow-console";
+
+function listNames(items: ReadonlyArray<{ name: string }>): string {
+    return items.length > 0 ? items.map(item => item.name).join(', ') : 'none';
+}
 
 /**
  * Spine Animation Methods for FlowState
@@ -34,6 +39,98 @@ class SpineMethods {
         sceneManager.trackSpineForUpdates(spine);
     }
 
+    /** False (and an attributed error naming the available animations) when the skeleton lacks it. */
+    private hasAnimationOrReport(spine: Spine, target: NodeRefLike, animationName: string, method: string): boolean {
+        const data = spine.skeleton.data;
+        if (data.findAnimation(animationName)) return true;
+        emitFlowConsole(
+            'error',
+            `[FlowState] ${method}: animation '${animationName}' does not exist on '${describeNodeRef(target)}'`
+                + ` (available: ${listNames(data.animations)})`,
+            { code: 'spine-animation-not-found' },
+        );
+        return false;
+    }
+
+    /**
+     * Resolve once `trackEntry` completes, is interrupted or is disposed.
+     * State-listener pattern: the per-TrackEntry `listener` field is not
+     * honoured reliably here; every other consumer (arcade-base
+     * spine-extended, jackpots, sound-manager, bingo-base, etc.) uses
+     * `spine.state.addListener({ complete })` and matches on the TrackEntry.
+     * Interrupt/dispose also settle so a chained call or a scene swap never
+     * leaves the Promise pending.
+     */
+    private settleOnTrackEnd(spine: Spine, trackEntry: unknown, animationName: string, resolve: () => void): void {
+        console.log('[FlowState] spine.onComplete listener attached for', animationName);
+        let settled = false;
+        const settle = (entry: any, reason: 'complete' | 'interrupt' | 'dispose') => {
+            if (settled) return;
+            if (entry !== trackEntry) return;
+            settled = true;
+            try { spine.state.removeListener(listener); } catch { /* swallow */ }
+            console.log('[FlowState] spine.onComplete resolved for', animationName, '(reason)', reason);
+            resolve();
+        };
+        const listener = {
+            complete: (entry: any) => settle(entry, 'complete'),
+            interrupt: (entry: any) => settle(entry, 'interrupt'),
+            dispose: (entry: any) => settle(entry, 'dispose'),
+        };
+        spine.state.addListener(listener);
+    }
+
+    /**
+     * Shared body of playAnimation / addAnimation. `start` queues the
+     * animation and returns its TrackEntry. In 'onComplete' mode the Promise
+     * ALWAYS settles: an unknown animation, an unresolvable target or a
+     * throwing `start` resolves at once (after an attributed error) rather
+     * than hanging the flow. A deferred target whose Spine load fails still
+     * never calls back, so that case can still hang.
+     */
+    private runAnimation(
+        method: 'playAnimation' | 'addAnimation',
+        target: NodeRefLike,
+        animationName: string,
+        loop: boolean,
+        sequenceNodeOn: 'immediate' | 'onComplete',
+        start: (spine: Spine, loop: boolean) => unknown,
+    ): Promise<void> | void {
+        const awaitCompletion = sequenceNodeOn === 'onComplete';
+        if (awaitCompletion && loop) {
+            emitFlowConsole(
+                'warn',
+                `[FlowState] ${method} '${animationName}' has loop=true and sequenceNodeOn='onComplete'; a looping animation will never complete. Falling through to immediate.`,
+                { code: 'spine-loop-on-complete' },
+            );
+        }
+        if (!awaitCompletion || loop) {
+            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
+                if (!this.hasAnimationOrReport(spine, target, animationName, method)) return;
+                start(spine, loop);
+                this.trackForUpdates(spine);
+            });
+            return;
+        }
+        return new Promise<void>((resolve) => {
+            const outcome = resolveNodeDeferred<Spine>(target, Spine, (spine) => {
+                if (!this.hasAnimationOrReport(spine, target, animationName, method)) {
+                    resolve();
+                    return;
+                }
+                try {
+                    const trackEntry = start(spine, false);
+                    this.trackForUpdates(spine);
+                    this.settleOnTrackEnd(spine, trackEntry, animationName, resolve);
+                } catch (err) {
+                    emitFlowConsole('error', `[FlowState] ${method}: ${describeFlowError(err)}`, { code: 'node-error' });
+                    resolve();
+                }
+            });
+            if (outcome === 'not-found') resolve();
+        });
+    }
+
     public playAnimation(
         target: NodeRefLike,
         animationName: string,
@@ -41,54 +138,8 @@ class SpineMethods {
         trackIndex: number = 0,
         sequenceNodeOn: 'immediate' | 'onComplete' = 'immediate',
     ): Promise<void> | void {
-        if (sequenceNodeOn !== 'onComplete') {
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                spine.state.setAnimation(trackIndex, animationName, loop);
-                this.trackForUpdates(spine);
-            });
-            return;
-        }
-        if (loop) {
-            console.warn(`[FlowState] playAnimation '${animationName}' has loop=true and sequenceNodeOn='onComplete'; a looping animation will never complete. Falling through to immediate.`);
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                spine.state.setAnimation(trackIndex, animationName, loop);
-                this.trackForUpdates(spine);
-            });
-            return;
-        }
-        // State-listener pattern: the per-TrackEntry `listener` field is not
-        // honoured reliably here; every other consumer (arcade-base
-        // spine-extended, jackpots, sound-manager, bingo-base, etc.)
-        // uses `spine.state.addListener({ complete })` and matches on the
-        // TrackEntry returned by setAnimation. We do the same, and additionally
-        // resolve on `interrupt`/`dispose` so a chained playAnimation that
-        // interrupts the running track (or a scene swap) doesn't leave the
-        // Promise pending forever.
-        // NOTE: if the target never resolves (scene unloaded, wrong type, etc.)
-        // resolveNodeDeferred never invokes the callback and this Promise hangs.
-        // Same hazard as the sync no-op contract; left as-is intentionally.
-        return new Promise<void>((resolve) => {
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                const trackEntry = spine.state.setAnimation(trackIndex, animationName, false);
-                this.trackForUpdates(spine);
-                console.log('[FlowState] spine.onComplete listener attached for', animationName);
-                let settled = false;
-                const settle = (entry: any, reason: 'complete' | 'interrupt' | 'dispose') => {
-                    if (settled) return;
-                    if (entry !== trackEntry) return;
-                    settled = true;
-                    try { spine.state.removeListener(listener); } catch { /* swallow */ }
-                    console.log('[FlowState] spine.onComplete resolved for', animationName, '(reason)', reason);
-                    resolve();
-                };
-                const listener = {
-                    complete: (entry: any) => settle(entry, 'complete'),
-                    interrupt: (entry: any) => settle(entry, 'interrupt'),
-                    dispose: (entry: any) => settle(entry, 'dispose'),
-                };
-                spine.state.addListener(listener);
-            });
-        });
+        return this.runAnimation('playAnimation', target, animationName, loop, sequenceNodeOn,
+            (spine, shouldLoop) => spine.state.setAnimation(trackIndex, animationName, shouldLoop));
     }
 
     public addAnimation(
@@ -99,49 +150,9 @@ class SpineMethods {
         trackIndex: number = 0,
         sequenceNodeOn: 'immediate' | 'onComplete' = 'immediate',
     ): Promise<void> | void {
-        if (sequenceNodeOn !== 'onComplete') {
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                spine.state.addAnimation(trackIndex, animationName, loop, delay);
-                this.trackForUpdates(spine);
-            });
-            return;
-        }
-        if (loop) {
-            console.warn(`[FlowState] addAnimation '${animationName}' has loop=true and sequenceNodeOn='onComplete'; a looping animation will never complete. Falling through to immediate.`);
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                spine.state.addAnimation(trackIndex, animationName, loop, delay);
-                this.trackForUpdates(spine);
-            });
-            return;
-        }
-        // State-listener pattern (see playAnimation): match on the queued
-        // TrackEntry returned by addAnimation. Resolve on complete /
-        // interrupt / dispose so chained calls or scene swaps don't strand
-        // the Promise.
-        // NOTE: same target-never-resolves hazard as playAnimation; the queued
-        // TrackEntry's `complete` is what we await (not the currently-playing one).
-        return new Promise<void>((resolve) => {
-            resolveNodeDeferred<Spine>(target, Spine, (spine) => {
-                const trackEntry = spine.state.addAnimation(trackIndex, animationName, false, delay);
-                this.trackForUpdates(spine);
-                console.log('[FlowState] spine.onComplete listener attached for', animationName);
-                let settled = false;
-                const settle = (entry: any, reason: 'complete' | 'interrupt' | 'dispose') => {
-                    if (settled) return;
-                    if (entry !== trackEntry) return;
-                    settled = true;
-                    try { spine.state.removeListener(listener); } catch { /* swallow */ }
-                    console.log('[FlowState] spine.onComplete resolved for', animationName, '(reason)', reason);
-                    resolve();
-                };
-                const listener = {
-                    complete: (entry: any) => settle(entry, 'complete'),
-                    interrupt: (entry: any) => settle(entry, 'interrupt'),
-                    dispose: (entry: any) => settle(entry, 'dispose'),
-                };
-                spine.state.addListener(listener);
-            });
-        });
+        // In 'onComplete' mode the queued entry's `complete` is awaited, not the currently-playing one.
+        return this.runAnimation('addAnimation', target, animationName, loop, sequenceNodeOn,
+            (spine, shouldLoop) => spine.state.addAnimation(trackIndex, animationName, shouldLoop, delay));
     }
 
     public clearTrack(target: NodeRefLike, trackIndex: number): void {
@@ -179,10 +190,19 @@ class SpineMethods {
     public setSkin(target: NodeRefLike, skinName: string): void {
         if (typeof skinName !== 'string' || !skinName.trim()) return;
         resolveNodeDeferred<Spine>(target, Spine, (spine) => {
+            const data = spine.skeleton.data;
+            if (!data.findSkin(skinName)) {
+                emitFlowConsole(
+                    'error',
+                    `[FlowState] setSkin: skin '${skinName}' does not exist on '${describeNodeRef(target)}' (available: ${listNames(data.skins)})`,
+                    { code: 'spine-skin-not-found' },
+                );
+                return;
+            }
             try {
                 spine.skeleton.setSkinByName(skinName);
             } catch (error) {
-                console.warn(`[FlowState] setSkin: could not apply skin '${skinName}'.`, error);
+                emitFlowConsole('error', `[FlowState] setSkin: could not apply skin '${skinName}': ${describeFlowError(error)}`, { code: 'node-error' });
                 return;
             }
             spine.skeleton.setSlotsToSetupPose();
@@ -190,7 +210,7 @@ class SpineMethods {
             try {
                 spine.update(0);
             } catch (error) {
-                console.warn(`[FlowState] setSkin: could not refresh skin '${skinName}'.`, error);
+                emitFlowConsole('warn', `[FlowState] setSkin: could not refresh skin '${skinName}': ${describeFlowError(error)}`, { code: 'node-error' });
             }
         });
     }

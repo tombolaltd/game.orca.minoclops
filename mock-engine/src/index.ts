@@ -21,6 +21,7 @@ export * from './session/MockGameSessionHandler';
 export * from './storage/InMemoryGameStorageHandler';
 export * from './settings/GameSettingsBase';
 export * from './jackpot/MockJackpotService';
+export * from './jackpot/ClientJackpotResponse';
 export * from './evaluation';
 
 export * from './flow/GameFlowHandlerBase';

@@ -1,4 +1,5 @@
 import { flowstateMethods } from "./methods"
+import { collectOrcaAudioPaths } from "./methods/audio"
 import { isLoopNode, loopIterationCount } from "./methods/loop"
 import { resolveValuePath } from "./methods/object"
 import { describeFlowError, emitFlowConsole, FlowNodeContext, isFlowErrorReported, markFlowErrorReported, withFlowNodeContext } from "./methods/flow-console"
@@ -266,6 +267,13 @@ export abstract class Flowstate {
         // bind successfully here; re-binds on (un)loadScene are harmless.
         this.bindCustomEventStarters();
         this.bindGamePreferenceStarters();
+    }
+
+    /** Every audio file the registered graphs play (preloaded while the game loads). */
+    public static audioPaths(): string[] {
+        const out = new Set<string>();
+        for (const graph of this.graphs) collectOrcaAudioPaths(graph.data, out);
+        return Array.from(out);
     }
 
     /**

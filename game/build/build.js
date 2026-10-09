@@ -10,6 +10,8 @@ const path = require('path');
 const chalk = require('chalk');
 const webpack = require('webpack');
 const config = require('./configuration');
+// Before the prod config loads: it checks the asset folders it will copy.
+reconcileRuntimeAssets();
 const webpackConfig = require('./webpack.prod.conf');
 const { eraseFolder, copyAssets } = require('./copy-assets');
 
@@ -26,6 +28,10 @@ spinner.start();
 // `?skin=<gameId>` — so any regex over it would silently return false and ship
 // a jackpots-less build. Reading the source of truth is drift-proof.
 //
+// A build of game/ ON ITS OWN (a CI checkout without orca-project-files/) has
+// no main.orca; it reads the per-skin `isJackpot` LITERALS in that file's
+// SKIN_TABLE instead (`readGameSkinTable`), never the derived IS_JACKPOT.
+//
 // A bundle serving ALL skins needs the assets if ANY skin is a jackpot skin.
 const MAIN_ORCA_PATH = path.resolve(__dirname, '../../orca-project-files/main.orca');
 
@@ -34,6 +40,10 @@ function isJackpotSkin() {
   try {
     parsed = JSON.parse(fs.readFileSync(MAIN_ORCA_PATH, 'utf-8'));
   } catch (err) {
+    // A build of game/ on its own has no main.orca; the generated skin table knows.
+    const assets = require('./orca-project-assets');
+    const table = typeof assets.readGameSkinTable === 'function' ? assets.readGameSkinTable() : null;
+    if (table && table.skins.length) return table.skins.some(skin => skin.isJackpot);
     // Unreadable/unparseable main.orca. Copying assets that turn out to be
     // unused only bloats the bundle; NOT copying them 404-storms a jackpot
     // skin at runtime — so fail toward copying.
@@ -55,6 +65,41 @@ function isJackpotSkin() {
   }
 
   return skins.some(skin => skin && skin.isJackpot === true);
+}
+
+// Make the runtime asset folders (`game/src/<bucket>/assets/`, which webpack
+// copies into the build) hold every asset the bundled scenes, graphs and clips
+// name, copying missing or out-of-date files from `orca-project-files/`. A
+// stale folder used to ship white boxes and silent sounds with no error.
+// Never fatal: a failure here leaves the build exactly as it was before.
+function reconcileRuntimeAssets() {
+  try {
+    const mirror = require('./orca-asset-mirror');
+    mirror.logOrcaAssetMirrorReport(mirror.reconcileOrcaAssetMirrors());
+  } catch (err) {
+    console.warn(chalk.yellow(`  [build] Runtime asset check failed: ${err && err.message}\n`));
+  }
+}
+
+// A referenced asset left out of the output draws as a white box: fail the build instead.
+function verifyBuiltAssets() {
+  let result;
+  try {
+    const mirror = require('./orca-asset-mirror');
+    if (typeof mirror.verifyOrcaBuildOutput !== 'function') return true;
+    result = mirror.verifyOrcaBuildOutput(path.join(config.build.assetsRoot, 'assets'));
+  } catch (err) {
+    console.warn(chalk.yellow(`  [build] Built-asset check failed: ${err && err.message}\n`));
+    return true;
+  }
+  if (!result.lost.length) return true;
+  const shown = result.lost.slice(0, 40).map(row => `    ${row.bucket}: ${row.ref}`);
+  if (result.lost.length > 40) shown.push(`    …and ${result.lost.length - 40} more`);
+  console.log(chalk.red(
+    `  Build failed: ${result.lost.length} asset file(s) the game uses are in its asset folders but not in the build output:\n` +
+    `${shown.join('\n')}\n`
+  ));
+  return false;
 }
 
 // Populate ./static before webpack runs. Production has no `prebuild`
@@ -105,6 +150,12 @@ async function main() {
   }
   await copyAssets('game');
 
+  // The output check after webpack must see what THIS build copied, not files
+  // an older build left behind: clear the copied assets as well as `static`.
+  await new Promise((resolve, reject) => {
+    rm(path.join(config.build.assetsRoot, 'assets'), rmError => (rmError ? reject(rmError) : resolve()));
+  });
+
   rm(path.join(config.build.assetsRoot, config.build.assetsSubDirectory), rmError => {
     if (rmError) {
       throw rmError;
@@ -126,6 +177,7 @@ async function main() {
         console.log(chalk.red('  Build failed with errors.\n'));
         process.exit(1);
       }
+      if (!verifyBuiltAssets()) process.exit(1);
 
       console.log(chalk.cyan('  Build complete.\n'));
       console.log(chalk.yellow(
