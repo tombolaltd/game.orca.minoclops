@@ -1,0 +1,1814 @@
+{
+  "nodes": [
+    {
+      "id": "settle_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Round result: top up the win, run the big-win ladder at 15x+, post the win or lose message, end the game once."
+    },
+    {
+      "id": "settle_001",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "payout"
+        }
+      ]
+    },
+    {
+      "id": "settle_003",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "settleRound"
+        }
+      ]
+    },
+    {
+      "id": "settle_004",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "winAmountSoFar"
+        }
+      ]
+    },
+    {
+      "id": "settle_005",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "settle_001"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "sourceNodeId": "settle_004"
+        }
+      ]
+    },
+    {
+      "id": "settle_006",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "settle_005"
+        }
+      ]
+    },
+    {
+      "id": "settle_010",
+      "title": "getStakeAmount",
+      "rootType": "Info & UI"
+    },
+    {
+      "id": "settle_011",
+      "title": "multiply",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "settle_010"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 15
+        }
+      ]
+    },
+    {
+      "id": "settle_012",
+      "title": "greaterThanOrEqual",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "settle_001"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "sourceNodeId": "settle_011"
+        }
+      ]
+    },
+    {
+      "id": "settle_013",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "settle_012"
+        }
+      ]
+    },
+    {
+      "id": "settle_049",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "settle_001"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "settle_050",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "settle_049"
+        }
+      ]
+    },
+    {
+      "id": "settle_058",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "settle_008",
+      "exitSourceId": "settle_009",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "settle_059",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "settle_007",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "winAmountSoFar"
+              }
+            ]
+          },
+          {
+            "id": "settle_008",
+            "title": "countUpText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "from",
+                "type": "float",
+                "sourceNodeId": "settle_007"
+              },
+              {
+                "name": "to",
+                "type": "float",
+                "sourceNodeId": "settle_073"
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 800
+              },
+              {
+                "name": "format",
+                "type": "string",
+                "value": "currency"
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "settle_009",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "winAmountSoFar"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "sourceNodeId": "settle_073"
+              }
+            ]
+          },
+          {
+            "id": "settle_073",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "payout"
+              }
+            ]
+          },
+          {
+            "id": "settle_060",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_settle_4",
+            "from": "settle_007",
+            "to": "settle_008",
+            "propertyType": "float",
+            "propertyName": "from"
+          },
+          {
+            "id": "l_settle_5",
+            "from": "settle_073",
+            "to": "settle_008",
+            "propertyType": "float",
+            "propertyName": "to"
+          },
+          {
+            "id": "l_settle_6",
+            "from": "settle_073",
+            "to": "settle_009",
+            "propertyType": "dynamic",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_settle_37",
+            "from": "settle_008",
+            "to": "settle_009"
+          },
+          {
+            "id": "l_settle_38",
+            "from": "settle_059",
+            "to": "settle_008"
+          },
+          {
+            "id": "l_settle_39",
+            "from": "settle_009",
+            "to": "settle_060"
+          }
+        ]
+      }
+    },
+    {
+      "id": "settle_061",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "settle_014",
+      "exitSourceId": "settle_048",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "settle_062",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "settle_002",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray",
+                "value": [
+                  15,
+                  30,
+                  50,
+                  100
+                ]
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "settle_014",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_title",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "BIG WIN"
+              }
+            ]
+          },
+          {
+            "id": "settle_015",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_sub",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "settle_016",
+            "title": "formatMoney",
+            "rootType": "Info & UI",
+            "properties": [
+              {
+                "name": "amount",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "rounded",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "settle_017",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "settle_016"
+              }
+            ]
+          },
+          {
+            "id": "settle_018",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "settle_019",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.92
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.92
+              }
+            ]
+          },
+          {
+            "id": "settle_020",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "settle_021",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/win-big.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "settle_022",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 360
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "settle_023",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 260
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "settle_024",
+            "title": "getStakeAmount",
+            "rootType": "Info & UI"
+          },
+          {
+            "id": "settle_025",
+            "title": "multiply",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_024"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "item"
+              }
+            ]
+          },
+          {
+            "id": "settle_026",
+            "title": "greaterThanOrEqual",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_074"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "sourceNodeId": "settle_025"
+              }
+            ]
+          },
+          {
+            "id": "settle_027",
+            "title": "branch",
+            "rootType": "branch",
+            "properties": [
+              {
+                "name": "condition",
+                "type": "bool",
+                "sourceNodeId": "settle_026"
+              }
+            ]
+          },
+          {
+            "id": "settle_028",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "value": [
+                  "BIG WIN",
+                  "MEGA WIN",
+                  "SUPER WIN",
+                  "EPIC WIN"
+                ]
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "settle_029",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_title",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "settle_028"
+              }
+            ]
+          },
+          {
+            "id": "settle_030",
+            "title": "greaterThan",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "settle_031",
+            "title": "branch",
+            "rootType": "branch",
+            "properties": [
+              {
+                "name": "condition",
+                "type": "bool",
+                "sourceNodeId": "settle_030"
+              }
+            ]
+          },
+          {
+            "id": "settle_032",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/tier-up.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "settle_033",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_title",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1.25
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1.25
+              }
+            ]
+          },
+          {
+            "id": "settle_034",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_title",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 350
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "settle_035",
+            "title": "getStakeAmount",
+            "rootType": "Info & UI"
+          },
+          {
+            "id": "settle_036",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "value": [
+                  0,
+                  30,
+                  50,
+                  100
+                ]
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "settle_037",
+            "title": "multiply",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_035"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "sourceNodeId": "settle_036"
+              }
+            ]
+          },
+          {
+            "id": "settle_038",
+            "title": "getStakeAmount",
+            "rootType": "Info & UI"
+          },
+          {
+            "id": "settle_039",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "value": [
+                  30,
+                  50,
+                  100,
+                  2000
+                ]
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "settle_040",
+            "title": "multiply",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_038"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "sourceNodeId": "settle_039"
+              }
+            ]
+          },
+          {
+            "id": "settle_041",
+            "title": "min",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_074"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "sourceNodeId": "settle_040"
+              }
+            ]
+          },
+          {
+            "id": "settle_042",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "value": [
+                  2000,
+                  1200,
+                  1200,
+                  1200
+                ]
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "sourceNodeId": "settle_002",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "settle_043",
+            "title": "countUpText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "from",
+                "type": "float",
+                "sourceNodeId": "settle_037"
+              },
+              {
+                "name": "to",
+                "type": "float",
+                "sourceNodeId": "settle_041"
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "sourceNodeId": "settle_042"
+              },
+              {
+                "name": "format",
+                "type": "string",
+                "value": "currency"
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "settle_044",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/cash-land.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "settle_045",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1.2
+              }
+            ]
+          },
+          {
+            "id": "settle_046",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 220
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "settle_047",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "settle_048",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_big_win",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "settle_074",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "payout"
+              }
+            ]
+          },
+          {
+            "id": "settle_063",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_settle_11",
+            "from": "settle_016",
+            "to": "settle_017",
+            "propertyType": "string",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_settle_12",
+            "from": "settle_024",
+            "to": "settle_025",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_13",
+            "from": "settle_002",
+            "to": "settle_025",
+            "propertyType": "float",
+            "propertyName": "b",
+            "sourceOutputName": "item"
+          },
+          {
+            "id": "l_settle_14",
+            "from": "settle_074",
+            "to": "settle_026",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_15",
+            "from": "settle_025",
+            "to": "settle_026",
+            "propertyType": "float",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_settle_16",
+            "from": "settle_026",
+            "to": "settle_027",
+            "propertyType": "bool",
+            "propertyName": "condition"
+          },
+          {
+            "id": "l_settle_17",
+            "from": "settle_002",
+            "to": "settle_028",
+            "propertyType": "int",
+            "propertyName": "index",
+            "sourceOutputName": "index"
+          },
+          {
+            "id": "l_settle_18",
+            "from": "settle_028",
+            "to": "settle_029",
+            "propertyType": "string",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_settle_19",
+            "from": "settle_002",
+            "to": "settle_030",
+            "propertyType": "float",
+            "propertyName": "a",
+            "sourceOutputName": "index"
+          },
+          {
+            "id": "l_settle_20",
+            "from": "settle_030",
+            "to": "settle_031",
+            "propertyType": "bool",
+            "propertyName": "condition"
+          },
+          {
+            "id": "l_settle_21",
+            "from": "settle_002",
+            "to": "settle_036",
+            "propertyType": "int",
+            "propertyName": "index",
+            "sourceOutputName": "index"
+          },
+          {
+            "id": "l_settle_22",
+            "from": "settle_035",
+            "to": "settle_037",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_23",
+            "from": "settle_036",
+            "to": "settle_037",
+            "propertyType": "float",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_settle_24",
+            "from": "settle_002",
+            "to": "settle_039",
+            "propertyType": "int",
+            "propertyName": "index",
+            "sourceOutputName": "index"
+          },
+          {
+            "id": "l_settle_25",
+            "from": "settle_038",
+            "to": "settle_040",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_26",
+            "from": "settle_039",
+            "to": "settle_040",
+            "propertyType": "float",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_settle_27",
+            "from": "settle_074",
+            "to": "settle_041",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_28",
+            "from": "settle_040",
+            "to": "settle_041",
+            "propertyType": "float",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_settle_29",
+            "from": "settle_002",
+            "to": "settle_042",
+            "propertyType": "int",
+            "propertyName": "index",
+            "sourceOutputName": "index"
+          },
+          {
+            "id": "l_settle_30",
+            "from": "settle_037",
+            "to": "settle_043",
+            "propertyType": "float",
+            "propertyName": "from"
+          },
+          {
+            "id": "l_settle_31",
+            "from": "settle_041",
+            "to": "settle_043",
+            "propertyType": "float",
+            "propertyName": "to"
+          },
+          {
+            "id": "l_settle_32",
+            "from": "settle_042",
+            "to": "settle_043",
+            "propertyType": "int",
+            "propertyName": "durationMS"
+          },
+          {
+            "id": "l_settle_41",
+            "from": "settle_014",
+            "to": "settle_015"
+          },
+          {
+            "id": "l_settle_42",
+            "from": "settle_015",
+            "to": "settle_017"
+          },
+          {
+            "id": "l_settle_43",
+            "from": "settle_017",
+            "to": "settle_018"
+          },
+          {
+            "id": "l_settle_44",
+            "from": "settle_018",
+            "to": "settle_019"
+          },
+          {
+            "id": "l_settle_45",
+            "from": "settle_019",
+            "to": "settle_020"
+          },
+          {
+            "id": "l_settle_46",
+            "from": "settle_020",
+            "to": "settle_021"
+          },
+          {
+            "id": "l_settle_47",
+            "from": "settle_021",
+            "to": "settle_022"
+          },
+          {
+            "id": "l_settle_48",
+            "from": "settle_022",
+            "to": "settle_023"
+          },
+          {
+            "id": "l_settle_49",
+            "from": "settle_032",
+            "to": "settle_033"
+          },
+          {
+            "id": "l_settle_50",
+            "from": "settle_033",
+            "to": "settle_034"
+          },
+          {
+            "id": "l_settle_51",
+            "from": "settle_029",
+            "to": "settle_031"
+          },
+          {
+            "id": "l_settle_52",
+            "from": "settle_031",
+            "to": "settle_032",
+            "outIdx": 0
+          },
+          {
+            "id": "l_settle_53",
+            "from": "settle_034",
+            "to": "settle_043"
+          },
+          {
+            "id": "l_settle_54",
+            "from": "settle_031",
+            "to": "settle_043",
+            "outIdx": 1
+          },
+          {
+            "id": "l_settle_55",
+            "from": "settle_027",
+            "to": "settle_029",
+            "outIdx": 0
+          },
+          {
+            "id": "l_settle_56",
+            "from": "settle_023",
+            "to": "settle_002"
+          },
+          {
+            "id": "l_settle_57",
+            "from": "settle_002",
+            "to": "settle_027",
+            "outIdx": 0
+          },
+          {
+            "id": "l_settle_58",
+            "from": "settle_002",
+            "to": "settle_044",
+            "outIdx": 1
+          },
+          {
+            "id": "l_settle_59",
+            "from": "settle_044",
+            "to": "settle_045"
+          },
+          {
+            "id": "l_settle_60",
+            "from": "settle_045",
+            "to": "settle_046"
+          },
+          {
+            "id": "l_settle_61",
+            "from": "settle_046",
+            "to": "settle_047"
+          },
+          {
+            "id": "l_settle_62",
+            "from": "settle_047",
+            "to": "settle_048"
+          },
+          {
+            "id": "l_settle_63",
+            "from": "settle_062",
+            "to": "settle_014"
+          },
+          {
+            "id": "l_settle_64",
+            "from": "settle_048",
+            "to": "settle_063"
+          }
+        ]
+      }
+    },
+    {
+      "id": "settle_064",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "settle_053",
+      "exitSourceId": "settle_053",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "settle_065",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "settle_051",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "bonusSpinsTotal"
+              }
+            ]
+          },
+          {
+            "id": "settle_052",
+            "title": "greaterThan",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "settle_051"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "settle_053",
+            "title": "setCabinetWinMessage",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "showAsBonusWin",
+                "type": "bool",
+                "sourceNodeId": "settle_052"
+              }
+            ]
+          },
+          {
+            "id": "settle_066",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_settle_35",
+            "from": "settle_051",
+            "to": "settle_052",
+            "propertyType": "float",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_settle_36",
+            "from": "settle_052",
+            "to": "settle_053",
+            "propertyType": "bool",
+            "propertyName": "showAsBonusWin"
+          },
+          {
+            "id": "l_settle_68",
+            "from": "settle_065",
+            "to": "settle_053"
+          },
+          {
+            "id": "l_settle_69",
+            "from": "settle_053",
+            "to": "settle_066"
+          }
+        ]
+      }
+    },
+    {
+      "id": "settle_067",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "settle_054",
+      "exitSourceId": "settle_054",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "settle_068",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "settle_054",
+            "title": "setCabinetLoseMessage",
+            "rootType": "Action"
+          },
+          {
+            "id": "settle_069",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_settle_70",
+            "from": "settle_068",
+            "to": "settle_054"
+          },
+          {
+            "id": "l_settle_71",
+            "from": "settle_054",
+            "to": "settle_069"
+          }
+        ]
+      }
+    },
+    {
+      "id": "settle_070",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "settle_055",
+      "exitSourceId": "settle_057",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "settle_071",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "settle_055",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "WIN UP TO 2,000x STAKE"
+              }
+            ]
+          },
+          {
+            "id": "settle_056",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "roundBusy"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "settle_057",
+            "title": "endCabinetGame",
+            "rootType": "Action"
+          },
+          {
+            "id": "settle_072",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_settle_78",
+            "from": "settle_055",
+            "to": "settle_056"
+          },
+          {
+            "id": "l_settle_79",
+            "from": "settle_056",
+            "to": "settle_057"
+          },
+          {
+            "id": "l_settle_80",
+            "from": "settle_071",
+            "to": "settle_055"
+          },
+          {
+            "id": "l_settle_81",
+            "from": "settle_057",
+            "to": "settle_072"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_settle_1",
+      "from": "settle_001",
+      "to": "settle_005",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_settle_2",
+      "from": "settle_004",
+      "to": "settle_005",
+      "propertyType": "float",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_settle_3",
+      "from": "settle_005",
+      "to": "settle_006",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_settle_7",
+      "from": "settle_010",
+      "to": "settle_011",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_settle_8",
+      "from": "settle_001",
+      "to": "settle_012",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_settle_9",
+      "from": "settle_011",
+      "to": "settle_012",
+      "propertyType": "float",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_settle_10",
+      "from": "settle_012",
+      "to": "settle_013",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_settle_33",
+      "from": "settle_001",
+      "to": "settle_049",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_settle_34",
+      "from": "settle_049",
+      "to": "settle_050",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_settle_40",
+      "from": "settle_006",
+      "to": "settle_058",
+      "outIdx": 0
+    },
+    {
+      "id": "l_settle_65",
+      "from": "settle_058",
+      "to": "settle_013"
+    },
+    {
+      "id": "l_settle_66",
+      "from": "settle_006",
+      "to": "settle_013",
+      "outIdx": 1
+    },
+    {
+      "id": "l_settle_67",
+      "from": "settle_013",
+      "to": "settle_061",
+      "outIdx": 0
+    },
+    {
+      "id": "l_settle_72",
+      "from": "settle_061",
+      "to": "settle_050"
+    },
+    {
+      "id": "l_settle_73",
+      "from": "settle_013",
+      "to": "settle_050",
+      "outIdx": 1
+    },
+    {
+      "id": "l_settle_74",
+      "from": "settle_050",
+      "to": "settle_064",
+      "outIdx": 0
+    },
+    {
+      "id": "l_settle_75",
+      "from": "settle_050",
+      "to": "settle_067",
+      "outIdx": 1
+    },
+    {
+      "id": "l_settle_76",
+      "from": "settle_064",
+      "to": "settle_070"
+    },
+    {
+      "id": "l_settle_77",
+      "from": "settle_067",
+      "to": "settle_070"
+    },
+    {
+      "id": "l_settle_82",
+      "from": "settle_003",
+      "to": "settle_006"
+    }
+  ]
+}

@@ -1,0 +1,155 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-top-left-radius: inherit;
+}
+
+.horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.horizontal > div {
+  flex: 1;
+}
+
+.centered {
+  justify-self: center;
+  display: grid;
+}
+
+.htpcontent {
+  height: calc(100% - 5vw); // 5vw correlates the the height of the controls bar
+}
+
+.content-section {
+  padding: 0 10%;
+}
+@media (orientation: portrait) {
+  .content-section {
+    padding: 0 5%;
+  }
+}
+
+.game-logo {
+  max-width: 50%;
+  margin-top: 10px;
+}
+
+#divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.divider-title {
+  user-select: none;
+}
+
+.divider-flourish {
+  max-width: 30%;
+  width: 200px;
+  height: 10px;
+  background-color: #00ff95;
+}
+
+.divider-flourish.left {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.divider-flourish.right {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.info-screenshot {
+  max-width: 60%;
+  border-radius: 15px;
+  border: 10px solid #38a04e; // TODO: make this themeable for skins...
+}
+
+li {
+  text-align: left;
+  padding-left: 10px;
+  margin-bottom: 8px;
+}
+
+li::marker {
+  color: #00ff95;
+}
+
+#symbolrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#symbolroot {
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 25%;
+}
+
+#symbolicon {
+  width: 80%;
+  object-fit: contain;
+  padding: 10%;
+}
+
+.winlines {
+  width: 100%;
+  padding: 2%
+}
+
+@media (orientation: portrait) {
+  .winlines{
+    width: 80%;
+  }
+}
+
+#symbolpayout {
+  white-space: pre-line;
+  user-select: none;
+}
+
+.symbol-highlight {
+  margin-bottom: 20px;
+}
+
+.symbol-highlight-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 10%;
+}
+
+@media (orientation: portrait) {
+  .symbol-highlight-body {
+    margin-left: 0;
+  }
+}
+
+.symbol-highlight-body .symbol-image {
+  width: 20%;
+}
+
+.symbol-highlight-body .prize-details {
+  text-align: left;
+}
+
+.footer {
+  width: 80%;
+  height: 10px;
+  background-color: #7df7a6;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}

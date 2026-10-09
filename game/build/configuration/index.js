@@ -1,0 +1,81 @@
+'use strict';
+// Template version: 1.3.1
+// see http://vuejs-templates.github.io/webpack for documentation.
+
+const path = require('path');
+
+module.exports = {
+  dev: {
+    // Paths
+    assetsSubDirectory: 'static',
+    assetsPublicPath: '/',
+    proxyTable: {
+      '/api/**': {
+        target: 'https://dev-www.tombolaarcade.co.uk',
+        changeOrigin: true
+      }
+    },
+
+    // Various Dev Server settings
+    host: '0.0.0.0', // can be overwritten by process.env.HOST
+    port: 9003, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    gameName: 'splittingsymbols',
+    autoOpenBrowser: false,
+    errorOverlay: true,
+    notifyOnErrors: true,
+    poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
+
+    /**
+     * Source Maps
+     */
+
+    // https://webpack.js.org/configuration/devtool/#development
+    // NOTE: 'source-map' produces full out-of-source per-module source maps
+    // which are stringified during webpack's sealing/asset-emit step. With a
+    // large `require.context`-bundled `flowstate-data/*.json` /
+    // `scene-data/*.json` tree, this triggers a V8
+    // "JavaScript heap out of memory" inside JsonStringifier::SerializeString
+    // at ~87% (sealing code generation). 'eval-cheap-module-source-map' keeps
+    // per-module sourcemaps in eval-string form (no giant top-level SourceMap
+    // asset) and is also significantly faster for dev rebuilds.
+    devtool: 'eval-cheap-module-source-map',
+
+    // If you have problems debugging vue-files in devtools,
+    // set this to false - it *may* help
+    // https://vue-loader.vuejs.org/en/options.html#cachebusting
+    cacheBusting: true,
+
+    cssSourceMap: false
+  },
+
+  build: {
+    // Template for index.html
+    index: path.resolve(__dirname, '../../.build-output/splittingsymbols/index.html'),
+
+    // Paths
+    assetsRoot: path.resolve(__dirname, '../../.build-output/splittingsymbols'),
+    assetsSubDirectory: 'static',
+    assetsPublicPath: './',
+
+    /**
+     * Source Maps
+     */
+
+    productionSourceMap: true,
+    // https://webpack.js.org/configuration/devtool/#production
+    devtool: 'source-map',
+
+    // Gzip off by default as many popular static hosts such as
+    // Surge or Netlify already gzip all static assets for you.
+    // Before setting to `true`, make sure to:
+    // npm install --save-dev compression-webpack-plugin
+    productionGzip: false,
+    productionGzipExtensions: ['js', 'css'],
+
+    // Run the build command with an extra argument to
+    // View the bundle analyzer report after build finishes:
+    // `npm run build --report`
+    // Set to `true` or `false` to always turn it on or off
+    bundleAnalyzerReport: process.env.npm_config_report
+  }
+};

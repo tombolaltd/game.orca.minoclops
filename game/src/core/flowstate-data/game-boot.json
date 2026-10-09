@@ -1,0 +1,1617 @@
+{
+  "nodes": [
+    {
+      "id": "gamebo_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Game loaded: base music, the resumed board, labels redrawn in the game font, and the split tutorial before the first spin."
+    },
+    {
+      "id": "gamebo_001",
+      "title": "onApplicationInit",
+      "rootType": "StarterNodes"
+    },
+    {
+      "id": "gamebo_031",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "tutorialSeen"
+        }
+      ]
+    },
+    {
+      "id": "gamebo_032",
+      "title": "not",
+      "rootType": "logic",
+      "properties": [
+        {
+          "name": "value",
+          "type": "bool",
+          "sourceNodeId": "gamebo_031"
+        }
+      ]
+    },
+    {
+      "id": "gamebo_033",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "gamebo_032"
+        }
+      ]
+    },
+    {
+      "id": "gamebo_063",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "gamebo_002",
+      "exitSourceId": "gamebo_006",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "gamebo_064",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "gamebo_002",
+            "title": "playMusic",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "musicName",
+                "type": "audioRef",
+                "value": "core/assets/audio/music/base-loop.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.45
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": true
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "gamebo_003",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "reelSymbols"
+              }
+            ]
+          },
+          {
+            "id": "gamebo_004",
+            "title": "setOnScreenReels",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reels",
+                "type": "string",
+                "sourceNodeId": "gamebo_003"
+              }
+            ]
+          },
+          {
+            "id": "gamebo_005",
+            "title": "formatMoney",
+            "rootType": "Info & UI",
+            "properties": [
+              {
+                "name": "amount",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "rounded",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "gamebo_006",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "gamebo_005"
+              }
+            ]
+          },
+          {
+            "id": "gamebo_065",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_gamebo_1",
+            "from": "gamebo_003",
+            "to": "gamebo_004",
+            "propertyType": "string",
+            "propertyName": "reels"
+          },
+          {
+            "id": "l_gamebo_2",
+            "from": "gamebo_005",
+            "to": "gamebo_006",
+            "propertyType": "string",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_gamebo_5",
+            "from": "gamebo_002",
+            "to": "gamebo_004"
+          },
+          {
+            "id": "l_gamebo_6",
+            "from": "gamebo_004",
+            "to": "gamebo_006"
+          },
+          {
+            "id": "l_gamebo_7",
+            "from": "gamebo_064",
+            "to": "gamebo_002"
+          },
+          {
+            "id": "l_gamebo_8",
+            "from": "gamebo_006",
+            "to": "gamebo_065"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gamebo_066",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "gamebo_007",
+      "exitSourceId": "gamebo_030",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "gamebo_067",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "gamebo_007",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 41
+              }
+            ]
+          },
+          {
+            "id": "gamebo_008",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 40
+              }
+            ]
+          },
+          {
+            "id": "gamebo_009",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 43
+              }
+            ]
+          },
+          {
+            "id": "gamebo_010",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 42
+              }
+            ]
+          },
+          {
+            "id": "gamebo_011",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 87
+              }
+            ]
+          },
+          {
+            "id": "gamebo_012",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 86
+              }
+            ]
+          },
+          {
+            "id": "gamebo_013",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 43
+              }
+            ]
+          },
+          {
+            "id": "gamebo_014",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 42
+              }
+            ]
+          },
+          {
+            "id": "gamebo_015",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "id": "gamebo_016",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 70
+              }
+            ]
+          },
+          {
+            "id": "gamebo_017",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_018",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_019",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_020",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_021",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_022",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_023",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_024",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_025",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_026",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_027",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_028",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_029",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_030",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_068",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_gamebo_10",
+            "from": "gamebo_007",
+            "to": "gamebo_008"
+          },
+          {
+            "id": "l_gamebo_11",
+            "from": "gamebo_008",
+            "to": "gamebo_009"
+          },
+          {
+            "id": "l_gamebo_12",
+            "from": "gamebo_009",
+            "to": "gamebo_010"
+          },
+          {
+            "id": "l_gamebo_13",
+            "from": "gamebo_010",
+            "to": "gamebo_011"
+          },
+          {
+            "id": "l_gamebo_14",
+            "from": "gamebo_011",
+            "to": "gamebo_012"
+          },
+          {
+            "id": "l_gamebo_15",
+            "from": "gamebo_012",
+            "to": "gamebo_013"
+          },
+          {
+            "id": "l_gamebo_16",
+            "from": "gamebo_013",
+            "to": "gamebo_014"
+          },
+          {
+            "id": "l_gamebo_17",
+            "from": "gamebo_014",
+            "to": "gamebo_015"
+          },
+          {
+            "id": "l_gamebo_18",
+            "from": "gamebo_015",
+            "to": "gamebo_016"
+          },
+          {
+            "id": "l_gamebo_19",
+            "from": "gamebo_016",
+            "to": "gamebo_017"
+          },
+          {
+            "id": "l_gamebo_20",
+            "from": "gamebo_017",
+            "to": "gamebo_018"
+          },
+          {
+            "id": "l_gamebo_21",
+            "from": "gamebo_018",
+            "to": "gamebo_019"
+          },
+          {
+            "id": "l_gamebo_22",
+            "from": "gamebo_019",
+            "to": "gamebo_020"
+          },
+          {
+            "id": "l_gamebo_23",
+            "from": "gamebo_020",
+            "to": "gamebo_021"
+          },
+          {
+            "id": "l_gamebo_24",
+            "from": "gamebo_021",
+            "to": "gamebo_022"
+          },
+          {
+            "id": "l_gamebo_25",
+            "from": "gamebo_022",
+            "to": "gamebo_023"
+          },
+          {
+            "id": "l_gamebo_26",
+            "from": "gamebo_023",
+            "to": "gamebo_024"
+          },
+          {
+            "id": "l_gamebo_27",
+            "from": "gamebo_024",
+            "to": "gamebo_025"
+          },
+          {
+            "id": "l_gamebo_28",
+            "from": "gamebo_025",
+            "to": "gamebo_026"
+          },
+          {
+            "id": "l_gamebo_29",
+            "from": "gamebo_026",
+            "to": "gamebo_027"
+          },
+          {
+            "id": "l_gamebo_30",
+            "from": "gamebo_027",
+            "to": "gamebo_028"
+          },
+          {
+            "id": "l_gamebo_31",
+            "from": "gamebo_028",
+            "to": "gamebo_029"
+          },
+          {
+            "id": "l_gamebo_32",
+            "from": "gamebo_029",
+            "to": "gamebo_030"
+          },
+          {
+            "id": "l_gamebo_33",
+            "from": "gamebo_067",
+            "to": "gamebo_007"
+          },
+          {
+            "id": "l_gamebo_34",
+            "from": "gamebo_030",
+            "to": "gamebo_068"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gamebo_069",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "gamebo_034",
+      "exitSourceId": "gamebo_037",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "gamebo_070",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "gamebo_034",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "gamebo_035",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "gamebo_036",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "gamebo_037",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/popup.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "gamebo_071",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_gamebo_35",
+            "from": "gamebo_034",
+            "to": "gamebo_035"
+          },
+          {
+            "id": "l_gamebo_36",
+            "from": "gamebo_035",
+            "to": "gamebo_036"
+          },
+          {
+            "id": "l_gamebo_37",
+            "from": "gamebo_036",
+            "to": "gamebo_037"
+          },
+          {
+            "id": "l_gamebo_38",
+            "from": "gamebo_070",
+            "to": "gamebo_034"
+          },
+          {
+            "id": "l_gamebo_39",
+            "from": "gamebo_037",
+            "to": "gamebo_071"
+          }
+        ]
+      }
+    },
+    {
+      "id": "gamebo_072",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "gamebo_038",
+      "exitSourceId": "gamebo_062",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "gamebo_073",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "gamebo_038",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1.5
+              }
+            ]
+          },
+          {
+            "id": "gamebo_039",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 41
+              }
+            ]
+          },
+          {
+            "id": "gamebo_040",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 40
+              }
+            ]
+          },
+          {
+            "id": "gamebo_041",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 43
+              }
+            ]
+          },
+          {
+            "id": "gamebo_042",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 42
+              }
+            ]
+          },
+          {
+            "id": "gamebo_043",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 87
+              }
+            ]
+          },
+          {
+            "id": "gamebo_044",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 86
+              }
+            ]
+          },
+          {
+            "id": "gamebo_045",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 43
+              }
+            ]
+          },
+          {
+            "id": "gamebo_046",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 42
+              }
+            ]
+          },
+          {
+            "id": "gamebo_047",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 71
+              }
+            ]
+          },
+          {
+            "id": "gamebo_048",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 70
+              }
+            ]
+          },
+          {
+            "id": "gamebo_049",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_050",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_051",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_052",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_053",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_054",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_055",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_056",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_057",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 31
+              }
+            ]
+          },
+          {
+            "id": "gamebo_058",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 30
+              }
+            ]
+          },
+          {
+            "id": "gamebo_059",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_060",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_061",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 27
+              }
+            ]
+          },
+          {
+            "id": "gamebo_062",
+            "title": "setTextFontSize",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "fontSize",
+                "type": "int",
+                "value": 26
+              }
+            ]
+          },
+          {
+            "id": "gamebo_074",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_gamebo_44",
+            "from": "gamebo_038",
+            "to": "gamebo_039"
+          },
+          {
+            "id": "l_gamebo_45",
+            "from": "gamebo_039",
+            "to": "gamebo_040"
+          },
+          {
+            "id": "l_gamebo_46",
+            "from": "gamebo_040",
+            "to": "gamebo_041"
+          },
+          {
+            "id": "l_gamebo_47",
+            "from": "gamebo_041",
+            "to": "gamebo_042"
+          },
+          {
+            "id": "l_gamebo_48",
+            "from": "gamebo_042",
+            "to": "gamebo_043"
+          },
+          {
+            "id": "l_gamebo_49",
+            "from": "gamebo_043",
+            "to": "gamebo_044"
+          },
+          {
+            "id": "l_gamebo_50",
+            "from": "gamebo_044",
+            "to": "gamebo_045"
+          },
+          {
+            "id": "l_gamebo_51",
+            "from": "gamebo_045",
+            "to": "gamebo_046"
+          },
+          {
+            "id": "l_gamebo_52",
+            "from": "gamebo_046",
+            "to": "gamebo_047"
+          },
+          {
+            "id": "l_gamebo_53",
+            "from": "gamebo_047",
+            "to": "gamebo_048"
+          },
+          {
+            "id": "l_gamebo_54",
+            "from": "gamebo_048",
+            "to": "gamebo_049"
+          },
+          {
+            "id": "l_gamebo_55",
+            "from": "gamebo_049",
+            "to": "gamebo_050"
+          },
+          {
+            "id": "l_gamebo_56",
+            "from": "gamebo_050",
+            "to": "gamebo_051"
+          },
+          {
+            "id": "l_gamebo_57",
+            "from": "gamebo_051",
+            "to": "gamebo_052"
+          },
+          {
+            "id": "l_gamebo_58",
+            "from": "gamebo_052",
+            "to": "gamebo_053"
+          },
+          {
+            "id": "l_gamebo_59",
+            "from": "gamebo_053",
+            "to": "gamebo_054"
+          },
+          {
+            "id": "l_gamebo_60",
+            "from": "gamebo_054",
+            "to": "gamebo_055"
+          },
+          {
+            "id": "l_gamebo_61",
+            "from": "gamebo_055",
+            "to": "gamebo_056"
+          },
+          {
+            "id": "l_gamebo_62",
+            "from": "gamebo_056",
+            "to": "gamebo_057"
+          },
+          {
+            "id": "l_gamebo_63",
+            "from": "gamebo_057",
+            "to": "gamebo_058"
+          },
+          {
+            "id": "l_gamebo_64",
+            "from": "gamebo_058",
+            "to": "gamebo_059"
+          },
+          {
+            "id": "l_gamebo_65",
+            "from": "gamebo_059",
+            "to": "gamebo_060"
+          },
+          {
+            "id": "l_gamebo_66",
+            "from": "gamebo_060",
+            "to": "gamebo_061"
+          },
+          {
+            "id": "l_gamebo_67",
+            "from": "gamebo_061",
+            "to": "gamebo_062"
+          },
+          {
+            "id": "l_gamebo_68",
+            "from": "gamebo_073",
+            "to": "gamebo_038"
+          },
+          {
+            "id": "l_gamebo_69",
+            "from": "gamebo_062",
+            "to": "gamebo_074"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_gamebo_3",
+      "from": "gamebo_031",
+      "to": "gamebo_032",
+      "propertyType": "bool",
+      "propertyName": "value"
+    },
+    {
+      "id": "l_gamebo_4",
+      "from": "gamebo_032",
+      "to": "gamebo_033",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_gamebo_9",
+      "from": "gamebo_063",
+      "to": "gamebo_066"
+    },
+    {
+      "id": "l_gamebo_40",
+      "from": "gamebo_066",
+      "to": "gamebo_033"
+    },
+    {
+      "id": "l_gamebo_41",
+      "from": "gamebo_033",
+      "to": "gamebo_069",
+      "outIdx": 0
+    },
+    {
+      "id": "l_gamebo_42",
+      "from": "gamebo_069",
+      "to": "gamebo_072"
+    },
+    {
+      "id": "l_gamebo_43",
+      "from": "gamebo_033",
+      "to": "gamebo_072",
+      "outIdx": 1
+    },
+    {
+      "id": "l_gamebo_70",
+      "from": "gamebo_001",
+      "to": "gamebo_063"
+    }
+  ]
+}

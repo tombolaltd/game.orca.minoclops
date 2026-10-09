@@ -1,0 +1,990 @@
+{
+  "nodes": [
+    {
+      "id": "bonuse_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Free spins over: show what the bonus paid, restore the base look, then settle the round."
+    },
+    {
+      "id": "bonuse_001",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "bonusSpin"
+        }
+      ]
+    },
+    {
+      "id": "bonuse_002",
+      "title": "parseObject",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "bonuse_001"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "paid",
+          "type": "int",
+          "path": "TotalBonusPayout"
+        }
+      ]
+    },
+    {
+      "id": "bonuse_003",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "bonusEnd"
+        }
+      ]
+    },
+    {
+      "id": "bonuse_004",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "bonuse_002",
+          "sourceOutputName": "paid"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "bonuse_005",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "bonuse_004"
+        }
+      ]
+    },
+    {
+      "id": "bonuse_031",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "settleRound"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "bonuse_032",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "bonuse_007",
+      "exitSourceId": "bonuse_019",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bonuse_033",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "bonuse_006",
+            "title": "formatMoney",
+            "rootType": "Info & UI",
+            "properties": [
+              {
+                "name": "amount",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "rounded",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "bonuse_007",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "bonuse_006"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_008",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "bonuse_009",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.92
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.92
+              }
+            ]
+          },
+          {
+            "id": "bonuse_010",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "bonuse_011",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/popup.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "bonuse_012",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 360
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_013",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 260
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_014",
+            "title": "countUpText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "from",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "to",
+                "type": "float",
+                "sourceNodeId": "bonuse_041",
+                "sourceOutputName": "paid"
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 2000
+              },
+              {
+                "name": "format",
+                "type": "string",
+                "value": "currency"
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_015",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/cash-land.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "bonuse_016",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1.2
+              }
+            ]
+          },
+          {
+            "id": "bonuse_017",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 220
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_018",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "bonuse_019",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "bonuse_041",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "bonuse_042"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "paid",
+                "type": "int",
+                "path": "TotalBonusPayout"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_042",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "bonusSpin"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_034",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_bonuse_4",
+            "from": "bonuse_006",
+            "to": "bonuse_007",
+            "propertyType": "string",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_bonuse_5",
+            "from": "bonuse_041",
+            "to": "bonuse_014",
+            "propertyType": "float",
+            "propertyName": "to",
+            "sourceOutputName": "paid"
+          },
+          {
+            "id": "l_bonuse_6",
+            "from": "bonuse_007",
+            "to": "bonuse_008"
+          },
+          {
+            "id": "l_bonuse_7",
+            "from": "bonuse_008",
+            "to": "bonuse_009"
+          },
+          {
+            "id": "l_bonuse_8",
+            "from": "bonuse_009",
+            "to": "bonuse_010"
+          },
+          {
+            "id": "l_bonuse_9",
+            "from": "bonuse_010",
+            "to": "bonuse_011"
+          },
+          {
+            "id": "l_bonuse_10",
+            "from": "bonuse_011",
+            "to": "bonuse_012"
+          },
+          {
+            "id": "l_bonuse_11",
+            "from": "bonuse_012",
+            "to": "bonuse_013"
+          },
+          {
+            "id": "l_bonuse_12",
+            "from": "bonuse_013",
+            "to": "bonuse_014"
+          },
+          {
+            "id": "l_bonuse_13",
+            "from": "bonuse_014",
+            "to": "bonuse_015"
+          },
+          {
+            "id": "l_bonuse_14",
+            "from": "bonuse_015",
+            "to": "bonuse_016"
+          },
+          {
+            "id": "l_bonuse_15",
+            "from": "bonuse_016",
+            "to": "bonuse_017"
+          },
+          {
+            "id": "l_bonuse_16",
+            "from": "bonuse_017",
+            "to": "bonuse_018"
+          },
+          {
+            "id": "l_bonuse_17",
+            "from": "bonuse_018",
+            "to": "bonuse_019"
+          },
+          {
+            "id": "l_bonuse_18",
+            "from": "bonuse_033",
+            "to": "bonuse_007"
+          },
+          {
+            "id": "l_bonuse_19",
+            "from": "bonuse_019",
+            "to": "bonuse_034"
+          },
+          {
+            "id": "l_bonuse_39",
+            "from": "bonuse_042",
+            "to": "bonuse_041",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bonuse_035",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "bonuse_020",
+      "exitSourceId": "bonuse_021",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bonuse_036",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "bonuse_020",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "FREE SPINS COMPLETE"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_021",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1.2
+              }
+            ]
+          },
+          {
+            "id": "bonuse_037",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_bonuse_20",
+            "from": "bonuse_020",
+            "to": "bonuse_021"
+          },
+          {
+            "id": "l_bonuse_21",
+            "from": "bonuse_036",
+            "to": "bonuse_020"
+          },
+          {
+            "id": "l_bonuse_22",
+            "from": "bonuse_021",
+            "to": "bonuse_037"
+          }
+        ]
+      }
+    },
+    {
+      "id": "bonuse_038",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "bonuse_022",
+      "exitSourceId": "bonuse_030",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "bonuse_039",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "bonuse_022",
+            "title": "crossfadeMusic",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "fromMusicName",
+                "type": "audioRef",
+                "value": "core/assets/audio/music/bonus-loop.mp3"
+              },
+              {
+                "name": "toMusicName",
+                "type": "audioRef",
+                "value": "core/assets/audio/music/base-loop.mp3"
+              },
+              {
+                "name": "duration",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "bonuse_023",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_bg",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "sine.inOut"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "bonuse_024",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_bg",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "bonuse_025",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_bg",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "bonuse_026",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_free_spins",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "bonuse_027",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_panel",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "bonuse_028",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "bonuse_029",
+            "title": "setInBonusRound",
+            "rootType": "Game State",
+            "properties": [
+              {
+                "name": "inBonus",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "bonuse_030",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "inBonus"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "bonuse_040",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_bonuse_27",
+            "from": "bonuse_022",
+            "to": "bonuse_023"
+          },
+          {
+            "id": "l_bonuse_28",
+            "from": "bonuse_023",
+            "to": "bonuse_024"
+          },
+          {
+            "id": "l_bonuse_29",
+            "from": "bonuse_024",
+            "to": "bonuse_025"
+          },
+          {
+            "id": "l_bonuse_30",
+            "from": "bonuse_025",
+            "to": "bonuse_026"
+          },
+          {
+            "id": "l_bonuse_31",
+            "from": "bonuse_026",
+            "to": "bonuse_027"
+          },
+          {
+            "id": "l_bonuse_32",
+            "from": "bonuse_027",
+            "to": "bonuse_028"
+          },
+          {
+            "id": "l_bonuse_33",
+            "from": "bonuse_028",
+            "to": "bonuse_029"
+          },
+          {
+            "id": "l_bonuse_34",
+            "from": "bonuse_029",
+            "to": "bonuse_030"
+          },
+          {
+            "id": "l_bonuse_35",
+            "from": "bonuse_039",
+            "to": "bonuse_022"
+          },
+          {
+            "id": "l_bonuse_36",
+            "from": "bonuse_030",
+            "to": "bonuse_040"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_bonuse_1",
+      "from": "bonuse_001",
+      "to": "bonuse_002",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "l_bonuse_2",
+      "from": "bonuse_002",
+      "to": "bonuse_004",
+      "propertyType": "float",
+      "propertyName": "a",
+      "sourceOutputName": "paid"
+    },
+    {
+      "id": "l_bonuse_3",
+      "from": "bonuse_004",
+      "to": "bonuse_005",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_bonuse_23",
+      "from": "bonuse_005",
+      "to": "bonuse_032",
+      "outIdx": 0
+    },
+    {
+      "id": "l_bonuse_24",
+      "from": "bonuse_005",
+      "to": "bonuse_035",
+      "outIdx": 1
+    },
+    {
+      "id": "l_bonuse_25",
+      "from": "bonuse_032",
+      "to": "bonuse_038"
+    },
+    {
+      "id": "l_bonuse_26",
+      "from": "bonuse_035",
+      "to": "bonuse_038"
+    },
+    {
+      "id": "l_bonuse_37",
+      "from": "bonuse_038",
+      "to": "bonuse_031"
+    },
+    {
+      "id": "l_bonuse_38",
+      "from": "bonuse_003",
+      "to": "bonuse_005"
+    }
+  ]
+}

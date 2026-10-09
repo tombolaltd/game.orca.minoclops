@@ -1,0 +1,65 @@
+character.webp
+size: 2048, 4096
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+character/Axe
+  bounds: 3, 3, 2051, 825
+  rotate: 90
+character/Brow
+  bounds: 1714, 3, 357, 268
+  rotate: 90
+character/Ear L
+  bounds: 289, 3705, 209, 143
+  rotate: 90
+character/Ear R
+  bounds: 1714, 1033, 280, 218
+character/ForearmL
+  bounds: 1714, 364, 336, 325
+  rotate: 90
+character/ForearmR
+  bounds: 1613, 2455, 379, 530
+character/handL
+  bounds: 3, 3705, 260, 282
+  rotate: 90
+character/handR
+  bounds: 1748, 1584, 304, 267
+  rotate: 90
+character/Head Base
+  bounds: 832, 3, 1273, 878
+  rotate: 90
+character/Layer 49
+  bounds: 1542, 1917, 534, 444
+  rotate: 90
+character/Layer 50
+  bounds: 3, 3062, 1940, 267
+character/Lower Jaw
+  bounds: 487, 3333, 371, 379
+  rotate: 90
+character/placeholder
+  bounds: 3, 2058, 1000, 1000
+character/pupil
+  bounds: 832, 1917, 114, 109
+character/Shinn copy
+  bounds: 870, 3333, 206, 275
+  rotate: 90
+character/Shinn
+  bounds: 1149, 3333, 205, 275
+  rotate: 90
+character/ShoulderL
+  bounds: 3, 3333, 368, 480
+  rotate: 90
+character/ShoulderR
+  bounds: 1007, 1917, 531, 630
+character/slash
+  bounds: 1613, 2989, 45, 228
+  rotate: 90
+character/Tail
+  bounds: 1007, 2551, 602, 443
+character/Thi copy
+  bounds: 1714, 704, 262, 325
+character/Thi
+  bounds: 1748, 1255, 262, 325
+character/torso
+  bounds: 832, 1280, 912, 633

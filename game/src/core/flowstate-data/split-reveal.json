@@ -1,0 +1,2684 @@
+{
+  "nodes": [
+    {
+      "id": "splitr_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "The split beat: hotspot fades in, the chosen cell splits x2, matching cells follow; show-step ticks the ways."
+    },
+    {
+      "id": "splitr_001",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "hotspot"
+        }
+      ]
+    },
+    {
+      "id": "splitr_002",
+      "title": "parseObject",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "splitr_001"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "found",
+          "type": "bool",
+          "path": "Found"
+        },
+        {
+          "name": "reel",
+          "type": "int",
+          "path": "Reel"
+        },
+        {
+          "name": "row",
+          "type": "int",
+          "path": "Row"
+        },
+        {
+          "name": "symbol",
+          "type": "int",
+          "path": "Symbol"
+        },
+        {
+          "name": "variant",
+          "type": "int",
+          "path": "Variant"
+        },
+        {
+          "name": "badge",
+          "type": "string",
+          "path": "Badge"
+        }
+      ]
+    },
+    {
+      "id": "splitr_008",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "splitReveal"
+        }
+      ]
+    },
+    {
+      "id": "splitr_009",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "splitr_002",
+          "sourceOutputName": "found"
+        }
+      ]
+    },
+    {
+      "id": "splitr_050",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "teaseBonus"
+        }
+      ]
+    },
+    {
+      "id": "splitr_051",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "teaseHintCount"
+        }
+      ]
+    },
+    {
+      "id": "splitr_052",
+      "title": "lessThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "splitr_051"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "splitr_053",
+      "title": "and",
+      "rootType": "logic",
+      "properties": [
+        {
+          "name": "part0",
+          "type": "bool",
+          "sourceNodeId": "splitr_050"
+        },
+        {
+          "name": "part1",
+          "type": "bool",
+          "sourceNodeId": "splitr_052"
+        }
+      ]
+    },
+    {
+      "id": "splitr_054",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "splitr_053"
+        }
+      ]
+    },
+    {
+      "id": "splitr_060",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "splitHintCount"
+        }
+      ]
+    },
+    {
+      "id": "splitr_061",
+      "title": "lessThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "splitr_060"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "splitr_062",
+      "title": "and",
+      "rootType": "logic",
+      "properties": [
+        {
+          "name": "part0",
+          "type": "bool",
+          "sourceNodeId": "splitr_002",
+          "sourceOutputName": "found"
+        },
+        {
+          "name": "part1",
+          "type": "bool",
+          "sourceNodeId": "splitr_061"
+        }
+      ]
+    },
+    {
+      "id": "splitr_063",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "splitr_062"
+        }
+      ]
+    },
+    {
+      "id": "splitr_070",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "showStep"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "splitr_071",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_014",
+      "exitSourceId": "splitr_019",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_072",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_010",
+            "title": "multiply",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "splitr_092",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "value": 182
+              }
+            ]
+          },
+          {
+            "id": "splitr_011",
+            "title": "add",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "value": -364
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "sourceNodeId": "splitr_010"
+              }
+            ]
+          },
+          {
+            "id": "splitr_012",
+            "title": "multiply",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "float",
+                "sourceNodeId": "splitr_092",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "b",
+                "type": "float",
+                "value": 170
+              }
+            ]
+          },
+          {
+            "id": "splitr_013",
+            "title": "add",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "value": -170
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "sourceNodeId": "splitr_012"
+              }
+            ]
+          },
+          {
+            "id": "splitr_014",
+            "title": "setNodePosition",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "x",
+                "type": "float",
+                "sourceNodeId": "splitr_011"
+              },
+              {
+                "name": "y",
+                "type": "float",
+                "sourceNodeId": "splitr_013"
+              }
+            ]
+          },
+          {
+            "id": "splitr_015",
+            "title": "stringBuilder",
+            "rootType": "string",
+            "properties": [
+              {
+                "name": "part0",
+                "type": "T",
+                "value": "SPLIT "
+              },
+              {
+                "name": "part1",
+                "type": "T",
+                "sourceNodeId": "splitr_092",
+                "sourceOutputName": "badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_016",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hotspot_label",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "splitr_015"
+              }
+            ]
+          },
+          {
+            "id": "splitr_017",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/lock.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.7
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "splitr_018",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 400
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "splitr_019",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 0.2
+              }
+            ]
+          },
+          {
+            "id": "splitr_092",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "splitr_093"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "found",
+                "type": "bool",
+                "path": "Found"
+              },
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              },
+              {
+                "name": "symbol",
+                "type": "int",
+                "path": "Symbol"
+              },
+              {
+                "name": "variant",
+                "type": "int",
+                "path": "Variant"
+              },
+              {
+                "name": "badge",
+                "type": "string",
+                "path": "Badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_093",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "hotspot"
+              }
+            ]
+          },
+          {
+            "id": "splitr_073",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_7",
+            "from": "splitr_092",
+            "to": "splitr_010",
+            "propertyType": "float",
+            "propertyName": "a",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_8",
+            "from": "splitr_010",
+            "to": "splitr_011",
+            "propertyType": "T",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_splitr_9",
+            "from": "splitr_092",
+            "to": "splitr_012",
+            "propertyType": "float",
+            "propertyName": "a",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_10",
+            "from": "splitr_012",
+            "to": "splitr_013",
+            "propertyType": "T",
+            "propertyName": "b"
+          },
+          {
+            "id": "l_splitr_11",
+            "from": "splitr_011",
+            "to": "splitr_014",
+            "propertyType": "float",
+            "propertyName": "x"
+          },
+          {
+            "id": "l_splitr_12",
+            "from": "splitr_013",
+            "to": "splitr_014",
+            "propertyType": "float",
+            "propertyName": "y"
+          },
+          {
+            "id": "l_splitr_13",
+            "from": "splitr_092",
+            "to": "splitr_015",
+            "propertyType": "T",
+            "propertyName": "part1",
+            "sourceOutputName": "badge"
+          },
+          {
+            "id": "l_splitr_14",
+            "from": "splitr_015",
+            "to": "splitr_016",
+            "propertyType": "string",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_splitr_60",
+            "from": "splitr_014",
+            "to": "splitr_016"
+          },
+          {
+            "id": "l_splitr_61",
+            "from": "splitr_016",
+            "to": "splitr_017"
+          },
+          {
+            "id": "l_splitr_62",
+            "from": "splitr_017",
+            "to": "splitr_018"
+          },
+          {
+            "id": "l_splitr_63",
+            "from": "splitr_018",
+            "to": "splitr_019"
+          },
+          {
+            "id": "l_splitr_64",
+            "from": "splitr_072",
+            "to": "splitr_014"
+          },
+          {
+            "id": "l_splitr_65",
+            "from": "splitr_019",
+            "to": "splitr_073"
+          },
+          {
+            "id": "l_splitr_118",
+            "from": "splitr_093",
+            "to": "splitr_092",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_074",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_020",
+      "exitSourceId": "splitr_031",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_075",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_020",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/boost.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "splitr_021",
+            "title": "stringBuilder",
+            "rootType": "string",
+            "properties": [
+              {
+                "name": "part0",
+                "type": "T",
+                "value": "Slash"
+              },
+              {
+                "name": "part1",
+                "type": "T",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "part2",
+                "type": "T",
+                "value": "_"
+              },
+              {
+                "name": "part3",
+                "type": "T",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "row"
+              }
+            ]
+          },
+          {
+            "id": "splitr_022",
+            "title": "findChildNode",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "parent",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_slashes",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "path",
+                "type": "string",
+                "sourceNodeId": "splitr_021"
+              }
+            ]
+          },
+          {
+            "id": "splitr_023",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_022"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.5
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.5
+              }
+            ]
+          },
+          {
+            "id": "splitr_024",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_022"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "splitr_025",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_022"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1.1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1.1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 350
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "splitr_026",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_022"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 300
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "splitr_027",
+            "title": "setSymbolAt",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "symbolIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "variant"
+              }
+            ]
+          },
+          {
+            "id": "splitr_028",
+            "title": "setSymbolText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "textIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_029",
+            "title": "getReelSymbolNode",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_094",
+                "sourceOutputName": "row"
+              }
+            ]
+          },
+          {
+            "id": "splitr_030",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_029"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1.2
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1.2
+              }
+            ]
+          },
+          {
+            "id": "splitr_031",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_029"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 320
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "splitr_094",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "splitr_095"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "found",
+                "type": "bool",
+                "path": "Found"
+              },
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              },
+              {
+                "name": "symbol",
+                "type": "int",
+                "path": "Symbol"
+              },
+              {
+                "name": "variant",
+                "type": "int",
+                "path": "Variant"
+              },
+              {
+                "name": "badge",
+                "type": "string",
+                "path": "Badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_095",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "hotspot"
+              }
+            ]
+          },
+          {
+            "id": "splitr_076",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_15",
+            "from": "splitr_094",
+            "to": "splitr_021",
+            "propertyType": "T",
+            "propertyName": "part1",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_16",
+            "from": "splitr_094",
+            "to": "splitr_021",
+            "propertyType": "T",
+            "propertyName": "part3",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_17",
+            "from": "splitr_021",
+            "to": "splitr_022",
+            "propertyType": "string",
+            "propertyName": "path"
+          },
+          {
+            "id": "l_splitr_18",
+            "from": "splitr_022",
+            "to": "splitr_023",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_19",
+            "from": "splitr_022",
+            "to": "splitr_024",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_20",
+            "from": "splitr_022",
+            "to": "splitr_025",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_21",
+            "from": "splitr_022",
+            "to": "splitr_026",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_22",
+            "from": "splitr_094",
+            "to": "splitr_027",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_23",
+            "from": "splitr_094",
+            "to": "splitr_027",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_24",
+            "from": "splitr_094",
+            "to": "splitr_027",
+            "propertyType": "int",
+            "propertyName": "symbolIndex",
+            "sourceOutputName": "variant"
+          },
+          {
+            "id": "l_splitr_25",
+            "from": "splitr_094",
+            "to": "splitr_028",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_26",
+            "from": "splitr_094",
+            "to": "splitr_028",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_27",
+            "from": "splitr_094",
+            "to": "splitr_028",
+            "propertyType": "string",
+            "propertyName": "text",
+            "sourceOutputName": "badge"
+          },
+          {
+            "id": "l_splitr_28",
+            "from": "splitr_094",
+            "to": "splitr_029",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_29",
+            "from": "splitr_094",
+            "to": "splitr_029",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_30",
+            "from": "splitr_029",
+            "to": "splitr_030",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_31",
+            "from": "splitr_029",
+            "to": "splitr_031",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_67",
+            "from": "splitr_020",
+            "to": "splitr_023"
+          },
+          {
+            "id": "l_splitr_68",
+            "from": "splitr_023",
+            "to": "splitr_024"
+          },
+          {
+            "id": "l_splitr_69",
+            "from": "splitr_024",
+            "to": "splitr_025"
+          },
+          {
+            "id": "l_splitr_70",
+            "from": "splitr_025",
+            "to": "splitr_026"
+          },
+          {
+            "id": "l_splitr_71",
+            "from": "splitr_026",
+            "to": "splitr_027"
+          },
+          {
+            "id": "l_splitr_72",
+            "from": "splitr_027",
+            "to": "splitr_028"
+          },
+          {
+            "id": "l_splitr_73",
+            "from": "splitr_028",
+            "to": "splitr_030"
+          },
+          {
+            "id": "l_splitr_74",
+            "from": "splitr_030",
+            "to": "splitr_031"
+          },
+          {
+            "id": "l_splitr_75",
+            "from": "splitr_075",
+            "to": "splitr_020"
+          },
+          {
+            "id": "l_splitr_76",
+            "from": "splitr_031",
+            "to": "splitr_076"
+          },
+          {
+            "id": "l_splitr_119",
+            "from": "splitr_095",
+            "to": "splitr_094",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_077",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_032",
+      "exitSourceId": "splitr_040",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_078",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_032",
+            "title": "setChildrenVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "splitr_033",
+            "title": "getChildNode",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "parent",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "sourceNodeId": "splitr_096",
+                "sourceOutputName": "symbol"
+              }
+            ]
+          },
+          {
+            "id": "splitr_034",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_033"
+              }
+            ]
+          },
+          {
+            "id": "splitr_035",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "sourceNodeId": "splitr_096",
+                "sourceOutputName": "badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_036",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "splitr_037",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.92
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.92
+              }
+            ]
+          },
+          {
+            "id": "splitr_038",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "splitr_039",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 360
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "splitr_040",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 260
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "splitr_096",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "splitr_097"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "found",
+                "type": "bool",
+                "path": "Found"
+              },
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              },
+              {
+                "name": "symbol",
+                "type": "int",
+                "path": "Symbol"
+              },
+              {
+                "name": "variant",
+                "type": "int",
+                "path": "Variant"
+              },
+              {
+                "name": "badge",
+                "type": "string",
+                "path": "Badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_097",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "hotspot"
+              }
+            ]
+          },
+          {
+            "id": "splitr_079",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_32",
+            "from": "splitr_096",
+            "to": "splitr_033",
+            "propertyType": "int",
+            "propertyName": "index",
+            "sourceOutputName": "symbol"
+          },
+          {
+            "id": "l_splitr_33",
+            "from": "splitr_033",
+            "to": "splitr_034",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_34",
+            "from": "splitr_096",
+            "to": "splitr_035",
+            "propertyType": "string",
+            "propertyName": "value",
+            "sourceOutputName": "badge"
+          },
+          {
+            "id": "l_splitr_78",
+            "from": "splitr_032",
+            "to": "splitr_034"
+          },
+          {
+            "id": "l_splitr_79",
+            "from": "splitr_034",
+            "to": "splitr_035"
+          },
+          {
+            "id": "l_splitr_80",
+            "from": "splitr_035",
+            "to": "splitr_036"
+          },
+          {
+            "id": "l_splitr_81",
+            "from": "splitr_036",
+            "to": "splitr_037"
+          },
+          {
+            "id": "l_splitr_82",
+            "from": "splitr_037",
+            "to": "splitr_038"
+          },
+          {
+            "id": "l_splitr_83",
+            "from": "splitr_038",
+            "to": "splitr_039"
+          },
+          {
+            "id": "l_splitr_84",
+            "from": "splitr_039",
+            "to": "splitr_040"
+          },
+          {
+            "id": "l_splitr_85",
+            "from": "splitr_078",
+            "to": "splitr_032"
+          },
+          {
+            "id": "l_splitr_86",
+            "from": "splitr_040",
+            "to": "splitr_079"
+          },
+          {
+            "id": "l_splitr_120",
+            "from": "splitr_097",
+            "to": "splitr_096",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_080",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_006",
+      "exitSourceId": "splitr_006",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_081",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_003",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "steps"
+              }
+            ]
+          },
+          {
+            "id": "splitr_004",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "sourceNodeId": "splitr_003"
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "splitr_005",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "splitr_004"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "cells",
+                "type": "ObjectArray",
+                "path": "NewSplitCells"
+              }
+            ]
+          },
+          {
+            "id": "splitr_006",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray",
+                "sourceNodeId": "splitr_005",
+                "sourceOutputName": "cells"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "splitr_007",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "splitr_006",
+                "sourceOutputName": "item"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              },
+              {
+                "name": "variant",
+                "type": "int",
+                "path": "Variant"
+              },
+              {
+                "name": "badge",
+                "type": "string",
+                "path": "Badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_041",
+            "title": "stringBuilder",
+            "rootType": "string",
+            "properties": [
+              {
+                "name": "part0",
+                "type": "T",
+                "value": "Slash"
+              },
+              {
+                "name": "part1",
+                "type": "T",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "part2",
+                "type": "T",
+                "value": "_"
+              },
+              {
+                "name": "part3",
+                "type": "T",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "row"
+              }
+            ]
+          },
+          {
+            "id": "splitr_042",
+            "title": "findChildNode",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "parent",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_slashes",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "path",
+                "type": "string",
+                "sourceNodeId": "splitr_041"
+              }
+            ]
+          },
+          {
+            "id": "splitr_043",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_042"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.5
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.5
+              }
+            ]
+          },
+          {
+            "id": "splitr_044",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_042"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "splitr_045",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_042"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 240
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "splitr_046",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "splitr_042"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 360
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "splitr_047",
+            "title": "setSymbolAt",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "symbolIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "variant"
+              }
+            ]
+          },
+          {
+            "id": "splitr_048",
+            "title": "setSymbolText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "textIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "sourceNodeId": "splitr_007",
+                "sourceOutputName": "badge"
+              }
+            ]
+          },
+          {
+            "id": "splitr_049",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 0.06
+              }
+            ]
+          },
+          {
+            "id": "splitr_082",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_2",
+            "from": "splitr_003",
+            "to": "splitr_004",
+            "propertyType": "TArray",
+            "propertyName": "array"
+          },
+          {
+            "id": "l_splitr_3",
+            "from": "splitr_004",
+            "to": "splitr_005",
+            "propertyType": "object",
+            "propertyName": "source"
+          },
+          {
+            "id": "l_splitr_4",
+            "from": "splitr_005",
+            "to": "splitr_006",
+            "propertyType": "TArray",
+            "propertyName": "items",
+            "sourceOutputName": "cells"
+          },
+          {
+            "id": "l_splitr_5",
+            "from": "splitr_006",
+            "to": "splitr_007",
+            "propertyType": "object",
+            "propertyName": "source",
+            "sourceOutputName": "item"
+          },
+          {
+            "id": "l_splitr_35",
+            "from": "splitr_007",
+            "to": "splitr_041",
+            "propertyType": "T",
+            "propertyName": "part1",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_36",
+            "from": "splitr_007",
+            "to": "splitr_041",
+            "propertyType": "T",
+            "propertyName": "part3",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_37",
+            "from": "splitr_041",
+            "to": "splitr_042",
+            "propertyType": "string",
+            "propertyName": "path"
+          },
+          {
+            "id": "l_splitr_38",
+            "from": "splitr_042",
+            "to": "splitr_043",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_39",
+            "from": "splitr_042",
+            "to": "splitr_044",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_40",
+            "from": "splitr_042",
+            "to": "splitr_045",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_41",
+            "from": "splitr_042",
+            "to": "splitr_046",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_splitr_42",
+            "from": "splitr_007",
+            "to": "splitr_047",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_43",
+            "from": "splitr_007",
+            "to": "splitr_047",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_44",
+            "from": "splitr_007",
+            "to": "splitr_047",
+            "propertyType": "int",
+            "propertyName": "symbolIndex",
+            "sourceOutputName": "variant"
+          },
+          {
+            "id": "l_splitr_45",
+            "from": "splitr_007",
+            "to": "splitr_048",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_splitr_46",
+            "from": "splitr_007",
+            "to": "splitr_048",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_splitr_47",
+            "from": "splitr_007",
+            "to": "splitr_048",
+            "propertyType": "string",
+            "propertyName": "text",
+            "sourceOutputName": "badge"
+          },
+          {
+            "id": "l_splitr_90",
+            "from": "splitr_043",
+            "to": "splitr_044"
+          },
+          {
+            "id": "l_splitr_91",
+            "from": "splitr_044",
+            "to": "splitr_045"
+          },
+          {
+            "id": "l_splitr_92",
+            "from": "splitr_045",
+            "to": "splitr_046"
+          },
+          {
+            "id": "l_splitr_93",
+            "from": "splitr_046",
+            "to": "splitr_047"
+          },
+          {
+            "id": "l_splitr_94",
+            "from": "splitr_047",
+            "to": "splitr_048"
+          },
+          {
+            "id": "l_splitr_95",
+            "from": "splitr_048",
+            "to": "splitr_049"
+          },
+          {
+            "id": "l_splitr_96",
+            "from": "splitr_006",
+            "to": "splitr_043",
+            "outIdx": 0
+          },
+          {
+            "id": "l_splitr_97",
+            "from": "splitr_081",
+            "to": "splitr_006"
+          },
+          {
+            "id": "l_splitr_98",
+            "from": "splitr_006",
+            "to": "splitr_082",
+            "outIdx": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_083",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_055",
+      "exitSourceId": "splitr_059",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_084",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_055",
+            "title": "setChildrenVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "splitr_056",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "splitr_057",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "teaseHintCount"
+              }
+            ]
+          },
+          {
+            "id": "splitr_058",
+            "title": "add",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "sourceNodeId": "splitr_057"
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "splitr_059",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "teaseHintCount"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "sourceNodeId": "splitr_058"
+              }
+            ]
+          },
+          {
+            "id": "splitr_085",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_52",
+            "from": "splitr_057",
+            "to": "splitr_058",
+            "propertyType": "T",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_splitr_53",
+            "from": "splitr_058",
+            "to": "splitr_059",
+            "propertyType": "dynamic",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_splitr_99",
+            "from": "splitr_055",
+            "to": "splitr_056"
+          },
+          {
+            "id": "l_splitr_100",
+            "from": "splitr_056",
+            "to": "splitr_059"
+          },
+          {
+            "id": "l_splitr_101",
+            "from": "splitr_084",
+            "to": "splitr_055"
+          },
+          {
+            "id": "l_splitr_102",
+            "from": "splitr_059",
+            "to": "splitr_085"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_086",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_064",
+      "exitSourceId": "splitr_068",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_087",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_064",
+            "title": "setChildrenVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "splitr_065",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "splitr_066",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "splitHintCount"
+              }
+            ]
+          },
+          {
+            "id": "splitr_067",
+            "title": "add",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "sourceNodeId": "splitr_066"
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "splitr_068",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "splitHintCount"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "sourceNodeId": "splitr_067"
+              }
+            ]
+          },
+          {
+            "id": "splitr_088",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_58",
+            "from": "splitr_066",
+            "to": "splitr_067",
+            "propertyType": "T",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_splitr_59",
+            "from": "splitr_067",
+            "to": "splitr_068",
+            "propertyType": "dynamic",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_splitr_103",
+            "from": "splitr_064",
+            "to": "splitr_065"
+          },
+          {
+            "id": "l_splitr_104",
+            "from": "splitr_065",
+            "to": "splitr_068"
+          },
+          {
+            "id": "l_splitr_105",
+            "from": "splitr_087",
+            "to": "splitr_064"
+          },
+          {
+            "id": "l_splitr_106",
+            "from": "splitr_068",
+            "to": "splitr_088"
+          }
+        ]
+      }
+    },
+    {
+      "id": "splitr_089",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "splitr_069",
+      "exitSourceId": "splitr_069",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "splitr_090",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "splitr_069",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hotspot",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 300
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "splitr_091",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_splitr_114",
+            "from": "splitr_090",
+            "to": "splitr_069"
+          },
+          {
+            "id": "l_splitr_115",
+            "from": "splitr_069",
+            "to": "splitr_091"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_splitr_1",
+      "from": "splitr_001",
+      "to": "splitr_002",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "l_splitr_6",
+      "from": "splitr_002",
+      "to": "splitr_009",
+      "propertyType": "bool",
+      "propertyName": "condition",
+      "sourceOutputName": "found"
+    },
+    {
+      "id": "l_splitr_48",
+      "from": "splitr_051",
+      "to": "splitr_052",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_splitr_49",
+      "from": "splitr_050",
+      "to": "splitr_053",
+      "propertyType": "bool",
+      "propertyName": "part0"
+    },
+    {
+      "id": "l_splitr_50",
+      "from": "splitr_052",
+      "to": "splitr_053",
+      "propertyType": "bool",
+      "propertyName": "part1"
+    },
+    {
+      "id": "l_splitr_51",
+      "from": "splitr_053",
+      "to": "splitr_054",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_splitr_54",
+      "from": "splitr_060",
+      "to": "splitr_061",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_splitr_55",
+      "from": "splitr_002",
+      "to": "splitr_062",
+      "propertyType": "bool",
+      "propertyName": "part0",
+      "sourceOutputName": "found"
+    },
+    {
+      "id": "l_splitr_56",
+      "from": "splitr_061",
+      "to": "splitr_062",
+      "propertyType": "bool",
+      "propertyName": "part1"
+    },
+    {
+      "id": "l_splitr_57",
+      "from": "splitr_062",
+      "to": "splitr_063",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_splitr_66",
+      "from": "splitr_071",
+      "to": "splitr_074"
+    },
+    {
+      "id": "l_splitr_77",
+      "from": "splitr_074",
+      "to": "splitr_077"
+    },
+    {
+      "id": "l_splitr_87",
+      "from": "splitr_009",
+      "to": "splitr_071",
+      "outIdx": 0
+    },
+    {
+      "id": "l_splitr_88",
+      "from": "splitr_077",
+      "to": "splitr_080"
+    },
+    {
+      "id": "l_splitr_89",
+      "from": "splitr_009",
+      "to": "splitr_080",
+      "outIdx": 1
+    },
+    {
+      "id": "l_splitr_107",
+      "from": "splitr_063",
+      "to": "splitr_086",
+      "outIdx": 0
+    },
+    {
+      "id": "l_splitr_108",
+      "from": "splitr_080",
+      "to": "splitr_054"
+    },
+    {
+      "id": "l_splitr_109",
+      "from": "splitr_054",
+      "to": "splitr_083",
+      "outIdx": 0
+    },
+    {
+      "id": "l_splitr_110",
+      "from": "splitr_054",
+      "to": "splitr_063",
+      "outIdx": 1
+    },
+    {
+      "id": "l_splitr_111",
+      "from": "splitr_083",
+      "to": "splitr_089"
+    },
+    {
+      "id": "l_splitr_112",
+      "from": "splitr_086",
+      "to": "splitr_089"
+    },
+    {
+      "id": "l_splitr_113",
+      "from": "splitr_063",
+      "to": "splitr_089",
+      "outIdx": 1
+    },
+    {
+      "id": "l_splitr_116",
+      "from": "splitr_089",
+      "to": "splitr_070"
+    },
+    {
+      "id": "l_splitr_117",
+      "from": "splitr_008",
+      "to": "splitr_009"
+    }
+  ]
+}

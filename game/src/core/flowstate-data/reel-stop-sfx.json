@@ -1,0 +1,65 @@
+{
+  "nodes": [
+    {
+      "id": "reelst_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "A thud as each reel lands."
+    },
+    {
+      "id": "reelst_001",
+      "title": "reelStop",
+      "rootType": "StarterNodes"
+    },
+    {
+      "id": "reelst_002",
+      "title": "playSound",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "soundName",
+          "type": "audioRef",
+          "value": "core/assets/audio/sfx/reel-stop.mp3"
+        },
+        {
+          "name": "volume",
+          "type": "float",
+          "value": 0.5
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "pitch",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "fadeIn",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "pan",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "bus",
+          "type": "string",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_reelst_1",
+      "from": "reelst_001",
+      "to": "reelst_002"
+    }
+  ]
+}

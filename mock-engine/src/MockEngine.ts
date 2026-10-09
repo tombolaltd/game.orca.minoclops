@@ -70,6 +70,10 @@ export interface MockEngineOptions {
     /** Off unless `enabled` is true; while off no response carries a Jackpot member. */
     jackpot?: MockJackpotConfig;
     operatorSettings?: OperatorFlowSettings | IOperatorSettingsProvider;
+    /**
+     * Defaults to `{ debugEnabled: true }`: a prototyping engine honours the debug data a
+     * request carries (forced stops, a forced bonus), as the real engine does in development.
+     */
     flowConfig?: GameFlowHandlerConfig;
     flowHandler?: MockFlowHandlerFactory;
     logger?: ILoggingService;
@@ -151,7 +155,7 @@ export class MockEngine {
         this.jackpotService = new MockJackpotService(this.rng, options.jackpot ?? {});
 
         this.operatorSettingsProvider = resolveOperatorSettingsProvider(options.operatorSettings);
-        this.flowConfig = options.flowConfig ?? {};
+        this.flowConfig = options.flowConfig ?? { debugEnabled: true };
         this.createFlowHandler = options.flowHandler ?? (dependencies => new DefaultGameFlowHandler(dependencies));
 
         // The store outlives any one request, so it is bound to a context that forwards to
@@ -347,7 +351,7 @@ export class MockEngine {
             Parent: raw.Parent,
             BeginGameData: (registration.beginGameData ?? passthrough)(raw.BeginGameData),
             ContextPassthrough: raw.ContextPassthrough,
-            DebugGameData: GameTypeRegistry.getDebugDataType(registration.game)(raw.DebugGameData),
+            DebugGameData: GameTypeRegistry.getDebugDataType(registration.game)(raw.DebugGameData ?? topLevelDebugData(raw)),
             BonusRoundData: (registration.bonusRoundData ?? passthrough)(bonusRoundSource),
             AuthToken: raw.AuthToken ?? this.sessionConfig.authToken,
             GamingSessionToken: raw.GamingSessionToken ?? this.sessionConfig.gamingSessionToken,
@@ -471,6 +475,26 @@ function resolveOperatorSettingsProvider(settings: MockEngineOptions['operatorSe
 }
 
 const passthrough = (raw: unknown): unknown => raw;
+
+/** Request flags arcade-base adds in debug builds; they are not game debug data. */
+const CLIENT_DEBUG_FLAGS = new Set(['DebugGameData', 'DebugNotification', 'DebugVersion']);
+
+/**
+ * The arcade client merges its debug data into the TOP LEVEL of the request body
+ * (arcade-base assigns `debugModel.debugServerData` onto it: `DebugStops`, `ForceBonus`, …),
+ * where the C# binder's shape is a `DebugGameData` member. With no `DebugGameData`, the
+ * `Debug…` / `Force…` fields of the body are the debug data.
+ */
+function topLevelDebugData(raw: MockArcadeRequest): Record<string, unknown> | undefined {
+    const out: Record<string, unknown> = {};
+    let found = false;
+    for (const [key, value] of Object.entries(raw as Record<string, unknown>)) {
+        if (!/^(Debug|Force)/.test(key) || CLIENT_DEBUG_FLAGS.has(key) || value === undefined) continue;
+        out[key] = value;
+        found = true;
+    }
+    return found ? out : undefined;
+}
 
 function clone<T>(value: T): T {
     return JSON.parse(JSON.stringify(value)) as T;

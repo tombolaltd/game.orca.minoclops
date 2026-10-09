@@ -1,0 +1,219 @@
+{
+  "nodes": [
+    {
+      "id": "stepsd_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "The board has settled: next free spin, bonus trigger, or settle the round."
+    },
+    {
+      "id": "stepsd_001",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundInfo"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_002",
+      "title": "parseObject",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "stepsd_001"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tier",
+          "type": "int",
+          "path": "BonusTier"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_003",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "stepsDone"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_004",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "inBonus"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_005",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "stepsd_004"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_006",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "bonusSpinEnd"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "stepsd_007",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "stepsd_002",
+          "sourceOutputName": "tier"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "stepsd_008",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "stepsd_007"
+        }
+      ]
+    },
+    {
+      "id": "stepsd_009",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "bonusTrigger"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "stepsd_010",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "settleRound"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_stepsd_1",
+      "from": "stepsd_001",
+      "to": "stepsd_002",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "l_stepsd_2",
+      "from": "stepsd_004",
+      "to": "stepsd_005",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_stepsd_3",
+      "from": "stepsd_002",
+      "to": "stepsd_007",
+      "propertyType": "float",
+      "propertyName": "a",
+      "sourceOutputName": "tier"
+    },
+    {
+      "id": "l_stepsd_4",
+      "from": "stepsd_007",
+      "to": "stepsd_008",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_stepsd_5",
+      "from": "stepsd_008",
+      "to": "stepsd_009",
+      "outIdx": 0
+    },
+    {
+      "id": "l_stepsd_6",
+      "from": "stepsd_008",
+      "to": "stepsd_010",
+      "outIdx": 1
+    },
+    {
+      "id": "l_stepsd_7",
+      "from": "stepsd_005",
+      "to": "stepsd_006",
+      "outIdx": 0
+    },
+    {
+      "id": "l_stepsd_8",
+      "from": "stepsd_005",
+      "to": "stepsd_008",
+      "outIdx": 1
+    },
+    {
+      "id": "l_stepsd_9",
+      "from": "stepsd_003",
+      "to": "stepsd_005"
+    }
+  ]
+}

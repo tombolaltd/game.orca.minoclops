@@ -1,0 +1,1 @@
+Add any assets in here that would be shared across every skin

@@ -1,0 +1,174 @@
+
+bigWin.png
+size: 2048,1024
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+amount
+  rotate: false
+  xy: 568, 393
+  size: 326, 122
+  orig: 417, 181
+  offset: 45, 40
+  index: -1
+BIGWIN
+  rotate: false
+  xy: 2, 358
+  size: 564, 157
+  orig: 810, 176
+  offset: 124, 11
+  index: -1
+bigWinGlow_00000
+  rotate: false
+  xy: 2, 2
+  size: 355, 354
+  orig: 359, 359
+  offset: 2, 2
+  index: -1
+board
+  rotate: false
+  xy: 2, 517
+  size: 908, 505
+  orig: 912, 509
+  offset: 2, 2
+  index: -1
+lightRay_00000
+  rotate: true
+  xy: 1477, 930
+  size: 92, 534
+  orig: 92, 534
+  offset: 0, 0
+  index: -1
+rectangle
+  rotate: false
+  xy: 912, 867
+  size: 563, 155
+  orig: 563, 155
+  offset: 0, 0
+  index: -1
+star_1
+  rotate: false
+  xy: 444, 231
+  size: 59, 60
+  orig: 63, 63
+  offset: 2, 1
+  index: -1
+trioLogo
+  rotate: false
+  xy: 912, 602
+  size: 447, 263
+  orig: 462, 280
+  offset: 7, 8
+  index: -1
+trioLogoShine_00000
+  rotate: false
+  xy: 896, 514
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+trioLogoShine_00015
+  rotate: false
+  xy: 896, 514
+  size: 1, 1
+  orig: 1, 1
+  offset: 0, 0
+  index: -1
+trioLogoShine_00001
+  rotate: false
+  xy: 568, 370
+  size: 35, 21
+  orig: 129, 64
+  offset: 0, 38
+  index: -1
+trioLogoShine_00002
+  rotate: false
+  xy: 1544, 889
+  size: 57, 39
+  orig: 129, 64
+  offset: 0, 20
+  index: -1
+trioLogoShine_00003
+  rotate: false
+  xy: 1477, 870
+  size: 65, 58
+  orig: 129, 64
+  offset: 0, 1
+  index: -1
+trioLogoShine_00004
+  rotate: false
+  xy: 359, 163
+  size: 60, 62
+  orig: 129, 64
+  offset: 13, 1
+  index: -1
+trioLogoShine_00005
+  rotate: false
+  xy: 1361, 737
+  size: 66, 63
+  orig: 129, 64
+  offset: 13, 1
+  index: -1
+trioLogoShine_00006
+  rotate: false
+  xy: 465, 293
+  size: 71, 63
+  orig: 129, 64
+  offset: 13, 1
+  index: -1
+trioLogoShine_00007
+  rotate: false
+  xy: 1013, 537
+  size: 71, 63
+  orig: 129, 64
+  offset: 13, 1
+  index: -1
+trioLogoShine_00008
+  rotate: false
+  xy: 912, 537
+  size: 99, 63
+  orig: 129, 64
+  offset: 13, 1
+  index: -1
+trioLogoShine_00009
+  rotate: false
+  xy: 359, 293
+  size: 104, 63
+  orig: 129, 64
+  offset: 15, 1
+  index: -1
+trioLogoShine_00010
+  rotate: false
+  xy: 1361, 802
+  size: 85, 63
+  orig: 129, 64
+  offset: 38, 1
+  index: -1
+trioLogoShine_00011
+  rotate: false
+  xy: 359, 227
+  size: 83, 64
+  orig: 129, 64
+  offset: 43, 0
+  index: -1
+trioLogoShine_00012
+  rotate: false
+  xy: 1086, 555
+  size: 60, 45
+  orig: 129, 64
+  offset: 68, 0
+  index: -1
+trioLogoShine_00013
+  rotate: false
+  xy: 1361, 690
+  size: 59, 45
+  orig: 129, 64
+  offset: 70, 0
+  index: -1
+trioLogoShine_00014
+  rotate: false
+  xy: 2013, 981
+  size: 24, 41
+  orig: 129, 64
+  offset: 105, 0
+  index: -1

@@ -1,0 +1,504 @@
+{
+  "nodes": [
+    {
+      "id": "helppo_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Help: paytable and rules between rounds; CLOSE hides it."
+    },
+    {
+      "id": "helppo_001",
+      "title": "onPointerTap",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_help_button",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "setInteractive",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "helppo_002",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundBusy"
+        }
+      ]
+    },
+    {
+      "id": "helppo_003",
+      "title": "not",
+      "rootType": "logic",
+      "properties": [
+        {
+          "name": "value",
+          "type": "bool",
+          "sourceNodeId": "helppo_002"
+        }
+      ]
+    },
+    {
+      "id": "helppo_004",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "helppo_003"
+        }
+      ]
+    },
+    {
+      "id": "helppo_011",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "helppo_005",
+      "exitSourceId": "helppo_010",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "helppo_012",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "helppo_005",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "helppo_006",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.92
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.92
+              }
+            ]
+          },
+          {
+            "id": "helppo_007",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "helppo_008",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/popup.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.8
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "helppo_009",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 360
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "back.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "helppo_010",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 260
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "helppo_013",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_helppo_3",
+            "from": "helppo_005",
+            "to": "helppo_006"
+          },
+          {
+            "id": "l_helppo_4",
+            "from": "helppo_006",
+            "to": "helppo_007"
+          },
+          {
+            "id": "l_helppo_5",
+            "from": "helppo_007",
+            "to": "helppo_008"
+          },
+          {
+            "id": "l_helppo_6",
+            "from": "helppo_008",
+            "to": "helppo_009"
+          },
+          {
+            "id": "l_helppo_7",
+            "from": "helppo_009",
+            "to": "helppo_010"
+          },
+          {
+            "id": "l_helppo_8",
+            "from": "helppo_012",
+            "to": "helppo_005"
+          },
+          {
+            "id": "l_helppo_9",
+            "from": "helppo_010",
+            "to": "helppo_013"
+          }
+        ]
+      }
+    },
+    {
+      "id": "helppo_014",
+      "title": "onPointerTap",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": null
+        },
+        {
+          "name": "setInteractive",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "helppo_019",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "helppo_015",
+      "exitSourceId": "helppo_018",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "helppo_020",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "helppo_015",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/popup.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.5
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "helppo_016",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 220
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "helppo_017",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              }
+            ]
+          },
+          {
+            "id": "helppo_018",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": null
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "helppo_021",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_helppo_12",
+            "from": "helppo_015",
+            "to": "helppo_016"
+          },
+          {
+            "id": "l_helppo_13",
+            "from": "helppo_016",
+            "to": "helppo_017"
+          },
+          {
+            "id": "l_helppo_14",
+            "from": "helppo_017",
+            "to": "helppo_018"
+          },
+          {
+            "id": "l_helppo_15",
+            "from": "helppo_020",
+            "to": "helppo_015"
+          },
+          {
+            "id": "l_helppo_16",
+            "from": "helppo_018",
+            "to": "helppo_021"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_helppo_1",
+      "from": "helppo_002",
+      "to": "helppo_003",
+      "propertyType": "bool",
+      "propertyName": "value"
+    },
+    {
+      "id": "l_helppo_2",
+      "from": "helppo_003",
+      "to": "helppo_004",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_helppo_10",
+      "from": "helppo_004",
+      "to": "helppo_011",
+      "outIdx": 0
+    },
+    {
+      "id": "l_helppo_11",
+      "from": "helppo_001",
+      "to": "helppo_004"
+    },
+    {
+      "id": "l_helppo_17",
+      "from": "helppo_014",
+      "to": "helppo_019"
+    }
+  ]
+}

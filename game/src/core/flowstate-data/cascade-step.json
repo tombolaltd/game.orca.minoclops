@@ -1,0 +1,950 @@
+{
+  "nodes": [
+    {
+      "id": "cascad_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Winners clear, surviving split badges are staged on their new cells, and new symbols drop in."
+    },
+    {
+      "id": "cascad_007",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "cascadeStep"
+        }
+      ]
+    },
+    {
+      "id": "cascad_021",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "showStep"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "cascad_022",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "cascad_008",
+      "exitSourceId": "cascad_005",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "cascad_023",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "cascad_005",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray",
+                "sourceNodeId": "cascad_031",
+                "sourceOutputName": "wins"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cascad_006",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "cascad_005",
+                "sourceOutputName": "item"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              }
+            ]
+          },
+          {
+            "id": "cascad_008",
+            "title": "resetSymbolVisuals",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "value": -1
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "value": -1
+              }
+            ]
+          },
+          {
+            "id": "cascad_009",
+            "title": "playSound",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "soundName",
+                "type": "audioRef",
+                "value": "core/assets/audio/sfx/blast.mp3"
+              },
+              {
+                "name": "volume",
+                "type": "float",
+                "value": 0.55
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "pitch",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "fadeIn",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "pan",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "bus",
+                "type": "string",
+                "value": ""
+              }
+            ]
+          },
+          {
+            "id": "cascad_010",
+            "title": "stringBuilder",
+            "rootType": "string",
+            "properties": [
+              {
+                "name": "part0",
+                "type": "T",
+                "value": "Burst"
+              },
+              {
+                "name": "part1",
+                "type": "T",
+                "sourceNodeId": "cascad_006",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "part2",
+                "type": "T",
+                "value": "_"
+              },
+              {
+                "name": "part3",
+                "type": "T",
+                "sourceNodeId": "cascad_006",
+                "sourceOutputName": "row"
+              }
+            ]
+          },
+          {
+            "id": "cascad_011",
+            "title": "findChildNode",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "parent",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bursts",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "path",
+                "type": "string",
+                "sourceNodeId": "cascad_010"
+              }
+            ]
+          },
+          {
+            "id": "cascad_012",
+            "title": "setNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "cascad_011"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.08
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.08
+              }
+            ]
+          },
+          {
+            "id": "cascad_013",
+            "title": "setNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "cascad_011"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cascad_014",
+            "title": "tweenNodeScale",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "cascad_011"
+              },
+              {
+                "name": "scaleX",
+                "type": "float",
+                "value": 0.3
+              },
+              {
+                "name": "scaleY",
+                "type": "float",
+                "value": 0.3
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 380
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "cascad_015",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "cascad_011"
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 380
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.in"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "cascad_031",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "cascad_032"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "badges",
+                "type": "ObjectArray",
+                "path": "CascadeBadges"
+              },
+              {
+                "name": "clear",
+                "type": "IntArray",
+                "path": "ClearLocations"
+              },
+              {
+                "name": "grid",
+                "type": "IntArray",
+                "path": "CascadeGrid"
+              },
+              {
+                "name": "wins",
+                "type": "ObjectArray",
+                "path": "WinPositions"
+              }
+            ]
+          },
+          {
+            "id": "cascad_032",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "step"
+              }
+            ]
+          },
+          {
+            "id": "cascad_024",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_cascad_4",
+            "from": "cascad_031",
+            "to": "cascad_005",
+            "propertyType": "TArray",
+            "propertyName": "items",
+            "sourceOutputName": "wins"
+          },
+          {
+            "id": "l_cascad_5",
+            "from": "cascad_005",
+            "to": "cascad_006",
+            "propertyType": "object",
+            "propertyName": "source",
+            "sourceOutputName": "item"
+          },
+          {
+            "id": "l_cascad_6",
+            "from": "cascad_006",
+            "to": "cascad_010",
+            "propertyType": "T",
+            "propertyName": "part1",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_cascad_7",
+            "from": "cascad_006",
+            "to": "cascad_010",
+            "propertyType": "T",
+            "propertyName": "part3",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_cascad_8",
+            "from": "cascad_010",
+            "to": "cascad_011",
+            "propertyType": "string",
+            "propertyName": "path"
+          },
+          {
+            "id": "l_cascad_9",
+            "from": "cascad_011",
+            "to": "cascad_012",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_cascad_10",
+            "from": "cascad_011",
+            "to": "cascad_013",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_cascad_11",
+            "from": "cascad_011",
+            "to": "cascad_014",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_cascad_12",
+            "from": "cascad_011",
+            "to": "cascad_015",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l_cascad_20",
+            "from": "cascad_008",
+            "to": "cascad_009"
+          },
+          {
+            "id": "l_cascad_21",
+            "from": "cascad_012",
+            "to": "cascad_013"
+          },
+          {
+            "id": "l_cascad_22",
+            "from": "cascad_013",
+            "to": "cascad_014"
+          },
+          {
+            "id": "l_cascad_23",
+            "from": "cascad_014",
+            "to": "cascad_015"
+          },
+          {
+            "id": "l_cascad_24",
+            "from": "cascad_009",
+            "to": "cascad_005"
+          },
+          {
+            "id": "l_cascad_25",
+            "from": "cascad_005",
+            "to": "cascad_012",
+            "outIdx": 0
+          },
+          {
+            "id": "l_cascad_26",
+            "from": "cascad_023",
+            "to": "cascad_008"
+          },
+          {
+            "id": "l_cascad_27",
+            "from": "cascad_005",
+            "to": "cascad_024",
+            "outIdx": 1
+          },
+          {
+            "id": "l_cascad_38",
+            "from": "cascad_032",
+            "to": "cascad_031",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    },
+    {
+      "id": "cascad_025",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "cascad_003",
+      "exitSourceId": "cascad_003",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "cascad_026",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "cascad_001",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "step"
+              }
+            ]
+          },
+          {
+            "id": "cascad_002",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "cascad_001"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "badges",
+                "type": "ObjectArray",
+                "path": "CascadeBadges"
+              },
+              {
+                "name": "clear",
+                "type": "IntArray",
+                "path": "ClearLocations"
+              },
+              {
+                "name": "grid",
+                "type": "IntArray",
+                "path": "CascadeGrid"
+              },
+              {
+                "name": "wins",
+                "type": "ObjectArray",
+                "path": "WinPositions"
+              }
+            ]
+          },
+          {
+            "id": "cascad_003",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray",
+                "sourceNodeId": "cascad_002",
+                "sourceOutputName": "badges"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cascad_004",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "cascad_003",
+                "sourceOutputName": "item"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "reel",
+                "type": "int",
+                "path": "Reel"
+              },
+              {
+                "name": "row",
+                "type": "int",
+                "path": "Row"
+              },
+              {
+                "name": "badge",
+                "type": "string",
+                "path": "Badge"
+              }
+            ]
+          },
+          {
+            "id": "cascad_016",
+            "title": "setLandingSymbolText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "cascad_004",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "cascad_004",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "textIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "text",
+                "type": "string",
+                "sourceNodeId": "cascad_004",
+                "sourceOutputName": "badge"
+              }
+            ]
+          },
+          {
+            "id": "cascad_027",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_cascad_1",
+            "from": "cascad_001",
+            "to": "cascad_002",
+            "propertyType": "object",
+            "propertyName": "source"
+          },
+          {
+            "id": "l_cascad_2",
+            "from": "cascad_002",
+            "to": "cascad_003",
+            "propertyType": "TArray",
+            "propertyName": "items",
+            "sourceOutputName": "badges"
+          },
+          {
+            "id": "l_cascad_3",
+            "from": "cascad_003",
+            "to": "cascad_004",
+            "propertyType": "object",
+            "propertyName": "source",
+            "sourceOutputName": "item"
+          },
+          {
+            "id": "l_cascad_13",
+            "from": "cascad_004",
+            "to": "cascad_016",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "l_cascad_14",
+            "from": "cascad_004",
+            "to": "cascad_016",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l_cascad_15",
+            "from": "cascad_004",
+            "to": "cascad_016",
+            "propertyType": "string",
+            "propertyName": "text",
+            "sourceOutputName": "badge"
+          },
+          {
+            "id": "l_cascad_29",
+            "from": "cascad_003",
+            "to": "cascad_016",
+            "outIdx": 0
+          },
+          {
+            "id": "l_cascad_30",
+            "from": "cascad_026",
+            "to": "cascad_003"
+          },
+          {
+            "id": "l_cascad_31",
+            "from": "cascad_003",
+            "to": "cascad_027",
+            "outIdx": 1
+          }
+        ]
+      }
+    },
+    {
+      "id": "cascad_028",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "cascad_017",
+      "exitSourceId": "cascad_020",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "cascad_029",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "cascad_017",
+            "title": "runCascade",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "locations",
+                "type": "string",
+                "sourceNodeId": "cascad_033",
+                "sourceOutputName": "clear"
+              },
+              {
+                "name": "outcome",
+                "type": "string",
+                "sourceNodeId": "cascad_033",
+                "sourceOutputName": "grid"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "cascad_018",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "stepIndex"
+              }
+            ]
+          },
+          {
+            "id": "cascad_019",
+            "title": "add",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "sourceNodeId": "cascad_018"
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "cascad_020",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "stepIndex"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "sourceNodeId": "cascad_019"
+              }
+            ]
+          },
+          {
+            "id": "cascad_033",
+            "title": "parseObject",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "cascad_034"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "badges",
+                "type": "ObjectArray",
+                "path": "CascadeBadges"
+              },
+              {
+                "name": "clear",
+                "type": "IntArray",
+                "path": "ClearLocations"
+              },
+              {
+                "name": "grid",
+                "type": "IntArray",
+                "path": "CascadeGrid"
+              },
+              {
+                "name": "wins",
+                "type": "ObjectArray",
+                "path": "WinPositions"
+              }
+            ]
+          },
+          {
+            "id": "cascad_034",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "step"
+              }
+            ]
+          },
+          {
+            "id": "cascad_030",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_cascad_16",
+            "from": "cascad_033",
+            "to": "cascad_017",
+            "propertyType": "string",
+            "propertyName": "locations",
+            "sourceOutputName": "clear"
+          },
+          {
+            "id": "l_cascad_17",
+            "from": "cascad_033",
+            "to": "cascad_017",
+            "propertyType": "string",
+            "propertyName": "outcome",
+            "sourceOutputName": "grid"
+          },
+          {
+            "id": "l_cascad_18",
+            "from": "cascad_018",
+            "to": "cascad_019",
+            "propertyType": "T",
+            "propertyName": "a"
+          },
+          {
+            "id": "l_cascad_19",
+            "from": "cascad_019",
+            "to": "cascad_020",
+            "propertyType": "dynamic",
+            "propertyName": "value"
+          },
+          {
+            "id": "l_cascad_33",
+            "from": "cascad_017",
+            "to": "cascad_020"
+          },
+          {
+            "id": "l_cascad_34",
+            "from": "cascad_029",
+            "to": "cascad_017"
+          },
+          {
+            "id": "l_cascad_35",
+            "from": "cascad_020",
+            "to": "cascad_030"
+          },
+          {
+            "id": "l_cascad_39",
+            "from": "cascad_034",
+            "to": "cascad_033",
+            "propertyType": "object",
+            "propertyName": "source"
+          }
+        ]
+      }
+    }
+  ],
+  "links": [
+    {
+      "id": "l_cascad_28",
+      "from": "cascad_022",
+      "to": "cascad_025"
+    },
+    {
+      "id": "l_cascad_32",
+      "from": "cascad_025",
+      "to": "cascad_028"
+    },
+    {
+      "id": "l_cascad_36",
+      "from": "cascad_028",
+      "to": "cascad_021"
+    },
+    {
+      "id": "l_cascad_37",
+      "from": "cascad_007",
+      "to": "cascad_022"
+    }
+  ]
+}

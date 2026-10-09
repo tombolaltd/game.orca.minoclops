@@ -1,0 +1,27 @@
+base.webp
+size: 4096, 4096
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+base/back
+  bounds: 884, 3831, 250, 250
+base/backGradient
+  bounds: 1768, 2773, 500, 500
+base/circle
+  bounds: 128, 3844, 146, 146
+base/Foreground
+  bounds: 2021, 915, 2001, 615
+base/LampL
+  bounds: 884, 2773, 880, 1054
+  offsets: 1, 0, 881, 1054
+base/LampR
+  bounds: 3, 2773, 877, 1067
+  offsets: 0, 2, 879, 1069
+base/Middle
+  bounds: 2021, 3, 2001, 908
+base/ReelGuide
+  bounds: 3, 3844, 159, 121
+  rotate: 90
+base/Wall and gate
+  bounds: 3, 3, 2014, 2766

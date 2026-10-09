@@ -1,0 +1,20 @@
+@import '../node_modules/@game-studio/arcade-base/dist/index.css';
+
+/*
+ * Dev-visibility accent for the chat iframe.
+ *
+ * The iframe's content document is replaced with a "Chat (dev preview)"
+ * placeholder by `core/dev/chat-placeholder.ts` in non-production builds,
+ * which is what actually makes the panel visible inside the Orca /
+ * Flowstate editor's emulator. The rule below just adds a subtle blue
+ * divider on top of the iframe element so the panel boundary is obvious
+ * even when arcade-base later collapses / animates its height.
+ *
+ * The CSS-only fallback (background-color + inline SVG label) was removed
+ * because iframe documents (including network-error pages) paint opaquely
+ * over the iframe element's CSS background and so it never reliably showed.
+ */
+#app .companion-component .chat-panel {
+    border-top: 4px solid rgba(74, 144, 226, 0.7);
+}
+

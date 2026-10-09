@@ -1,0 +1,64 @@
+{
+  "compilerOptions": {
+    // this aligns with Vue's browser support
+    "target": "es2015",
+    "skipLibCheck": true,
+    "ignoreDeprecations": "6.0",
+    // this enables stricter inference for data properties on `this`
+    "strict": true,
+    // if using webpack 2+ or rollup, to leverage tree shaking:
+    "module": "esnext",
+    "lib": ["es2015", "es2017", "dom", "es5", "es6"],
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "allowJs": true,
+    "emitDecoratorMetadata": true,
+    "sourceMap": true,
+    "strictPropertyInitialization": false,
+    "baseUrl": ".",
+    "types": ["reflect-metadata", "node"],
+    "typeRoots": [
+      "./node_modules/@types"
+    ],
+    "paths": {
+      "@/*": [
+        "./*"
+      ],
+      "@pixi/*": [
+        "./node_modules/@pixi/*"
+      ],
+      "pixi.js/*": [
+        "./node_modules/pixi.js/*"
+      ],
+      "@esotericsoftware/*": [
+        "./node_modules/@esotericsoftware/*"
+      ],
+    }
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.vue"
+  ],
+  "exclude": [
+    "node_modules",
+    // User-authored custom FlowState node scripts, mirrored here from
+    // `orca-project-files/scripts/`. Excluded from the whole-program glob ON
+    // PURPOSE: `include` would otherwise pull in EVERY mirrored file, so one
+    // half-finished script would fail the whole game build even though nothing
+    // imports it. Scripts that are actually registered in
+    // `generated-custom-nodes.ts` are still fully type-checked — webpack routes
+    // them through ts-loader, which adds them to the program regardless of this
+    // exclude. Net effect: real nodes get strict type feedback, orphans and
+    // works-in-progress stay harmless.
+    "src/core/services/orca/custom-scripts",
+    // User-authored custom COMPONENTS, mirrored here from
+    // `orca-project-files/components/`. Excluded for exactly the same reason as
+    // the scripts mirror above: one half-finished component must not fail the
+    // whole game build. Components actually registered in
+    // `generated-custom-components.ts` stay fully type-checked via ts-loader.
+    "src/core/services/orca/custom-components"
+  ]
+}

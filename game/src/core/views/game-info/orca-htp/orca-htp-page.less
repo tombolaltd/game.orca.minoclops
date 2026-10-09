@@ -1,0 +1,64 @@
+// Popup chrome for the authored How-To-Play document. The document's own
+// styling is owned by @game-studio/htp-preview-vue2; everything here is the
+// overlay around it.
+
+// Relocated to <body> by the host; zero-size so it never blocks the game.
+.orca-htp-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 10000;
+}
+
+// No backdrop in any mode: outside the panel the game stays visible and interactive.
+.orca-htp {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+
+  // Geometry comes from the chat's bounding rect (inline style).
+  &--desktop {
+    box-sizing: border-box;
+  }
+
+  &--portrait {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  &--landscape {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
+  }
+
+  &__panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    background: #ffffff;
+    overflow: hidden;
+  }
+
+  // The package renders an arbitrarily tall document, so the scroll container
+  // is the host's responsibility.
+  &__scroll {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  // The package's header back-arrow is the close control (wired by delegation
+  // in the host), but the package styles it as static decoration.
+  .back-arrow {
+    cursor: pointer;
+  }
+}
