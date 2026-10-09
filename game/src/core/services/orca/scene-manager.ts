@@ -6604,7 +6604,13 @@ class SceneManager {
                 container.addChildAt(spine, 0);
                 const pending = (container as OrcaResolvedDisplayObjectWrapper).__orcaPendingCallbacks as Array<(obj: PixiDisplayObject) => void> | undefined;
                 (container as OrcaResolvedDisplayObjectWrapper).__orcaPendingCallbacks = undefined;
-                pending?.forEach((cb) => cb(spine));
+                pending?.forEach((cb) => {
+                    try {
+                        cb(spine);
+                    } catch (callbackError) {
+                        console.error(`[SceneManager] Deferred Spine callback failed for node "${node.name}"`, callbackError);
+                    }
+                });
             })
             .catch((error) => {
                 (container as OrcaResolvedDisplayObjectWrapper).__orcaPendingCallbacks = undefined;

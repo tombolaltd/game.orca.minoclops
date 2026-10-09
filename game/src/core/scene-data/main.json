@@ -486,7 +486,18 @@
               "landscape": {
                 "entries": {
                   "node_ss_popups": {
-                    "visible": true
+                    "visible": true,
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "scaleX": 1,
+                      "scaleY": 1
+                    },
+                    "responsiveScaler": {
+                      "mode": "bestFitShrink",
+                      "referenceWidth": 1920,
+                      "referenceHeight": 1080
+                    }
                   },
                   "node_ss_tutorial_split": {
                     "visible": false
@@ -2534,7 +2545,12 @@
               "landscape": {
                 "entries": {
                   "node_ss_hud": {
-                    "visible": true
+                    "visible": true,
+                    "responsiveScaler": {
+                      "mode": "bestFitShrink",
+                      "referenceWidth": 1920,
+                      "referenceHeight": 1080
+                    }
                   },
                   "node_ss_header_plate": {
                     "transform": {
@@ -2550,7 +2566,13 @@
                     }
                   },
                   "node_ss_help_button": {
-                    "visible": false
+                    "visible": false,
+                    "transform": {
+                      "x": -828,
+                      "y": -446,
+                      "scaleX": 0.72,
+                      "scaleY": 0.72
+                    }
                   },
                   "node_ss_header_banner": {
                     "visible": true
@@ -2705,7 +2727,12 @@
                       "x": -265,
                       "y": 290,
                       "scaleX": 1,
-                      "scaleY": 1
+                      "scaleY": 1,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
                     }
                   },
                   "node_ss_right_panel": {
@@ -2713,7 +2740,12 @@
                       "x": 265,
                       "y": 290,
                       "scaleX": 1,
-                      "scaleY": 1
+                      "scaleY": 1,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
                     }
                   },
                   "node_ss_split_card": {
@@ -2733,6 +2765,32 @@
                   },
                   "node_ss_bonus_tier_0": {
                     "visible": true
+                  },
+                  "node_ss_ways_label": {
+                    "transform": {
+                      "x": 0,
+                      "y": -249.57884781093534,
+                      "scaleX": 1,
+                      "scaleY": 1,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
+                  },
+                  "node_ss_win_label": {
+                    "transform": {
+                      "x": 0,
+                      "y": -246.62334900329256,
+                      "scaleX": 1,
+                      "scaleY": 1,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
                   }
                 }
               }
@@ -3782,7 +3840,7 @@
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": false,
+              "expanded": true,
               "texture": "assets/ui/hotspot-gold.png",
               "tint": 16777215,
               "blendMode": "normal",
@@ -4184,7 +4242,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": false,
+          "expanded": true,
           "dontDestroyOnLoad": false,
           "responsiveScaler": {
             "mode": "bestFitShrink",
@@ -4212,6 +4270,11 @@
                       "pivotY": 0.5,
                       "skewX": 0,
                       "skewY": 0
+                    },
+                    "responsiveScaler": {
+                      "mode": "bestFitShrink",
+                      "referenceWidth": 1920,
+                      "referenceHeight": 1080
                     }
                   },
                   "node_ss_reel_frame": {
@@ -4293,7 +4356,12 @@
                       "x": 0,
                       "y": -340,
                       "scaleX": 1,
-                      "scaleY": 1
+                      "scaleY": 1,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
                     },
                     "responsiveScaler": {
                       "mode": "bestFitShrink",
@@ -4303,13 +4371,61 @@
                     "visible": true
                   },
                   "node_ss_reel_frame": {
-                    "visible": true
+                    "visible": true,
+                    "transform": {
+                      "x": 71.08605823481537,
+                      "y": -72.20124210289801,
+                      "scaleX": 0.8615948999488131,
+                      "scaleY": 0.7566324374606512,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
                   },
                   "node_ss_reels": {
-                    "visible": true
+                    "visible": true,
+                    "transform": {
+                      "x": -449.5375973433746,
+                      "y": -256.99528778358865,
+                      "scaleX": 0.6769229464574643,
+                      "scaleY": 0.6719101410843265,
+                      "rotation": 0,
+                      "pivotX": 0,
+                      "pivotY": 0,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
                   },
                   "node_ss_reel_backdrop": {
                     "visible": true
+                  },
+                  "node_1791297984204_qg9p9detx": {
+                    "transform": {
+                      "x": -71.78399187821947,
+                      "y": 253.03795441261605,
+                      "scaleX": 0.7984861908352846,
+                      "scaleY": 1.070238187419495,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
+                  },
+                  "node_1791295520191_9uj0li4ny": {
+                    "transform": {
+                      "x": -0.872375553048073,
+                      "y": 0.4049031677202386,
+                      "scaleX": 0.7,
+                      "scaleY": 0.6084006331244758,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
                   }
                 }
               }

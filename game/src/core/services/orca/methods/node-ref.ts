@@ -1,5 +1,6 @@
 import sceneManager from "../scene-manager";
 import { ACTIVE_SKIN_NAME } from "../active-skin";
+import { captureFlowNodeContext, currentFlowNodeContext, describeFlowError, emitFlowConsole, withFlowNodeContext } from "./flow-console";
 
 /**
  * NodeRefValue is the editor-side primitive representing a drag-and-drop
@@ -109,8 +110,11 @@ function loadedSceneRef(): { name: string; scope: 'core' | 'skin' } | null {
  * ref's own scene reads like a missing node rather than a wrong scene.
  */
 function warnNodeNotInTree(ref: NodeRefValue): void {
-    if (warnedMissingNodeIds.has(ref.nodeId)) return;
-    warnedMissingNodeIds.add(ref.nodeId);
+    // One-shot per (flow node, scene node) so each referencing flow node gets its own link.
+    const ctx = currentFlowNodeContext();
+    const key = ctx ? `${ctx.graphId}\u0000${ctx.nodeId}\u0000${ref.nodeId}` : ref.nodeId;
+    if (warnedMissingNodeIds.has(key)) return;
+    warnedMissingNodeIds.add(key);
 
     const refScene = typeof ref.sceneName === 'string' ? ref.sceneName : '';
     const loaded = loadedSceneRef();
@@ -124,7 +128,20 @@ function warnNodeNotInTree(ref: NodeRefValue): void {
             + ` — the skin's entry scene, or a loadScene action, may be pointing at the wrong scene.`;
     }
 
-    console.warn(message);
+    emitFlowConsole('warn', message, { code: 'node-not-in-tree' });
+}
+
+/** The authored scene-node name for a reference, else its id — for messages only. */
+export function describeNodeRef(target: NodeRefLike): string {
+    const id = nodeRefId(target);
+    if (!id) return '(no target)';
+    try {
+        const manager = sceneManager as unknown as { getNodeDataById?: (nodeId: string) => { name?: unknown } | undefined };
+        const name = manager.getNodeDataById ? manager.getNodeDataById(id)?.name : undefined;
+        return typeof name === 'string' && name ? name : id;
+    } catch {
+        return id;
+    }
 }
 
 /**
@@ -156,12 +173,12 @@ export function resolveNode<T = any>(target: NodeRefLike, Ctor?: abstract new (.
             : obj;
 
         if (!resolvedObj) {
-            console.warn(`[FlowState] Scene node ${ref.nodeId} has no resolved ${Ctor?.name ?? 'DisplayObject'} target`);
+            emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} has no resolved ${Ctor?.name ?? 'DisplayObject'} target`, { code: 'node-unresolved' });
             return null;
         }
 
         if (Ctor && !(resolvedObj instanceof Ctor)) {
-            console.warn(`[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`);
+            emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
             return null;
         }
         return resolvedObj as unknown as T;
@@ -210,13 +227,27 @@ export function resolveNodeDeferred<T = any>(
     }
 
     if (Array.isArray(wrapper.__orcaPendingCallbacks)) {
+        // The flow node has moved on by the time this runs, so carry its
+        // context, and never let one callback break the rest of the queue.
+        const ctx = captureFlowNodeContext();
         wrapper.__orcaPendingCallbacks.push((loaded) => {
-            if (loaded instanceof Ctor) callback(loaded as unknown as T);
+            withFlowNodeContext(ctx, () => {
+                if (!(loaded instanceof Ctor)) {
+                    emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
+                    return;
+                }
+                try {
+                    callback(loaded as unknown as T);
+                } catch (err) {
+                    const title = ctx?.nodeTitle ? `${ctx.nodeTitle}: ` : '';
+                    emitFlowConsole('error', `[FlowState] ${title}${describeFlowError(err)}`, { code: 'node-error' });
+                }
+            });
         });
         return 'deferred';
     }
 
-    console.warn(`[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`);
+    emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
     return 'not-found';
 }
 

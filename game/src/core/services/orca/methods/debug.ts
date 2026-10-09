@@ -6,46 +6,60 @@
  * 
  * These methods can be called from FlowState debug nodes to output
  * information to the browser console.
+ *
+ * The five level methods emit tagged `orca-console:` lines carrying the
+ * executing node (see ./flow-console) so the editor Console links back to it.
  */
+import { emitFlowConsole, FlowConsoleLevel, stringifyFlowValue } from "./flow-console";
+
+function emitLog(level: FlowConsoleLevel, value: unknown, color?: unknown): void {
+    emitFlowConsole(level, stringifyFlowValue(value), { color, code: 'debug-log' });
+}
+
 class DebugMethods {
     /**
      * Log a value to the console (standard log level)
      * @param value - Any value to log
+     * @param color - Optional hex colour ('#ff0000'); '' = default
      */
-    public log(value: unknown): void {
-        console.log(value);
+    public log(value: unknown, color?: string): void {
+        emitLog('log', value, color);
     }
 
     /**
      * Log an error message to the console
      * @param value - Error message or object to log
+     * @param color - Optional hex colour; '' = default
      */
-    public logError(value: unknown): void {
-        console.error(value);
+    public logError(value: unknown, color?: string): void {
+        emitLog('error', value, color);
     }
 
     /**
      * Log a warning message to the console
      * @param value - Warning message or object to log
+     * @param color - Optional hex colour; '' = default
      */
-    public logWarn(value: unknown): void {
-        console.warn(value);
+    public logWarn(value: unknown, color?: string): void {
+        emitLog('warn', value, color);
     }
 
     /**
      * Log an info message to the console
      * @param value - Info message or object to log
+     * @param color - Optional hex colour; '' = default
      */
-    public logInfo(value: unknown): void {
-        console.info(value);
+    public logInfo(value: unknown, color?: string): void {
+        emitLog('info', value, color);
     }
 
     /**
      * Log a debug message to the console
      * @param value - Debug message or object to log
+     * @param color - Optional hex colour; '' = default
      */
-    public logDebug(value: unknown): void {
-        console.debug(value);
+    public logDebug(value: unknown, color?: string): void {
+        emitLog('verbose', value, color);
     }
 
     /**

@@ -239,234 +239,13 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "splitr_014",
-      "exitSourceId": "splitr_019",
+      "exitSourceId": "nbm6ugoq",
       "subgraph": {
         "nodes": [
           {
             "id": "splitr_072",
             "title": "Entry",
             "isEntry": true
-          },
-          {
-            "id": "splitr_010",
-            "title": "multiply",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "float",
-                "sourceNodeId": "splitr_092",
-                "sourceOutputName": "reel"
-              },
-              {
-                "name": "b",
-                "type": "float",
-                "value": 182
-              }
-            ]
-          },
-          {
-            "id": "splitr_011",
-            "title": "add",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "T",
-                "value": -364
-              },
-              {
-                "name": "b",
-                "type": "T",
-                "sourceNodeId": "splitr_010"
-              }
-            ]
-          },
-          {
-            "id": "splitr_012",
-            "title": "multiply",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "float",
-                "sourceNodeId": "splitr_092",
-                "sourceOutputName": "row"
-              },
-              {
-                "name": "b",
-                "type": "float",
-                "value": 170
-              }
-            ]
-          },
-          {
-            "id": "splitr_013",
-            "title": "add",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "T",
-                "value": -170
-              },
-              {
-                "name": "b",
-                "type": "T",
-                "sourceNodeId": "splitr_012"
-              }
-            ]
-          },
-          {
-            "id": "splitr_014",
-            "title": "setNodePosition",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "x",
-                "type": "float",
-                "sourceNodeId": "splitr_011"
-              },
-              {
-                "name": "y",
-                "type": "float",
-                "sourceNodeId": "splitr_013"
-              }
-            ]
-          },
-          {
-            "id": "splitr_015",
-            "title": "stringBuilder",
-            "rootType": "string",
-            "properties": [
-              {
-                "name": "part0",
-                "type": "T",
-                "value": "SPLIT "
-              },
-              {
-                "name": "part1",
-                "type": "T",
-                "sourceNodeId": "splitr_092",
-                "sourceOutputName": "badge"
-              }
-            ]
-          },
-          {
-            "id": "splitr_016",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot_label",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "sourceNodeId": "splitr_015"
-              }
-            ]
-          },
-          {
-            "id": "splitr_017",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/lock.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.7
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "splitr_018",
-            "title": "tweenNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 400
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
           },
           {
             "id": "splitr_019",
@@ -476,7 +255,7 @@
               {
                 "name": "seconds",
                 "type": "float",
-                "value": 0.2
+                "value": 0.5
               }
             ]
           },
@@ -540,93 +319,97 @@
             "id": "splitr_073",
             "title": "Exit",
             "isExit": true
+          },
+          {
+            "id": "nbm6ugoq",
+            "title": "playSymbolAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_092",
+                "sourceOutputName": "reel"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "splitr_092",
+                "sourceOutputName": "row"
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "hotspotON"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "na33f6dn",
+            "title": "playSymbolAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "hotspotIOFF"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "neyhgujk",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1
+              }
+            ]
           }
         ],
         "links": [
-          {
-            "id": "l_splitr_7",
-            "from": "splitr_092",
-            "to": "splitr_010",
-            "propertyType": "float",
-            "propertyName": "a",
-            "sourceOutputName": "reel"
-          },
-          {
-            "id": "l_splitr_8",
-            "from": "splitr_010",
-            "to": "splitr_011",
-            "propertyType": "T",
-            "propertyName": "b"
-          },
-          {
-            "id": "l_splitr_9",
-            "from": "splitr_092",
-            "to": "splitr_012",
-            "propertyType": "float",
-            "propertyName": "a",
-            "sourceOutputName": "row"
-          },
-          {
-            "id": "l_splitr_10",
-            "from": "splitr_012",
-            "to": "splitr_013",
-            "propertyType": "T",
-            "propertyName": "b"
-          },
-          {
-            "id": "l_splitr_11",
-            "from": "splitr_011",
-            "to": "splitr_014",
-            "propertyType": "float",
-            "propertyName": "x"
-          },
-          {
-            "id": "l_splitr_12",
-            "from": "splitr_013",
-            "to": "splitr_014",
-            "propertyType": "float",
-            "propertyName": "y"
-          },
-          {
-            "id": "l_splitr_13",
-            "from": "splitr_092",
-            "to": "splitr_015",
-            "propertyType": "T",
-            "propertyName": "part1",
-            "sourceOutputName": "badge"
-          },
-          {
-            "id": "l_splitr_14",
-            "from": "splitr_015",
-            "to": "splitr_016",
-            "propertyType": "string",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_splitr_60",
-            "from": "splitr_014",
-            "to": "splitr_016"
-          },
-          {
-            "id": "l_splitr_61",
-            "from": "splitr_016",
-            "to": "splitr_017"
-          },
-          {
-            "id": "l_splitr_62",
-            "from": "splitr_017",
-            "to": "splitr_018"
-          },
-          {
-            "id": "l_splitr_63",
-            "from": "splitr_018",
-            "to": "splitr_019"
-          },
-          {
-            "id": "l_splitr_64",
-            "from": "splitr_072",
-            "to": "splitr_014"
-          },
           {
             "id": "l_splitr_65",
             "from": "splitr_019",
@@ -638,6 +421,42 @@
             "to": "splitr_092",
             "propertyType": "object",
             "propertyName": "source"
+          },
+          {
+            "id": "l6kbwpih",
+            "from": "splitr_092",
+            "to": "nbm6ugoq",
+            "propertyType": "int",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "reel"
+          },
+          {
+            "id": "ln8il6kz",
+            "from": "splitr_092",
+            "to": "nbm6ugoq",
+            "propertyType": "int",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "row"
+          },
+          {
+            "id": "l4ahl5ql",
+            "from": "splitr_072",
+            "to": "nbm6ugoq"
+          },
+          {
+            "id": "llgpjylt",
+            "from": "nbm6ugoq",
+            "to": "neyhgujk"
+          },
+          {
+            "id": "lvd074ve",
+            "from": "neyhgujk",
+            "to": "na33f6dn"
+          },
+          {
+            "id": "lhvtjqgy",
+            "from": "na33f6dn",
+            "to": "splitr_019"
           }
         ]
       }

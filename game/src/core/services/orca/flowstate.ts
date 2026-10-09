@@ -1,13 +1,14 @@
 import { flowstateMethods } from "./methods"
 import { isLoopNode, loopIterationCount } from "./methods/loop"
 import { resolveValuePath } from "./methods/object"
+import { describeFlowError, emitFlowConsole, FlowNodeContext, isFlowErrorReported, markFlowErrorReported, withFlowNodeContext } from "./methods/flow-console"
 import { IFlowstateData, IFlowstateEventTriggers, IFlowstateGraphVariable, IFlowstateNode, IFlowstateSubgraph } from "./types"
 import { FlowstateApplicationEventTriggers } from "./event-triggers/application-events";
 import { bindPixiStarters, detachAllPixiStarters } from "./event-triggers/pixi-events";
 import { bindCustomEventStarters, detachAllCustomEventStarters } from "./event-triggers/custom-events";
 import { bindGamePreferenceStarters, detachAllGamePreferenceStarters } from "./event-triggers/game-preferences";
 import { initFlowstateHandshake } from "./editor-integration";
-import { ACTIVE_SKIN } from "./active-skin";
+import { ACTIVE_SKIN, ACTIVE_SKIN_NAME } from "./active-skin";
 import { SKIN_FLOWSTATE_GRAPHS } from "./generated-skin-flows";
 import packageConfig from '@/package.json';
 
@@ -67,6 +68,8 @@ const LOOP_BREAK_INPUT = 'break';
 const LOOP_BODY_OUT_IDX = 0;
 const LOOP_COMPLETE_OUT_IDX = 1;
 const LOOP_BREAK_OUT_IDX = 2;
+
+const STOP_WALK: unique symbol = Symbol('stopWalk');
 
 // Action nodes with a 'then' (outIdx 0) + 'on complete' (outIdx 1) pair — menu `flowOutputs`.
 const COMPLETION_OUTPUT_TITLES = new Set(['httpPost']);
@@ -526,65 +529,101 @@ export abstract class Flowstate {
             }
 
             if (visited.has(currentId)) {
-                console.warn(`[FlowState] Cycle detected at node ${currentId} in graph ${ctx.graph.id}`);
+                emitFlowConsole('warn', `[FlowState] Cycle detected at node ${currentId} in graph ${ctx.graph.id}`, {
+                    context: flowNodeContext(node, ctx),
+                    code: 'cycle',
+                });
                 return;
             }
             visited.add(currentId);
 
             if (node.isExit) return;
 
-            let next: OutgoingLink | undefined;
-
-            if (node.subgraph) {
-                await this.runSubgraph(node.subgraph, ctx);
-                next = this.firstOutgoingLink(ctx, currentId);
-            } else if (this.isBranchNode(node)) {
-                const conditionTrue = await this.resolveBranchCondition(node, ctx);
-                next = this.outgoingLinkByIdx(ctx, currentId, conditionTrue ? 0 : 1);
-            } else if (this.isSwitchNode(node)) {
-                const idx = await this.resolveSwitchCaseIndex(node, ctx);
-                next = this.outgoingLinkByIdx(ctx, currentId, idx);
-            } else if (isLoopNode(node)) {
-                const outcome = await this.runLoop(ctx, node, currentId);
-                if (outcome === 'cancelled') return;
-                next = this.outgoingLinkByIdx(
-                    ctx,
-                    currentId,
-                    outcome === 'broken' ? LOOP_BREAK_OUT_IDX : LOOP_COMPLETE_OUT_IDX,
-                );
-            } else if (node.title === SET_VARIABLE_TITLE) {
-                // Walker-intrinsic write to the per-graph variable store, then
-                // continue the normal exec-out traversal.
-                await this.applySetVariable(node, ctx);
-                next = this.firstOutgoingLink(ctx, currentId);
-            } else if (COMPLETION_OUTPUT_TITLES.has(node.title)) {
-                // outIdx 0 continues at once; outIdx 1 walks when the node's work settles.
-                const pending = this.executeNode(node, ctx);
-                const nodeId = currentId;
-                const completeLink = this.outgoingLinkByIdx(ctx, nodeId, COMPLETION_OUT_IDX);
-                if (completeLink) {
-                    const completeVisited = new Set(visited);
-                    void pending
-                        .then(result => {
-                            if (ctx.cancelled?.()) return;
-                            const completionResults = new Map(ctx.completionResults ?? []);
-                            completionResults.set(nodeId, result);
-                            return this.walkFrom({ ...ctx, completionResults }, completeLink.to, completeVisited, completeLink.toInput);
-                        })
-                        .catch(err => console.error(`[FlowState] 'on complete' walk from ${nodeId} in graph '${ctx.graph.id}' failed`, err));
+            // Control-flow nodes resolve inputs outside executeNode; a throw there
+            // ends this walk, attributed, instead of rejecting it unattributed.
+            let next: OutgoingLink | undefined | typeof STOP_WALK;
+            try {
+                next = await this.stepNode(ctx, node, currentId, visited);
+            } catch (err) {
+                if (!isFlowErrorReported(err)) {
+                    emitFlowConsole('error', `[FlowState] ${node.title}: ${describeFlowError(err)}`, {
+                        context: flowNodeContext(node, ctx),
+                        code: 'node-error',
+                    });
                 }
-                next = this.outgoingLinkByIdx(ctx, nodeId, 0);
-            } else if (node.isState || node.isEntry) {
-                // Skip but continue.
-                next = this.firstOutgoingLink(ctx, currentId);
-            } else {
-                await this.executeNode(node, ctx);
-                next = this.firstOutgoingLink(ctx, currentId);
+                return;
             }
+            if (next === STOP_WALK) return;
 
             currentId = next?.to;
             currentInput = next?.toInput;
         }
+    }
+
+    /** Run one node and pick the outgoing link to follow (`STOP_WALK` ends the walk). */
+    private static async stepNode(
+        ctx: WalkContext,
+        node: IFlowstateNode,
+        currentId: string,
+        visited: Set<string>,
+    ): Promise<OutgoingLink | undefined | typeof STOP_WALK> {
+        if (node.subgraph) {
+            await this.runSubgraph(node.subgraph, ctx);
+            return this.firstOutgoingLink(ctx, currentId);
+        }
+        if (this.isBranchNode(node)) {
+            const conditionTrue = await this.resolveBranchCondition(node, ctx);
+            return this.outgoingLinkByIdx(ctx, currentId, conditionTrue ? 0 : 1);
+        }
+        if (this.isSwitchNode(node)) {
+            const idx = await this.resolveSwitchCaseIndex(node, ctx);
+            return this.outgoingLinkByIdx(ctx, currentId, idx);
+        }
+        if (isLoopNode(node)) {
+            const outcome = await this.runLoop(ctx, node, currentId);
+            if (outcome === 'cancelled') return STOP_WALK;
+            return this.outgoingLinkByIdx(
+                ctx,
+                currentId,
+                outcome === 'broken' ? LOOP_BREAK_OUT_IDX : LOOP_COMPLETE_OUT_IDX,
+            );
+        }
+        if (node.title === SET_VARIABLE_TITLE) {
+            // Walker-intrinsic write to the per-graph variable store, then
+            // continue the normal exec-out traversal.
+            await this.applySetVariable(node, ctx);
+            return this.firstOutgoingLink(ctx, currentId);
+        }
+        if (COMPLETION_OUTPUT_TITLES.has(node.title)) {
+            // outIdx 0 continues at once; outIdx 1 walks when the node's work settles.
+            const pending = this.executeNode(node, ctx);
+            const nodeId = currentId;
+            const completeLink = this.outgoingLinkByIdx(ctx, nodeId, COMPLETION_OUT_IDX);
+            if (completeLink) {
+                const completeVisited = new Set(visited);
+                void pending
+                    .then(result => {
+                        if (ctx.cancelled?.()) return;
+                        const completionResults = new Map(ctx.completionResults ?? []);
+                        completionResults.set(nodeId, result);
+                        return this.walkFrom({ ...ctx, completionResults }, completeLink.to, completeVisited, completeLink.toInput);
+                    })
+                    .catch(err => {
+                        if (isFlowErrorReported(err)) return;
+                        emitFlowConsole('error', `[FlowState] ${node.title}: 'on complete' walk failed: ${describeFlowError(err)}`, {
+                            context: flowNodeContext(node, ctx),
+                            code: 'node-error',
+                        });
+                    });
+            }
+            return this.outgoingLinkByIdx(ctx, nodeId, 0);
+        }
+        if (node.isState || node.isEntry) {
+            // Skip but continue.
+            return this.firstOutgoingLink(ctx, currentId);
+        }
+        await this.executeNode(node, ctx);
+        return this.firstOutgoingLink(ctx, currentId);
     }
 
     /**
@@ -775,6 +814,7 @@ export abstract class Flowstate {
         const method = this.findMethod(flowstateMethods, node.title);
         if (!method) return undefined;
 
+        const nodeCtx = flowNodeContext(node, ctx);
         try {
             const params: any[] = [];
             if (node.properties && node.properties.length > 0) {
@@ -783,9 +823,16 @@ export abstract class Flowstate {
                     params.push(value);
                 }
             }
-            return await method(...params);
+            reportMissingReferenceInputs(node, params, nodeCtx);
+            // Context covers only the synchronous part; deferred callbacks capture it.
+            return await withFlowNodeContext(nodeCtx, () => method(...params));
         } catch (err) {
-            console.error(`[FlowState] Error executing node '${node.title}' (${node.id}) in graph '${ctx.graph.id}'`, err);
+            if (!isFlowErrorReported(err)) {
+                emitFlowConsole('error', `[FlowState] ${node.title}: ${describeFlowError(err)}`, {
+                    context: nodeCtx,
+                    code: 'node-error',
+                });
+            }
             return undefined;
         }
     }
@@ -836,7 +883,21 @@ export abstract class Flowstate {
                             sourceParams.push(value);
                         }
                     }
-                    const result = await method(...sourceParams);
+                    const sourceCtx = flowNodeContext(sourceNode, ctx);
+                    reportMissingReferenceInputs(sourceNode, sourceParams, sourceCtx);
+                    let result: unknown;
+                    try {
+                        result = await withFlowNodeContext(sourceCtx, () => method(...sourceParams));
+                    } catch (err) {
+                        // Attribute to the getter; the consumer still aborts, without a second line.
+                        if (!isFlowErrorReported(err)) {
+                            emitFlowConsole('error', `[FlowState] ${sourceNode.title}: ${describeFlowError(err)}`, {
+                                context: sourceCtx,
+                                code: 'node-error',
+                            });
+                        }
+                        throw markFlowErrorReported(err);
+                    }
                     if (prop.sourceOutputName) {
                         // AUTHOR-DEFINED drill-down output: the source node
                         // exported an `outputs[]` entry for this pin carrying a
@@ -877,7 +938,10 @@ export abstract class Flowstate {
     private static async readGraphVariable(node: IFlowstateNode, ctx: WalkContext): Promise<unknown> {
         const name = await this.resolveVariableName(node, ctx);
         if (!name || !ctx.graph.variables.has(name)) {
-            console.warn(`[FlowState] Unknown graph variable '${name}' read by node ${node.id} in graph ${ctx.graph.id}`);
+            emitFlowConsole('warn', `[FlowState] Unknown graph variable '${name}' read by node ${node.id} in graph ${ctx.graph.id}`, {
+                context: flowNodeContext(node, ctx),
+                code: 'unknown-variable',
+            });
             return undefined;
         }
         return ctx.graph.variables.get(name);
@@ -891,7 +955,10 @@ export abstract class Flowstate {
     private static async applySetVariable(node: IFlowstateNode, ctx: WalkContext): Promise<void> {
         const name = await this.resolveVariableName(node, ctx);
         if (!name || !ctx.graph.variables.has(name)) {
-            console.warn(`[FlowState] Unknown graph variable '${name}' written by node ${node.id} in graph ${ctx.graph.id}`);
+            emitFlowConsole('warn', `[FlowState] Unknown graph variable '${name}' written by node ${node.id} in graph ${ctx.graph.id}`, {
+                context: flowNodeContext(node, ctx),
+                code: 'unknown-variable',
+            });
             return;
         }
         const props = node.properties ?? [];
@@ -984,3 +1051,62 @@ const GAME_PREFERENCE_STARTER_TITLES = new Set([
 const GET_VARIABLE_TITLE = 'getVariable';
 const SET_VARIABLE_TITLE = 'setVariable';
 const VARIABLE_NODE_TITLES = new Set([GET_VARIABLE_TITLE, SET_VARIABLE_TITLE]);
+
+function flowNodeContext(node: IFlowstateNode, ctx: WalkContext): FlowNodeContext {
+    return { graphId: ctx.graph.id, nodeId: node.id, nodeTitle: node.title };
+}
+
+// Exported property types that name an authored thing; an empty value means the
+// author never set the input. `variableRef` is walker-intrinsic and warns itself.
+const REFERENCE_INPUT_TYPES = new Set([
+    'nodeRef', 'node3dRef', 'sceneRef', 'animationRef', 'audioRef',
+    'customEventRef', 'builtInEventRef', 'gamePreferenceRef', 'translationKeyRef',
+]);
+
+const reportedMissingInputs = new Set<string>();
+
+function isMissingReference(value: unknown): boolean {
+    if (value === null || value === undefined) return true;
+    if (typeof value === 'string') return value.trim() === '';
+    if (typeof value === 'object') {
+        const ref = value as { bySkin?: unknown; nodeId?: unknown };
+        // A per-skin ref with no entry for the booting skin resolves to nothing.
+        if (ref.bySkin && typeof ref.bySkin === 'object') {
+            return !(ref.bySkin as Record<string, unknown>)[ACTIVE_SKIN_NAME];
+        }
+        if ('nodeId' in ref) return typeof ref.nodeId !== 'string' || ref.nodeId === '';
+    }
+    return false;
+}
+
+/**
+ * Warn (once per node input per session) when a reference input resolved to
+ * nothing. Never blocks: methods already no-op on an unresolvable reference,
+ * and an optional slot (e.g. playRandomSound's sound2..5) is legitimately
+ * empty — so several `audioRef` inputs on one node warn only when ALL are empty.
+ */
+function reportMissingReferenceInputs(node: IFlowstateNode, params: unknown[], nodeCtx: FlowNodeContext): void {
+    const props = node.properties ?? [];
+    const missing: string[] = [];
+    let audioCount = 0;
+    let audioMissing: string[] = [];
+    props.forEach((prop, i) => {
+        if (!prop || !REFERENCE_INPUT_TYPES.has(prop.type)) return;
+        if (prop.type === 'audioRef') {
+            audioCount++;
+            if (isMissingReference(params[i])) audioMissing.push(prop.name);
+            return;
+        }
+        if (isMissingReference(params[i])) missing.push(prop.name);
+    });
+    if (audioCount > 1 && audioMissing.length < audioCount) audioMissing = [];
+    for (const name of missing.concat(audioMissing)) {
+        const key = `${nodeCtx.graphId}\u0000${nodeCtx.nodeId}\u0000${name}`;
+        if (reportedMissingInputs.has(key)) continue;
+        reportedMissingInputs.add(key);
+        emitFlowConsole('warn', `[FlowState] ${node.title}: missing input '${name}'`, {
+            context: nodeCtx,
+            code: 'missing-input',
+        });
+    }
+}
