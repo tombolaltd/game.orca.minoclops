@@ -22,11 +22,7 @@
   },
   "coreGraphOrder": [
     "game-boot",
-    "reel-stop-sfx",
-    "tutorial",
-    "help-popup",
     "round-start",
-    "bonus-tease",
     "split-reveal",
     "show-step",
     "cascade-step",

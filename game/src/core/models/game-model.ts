@@ -1,104 +1,275 @@
-import { IBaseGameModel, IBaseServerResponse, IBaseMessageResponse } from '@game-studio/arcade-base';
-import { sendServerResponseToEditor } from '../services/orca/editor-integration';
+import { IBaseGameModel, IBaseMessageResponse, IBaseServerResponse } from '@game-studio/arcade-base';
+import { gameSettings } from './game-settings';
 import { IFlowStateServerResponse } from '../services/orca/types';
+import { sendServerResponseToEditor } from '../services/orca/editor-integration';
 
+//types
+
+export interface IServerResponse extends IBaseServerResponse {
+    GameMessage: IGameMessageResponse;
+}
+
+export interface IGameMessageResponse extends IBaseMessageResponse {
+    ArcadeGameType: string;
+    Payout: number;
+    Winner: boolean;
+    BonusRound?: IBonusRound;
+    Game: IGame;
+}
+
+export interface IReelPosition {
+    Reel: number;
+    Row: number;
+}
+
+export interface IGame {
+    GameResult: IGameResult;
+    BonusRound?: IBonusRound;
+}
+
+export interface IGameResult {
+    Bonus: boolean;
+    CascadeCount: number;
+    Outcomes: IOutcome[];
+    ScatterResult: IScatterResult | null;
+    SplitSymbolDetails: ISplitSymbolDetail[];
+}
+
+export interface IOutcome {
+    DisplayReels: number[][];
+    Prize: number;
+    Results: IOutcomeResult[];
+    SplitSymbols: ISplitSymbol[];
+    Stops: number[];
+    WinWays: number;
+}
+
+export interface IOutcomeResult {
+    Positions: IReelPosition[];
+    OutcomeType: string;
+    Matched: number;
+    Symbol: number;
+    Prize: number;
+    Wild: boolean;
+    IsSplit: boolean;
+    SymbolMultiplier: number;
+    SplitMultiplier: number;
+    TotalMultiplier: number;
+}
+
+export interface ISplitSymbolDetail {
+    HighlightedPosition: ISplitSymbol[];
+    Split: number;
+    Symbol: number;
+}
+
+export interface ISplitSymbol {
+    Reel: number;
+    Row: number;
+}
+
+export interface IPrizeResult {
+    Prize: number;
+    Positions: IReelPosition[];
+    Symbol: number;
+    Matched: number;
+    Multiplier: number;
+    OutcomeType: string;
+    Wild: boolean;
+}
+
+export interface IScatterResult {
+    Bonus: boolean;
+    Count: number;
+    Multiplier: number;
+    OutcomeType: string;
+    Positions: IReelPosition[];
+    Prize: number;
+    Symbol: number;
+}
+
+export interface IBonusRound extends IGameResult {
+    BonusPayout: number;
+    TotalBonusPayout: number;
+    Number: number;
+    Remaining: number;
+}
+
+
+//model
 export class GameModel implements IBaseGameModel {
     public static get Instance(): GameModel {
         return this._instance || (this._instance = new GameModel());
     }
     private static _instance: GameModel;
 
-    public payout: number = 0;
-    public isNewPlayer: boolean = false;
-    public playMode: string;
-    public isComplete: boolean;
-    public hasBonus: boolean;
-    public gameId: number;
-    public isInProgress: boolean;
-
-    // ─────────────────────────────────────────────────────────────────────
-    // Optional state fields consumed by the bundled FlowState method library.
-    // These are intentionally permissive defaults so a fresh scaffold compiles
-    // and runs; real games typically override / refine these. Do not remove
-    // — the FlowState `gameState` and `reels` method modules read/write them.
-    // ─────────────────────────────────────────────────────────────────────
-
-    // Bonus / free-spin state
-    public isInBonusRound: boolean = false;
-    public freeSpinsRemaining: number = 0;
-    public isFreeSpinning: boolean = false;
-    public currentBonusSpin: number = 0;
-    public isInJackpot: boolean = false;
-
-    // Win state
-    public winner: boolean = false;
-    public totalGamePayout: number = 0;
-    public totalBonusPayout: number = 0;
-    public mainGamePayout: number = 0;
-    public currentBonusSpinPayout: number = 0;
-    public winAmountSoFar: number = 0;
-
-    // Reel state
-    public reelStoppingPositions: number[] = [];
-    public isWildReel: boolean[] = [];
-    public shouldReelSlowDown: boolean[] = [];
-
-    // Some fake message data to use until a server is setup
-    // Only applies while config.engineName === 'unknown'
-    public dummyMessage: IBaseMessageResponse = {
-        GameId: 1,
-        GameComplete: true,
-        Skin: 'GAME_NAME_LOWER_CASE',
-        Stake: 5,
-        PlayMode: 'Cash'
-    };
-
-    // Additional data merged into the outgoing Begin request payload by the
-    // arcade-base runtime. Populated on Resume for jackpot skins with the
-    // captured jackpot version (see game-settings.ts).
-    public additionalBeginData: Record<string, unknown> = {};
-
-    // ─────────────────────────────────────────────────────────────────────
-    // Splitting Symbols. The server mappings below copy the engine's round
-    // (GameMessage.Game) into `realGame`; `shapeSplittingRound` (end of
-    // setData) turns it into the per-cascade steps the FlowState graphs play.
-    // Symbol ids are the engine's: 1 BONUS, 2 WILD, 3-11 paying (3 highest);
-    // a split symbol shows on the reels as its id + 10.
-    // ─────────────────────────────────────────────────────────────────────
-
     /** The engine's game id, sent back as `GameId` on every Continue. */
     public engineGameId: number = 0;
     /** GameMessage.Game as the engine sent it: GameResult (paid spin) and BonusRound (free spin). */
     public realGame: Record<string, any> = {};
-    /** The board to show, `[reel][row]` symbol ids (row 0 at the top). */
-    public reelSymbols: number[][] = [[7,3,9],[5,10,4],[8,2,6],[11,7,3],[9,5,8]];
-    /** One entry per cascade: Grid, NewSplitCells, WaysTotal, WinPositions, StepWin, AccumulatedWin, HasCascade, ClearLocations, CascadeGrid, CascadeBadges. */
-    public steps: Record<string, any>[] = [];
-    /** The step being played (written by the graphs). */
-    public step: Record<string, any> = {};
-    /** This spin's hotspot: Found, Reel, Row, Symbol, Variant, Multiple, Badge. */
-    public hotspot: Record<string, any> = { Found: false, Reel: 0, Row: 0, Symbol: 0, Name: '', Variant: 0, Multiple: 1, Badge: '' };
-    /** Two BONUS symbols landed on the first board. */
-    public teaseBonus: boolean = false;
-    /** The round: BonusTier, BonusCount, FreeSpins, BonusPositions, ScatterAward, WinAfterScatter, GameComplete, Payout. */
-    public roundInfo: Record<string, any> = {};
-    /** The free spin: Number, Total, Remaining, HotspotReel, Selections, Steps, SpinWin, TotalBonusPayout, AccumulatedWin. */
-    public bonusSpin: Record<string, any> = {};
-    /** Tutorial / hint bookkeeping (written by the graphs). */
-    public bonusTutorialSeen: boolean = false;
-    public tutorialSeen: boolean = false;
-    public teaseHintCount: number = 0;
-    public persistHintCount: number = 0;
-    public splitHintCount: number = 0;
-    /** Round flow state (written by the graphs). */
+
+    public payout: number = 0;
+    public isNewPlayer: boolean = false;
+    public playMode: string = '';
+    public isComplete: boolean = false;
+    public hasBonus: boolean = false;
+    public gameId: number = 0;
+    public isInProgress: boolean = false;
+    public additionalBeginData: object = {};
+
+    public gameid: number = 0;
+    public gameComplete: boolean = false;
+    public stake: number = 0;
+    public skin: string = '';
+    public arcadeGameType: string = '';
+    public bonus: boolean = false;
+    public cascadeCount: number = 0;
+    public currentCascade: number = 0;
+    public initialBonusSpins: number = 0;
+    public currentBonusSpin: number = 0;
+    public currentBonus: IBonusRound = {
+        BonusPayout: 0,
+        TotalBonusPayout: 0,
+        Number: 0,
+        Remaining: 0,
+        Bonus: false,
+        CascadeCount: 0,
+        Outcomes: [],
+        ScatterResult: null,
+        SplitSymbolDetails: []
+    };
+    public currentBonusSpinPayout: number = 0;
+    public bonusSpinsRemaining: number = 0;
+    public totalBonusPayout: number = 0;
+
+    // True while a free-spin round is being played out.
+    public isInBonusRound: boolean = false;
+    // True when the game launched already mid free-spin round (Resume), so it enters bonus on load.
+    public bonusOnResume: boolean = false;
+
+    public unplayedSpinOutcomes: IOutcome[] = [];
+    public playedSpinOutcomes: IOutcome[] = [];
+
+    public winner: boolean = false;
+    public bonusRound: IBonusRound = {
+        BonusPayout: 0,
+        TotalBonusPayout: 0,
+        Number: 0,
+        Remaining: 0,
+        Bonus: false,
+        CascadeCount: 0,
+        Outcomes: [],
+        ScatterResult: null,
+        SplitSymbolDetails: []
+    };
+    public scatterResult: IScatterResult | null = null;
+
+    public splitSymbolDetails: ISplitSymbolDetail[] = [];
+
+       /** Round flow state (written by the graphs). */
     public roundBusy: boolean = false;
-    public inBonus: boolean = false;
     public bonusSpinsTotal: number = 0;
     public bonusSpinsPlayed: number = 0;
     public waysShown: number = 243;
     public stepIndex: number = 0;
 
-    public setData(responseData: IBaseServerResponse): void {
+    public isInJackpot: boolean = false;
+    public mainGamePayout: number = 0;
+    public isWildReel: boolean[] = [];
+    public shouldReelSlowDown: boolean[] = [];
+
+    public displayReels: number [][] = [];
+
+    // Static stand-in message used while config.engineName === 'unknown'. The dummy generator is
+    // commented out for now; this returns one fixed base-spin board so the reels have something to show.
+    public get dummyMessage(): IGameMessageResponse {
+        const gameResult: IGameResult = {
+            Bonus: false,
+            CascadeCount: 0,
+            ScatterResult: {
+                Bonus: false,
+                Count: 0,
+                Multiplier: 0,
+                OutcomeType: 'scatter',
+                Positions: [],
+                Prize: 0,
+                Symbol: 1
+            },
+            SplitSymbolDetails: [],
+            Outcomes: [
+                {
+                    DisplayReels: [
+                        [1, 6, 3],
+                        [4, 7, 2],
+                        [8, 5, 9],
+                        [3, 10, 6],
+                        [5, 8, 2]
+                    ],
+                    Prize: 0,
+                    Results: [],
+                    SplitSymbols: [],
+                    Stops: [0, 0, 0, 0, 0],
+                    WinWays: 0
+                }
+            ]
+        };
+        return {
+            GameId: 0,
+            GameComplete: true,
+            PlayMode: 'real',
+            Stake: 0,
+            Skin: 'minoclops',
+            ArcadeGameType: 'splitting-symbols',
+            Payout: 0,
+            Winner: false,
+            BonusRound: { ...gameResult, BonusPayout: 0, TotalBonusPayout: 0, Number: 0, Remaining: 0 },
+            Game: { GameResult: gameResult }
+        };
+    }
+
+    public get reelStoppingPositions(): number[]{
+        return this.unplayedSpinOutcomes[0].Stops;
+    }
+
+    public set reelStoppingPositions(value: number[]){
+        this.unplayedSpinOutcomes[0].Stops = value;
+    }
+
+
+    public get freeSpinsRemaining(): number{
+        return this.bonusSpinsRemaining;
+    }
+
+    public set freeSpinsRemaining(value: number){
+        this.bonusSpinsRemaining = value;
+    }
+
+    public get totalGamePayout(): number{
+        return this.payout;
+    }
+
+    public set totalGamePayout(value: number){
+        this.payout = value;
+    }
+
+    public get isFreeSpinning(): boolean{
+        return this.isInBonusRound;
+    }
+
+     public set isFreeSpinning(value: boolean){
+         this.isInBonusRound = value;
+    }
+
+     public get winAmountSoFar(): number{
+        return this.payout;
+    }
+
+     public set winAmountSoFar(value: number){
+         this.payout = value;
+    }
+
+
+     public setData(responseData: IBaseServerResponse): void {
         // Forward to FlowState Editor for auto-gathering (if enabled)
         sendServerResponseToEditor(responseData);
 
@@ -121,7 +292,8 @@ export class GameModel implements IBaseGameModel {
                 break;
         }
 
-        this.shapeSplittingRound(data);
+        this.setSplittingSymbolsGameData(responseData as IServerResponse);
+
     }
 
     private setResumeData(resumeData: IFlowStateServerResponse): void {
@@ -136,270 +308,104 @@ export class GameModel implements IBaseGameModel {
         this.flowstateSetContinueData(continueData);
     }
 
-    // ─────────────────────────────────────────────────────────────────────
-    // Splitting Symbols round shaping (see the note above the fields).
-    // ─────────────────────────────────────────────────────────────────────
-
-    private shapeSplittingRound(data: IFlowStateServerResponse): void {
-        const message: Record<string, any> | undefined = (data as any).GameMessage;
-        if (!message || !message.Game || typeof message.Game !== 'object') return;
-        const game: Record<string, any> = this.realGame || {};
-        const base: Record<string, any> = game.GameResult || {};
-        const free: Record<string, any> | null = game.BonusRound || null;
-        const outcomes: Record<string, any>[] = Array.isArray(base.Outcomes) ? base.Outcomes : [];
-        const settings: Record<string, any> = (data as any).GameSettings || {};
-        const complete = message.GameComplete === true;
-        const resumed = data.RequestType === 'Resume';
-
-        if (outcomes.length > 0) {
-            this.roundInfo = this.splittingRoundInfo(base, complete, settings.Symbols);
-        } else {
-            this.roundInfo = Object.assign({}, this.roundInfo, { GameComplete: complete, Payout: this.payout });
-        }
-        if (free) {
-            this.shapeSplittingFreeSpin(free, resumed);
+    public setSplittingSymbolsGameData(responseData: IServerResponse): void {
+        if (!responseData) {
             return;
         }
-        if (outcomes.length === 0) return;
 
-        const details: Record<string, any>[] = Array.isArray(base.SplitSymbolDetails) ? base.SplitSymbolDetails : [];
-        const detail: Record<string, any> | undefined = details[0];
-        const selections = new Map<number, number>();
-        if (detail && Number(detail.Split) > 0) selections.set(Number(detail.Symbol), Number(detail.Split));
-        const firstBoard = this.splittingBoard(outcomes[0].DisplayReels);
-        this.hotspot = this.splittingHotspot(firstBoard, detail);
-        this.steps = this.splittingSteps(outcomes, selections, 0, -1, this.hotspot);
-        this.reelSymbols = resumed ? this.splittingBoard(outcomes[outcomes.length - 1].DisplayReels) : firstBoard;
-        this.teaseBonus = !resumed && this.splittingCount(firstBoard, 1) === 2;
-        const freeSpins = Number(this.roundInfo.FreeSpins) || 0;
-        this.bonusSpin = {
-            Number: 0,
-            Total: freeSpins,
-            Remaining: freeSpins,
-            Grid: [],
-            HotspotReel: 0,
-            Selections: [],
-            SelectionCount: 0,
-            Steps: [],
-            CascadeCount: 0,
-            SpinWin: 0,
-            TotalBonusPayout: 0,
-            AccumulatedWin: freeSpins > 0 ? this.payout : 0,
-            Clamped: false,
-        };
-    }
+        const message = responseData.GameMessage;
+        const game = message.Game;
+        const gameResult = game.GameResult;
+        const bonusRound = game.BonusRound;
 
-    private splittingRoundInfo(base: Record<string, any>, complete: boolean, symbols: any): Record<string, any> {
-        const scatter: Record<string, any> = base.ScatterResult || {};
-        const count = Number(scatter.Count) || 0;
-        const triggered = scatter.Bonus === true || base.Bonus === true;
-        const tier = triggered ? Math.min(5, Math.max(3, count)) : 0;
-        const positions: Record<string, any>[] = Array.isArray(scatter.Positions) ? scatter.Positions : [];
-        return {
-            BonusTier: tier,
-            BonusCount: count,
-            FreeSpins: tier > 0 ? this.splittingFreeSpins(symbols, tier) : 0,
-            BonusPositions: positions.map((cell: Record<string, any>) => ({ Reel: Number(cell.Reel), Row: Number(cell.Row) })),
-            ScatterAward: Number(scatter.Prize) || 0,
-            WinAfterScatter: this.payout,
-            GameComplete: complete,
-            Payout: this.payout,
-        };
-    }
+        this.playMode = message.PlayMode;
+        this.isComplete = message.GameComplete;
+        this.gameId = message.GameId;
+        this.gameComplete = message.GameComplete;
+        this.stake = message.Stake;
+        this.skin = message.Skin;
+        this.arcadeGameType = message.ArcadeGameType;
+        this.payout = this.mainGamePayout = message.Payout;
+        this.winner = message.Winner;
+        this.playedSpinOutcomes = [];
+        this.currentCascade = 0;
+        // Reset here so the first Continue of a resume-triggered bonus sends BonusSpin 1; the bonus
+        // block below overrides it with the engine's Number once free spins are in progress.
+        this.currentBonusSpin = 0;
+        // An unfinished game (GameComplete false) resumed from the server is mid bonus round.
+        this.bonusOnResume = responseData.RequestType === 'Resume' && !this.isComplete;
 
-    /** Free spins for a BONUS count: the engine's table (the BONUS symbol's prizes) when it sends one, else the game's rules. */
-    private splittingFreeSpins(symbols: any, tier: number): number {
-        const entries: Record<string, any>[] = Array.isArray(symbols) ? symbols : [];
-        for (const entry of entries) {
-            if (!entry || !(entry.IsScatter === true || Number(entry.Symbol) === 1)) continue;
-            const prizes: Record<string, any>[] = Array.isArray(entry.Prizes) ? entry.Prizes : [];
-            for (const prize of prizes) {
-                if (prize && Number(prize.Matched) === tier && Number(prize.NumberOfBonusSpins) > 0) return Number(prize.NumberOfBonusSpins);
+        this.bonus = gameResult.Bonus;
+        this.hasBonus = gameResult.ScatterResult?.Bonus === true;
+        // Trigger stage (Bonus landed, no Game.BonusRound yet): seed the award; the bonus block overrides with Remaining.
+        this.bonusSpinsRemaining = this.hasBonus ? gameSettings.initialBonusSpins : 0;
+        this.cascadeCount = gameResult.CascadeCount;
+        this.scatterResult = gameResult.ScatterResult;
+        this.splitSymbolDetails = gameResult.SplitSymbolDetails;
+        // GameResult is empty {} on a Continue, so guard the spread; a Resume carries the full triggering spin.
+        this.unplayedSpinOutcomes = gameResult.Outcomes ? [...gameResult.Outcomes] : [];
+        this.displayReels = gameResult.Outcomes ? gameResult.Outcomes[0].DisplayReels : [];
+        this.waysShown = this.unplayedSpinOutcomes[0].WinWays;
+
+        // On a Resume the triggering spin already played out; keep only its settled board so the reels show it.
+        if (responseData.RequestType === 'Resume' && this.unplayedSpinOutcomes.length > 0) {
+            this.currentCascade = this.unplayedSpinOutcomes.length - 1;
+            this.unplayedSpinOutcomes = [this.unplayedSpinOutcomes[this.currentCascade]];
+        }
+
+        if (bonusRound) {
+            // Free spin (Continue/Resume): cascades and counters live under Game.BonusRound.
+            this.currentBonus = bonusRound;
+            this.bonusRound = bonusRound;
+            this.bonus = true;
+            this.hasBonus = false;
+            this.scatterResult = null;
+            this.cascadeCount = bonusRound.CascadeCount;
+            this.splitSymbolDetails = bonusRound.SplitSymbolDetails;
+            this.bonusSpinsRemaining = bonusRound.Remaining;
+            this.currentBonusSpin = bonusRound.Number;
+            this.currentBonusSpinPayout = bonusRound.BonusPayout;
+            this.totalBonusPayout = bonusRound.TotalBonusPayout;
+            this.mainGamePayout = this.payout - this.totalBonusPayout;
+            this.unplayedSpinOutcomes = [...bonusRound.Outcomes];
+
+            // A mid free-spin Resume settles on the last cascade of the current spin.
+            if (responseData.RequestType === 'Resume' && this.unplayedSpinOutcomes.length > 0) {
+                this.currentCascade = this.unplayedSpinOutcomes.length - 1;
+                this.unplayedSpinOutcomes = [this.unplayedSpinOutcomes[this.currentCascade]];
             }
         }
-        const rules: Record<string, number> = { '3': 4, '4': 5, '5': 5 };
-        return rules[String(tier)] || 0;
+
     }
 
-    private shapeSplittingFreeSpin(free: Record<string, any>, resumed: boolean): void {
-        const outcomes: Record<string, any>[] = Array.isArray(free.Outcomes) ? free.Outcomes : [];
-        const details: Record<string, any>[] = Array.isArray(free.SplitSymbolDetails) ? free.SplitSymbolDetails : [];
-        const selections = new Map<number, number>();
-        const picks: Record<string, any>[] = [];
-        let hotspotReel = 0;
-        for (let i = 0; i < details.length; i++) {
-            const detail: Record<string, any> = details[i] || {};
-            const cells: Record<string, any>[] = Array.isArray(detail.HighlightedPosition) ? detail.HighlightedPosition : [];
-            if (i === 0 && cells.length > 0) hotspotReel = Number(cells[0].Reel) || 0;
-            const symbol = Number(detail.Symbol);
-            const multiple = Number(detail.Split) || 0;
-            if (multiple <= 0 || selections.has(symbol)) continue;
-            selections.set(symbol, multiple);
-            picks.push({ Symbol: symbol, Name: this.splittingName(symbol), Variant: symbol + 10, Count: cells.length, Multiple: multiple, Badge: 'x' + multiple });
-        }
-        const spinWin = Number(free.BonusPayout) || 0;
-        const steps = this.splittingSteps(outcomes, selections, Math.max(0, this.payout - spinWin), hotspotReel, null);
-        const first = outcomes.length > 0 ? this.splittingBoard(outcomes[0].DisplayReels) : [];
-        const last = steps.length > 0 ? steps[steps.length - 1] : null;
-        const number = Number(free.Number) || 0;
-        const remaining = Number(free.Remaining) || 0;
-        this.steps = steps;
-        this.reelSymbols = resumed && outcomes.length > 0 ? this.splittingBoard(outcomes[outcomes.length - 1].DisplayReels) : first;
-        this.teaseBonus = false;
-        this.bonusSpin = {
-            Number: number,
-            Total: number + remaining,
-            Remaining: remaining,
-            Grid: first,
-            HotspotReel: hotspotReel,
-            Selections: picks,
-            SelectionCount: picks.length,
-            Steps: steps,
-            CascadeCount: Number(free.CascadeCount) || Math.max(0, outcomes.length - 1),
-            SpinWin: spinWin,
-            TotalBonusPayout: Number(free.TotalBonusPayout) || 0,
-            AccumulatedWin: last ? last.AccumulatedWin : this.payout,
-            Clamped: false,
-        };
+
+    public get cascadeOutcome(): number[][] {
+        return this.unplayedSpinOutcomes[0].DisplayReels;
     }
 
-    private splittingHotspot(board: number[][], detail: Record<string, any> | undefined): Record<string, any> {
-        const none: Record<string, any> = { Found: false, Reel: 0, Row: 0, Symbol: 0, Name: '', Variant: 0, Multiple: 1, Badge: '' };
-        if (!detail || !(Number(detail.Split) > 0)) return none;
-        const symbol = Number(detail.Symbol);
-        const multiple = Number(detail.Split);
-        let reel = -1;
-        let row = -1;
-        const cells: Record<string, any>[] = Array.isArray(detail.HighlightedPosition) ? detail.HighlightedPosition : [];
-        for (const cell of cells) {
-            const r = Number(cell.Reel);
-            const w = Number(cell.Row);
-            if (reel < 0 && board[r] && board[r][w] === symbol) {
-                reel = r;
-                row = w;
-            }
-        }
-        for (let r = 0; reel < 0 && r < board.length; r++) {
-            for (let w = 0; reel < 0 && w < board[r].length; w++) {
-                if (board[r][w] === symbol) {
-                    reel = r;
-                    row = w;
+    // topOffset accounts for the hidden buffer symbol above the visible grid
+    public getFullReelRemovals(topOffset: number): number[][] {
+        return this.unplayedSpinOutcomes[0].DisplayReels.map(
+            reel => reel.map((_, row) => row + topOffset)
+        );
+    }
+
+    // Blocks to be removed from the on-screen board, taken from the outcome that just
+    // settled (mirrors cascade-243's currentCascadeTargets). topOffset accounts for the
+    // hidden buffer symbol above the visible grid.
+    public currentCascadeTargets(topOffset: number): number[][] {
+        const outcome = this.playedSpinOutcomes[this.playedSpinOutcomes.length - 1];
+        const locations: number[][] = outcome.DisplayReels.map(() => []);
+        for (const result of outcome.Results) {
+            const positions = result.Positions
+            for (const position of positions) {
+                const location = locations[position.Reel];
+                if (location && !location.includes(position.Row + topOffset)) {
+                    location.push(position.Row + topOffset);
                 }
             }
         }
-        if (reel < 0) return none;
-        return { Found: true, Reel: reel, Row: row, Symbol: symbol, Name: this.splittingName(symbol), Variant: symbol + 10, Multiple: multiple, Badge: 'x' + multiple };
-    }
-
-    private splittingSteps(outcomes: Record<string, any>[], selections: Map<number, number>, start: number, hotspotReel: number, hotspot: Record<string, any> | null): Record<string, any>[] {
-        const isSplit = (symbol: number): boolean => symbol !== 1 && selections.has(symbol);
-        const multipleOf = (symbol: number): number => (isSplit(symbol) ? Number(selections.get(symbol)) : 1);
-        const steps: Record<string, any>[] = [];
-        let total = start;
-        let dropped: string[] | null = null;
-        for (let index = 0; index < outcomes.length; index++) {
-            const outcome: Record<string, any> = outcomes[index] || {};
-            const board = this.splittingBoard(outcome.DisplayReels);
-            const splitCells: Record<string, any>[] = [];
-            board.forEach((column: number[], reel: number) => column.forEach((symbol: number, row: number) => {
-                if (!isSplit(symbol)) return;
-                const multiple = multipleOf(symbol);
-                splitCells.push({ Reel: reel, Row: row, Symbol: symbol, Variant: symbol + 10, Multiple: multiple, Badge: 'x' + multiple });
-            }));
-            let fresh: Record<string, any>[];
-            if (dropped === null && hotspotReel >= 0) {
-                fresh = splitCells.filter((cell) => cell.Reel === hotspotReel).concat(splitCells.filter((cell) => cell.Reel !== hotspotReel));
-            } else if (dropped === null) {
-                fresh = splitCells.filter((cell) => !(hotspot && hotspot.Found && cell.Reel === hotspot.Reel && cell.Row === hotspot.Row));
-            } else {
-                const landed: string[] = dropped;
-                fresh = splitCells.filter((cell) => landed.indexOf(cell.Reel + ':' + cell.Row) >= 0);
-            }
-            const results: Record<string, any>[] = Array.isArray(outcome.Results) ? outcome.Results : [];
-            const won: string[] = [];
-            const winPositions: Record<string, any>[] = [];
-            for (const result of results) {
-                const positions: Record<string, any>[] = result && Array.isArray(result.Positions) ? result.Positions : [];
-                for (const position of positions) {
-                    const reel = Number(position.Reel);
-                    const row = Number(position.Row);
-                    const key = reel + ':' + row;
-                    if (reel < 0 || reel >= board.length || won.indexOf(key) >= 0) continue;
-                    won.push(key);
-                    winPositions.push({ Reel: reel, Row: row });
-                }
-            }
-            winPositions.sort((a, b) => a.Reel - b.Reel || a.Row - b.Row);
-            let ways = board.length > 0 ? 1 : 0;
-            for (const column of board) {
-                let copies = 0;
-                for (const symbol of column) copies += multipleOf(symbol);
-                ways *= copies;
-            }
-            const prize = Number(outcome.Prize) || 0;
-            total += prize;
-            const step: Record<string, any> = {
-                Index: index,
-                Grid: board.map((column: number[]) => column.map((symbol: number) => (isSplit(symbol) ? symbol + 10 : symbol))),
-                SymbolGrid: board.map((column: number[]) => column.slice()),
-                SplitCells: splitCells,
-                NewSplitCells: fresh,
-                NewSplitCount: fresh.length,
-                WaysTotal: typeof outcome.WinWays === 'number' ? outcome.WinWays : ways,
-                WinPositions: winPositions,
-                WinCount: results.length,
-                StepWin: prize,
-                AccumulatedWin: total,
-                Clamped: false,
-                HasCascade: false,
-                ClearLocations: [],
-                CascadeGrid: [],
-                CascadeBadges: [],
-            };
-            dropped = [];
-            const next: Record<string, any> | undefined = outcomes[index + 1];
-            if (next) {
-                const landed: string[] = [];
-                const badges: Record<string, any>[] = [];
-                const cleared = board.map((column: number[], reel: number) => column.map((symbol: number, row: number) => row).filter((row: number) => won.indexOf(reel + ':' + row) >= 0));
-                const cascadeGrid = this.splittingBoard(next.DisplayReels).map((column: number[], reel: number) => column.map((symbol: number, row: number) => {
-                    if (row < (cleared[reel] ? cleared[reel].length : 0)) {
-                        landed.push(reel + ':' + row);
-                        return symbol;
-                    }
-                    if (!isSplit(symbol)) return symbol;
-                    badges.push({ Reel: reel, Row: row, Badge: 'x' + multipleOf(symbol) });
-                    return symbol + 10;
-                }));
-                step.HasCascade = true;
-                step.ClearLocations = cleared;
-                step.CascadeGrid = cascadeGrid;
-                step.CascadeBadges = badges;
-                dropped = landed;
-            }
-            steps.push(step);
-        }
-        return steps;
-    }
-
-    private splittingBoard(raw: any): number[][] {
-        if (!Array.isArray(raw)) return [];
-        return raw.map((column: any) => (Array.isArray(column) ? column.map((symbol: any) => Number(symbol)) : []));
-    }
-
-    private splittingCount(board: number[][], symbol: number): number {
-        let count = 0;
-        for (const column of board) {
-            for (const cell of column) {
-                if (cell === symbol) count++;
-            }
-        }
-        return count;
-    }
-
-    private splittingName(symbol: number): string {
-        const names = ['', 'BONUS', 'WILD', 'HP1', 'HP2', 'MP1', 'MP2', 'LP1', 'LP2', 'LP3', 'LP4', 'LP5'];
-        return names[symbol] || '';
+        return locations;
     }
 
     // #region FlowState Server Connection Mappings

@@ -1,52 +1,9 @@
 {
   "nodes": [
     {
-      "id": "gamebo_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "Game loaded: base music, the resumed board, labels redrawn in the game font, and the split tutorial before the first spin."
-    },
-    {
       "id": "gamebo_001",
       "title": "onApplicationInit",
       "rootType": "StarterNodes"
-    },
-    {
-      "id": "gamebo_031",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "tutorialSeen"
-        }
-      ]
-    },
-    {
-      "id": "gamebo_032",
-      "title": "not",
-      "rootType": "logic",
-      "properties": [
-        {
-          "name": "value",
-          "type": "bool",
-          "sourceNodeId": "gamebo_031"
-        }
-      ]
-    },
-    {
-      "id": "gamebo_033",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "gamebo_032"
-        }
-      ]
     },
     {
       "id": "gamebo_063",
@@ -106,7 +63,7 @@
               {
                 "name": "propertyName",
                 "type": "modelProperty",
-                "value": "reelSymbols"
+                "value": "displayReels"
               }
             ]
           },
@@ -147,7 +104,8 @@
                 "type": "bool",
                 "value": false
               }
-            ]
+            ],
+            "propertyValue": ""
           },
           {
             "id": "gamebo_006",
@@ -179,13 +137,6 @@
         ],
         "links": [
           {
-            "id": "l_gamebo_1",
-            "from": "gamebo_003",
-            "to": "gamebo_004",
-            "propertyType": "string",
-            "propertyName": "reels"
-          },
-          {
             "id": "l_gamebo_2",
             "from": "gamebo_005",
             "to": "gamebo_006",
@@ -211,6 +162,13 @@
             "id": "l_gamebo_8",
             "from": "gamebo_006",
             "to": "gamebo_065"
+          },
+          {
+            "id": "lwjbuidw",
+            "from": "gamebo_003",
+            "to": "gamebo_004",
+            "propertyType": "string",
+            "propertyName": "reels"
           }
         ]
       }
@@ -807,147 +765,6 @@
             "id": "l_gamebo_34",
             "from": "gamebo_030",
             "to": "gamebo_068"
-          }
-        ]
-      }
-    },
-    {
-      "id": "gamebo_069",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "gamebo_034",
-      "exitSourceId": "gamebo_037",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "gamebo_070",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "gamebo_034",
-            "title": "setNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "gamebo_035",
-            "title": "setNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "gamebo_036",
-            "title": "showNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "gamebo_037",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/popup.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.8
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "gamebo_071",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_gamebo_35",
-            "from": "gamebo_034",
-            "to": "gamebo_035"
-          },
-          {
-            "id": "l_gamebo_36",
-            "from": "gamebo_035",
-            "to": "gamebo_036"
-          },
-          {
-            "id": "l_gamebo_37",
-            "from": "gamebo_036",
-            "to": "gamebo_037"
-          },
-          {
-            "id": "l_gamebo_38",
-            "from": "gamebo_070",
-            "to": "gamebo_034"
-          },
-          {
-            "id": "l_gamebo_39",
-            "from": "gamebo_037",
-            "to": "gamebo_071"
           }
         ]
       }
@@ -1568,50 +1385,19 @@
   ],
   "links": [
     {
-      "id": "l_gamebo_3",
-      "from": "gamebo_031",
-      "to": "gamebo_032",
-      "propertyType": "bool",
-      "propertyName": "value"
-    },
-    {
-      "id": "l_gamebo_4",
-      "from": "gamebo_032",
-      "to": "gamebo_033",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
       "id": "l_gamebo_9",
       "from": "gamebo_063",
       "to": "gamebo_066"
     },
     {
-      "id": "l_gamebo_40",
-      "from": "gamebo_066",
-      "to": "gamebo_033"
-    },
-    {
-      "id": "l_gamebo_41",
-      "from": "gamebo_033",
-      "to": "gamebo_069",
-      "outIdx": 0
-    },
-    {
-      "id": "l_gamebo_42",
-      "from": "gamebo_069",
-      "to": "gamebo_072"
-    },
-    {
-      "id": "l_gamebo_43",
-      "from": "gamebo_033",
-      "to": "gamebo_072",
-      "outIdx": 1
-    },
-    {
       "id": "l_gamebo_70",
       "from": "gamebo_001",
       "to": "gamebo_063"
+    },
+    {
+      "id": "lwxr2sdb",
+      "from": "gamebo_066",
+      "to": "gamebo_072"
     }
   ]
 }

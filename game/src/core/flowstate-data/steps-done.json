@@ -15,26 +15,7 @@
         {
           "name": "propertyName",
           "type": "modelProperty",
-          "value": "roundInfo"
-        }
-      ]
-    },
-    {
-      "id": "stepsd_002",
-      "title": "parseObject",
-      "rootType": "objectOps",
-      "properties": [
-        {
-          "name": "source",
-          "type": "object",
-          "sourceNodeId": "stepsd_001"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "tier",
-          "type": "int",
-          "path": "BonusTier"
+          "value": "hasBonus"
         }
       ]
     },
@@ -92,24 +73,6 @@
       ]
     },
     {
-      "id": "stepsd_007",
-      "title": "greaterThan",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "float",
-          "sourceNodeId": "stepsd_002",
-          "sourceOutputName": "tier"
-        },
-        {
-          "name": "b",
-          "type": "float",
-          "value": 0
-        }
-      ]
-    },
-    {
       "id": "stepsd_008",
       "title": "branch",
       "rootType": "branch",
@@ -117,7 +80,7 @@
         {
           "name": "condition",
           "type": "bool",
-          "sourceNodeId": "stepsd_007"
+          "sourceNodeId": "stepsd_001"
         }
       ]
     },
@@ -158,31 +121,9 @@
   ],
   "links": [
     {
-      "id": "l_stepsd_1",
-      "from": "stepsd_001",
-      "to": "stepsd_002",
-      "propertyType": "object",
-      "propertyName": "source"
-    },
-    {
       "id": "l_stepsd_2",
       "from": "stepsd_004",
       "to": "stepsd_005",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
-      "id": "l_stepsd_3",
-      "from": "stepsd_002",
-      "to": "stepsd_007",
-      "propertyType": "float",
-      "propertyName": "a",
-      "sourceOutputName": "tier"
-    },
-    {
-      "id": "l_stepsd_4",
-      "from": "stepsd_007",
-      "to": "stepsd_008",
       "propertyType": "bool",
       "propertyName": "condition"
     },
@@ -214,6 +155,13 @@
       "id": "l_stepsd_9",
       "from": "stepsd_003",
       "to": "stepsd_005"
+    },
+    {
+      "id": "l4so82it",
+      "from": "stepsd_001",
+      "to": "stepsd_008",
+      "propertyType": "bool",
+      "propertyName": "condition"
     }
   ]
 }

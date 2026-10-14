@@ -119,7 +119,8 @@ function warnNodeNotInTree(ref: NodeRefValue): void {
     const refScene = typeof ref.sceneName === 'string' ? ref.sceneName : '';
     const loaded = loadedSceneRef();
     const loadedLabel = loaded ? `${loaded.scope}:${loaded.name}` : '(no scene loaded)';
-    let message = `[FlowState] Scene node not in current tree: ${refScene || '(unknown scene)'} / ${ref.nodeId}`
+    const name = sceneNodeName(ref.nodeId);
+    let message = `[FlowState] Scene node not in current tree: ${refScene || '(unknown scene)'} / ${name ? `"${name}"` : ref.nodeId}`
         + ` — currently loaded scene is ${loadedLabel}.`;
 
     const scopeDiffers = !!ref.sceneScope && !!loaded && ref.sceneScope !== loaded.scope;
@@ -128,7 +129,42 @@ function warnNodeNotInTree(ref: NodeRefValue): void {
             + ` — the skin's entry scene, or a loadScene action, may be pointing at the wrong scene.`;
     }
 
-    emitFlowConsole('warn', message, { code: 'node-not-in-tree' });
+    emitFlowConsole('warn', message, { code: 'node-not-in-tree', ...sceneNodeExtra(ref, false) });
+}
+
+/** Authored name of a built scene node, or undefined — never throws. */
+function sceneNodeName(nodeId: string): string | undefined {
+    try {
+        const manager = sceneManager as unknown as { getNodeDataById?: (id: string) => { name?: unknown } | undefined };
+        const name = manager.getNodeDataById ? manager.getNodeDataById(nodeId)?.name : undefined;
+        return typeof name === 'string' && name ? name : undefined;
+    } catch {
+        return undefined;
+    }
+}
+
+/** `Scene node "Name"`, or `Scene node <id>` when the name is unknown. */
+function sceneNodeLabel(nodeId: string): string {
+    const name = sceneNodeName(nodeId);
+    return name ? `Scene node "${name}"` : `Scene node ${nodeId}`;
+}
+
+/** Structured scene-node reference for the console payload. */
+function sceneNodeExtra(ref: NodeRefValue, fallBackToLoaded: boolean): {
+    sceneNodeId: string;
+    sceneNodeName?: string;
+    sceneName?: string;
+    sceneScope?: 'core' | 'skin';
+} {
+    const loaded = fallBackToLoaded ? loadedSceneRef() : null;
+    const sceneName = typeof ref.sceneName === 'string' && ref.sceneName ? ref.sceneName : loaded?.name;
+    const sceneScope = ref.sceneScope === 'core' || ref.sceneScope === 'skin' ? ref.sceneScope : loaded?.scope;
+    return {
+        sceneNodeId: ref.nodeId,
+        sceneNodeName: sceneNodeName(ref.nodeId),
+        sceneName,
+        sceneScope,
+    };
 }
 
 /** The authored scene-node name for a reference, else its id — for messages only. */
@@ -173,12 +209,12 @@ export function resolveNode<T = any>(target: NodeRefLike, Ctor?: abstract new (.
             : obj;
 
         if (!resolvedObj) {
-            emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} has no resolved ${Ctor?.name ?? 'DisplayObject'} target`, { code: 'node-unresolved' });
+            emitFlowConsole('warn', `[FlowState] ${sceneNodeLabel(ref.nodeId)} has no resolved ${Ctor?.name ?? 'DisplayObject'} target`, { code: 'node-unresolved', ...sceneNodeExtra(ref, true) });
             return null;
         }
 
         if (Ctor && !(resolvedObj instanceof Ctor)) {
-            emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
+            emitFlowConsole('warn', `[FlowState] ${sceneNodeLabel(ref.nodeId)} is not a ${Ctor.name}`, { code: 'node-wrong-type', ...sceneNodeExtra(ref, true) });
             return null;
         }
         return resolvedObj as unknown as T;
@@ -233,7 +269,7 @@ export function resolveNodeDeferred<T = any>(
         wrapper.__orcaPendingCallbacks.push((loaded) => {
             withFlowNodeContext(ctx, () => {
                 if (!(loaded instanceof Ctor)) {
-                    emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
+                    emitFlowConsole('warn', `[FlowState] ${sceneNodeLabel(ref.nodeId)} is not a ${Ctor.name}`, { code: 'node-wrong-type', ...sceneNodeExtra(ref, true) });
                     return;
                 }
                 try {
@@ -247,7 +283,7 @@ export function resolveNodeDeferred<T = any>(
         return 'deferred';
     }
 
-    emitFlowConsole('warn', `[FlowState] Scene node ${ref.nodeId} is not a ${Ctor.name}`, { code: 'node-wrong-type' });
+    emitFlowConsole('warn', `[FlowState] ${sceneNodeLabel(ref.nodeId)} is not a ${Ctor.name}`, { code: 'node-wrong-type', ...sceneNodeExtra(ref, true) });
     return 'not-found';
 }
 

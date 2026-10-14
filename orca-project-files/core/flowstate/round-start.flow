@@ -4,23 +4,12 @@
   "graph": {
     "nodes": [
       {
-        "id": "rounds_note",
-        "title": "Note",
-        "x": 80,
-        "y": -164,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "Paid spin: close popups, clear the last board, land the new grid, then reveal the split.",
-        "width": 620,
-        "height": 210
-      },
-      {
         "id": "rounds_001",
         "title": "onBeginGame",
         "displayName": "BUY pressed",
         "friendlyTitle": "On Buy In",
-        "x": 80,
-        "y": 120,
+        "x": 557.5819567259,
+        "y": -88.39103272146359,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -30,73 +19,10 @@
         "propertyValues": {}
       },
       {
-        "id": "rounds_026",
-        "title": "getGameModelProperty",
-        "x": 1464,
-        "y": 204,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "teaseBonus"
-        }
-      },
-      {
-        "id": "rounds_027",
-        "title": "branch",
-        "displayName": "2 BONUS landed?",
-        "x": 1826,
-        "y": 94.74786474349582,
-        "rootType": "branch",
-        "color": "#d4a72c",
-        "icon": "🔀",
-        "properties": [
-          {
-            "name": "condition",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "condition": false
-        }
-      },
-      {
-        "id": "rounds_028",
-        "title": "fireCustomEvent",
-        "x": 2196.8021501639378,
-        "y": -39.9057279782005,
-        "rootType": "fireEvent",
-        "color": "#d94848",
-        "icon": "📣",
-        "properties": [
-          {
-            "name": "eventName",
-            "type": "customEventRef",
-            "default": ""
-          },
-          {
-            "name": "propertyNames",
-            "type": "TArray"
-          }
-        ],
-        "propertyValues": {
-          "eventName": "bonusTease",
-          "propertyNames": []
-        }
-      },
-      {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 2560.2691751912607,
-        "y": 147.87347551913587,
+        "x": 1762.230586594877,
+        "y": -101.49290145721676,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -117,163 +43,11 @@
         }
       },
       {
-        "id": "rounds_030",
-        "title": "State",
-        "displayName": "Close popups",
-        "x": 314,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "rounds_002",
-        "exitSourceId": "rounds_005",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "rounds_031",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "rounds_002",
-              "title": "hideNode",
-              "displayName": "Close tutorial",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "rounds_003",
-              "title": "hideNode",
-              "displayName": "Close help",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "rounds_004",
-              "title": "setGameModelProperty",
-              "displayName": "Tutorial seen",
-              "x": 1034,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "tutorialSeen",
-                "value": true
-              }
-            },
-            {
-              "id": "rounds_005",
-              "title": "setGameModelProperty",
-              "displayName": "Round busy",
-              "x": 1396,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "roundBusy",
-                "value": true
-              }
-            },
-            {
-              "id": "rounds_032",
-              "title": "Exit",
-              "x": 1758,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_rounds_4",
-              "from": "rounds_002",
-              "to": "rounds_003"
-            },
-            {
-              "id": "l_rounds_5",
-              "from": "rounds_003",
-              "to": "rounds_004"
-            },
-            {
-              "id": "l_rounds_6",
-              "from": "rounds_004",
-              "to": "rounds_005"
-            },
-            {
-              "id": "l_rounds_7",
-              "from": "rounds_031",
-              "to": "rounds_002"
-            },
-            {
-              "id": "l_rounds_8",
-              "from": "rounds_005",
-              "to": "rounds_032"
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
         "id": "rounds_033",
         "title": "State",
         "displayName": "Reset round",
-        "x": 544,
-        "y": 120,
+        "x": 769.1617007138018,
+        "y": -73.00100310302629,
         "isState": true,
         "entryTargetId": "rounds_006",
         "exitSourceId": "rounds_011",
@@ -282,8 +56,8 @@
             {
               "id": "rounds_034",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": -73.67362219370744,
+              "y": 22.942975456605822,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -292,8 +66,8 @@
               "id": "rounds_006",
               "title": "setGameModelProperty",
               "displayName": "No win yet",
-              "x": 310,
-              "y": 120,
+              "x": 163.8075409042841,
+              "y": 14.499156239728777,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
@@ -311,7 +85,7 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "winAmountSoFar",
+                "propertyName": "payout",
                 "value": 0
               }
             },
@@ -319,8 +93,8 @@
               "id": "rounds_007",
               "title": "setGameModelProperty",
               "displayName": "Base game",
-              "x": 672,
-              "y": 120,
+              "x": 512.5115022146942,
+              "y": 2.2484502257175123,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
@@ -338,16 +112,16 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "inBonus",
-                "value": false
+                "propertyName": "playedSpinOutcomes",
+                "value": "[]"
               }
             },
             {
               "id": "rounds_008",
               "title": "setGameModelProperty",
               "displayName": "No free spins",
-              "x": 1034,
-              "y": 120,
+              "x": 852.5157783491336,
+              "y": 2.554250124394841,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
@@ -373,8 +147,8 @@
               "id": "rounds_009",
               "title": "setGameModelProperty",
               "displayName": "No free spins",
-              "x": 1396,
-              "y": 120,
+              "x": 1167.8605109980042,
+              "y": 21.403036015238456,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
@@ -400,8 +174,8 @@
               "id": "rounds_010",
               "title": "formatMoney",
               "friendlyTitle": "Format Money",
-              "x": 1758,
-              "y": 204,
+              "x": 1806.5744866291943,
+              "y": 246.3450116784939,
               "rootType": "Info & UI",
               "color": "#1abc9c",
               "icon": "📊",
@@ -418,6 +192,7 @@
                   "default": false
                 }
               ],
+              "propertyValue": "0",
               "propertyValues": {
                 "amount": 0,
                 "rounded": false
@@ -427,8 +202,8 @@
               "id": "rounds_011",
               "title": "setText",
               "displayName": "Win reads 0",
-              "x": 2120,
-              "y": 120,
+              "x": 2142.2422347911947,
+              "y": 37.09712486918414,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -440,7 +215,8 @@
                 },
                 {
                   "name": "value",
-                  "type": "string"
+                  "type": "string",
+                  "propertyValue": "0"
                 }
               ],
               "propertyValues": {
@@ -455,11 +231,65 @@
             {
               "id": "rounds_035",
               "title": "Exit",
-              "x": 2482,
-              "y": 120,
+              "x": 2498.1670762098765,
+              "y": 79.57927701170067,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
+            },
+            {
+              "id": "not0n7z6",
+              "title": "setGameModelProperty",
+              "displayName": "No free spins",
+              "x": 1482.820721491674,
+              "y": 15.44118125150446,
+              "rootType": "properties",
+              "color": "#e67e22",
+              "icon": "✏️",
+              "overrideNodeType": "sequence",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                },
+                {
+                  "name": "value",
+                  "type": "dynamic",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "currentCascade",
+                "value": 0
+              }
+            },
+            {
+              "id": "nlcxj9rv",
+              "title": "setGameModelProperty",
+              "displayName": "No free spins",
+              "x": 1806.4585802978781,
+              "y": 13.818642610836307,
+              "rootType": "properties",
+              "color": "#e67e22",
+              "icon": "✏️",
+              "overrideNodeType": "sequence",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                },
+                {
+                  "name": "value",
+                  "type": "dynamic",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "currentBonusSpin",
+                "value": 0
+              }
             }
           ],
           "links": [
@@ -486,11 +316,6 @@
               "to": "rounds_009"
             },
             {
-              "id": "l_rounds_13",
-              "from": "rounds_009",
-              "to": "rounds_011"
-            },
-            {
               "id": "l_rounds_14",
               "from": "rounds_034",
               "to": "rounds_006"
@@ -499,6 +324,21 @@
               "id": "l_rounds_15",
               "from": "rounds_011",
               "to": "rounds_035"
+            },
+            {
+              "id": "ln5jn8un",
+              "from": "rounds_009",
+              "to": "not0n7z6"
+            },
+            {
+              "id": "l5y622pq",
+              "from": "not0n7z6",
+              "to": "nlcxj9rv"
+            },
+            {
+              "id": "l98bpkds",
+              "from": "nlcxj9rv",
+              "to": "rounds_011"
             }
           ],
           "groups": []
@@ -508,8 +348,8 @@
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": 774,
-        "y": 120,
+        "x": 968.8962369343765,
+        "y": -77.8241583970742,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -525,93 +365,11 @@
               "isEntry": true
             },
             {
-              "id": "rounds_012",
-              "title": "resetSymbolVisuals",
-              "displayName": "Undo highlights",
-              "friendlyTitle": "Reset Symbol Visuals",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": -1
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": -1,
-                "rowIndex": -1,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "rounds_013",
-              "title": "clearSymbolTexts",
-              "displayName": "Drop badges",
-              "friendlyTitle": "Clear Symbol Texts",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "textIndex",
-                  "type": "int",
-                  "default": -1
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": -1,
-                "rowIndex": -1,
-                "textIndex": -1,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
               "id": "rounds_014",
               "title": "setNodeAlpha",
               "displayName": "Hide hotspot",
-              "x": 1034,
-              "y": 120,
+              "x": 360.6067567567569,
+              "y": 116.03108108108108,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -640,8 +398,8 @@
               "id": "rounds_015",
               "title": "setNodeAlpha",
               "displayName": "Hide reel hotspot",
-              "x": 1396,
-              "y": 120,
+              "x": 753.035135135135,
+              "y": 117.35405405405405,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -669,7 +427,7 @@
             {
               "id": "rounds_038",
               "title": "Exit",
-              "x": 1758,
+              "x": 1120.327027027027,
               "y": 120,
               "color": "#FF5722",
               "icon": "⭡",
@@ -678,29 +436,19 @@
           ],
           "links": [
             {
-              "id": "l_rounds_17",
-              "from": "rounds_012",
-              "to": "rounds_013"
-            },
-            {
-              "id": "l_rounds_18",
-              "from": "rounds_013",
-              "to": "rounds_014"
-            },
-            {
               "id": "l_rounds_19",
               "from": "rounds_014",
               "to": "rounds_015"
             },
             {
-              "id": "l_rounds_20",
-              "from": "rounds_037",
-              "to": "rounds_012"
-            },
-            {
               "id": "l_rounds_21",
               "from": "rounds_015",
               "to": "rounds_038"
+            },
+            {
+              "id": "lhl8j6fi",
+              "from": "rounds_037",
+              "to": "rounds_014"
             }
           ],
           "groups": []
@@ -709,9 +457,9 @@
       {
         "id": "rounds_039",
         "title": "State",
-        "displayName": "Reset panels",
-        "x": 1004,
-        "y": 120,
+        "displayName": "Reset Game Model",
+        "x": 1173.4474909703906,
+        "y": -84.52577971932769,
         "isState": true,
         "entryTargetId": "rounds_016",
         "exitSourceId": "rounds_022",
@@ -720,105 +468,11 @@
             {
               "id": "rounds_040",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 1427.3714053200347,
+              "y": 167.85745428732363,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
-            },
-            {
-              "id": "rounds_016",
-              "title": "hideNode",
-              "displayName": "Hide split card",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "rounds_017",
-              "title": "hideNode",
-              "displayName": "Hide split cards",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_bonus_panel",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "rounds_018",
-              "title": "setChildrenVisible",
-              "displayName": "Hide hints",
-              "friendlyTitle": "Set Children Visible",
-              "x": 1034,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "visible",
-                  "type": "bool",
-                  "default": false
-                }
-              ],
-              "propertyValues": {
-                "visible": false,
-                "target": null
-              }
-            },
-            {
-              "id": "rounds_019",
-              "title": "setText",
-              "displayName": "Header",
-              "x": 1396,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "value",
-                  "type": "string"
-                }
-              ],
-              "propertyValues": {
-                "target": null,
-                "value": "WIN UP TO 2,000x STAKE"
-              }
             },
             {
               "id": "rounds_020",
@@ -877,37 +531,10 @@
               }
             },
             {
-              "id": "rounds_022",
-              "title": "setGameModelProperty",
-              "displayName": "First step",
-              "x": 2482,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "stepIndex",
-                "value": 0
-              }
-            },
-            {
               "id": "rounds_041",
               "title": "Exit",
-              "x": 2844,
-              "y": 120,
+              "x": 2531.0170155855553,
+              "y": 133.04095768393518,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -915,43 +542,18 @@
           ],
           "links": [
             {
-              "id": "l_rounds_23",
-              "from": "rounds_016",
-              "to": "rounds_017"
-            },
-            {
-              "id": "l_rounds_24",
-              "from": "rounds_017",
-              "to": "rounds_018"
-            },
-            {
-              "id": "l_rounds_25",
-              "from": "rounds_018",
-              "to": "rounds_019"
-            },
-            {
-              "id": "l_rounds_26",
-              "from": "rounds_019",
-              "to": "rounds_020"
-            },
-            {
               "id": "l_rounds_27",
               "from": "rounds_020",
               "to": "rounds_021"
             },
             {
-              "id": "l_rounds_28",
-              "from": "rounds_021",
-              "to": "rounds_022"
-            },
-            {
-              "id": "l_rounds_29",
+              "id": "l4pu1ssz",
               "from": "rounds_040",
-              "to": "rounds_016"
+              "to": "rounds_020"
             },
             {
-              "id": "l_rounds_30",
-              "from": "rounds_022",
+              "id": "lu6ryi15",
+              "from": "rounds_021",
               "to": "rounds_041"
             }
           ],
@@ -959,219 +561,68 @@
         }
       },
       {
-        "id": "rounds_042",
-        "title": "State",
-        "displayName": "Land base grid",
-        "x": 1234,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "rounds_023",
-        "exitSourceId": "rounds_025",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "rounds_043",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "rounds_023",
-              "title": "playSound",
-              "displayName": "Spin sound",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "soundName",
-                  "type": "audioRef"
-                },
-                {
-                  "name": "volume",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
-                },
-                {
-                  "name": "pitch",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "fadeIn",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "pan",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "bus",
-                  "type": "string",
-                  "default": "",
-                  "optionsFrom": "project.audio.buses"
-                }
-              ],
-              "propertyValues": {
-                "volume": 0.6,
-                "loop": false,
-                "pitch": 1,
-                "fadeIn": 0,
-                "pan": 0,
-                "bus": "",
-                "soundName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/sfx/spin-start.mp3"
-                }
+        "id": "nfofoxjt",
+        "title": "spinReels",
+        "x": 1384.2041691590537,
+        "y": -117.76687549976013,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "mode",
+            "type": "string",
+            "default": "fullSequence",
+            "options": [
+              {
+                "value": "fullSequence",
+                "label": "Full sequence"
+              },
+              {
+                "value": "startSpinOnly",
+                "label": "Start spin only"
               }
-            },
-            {
-              "id": "rounds_024",
-              "title": "getGameModelProperty",
-              "x": 672,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "reelSymbols"
-              }
-            },
-            {
-              "id": "rounds_025",
-              "title": "spinReelsToGrid",
-              "displayName": "Land the grid",
-              "friendlyTitle": "Spin Reels To Grid",
-              "x": 1035.4618151869668,
-              "y": 102.45821775639749,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "grid",
-                  "type": "any",
-                  "default": ""
-                },
-                {
-                  "name": "fillerSymbols",
-                  "type": "any",
-                  "default": ""
-                },
-                {
-                  "name": "sequenceNodeOn",
-                  "type": "string",
-                  "default": "onComplete",
-                  "options": [
-                    {
-                      "value": "immediate",
-                      "label": "Immediate (continue right away)"
-                    },
-                    {
-                      "value": "onComplete",
-                      "label": "On Complete (wait for the reels to land)"
-                    }
-                  ]
-                }
-              ],
-              "propertyValues": {
-                "grid": "",
-                "fillerSymbols": [
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11
-                ],
-                "sequenceNodeOn": "onComplete",
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "rounds_044",
-              "title": "Exit",
-              "x": 1396,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
+            ]
+          },
+          {
+            "name": "endPositions",
+            "type": "string",
+            "default": "",
+            "visibleWhen": {
+              "property": "mode",
+              "equals": "fullSequence"
             }
-          ],
-          "links": [
-            {
-              "id": "l_rounds_2",
-              "from": "rounds_024",
-              "to": "rounds_025",
-              "propertyType": "any",
-              "propertyName": "grid"
-            },
-            {
-              "id": "l_rounds_32",
-              "from": "rounds_023",
-              "to": "rounds_025"
-            },
-            {
-              "id": "l_rounds_33",
-              "from": "rounds_043",
-              "to": "rounds_023"
-            },
-            {
-              "id": "l_rounds_34",
-              "from": "rounds_025",
-              "to": "rounds_044"
+          },
+          {
+            "name": "startPositions?",
+            "type": "string",
+            "default": "",
+            "visibleWhen": {
+              "property": "mode",
+              "equals": "fullSequence"
             }
-          ],
-          "groups": []
+          }
+        ],
+        "propertyValues": {
+          "mode": "fullSequence",
+          "endPositions": "",
+          "startPositions?": "",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
         }
       }
     ],
     "links": [
-      {
-        "id": "l_rounds_3",
-        "from": "rounds_026",
-        "to": "rounds_027",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
-      {
-        "id": "l_rounds_9",
-        "from": "rounds_030",
-        "to": "rounds_033"
-      },
       {
         "id": "l_rounds_16",
         "from": "rounds_033",
@@ -1183,44 +634,27 @@
         "to": "rounds_039"
       },
       {
-        "id": "l_rounds_31",
-        "from": "rounds_039",
-        "to": "rounds_042"
-      },
-      {
-        "id": "l_rounds_35",
-        "from": "rounds_042",
-        "to": "rounds_027"
-      },
-      {
-        "id": "l_rounds_36",
-        "from": "rounds_027",
-        "to": "rounds_028",
-        "outIdx": 0
-      },
-      {
-        "id": "l_rounds_37",
-        "from": "rounds_028",
-        "to": "rounds_029"
-      },
-      {
-        "id": "l_rounds_38",
-        "from": "rounds_027",
-        "to": "rounds_029",
-        "outIdx": 1
-      },
-      {
-        "id": "l_rounds_39",
+        "id": "l4cxjzwc",
         "from": "rounds_001",
-        "to": "rounds_030"
+        "to": "rounds_033"
+      },
+      {
+        "id": "lpzwb0z2",
+        "from": "rounds_039",
+        "to": "nfofoxjt"
+      },
+      {
+        "id": "lfj5o1oj",
+        "from": "nfofoxjt",
+        "to": "rounds_029"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -1231.6485775623353,
-      "panY": 36.47155322426988,
-      "scale": 0.7797255949152936
+      "panX": -279.4913264715972,
+      "panY": 315.67448545371406,
+      "scale": 0.6498279727278928
     }
   }
 }

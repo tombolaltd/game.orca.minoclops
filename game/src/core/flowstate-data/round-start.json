@@ -1,57 +1,9 @@
 {
   "nodes": [
     {
-      "id": "rounds_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "Paid spin: close popups, clear the last board, land the new grid, then reveal the split."
-    },
-    {
       "id": "rounds_001",
       "title": "onBeginGame",
       "rootType": "StarterNodes"
-    },
-    {
-      "id": "rounds_026",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "teaseBonus"
-        }
-      ]
-    },
-    {
-      "id": "rounds_027",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "rounds_026"
-        }
-      ]
-    },
-    {
-      "id": "rounds_028",
-      "title": "fireCustomEvent",
-      "rootType": "fireEvent",
-      "properties": [
-        {
-          "name": "eventName",
-          "type": "customEventRef",
-          "value": "bonusTease"
-        },
-        {
-          "name": "propertyNames",
-          "type": "TArray",
-          "value": []
-        }
-      ]
     },
     {
       "id": "rounds_029",
@@ -69,112 +21,6 @@
           "value": []
         }
       ]
-    },
-    {
-      "id": "rounds_030",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "rounds_002",
-      "exitSourceId": "rounds_005",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "rounds_031",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "rounds_002",
-            "title": "hideNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "rounds_003",
-            "title": "hideNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "rounds_004",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "tutorialSeen"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": true
-              }
-            ]
-          },
-          {
-            "id": "rounds_005",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "roundBusy"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": true
-              }
-            ]
-          },
-          {
-            "id": "rounds_032",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_rounds_4",
-            "from": "rounds_002",
-            "to": "rounds_003"
-          },
-          {
-            "id": "l_rounds_5",
-            "from": "rounds_003",
-            "to": "rounds_004"
-          },
-          {
-            "id": "l_rounds_6",
-            "from": "rounds_004",
-            "to": "rounds_005"
-          },
-          {
-            "id": "l_rounds_7",
-            "from": "rounds_031",
-            "to": "rounds_002"
-          },
-          {
-            "id": "l_rounds_8",
-            "from": "rounds_005",
-            "to": "rounds_032"
-          }
-        ]
-      }
     },
     {
       "id": "rounds_033",
@@ -197,7 +43,7 @@
               {
                 "name": "propertyName",
                 "type": "modelProperty",
-                "value": "winAmountSoFar"
+                "value": "payout"
               },
               {
                 "name": "value",
@@ -214,12 +60,12 @@
               {
                 "name": "propertyName",
                 "type": "modelProperty",
-                "value": "inBonus"
+                "value": "playedSpinOutcomes"
               },
               {
                 "name": "value",
                 "type": "dynamic",
-                "value": false
+                "value": "[]"
               }
             ]
           },
@@ -272,7 +118,8 @@
                 "type": "bool",
                 "value": false
               }
-            ]
+            ],
+            "propertyValue": "0"
           },
           {
             "id": "rounds_011",
@@ -300,6 +147,40 @@
             "id": "rounds_035",
             "title": "Exit",
             "isExit": true
+          },
+          {
+            "id": "not0n7z6",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "currentCascade"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "nlcxj9rv",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "currentBonusSpin"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": 0
+              }
+            ]
           }
         ],
         "links": [
@@ -326,11 +207,6 @@
             "to": "rounds_009"
           },
           {
-            "id": "l_rounds_13",
-            "from": "rounds_009",
-            "to": "rounds_011"
-          },
-          {
             "id": "l_rounds_14",
             "from": "rounds_034",
             "to": "rounds_006"
@@ -339,6 +215,21 @@
             "id": "l_rounds_15",
             "from": "rounds_011",
             "to": "rounds_035"
+          },
+          {
+            "id": "ln5jn8un",
+            "from": "rounds_009",
+            "to": "not0n7z6"
+          },
+          {
+            "id": "l5y622pq",
+            "from": "not0n7z6",
+            "to": "nlcxj9rv"
+          },
+          {
+            "id": "l98bpkds",
+            "from": "nlcxj9rv",
+            "to": "rounds_011"
           }
         ]
       }
@@ -355,65 +246,6 @@
             "id": "rounds_037",
             "title": "Entry",
             "isEntry": true
-          },
-          {
-            "id": "rounds_012",
-            "title": "resetSymbolVisuals",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "value": -1
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "value": -1
-              }
-            ]
-          },
-          {
-            "id": "rounds_013",
-            "title": "clearSymbolTexts",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "value": -1
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "value": -1
-              },
-              {
-                "name": "textIndex",
-                "type": "int",
-                "value": -1
-              }
-            ]
           },
           {
             "id": "rounds_014",
@@ -467,29 +299,19 @@
         ],
         "links": [
           {
-            "id": "l_rounds_17",
-            "from": "rounds_012",
-            "to": "rounds_013"
-          },
-          {
-            "id": "l_rounds_18",
-            "from": "rounds_013",
-            "to": "rounds_014"
-          },
-          {
             "id": "l_rounds_19",
             "from": "rounds_014",
             "to": "rounds_015"
           },
           {
-            "id": "l_rounds_20",
-            "from": "rounds_037",
-            "to": "rounds_012"
-          },
-          {
             "id": "l_rounds_21",
             "from": "rounds_015",
             "to": "rounds_038"
+          },
+          {
+            "id": "lhl8j6fi",
+            "from": "rounds_037",
+            "to": "rounds_014"
           }
         ]
       }
@@ -506,69 +328,6 @@
             "id": "rounds_040",
             "title": "Entry",
             "isEntry": true
-          },
-          {
-            "id": "rounds_016",
-            "title": "hideNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "rounds_017",
-            "title": "hideNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_bonus_panel",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            ]
-          },
-          {
-            "id": "rounds_018",
-            "title": "setChildrenVisible",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "visible",
-                "type": "bool",
-                "value": false
-              }
-            ]
-          },
-          {
-            "id": "rounds_019",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "value": "WIN UP TO 2,000x STAKE"
-              }
-            ]
           },
           {
             "id": "rounds_020",
@@ -610,23 +369,6 @@
             ]
           },
           {
-            "id": "rounds_022",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "stepIndex"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          },
-          {
             "id": "rounds_041",
             "title": "Exit",
             "isExit": true
@@ -634,204 +376,57 @@
         ],
         "links": [
           {
-            "id": "l_rounds_23",
-            "from": "rounds_016",
-            "to": "rounds_017"
-          },
-          {
-            "id": "l_rounds_24",
-            "from": "rounds_017",
-            "to": "rounds_018"
-          },
-          {
-            "id": "l_rounds_25",
-            "from": "rounds_018",
-            "to": "rounds_019"
-          },
-          {
-            "id": "l_rounds_26",
-            "from": "rounds_019",
-            "to": "rounds_020"
-          },
-          {
             "id": "l_rounds_27",
             "from": "rounds_020",
             "to": "rounds_021"
           },
           {
-            "id": "l_rounds_28",
-            "from": "rounds_021",
-            "to": "rounds_022"
-          },
-          {
-            "id": "l_rounds_29",
+            "id": "l4pu1ssz",
             "from": "rounds_040",
-            "to": "rounds_016"
+            "to": "rounds_020"
           },
           {
-            "id": "l_rounds_30",
-            "from": "rounds_022",
+            "id": "lu6ryi15",
+            "from": "rounds_021",
             "to": "rounds_041"
           }
         ]
       }
     },
     {
-      "id": "rounds_042",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "rounds_023",
-      "exitSourceId": "rounds_025",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "rounds_043",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "rounds_023",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/spin-start.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.6
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "rounds_024",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "reelSymbols"
-              }
-            ]
-          },
-          {
-            "id": "rounds_025",
-            "title": "spinReelsToGrid",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "grid",
-                "type": "any",
-                "sourceNodeId": "rounds_024"
-              },
-              {
-                "name": "fillerSymbols",
-                "type": "any",
-                "value": [
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11
-                ]
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "rounds_044",
-            "title": "Exit",
-            "isExit": true
+      "id": "nfofoxjt",
+      "title": "spinReels",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
           }
-        ],
-        "links": [
-          {
-            "id": "l_rounds_2",
-            "from": "rounds_024",
-            "to": "rounds_025",
-            "propertyType": "any",
-            "propertyName": "grid"
-          },
-          {
-            "id": "l_rounds_32",
-            "from": "rounds_023",
-            "to": "rounds_025"
-          },
-          {
-            "id": "l_rounds_33",
-            "from": "rounds_043",
-            "to": "rounds_023"
-          },
-          {
-            "id": "l_rounds_34",
-            "from": "rounds_025",
-            "to": "rounds_044"
-          }
-        ]
-      }
+        },
+        {
+          "name": "mode",
+          "type": "string",
+          "value": "fullSequence"
+        },
+        {
+          "name": "endPositions",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "name": "startPositions?",
+          "type": "string",
+          "value": ""
+        }
+      ]
     }
   ],
   "links": [
-    {
-      "id": "l_rounds_3",
-      "from": "rounds_026",
-      "to": "rounds_027",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
-      "id": "l_rounds_9",
-      "from": "rounds_030",
-      "to": "rounds_033"
-    },
     {
       "id": "l_rounds_16",
       "from": "rounds_033",
@@ -843,36 +438,19 @@
       "to": "rounds_039"
     },
     {
-      "id": "l_rounds_31",
-      "from": "rounds_039",
-      "to": "rounds_042"
-    },
-    {
-      "id": "l_rounds_35",
-      "from": "rounds_042",
-      "to": "rounds_027"
-    },
-    {
-      "id": "l_rounds_36",
-      "from": "rounds_027",
-      "to": "rounds_028",
-      "outIdx": 0
-    },
-    {
-      "id": "l_rounds_37",
-      "from": "rounds_028",
-      "to": "rounds_029"
-    },
-    {
-      "id": "l_rounds_38",
-      "from": "rounds_027",
-      "to": "rounds_029",
-      "outIdx": 1
-    },
-    {
-      "id": "l_rounds_39",
+      "id": "l4cxjzwc",
       "from": "rounds_001",
-      "to": "rounds_030"
+      "to": "rounds_033"
+    },
+    {
+      "id": "lpzwb0z2",
+      "from": "rounds_039",
+      "to": "nfofoxjt"
+    },
+    {
+      "id": "lfj5o1oj",
+      "from": "nfofoxjt",
+      "to": "rounds_029"
     }
   ]
 }

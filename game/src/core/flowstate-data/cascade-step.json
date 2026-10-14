@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "cascad_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "Winners clear, surviving split badges are staged on their new cells, and new symbols drop in."
-    },
-    {
       "id": "cascad_007",
       "title": "onCustomEvent",
       "rootType": "StarterNodes",
@@ -205,227 +198,6 @@
             "id": "l_cascad_27",
             "from": "cascad_005",
             "to": "cascad_024",
-            "outIdx": 1
-          }
-        ]
-      }
-    },
-    {
-      "id": "cascad_025",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "cascad_003",
-      "exitSourceId": "cascad_003",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "cascad_026",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "cascad_001",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "step"
-              }
-            ]
-          },
-          {
-            "id": "cascad_002",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "cascad_001"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "badges",
-                "type": "ObjectArray",
-                "path": "CascadeBadges"
-              },
-              {
-                "name": "clear",
-                "type": "IntArray",
-                "path": "ClearLocations"
-              },
-              {
-                "name": "grid",
-                "type": "IntArray",
-                "path": "CascadeGrid"
-              },
-              {
-                "name": "wins",
-                "type": "ObjectArray",
-                "path": "WinPositions"
-              }
-            ]
-          },
-          {
-            "id": "cascad_003",
-            "title": "loop",
-            "rootType": "loop",
-            "properties": [
-              {
-                "name": "items",
-                "type": "TArray",
-                "sourceNodeId": "cascad_002",
-                "sourceOutputName": "badges"
-              },
-              {
-                "name": "count",
-                "type": "int",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "cascad_004",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "cascad_003",
-                "sourceOutputName": "item"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "reel",
-                "type": "int",
-                "path": "Reel"
-              },
-              {
-                "name": "row",
-                "type": "int",
-                "path": "Row"
-              },
-              {
-                "name": "badge",
-                "type": "string",
-                "path": "Badge"
-              }
-            ]
-          },
-          {
-            "id": "cascad_016",
-            "title": "setLandingSymbolText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "sourceNodeId": "cascad_004",
-                "sourceOutputName": "reel"
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "sourceNodeId": "cascad_004",
-                "sourceOutputName": "row"
-              },
-              {
-                "name": "textIndex",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "text",
-                "type": "string",
-                "sourceNodeId": "cascad_004",
-                "sourceOutputName": "badge"
-              }
-            ]
-          },
-          {
-            "id": "cascad_027",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_cascad_1",
-            "from": "cascad_001",
-            "to": "cascad_002",
-            "propertyType": "object",
-            "propertyName": "source"
-          },
-          {
-            "id": "l_cascad_2",
-            "from": "cascad_002",
-            "to": "cascad_003",
-            "propertyType": "TArray",
-            "propertyName": "items",
-            "sourceOutputName": "badges"
-          },
-          {
-            "id": "l_cascad_3",
-            "from": "cascad_003",
-            "to": "cascad_004",
-            "propertyType": "object",
-            "propertyName": "source",
-            "sourceOutputName": "item"
-          },
-          {
-            "id": "l_cascad_13",
-            "from": "cascad_004",
-            "to": "cascad_016",
-            "propertyType": "int",
-            "propertyName": "reelIndex",
-            "sourceOutputName": "reel"
-          },
-          {
-            "id": "l_cascad_14",
-            "from": "cascad_004",
-            "to": "cascad_016",
-            "propertyType": "int",
-            "propertyName": "rowIndex",
-            "sourceOutputName": "row"
-          },
-          {
-            "id": "l_cascad_15",
-            "from": "cascad_004",
-            "to": "cascad_016",
-            "propertyType": "string",
-            "propertyName": "text",
-            "sourceOutputName": "badge"
-          },
-          {
-            "id": "l_cascad_29",
-            "from": "cascad_003",
-            "to": "cascad_016",
-            "outIdx": 0
-          },
-          {
-            "id": "l_cascad_30",
-            "from": "cascad_026",
-            "to": "cascad_003"
-          },
-          {
-            "id": "l_cascad_31",
-            "from": "cascad_003",
-            "to": "cascad_027",
             "outIdx": 1
           }
         ]
@@ -635,16 +407,6 @@
   ],
   "links": [
     {
-      "id": "l_cascad_28",
-      "from": "cascad_022",
-      "to": "cascad_025"
-    },
-    {
-      "id": "l_cascad_32",
-      "from": "cascad_025",
-      "to": "cascad_028"
-    },
-    {
       "id": "l_cascad_36",
       "from": "cascad_028",
       "to": "cascad_021"
@@ -653,6 +415,11 @@
       "id": "l_cascad_37",
       "from": "cascad_007",
       "to": "cascad_022"
+    },
+    {
+      "id": "l2y9cqbl",
+      "from": "cascad_022",
+      "to": "cascad_028"
     }
   ]
 }

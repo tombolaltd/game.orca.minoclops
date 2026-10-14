@@ -17,8 +17,8 @@
       {
         "id": "stepsd_001",
         "title": "getGameModelProperty",
-        "x": 1166,
-        "y": 497,
+        "x": 469.9931344221135,
+        "y": 363.8024716016933,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -30,32 +30,8 @@
           }
         ],
         "propertyValues": {
-          "propertyName": "roundInfo"
+          "propertyName": "hasBonus"
         }
-      },
-      {
-        "id": "stepsd_002",
-        "title": "parseObject",
-        "friendlyTitle": "Parse Object",
-        "x": 1528,
-        "y": 497,
-        "rootType": "objectOps",
-        "color": "#607d8b",
-        "icon": "🔎",
-        "properties": [
-          {
-            "name": "source",
-            "type": "object"
-          }
-        ],
-        "propertyValues": {},
-        "outputs": [
-          {
-            "name": "tier",
-            "type": "int",
-            "path": "BonusTier"
-          }
-        ]
       },
       {
         "id": "stepsd_003",
@@ -82,8 +58,8 @@
       {
         "id": "stepsd_004",
         "title": "getGameModelProperty",
-        "x": 442,
-        "y": 204,
+        "x": 91.06041809257533,
+        "y": 312.4448493447836,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -102,8 +78,8 @@
         "id": "stepsd_005",
         "title": "branch",
         "displayName": "In free spins?",
-        "x": 804,
-        "y": 120,
+        "x": 490.71487967062524,
+        "y": 145.60503387307392,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -121,8 +97,8 @@
       {
         "id": "stepsd_006",
         "title": "fireCustomEvent",
-        "x": 2252,
-        "y": 120,
+        "x": 922.0444170632791,
+        "y": 37.160184528290316,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -143,33 +119,11 @@
         }
       },
       {
-        "id": "stepsd_007",
-        "title": "greaterThan",
-        "x": 1890,
-        "y": 497,
-        "rootType": "math",
-        "color": "#16a085",
-        "icon": "▶️",
-        "properties": [
-          {
-            "name": "a",
-            "type": "float"
-          },
-          {
-            "name": "b",
-            "type": "float"
-          }
-        ],
-        "propertyValues": {
-          "b": 0
-        }
-      },
-      {
         "id": "stepsd_008",
         "title": "branch",
         "displayName": "Bonus triggered?",
-        "x": 2252,
-        "y": 413,
+        "x": 903.8230545144125,
+        "y": 282.03412216079585,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -187,8 +141,8 @@
       {
         "id": "stepsd_009",
         "title": "fireCustomEvent",
-        "x": 2614,
-        "y": 413,
+        "x": 1410.0380833327351,
+        "y": 215.32475572573165,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -211,8 +165,8 @@
       {
         "id": "stepsd_010",
         "title": "fireCustomEvent",
-        "x": 2614,
-        "y": 736,
+        "x": 1371.897452729575,
+        "y": 497.45979436520327,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -235,31 +189,9 @@
     ],
     "links": [
       {
-        "id": "l_stepsd_1",
-        "from": "stepsd_001",
-        "to": "stepsd_002",
-        "propertyType": "object",
-        "propertyName": "source"
-      },
-      {
         "id": "l_stepsd_2",
         "from": "stepsd_004",
         "to": "stepsd_005",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
-      {
-        "id": "l_stepsd_3",
-        "from": "stepsd_002",
-        "to": "stepsd_007",
-        "propertyType": "float",
-        "propertyName": "a",
-        "sourceOutputName": "tier"
-      },
-      {
-        "id": "l_stepsd_4",
-        "from": "stepsd_007",
-        "to": "stepsd_008",
         "propertyType": "bool",
         "propertyName": "condition"
       },
@@ -291,14 +223,21 @@
         "id": "l_stepsd_9",
         "from": "stepsd_003",
         "to": "stepsd_005"
+      },
+      {
+        "id": "l4so82it",
+        "from": "stepsd_001",
+        "to": "stepsd_008",
+        "propertyType": "bool",
+        "propertyName": "condition"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -459.07538495861104,
-      "panY": 1.8587570619390021,
-      "scale": 0.4819930308921757
+      "panX": -342.3167576624953,
+      "panY": 48.454363206660105,
+      "scale": 0.7357788920737262
     }
   }
 }

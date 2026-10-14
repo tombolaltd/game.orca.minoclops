@@ -5,9 +5,13 @@
  * WIRE CONTRACT (shared with the editor — do not change unilaterally): ONE
  * console call per message with ONE string argument,
  *   `${humanText} orca-console:${JSON.stringify(payload)}`
- * payload = { v: 1, level, text, color?, graphId?, nodeId?, nodeTitle?, code? }.
+ * payload = { v: 1, level, text, color?, graphId?, nodeId?, nodeTitle?, code?,
+ *             sceneNodeId?, sceneNodeName?, sceneName?, sceneScope? }.
  * `graphId` is the runtime registered id (`core/<name>` / `skin/<folder>/<name>`)
- * and `nodeId` the authoring node id. The console method matches `level`.
+ * and `nodeId` the authoring FlowState node id. `sceneNodeId` is the uuid of
+ * the SCENE node a message is about, `sceneNodeName` its authored name,
+ * `sceneName` / `sceneScope` ('core' | 'skin') the scene it lives in. Every
+ * optional field is omitted when empty. The console method matches `level`.
  *
  * A leaf module with NO imports: the walker, node-ref.ts and method modules
  * all import it, so it must never join their import cycle.
@@ -27,6 +31,10 @@ export interface FlowConsoleExtra {
     graphId?: string;
     nodeId?: string;
     nodeTitle?: string;
+    sceneNodeId?: string;
+    sceneNodeName?: string;
+    sceneName?: string;
+    sceneScope?: 'core' | 'skin';
     /** Explicit attribution; `null` = none. Omitted = the current node context. */
     context?: FlowNodeContext | null;
 }
@@ -40,6 +48,10 @@ interface FlowConsolePayload {
     nodeId?: string;
     nodeTitle?: string;
     code?: string;
+    sceneNodeId?: string;
+    sceneNodeName?: string;
+    sceneName?: string;
+    sceneScope?: 'core' | 'skin';
 }
 
 const MARKER = 'orca-console:';
@@ -98,6 +110,16 @@ export function emitFlowConsole(level: FlowConsoleLevel, text: string, extra?: F
     if (nodeTitle) payload.nodeTitle = nodeTitle;
     const code = nonEmpty(extra?.code);
     if (code) payload.code = code;
+    const sceneNodeId = nonEmpty(extra?.sceneNodeId);
+    if (sceneNodeId) {
+        payload.sceneNodeId = sceneNodeId;
+        const sceneNodeName = nonEmpty(extra?.sceneNodeName);
+        if (sceneNodeName) payload.sceneNodeName = sceneNodeName;
+        const sceneName = nonEmpty(extra?.sceneName);
+        if (sceneName) payload.sceneName = sceneName;
+        const scope = extra?.sceneScope;
+        if (scope === 'core' || scope === 'skin') payload.sceneScope = scope;
+    }
 
     let line: string;
     try {

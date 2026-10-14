@@ -729,6 +729,50 @@ function resolveSymbolCells(
 }
 
 /**
+ * The symbol id VISIBLE at one cell (`getReelSymbolAt`):
+ * the live view's `symbolData.skin` (always the real id — the component
+ * decodes text-carrying virtual skins), else the pre-scroll strip; `-1` when
+ * unresolvable.
+ */
+function readVisibleSymbol(target: NodeRefLike, reelIndex: number, rowIndex: number, caller: string): number {
+    const root = getReelsRoot(target, caller);
+    if (!root) return -1;
+    const grid = getGridSize(root, caller);
+    if (!grid) return -1;
+    if (
+        typeof reelIndex !== "number" || !Number.isFinite(reelIndex) ||
+        typeof rowIndex !== "number" || !Number.isFinite(rowIndex)
+    ) {
+        console.warn(`[FlowState/reels] ${caller}: indices must be numbers, got`, reelIndex, rowIndex);
+        return -1;
+    }
+    const reel = Math.trunc(reelIndex);
+    const row = Math.trunc(rowIndex);
+    if (reel < 0 || reel >= grid.reelCount || row < 0 || row >= grid.rowCount) {
+        console.warn(
+            `[FlowState/reels] ${caller}: [${reel}][${row}] out of range (${grid.reelCount}x${grid.rowCount})`,
+        );
+        return -1;
+    }
+
+    const resolveCell = root._flowstateResolveSymbolCell;
+    if (typeof resolveCell === "function") {
+        try {
+            const view = resolveCell(reel, row);
+            const skin = view?.symbolData?.skin;
+            if (typeof skin === "number" && Number.isFinite(skin)) return Math.trunc(skin);
+        } catch (err) {
+            console.warn(`[FlowState/reels] ${caller}: cell resolve failed`, err);
+        }
+    }
+
+    // Fallback: the scrolling strip (accurate only pre-scroll).
+    const onScreen = root._flowstateReelService?.model?.onScreenReels;
+    const value = Array.isArray(onScreen) && Array.isArray(onScreen[reel]) ? onScreen[reel][row] : undefined;
+    return typeof value === "number" && Number.isFinite(value) ? Math.trunc(value) : -1;
+}
+
+/**
  * Fetch a single per-reel view by index. Returns `null` (silently — callers
  * warn with their own context) when the handle is missing or the index is
  * out of range.
@@ -2335,41 +2379,7 @@ export class GenericReelsMethods {
      * @returns Symbol index, or `-1` when unresolvable
      */
     public getReelSymbolAt(target: NodeRefLike, reelIndex: number, rowIndex: number): number {
-        const root = getReelsRoot(target, "getReelSymbolAt");
-        if (!root) return -1;
-        const grid = getGridSize(root, "getReelSymbolAt");
-        if (!grid) return -1;
-        if (
-            typeof reelIndex !== "number" || !Number.isFinite(reelIndex) ||
-            typeof rowIndex !== "number" || !Number.isFinite(rowIndex)
-        ) {
-            console.warn(`[FlowState/reels] getReelSymbolAt: indices must be numbers, got`, reelIndex, rowIndex);
-            return -1;
-        }
-        const reel = Math.trunc(reelIndex);
-        const row = Math.trunc(rowIndex);
-        if (reel < 0 || reel >= grid.reelCount || row < 0 || row >= grid.rowCount) {
-            console.warn(
-                `[FlowState/reels] getReelSymbolAt: [${reel}][${row}] out of range (${grid.reelCount}x${grid.rowCount})`,
-            );
-            return -1;
-        }
-
-        const resolveCell = root._flowstateResolveSymbolCell;
-        if (typeof resolveCell === "function") {
-            try {
-                const view = resolveCell(reel, row);
-                const skin = view?.symbolData?.skin;
-                if (typeof skin === "number" && Number.isFinite(skin)) return Math.trunc(skin);
-            } catch (err) {
-                console.warn(`[FlowState/reels] getReelSymbolAt: cell resolve failed`, err);
-            }
-        }
-
-        // Fallback: the scrolling strip (accurate only pre-scroll).
-        const onScreen = root._flowstateReelService?.model?.onScreenReels;
-        const value = Array.isArray(onScreen) && Array.isArray(onScreen[reel]) ? onScreen[reel][row] : undefined;
-        return typeof value === "number" && Number.isFinite(value) ? Math.trunc(value) : -1;
+        return readVisibleSymbol(target, reelIndex, rowIndex, "getReelSymbolAt");
     }
 
     /**
