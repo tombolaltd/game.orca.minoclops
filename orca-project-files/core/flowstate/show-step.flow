@@ -6,8 +6,8 @@
       {
         "id": "showst_note",
         "title": "Note",
-        "x": 80,
-        "y": -164,
+        "x": 1272,
+        "y": -512,
         "rootType": "note",
         "isNote": true,
         "noteText": "One cascade step: persistence splits, the ways tick, the win highlight and count-up, the max-win cap.",
@@ -18,8 +18,8 @@
         "id": "showst_005",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
+        "x": 2380,
+        "y": -228,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -39,8 +39,8 @@
       {
         "id": "showst_010",
         "title": "getGameModelProperty",
-        "x": 1396,
-        "y": 204,
+        "x": 2266.8273335571107,
+        "y": 82.6491119675444,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -58,8 +58,8 @@
       {
         "id": "showst_011",
         "title": "greaterThan",
-        "x": 1758,
-        "y": 204,
+        "x": 2608.198948709342,
+        "y": 48.16740998959904,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -74,14 +74,14 @@
           }
         ],
         "propertyValues": {
-          "b": 0
+          "b": -3
         }
       },
       {
         "id": "showst_012",
         "title": "getLength",
-        "x": 1396,
-        "y": 365,
+        "x": 2274.548061650946,
+        "y": 225.12560760832991,
         "rootType": "util",
         "color": "#7f8c8d",
         "icon": "📏",
@@ -96,8 +96,8 @@
       {
         "id": "showst_013",
         "title": "greaterThan",
-        "x": 1758,
-        "y": 365,
+        "x": 2902.6217098505135,
+        "y": 176.90697594586413,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -119,8 +119,8 @@
         "id": "showst_014",
         "title": "and",
         "friendlyTitle": "AND",
-        "x": 2120,
-        "y": 204,
+        "x": 3087.4240801206743,
+        "y": 23.957948373676174,
         "rootType": "logic",
         "color": "#3f51b5",
         "icon": "&&",
@@ -145,8 +145,8 @@
         "id": "showst_015",
         "title": "branch",
         "displayName": "Drop-ins match?",
-        "x": 2482,
-        "y": 120,
+        "x": 3498,
+        "y": -120,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -164,8 +164,8 @@
       {
         "id": "showst_026",
         "title": "getGameModelProperty",
-        "x": 3074,
-        "y": 204,
+        "x": 3544.743792752869,
+        "y": 106.72591402917496,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -183,8 +183,8 @@
       {
         "id": "showst_027",
         "title": "lessThan",
-        "x": 3436,
-        "y": 204,
+        "x": 3887.0786476704334,
+        "y": 91.9056825341575,
         "rootType": "math",
         "color": "#16a085",
         "icon": "◀️",
@@ -206,8 +206,8 @@
         "id": "showst_028",
         "title": "branch",
         "displayName": "Teach persistence?",
-        "x": 3798,
-        "y": 120,
+        "x": 4233.938006209418,
+        "y": -181.35727815481516,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -559,8 +559,8 @@
         "id": "showst_077",
         "title": "State",
         "displayName": "Pick step",
-        "x": 442,
-        "y": 120,
+        "x": 2846,
+        "y": -181.76791009698357,
         "isState": true,
         "entryTargetId": "showst_009",
         "exitSourceId": "showst_009",
@@ -707,975 +707,11 @@
         }
       },
       {
-        "id": "showst_080",
-        "title": "State",
-        "displayName": "Persist splits",
-        "x": 2844,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "showst_016",
-        "exitSourceId": "showst_003",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "showst_081",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "showst_001",
-              "title": "getGameModelProperty",
-              "x": 672,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "step"
-              }
-            },
-            {
-              "id": "showst_002",
-              "title": "parseObject",
-              "friendlyTitle": "Parse Object",
-              "x": 1034,
-              "y": 204,
-              "rootType": "objectOps",
-              "color": "#607d8b",
-              "icon": "🔎",
-              "properties": [
-                {
-                  "name": "source",
-                  "type": "object"
-                }
-              ],
-              "propertyValues": {},
-              "outputs": [
-                {
-                  "name": "newCells",
-                  "type": "ObjectArray",
-                  "path": "NewSplitCells"
-                },
-                {
-                  "name": "ways",
-                  "type": "int",
-                  "path": "WaysTotal"
-                },
-                {
-                  "name": "winPositions",
-                  "type": "ObjectArray",
-                  "path": "WinPositions"
-                },
-                {
-                  "name": "stepWin",
-                  "type": "int",
-                  "path": "StepWin"
-                },
-                {
-                  "name": "total",
-                  "type": "int",
-                  "path": "AccumulatedWin"
-                },
-                {
-                  "name": "clamped",
-                  "type": "bool",
-                  "path": "Clamped"
-                },
-                {
-                  "name": "cascade",
-                  "type": "bool",
-                  "path": "HasCascade"
-                }
-              ]
-            },
-            {
-              "id": "showst_003",
-              "title": "loop",
-              "friendlyTitle": "Repeat For Each",
-              "x": 1396,
-              "y": 120,
-              "rootType": "loop",
-              "color": "#9b59b6",
-              "icon": "🔁",
-              "properties": [
-                {
-                  "name": "items",
-                  "type": "TArray"
-                },
-                {
-                  "name": "count",
-                  "type": "int",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "count": 1
-              }
-            },
-            {
-              "id": "showst_004",
-              "title": "parseObject",
-              "friendlyTitle": "Parse Object",
-              "x": 1758,
-              "y": 718,
-              "rootType": "objectOps",
-              "color": "#607d8b",
-              "icon": "🔎",
-              "properties": [
-                {
-                  "name": "source",
-                  "type": "object"
-                }
-              ],
-              "propertyValues": {},
-              "outputs": [
-                {
-                  "name": "reel",
-                  "type": "int",
-                  "path": "Reel"
-                },
-                {
-                  "name": "row",
-                  "type": "int",
-                  "path": "Row"
-                },
-                {
-                  "name": "variant",
-                  "type": "int",
-                  "path": "Variant"
-                },
-                {
-                  "name": "badge",
-                  "type": "string",
-                  "path": "Badge"
-                }
-              ]
-            },
-            {
-              "id": "showst_016",
-              "title": "playSound",
-              "displayName": "Soft swish",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "soundName",
-                  "type": "audioRef"
-                },
-                {
-                  "name": "volume",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
-                },
-                {
-                  "name": "pitch",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "fadeIn",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "pan",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "bus",
-                  "type": "string",
-                  "default": "",
-                  "optionsFrom": "project.audio.buses"
-                }
-              ],
-              "propertyValues": {
-                "volume": 0.45,
-                "loop": false,
-                "pitch": 1,
-                "fadeIn": 0,
-                "pan": 0,
-                "bus": "",
-                "soundName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/sfx/boost.mp3"
-                }
-              }
-            },
-            {
-              "id": "showst_017",
-              "title": "stringBuilder",
-              "friendlyTitle": "String Builder",
-              "x": 2120,
-              "y": 718,
-              "rootType": "string",
-              "color": "#c0392b",
-              "icon": "🧱",
-              "properties": [
-                {
-                  "name": "part0",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part1",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part2",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part3",
-                  "type": "T",
-                  "default": ""
-                }
-              ],
-              "propertyValues": {
-                "part0": "Slash",
-                "part2": "_",
-                "part1": ""
-              }
-            },
-            {
-              "id": "showst_018",
-              "title": "findChildNode",
-              "friendlyTitle": "Find Child Node",
-              "x": 2482,
-              "y": 718,
-              "rootType": "getters",
-              "color": "#0e7c86",
-              "icon": "🔍",
-              "properties": [
-                {
-                  "name": "parent",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "path",
-                  "type": "string",
-                  "default": ""
-                }
-              ],
-              "propertyValues": {
-                "path": "",
-                "parent": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "showst_019",
-              "title": "setNodeScale",
-              "x": 2844,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "scaleX",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "scaleY",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "scaleX": 0.4,
-                "scaleY": 0.4
-              }
-            },
-            {
-              "id": "showst_020",
-              "title": "setNodeAlpha",
-              "x": 3206,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0.65
-              }
-            },
-            {
-              "id": "showst_021",
-              "title": "tweenNodeScale",
-              "displayName": "Slash",
-              "x": 3568,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "scaleX",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "scaleY",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "durationMS",
-                  "type": "int",
-                  "default": 500
-                },
-                {
-                  "name": "ease",
-                  "type": "string",
-                  "default": "power2.out",
-                  "options": [
-                    {
-                      "value": "none",
-                      "label": "None (linear)"
-                    },
-                    {
-                      "value": "power1.in",
-                      "label": "Power1 In"
-                    },
-                    {
-                      "value": "power1.out",
-                      "label": "Power1 Out"
-                    },
-                    {
-                      "value": "power1.inOut",
-                      "label": "Power1 In/Out"
-                    },
-                    {
-                      "value": "power2.in",
-                      "label": "Power2 In"
-                    },
-                    {
-                      "value": "power2.out",
-                      "label": "Power2 Out"
-                    },
-                    {
-                      "value": "power2.inOut",
-                      "label": "Power2 In/Out"
-                    },
-                    {
-                      "value": "power3.in",
-                      "label": "Power3 In"
-                    },
-                    {
-                      "value": "power3.out",
-                      "label": "Power3 Out"
-                    },
-                    {
-                      "value": "power3.inOut",
-                      "label": "Power3 In/Out"
-                    },
-                    {
-                      "value": "sine.in",
-                      "label": "Sine In"
-                    },
-                    {
-                      "value": "sine.out",
-                      "label": "Sine Out"
-                    },
-                    {
-                      "value": "sine.inOut",
-                      "label": "Sine In/Out"
-                    },
-                    {
-                      "value": "expo.in",
-                      "label": "Expo In"
-                    },
-                    {
-                      "value": "expo.out",
-                      "label": "Expo Out"
-                    },
-                    {
-                      "value": "expo.inOut",
-                      "label": "Expo In/Out"
-                    },
-                    {
-                      "value": "back.in",
-                      "label": "Back In"
-                    },
-                    {
-                      "value": "back.out",
-                      "label": "Back Out"
-                    },
-                    {
-                      "value": "back.inOut",
-                      "label": "Back In/Out"
-                    },
-                    {
-                      "value": "elastic.in",
-                      "label": "Elastic In"
-                    },
-                    {
-                      "value": "elastic.out",
-                      "label": "Elastic Out"
-                    },
-                    {
-                      "value": "elastic.inOut",
-                      "label": "Elastic In/Out"
-                    },
-                    {
-                      "value": "bounce.in",
-                      "label": "Bounce In"
-                    },
-                    {
-                      "value": "bounce.out",
-                      "label": "Bounce Out"
-                    },
-                    {
-                      "value": "bounce.inOut",
-                      "label": "Bounce In/Out"
-                    }
-                  ]
-                },
-                {
-                  "name": "easeStrength",
-                  "type": "float",
-                  "default": 1,
-                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-                },
-                {
-                  "name": "sequenceNodeOn",
-                  "type": "string",
-                  "default": "immediate",
-                  "options": [
-                    {
-                      "value": "immediate",
-                      "label": "Immediate (continue right away)"
-                    },
-                    {
-                      "value": "onComplete",
-                      "label": "On Complete (wait for tween)"
-                    }
-                  ]
-                }
-              ],
-              "propertyValues": {
-                "scaleX": 0.8,
-                "scaleY": 0.8,
-                "durationMS": 240,
-                "ease": "power2.out",
-                "easeStrength": 1,
-                "sequenceNodeOn": "immediate"
-              }
-            },
-            {
-              "id": "showst_022",
-              "title": "tweenNodeAlpha",
-              "displayName": "Slash fades",
-              "x": 3930,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "durationMS",
-                  "type": "int",
-                  "default": 500
-                },
-                {
-                  "name": "ease",
-                  "type": "string",
-                  "default": "power2.out",
-                  "options": [
-                    {
-                      "value": "none",
-                      "label": "None (linear)"
-                    },
-                    {
-                      "value": "power1.in",
-                      "label": "Power1 In"
-                    },
-                    {
-                      "value": "power1.out",
-                      "label": "Power1 Out"
-                    },
-                    {
-                      "value": "power1.inOut",
-                      "label": "Power1 In/Out"
-                    },
-                    {
-                      "value": "power2.in",
-                      "label": "Power2 In"
-                    },
-                    {
-                      "value": "power2.out",
-                      "label": "Power2 Out"
-                    },
-                    {
-                      "value": "power2.inOut",
-                      "label": "Power2 In/Out"
-                    },
-                    {
-                      "value": "power3.in",
-                      "label": "Power3 In"
-                    },
-                    {
-                      "value": "power3.out",
-                      "label": "Power3 Out"
-                    },
-                    {
-                      "value": "power3.inOut",
-                      "label": "Power3 In/Out"
-                    },
-                    {
-                      "value": "sine.in",
-                      "label": "Sine In"
-                    },
-                    {
-                      "value": "sine.out",
-                      "label": "Sine Out"
-                    },
-                    {
-                      "value": "sine.inOut",
-                      "label": "Sine In/Out"
-                    },
-                    {
-                      "value": "expo.in",
-                      "label": "Expo In"
-                    },
-                    {
-                      "value": "expo.out",
-                      "label": "Expo Out"
-                    },
-                    {
-                      "value": "expo.inOut",
-                      "label": "Expo In/Out"
-                    },
-                    {
-                      "value": "back.in",
-                      "label": "Back In"
-                    },
-                    {
-                      "value": "back.out",
-                      "label": "Back Out"
-                    },
-                    {
-                      "value": "back.inOut",
-                      "label": "Back In/Out"
-                    },
-                    {
-                      "value": "elastic.in",
-                      "label": "Elastic In"
-                    },
-                    {
-                      "value": "elastic.out",
-                      "label": "Elastic Out"
-                    },
-                    {
-                      "value": "elastic.inOut",
-                      "label": "Elastic In/Out"
-                    },
-                    {
-                      "value": "bounce.in",
-                      "label": "Bounce In"
-                    },
-                    {
-                      "value": "bounce.out",
-                      "label": "Bounce Out"
-                    },
-                    {
-                      "value": "bounce.inOut",
-                      "label": "Bounce In/Out"
-                    }
-                  ]
-                },
-                {
-                  "name": "easeStrength",
-                  "type": "float",
-                  "default": 1,
-                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-                },
-                {
-                  "name": "sequenceNodeOn",
-                  "type": "string",
-                  "default": "immediate",
-                  "options": [
-                    {
-                      "value": "immediate",
-                      "label": "Immediate (continue right away)"
-                    },
-                    {
-                      "value": "onComplete",
-                      "label": "On Complete (wait for tween)"
-                    }
-                  ]
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0,
-                "durationMS": 360,
-                "ease": "power2.in",
-                "easeStrength": 1,
-                "sequenceNodeOn": "immediate"
-              }
-            },
-            {
-              "id": "showst_023",
-              "title": "setSymbolAt",
-              "displayName": "Split symbol",
-              "friendlyTitle": "Set Symbol At",
-              "x": 4292,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "symbolIndex",
-                  "type": "int",
-                  "default": 0
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": 0,
-                "rowIndex": 0,
-                "symbolIndex": 0,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "showst_024",
-              "title": "setSymbolText",
-              "displayName": "Split badge",
-              "friendlyTitle": "Set Symbol Text",
-              "x": 4654,
-              "y": 634,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "textIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "text",
-                  "type": "string",
-                  "default": ""
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": 0,
-                "rowIndex": 0,
-                "textIndex": 0,
-                "text": "",
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "showst_025",
-              "title": "delay",
-              "friendlyTitle": "Wait",
-              "x": 5016,
-              "y": 634,
-              "rootType": "delay",
-              "color": "#8e44ad",
-              "icon": "⏱️",
-              "properties": [
-                {
-                  "name": "seconds",
-                  "type": "float"
-                }
-              ],
-              "propertyValues": {
-                "seconds": 0.06
-              }
-            },
-            {
-              "id": "showst_082",
-              "title": "Exit",
-              "x": 5378,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_showst_1",
-              "from": "showst_001",
-              "to": "showst_002",
-              "propertyType": "object",
-              "propertyName": "source"
-            },
-            {
-              "id": "l_showst_2",
-              "from": "showst_002",
-              "to": "showst_003",
-              "propertyType": "TArray",
-              "propertyName": "items",
-              "sourceOutputName": "newCells"
-            },
-            {
-              "id": "l_showst_3",
-              "from": "showst_003",
-              "to": "showst_004",
-              "propertyType": "object",
-              "propertyName": "source",
-              "sourceOutputName": "item"
-            },
-            {
-              "id": "l_showst_13",
-              "from": "showst_004",
-              "to": "showst_017",
-              "propertyType": "T",
-              "propertyName": "part1",
-              "sourceOutputName": "reel"
-            },
-            {
-              "id": "l_showst_14",
-              "from": "showst_004",
-              "to": "showst_017",
-              "propertyType": "T",
-              "propertyName": "part3",
-              "sourceOutputName": "row"
-            },
-            {
-              "id": "l_showst_15",
-              "from": "showst_017",
-              "to": "showst_018",
-              "propertyType": "string",
-              "propertyName": "path"
-            },
-            {
-              "id": "l_showst_16",
-              "from": "showst_018",
-              "to": "showst_019",
-              "propertyType": "nodeRef",
-              "propertyName": "target"
-            },
-            {
-              "id": "l_showst_17",
-              "from": "showst_018",
-              "to": "showst_020",
-              "propertyType": "nodeRef",
-              "propertyName": "target"
-            },
-            {
-              "id": "l_showst_18",
-              "from": "showst_018",
-              "to": "showst_021",
-              "propertyType": "nodeRef",
-              "propertyName": "target"
-            },
-            {
-              "id": "l_showst_19",
-              "from": "showst_018",
-              "to": "showst_022",
-              "propertyType": "nodeRef",
-              "propertyName": "target"
-            },
-            {
-              "id": "l_showst_20",
-              "from": "showst_004",
-              "to": "showst_023",
-              "propertyType": "int",
-              "propertyName": "reelIndex",
-              "sourceOutputName": "reel"
-            },
-            {
-              "id": "l_showst_21",
-              "from": "showst_004",
-              "to": "showst_023",
-              "propertyType": "int",
-              "propertyName": "rowIndex",
-              "sourceOutputName": "row"
-            },
-            {
-              "id": "l_showst_22",
-              "from": "showst_004",
-              "to": "showst_023",
-              "propertyType": "int",
-              "propertyName": "symbolIndex",
-              "sourceOutputName": "variant"
-            },
-            {
-              "id": "l_showst_23",
-              "from": "showst_004",
-              "to": "showst_024",
-              "propertyType": "int",
-              "propertyName": "reelIndex",
-              "sourceOutputName": "reel"
-            },
-            {
-              "id": "l_showst_24",
-              "from": "showst_004",
-              "to": "showst_024",
-              "propertyType": "int",
-              "propertyName": "rowIndex",
-              "sourceOutputName": "row"
-            },
-            {
-              "id": "l_showst_25",
-              "from": "showst_004",
-              "to": "showst_024",
-              "propertyType": "string",
-              "propertyName": "text",
-              "sourceOutputName": "badge"
-            },
-            {
-              "id": "l_showst_68",
-              "from": "showst_019",
-              "to": "showst_020"
-            },
-            {
-              "id": "l_showst_69",
-              "from": "showst_020",
-              "to": "showst_021"
-            },
-            {
-              "id": "l_showst_70",
-              "from": "showst_021",
-              "to": "showst_022"
-            },
-            {
-              "id": "l_showst_71",
-              "from": "showst_022",
-              "to": "showst_023"
-            },
-            {
-              "id": "l_showst_72",
-              "from": "showst_023",
-              "to": "showst_024"
-            },
-            {
-              "id": "l_showst_73",
-              "from": "showst_024",
-              "to": "showst_025"
-            },
-            {
-              "id": "l_showst_74",
-              "from": "showst_016",
-              "to": "showst_003"
-            },
-            {
-              "id": "l_showst_75",
-              "from": "showst_003",
-              "to": "showst_019",
-              "outIdx": 0
-            },
-            {
-              "id": "l_showst_76",
-              "from": "showst_081",
-              "to": "showst_016"
-            },
-            {
-              "id": "l_showst_77",
-              "from": "showst_003",
-              "to": "showst_082",
-              "outIdx": 1
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
         "id": "showst_083",
         "title": "State",
         "displayName": "Persist hint",
-        "x": 4160,
-        "y": 120,
+        "x": 4720.603536613081,
+        "y": -182.55752034060055,
         "isState": true,
         "entryTargetId": "showst_029",
         "exitSourceId": "showst_033",
@@ -2651,8 +1687,8 @@
         "id": "showst_095",
         "title": "State",
         "displayName": "Win highlight",
-        "x": 7978,
-        "y": 752,
+        "x": 7975.340695174697,
+        "y": 428.2979083644457,
         "isState": true,
         "entryTargetId": "showst_053",
         "exitSourceId": "showst_061",
@@ -4081,8 +3117,8 @@
         "id": "showst_107",
         "title": "parseObject",
         "friendlyTitle": "Parse Object",
-        "x": 1034,
-        "y": 365,
+        "x": 1870.711878909564,
+        "y": 315.4629753271213,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🔎",
@@ -4134,8 +3170,8 @@
       {
         "id": "showst_108",
         "title": "getGameModelProperty",
-        "x": 672,
-        "y": 365,
+        "x": 1529.650243043332,
+        "y": 285.29967994062474,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -4322,11 +3358,6 @@
         "sourceOutputName": "cascade"
       },
       {
-        "id": "l_showst_82",
-        "from": "showst_080",
-        "to": "showst_028"
-      },
-      {
         "id": "l_showst_83",
         "from": "showst_028",
         "to": "showst_083",
@@ -4336,12 +3367,6 @@
         "id": "l_showst_84",
         "from": "showst_077",
         "to": "showst_015"
-      },
-      {
-        "id": "l_showst_85",
-        "from": "showst_015",
-        "to": "showst_080",
-        "outIdx": 0
       },
       {
         "id": "l_showst_90",
@@ -4478,14 +3503,20 @@
         "to": "showst_107",
         "propertyType": "object",
         "propertyName": "source"
+      },
+      {
+        "id": "lbqfme89",
+        "from": "showst_015",
+        "to": "showst_028",
+        "outIdx": 0
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -1553.795961657741,
+      "panY": 188.1302636828815,
+      "scale": 0.7257303375779841
     }
   }
 }

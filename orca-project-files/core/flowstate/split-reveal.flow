@@ -17,8 +17,8 @@
       {
         "id": "splitr_001",
         "title": "getGameModelProperty",
-        "x": 442,
-        "y": 204,
+        "x": 40.322294487945925,
+        "y": 365.8887966906966,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -37,8 +37,8 @@
         "id": "splitr_002",
         "title": "parseObject",
         "friendlyTitle": "Parse Object",
-        "x": 820.5609944933832,
-        "y": 384.3308289279506,
+        "x": 464.8226835077147,
+        "y": 309.23903039270607,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🔎",
@@ -108,201 +108,8 @@
         "id": "splitr_009",
         "title": "branch",
         "displayName": "Split symbol found?",
-        "x": 1166,
-        "y": 120,
-        "rootType": "branch",
-        "color": "#d4a72c",
-        "icon": "🔀",
-        "properties": [
-          {
-            "name": "condition",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "condition": false
-        }
-      },
-      {
-        "id": "splitr_050",
-        "title": "getGameModelProperty",
-        "x": 2810,
-        "y": 204,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "teaseBonus"
-        }
-      },
-      {
-        "id": "splitr_051",
-        "title": "getGameModelProperty",
-        "x": 2448,
-        "y": 339,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "teaseHintCount"
-        }
-      },
-      {
-        "id": "splitr_052",
-        "title": "lessThan",
-        "x": 2810,
-        "y": 339,
-        "rootType": "math",
-        "color": "#16a085",
-        "icon": "◀️",
-        "properties": [
-          {
-            "name": "a",
-            "type": "float"
-          },
-          {
-            "name": "b",
-            "type": "float"
-          }
-        ],
-        "propertyValues": {
-          "b": 1
-        }
-      },
-      {
-        "id": "splitr_053",
-        "title": "and",
-        "friendlyTitle": "AND",
-        "x": 3172,
-        "y": 204,
-        "rootType": "logic",
-        "color": "#3f51b5",
-        "icon": "&&",
-        "properties": [
-          {
-            "name": "part0",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "part1",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "part0": false,
-          "part1": false
-        }
-      },
-      {
-        "id": "splitr_054",
-        "title": "branch",
-        "displayName": "First tease?",
-        "x": 3534,
-        "y": 120,
-        "rootType": "branch",
-        "color": "#d4a72c",
-        "icon": "🔀",
-        "properties": [
-          {
-            "name": "condition",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "condition": false
-        }
-      },
-      {
-        "id": "splitr_060",
-        "title": "getGameModelProperty",
-        "x": 3896,
-        "y": 658,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "splitHintCount"
-        }
-      },
-      {
-        "id": "splitr_061",
-        "title": "lessThan",
-        "x": 4258,
-        "y": 658,
-        "rootType": "math",
-        "color": "#16a085",
-        "icon": "◀️",
-        "properties": [
-          {
-            "name": "a",
-            "type": "float"
-          },
-          {
-            "name": "b",
-            "type": "float"
-          }
-        ],
-        "propertyValues": {
-          "b": 3
-        }
-      },
-      {
-        "id": "splitr_062",
-        "title": "and",
-        "friendlyTitle": "AND",
-        "x": 4620,
-        "y": 658,
-        "rootType": "logic",
-        "color": "#3f51b5",
-        "icon": "&&",
-        "properties": [
-          {
-            "name": "part0",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "part1",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "part0": false,
-          "part1": false
-        }
-      },
-      {
-        "id": "splitr_063",
-        "title": "branch",
-        "displayName": "Teach the split?",
-        "x": 4982,
-        "y": 574,
+        "x": 862.4173587095343,
+        "y": 106.65570807514436,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -320,8 +127,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 6238.2660778264935,
-        "y": 274.5692819382434,
+        "x": 1717.6731273119015,
+        "y": 138.52179353141383,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -345,11 +152,11 @@
         "id": "splitr_074",
         "title": "State",
         "displayName": "Split the cell",
-        "x": 1668.0535639555053,
-        "y": 39.9585970816145,
+        "x": 1245.2028486040062,
+        "y": 159.04974871907172,
         "isState": true,
-        "entryTargetId": "splitr_020",
-        "exitSourceId": "n4k6y93d",
+        "entryTargetId": "ntot2zfn",
+        "exitSourceId": "nkc0yp0p",
         "subgraph": {
           "nodes": [
             {
@@ -362,70 +169,11 @@
               "isEntry": true
             },
             {
-              "id": "splitr_020",
-              "title": "playSound",
-              "displayName": "Split swish",
-              "x": 159.16978103726706,
-              "y": 105.12941503184322,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "soundName",
-                  "type": "audioRef"
-                },
-                {
-                  "name": "volume",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
-                },
-                {
-                  "name": "pitch",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "fadeIn",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "pan",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "bus",
-                  "type": "string",
-                  "default": "",
-                  "optionsFrom": "project.audio.buses"
-                }
-              ],
-              "propertyValues": {
-                "volume": 0.8,
-                "loop": false,
-                "pitch": 1,
-                "fadeIn": 0,
-                "pan": 0,
-                "bus": "",
-                "soundName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/sfx/boost.mp3"
-                }
-              }
-            },
-            {
               "id": "splitr_094",
               "title": "parseObject",
               "friendlyTitle": "Parse Object",
-              "x": -235.38988082336175,
-              "y": 583.0125269605085,
+              "x": -457.52944916772935,
+              "y": 421.713732111732,
               "rootType": "objectOps",
               "color": "#607d8b",
               "icon": "🔎",
@@ -472,8 +220,8 @@
             {
               "id": "splitr_095",
               "title": "getGameModelProperty",
-              "x": -617.7819158288702,
-              "y": 578.8702940675837,
+              "x": -798.8893346064438,
+              "y": 433.13541802000503,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -491,8 +239,8 @@
             {
               "id": "splitr_076",
               "title": "Exit",
-              "x": 990.7984751895856,
-              "y": 234.99378883345224,
+              "x": 254.71115264853825,
+              "y": 143.18779760338845,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -518,54 +266,22 @@
               }
             },
             {
-              "id": "nrqjkrnx",
-              "title": "playSymbolAnimation",
-              "friendlyTitle": "Play Symbol Animation",
-              "x": 633.2074058517429,
-              "y": 104.70656002983057,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
+              "id": "npnsrmos",
+              "title": "getReelSymbolSpines",
+              "friendlyTitle": "Get Reel Symbol Spines",
+              "x": -47.625209963140634,
+              "y": 439.35285287844425,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🎰",
               "isStarter": false,
               "properties": [
                 {
                   "name": "target",
                   "type": "nodeRef",
                   "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "animationName",
-                  "type": "string",
-                  "default": ""
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
                 }
-              ],
-              "propertyValues": {
-                "reelIndex": 0,
-                "rowIndex": 0,
-                "animationName": "",
-                "loop": false,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
+              ]
             }
           ],
           "links": [
@@ -582,9 +298,9 @@
               "to": "ntot2zfn"
             },
             {
-              "id": "l0ehtzlv",
+              "id": "leqv25kd",
               "from": "ntot2zfn",
-              "to": "splitr_020"
+              "to": "splitr_076"
             }
           ],
           "groups": []
@@ -594,8 +310,8 @@
         "id": "splitr_077",
         "title": "State",
         "displayName": "Split card",
-        "x": 1907.6745786204199,
-        "y": 42.89647834435765,
+        "x": 1163.5144669419346,
+        "y": -58.52434223564606,
         "isState": true,
         "entryTargetId": "splitr_032",
         "exitSourceId": "splitr_040",
@@ -1266,8 +982,8 @@
         "id": "splitr_080",
         "title": "State",
         "displayName": "Matching cells",
-        "x": 2223.9356782808886,
-        "y": 104.02218717866307,
+        "x": 1469.5752998610922,
+        "y": -48.09231177845794,
         "isState": true,
         "entryTargetId": "splitr_006",
         "exitSourceId": "splitr_006",
@@ -1470,12 +1186,7 @@
               ],
               "propertyValues": {
                 "path": "",
-                "parent": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "parent": null
               }
             },
             {
@@ -1701,8 +1412,8 @@
               "id": "splitr_046",
               "title": "tweenNodeAlpha",
               "displayName": "Slash fades",
-              "x": 3992.2924475368163,
-              "y": 720.0939907672185,
+              "x": 4089.4241064472485,
+              "y": 370.4200186896641,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1863,8 +1574,8 @@
               "title": "setSymbolAt",
               "displayName": "Split symbol",
               "friendlyTitle": "Set Symbol At",
-              "x": 4428.4441974658075,
-              "y": 1039.950362048936,
+              "x": 4472.5489171411655,
+              "y": 792.1238419683515,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1907,8 +1618,8 @@
               "title": "setSymbolText",
               "displayName": "Split badge",
               "friendlyTitle": "Set Symbol Text",
-              "x": 4574.523429004751,
-              "y": 369.9674753016634,
+              "x": 5046.685463388471,
+              "y": 523.2676279283822,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1956,8 +1667,8 @@
               "id": "splitr_049",
               "title": "delay",
               "friendlyTitle": "Wait",
-              "x": 5016,
-              "y": 443,
+              "x": 5521.547298712826,
+              "y": 433.98842439601435,
               "rootType": "delay",
               "color": "#8e44ad",
               "icon": "⏱️",
@@ -1974,8 +1685,8 @@
             {
               "id": "splitr_082",
               "title": "Exit",
-              "x": 5378,
-              "y": 120,
+              "x": 2302,
+              "y": 132,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -2169,373 +1880,11 @@
         }
       },
       {
-        "id": "splitr_083",
-        "title": "State",
-        "displayName": "Tease hint",
-        "x": 5114,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "splitr_055",
-        "exitSourceId": "splitr_059",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "splitr_084",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "splitr_055",
-              "title": "setChildrenVisible",
-              "displayName": "Hide hints",
-              "friendlyTitle": "Set Children Visible",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "visible",
-                  "type": "bool",
-                  "default": false
-                }
-              ],
-              "propertyValues": {
-                "visible": false,
-                "target": null
-              }
-            },
-            {
-              "id": "splitr_056",
-              "title": "showNode",
-              "displayName": "Show tease hint",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "splitr_057",
-              "title": "getGameModelProperty",
-              "x": 1034,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "teaseHintCount"
-              }
-            },
-            {
-              "id": "splitr_058",
-              "title": "add",
-              "x": 1396,
-              "y": 204,
-              "rootType": "math",
-              "color": "#16a085",
-              "icon": "➕",
-              "properties": [
-                {
-                  "name": "a",
-                  "type": "T"
-                },
-                {
-                  "name": "b",
-                  "type": "T"
-                }
-              ],
-              "propertyValues": {
-                "b": 1
-              }
-            },
-            {
-              "id": "splitr_059",
-              "title": "setGameModelProperty",
-              "displayName": "Count tease hint",
-              "x": 1758,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "teaseHintCount"
-              }
-            },
-            {
-              "id": "splitr_085",
-              "title": "Exit",
-              "x": 2120,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_splitr_52",
-              "from": "splitr_057",
-              "to": "splitr_058",
-              "propertyType": "T",
-              "propertyName": "a"
-            },
-            {
-              "id": "l_splitr_53",
-              "from": "splitr_058",
-              "to": "splitr_059",
-              "propertyType": "dynamic",
-              "propertyName": "value"
-            },
-            {
-              "id": "l_splitr_99",
-              "from": "splitr_055",
-              "to": "splitr_056"
-            },
-            {
-              "id": "l_splitr_100",
-              "from": "splitr_056",
-              "to": "splitr_059"
-            },
-            {
-              "id": "l_splitr_101",
-              "from": "splitr_084",
-              "to": "splitr_055"
-            },
-            {
-              "id": "l_splitr_102",
-              "from": "splitr_059",
-              "to": "splitr_085"
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
-        "id": "splitr_086",
-        "title": "State",
-        "displayName": "Split hint",
-        "x": 5465.447292951478,
-        "y": 312.704309104398,
-        "isState": true,
-        "entryTargetId": "splitr_064",
-        "exitSourceId": "splitr_068",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "splitr_087",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "splitr_064",
-              "title": "setChildrenVisible",
-              "displayName": "Hide hints",
-              "friendlyTitle": "Set Children Visible",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "visible",
-                  "type": "bool",
-                  "default": false
-                }
-              ],
-              "propertyValues": {
-                "visible": false,
-                "target": null
-              }
-            },
-            {
-              "id": "splitr_065",
-              "title": "showNode",
-              "displayName": "Show split hint",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "splitr_066",
-              "title": "getGameModelProperty",
-              "x": 1034,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "splitHintCount"
-              }
-            },
-            {
-              "id": "splitr_067",
-              "title": "add",
-              "x": 1396,
-              "y": 204,
-              "rootType": "math",
-              "color": "#16a085",
-              "icon": "➕",
-              "properties": [
-                {
-                  "name": "a",
-                  "type": "T"
-                },
-                {
-                  "name": "b",
-                  "type": "T"
-                }
-              ],
-              "propertyValues": {
-                "b": 1
-              }
-            },
-            {
-              "id": "splitr_068",
-              "title": "setGameModelProperty",
-              "displayName": "Count split hint",
-              "x": 1758,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "splitHintCount"
-              }
-            },
-            {
-              "id": "splitr_088",
-              "title": "Exit",
-              "x": 2120,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_splitr_58",
-              "from": "splitr_066",
-              "to": "splitr_067",
-              "propertyType": "T",
-              "propertyName": "a"
-            },
-            {
-              "id": "l_splitr_59",
-              "from": "splitr_067",
-              "to": "splitr_068",
-              "propertyType": "dynamic",
-              "propertyName": "value"
-            },
-            {
-              "id": "l_splitr_103",
-              "from": "splitr_064",
-              "to": "splitr_065"
-            },
-            {
-              "id": "l_splitr_104",
-              "from": "splitr_065",
-              "to": "splitr_068"
-            },
-            {
-              "id": "l_splitr_105",
-              "from": "splitr_087",
-              "to": "splitr_064"
-            },
-            {
-              "id": "l_splitr_106",
-              "from": "splitr_068",
-              "to": "splitr_088"
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
         "id": "splitr_089",
         "title": "State",
         "displayName": "Hotspot out",
-        "x": 5975.1440888397265,
-        "y": 320.57204441986346,
+        "x": 1480.2960119847744,
+        "y": 162.70707374177516,
         "isState": true,
         "entryTargetId": "splitr_069",
         "exitSourceId": "splitr_069",
@@ -2760,118 +2109,6 @@
         "sourceOutputName": "found"
       },
       {
-        "id": "l_splitr_48",
-        "from": "splitr_051",
-        "to": "splitr_052",
-        "propertyType": "float",
-        "propertyName": "a"
-      },
-      {
-        "id": "l_splitr_49",
-        "from": "splitr_050",
-        "to": "splitr_053",
-        "propertyType": "bool",
-        "propertyName": "part0"
-      },
-      {
-        "id": "l_splitr_50",
-        "from": "splitr_052",
-        "to": "splitr_053",
-        "propertyType": "bool",
-        "propertyName": "part1"
-      },
-      {
-        "id": "l_splitr_51",
-        "from": "splitr_053",
-        "to": "splitr_054",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
-      {
-        "id": "l_splitr_54",
-        "from": "splitr_060",
-        "to": "splitr_061",
-        "propertyType": "float",
-        "propertyName": "a"
-      },
-      {
-        "id": "l_splitr_55",
-        "from": "splitr_002",
-        "to": "splitr_062",
-        "propertyType": "bool",
-        "propertyName": "part0",
-        "sourceOutputName": "found"
-      },
-      {
-        "id": "l_splitr_56",
-        "from": "splitr_061",
-        "to": "splitr_062",
-        "propertyType": "bool",
-        "propertyName": "part1"
-      },
-      {
-        "id": "l_splitr_57",
-        "from": "splitr_062",
-        "to": "splitr_063",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
-      {
-        "id": "l_splitr_77",
-        "from": "splitr_074",
-        "to": "splitr_077"
-      },
-      {
-        "id": "l_splitr_88",
-        "from": "splitr_077",
-        "to": "splitr_080"
-      },
-      {
-        "id": "l_splitr_89",
-        "from": "splitr_009",
-        "to": "splitr_080",
-        "outIdx": 1
-      },
-      {
-        "id": "l_splitr_107",
-        "from": "splitr_063",
-        "to": "splitr_086",
-        "outIdx": 0
-      },
-      {
-        "id": "l_splitr_108",
-        "from": "splitr_080",
-        "to": "splitr_054"
-      },
-      {
-        "id": "l_splitr_109",
-        "from": "splitr_054",
-        "to": "splitr_083",
-        "outIdx": 0
-      },
-      {
-        "id": "l_splitr_110",
-        "from": "splitr_054",
-        "to": "splitr_063",
-        "outIdx": 1
-      },
-      {
-        "id": "l_splitr_111",
-        "from": "splitr_083",
-        "to": "splitr_089"
-      },
-      {
-        "id": "l_splitr_112",
-        "from": "splitr_086",
-        "to": "splitr_089"
-      },
-      {
-        "id": "l_splitr_113",
-        "from": "splitr_063",
-        "to": "splitr_089",
-        "outIdx": 1
-      },
-      {
         "id": "l_splitr_116",
         "from": "splitr_089",
         "to": "splitr_070"
@@ -2886,14 +2123,19 @@
         "from": "splitr_009",
         "to": "splitr_074",
         "outIdx": 0
+      },
+      {
+        "id": "lba2bnrl",
+        "from": "splitr_074",
+        "to": "splitr_089"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -635.2391736835502,
-      "panY": 68.2268204352595,
-      "scale": 0.5807267460015499
+      "panX": 460.8973136656214,
+      "panY": -22.073652346120582,
+      "scale": 0.6308842605388022
     }
   }
 }

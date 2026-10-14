@@ -17,12 +17,14 @@
       {
         "id": "bonuss_005",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -32,24 +34,22 @@
         ],
         "propertyValues": {
           "eventName": "bonusStart"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonuss_006",
         "title": "onEnterBonusRound",
+        "displayName": "Resumed in free spins",
+        "friendlyTitle": "On Bonus Start",
         "x": 190,
         "y": 461,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Bonus Start",
         "color": "#ff6b35",
         "icon": "▶️",
         "isStarter": true,
         "starterNodeType": "application",
         "properties": [],
-        "propertyValues": {},
-        "displayName": "Resumed in free spins"
+        "propertyValues": {}
       },
       {
         "id": "bonuss_050",
@@ -73,10 +73,10 @@
       {
         "id": "bonuss_051",
         "title": "not",
+        "friendlyTitle": "NOT",
         "x": 1724,
         "y": 204,
         "rootType": "logic",
-        "friendlyTitle": "NOT",
         "color": "#3f51b5",
         "icon": "!",
         "properties": [
@@ -93,8 +93,9 @@
       {
         "id": "bonuss_052",
         "title": "branch",
-        "x": 2086,
-        "y": 120,
+        "displayName": "First bonus?",
+        "x": 2069.3333333333335,
+        "y": 56.666666666666686,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -107,16 +108,15 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "First bonus?"
+        }
       },
       {
         "id": "bonuss_059",
         "title": "not",
+        "friendlyTitle": "NOT",
         "x": 3632,
         "y": 204,
         "rootType": "logic",
-        "friendlyTitle": "NOT",
         "color": "#3f51b5",
         "icon": "!",
         "properties": [
@@ -133,6 +133,7 @@
       {
         "id": "bonuss_060",
         "title": "branch",
+        "displayName": "Spins to play?",
         "x": 3994,
         "y": 120,
         "rootType": "branch",
@@ -147,8 +148,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Spins to play?"
+        }
       },
       {
         "id": "bonuss_061",
@@ -200,10 +200,10 @@
       },
       {
         "id": "bonuss_063",
-        "x": 442,
-        "y": 120,
         "title": "State",
         "displayName": "Lock cabinet",
+        "x": 442,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_007",
         "exitSourceId": "bonuss_011",
@@ -211,12 +211,12 @@
           "nodes": [
             {
               "id": "bonuss_064",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_007",
@@ -243,10 +243,10 @@
             {
               "id": "bonuss_009",
               "title": "setInBonusRound",
+              "friendlyTitle": "Set In Bonus Round",
               "x": 919,
               "y": 120,
               "rootType": "Game State",
-              "friendlyTitle": "Set In Bonus Round",
               "color": "#9b59b6",
               "icon": "🎮",
               "properties": [
@@ -263,6 +263,7 @@
             {
               "id": "bonuss_010",
               "title": "hideNode",
+              "displayName": "Close tutorial",
               "x": 1281,
               "y": 120,
               "rootType": "Action",
@@ -276,12 +277,12 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Close tutorial"
+              }
             },
             {
               "id": "bonuss_011",
               "title": "hideNode",
+              "displayName": "Close help",
               "x": 1643,
               "y": 120,
               "rootType": "Action",
@@ -295,17 +296,16 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Close help"
+              }
             },
             {
               "id": "bonuss_065",
+              "title": "Exit",
               "x": 2005,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -339,15 +339,16 @@
               "from": "bonuss_011",
               "to": "bonuss_065"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_066",
-        "x": 672,
-        "y": 120,
         "title": "State",
         "displayName": "Bonus models",
+        "x": 672,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_012",
         "exitSourceId": "bonuss_018",
@@ -355,12 +356,12 @@
           "nodes": [
             {
               "id": "bonuss_067",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_001",
@@ -384,10 +385,10 @@
             {
               "id": "bonuss_002",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 1758,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -396,6 +397,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "number",
@@ -412,17 +414,18 @@
                   "type": "int",
                   "path": "Remaining"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_012",
               "title": "setGameModelProperty",
+              "displayName": "In free spins",
               "x": 310,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -435,21 +438,21 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "inBonus",
                 "value": true
-              },
-              "displayName": "In free spins"
+              }
             },
             {
               "id": "bonuss_013",
               "title": "setGameModelProperty",
+              "displayName": "Round busy",
               "x": 672,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -462,21 +465,21 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "roundBusy",
                 "value": true
-              },
-              "displayName": "Round busy"
+              }
             },
             {
               "id": "bonuss_014",
               "title": "setGameModelProperty",
+              "displayName": "Tutorial seen",
               "x": 1034,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -489,21 +492,21 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "tutorialSeen",
                 "value": true
-              },
-              "displayName": "Tutorial seen"
+              }
             },
             {
               "id": "bonuss_015",
               "title": "setGameModelProperty",
+              "displayName": "Spins played",
               "x": 2120,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -516,20 +519,20 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "bonusSpinsPlayed"
-              },
-              "displayName": "Spins played"
+              }
             },
             {
               "id": "bonuss_016",
               "title": "setGameModelProperty",
+              "displayName": "Spins awarded",
               "x": 2482,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -542,11 +545,9 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "bonusSpinsTotal"
-              },
-              "displayName": "Spins awarded"
+              }
             },
             {
               "id": "bonuss_017",
@@ -570,11 +571,13 @@
             {
               "id": "bonuss_018",
               "title": "setGameModelProperty",
+              "displayName": "Win so far",
               "x": 3206,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -587,20 +590,18 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "winAmountSoFar"
-              },
-              "displayName": "Win so far"
+              }
             },
             {
               "id": "bonuss_068",
+              "title": "Exit",
               "x": 3568,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -669,15 +670,16 @@
               "from": "bonuss_018",
               "to": "bonuss_068"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_069",
-        "x": 902,
-        "y": 120,
         "title": "State",
         "displayName": "Bonus look",
+        "x": 902,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_019",
         "exitSourceId": "bonuss_033",
@@ -685,12 +687,12 @@
           "nodes": [
             {
               "id": "bonuss_070",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_003",
@@ -714,10 +716,10 @@
             {
               "id": "bonuss_004",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 6102,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -726,6 +728,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "tier",
@@ -737,12 +740,12 @@
                   "type": "bool",
                   "path": "GameComplete"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_019",
               "title": "crossfadeMusic",
+              "displayName": "Bonus music",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -772,8 +775,7 @@
                   "path": "assets/audio/music/bonus-loop.mp3"
                 },
                 "duration": 1
-              },
-              "displayName": "Bonus music"
+              }
             },
             {
               "id": "bonuss_020",
@@ -807,6 +809,7 @@
             {
               "id": "bonuss_021",
               "title": "showNode",
+              "displayName": "Bonus background",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -825,12 +828,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Bonus background"
+              }
             },
             {
               "id": "bonuss_022",
               "title": "tweenNodeAlpha",
+              "displayName": "Background fades in",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -992,16 +995,15 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Background fades in"
+              }
             },
             {
               "id": "bonuss_023",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 2482,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -1029,6 +1031,7 @@
             {
               "id": "bonuss_024",
               "title": "setText",
+              "displayName": "Spins left",
               "x": 2844,
               "y": 120,
               "rootType": "Action",
@@ -1052,12 +1055,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Spins left"
+              }
             },
             {
               "id": "bonuss_025",
               "title": "hideNode",
+              "displayName": "Hide bonus tiers",
               "x": 3206,
               "y": 120,
               "rootType": "Action",
@@ -1071,8 +1074,7 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Hide bonus tiers"
+              }
             },
             {
               "id": "bonuss_026",
@@ -1112,6 +1114,7 @@
             {
               "id": "bonuss_027",
               "title": "showNode",
+              "displayName": "Show spin counter",
               "x": 3930,
               "y": 120,
               "rootType": "Action",
@@ -1130,8 +1133,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Show spin counter"
+              }
             },
             {
               "id": "bonuss_028",
@@ -1155,12 +1157,13 @@
             {
               "id": "bonuss_029",
               "title": "formatMoney",
+              "friendlyTitle": "Format Money",
               "x": 4654,
               "y": 204,
               "rootType": "Info & UI",
-              "friendlyTitle": "Format Money",
               "color": "#1abc9c",
               "icon": "📊",
+              "overrideNodeType": "property",
               "properties": [
                 {
                   "name": "amount",
@@ -1176,12 +1179,12 @@
               "propertyValues": {
                 "amount": 0,
                 "rounded": false
-              },
-              "overrideNodeType": "property"
+              }
             },
             {
               "id": "bonuss_030",
               "title": "setText",
+              "displayName": "Win so far",
               "x": 5016,
               "y": 120,
               "rootType": "Action",
@@ -1205,12 +1208,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Win so far"
+              }
             },
             {
               "id": "bonuss_031",
               "title": "setCabinetMessage",
+              "displayName": "Cabinet label",
               "x": 5378,
               "y": 120,
               "rootType": "Action",
@@ -1241,16 +1244,15 @@
                 "instant": true,
                 "messagePortrait": "FREE SPINS",
                 "messageLandscape": "FREE SPINS"
-              },
-              "displayName": "Cabinet label"
+              }
             },
             {
               "id": "bonuss_032",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 6464,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -1284,6 +1286,7 @@
             {
               "id": "bonuss_033",
               "title": "setText",
+              "displayName": "Bonus header",
               "x": 6826,
               "y": 120,
               "rootType": "Action",
@@ -1302,16 +1305,15 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Bonus header"
+              }
             },
             {
               "id": "bonuss_081",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 2120,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -1320,6 +1322,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "number",
@@ -1336,8 +1339,7 @@
                   "type": "int",
                   "path": "Remaining"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_082",
@@ -1360,12 +1362,12 @@
             },
             {
               "id": "bonuss_071",
+              "title": "Exit",
               "x": 7188,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1503,15 +1505,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_072",
-        "x": 1132,
-        "y": 120,
         "title": "State",
         "displayName": "Bonus banner",
+        "x": 1132,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_035",
         "exitSourceId": "bonuss_049",
@@ -1519,20 +1522,20 @@
           "nodes": [
             {
               "id": "bonuss_073",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_034",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 1034,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -1555,6 +1558,7 @@
             {
               "id": "bonuss_035",
               "title": "setText",
+              "displayName": "Spins text",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -1573,16 +1577,15 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Spins text"
+              }
             },
             {
               "id": "bonuss_036",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 2482,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -1605,6 +1608,7 @@
             {
               "id": "bonuss_037",
               "title": "setText",
+              "displayName": "Tier text",
               "x": 2844,
               "y": 120,
               "rootType": "Action",
@@ -1623,8 +1627,7 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Tier text"
+              }
             },
             {
               "id": "bonuss_038",
@@ -1648,10 +1651,10 @@
             {
               "id": "bonuss_039",
               "title": "not",
+              "friendlyTitle": "NOT",
               "x": 3568,
               "y": 204,
               "rootType": "logic",
-              "friendlyTitle": "NOT",
               "color": "#3f51b5",
               "icon": "!",
               "properties": [
@@ -1668,6 +1671,7 @@
             {
               "id": "bonuss_040",
               "title": "setNodeVisible",
+              "displayName": "Rules first time",
               "x": 3930,
               "y": 120,
               "rootType": "Action",
@@ -1687,8 +1691,7 @@
               "propertyValues": {
                 "visible": true,
                 "target": null
-              },
-              "displayName": "Rules first time"
+              }
             },
             {
               "id": "bonuss_041",
@@ -1712,6 +1715,7 @@
             {
               "id": "bonuss_042",
               "title": "setNodeVisible",
+              "displayName": "Reminder on repeats",
               "x": 4654,
               "y": 120,
               "rootType": "Action",
@@ -1731,8 +1735,7 @@
               "propertyValues": {
                 "visible": true,
                 "target": null
-              },
-              "displayName": "Reminder on repeats"
+              }
             },
             {
               "id": "bonuss_043",
@@ -1791,6 +1794,7 @@
             {
               "id": "bonuss_045",
               "title": "showNode",
+              "displayName": "Show banner",
               "x": 5740,
               "y": 120,
               "rootType": "Action",
@@ -1804,8 +1808,7 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Show banner"
+              }
             },
             {
               "id": "bonuss_046",
@@ -2035,6 +2038,7 @@
             {
               "id": "bonuss_048",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade banner in",
               "x": 6826,
               "y": 120,
               "rootType": "Action",
@@ -2191,16 +2195,15 @@
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete",
                 "target": null
-              },
-              "displayName": "Fade banner in"
+              }
             },
             {
               "id": "bonuss_049",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 7188,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -2216,10 +2219,10 @@
             {
               "id": "bonuss_083",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 672,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -2228,6 +2231,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "number",
@@ -2244,8 +2248,7 @@
                   "type": "int",
                   "path": "Remaining"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_084",
@@ -2269,10 +2272,10 @@
             {
               "id": "bonuss_085",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 2120,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -2281,6 +2284,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "tier",
@@ -2292,8 +2296,7 @@
                   "type": "bool",
                   "path": "GameComplete"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_086",
@@ -2316,12 +2319,12 @@
             },
             {
               "id": "bonuss_074",
+              "title": "Exit",
               "x": 7550,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2450,15 +2453,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_075",
-        "x": 2448,
-        "y": 120,
         "title": "State",
         "displayName": "Teach the bonus",
+        "x": 2458,
+        "y": 66.66666666666666,
         "isState": true,
         "entryTargetId": "bonuss_053",
         "exitSourceId": "bonuss_054",
@@ -2466,20 +2470,20 @@
           "nodes": [
             {
               "id": "bonuss_076",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_053",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 310,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -2495,11 +2499,13 @@
             {
               "id": "bonuss_054",
               "title": "setGameModelProperty",
+              "displayName": "Bonus taught",
               "x": 672,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -2512,21 +2518,19 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "bonusTutorialSeen",
                 "value": true
-              },
-              "displayName": "Bonus taught"
+              }
             },
             {
               "id": "bonuss_077",
+              "title": "Exit",
               "x": 1034,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2545,15 +2549,16 @@
               "from": "bonuss_054",
               "to": "bonuss_077"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_078",
-        "x": 2678,
-        "y": 120,
         "title": "State",
         "displayName": "Banner out",
+        "x": 2689.666666666667,
+        "y": 158.33333333333334,
         "isState": true,
         "entryTargetId": "bonuss_055",
         "exitSourceId": "bonuss_058",
@@ -2561,16 +2566,17 @@
           "nodes": [
             {
               "id": "bonuss_079",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_055",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade banner out",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -2727,8 +2733,7 @@
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete",
                 "target": null
-              },
-              "displayName": "Fade banner out"
+              }
             },
             {
               "id": "bonuss_056",
@@ -2775,10 +2780,10 @@
             {
               "id": "bonuss_058",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 1396,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -2793,12 +2798,12 @@
             },
             {
               "id": "bonuss_080",
+              "title": "Exit",
               "x": 1758,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2827,16 +2832,17 @@
               "from": "bonuss_058",
               "to": "bonuss_080"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_087",
         "title": "parseObject",
+        "friendlyTitle": "Parse Object",
         "x": 3270,
         "y": 204,
         "rootType": "objectOps",
-        "friendlyTitle": "Parse Object",
         "color": "#607d8b",
         "icon": "🔎",
         "properties": [
@@ -2845,6 +2851,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "tier",
@@ -2856,14 +2863,13 @@
             "type": "bool",
             "path": "GameComplete"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "bonuss_088",
         "title": "getGameModelProperty",
-        "x": 2908,
-        "y": 204,
+        "x": 2874.666666666667,
+        "y": 259,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -2981,11 +2987,12 @@
         "propertyName": "source"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -1741.2659003686476,
+      "panY": 8.19058086699141,
+      "scale": 0.5995501687078204
     }
   }
 }

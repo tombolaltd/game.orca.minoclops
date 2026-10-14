@@ -6,7 +6,7 @@
       "isJackpot": false,
       "runtimeGameId": "samsplit",
       "runtimeGameIdLocked": true,
-      "tileName": "samsplit"
+      "tileName": "minoclop"
     }
   ],
   "activeSkin": "samsplit",
@@ -51,7 +51,9 @@
   "coreSceneOrder": [
     "main"
   ],
-  "skinSceneOrder": {},
+  "skinSceneOrder": {
+    "samsplit": []
+  },
   "lastOpenedScene": {
     "scope": "core",
     "name": "main"
@@ -516,5 +518,6 @@
     "sceneAssetRefs": true,
     "reelsSymbolMode": true
   },
-  "schemaVersion": 138
+  "schemaVersion": 139,
+  "skinsConsolidated": true
 }

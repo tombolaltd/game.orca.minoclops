@@ -1120,8 +1120,8 @@
         "id": "gamebo_069",
         "title": "State",
         "displayName": "Split tutorial",
-        "x": 1924,
-        "y": 120,
+        "x": 1928.1434997527758,
+        "y": 49.56050420281133,
         "isState": true,
         "entryTargetId": "gamebo_034",
         "exitSourceId": "gamebo_037",
@@ -2185,9 +2185,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -67.49716871998706,
-      "panY": 187.67356567016006,
-      "scale": 0.48268375029108285
+      "panX": -36.74585529497392,
+      "panY": 183.4198358902505,
+      "scale": 0.46806710757895065
     }
   }
 }

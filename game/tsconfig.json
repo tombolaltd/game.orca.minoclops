@@ -59,6 +59,7 @@
     // the scripts mirror above: one half-finished component must not fail the
     // whole game build. Components actually registered in
     // `generated-custom-components.ts` stay fully type-checked via ts-loader.
-    "src/core/services/orca/custom-components"
+    "src/core/services/orca/custom-components",
+    "src/**/*.orca-edit.ts"
   ]
 }

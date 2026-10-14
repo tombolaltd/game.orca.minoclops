@@ -56,9 +56,7 @@
             "properties": [
               {
                 "name": "items",
-                "type": "TArray",
-                "sourceNodeId": "cascad_031",
-                "sourceOutputName": "wins"
+                "type": "TArray"
               },
               {
                 "name": "count",
@@ -162,209 +160,6 @@
             ]
           },
           {
-            "id": "cascad_010",
-            "title": "stringBuilder",
-            "rootType": "string",
-            "properties": [
-              {
-                "name": "part0",
-                "type": "T",
-                "value": "Burst"
-              },
-              {
-                "name": "part1",
-                "type": "T",
-                "sourceNodeId": "cascad_006",
-                "sourceOutputName": "reel"
-              },
-              {
-                "name": "part2",
-                "type": "T",
-                "value": "_"
-              },
-              {
-                "name": "part3",
-                "type": "T",
-                "sourceNodeId": "cascad_006",
-                "sourceOutputName": "row"
-              }
-            ]
-          },
-          {
-            "id": "cascad_011",
-            "title": "findChildNode",
-            "rootType": "getters",
-            "properties": [
-              {
-                "name": "parent",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_bursts",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "path",
-                "type": "string",
-                "sourceNodeId": "cascad_010"
-              }
-            ]
-          },
-          {
-            "id": "cascad_012",
-            "title": "setNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "cascad_011"
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 0.08
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 0.08
-              }
-            ]
-          },
-          {
-            "id": "cascad_013",
-            "title": "setNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "cascad_011"
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "cascad_014",
-            "title": "tweenNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "cascad_011"
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 0.3
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 0.3
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 380
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          },
-          {
-            "id": "cascad_015",
-            "title": "tweenNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "cascad_011"
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 380
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.in"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          },
-          {
-            "id": "cascad_031",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "cascad_032"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "badges",
-                "type": "ObjectArray",
-                "path": "CascadeBadges"
-              },
-              {
-                "name": "clear",
-                "type": "IntArray",
-                "path": "ClearLocations"
-              },
-              {
-                "name": "grid",
-                "type": "IntArray",
-                "path": "CascadeGrid"
-              },
-              {
-                "name": "wins",
-                "type": "ObjectArray",
-                "path": "WinPositions"
-              }
-            ]
-          },
-          {
             "id": "cascad_032",
             "title": "getGameModelProperty",
             "rootType": "properties",
@@ -384,14 +179,6 @@
         ],
         "links": [
           {
-            "id": "l_cascad_4",
-            "from": "cascad_031",
-            "to": "cascad_005",
-            "propertyType": "TArray",
-            "propertyName": "items",
-            "sourceOutputName": "wins"
-          },
-          {
             "id": "l_cascad_5",
             "from": "cascad_005",
             "to": "cascad_006",
@@ -400,86 +187,14 @@
             "sourceOutputName": "item"
           },
           {
-            "id": "l_cascad_6",
-            "from": "cascad_006",
-            "to": "cascad_010",
-            "propertyType": "T",
-            "propertyName": "part1",
-            "sourceOutputName": "reel"
-          },
-          {
-            "id": "l_cascad_7",
-            "from": "cascad_006",
-            "to": "cascad_010",
-            "propertyType": "T",
-            "propertyName": "part3",
-            "sourceOutputName": "row"
-          },
-          {
-            "id": "l_cascad_8",
-            "from": "cascad_010",
-            "to": "cascad_011",
-            "propertyType": "string",
-            "propertyName": "path"
-          },
-          {
-            "id": "l_cascad_9",
-            "from": "cascad_011",
-            "to": "cascad_012",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l_cascad_10",
-            "from": "cascad_011",
-            "to": "cascad_013",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l_cascad_11",
-            "from": "cascad_011",
-            "to": "cascad_014",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l_cascad_12",
-            "from": "cascad_011",
-            "to": "cascad_015",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
             "id": "l_cascad_20",
             "from": "cascad_008",
             "to": "cascad_009"
           },
           {
-            "id": "l_cascad_21",
-            "from": "cascad_012",
-            "to": "cascad_013"
-          },
-          {
-            "id": "l_cascad_22",
-            "from": "cascad_013",
-            "to": "cascad_014"
-          },
-          {
-            "id": "l_cascad_23",
-            "from": "cascad_014",
-            "to": "cascad_015"
-          },
-          {
             "id": "l_cascad_24",
             "from": "cascad_009",
             "to": "cascad_005"
-          },
-          {
-            "id": "l_cascad_25",
-            "from": "cascad_005",
-            "to": "cascad_012",
-            "outIdx": 0
           },
           {
             "id": "l_cascad_26",
@@ -491,13 +206,6 @@
             "from": "cascad_005",
             "to": "cascad_024",
             "outIdx": 1
-          },
-          {
-            "id": "l_cascad_38",
-            "from": "cascad_032",
-            "to": "cascad_031",
-            "propertyType": "object",
-            "propertyName": "source"
           }
         ]
       }

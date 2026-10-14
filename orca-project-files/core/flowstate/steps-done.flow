@@ -36,10 +36,10 @@
       {
         "id": "stepsd_002",
         "title": "parseObject",
+        "friendlyTitle": "Parse Object",
         "x": 1528,
         "y": 497,
         "rootType": "objectOps",
-        "friendlyTitle": "Parse Object",
         "color": "#607d8b",
         "icon": "🔎",
         "properties": [
@@ -48,24 +48,26 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "tier",
             "type": "int",
             "path": "BonusTier"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "stepsd_003",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -75,9 +77,7 @@
         ],
         "propertyValues": {
           "eventName": "stepsDone"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "stepsd_004",
@@ -101,6 +101,7 @@
       {
         "id": "stepsd_005",
         "title": "branch",
+        "displayName": "In free spins?",
         "x": 804,
         "y": 120,
         "rootType": "branch",
@@ -115,8 +116,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "In free spins?"
+        }
       },
       {
         "id": "stepsd_006",
@@ -167,6 +167,7 @@
       {
         "id": "stepsd_008",
         "title": "branch",
+        "displayName": "Bonus triggered?",
         "x": 2252,
         "y": 413,
         "rootType": "branch",
@@ -181,8 +182,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Bonus triggered?"
+        }
       },
       {
         "id": "stepsd_009",
@@ -293,11 +293,12 @@
         "to": "stepsd_005"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -459.07538495861104,
+      "panY": 1.8587570619390021,
+      "scale": 0.4819930308921757
     }
   }
 }

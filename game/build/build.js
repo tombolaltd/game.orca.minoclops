@@ -43,7 +43,10 @@ function isJackpotSkin() {
     // A build of game/ on its own has no main.orca; the generated skin table knows.
     const assets = require('./orca-project-assets');
     const table = typeof assets.readGameSkinTable === 'function' ? assets.readGameSkinTable() : null;
-    if (table && table.skins.length) return table.skins.some(skin => skin.isJackpot);
+    if (table && table.skins.length) {
+      return table.skins.some(skin => skin.isJackpot)
+        || (Array.isArray(table.jackpotTiles) && table.jackpotTiles.length > 0);
+    }
     // Unreadable/unparseable main.orca. Copying assets that turn out to be
     // unused only bloats the bundle; NOT copying them 404-storms a jackpot
     // skin at runtime — so fail toward copying.

@@ -17,12 +17,14 @@
       {
         "id": "bonuss_004",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -32,9 +34,7 @@
         ],
         "propertyValues": {
           "eventName": "bonusSpin"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonuss_027",
@@ -62,10 +62,10 @@
       },
       {
         "id": "bonuss_028",
-        "x": 442,
-        "y": 120,
         "title": "State",
         "displayName": "Next free spin",
+        "x": 442,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_006",
         "exitSourceId": "bonuss_006",
@@ -73,12 +73,12 @@
           "nodes": [
             {
               "id": "bonuss_029",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_003",
@@ -124,11 +124,13 @@
             {
               "id": "bonuss_006",
               "title": "setGameModelProperty",
+              "displayName": "Count the spin",
               "x": 1034,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -141,20 +143,18 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "bonusSpinsPlayed"
-              },
-              "displayName": "Count the spin"
+              }
             },
             {
               "id": "bonuss_030",
+              "title": "Exit",
               "x": 1396,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -182,15 +182,16 @@
               "from": "bonuss_006",
               "to": "bonuss_030"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_031",
-        "x": 672,
-        "y": 120,
         "title": "State",
         "displayName": "Clear reels",
+        "x": 672,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_009",
         "exitSourceId": "bonuss_012",
@@ -198,20 +199,21 @@
           "nodes": [
             {
               "id": "bonuss_032",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_009",
               "title": "resetSymbolVisuals",
+              "displayName": "Undo highlights",
+              "friendlyTitle": "Reset Symbol Visuals",
               "x": 310,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Reset Symbol Visuals",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -240,16 +242,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Undo highlights"
+              }
             },
             {
               "id": "bonuss_010",
               "title": "clearSymbolTexts",
+              "displayName": "Drop badges",
+              "friendlyTitle": "Clear Symbol Texts",
               "x": 672,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Clear Symbol Texts",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -284,12 +286,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Drop badges"
+              }
             },
             {
               "id": "bonuss_011",
               "title": "setNodeAlpha",
+              "displayName": "Hide hotspot",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -314,12 +316,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide hotspot"
+              }
             },
             {
               "id": "bonuss_012",
               "title": "setNodeAlpha",
+              "displayName": "Hide reel hotspot",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -344,17 +346,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide reel hotspot"
+              }
             },
             {
               "id": "bonuss_033",
+              "title": "Exit",
               "x": 1758,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -383,15 +384,16 @@
               "from": "bonuss_012",
               "to": "bonuss_033"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_034",
-        "x": 902,
-        "y": 120,
         "title": "State",
         "displayName": "Reset panels",
+        "x": 902,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_013",
         "exitSourceId": "bonuss_019",
@@ -399,12 +401,12 @@
           "nodes": [
             {
               "id": "bonuss_035",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_007",
@@ -428,10 +430,10 @@
             {
               "id": "bonuss_008",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 1758,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -465,6 +467,7 @@
             {
               "id": "bonuss_013",
               "title": "hideNode",
+              "displayName": "Hide split card",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -478,12 +481,12 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Hide split card"
+              }
             },
             {
               "id": "bonuss_014",
               "title": "hideNode",
+              "displayName": "Hide split cards",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -502,16 +505,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide split cards"
+              }
             },
             {
               "id": "bonuss_015",
               "title": "setChildrenVisible",
+              "displayName": "Hide hints",
+              "friendlyTitle": "Set Children Visible",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Set Children Visible",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -528,12 +531,12 @@
               "propertyValues": {
                 "visible": false,
                 "target": null
-              },
-              "displayName": "Hide hints"
+              }
             },
             {
               "id": "bonuss_016",
               "title": "setText",
+              "displayName": "Header",
               "x": 2120,
               "y": 120,
               "rootType": "Action",
@@ -552,12 +555,12 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Header"
+              }
             },
             {
               "id": "bonuss_017",
               "title": "setText",
+              "displayName": "Ways 243",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
@@ -582,8 +585,7 @@
                   "sceneName": "main"
                 },
                 "value": "243"
-              },
-              "displayName": "Ways 243"
+              }
             },
             {
               "id": "bonuss_018",
@@ -593,6 +595,7 @@
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -605,7 +608,6 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "waysShown",
                 "value": 243
@@ -614,11 +616,13 @@
             {
               "id": "bonuss_019",
               "title": "setGameModelProperty",
+              "displayName": "First step",
               "x": 3206,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -631,12 +635,10 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "stepIndex",
                 "value": 0
-              },
-              "displayName": "First step"
+              }
             },
             {
               "id": "bonuss_043",
@@ -659,12 +661,12 @@
             },
             {
               "id": "bonuss_036",
+              "title": "Exit",
               "x": 3568,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -729,15 +731,16 @@
               "from": "bonuss_019",
               "to": "bonuss_036"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_037",
-        "x": 1132,
-        "y": 120,
         "title": "State",
         "displayName": "Request spin",
+        "x": 1132,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_021",
         "exitSourceId": "bonuss_021",
@@ -745,12 +748,12 @@
           "nodes": [
             {
               "id": "bonuss_038",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_020",
@@ -774,10 +777,10 @@
             {
               "id": "bonuss_021",
               "title": "sendContinueRequest",
+              "friendlyTitle": "Send Continue Request",
               "x": 672,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Send Continue Request",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -824,12 +827,12 @@
             },
             {
               "id": "bonuss_039",
+              "title": "Exit",
               "x": 1034,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -857,15 +860,16 @@
               "from": "bonuss_021",
               "to": "bonuss_039"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_040",
-        "x": 1362,
-        "y": 120,
         "title": "State",
         "displayName": "Land spin",
+        "x": 1362,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_023",
         "exitSourceId": "bonuss_026",
@@ -873,12 +877,12 @@
           "nodes": [
             {
               "id": "bonuss_041",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_001",
@@ -902,10 +906,10 @@
             {
               "id": "bonuss_002",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 672,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -914,6 +918,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "total",
@@ -925,16 +930,15 @@
                   "type": "int",
                   "path": "Remaining"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_022",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 1034,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -962,6 +966,7 @@
             {
               "id": "bonuss_023",
               "title": "setText",
+              "displayName": "Spins left",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -985,12 +990,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Spins left"
+              }
             },
             {
               "id": "bonuss_024",
               "title": "playSound",
+              "displayName": "Spin sound",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -1044,8 +1049,7 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/spin-start.mp3"
                 }
-              },
-              "displayName": "Spin sound"
+              }
             },
             {
               "id": "bonuss_025",
@@ -1069,10 +1073,11 @@
             {
               "id": "bonuss_026",
               "title": "spinReelsToGrid",
+              "displayName": "Land the grid",
+              "friendlyTitle": "Spin Reels To Grid",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Spin Reels To Grid",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -1128,17 +1133,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Land the grid"
+              }
             },
             {
               "id": "bonuss_042",
+              "title": "Exit",
               "x": 2844,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1199,7 +1203,8 @@
               "from": "bonuss_026",
               "to": "bonuss_042"
             }
-          ]
+          ],
+          "groups": []
         }
       }
     ],
@@ -1235,6 +1240,7 @@
         "to": "bonuss_028"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
       "panX": 40,

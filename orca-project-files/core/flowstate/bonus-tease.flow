@@ -17,12 +17,14 @@
       {
         "id": "bonust_004",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -32,16 +34,14 @@
         ],
         "propertyValues": {
           "eventName": "bonusTease"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonust_012",
-        "x": 442,
-        "y": 120,
         "title": "State",
         "displayName": "Tease message",
+        "x": 442,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonust_005",
         "exitSourceId": "bonust_006",
@@ -49,16 +49,17 @@
           "nodes": [
             {
               "id": "bonust_013",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonust_005",
               "title": "setText",
+              "displayName": "Tease header",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -78,12 +79,12 @@
               "propertyValues": {
                 "target": null,
                 "value": "2 BONUS! 1 MORE FOR FREE SPINS"
-              },
-              "displayName": "Tease header"
+              }
             },
             {
               "id": "bonust_006",
               "title": "playSound",
+              "displayName": "Tease sting",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -137,17 +138,16 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/feature-unlock.mp3"
                 }
-              },
-              "displayName": "Tease sting"
+              }
             },
             {
               "id": "bonust_014",
+              "title": "Exit",
               "x": 1034,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -166,15 +166,16 @@
               "from": "bonust_006",
               "to": "bonust_014"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonust_015",
-        "x": 672,
-        "y": 120,
         "title": "State",
         "displayName": "Pulse BONUS",
+        "x": 672,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonust_002",
         "exitSourceId": "bonust_002",
@@ -182,12 +183,12 @@
           "nodes": [
             {
               "id": "bonust_016",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonust_001",
@@ -211,10 +212,10 @@
             {
               "id": "bonust_002",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 672,
               "y": 120,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -235,10 +236,10 @@
             {
               "id": "bonust_003",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 1034,
               "y": 428,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -259,10 +260,10 @@
             {
               "id": "bonust_007",
               "title": "equals",
+              "friendlyTitle": "Equal",
               "x": 1396,
               "y": 820,
               "rootType": "math",
-              "friendlyTitle": "Equal",
               "color": "#16a085",
               "icon": "🟰",
               "properties": [
@@ -282,6 +283,7 @@
             {
               "id": "bonust_008",
               "title": "branch",
+              "displayName": "BONUS here?",
               "x": 1758,
               "y": 736,
               "rootType": "branch",
@@ -296,16 +298,15 @@
               ],
               "propertyValues": {
                 "condition": false
-              },
-              "displayName": "BONUS here?"
+              }
             },
             {
               "id": "bonust_009",
               "title": "getReelSymbolNode",
+              "friendlyTitle": "Get Reel Symbol Node",
               "x": 2120,
               "y": 820,
               "rootType": "getters",
-              "friendlyTitle": "Get Reel Symbol Node",
               "color": "#0e7c86",
               "icon": "🎰",
               "properties": [
@@ -339,6 +340,7 @@
             {
               "id": "bonust_010",
               "title": "tweenNodeScale",
+              "displayName": "Swell",
               "x": 2482,
               "y": 736,
               "rootType": "Action",
@@ -500,12 +502,12 @@
                 "ease": "power2.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Swell"
+              }
             },
             {
               "id": "bonust_011",
               "title": "tweenNodeScale",
+              "displayName": "Settle",
               "x": 2844,
               "y": 736,
               "rootType": "Action",
@@ -667,17 +669,16 @@
                 "ease": "back.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Settle"
+              }
             },
             {
               "id": "bonust_017",
+              "title": "Exit",
               "x": 3206,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -775,7 +776,8 @@
               "to": "bonust_017",
               "outIdx": 1
             }
-          ]
+          ],
+          "groups": []
         }
       }
     ],
@@ -791,6 +793,7 @@
         "to": "bonust_012"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
       "panX": 40,

@@ -285,6 +285,8 @@ type ReelSymbolViewLike = {
     getCellText?: (slot: number) => string;
     setCellText?: (slot: number, text: string) => void;
     setCellTexts?: (texts: readonly string[]) => void;
+    /** Spine access — absent on a component injected before the feature. */
+    symbolHasSpine?: () => boolean;
 };
 
 /**
@@ -371,8 +373,8 @@ function textSlotOrWarn(textIndex: unknown, texts: SymbolTextStateLike, caller: 
 }
 
 /**
- * A reference to part of a Reels node (`cell:<reel>:<row>` or
- * `text:<reel>:<row>:<slot>`), accepted by every node that takes a scene-node
+ * A reference to part of a Reels node (`cell:<reel>:<row>`,
+ * `text:<reel>:<row>:<slot>` or `spine:<reel>:<row>`), accepted by every node that takes a scene-node
  * `target`. The scene manager resolves it live, so it names whatever sits in
  * that cell when it is used.
  */
@@ -2183,6 +2185,44 @@ export class GenericReelsMethods {
     public getReelSymbolNode(target: NodeRefLike, reelIndex: number, rowIndex: number): NodeRefValue | null {
         if (!getReelsRoot(target, "getReelSymbolNode")) return null;
         return reelsSubNodeRef(target, `cell:${Math.trunc(Number(reelIndex))}:${Math.trunc(Number(rowIndex))}`);
+    }
+
+    /**
+     * A reference to the Spine of the symbol in a cell, for the Spine action
+     * nodes. Resolved live: it names whatever symbol is there when used, and
+     * resolves to nothing (the consumer no-ops) while that symbol has no spine.
+     */
+    public getReelSymbolSpine(target: NodeRefLike, reelIndex: number, rowIndex: number): NodeRefValue | null {
+        if (!getReelsRoot(target, "getReelSymbolSpine")) return null;
+        return reelsSubNodeRef(target, `spine:${Math.trunc(Number(reelIndex))}:${Math.trunc(Number(rowIndex))}`);
+    }
+
+    /**
+     * Spine references for every visible cell, reel by reel (reel 0 rows
+     * 0..n, then reel 1…). Cells whose symbol has no spine at call time are
+     * left out; each ref still resolves live afterwards.
+     */
+    public getReelSymbolSpines(target: NodeRefLike): NodeRefValue[] {
+        const caller = "getReelSymbolSpines";
+        const root = getReelsRoot(target, caller);
+        const grid = root ? getGridSize(root, caller) : null;
+        const resolveCell = root?._flowstateResolveSymbolCell;
+        if (!root || !grid || typeof resolveCell !== "function") return [];
+        const refs: NodeRefValue[] = [];
+        for (let reel = 0; reel < grid.reelCount; reel++) {
+            for (let row = 0; row < grid.rowCount; row++) {
+                let view: ReelSymbolViewLike | null = null;
+                try {
+                    view = resolveCell(reel, row);
+                } catch {
+                    view = null;
+                }
+                if (!view?.symbolHasSpine?.()) continue;
+                const ref = reelsSubNodeRef(target, `spine:${reel}:${row}`);
+                if (ref) refs.push(ref);
+            }
+        }
+        return refs;
     }
 
     /**

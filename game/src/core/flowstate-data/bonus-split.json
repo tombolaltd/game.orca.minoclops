@@ -1127,12 +1127,7 @@
               {
                 "name": "parent",
                 "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "value": null
               },
               {
                 "name": "path",
@@ -1464,12 +1459,7 @@
               {
                 "name": "parent",
                 "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "value": null
               },
               {
                 "name": "path",

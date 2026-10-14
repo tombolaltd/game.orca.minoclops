@@ -89,135 +89,6 @@
       ]
     },
     {
-      "id": "splitr_050",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "teaseBonus"
-        }
-      ]
-    },
-    {
-      "id": "splitr_051",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "teaseHintCount"
-        }
-      ]
-    },
-    {
-      "id": "splitr_052",
-      "title": "lessThan",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "float",
-          "sourceNodeId": "splitr_051"
-        },
-        {
-          "name": "b",
-          "type": "float",
-          "value": 1
-        }
-      ]
-    },
-    {
-      "id": "splitr_053",
-      "title": "and",
-      "rootType": "logic",
-      "properties": [
-        {
-          "name": "part0",
-          "type": "bool",
-          "sourceNodeId": "splitr_050"
-        },
-        {
-          "name": "part1",
-          "type": "bool",
-          "sourceNodeId": "splitr_052"
-        }
-      ]
-    },
-    {
-      "id": "splitr_054",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "splitr_053"
-        }
-      ]
-    },
-    {
-      "id": "splitr_060",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "splitHintCount"
-        }
-      ]
-    },
-    {
-      "id": "splitr_061",
-      "title": "lessThan",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "float",
-          "sourceNodeId": "splitr_060"
-        },
-        {
-          "name": "b",
-          "type": "float",
-          "value": 3
-        }
-      ]
-    },
-    {
-      "id": "splitr_062",
-      "title": "and",
-      "rootType": "logic",
-      "properties": [
-        {
-          "name": "part0",
-          "type": "bool",
-          "sourceNodeId": "splitr_002",
-          "sourceOutputName": "found"
-        },
-        {
-          "name": "part1",
-          "type": "bool",
-          "sourceNodeId": "splitr_061"
-        }
-      ]
-    },
-    {
-      "id": "splitr_063",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "splitr_062"
-        }
-      ]
-    },
-    {
       "id": "splitr_070",
       "title": "fireCustomEvent",
       "rootType": "fireEvent",
@@ -238,56 +109,14 @@
       "id": "splitr_074",
       "title": "State",
       "isState": true,
-      "entryTargetId": "splitr_020",
-      "exitSourceId": "n4k6y93d",
+      "entryTargetId": "ntot2zfn",
+      "exitSourceId": "nkc0yp0p",
       "subgraph": {
         "nodes": [
           {
             "id": "splitr_075",
             "title": "Entry",
             "isEntry": true
-          },
-          {
-            "id": "splitr_020",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/boost.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.8
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
           },
           {
             "id": "splitr_094",
@@ -363,39 +192,13 @@
             ]
           },
           {
-            "id": "nrqjkrnx",
-            "title": "playSymbolAnimation",
-            "rootType": "Action",
+            "id": "npnsrmos",
+            "title": "getReelSymbolSpines",
+            "rootType": "getters",
             "properties": [
               {
                 "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "animationName",
-                "type": "string",
-                "value": ""
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
+                "type": "nodeRef"
               }
             ]
           }
@@ -414,9 +217,9 @@
             "to": "ntot2zfn"
           },
           {
-            "id": "l0ehtzlv",
+            "id": "leqv25kd",
             "from": "ntot2zfn",
-            "to": "splitr_020"
+            "to": "splitr_076"
           }
         ]
       }
@@ -921,12 +724,7 @@
               {
                 "name": "parent",
                 "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "value": null
               },
               {
                 "name": "path",
@@ -1327,270 +1125,6 @@
       }
     },
     {
-      "id": "splitr_083",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "splitr_055",
-      "exitSourceId": "splitr_059",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "splitr_084",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "splitr_055",
-            "title": "setChildrenVisible",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "visible",
-                "type": "bool",
-                "value": false
-              }
-            ]
-          },
-          {
-            "id": "splitr_056",
-            "title": "showNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "splitr_057",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "teaseHintCount"
-              }
-            ]
-          },
-          {
-            "id": "splitr_058",
-            "title": "add",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "T",
-                "sourceNodeId": "splitr_057"
-              },
-              {
-                "name": "b",
-                "type": "T",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "splitr_059",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "teaseHintCount"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "sourceNodeId": "splitr_058"
-              }
-            ]
-          },
-          {
-            "id": "splitr_085",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_splitr_52",
-            "from": "splitr_057",
-            "to": "splitr_058",
-            "propertyType": "T",
-            "propertyName": "a"
-          },
-          {
-            "id": "l_splitr_53",
-            "from": "splitr_058",
-            "to": "splitr_059",
-            "propertyType": "dynamic",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_splitr_99",
-            "from": "splitr_055",
-            "to": "splitr_056"
-          },
-          {
-            "id": "l_splitr_100",
-            "from": "splitr_056",
-            "to": "splitr_059"
-          },
-          {
-            "id": "l_splitr_101",
-            "from": "splitr_084",
-            "to": "splitr_055"
-          },
-          {
-            "id": "l_splitr_102",
-            "from": "splitr_059",
-            "to": "splitr_085"
-          }
-        ]
-      }
-    },
-    {
-      "id": "splitr_086",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "splitr_064",
-      "exitSourceId": "splitr_068",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "splitr_087",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "splitr_064",
-            "title": "setChildrenVisible",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "visible",
-                "type": "bool",
-                "value": false
-              }
-            ]
-          },
-          {
-            "id": "splitr_065",
-            "title": "showNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              }
-            ]
-          },
-          {
-            "id": "splitr_066",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "splitHintCount"
-              }
-            ]
-          },
-          {
-            "id": "splitr_067",
-            "title": "add",
-            "rootType": "math",
-            "properties": [
-              {
-                "name": "a",
-                "type": "T",
-                "sourceNodeId": "splitr_066"
-              },
-              {
-                "name": "b",
-                "type": "T",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "splitr_068",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "splitHintCount"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "sourceNodeId": "splitr_067"
-              }
-            ]
-          },
-          {
-            "id": "splitr_088",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_splitr_58",
-            "from": "splitr_066",
-            "to": "splitr_067",
-            "propertyType": "T",
-            "propertyName": "a"
-          },
-          {
-            "id": "l_splitr_59",
-            "from": "splitr_067",
-            "to": "splitr_068",
-            "propertyType": "dynamic",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_splitr_103",
-            "from": "splitr_064",
-            "to": "splitr_065"
-          },
-          {
-            "id": "l_splitr_104",
-            "from": "splitr_065",
-            "to": "splitr_068"
-          },
-          {
-            "id": "l_splitr_105",
-            "from": "splitr_087",
-            "to": "splitr_064"
-          },
-          {
-            "id": "l_splitr_106",
-            "from": "splitr_068",
-            "to": "splitr_088"
-          }
-        ]
-      }
-    },
-    {
       "id": "splitr_089",
       "title": "State",
       "isState": true,
@@ -1683,118 +1217,6 @@
       "sourceOutputName": "found"
     },
     {
-      "id": "l_splitr_48",
-      "from": "splitr_051",
-      "to": "splitr_052",
-      "propertyType": "float",
-      "propertyName": "a"
-    },
-    {
-      "id": "l_splitr_49",
-      "from": "splitr_050",
-      "to": "splitr_053",
-      "propertyType": "bool",
-      "propertyName": "part0"
-    },
-    {
-      "id": "l_splitr_50",
-      "from": "splitr_052",
-      "to": "splitr_053",
-      "propertyType": "bool",
-      "propertyName": "part1"
-    },
-    {
-      "id": "l_splitr_51",
-      "from": "splitr_053",
-      "to": "splitr_054",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
-      "id": "l_splitr_54",
-      "from": "splitr_060",
-      "to": "splitr_061",
-      "propertyType": "float",
-      "propertyName": "a"
-    },
-    {
-      "id": "l_splitr_55",
-      "from": "splitr_002",
-      "to": "splitr_062",
-      "propertyType": "bool",
-      "propertyName": "part0",
-      "sourceOutputName": "found"
-    },
-    {
-      "id": "l_splitr_56",
-      "from": "splitr_061",
-      "to": "splitr_062",
-      "propertyType": "bool",
-      "propertyName": "part1"
-    },
-    {
-      "id": "l_splitr_57",
-      "from": "splitr_062",
-      "to": "splitr_063",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
-      "id": "l_splitr_77",
-      "from": "splitr_074",
-      "to": "splitr_077"
-    },
-    {
-      "id": "l_splitr_88",
-      "from": "splitr_077",
-      "to": "splitr_080"
-    },
-    {
-      "id": "l_splitr_89",
-      "from": "splitr_009",
-      "to": "splitr_080",
-      "outIdx": 1
-    },
-    {
-      "id": "l_splitr_107",
-      "from": "splitr_063",
-      "to": "splitr_086",
-      "outIdx": 0
-    },
-    {
-      "id": "l_splitr_108",
-      "from": "splitr_080",
-      "to": "splitr_054"
-    },
-    {
-      "id": "l_splitr_109",
-      "from": "splitr_054",
-      "to": "splitr_083",
-      "outIdx": 0
-    },
-    {
-      "id": "l_splitr_110",
-      "from": "splitr_054",
-      "to": "splitr_063",
-      "outIdx": 1
-    },
-    {
-      "id": "l_splitr_111",
-      "from": "splitr_083",
-      "to": "splitr_089"
-    },
-    {
-      "id": "l_splitr_112",
-      "from": "splitr_086",
-      "to": "splitr_089"
-    },
-    {
-      "id": "l_splitr_113",
-      "from": "splitr_063",
-      "to": "splitr_089",
-      "outIdx": 1
-    },
-    {
       "id": "l_splitr_116",
       "from": "splitr_089",
       "to": "splitr_070"
@@ -1809,6 +1231,11 @@
       "from": "splitr_009",
       "to": "splitr_074",
       "outIdx": 0
+    },
+    {
+      "id": "lba2bnrl",
+      "from": "splitr_074",
+      "to": "splitr_089"
     }
   ]
 }

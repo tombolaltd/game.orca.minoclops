@@ -1118,6 +1118,26 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
     return this.startSpineTrack(spine, trackIndex, animationName, loop);
   }
 
+  /** Whether the symbol in this cell now is drawn with a spine. */
+  public symbolHasSpine(): boolean {
+    const visual = this.readVisual();
+    return !!(visual?.hasSpine && visual.spineSkeletonPath);
+  }
+
+  /**
+   * This symbol's Spine for FlowState spine nodes: built on demand and shown
+   * (in place of the baked static sprite, which is the same setup pose).
+   * Null when the symbol has no spine or its skeleton is not loaded yet.
+   */
+  public getFlowstateSpine(): Spine | null {
+    if (!this.symbolHasSpine()) return null;
+    const spine = this.ensureSpineForWin();
+    if (!spine) return null;
+    // The view still owns the spine: its next land/win settle or skin change parks it (clears tracks, hides it).
+    this.revealSpineForWin();
+    return spine;
+  }
+
   // =======================================================================
   // FlowState per-symbol getters / setters
   // =======================================================================
@@ -3472,14 +3492,17 @@ export function buildFlowstateReelsDisplay(
   };
 
   // `<nodeId>::cell:<reel>:<row>` → the symbol at that cell now;
-  // `<nodeId>::text:<reel>:<row>:<slot>` → its text. Resolved LIVE on every
-  // lookup, so a ref taken before a spin still names whatever landed there.
+  // `<nodeId>::text:<reel>:<row>:<slot>` → its text;
+  // `<nodeId>::spine:<reel>:<row>` → its spine (nothing when it has none).
+  // Resolved LIVE on every lookup, so a ref taken before a spin still names
+  // whatever landed there.
   root.__orcaResolveSubNode = (key: string): PIXI.Container | undefined => {
-    const match = /^(cell|text):(-?\d+):(-?\d+)(?::(\d+))?$/.exec(String(key ?? ''));
+    const match = /^(cell|text|spine):(-?\d+):(-?\d+)(?::(\d+))?$/.exec(String(key ?? ''));
     if (!match) return undefined;
     const view = root._flowstateResolveSymbolCell?.(Number(match[2]), Number(match[3])) ?? null;
     if (!view) return undefined;
     if (match[1] === 'cell') return view;
+    if (match[1] === 'spine') return view.getFlowstateSpine() ?? undefined;
     return view.getCellTextObject(Number(match[4] ?? 0)) ?? undefined;
   };
 
@@ -5190,4 +5213,3 @@ export function createFlowstateReelsWinlinePlayer(
 
   return { playWinline, clearWinline };
 }
-// @flowstate-injection-end

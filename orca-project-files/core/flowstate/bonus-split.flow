@@ -17,12 +17,14 @@
       {
         "id": "bonuss_013",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -32,9 +34,7 @@
         ],
         "propertyValues": {
           "eventName": "bonusSplit"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonuss_057",
@@ -62,10 +62,10 @@
       },
       {
         "id": "bonuss_058",
-        "x": 442,
-        "y": 120,
         "title": "State",
         "displayName": "Reel hotspot",
+        "x": 442,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_016",
         "exitSourceId": "bonuss_019",
@@ -73,12 +73,12 @@
           "nodes": [
             {
               "id": "bonuss_059",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_014",
@@ -127,6 +127,7 @@
             {
               "id": "bonuss_016",
               "title": "setNodePosition",
+              "displayName": "Over the reel",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -157,12 +158,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Over the reel"
+              }
             },
             {
               "id": "bonuss_017",
               "title": "playSound",
+              "displayName": "Lock on",
               "x": 2120,
               "y": 120,
               "rootType": "Action",
@@ -216,12 +217,12 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/lock.mp3"
                 }
-              },
-              "displayName": "Lock on"
+              }
             },
             {
               "id": "bonuss_018",
               "title": "tweenNodeAlpha",
+              "displayName": "Hotspot fades in",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
@@ -383,16 +384,15 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hotspot fades in"
+              }
             },
             {
               "id": "bonuss_019",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 2844,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -408,10 +408,10 @@
             {
               "id": "bonuss_070",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 672,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -420,6 +420,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "reel",
@@ -431,8 +432,7 @@
                   "type": "ObjectArray",
                   "path": "Selections"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_071",
@@ -455,12 +455,12 @@
             },
             {
               "id": "bonuss_060",
+              "title": "Exit",
               "x": 3206,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -518,15 +518,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_061",
-        "x": 672,
-        "y": 120,
         "title": "State",
         "displayName": "Split cards",
+        "x": 672,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_020",
         "exitSourceId": "bonuss_003",
@@ -534,12 +535,12 @@
           "nodes": [
             {
               "id": "bonuss_062",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_001",
@@ -563,10 +564,10 @@
             {
               "id": "bonuss_002",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 2482,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -575,6 +576,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "reel",
@@ -586,16 +588,15 @@
                   "type": "ObjectArray",
                   "path": "Selections"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_003",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 2844,
               "y": 120,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -616,10 +617,10 @@
             {
               "id": "bonuss_004",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 4654,
               "y": 545,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -628,6 +629,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "symbol",
@@ -639,16 +641,15 @@
                   "type": "string",
                   "path": "Badge"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_005",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 3206,
               "y": 545,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -671,10 +672,10 @@
             {
               "id": "bonuss_006",
               "title": "findChildNode",
+              "friendlyTitle": "Find Child Node",
               "x": 3568,
               "y": 545,
               "rootType": "getters",
-              "friendlyTitle": "Find Child Node",
               "color": "#0e7c86",
               "icon": "🔍",
               "properties": [
@@ -701,10 +702,10 @@
             {
               "id": "bonuss_007",
               "title": "findChildNode",
+              "friendlyTitle": "Find Child Node",
               "x": 3930,
               "y": 545,
               "rootType": "getters",
-              "friendlyTitle": "Find Child Node",
               "color": "#0e7c86",
               "icon": "🔍",
               "properties": [
@@ -725,6 +726,7 @@
             {
               "id": "bonuss_020",
               "title": "hideNode",
+              "displayName": "Hide card 1",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -743,12 +745,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide card 1"
+              }
             },
             {
               "id": "bonuss_021",
               "title": "hideNode",
+              "displayName": "Hide card 2",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -767,12 +769,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide card 2"
+              }
             },
             {
               "id": "bonuss_022",
               "title": "hideNode",
+              "displayName": "Hide card 3",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -791,8 +793,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide card 3"
+              }
             },
             {
               "id": "bonuss_023",
@@ -832,6 +833,7 @@
             {
               "id": "bonuss_024",
               "title": "showNode",
+              "displayName": "Show split panel",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -850,16 +852,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Show split panel"
+              }
             },
             {
               "id": "bonuss_025",
               "title": "setChildrenVisible",
+              "displayName": "Clear icon",
+              "friendlyTitle": "Set Children Visible",
               "x": 4292,
               "y": 461,
               "rootType": "Action",
-              "friendlyTitle": "Set Children Visible",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -875,16 +877,15 @@
               ],
               "propertyValues": {
                 "visible": false
-              },
-              "displayName": "Clear icon"
+              }
             },
             {
               "id": "bonuss_026",
               "title": "getChildNode",
+              "friendlyTitle": "Get Child Node",
               "x": 5016,
               "y": 545,
               "rootType": "getters",
-              "friendlyTitle": "Get Child Node",
               "color": "#0e7c86",
               "icon": "🔢",
               "properties": [
@@ -905,6 +906,7 @@
             {
               "id": "bonuss_027",
               "title": "showNode",
+              "displayName": "Card icon",
               "x": 5378,
               "y": 461,
               "rootType": "Action",
@@ -916,16 +918,15 @@
                   "type": "nodeRef"
                 }
               ],
-              "propertyValues": {},
-              "displayName": "Card icon"
+              "propertyValues": {}
             },
             {
               "id": "bonuss_028",
               "title": "findChildNode",
+              "friendlyTitle": "Find Child Node",
               "x": 5740,
               "y": 545,
               "rootType": "getters",
-              "friendlyTitle": "Find Child Node",
               "color": "#0e7c86",
               "icon": "🔍",
               "properties": [
@@ -946,6 +947,7 @@
             {
               "id": "bonuss_029",
               "title": "setText",
+              "displayName": "Card multiple",
               "x": 6102,
               "y": 461,
               "rootType": "Action",
@@ -962,8 +964,7 @@
                   "type": "string"
                 }
               ],
-              "propertyValues": {},
-              "displayName": "Card multiple"
+              "propertyValues": {}
             },
             {
               "id": "bonuss_030",
@@ -997,6 +998,7 @@
             {
               "id": "bonuss_031",
               "title": "showNode",
+              "displayName": "Show card",
               "x": 6826,
               "y": 461,
               "rootType": "Action",
@@ -1008,12 +1010,12 @@
                   "type": "nodeRef"
                 }
               ],
-              "propertyValues": {},
-              "displayName": "Show card"
+              "propertyValues": {}
             },
             {
               "id": "bonuss_032",
               "title": "tweenNodeScale",
+              "displayName": "Card pops",
               "x": 7188,
               "y": 461,
               "rootType": "Action",
@@ -1175,17 +1177,16 @@
                 "ease": "back.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Card pops"
+              }
             },
             {
               "id": "bonuss_063",
+              "title": "Exit",
               "x": 7550,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1373,15 +1374,16 @@
               "to": "bonuss_063",
               "outIdx": 1
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_064",
-        "x": 902,
-        "y": 120,
         "title": "State",
         "displayName": "Stack splits",
+        "x": 902,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_033",
         "exitSourceId": "bonuss_011",
@@ -1389,12 +1391,12 @@
           "nodes": [
             {
               "id": "bonuss_065",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_008",
@@ -1418,10 +1420,10 @@
             {
               "id": "bonuss_009",
               "title": "at",
+              "friendlyTitle": "Get",
               "x": 1034,
               "y": 204,
               "rootType": "array",
-              "friendlyTitle": "Get",
               "color": "#2980b9",
               "icon": "🎯",
               "properties": [
@@ -1441,10 +1443,10 @@
             {
               "id": "bonuss_010",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 1396,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -1453,22 +1455,22 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "cells",
                   "type": "ObjectArray",
                   "path": "NewSplitCells"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_011",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 1758,
               "y": 120,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -1489,10 +1491,10 @@
             {
               "id": "bonuss_012",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 2482,
               "y": 718,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -1501,6 +1503,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "reel",
@@ -1522,12 +1525,12 @@
                   "type": "string",
                   "path": "Badge"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_033",
               "title": "playSound",
+              "displayName": "Split swish",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -1581,16 +1584,15 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/boost.mp3"
                 }
-              },
-              "displayName": "Split swish"
+              }
             },
             {
               "id": "bonuss_034",
               "title": "equals",
+              "friendlyTitle": "Equal",
               "x": 2844,
               "y": 718,
               "rootType": "math",
-              "friendlyTitle": "Equal",
               "color": "#16a085",
               "icon": "🟰",
               "properties": [
@@ -1608,6 +1610,7 @@
             {
               "id": "bonuss_035",
               "title": "branch",
+              "displayName": "On the hotspot reel?",
               "x": 3206,
               "y": 634,
               "rootType": "branch",
@@ -1622,16 +1625,15 @@
               ],
               "propertyValues": {
                 "condition": false
-              },
-              "displayName": "On the hotspot reel?"
+              }
             },
             {
               "id": "bonuss_036",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 3568,
               "y": 718,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -1665,10 +1667,10 @@
             {
               "id": "bonuss_037",
               "title": "findChildNode",
+              "friendlyTitle": "Find Child Node",
               "x": 3930,
               "y": 718,
               "rootType": "getters",
-              "friendlyTitle": "Find Child Node",
               "color": "#0e7c86",
               "icon": "🔍",
               "properties": [
@@ -1684,12 +1686,7 @@
               ],
               "propertyValues": {
                 "path": "",
-                "parent": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "parent": null
               }
             },
             {
@@ -1747,6 +1744,7 @@
             {
               "id": "bonuss_040",
               "title": "tweenNodeScale",
+              "displayName": "Slash",
               "x": 5016,
               "y": 634,
               "rootType": "Action",
@@ -1908,12 +1906,12 @@
                 "ease": "power2.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Slash"
+              }
             },
             {
               "id": "bonuss_041",
               "title": "tweenNodeAlpha",
+              "displayName": "Slash fades",
               "x": 5378,
               "y": 634,
               "rootType": "Action",
@@ -2069,16 +2067,16 @@
                 "ease": "power2.in",
                 "easeStrength": 1,
                 "sequenceNodeOn": "immediate"
-              },
-              "displayName": "Slash fades"
+              }
             },
             {
               "id": "bonuss_042",
               "title": "setSymbolAt",
+              "displayName": "Split symbol",
+              "friendlyTitle": "Set Symbol At",
               "x": 5740,
               "y": 634,
               "rootType": "Action",
-              "friendlyTitle": "Set Symbol At",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -2113,16 +2111,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Split symbol"
+              }
             },
             {
               "id": "bonuss_043",
               "title": "setSymbolText",
+              "displayName": "Split badge",
+              "friendlyTitle": "Set Symbol Text",
               "x": 6102,
               "y": 634,
               "rootType": "Action",
-              "friendlyTitle": "Set Symbol Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -2163,16 +2161,15 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Split badge"
+              }
             },
             {
               "id": "bonuss_044",
               "title": "getReelSymbolNode",
+              "friendlyTitle": "Get Reel Symbol Node",
               "x": 6464,
               "y": 718,
               "rootType": "getters",
-              "friendlyTitle": "Get Reel Symbol Node",
               "color": "#0e7c86",
               "icon": "🎰",
               "properties": [
@@ -2206,6 +2203,7 @@
             {
               "id": "bonuss_045",
               "title": "setNodeScale",
+              "displayName": "Symbol pops",
               "x": 6826,
               "y": 634,
               "rootType": "Action",
@@ -2230,12 +2228,12 @@
               "propertyValues": {
                 "scaleX": 1.2,
                 "scaleY": 1.2
-              },
-              "displayName": "Symbol pops"
+              }
             },
             {
               "id": "bonuss_046",
               "title": "tweenNodeScale",
+              "displayName": "Symbol settles",
               "x": 7188,
               "y": 634,
               "rootType": "Action",
@@ -2397,16 +2395,15 @@
                 "ease": "back.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Symbol settles"
+              }
             },
             {
               "id": "bonuss_047",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 3568,
               "y": 1294,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -2440,10 +2437,10 @@
             {
               "id": "bonuss_048",
               "title": "findChildNode",
+              "friendlyTitle": "Find Child Node",
               "x": 3930,
               "y": 1294,
               "rootType": "getters",
-              "friendlyTitle": "Find Child Node",
               "color": "#0e7c86",
               "icon": "🔍",
               "properties": [
@@ -2459,12 +2456,7 @@
               ],
               "propertyValues": {
                 "path": "",
-                "parent": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_slashes",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "parent": null
               }
             },
             {
@@ -2522,6 +2514,7 @@
             {
               "id": "bonuss_051",
               "title": "tweenNodeScale",
+              "displayName": "Slash",
               "x": 5016,
               "y": 1210,
               "rootType": "Action",
@@ -2683,12 +2676,12 @@
                 "ease": "power2.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "immediate"
-              },
-              "displayName": "Slash"
+              }
             },
             {
               "id": "bonuss_052",
               "title": "tweenNodeAlpha",
+              "displayName": "Slash fades",
               "x": 5378,
               "y": 1210,
               "rootType": "Action",
@@ -2844,16 +2837,16 @@
                 "ease": "power2.in",
                 "easeStrength": 1,
                 "sequenceNodeOn": "immediate"
-              },
-              "displayName": "Slash fades"
+              }
             },
             {
               "id": "bonuss_053",
               "title": "setSymbolAt",
+              "displayName": "Split symbol",
+              "friendlyTitle": "Set Symbol At",
               "x": 5740,
               "y": 1210,
               "rootType": "Action",
-              "friendlyTitle": "Set Symbol At",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -2888,16 +2881,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Split symbol"
+              }
             },
             {
               "id": "bonuss_054",
               "title": "setSymbolText",
+              "displayName": "Split badge",
+              "friendlyTitle": "Set Symbol Text",
               "x": 6102,
               "y": 1210,
               "rootType": "Action",
-              "friendlyTitle": "Set Symbol Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -2938,16 +2931,15 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Split badge"
+              }
             },
             {
               "id": "bonuss_055",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 6826,
               "y": 1210,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -2963,10 +2955,10 @@
             {
               "id": "bonuss_072",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 2482,
               "y": 953,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -2975,6 +2967,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "reel",
@@ -2986,8 +2979,7 @@
                   "type": "ObjectArray",
                   "path": "Selections"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuss_073",
@@ -3010,12 +3002,12 @@
             },
             {
               "id": "bonuss_066",
+              "title": "Exit",
               "x": 7550,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -3406,15 +3398,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuss_067",
-        "x": 1132,
-        "y": 120,
         "title": "State",
         "displayName": "Hotspot out",
+        "x": 1132,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuss_056",
         "exitSourceId": "bonuss_056",
@@ -3422,16 +3415,17 @@
           "nodes": [
             {
               "id": "bonuss_068",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuss_056",
               "title": "tweenNodeAlpha",
+              "displayName": "Hotspot fades",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -3593,17 +3587,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hotspot fades"
+              }
             },
             {
               "id": "bonuss_069",
+              "title": "Exit",
               "x": 672,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -3617,7 +3610,8 @@
               "from": "bonuss_056",
               "to": "bonuss_069"
             }
-          ]
+          ],
+          "groups": []
         }
       }
     ],
@@ -3648,6 +3642,7 @@
         "to": "bonuss_058"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
       "panX": 40,

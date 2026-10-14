@@ -12,54 +12,62 @@
  */
 import { emitFlowConsole, FlowConsoleLevel, stringifyFlowValue } from "./flow-console";
 
-function emitLog(level: FlowConsoleLevel, value: unknown, color?: unknown): void {
-    emitFlowConsole(level, stringifyFlowValue(value), { color, code: 'debug-log' });
+const COLOR_ARG_RE = /^(?:#|0x)?(?:[0-9a-f]{3}|[0-9a-f]{4}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
+
+/**
+ * Log nodes take `(message, color, message2, message3, …)`: extra `message<N>`
+ * inputs are appended after `color` as each last one is connected, so there is
+ * always one spare, unconnected slot at the end — trailing `undefined`s are
+ * dropped so it never prints. A node saved before `color` existed has no
+ * colour slot, so a second value that is not a colour is logged as a message.
+ */
+function emitLog(level: FlowConsoleLevel, message: unknown, color: unknown, more: unknown[]): void {
+    const isColor = color === undefined || (typeof color === 'string' && (color.trim() === '' || COLOR_ARG_RE.test(color.trim())));
+    const values = isColor ? [message, ...more] : [message, color, ...more];
+    let end = values.length;
+    while (end > 1 && values[end - 1] === undefined) end--;
+    for (let i = 0; i < end; i++) {
+        emitFlowConsole(level, stringifyFlowValue(values[i]), { color: isColor ? color : undefined, code: 'debug-log' });
+    }
 }
 
 class DebugMethods {
     /**
-     * Log a value to the console (standard log level)
+     * Log values to the console (standard log level), in order
      * @param value - Any value to log
      * @param color - Optional hex colour ('#ff0000'); '' = default
+     * @param more - Further `message<N>` values, logged in pin order
      */
-    public log(value: unknown, color?: string): void {
-        emitLog('log', value, color);
+    public log(value: unknown, color?: unknown, ...more: unknown[]): void {
+        emitLog('log', value, color, more);
     }
 
     /**
-     * Log an error message to the console
-     * @param value - Error message or object to log
-     * @param color - Optional hex colour; '' = default
+     * Log each error message to the console, in order
      */
-    public logError(value: unknown, color?: string): void {
-        emitLog('error', value, color);
+    public logError(value: unknown, color?: unknown, ...more: unknown[]): void {
+        emitLog('error', value, color, more);
     }
 
     /**
-     * Log a warning message to the console
-     * @param value - Warning message or object to log
-     * @param color - Optional hex colour; '' = default
+     * Log each warning message to the console, in order
      */
-    public logWarn(value: unknown, color?: string): void {
-        emitLog('warn', value, color);
+    public logWarn(value: unknown, color?: unknown, ...more: unknown[]): void {
+        emitLog('warn', value, color, more);
     }
 
     /**
-     * Log an info message to the console
-     * @param value - Info message or object to log
-     * @param color - Optional hex colour; '' = default
+     * Log each info message to the console, in order
      */
-    public logInfo(value: unknown, color?: string): void {
-        emitLog('info', value, color);
+    public logInfo(value: unknown, color?: unknown, ...more: unknown[]): void {
+        emitLog('info', value, color, more);
     }
 
     /**
-     * Log a debug message to the console
-     * @param value - Debug message or object to log
-     * @param color - Optional hex colour; '' = default
+     * Log each debug message to the console, in order
      */
-    public logDebug(value: unknown, color?: string): void {
-        emitLog('verbose', value, color);
+    public logDebug(value: unknown, color?: unknown, ...more: unknown[]): void {
+        emitLog('verbose', value, color, more);
     }
 
     /**

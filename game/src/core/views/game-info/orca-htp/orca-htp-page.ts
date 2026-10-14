@@ -1,7 +1,6 @@
 import { defineComponent } from 'vue';
 
-import { device, eventEmitter } from '@game-studio/arcade-base';
-import { HtpPreviewPage } from '@game-studio/htp-preview-vue2';
+import { device, eventEmitter, SettingsEventEmitter } from '@game-studio/arcade-base';
 
 import { diContainer } from '../../../inversify';
 import { gameSettings } from '../../../models/game-settings';
@@ -9,6 +8,9 @@ import { ACTIVE_SKIN } from '../../../services/orca/active-skin';
 import { HTP_BY_SKIN } from '../../../services/orca/generated-htp';
 import { translations } from '../../../services/orca/methods/translations';
 import { ORCA_TRANSLATIONS, ORCA_TRANSLATION_BASE_LANGUAGE } from '../../../services/orca/generated-translations';
+// The editor's own How-To-Play renderer (copied from Orca's packages), so the
+// game draws exactly what the HTP Editor previews.
+import { HtpPreviewPage } from './htp-preview';
 
 /**
  * Host for the authored How-To-Play document.
@@ -122,6 +124,11 @@ export default defineComponent({
         },
         injectedImages(): Record<string, string> | undefined {
             return activeDocument()?.injectedImages;
+        },
+        /** The game's title under "How to play" — read loosely: an older generated module lacks it. */
+        gameName(): string {
+            const name = (activeDocument() as { gameName?: unknown } | null)?.gameName;
+            return typeof name === 'string' ? name : '';
         },
         /**
          * Image names were rewritten to bucket-relative paths by the editor's
@@ -270,6 +277,20 @@ export default defineComponent({
             // typed against the known event-name unions, and an authored name
             // is a project custom event.
             if (event) eventEmitter.emit(event as any);
+        },
+        /**
+         * "For full game rules click here". arcade-base shows the rules itself only
+         * in the app; on the web they are the settings menu's Game Rules page.
+         */
+        openGameRules() {
+            this.hide();
+            if (device?.type?.isApp === true) {
+                eventEmitter.emit('POPUP_TOGGLE_GAME_RULES', true);
+                return;
+            }
+            // 'show' renders the menu's pages; 'inGameShow' opens Game Rules once the menu has slid in.
+            SettingsEventEmitter.emit('show');
+            SettingsEventEmitter.emit('inGameShow', { id: 'game-rules' });
         },
         currencyConverter(value: number): string {
             return formatCurrency(value);

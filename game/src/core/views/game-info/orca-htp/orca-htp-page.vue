@@ -8,6 +8,7 @@
               :sections="sections"
               :folderPath="folderPath"
               :injectedImages="injectedImages"
+              :gameName="gameName"
               :tokens="tokens"
               :translations="translationTable"
               :currentLanguageCode="currentLanguageCode"
@@ -15,6 +16,7 @@
               :symbolData="symbolData"
               :currencyConverter="currencyConverter"
               :events="onHtpEvent"
+              :openGameRules="openGameRules"
             />
           </div>
         </div>

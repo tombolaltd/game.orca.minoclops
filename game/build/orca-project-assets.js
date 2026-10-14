@@ -135,7 +135,7 @@ function listOnDiskSkinFolders() {
  * where main.orca cannot name the skins and every skin's assets used to be
  * left out of the build without a word. Null when the file is missing.
  *
- * @returns {{ defaultSkin: string, skins: Array<{ folder: string, realName: string, isJackpot: boolean }> } | null}
+ * @returns {{ defaultSkin: string, skins: Array<{ folder: string, realName: string, isJackpot: boolean }>, jackpotTiles: Array<{ tile: string, folder: string }> } | null}
  */
 function readGameSkinTable() {
   let source;
@@ -158,7 +158,17 @@ function readGameSkinTable() {
     );
   }
   const fallback = source.match(/\bDEFAULT_SKIN\s*:\s*string\s*=\s*(['"])([^'"]*)\1/);
-  return { defaultSkin: fallback ? fallback[2] : '', skins };
+  // A "Both" game's jackpot launcher tile: not a skin row (its own row says
+  // isJackpot: false), but the bundle still ships jackpots for it.
+  const jackpotTiles = [];
+  const tilesBlock = source.match(/\bJACKPOT_TILES\b[^=]*=\s*\{([^}]*)\}/);
+  if (tilesBlock) {
+    const pair = /(['"])([A-Za-z0-9_.-]+)\1\s*:\s*(['"])([A-Za-z0-9_.-]+)\3/g;
+    for (let match = pair.exec(tilesBlock[1]); match; match = pair.exec(tilesBlock[1])) {
+      jackpotTiles.push({ tile: match[2], folder: match[4] });
+    }
+  }
+  return { defaultSkin: fallback ? fallback[2] : '', skins, jackpotTiles };
 }
 
 /**

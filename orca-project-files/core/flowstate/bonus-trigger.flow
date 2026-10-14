@@ -17,12 +17,14 @@
       {
         "id": "bonust_005",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -32,9 +34,7 @@
         ],
         "propertyValues": {
           "eventName": "bonusTrigger"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonust_012",
@@ -61,6 +61,7 @@
       {
         "id": "bonust_013",
         "title": "branch",
+        "displayName": "1,000x prize?",
         "x": 1988,
         "y": 120,
         "rootType": "branch",
@@ -75,16 +76,15 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "1,000x prize?"
+        }
       },
       {
         "id": "bonust_033",
         "title": "delay",
+        "friendlyTitle": "Wait",
         "x": 2580,
         "y": 120,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -123,10 +123,10 @@
       },
       {
         "id": "bonust_035",
-        "x": 442,
-        "y": 120,
         "title": "State",
         "displayName": "Bonus landed",
+        "x": 442,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonust_007",
         "exitSourceId": "bonust_008",
@@ -134,20 +134,20 @@
           "nodes": [
             {
               "id": "bonust_036",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonust_006",
               "title": "stringBuilder",
+              "friendlyTitle": "String Builder",
               "x": 1034,
               "y": 204,
               "rootType": "string",
-              "friendlyTitle": "String Builder",
               "color": "#c0392b",
               "icon": "🧱",
               "properties": [
@@ -181,6 +181,7 @@
             {
               "id": "bonust_007",
               "title": "setText",
+              "displayName": "Award header",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -199,12 +200,12 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Award header"
+              }
             },
             {
               "id": "bonust_008",
               "title": "playSound",
+              "displayName": "Trigger fanfare",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -258,16 +259,15 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/bonus-trigger.mp3"
                 }
-              },
-              "displayName": "Trigger fanfare"
+              }
             },
             {
               "id": "bonust_044",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 672,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -276,6 +276,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "tier",
@@ -302,8 +303,7 @@
                   "type": "int",
                   "path": "WinAfterScatter"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonust_045",
@@ -326,12 +326,12 @@
             },
             {
               "id": "bonust_037",
+              "title": "Exit",
               "x": 2120,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -380,15 +380,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonust_038",
-        "x": 672,
-        "y": 120,
         "title": "State",
         "displayName": "Pulse BONUS",
+        "x": 672,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonust_003",
         "exitSourceId": "bonust_003",
@@ -396,12 +397,12 @@
           "nodes": [
             {
               "id": "bonust_039",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonust_001",
@@ -425,10 +426,10 @@
             {
               "id": "bonust_002",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 672,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -437,6 +438,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "tier",
@@ -463,16 +465,15 @@
                   "type": "int",
                   "path": "WinAfterScatter"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonust_003",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 1034,
               "y": 120,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -493,10 +494,10 @@
             {
               "id": "bonust_004",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 1396,
               "y": 623,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -505,6 +506,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "reel",
@@ -516,16 +518,15 @@
                   "type": "int",
                   "path": "Row"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonust_009",
               "title": "getReelSymbolNode",
+              "friendlyTitle": "Get Reel Symbol Node",
               "x": 1758,
               "y": 623,
               "rootType": "getters",
-              "friendlyTitle": "Get Reel Symbol Node",
               "color": "#0e7c86",
               "icon": "🎰",
               "properties": [
@@ -559,6 +560,7 @@
             {
               "id": "bonust_010",
               "title": "tweenNodeScale",
+              "displayName": "Swell",
               "x": 2120,
               "y": 539,
               "rootType": "Action",
@@ -720,12 +722,12 @@
                 "ease": "power2.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Swell"
+              }
             },
             {
               "id": "bonust_011",
               "title": "tweenNodeScale",
+              "displayName": "Settle",
               "x": 2482,
               "y": 539,
               "rootType": "Action",
@@ -887,17 +889,16 @@
                 "ease": "back.out",
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete"
-              },
-              "displayName": "Settle"
+              }
             },
             {
               "id": "bonust_040",
+              "title": "Exit",
               "x": 2844,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -976,15 +977,16 @@
               "to": "bonust_040",
               "outIdx": 1
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonust_041",
-        "x": 2350,
-        "y": 120,
         "title": "State",
         "displayName": "Scatter prize",
+        "x": 2350,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonust_014",
         "exitSourceId": "bonust_032",
@@ -992,16 +994,17 @@
           "nodes": [
             {
               "id": "bonust_042",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonust_014",
               "title": "setText",
+              "displayName": "Prize title",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -1026,12 +1029,12 @@
                   "sceneName": "main"
                 },
                 "value": "5 BONUS"
-              },
-              "displayName": "Prize title"
+              }
             },
             {
               "id": "bonust_015",
               "title": "setText",
+              "displayName": "Prize subtitle",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -1056,18 +1059,18 @@
                   "sceneName": "main"
                 },
                 "value": "SCATTER PRIZE"
-              },
-              "displayName": "Prize subtitle"
+              }
             },
             {
               "id": "bonust_016",
               "title": "formatMoney",
+              "friendlyTitle": "Format Money",
               "x": 1034,
               "y": 204,
               "rootType": "Info & UI",
-              "friendlyTitle": "Format Money",
               "color": "#1abc9c",
               "icon": "📊",
+              "overrideNodeType": "property",
               "properties": [
                 {
                   "name": "amount",
@@ -1083,12 +1086,12 @@
               "propertyValues": {
                 "amount": 0,
                 "rounded": false
-              },
-              "overrideNodeType": "property"
+              }
             },
             {
               "id": "bonust_017",
               "title": "setText",
+              "displayName": "Prize from 0",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -1112,8 +1115,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Prize from 0"
+              }
             },
             {
               "id": "bonust_018",
@@ -1182,6 +1184,7 @@
             {
               "id": "bonust_020",
               "title": "showNode",
+              "displayName": "Show prize",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
@@ -1200,8 +1203,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Show prize"
+              }
             },
             {
               "id": "bonust_021",
@@ -1436,6 +1438,7 @@
             {
               "id": "bonust_023",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade prize in",
               "x": 3568,
               "y": 120,
               "rootType": "Action",
@@ -1597,16 +1600,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Fade prize in"
+              }
             },
             {
               "id": "bonust_024",
               "title": "countUpText",
+              "displayName": "Count the prize",
+              "friendlyTitle": "Count Up Text",
               "x": 4654,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Count Up Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -1717,8 +1720,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Count the prize"
+              }
             },
             {
               "id": "bonust_025",
@@ -1742,10 +1744,11 @@
             {
               "id": "bonust_026",
               "title": "countUpText",
+              "displayName": "Bank the prize",
+              "friendlyTitle": "Count Up Text",
               "x": 5378,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Count Up Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -1856,17 +1859,18 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Bank the prize"
+              }
             },
             {
               "id": "bonust_027",
               "title": "setGameModelProperty",
+              "displayName": "Win shown",
               "x": 5740,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -1879,15 +1883,14 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "winAmountSoFar"
-              },
-              "displayName": "Win shown"
+              }
             },
             {
               "id": "bonust_028",
               "title": "playSound",
+              "displayName": "Prize lands",
               "x": 6102,
               "y": 120,
               "rootType": "Action",
@@ -1941,16 +1944,15 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/cash-land.mp3"
                 }
-              },
-              "displayName": "Prize lands"
+              }
             },
             {
               "id": "bonust_029",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 6464,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -1966,6 +1968,7 @@
             {
               "id": "bonust_030",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade prize out",
               "x": 6826,
               "y": 120,
               "rootType": "Action",
@@ -2127,8 +2130,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Fade prize out"
+              }
             },
             {
               "id": "bonust_031",
@@ -2185,10 +2187,10 @@
             {
               "id": "bonust_048",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 4292,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -2197,6 +2199,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "tier",
@@ -2223,8 +2226,7 @@
                   "type": "int",
                   "path": "WinAfterScatter"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonust_049",
@@ -2247,12 +2249,12 @@
             },
             {
               "id": "bonust_043",
+              "title": "Exit",
               "x": 7912,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2391,16 +2393,17 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonust_046",
         "title": "parseObject",
+        "friendlyTitle": "Parse Object",
         "x": 1264,
         "y": 204,
         "rootType": "objectOps",
-        "friendlyTitle": "Parse Object",
         "color": "#607d8b",
         "icon": "🔎",
         "properties": [
@@ -2409,6 +2412,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "tier",
@@ -2435,8 +2439,7 @@
             "type": "int",
             "path": "WinAfterScatter"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "bonust_047",
@@ -2519,10 +2522,11 @@
         "propertyName": "source"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
+      "panX": -957,
+      "panY": 96,
       "scale": 0.6
     }
   }

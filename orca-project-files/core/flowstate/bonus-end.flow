@@ -36,10 +36,10 @@
       {
         "id": "bonuse_002",
         "title": "parseObject",
+        "friendlyTitle": "Parse Object",
         "x": 804,
         "y": 204,
         "rootType": "objectOps",
-        "friendlyTitle": "Parse Object",
         "color": "#607d8b",
         "icon": "🔎",
         "properties": [
@@ -48,24 +48,26 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "paid",
             "type": "int",
             "path": "TotalBonusPayout"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "bonuse_003",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -75,9 +77,7 @@
         ],
         "propertyValues": {
           "eventName": "bonusEnd"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonuse_004",
@@ -104,6 +104,7 @@
       {
         "id": "bonuse_005",
         "title": "branch",
+        "displayName": "Bonus paid?",
         "x": 1528,
         "y": 120,
         "rootType": "branch",
@@ -118,8 +119,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Bonus paid?"
+        }
       },
       {
         "id": "bonuse_031",
@@ -147,10 +147,10 @@
       },
       {
         "id": "bonuse_032",
-        "x": 1890,
-        "y": 120,
         "title": "State",
         "displayName": "Bonus total",
+        "x": 1890,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuse_007",
         "exitSourceId": "bonuse_019",
@@ -158,22 +158,23 @@
           "nodes": [
             {
               "id": "bonuse_033",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuse_006",
               "title": "formatMoney",
+              "friendlyTitle": "Format Money",
               "x": 310,
               "y": 204,
               "rootType": "Info & UI",
-              "friendlyTitle": "Format Money",
               "color": "#1abc9c",
               "icon": "📊",
+              "overrideNodeType": "property",
               "properties": [
                 {
                   "name": "amount",
@@ -189,12 +190,12 @@
               "propertyValues": {
                 "amount": 0,
                 "rounded": false
-              },
-              "overrideNodeType": "property"
+              }
             },
             {
               "id": "bonuse_007",
               "title": "setText",
+              "displayName": "Total from 0",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -213,8 +214,7 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Total from 0"
+              }
             },
             {
               "id": "bonuse_008",
@@ -273,6 +273,7 @@
             {
               "id": "bonuse_010",
               "title": "showNode",
+              "displayName": "Show total",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -286,8 +287,7 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Show total"
+              }
             },
             {
               "id": "bonuse_011",
@@ -517,6 +517,7 @@
             {
               "id": "bonuse_013",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade total in",
               "x": 2844,
               "y": 120,
               "rootType": "Action",
@@ -673,16 +674,16 @@
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete",
                 "target": null
-              },
-              "displayName": "Fade total in"
+              }
             },
             {
               "id": "bonuse_014",
               "title": "countUpText",
+              "displayName": "Count bonus total",
+              "friendlyTitle": "Count Up Text",
               "x": 3930,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Count Up Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -788,12 +789,12 @@
                 "ease": "power2.out",
                 "sequenceNodeOn": "onComplete",
                 "target": null
-              },
-              "displayName": "Count bonus total"
+              }
             },
             {
               "id": "bonuse_015",
               "title": "playSound",
+              "displayName": "Total lands",
               "x": 4292,
               "y": 120,
               "rootType": "Action",
@@ -847,16 +848,15 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/cash-land.mp3"
                 }
-              },
-              "displayName": "Total lands"
+              }
             },
             {
               "id": "bonuse_016",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 4654,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -872,6 +872,7 @@
             {
               "id": "bonuse_017",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade total out",
               "x": 5016,
               "y": 120,
               "rootType": "Action",
@@ -1028,8 +1029,7 @@
                 "easeStrength": 1,
                 "sequenceNodeOn": "onComplete",
                 "target": null
-              },
-              "displayName": "Fade total out"
+              }
             },
             {
               "id": "bonuse_018",
@@ -1076,10 +1076,10 @@
             {
               "id": "bonuse_041",
               "title": "parseObject",
+              "friendlyTitle": "Parse Object",
               "x": 3568,
               "y": 204,
               "rootType": "objectOps",
-              "friendlyTitle": "Parse Object",
               "color": "#607d8b",
               "icon": "🔎",
               "properties": [
@@ -1088,14 +1088,14 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "paid",
                   "type": "int",
                   "path": "TotalBonusPayout"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "bonuse_042",
@@ -1118,12 +1118,12 @@
             },
             {
               "id": "bonuse_034",
+              "title": "Exit",
               "x": 6102,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1219,15 +1219,16 @@
               "propertyType": "object",
               "propertyName": "source"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuse_035",
-        "x": 1890,
-        "y": 443,
         "title": "State",
         "displayName": "No bonus win",
+        "x": 1890,
+        "y": 443,
         "isState": true,
         "entryTargetId": "bonuse_020",
         "exitSourceId": "bonuse_021",
@@ -1235,16 +1236,17 @@
           "nodes": [
             {
               "id": "bonuse_036",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuse_020",
               "title": "setText",
+              "displayName": "Bonus over",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -1264,16 +1266,15 @@
               "propertyValues": {
                 "target": null,
                 "value": "FREE SPINS COMPLETE"
-              },
-              "displayName": "Bonus over"
+              }
             },
             {
               "id": "bonuse_021",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 672,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -1288,12 +1289,12 @@
             },
             {
               "id": "bonuse_037",
+              "title": "Exit",
               "x": 1034,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1312,15 +1313,16 @@
               "from": "bonuse_021",
               "to": "bonuse_037"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "bonuse_038",
-        "x": 2120,
-        "y": 120,
         "title": "State",
         "displayName": "Base look",
+        "x": 2120,
+        "y": 120,
         "isState": true,
         "entryTargetId": "bonuse_022",
         "exitSourceId": "bonuse_030",
@@ -1328,16 +1330,17 @@
           "nodes": [
             {
               "id": "bonuse_039",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "bonuse_022",
               "title": "crossfadeMusic",
+              "displayName": "Base music",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -1367,12 +1370,12 @@
                   "path": "assets/audio/music/base-loop.mp3"
                 },
                 "duration": 1
-              },
-              "displayName": "Base music"
+              }
             },
             {
               "id": "bonuse_023",
               "title": "tweenNodeAlpha",
+              "displayName": "Background fades out",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -1534,12 +1537,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Background fades out"
+              }
             },
             {
               "id": "bonuse_024",
               "title": "hideNode",
+              "displayName": "Hide bonus background",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -1558,8 +1561,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide bonus background"
+              }
             },
             {
               "id": "bonuse_025",
@@ -1593,6 +1595,7 @@
             {
               "id": "bonuse_026",
               "title": "hideNode",
+              "displayName": "Hide spin counter",
               "x": 1758,
               "y": 120,
               "rootType": "Action",
@@ -1611,12 +1614,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide spin counter"
+              }
             },
             {
               "id": "bonuse_027",
               "title": "hideNode",
+              "displayName": "Hide split panel",
               "x": 2120,
               "y": 120,
               "rootType": "Action",
@@ -1635,12 +1638,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide split panel"
+              }
             },
             {
               "id": "bonuse_028",
               "title": "showNode",
+              "displayName": "Show bonus tiers",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
@@ -1654,16 +1657,15 @@
               ],
               "propertyValues": {
                 "target": null
-              },
-              "displayName": "Show bonus tiers"
+              }
             },
             {
               "id": "bonuse_029",
               "title": "setInBonusRound",
+              "friendlyTitle": "Set In Bonus Round",
               "x": 2844,
               "y": 120,
               "rootType": "Game State",
-              "friendlyTitle": "Set In Bonus Round",
               "color": "#9b59b6",
               "icon": "🎮",
               "properties": [
@@ -1680,11 +1682,13 @@
             {
               "id": "bonuse_030",
               "title": "setGameModelProperty",
+              "displayName": "Base game",
               "x": 3206,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -1697,21 +1701,19 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "inBonus",
                 "value": false
-              },
-              "displayName": "Base game"
+              }
             },
             {
               "id": "bonuse_040",
+              "title": "Exit",
               "x": 3568,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -1765,7 +1767,8 @@
               "from": "bonuse_030",
               "to": "bonuse_040"
             }
-          ]
+          ],
+          "groups": []
         }
       }
     ],
@@ -1825,11 +1828,12 @@
         "to": "bonuse_005"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": 214.81980615347175,
+      "panY": 230.86239397260334,
+      "scale": 0.5011621268467636
     }
   }
 }

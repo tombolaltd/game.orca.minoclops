@@ -36,10 +36,10 @@
       {
         "id": "bonuss_002",
         "title": "parseObject",
+        "friendlyTitle": "Parse Object",
         "x": 1166,
         "y": 204,
         "rootType": "objectOps",
-        "friendlyTitle": "Parse Object",
         "color": "#607d8b",
         "icon": "🔎",
         "properties": [
@@ -48,24 +48,26 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "complete",
             "type": "bool",
             "path": "GameComplete"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "bonuss_003",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -75,17 +77,15 @@
         ],
         "propertyValues": {
           "eventName": "bonusSpinEnd"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "bonuss_004",
         "title": "delay",
+        "friendlyTitle": "Wait",
         "x": 442,
         "y": 120,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -101,10 +101,10 @@
       {
         "id": "bonuss_005",
         "title": "not",
+        "friendlyTitle": "NOT",
         "x": 1528,
         "y": 204,
         "rootType": "logic",
-        "friendlyTitle": "NOT",
         "color": "#3f51b5",
         "icon": "!",
         "properties": [
@@ -121,6 +121,7 @@
       {
         "id": "bonuss_006",
         "title": "branch",
+        "displayName": "Spins left?",
         "x": 1890,
         "y": 120,
         "rootType": "branch",
@@ -135,8 +136,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Spins left?"
+        }
       },
       {
         "id": "bonuss_007",
@@ -233,6 +233,7 @@
         "to": "bonuss_004"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
       "panX": 40,

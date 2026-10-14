@@ -9,6 +9,8 @@ export interface OrcaHtpDocument {
     contents: unknown[];
     /** Base64 / data-URL images embedded in the document itself. */
     injectedImages?: Record<string, string>;
+    /** `projectSettings.gameNameTitle`, shown under the page title. */
+    gameName?: string;
 }
 
 /** Keyed by EFFECTIVE runtime skin folder — the same key as `SKIN_TABLE`. */

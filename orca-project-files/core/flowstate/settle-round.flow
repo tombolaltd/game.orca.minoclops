@@ -36,12 +36,14 @@
       {
         "id": "settle_003",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -51,9 +53,7 @@
         ],
         "propertyValues": {
           "eventName": "settleRound"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "settle_004",
@@ -77,8 +77,8 @@
       {
         "id": "settle_005",
         "title": "greaterThan",
-        "x": 804,
-        "y": 204,
+        "x": 854.4822330584146,
+        "y": 407.66969889084504,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -97,8 +97,9 @@
       {
         "id": "settle_006",
         "title": "branch",
-        "x": 1166,
-        "y": 120,
+        "displayName": "Win not all shown?",
+        "x": 1150.3331000853195,
+        "y": -71.48433229053808,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -111,27 +112,26 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Win not all shown?"
+        }
       },
       {
         "id": "settle_010",
         "title": "getStakeAmount",
-        "x": 1758,
-        "y": 204,
-        "rootType": "Info & UI",
         "friendlyTitle": "Get Stake",
+        "x": 1657.035533883171,
+        "y": 364.15053246117725,
+        "rootType": "Info & UI",
         "color": "#1abc9c",
         "icon": "📊",
-        "properties": [],
         "overrideNodeType": "property",
+        "properties": [],
         "propertyValues": {}
       },
       {
         "id": "settle_011",
         "title": "multiply",
-        "x": 1990,
-        "y": 204,
+        "x": 2019.5930331721738,
+        "y": 367.6320657755507,
         "rootType": "math",
         "color": "#16a085",
         "icon": "✖️",
@@ -152,8 +152,8 @@
       {
         "id": "settle_012",
         "title": "greaterThanOrEqual",
-        "x": 2352,
-        "y": 204,
+        "x": 2395.5191664296676,
+        "y": 614.8209310960635,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -172,8 +172,9 @@
       {
         "id": "settle_013",
         "title": "branch",
-        "x": 2714,
-        "y": 120,
+        "displayName": "15x or more?",
+        "x": 2686.147733485013,
+        "y": 5.109400625677168,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -186,8 +187,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "15x or more?"
+        }
       },
       {
         "id": "settle_049",
@@ -214,6 +214,7 @@
       {
         "id": "settle_050",
         "title": "branch",
+        "displayName": "Round won?",
         "x": 3668,
         "y": 120,
         "rootType": "branch",
@@ -228,15 +229,14 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Round won?"
+        }
       },
       {
         "id": "settle_058",
-        "x": 1528,
-        "y": 120,
         "title": "State",
         "displayName": "Top up win",
+        "x": 1672.483632546497,
+        "y": -97.5958321483387,
         "isState": true,
         "entryTargetId": "settle_008",
         "exitSourceId": "settle_009",
@@ -244,12 +244,12 @@
           "nodes": [
             {
               "id": "settle_059",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "settle_007",
@@ -273,10 +273,11 @@
             {
               "id": "settle_008",
               "title": "countUpText",
+              "displayName": "Count to payout",
+              "friendlyTitle": "Count Up Text",
               "x": 672,
               "y": 120,
               "rootType": "Action",
-              "friendlyTitle": "Count Up Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -387,17 +388,18 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Count to payout"
+              }
             },
             {
               "id": "settle_009",
               "title": "setGameModelProperty",
+              "displayName": "Win shown",
               "x": 1034,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -410,11 +412,9 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "winAmountSoFar"
-              },
-              "displayName": "Win shown"
+              }
             },
             {
               "id": "settle_073",
@@ -437,12 +437,12 @@
             },
             {
               "id": "settle_060",
+              "title": "Exit",
               "x": 1396,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -482,15 +482,16 @@
               "from": "settle_009",
               "to": "settle_060"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "settle_061",
-        "x": 3076,
-        "y": 120,
         "title": "State",
         "displayName": "Big win ladder",
+        "x": 3182.1867660883895,
+        "y": -68.00279897616466,
         "isState": true,
         "entryTargetId": "settle_014",
         "exitSourceId": "settle_048",
@@ -498,20 +499,20 @@
           "nodes": [
             {
               "id": "settle_062",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "settle_002",
               "title": "loop",
+              "friendlyTitle": "Repeat For Each",
               "x": 3930,
               "y": 120,
               "rootType": "loop",
-              "friendlyTitle": "Repeat For Each",
               "color": "#9b59b6",
               "icon": "🔁",
               "properties": [
@@ -538,6 +539,7 @@
             {
               "id": "settle_014",
               "title": "setText",
+              "displayName": "First tier",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -562,12 +564,12 @@
                   "sceneName": "main"
                 },
                 "value": "BIG WIN"
-              },
-              "displayName": "First tier"
+              }
             },
             {
               "id": "settle_015",
               "title": "setText",
+              "displayName": "No subtitle",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -592,18 +594,18 @@
                   "sceneName": "main"
                 },
                 "value": ""
-              },
-              "displayName": "No subtitle"
+              }
             },
             {
               "id": "settle_016",
               "title": "formatMoney",
+              "friendlyTitle": "Format Money",
               "x": 1034,
               "y": 204,
               "rootType": "Info & UI",
-              "friendlyTitle": "Format Money",
               "color": "#1abc9c",
               "icon": "📊",
+              "overrideNodeType": "property",
               "properties": [
                 {
                   "name": "amount",
@@ -619,12 +621,12 @@
               "propertyValues": {
                 "amount": 0,
                 "rounded": false
-              },
-              "overrideNodeType": "property"
+              }
             },
             {
               "id": "settle_017",
               "title": "setText",
+              "displayName": "Amount from 0",
               "x": 1396,
               "y": 120,
               "rootType": "Action",
@@ -648,8 +650,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Amount from 0"
+              }
             },
             {
               "id": "settle_018",
@@ -718,6 +719,7 @@
             {
               "id": "settle_020",
               "title": "showNode",
+              "displayName": "Show big win",
               "x": 2482,
               "y": 120,
               "rootType": "Action",
@@ -736,8 +738,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Show big win"
+              }
             },
             {
               "id": "settle_021",
@@ -972,6 +973,7 @@
             {
               "id": "settle_023",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade big win in",
               "x": 3568,
               "y": 120,
               "rootType": "Action",
@@ -1133,20 +1135,19 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Fade big win in"
+              }
             },
             {
               "id": "settle_024",
               "title": "getStakeAmount",
+              "friendlyTitle": "Get Stake",
               "x": 4292,
               "y": 853,
               "rootType": "Info & UI",
-              "friendlyTitle": "Get Stake",
               "color": "#1abc9c",
               "icon": "📊",
-              "properties": [],
               "overrideNodeType": "property",
+              "properties": [],
               "propertyValues": {}
             },
             {
@@ -1192,6 +1193,7 @@
             {
               "id": "settle_027",
               "title": "branch",
+              "displayName": "Reached this tier?",
               "x": 5248,
               "y": 634,
               "rootType": "branch",
@@ -1206,16 +1208,15 @@
               ],
               "propertyValues": {
                 "condition": false
-              },
-              "displayName": "Reached this tier?"
+              }
             },
             {
               "id": "settle_028",
               "title": "at",
+              "friendlyTitle": "Get",
               "x": 5610,
               "y": 718,
               "rootType": "array",
-              "friendlyTitle": "Get",
               "color": "#2980b9",
               "icon": "🎯",
               "properties": [
@@ -1240,6 +1241,7 @@
             {
               "id": "settle_029",
               "title": "setText",
+              "displayName": "Tier name",
               "x": 5972,
               "y": 634,
               "rootType": "Action",
@@ -1263,8 +1265,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Tier name"
+              }
             },
             {
               "id": "settle_030",
@@ -1291,6 +1292,7 @@
             {
               "id": "settle_031",
               "title": "branch",
+              "displayName": "Stepped up?",
               "x": 6696,
               "y": 634,
               "rootType": "branch",
@@ -1305,12 +1307,12 @@
               ],
               "propertyValues": {
                 "condition": false
-              },
-              "displayName": "Stepped up?"
+              }
             },
             {
               "id": "settle_032",
               "title": "playSound",
+              "displayName": "Tier up",
               "x": 7058,
               "y": 634,
               "rootType": "Action",
@@ -1364,12 +1366,12 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/tier-up.mp3"
                 }
-              },
-              "displayName": "Tier up"
+              }
             },
             {
               "id": "settle_033",
               "title": "setNodeScale",
+              "displayName": "Title pops",
               "x": 7420,
               "y": 634,
               "rootType": "Action",
@@ -1400,12 +1402,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Title pops"
+              }
             },
             {
               "id": "settle_034",
               "title": "tweenNodeScale",
+              "displayName": "Title settles",
               "x": 7782,
               "y": 634,
               "rootType": "Action",
@@ -1573,29 +1575,28 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Title settles"
+              }
             },
             {
               "id": "settle_035",
               "title": "getStakeAmount",
+              "friendlyTitle": "Get Stake",
               "x": 8636,
               "y": 718,
               "rootType": "Info & UI",
-              "friendlyTitle": "Get Stake",
               "color": "#1abc9c",
               "icon": "📊",
-              "properties": [],
               "overrideNodeType": "property",
+              "properties": [],
               "propertyValues": {}
             },
             {
               "id": "settle_036",
               "title": "at",
+              "friendlyTitle": "Get",
               "x": 8506,
               "y": 853,
               "rootType": "array",
-              "friendlyTitle": "Get",
               "color": "#2980b9",
               "icon": "🎯",
               "properties": [
@@ -1640,23 +1641,23 @@
             {
               "id": "settle_038",
               "title": "getStakeAmount",
+              "friendlyTitle": "Get Stake",
               "x": 8274,
               "y": 1014,
               "rootType": "Info & UI",
-              "friendlyTitle": "Get Stake",
               "color": "#1abc9c",
               "icon": "📊",
-              "properties": [],
               "overrideNodeType": "property",
+              "properties": [],
               "propertyValues": {}
             },
             {
               "id": "settle_039",
               "title": "at",
+              "friendlyTitle": "Get",
               "x": 8144,
               "y": 1149,
               "rootType": "array",
-              "friendlyTitle": "Get",
               "color": "#2980b9",
               "icon": "🎯",
               "properties": [
@@ -1701,10 +1702,10 @@
             {
               "id": "settle_041",
               "title": "min",
+              "friendlyTitle": "Minimum",
               "x": 8868,
               "y": 1014,
               "rootType": "math",
-              "friendlyTitle": "Minimum",
               "color": "#16a085",
               "icon": "🔽",
               "properties": [
@@ -1722,10 +1723,10 @@
             {
               "id": "settle_042",
               "title": "at",
+              "friendlyTitle": "Get",
               "x": 8868,
               "y": 1310,
               "rootType": "array",
-              "friendlyTitle": "Get",
               "color": "#2980b9",
               "icon": "🎯",
               "properties": [
@@ -1750,10 +1751,11 @@
             {
               "id": "settle_043",
               "title": "countUpText",
+              "displayName": "Count this tier",
+              "friendlyTitle": "Count Up Text",
               "x": 9230,
               "y": 634,
               "rootType": "Action",
-              "friendlyTitle": "Count Up Text",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [
@@ -1864,12 +1866,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Count this tier"
+              }
             },
             {
               "id": "settle_044",
               "title": "playSound",
+              "displayName": "Big win lands",
               "x": 9592,
               "y": 120,
               "rootType": "Action",
@@ -1923,16 +1925,15 @@
                   "kind": "audioRef",
                   "path": "assets/audio/sfx/cash-land.mp3"
                 }
-              },
-              "displayName": "Big win lands"
+              }
             },
             {
               "id": "settle_045",
               "title": "delay",
+              "friendlyTitle": "Wait",
               "x": 9954,
               "y": 120,
               "rootType": "delay",
-              "friendlyTitle": "Wait",
               "color": "#8e44ad",
               "icon": "⏱️",
               "properties": [
@@ -1948,6 +1949,7 @@
             {
               "id": "settle_046",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade big win out",
               "x": 10316,
               "y": 120,
               "rootType": "Action",
@@ -2109,8 +2111,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Fade big win out"
+              }
             },
             {
               "id": "settle_047",
@@ -2185,12 +2186,12 @@
             },
             {
               "id": "settle_063",
+              "title": "Exit",
               "x": 11402,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2479,15 +2480,16 @@
               "from": "settle_048",
               "to": "settle_063"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "settle_064",
-        "x": 4030,
-        "y": 120,
         "title": "State",
         "displayName": "Win message",
+        "x": 4030,
+        "y": 120,
         "isState": true,
         "entryTargetId": "settle_053",
         "exitSourceId": "settle_053",
@@ -2495,12 +2497,12 @@
           "nodes": [
             {
               "id": "settle_065",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "settle_051",
@@ -2546,6 +2548,7 @@
             {
               "id": "settle_053",
               "title": "setCabinetWinMessage",
+              "displayName": "Win message",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -2560,17 +2563,16 @@
               ],
               "propertyValues": {
                 "showAsBonusWin": false
-              },
-              "displayName": "Win message"
+              }
             },
             {
               "id": "settle_066",
+              "title": "Exit",
               "x": 1396,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2598,15 +2600,16 @@
               "from": "settle_053",
               "to": "settle_066"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "settle_067",
-        "x": 4030,
-        "y": 548,
         "title": "State",
         "displayName": "Lose message",
+        "x": 4030,
+        "y": 548,
         "isState": true,
         "entryTargetId": "settle_054",
         "exitSourceId": "settle_054",
@@ -2614,33 +2617,33 @@
           "nodes": [
             {
               "id": "settle_068",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "settle_054",
               "title": "setCabinetLoseMessage",
+              "displayName": "Lose message",
               "x": 310,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [],
-              "propertyValues": {},
-              "displayName": "Lose message"
+              "propertyValues": {}
             },
             {
               "id": "settle_069",
+              "title": "Exit",
               "x": 625,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2654,15 +2657,16 @@
               "from": "settle_054",
               "to": "settle_069"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "settle_070",
-        "x": 4260,
-        "y": 120,
         "title": "State",
         "displayName": "End round",
+        "x": 4260,
+        "y": 120,
         "isState": true,
         "entryTargetId": "settle_055",
         "exitSourceId": "settle_057",
@@ -2670,16 +2674,17 @@
           "nodes": [
             {
               "id": "settle_071",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "settle_055",
               "title": "setText",
+              "displayName": "Default header",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -2699,17 +2704,18 @@
               "propertyValues": {
                 "target": null,
                 "value": "WIN UP TO 2,000x STAKE"
-              },
-              "displayName": "Default header"
+              }
             },
             {
               "id": "settle_056",
               "title": "setGameModelProperty",
+              "displayName": "Round over",
               "x": 672,
               "y": 120,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
+              "overrideNodeType": "sequence",
               "properties": [
                 {
                   "name": "propertyName",
@@ -2722,33 +2728,31 @@
                   "propertyValue": "gameModel"
                 }
               ],
-              "overrideNodeType": "sequence",
               "propertyValues": {
                 "propertyName": "roundBusy",
                 "value": false
-              },
-              "displayName": "Round over"
+              }
             },
             {
               "id": "settle_057",
               "title": "endCabinetGame",
+              "displayName": "End the game",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
               "properties": [],
-              "propertyValues": {},
-              "displayName": "End the game"
+              "propertyValues": {}
             },
             {
               "id": "settle_072",
+              "title": "Exit",
               "x": 1302,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -2772,7 +2776,8 @@
               "from": "settle_057",
               "to": "settle_072"
             }
-          ]
+          ],
+          "groups": []
         }
       }
     ],
@@ -2902,11 +2907,12 @@
         "to": "settle_006"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -146.4302128077103,
+      "panY": 180.08895606529308,
+      "scale": 0.35519951838398334
     }
   }
 }
