@@ -1,9 +1,9 @@
 {
-  "moduleName": "splittingsymbols",
-  "angularModuleName": "Splitting Symbols",
-  "gameName": "splittingsymbols",
-  "friendlyName": "Splitting Symbols",
+  "moduleName": "minoclops",
+  "angularModuleName": "Minoclops",
+  "gameName": "minoclops",
+  "friendlyName": "Minoclops",
   "locale": {
-    "localeName": "SPLITTINGSYMBOLS"
+    "localeName": "MINOCLOPS"
   }
 }

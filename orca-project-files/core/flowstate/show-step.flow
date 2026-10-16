@@ -76,8 +76,8 @@
       {
         "id": "nipb74mu",
         "title": "getGameModelProperty",
-        "x": 805.6377220851624,
-        "y": 15.536247567282643,
+        "x": 843.9175784837173,
+        "y": 261.484324927997,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -114,27 +114,6 @@
         }
       },
       {
-        "id": "nt7791av",
-        "title": "equals",
-        "friendlyTitle": "Equal",
-        "x": 1161.6489331017726,
-        "y": 35.86450736726888,
-        "rootType": "math",
-        "color": "#16a085",
-        "icon": "🟰",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "a",
-            "type": "T"
-          },
-          {
-            "name": "b",
-            "type": "T"
-          }
-        ]
-      },
-      {
         "id": "n8u6ewfk",
         "title": "getGameModelProperty",
         "x": 803.5398872562284,
@@ -151,8 +130,28 @@
           }
         ],
         "propertyValues": {
-          "propertyName": "currentCascade"
+          "propertyName": "_currentCascade"
         }
+      },
+      {
+        "id": "n67zu366",
+        "title": "greaterThanOrEqual",
+        "x": 1201.6033883115065,
+        "y": 124.07913318046995,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ]
       }
     ],
     "links": [
@@ -174,22 +173,22 @@
         "outIdx": 1
       },
       {
-        "id": "lzirqzfg",
-        "from": "nipb74mu",
-        "to": "nt7791av",
-        "propertyType": "T",
+        "id": "lhal07cm",
+        "from": "n8u6ewfk",
+        "to": "n67zu366",
+        "propertyType": "float",
         "propertyName": "a"
       },
       {
-        "id": "ldwts75y",
-        "from": "n8u6ewfk",
-        "to": "nt7791av",
-        "propertyType": "T",
+        "id": "lq5k15wk",
+        "from": "nipb74mu",
+        "to": "n67zu366",
+        "propertyType": "float",
         "propertyName": "b"
       },
       {
-        "id": "ltjjeiky",
-        "from": "nt7791av",
+        "id": "lgzgqcbe",
+        "from": "n67zu366",
         "to": "nigin0xz",
         "propertyType": "bool",
         "propertyName": "condition"
@@ -198,9 +197,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -687.6285075416583,
-      "panY": 379.0502132981186,
-      "scale": 0.8294069421485156
+      "panX": -833.6478277980486,
+      "panY": 312.6481230746247,
+      "scale": 1.039464460689032
     }
   }
 }

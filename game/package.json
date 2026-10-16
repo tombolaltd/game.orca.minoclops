@@ -1,7 +1,7 @@
 {
-	"name": "@arcade-client/splittingsymbols",
+	"name": "@arcade-client/minoclops",
 	"version": "0.0.0",
-	"description": "tombola arcade splittingsymbols",
+	"description": "tombola arcade minoclops",
 	"author": "tombola",
 	"publishConfig": {
 		"registry": "https://packages.tombola.com/repository/npm-private-client/"

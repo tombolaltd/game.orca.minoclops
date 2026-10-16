@@ -18,8 +18,8 @@
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 53.7168972913143,
-        "y": 90.7916191686865,
+        "x": -176.94469777783195,
+        "y": 61.824814206514645,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -155,14 +155,29 @@
         "propertyValues": {
           "count": 1
         }
+      },
+      {
+        "id": "ncejedmd",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 306.93242155219934,
+        "y": 54.88908817682284,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 2
+        }
       }
     ],
     "links": [
-      {
-        "id": "lt3xj1zm",
-        "from": "splitr_008",
-        "to": "splitr_070"
-      },
       {
         "id": "l9v9yq4g",
         "from": "n6wdkvrw",
@@ -176,14 +191,24 @@
         "to": "nwxdrps1",
         "propertyType": "object",
         "propertyName": "source"
+      },
+      {
+        "id": "lio9xz18",
+        "from": "splitr_008",
+        "to": "ncejedmd"
+      },
+      {
+        "id": "lxzmfn1m",
+        "from": "ncejedmd",
+        "to": "splitr_070"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 150.51095458018676,
-      "panY": 9.707577515635307,
-      "scale": 1.0298738799710228
+      "panX": 292.3397409361339,
+      "panY": 62.14293034112694,
+      "scale": 0.9321014186845828
     }
   }
 }

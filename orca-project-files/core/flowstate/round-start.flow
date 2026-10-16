@@ -8,8 +8,8 @@
         "title": "onBeginGame",
         "displayName": "BUY pressed",
         "friendlyTitle": "On Buy In",
-        "x": 557.5819567259,
-        "y": -88.39103272146359,
+        "x": 528.471050835921,
+        "y": -158.0492718153419,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -21,8 +21,8 @@
       {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 2073.3774410744486,
-        "y": -114.44659934192842,
+        "x": 1242.0928050947941,
+        "y": -178.53840611688074,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -38,7 +38,7 @@
           }
         ],
         "propertyValues": {
-          "eventName": "splitReveal",
+          "eventName": "cascadeStep",
           "propertyNames": []
         }
       },
@@ -46,8 +46,8 @@
         "id": "rounds_033",
         "title": "State",
         "displayName": "Reset round",
-        "x": 745.8173518048393,
-        "y": -254.75343389423415,
+        "x": 720.8651467562859,
+        "y": -345.2051771952403,
         "isState": true,
         "entryTargetId": "rounds_006",
         "exitSourceId": "rounds_011",
@@ -348,8 +348,8 @@
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": 805.1177071332417,
-        "y": -99.54988173804105,
+        "x": 777.6402703381287,
+        "y": -153.16496770087141,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -458,8 +458,8 @@
         "id": "rounds_039",
         "title": "State",
         "displayName": "Reset labels",
-        "x": 1024.709846559156,
-        "y": -96.22424613369445,
+        "x": 1016.8560114032884,
+        "y": -163.00194181070822,
         "isState": true,
         "entryTargetId": "rounds_016",
         "exitSourceId": "rounds_022",
@@ -559,156 +559,6 @@
           ],
           "groups": []
         }
-      },
-      {
-        "id": "nfofoxjt",
-        "title": "spinReels",
-        "x": 1272.6514442446762,
-        "y": -331.8061967327141,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "reels"
-          },
-          {
-            "name": "mode",
-            "type": "string",
-            "default": "fullSequence",
-            "options": [
-              {
-                "value": "fullSequence",
-                "label": "Full sequence"
-              },
-              {
-                "value": "startSpinOnly",
-                "label": "Start spin only"
-              }
-            ]
-          },
-          {
-            "name": "endPositions",
-            "type": "string",
-            "default": "",
-            "visibleWhen": {
-              "property": "mode",
-              "equals": "fullSequence"
-            }
-          },
-          {
-            "name": "startPositions?",
-            "type": "string",
-            "default": "",
-            "visibleWhen": {
-              "property": "mode",
-              "equals": "fullSequence"
-            }
-          }
-        ],
-        "propertyValues": {
-          "mode": "fullSequence",
-          "endPositions": "",
-          "startPositions?": "",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "nikrn399",
-        "title": "waitForReelsToStop",
-        "friendlyTitle": "Wait For Reels To Stop",
-        "x": 1676.1069290418288,
-        "y": -95.25964745601465,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "reels"
-          },
-          {
-            "name": "timeoutSeconds",
-            "type": "float",
-            "default": 30
-          }
-        ],
-        "propertyValues": {
-          "timeoutSeconds": 2.5,
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "npevewfe",
-        "title": "runCascade",
-        "x": 1255.690285936363,
-        "y": 192.69548613537333,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "reels"
-          },
-          {
-            "name": "locations",
-            "type": "string",
-            "default": "[[0],[0],[0],[0],[0]]"
-          },
-          {
-            "name": "outcome",
-            "type": "string",
-            "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for the cascade)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "locations": "",
-          "outcome": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
-          "sequenceNodeOn": "immediate"
-        }
-      },
-      {
-        "id": "nguqaqdp",
-        "title": "Note",
-        "x": 1264.3783260689008,
-        "y": -23.059588958306236,
-        "isNote": true,
-        "noteText": "TODO: needs to cascade instead of spin. figure it out",
-        "width": 288,
-        "height": 176
       }
     ],
     "links": [
@@ -718,32 +568,22 @@
         "to": "rounds_039"
       },
       {
-        "id": "lubul166",
+        "id": "lgnzpw35",
         "from": "rounds_001",
         "to": "rounds_036"
       },
       {
-        "id": "l6yf4ru7",
-        "from": "nikrn399",
-        "to": "rounds_029"
-      },
-      {
-        "id": "llb0gban",
+        "id": "lpnauol5",
         "from": "rounds_039",
-        "to": "nfofoxjt"
-      },
-      {
-        "id": "lqto52k9",
-        "from": "nfofoxjt",
-        "to": "nikrn399"
+        "to": "rounds_029"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -487.72239453786744,
-      "panY": 356.887754421359,
-      "scale": 0.7796514121870074
+      "panX": -783.4137364785374,
+      "panY": 309.4625114927152,
+      "scale": 1.091393847915723
     }
   }
 }

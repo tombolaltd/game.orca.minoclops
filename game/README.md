@@ -1,4 +1,4 @@
-## Splitting Symbols Build Setup
+## Minoclops Build Setup
 
 ``` bash
 # install dependencies

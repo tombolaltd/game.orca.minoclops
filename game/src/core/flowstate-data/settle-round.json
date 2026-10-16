@@ -17,7 +17,28 @@
       "title": "Note",
       "isNote": true,
       "noteText": "TODO: Play bonus win if needed or big win. Set cabinet values and other end of game things"
+    },
+    {
+      "id": "n88iott5",
+      "title": "endCabinetGame",
+      "rootType": "Action"
+    },
+    {
+      "id": "n152ds7e",
+      "title": "GAME_COMPLETE",
+      "rootType": "fireEvent"
     }
   ],
-  "links": []
+  "links": [
+    {
+      "id": "lygjpzyk",
+      "from": "settle_003",
+      "to": "n88iott5"
+    },
+    {
+      "id": "lsvfnlxi",
+      "from": "n88iott5",
+      "to": "n152ds7e"
+    }
+  ]
 }

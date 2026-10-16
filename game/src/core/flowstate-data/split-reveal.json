@@ -92,14 +92,21 @@
           "value": 1
         }
       ]
+    },
+    {
+      "id": "ncejedmd",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 2
+        }
+      ]
     }
   ],
   "links": [
-    {
-      "id": "lt3xj1zm",
-      "from": "splitr_008",
-      "to": "splitr_070"
-    },
     {
       "id": "l9v9yq4g",
       "from": "n6wdkvrw",
@@ -113,6 +120,16 @@
       "to": "nwxdrps1",
       "propertyType": "object",
       "propertyName": "source"
+    },
+    {
+      "id": "lio9xz18",
+      "from": "splitr_008",
+      "to": "ncejedmd"
+    },
+    {
+      "id": "lxzmfn1m",
+      "from": "ncejedmd",
+      "to": "splitr_070"
     }
   ]
 }

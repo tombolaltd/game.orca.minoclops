@@ -11,7 +11,7 @@ NOTE: This block can be deleted in any projects created from the template.
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Project to hold the tombola game splittingsymbols, and all of it's related content (TicketFetcher, assets, etc...)
+Project to hold the tombola game minoclops, and all of it's related content (TicketFetcher, assets, etc...)
 
 <!-- GETTING STARTED -->
 ## Getting Started

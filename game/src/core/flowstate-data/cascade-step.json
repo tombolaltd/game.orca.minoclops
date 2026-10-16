@@ -34,7 +34,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "cascad_017",
-      "exitSourceId": "n3w1ih06",
+      "exitSourceId": "n0mjeqyp",
       "subgraph": {
         "nodes": [
           {
@@ -60,17 +60,19 @@
               {
                 "name": "locations",
                 "type": "string",
-                "value": ""
+                "sourceNodeId": "nnqo51iy",
+                "sourceOutputName": "locations"
               },
               {
                 "name": "outcome",
                 "type": "string",
-                "value": ""
+                "sourceNodeId": "nnqo51iy",
+                "sourceOutputName": "outcomes"
               },
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "onComplete"
+                "value": "immediate"
               }
             ]
           },
@@ -82,7 +84,7 @@
               {
                 "name": "propertyName",
                 "type": "modelProperty",
-                "value": "currentCascade"
+                "value": "_currentCascade"
               }
             ]
           },
@@ -94,7 +96,7 @@
               {
                 "name": "propertyName",
                 "type": "modelProperty",
-                "value": "currentCascade"
+                "value": "_currentCascade"
               },
               {
                 "name": "value",
@@ -107,18 +109,6 @@
             "id": "cascad_030",
             "title": "Exit",
             "isExit": true
-          },
-          {
-            "id": "nr6zf4u8",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "currentCascade"
-              }
-            ]
           },
           {
             "id": "nlbg0i8g",
@@ -138,64 +128,40 @@
             ]
           },
           {
-            "id": "n57yc4vj",
-            "title": "cascadeLocations",
-            "rootType": "custom",
-            "properties": [
-              {
-                "name": "currentCascade",
-                "type": "int",
-                "sourceNodeId": "nfspbw22"
-              }
-            ]
-          },
-          {
-            "id": "nfspbw22",
-            "title": "toInt",
-            "rootType": "cast",
-            "properties": [
-              {
-                "name": "value",
-                "type": "T",
-                "sourceNodeId": "nr6zf4u8"
-              }
-            ]
-          },
-          {
-            "id": "nsd30wuj",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object"
-              }
-            ]
-          },
-          {
-            "id": "n6m9nav5",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object"
-              }
-            ]
-          },
-          {
             "id": "nh90ofe9",
             "title": "Note",
             "isNote": true,
             "noteText": "TODO: cascades need a 2d number array but I can't return that from a custom script yet. While Brad gets that in maybe figure out a way to get that to work with parse objects or turning itno a json"
+          },
+          {
+            "id": "nnqo51iy",
+            "title": "cascadeLocations",
+            "rootType": "custom"
+          },
+          {
+            "id": "n0mjeqyp",
+            "title": "waitForReelsToStop",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "timeoutSeconds",
+                "type": "float",
+                "value": 5
+              }
+            ]
           }
         ],
         "links": [
-          {
-            "id": "l_cascad_33",
-            "from": "cascad_017",
-            "to": "cascad_020"
-          },
           {
             "id": "l_cascad_34",
             "from": "cascad_029",
@@ -207,13 +173,6 @@
             "to": "cascad_030"
           },
           {
-            "id": "lzyx8hvq",
-            "from": "cascad_018",
-            "to": "nlbg0i8g",
-            "propertyType": "T",
-            "propertyName": "a"
-          },
-          {
             "id": "lbz24khd",
             "from": "nlbg0i8g",
             "to": "cascad_020",
@@ -221,18 +180,37 @@
             "propertyName": "value"
           },
           {
-            "id": "lw88lhpc",
-            "from": "nr6zf4u8",
-            "to": "nfspbw22",
-            "propertyType": "float",
-            "propertyName": "value"
+            "id": "l11cy8ud",
+            "from": "cascad_018",
+            "to": "nlbg0i8g",
+            "propertyType": "T",
+            "propertyName": "a"
           },
           {
-            "id": "l7e9446r",
-            "from": "nfspbw22",
-            "to": "n57yc4vj",
-            "propertyType": "int",
-            "propertyName": "currentCascade"
+            "id": "lh6uzuai",
+            "from": "cascad_017",
+            "to": "n0mjeqyp"
+          },
+          {
+            "id": "l6tv1ug8",
+            "from": "n0mjeqyp",
+            "to": "cascad_020"
+          },
+          {
+            "id": "lk7lmeod",
+            "from": "nnqo51iy",
+            "to": "cascad_017",
+            "propertyType": "string",
+            "propertyName": "locations",
+            "sourceOutputName": "locations"
+          },
+          {
+            "id": "lxtpih9o",
+            "from": "nnqo51iy",
+            "to": "cascad_017",
+            "propertyType": "string",
+            "propertyName": "outcome",
+            "sourceOutputName": "outcomes"
           }
         ]
       }

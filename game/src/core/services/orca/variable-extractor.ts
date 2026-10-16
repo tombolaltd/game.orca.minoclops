@@ -39,7 +39,6 @@ export const gameModelVariables: IFlowstateVariable[] = [
     { name: "arcadeGameType", type: 'string' },
     { name: "bonus", type: 'boolean' },
     { name: "cascadeCount", type: 'number' },
-    { name: "currentCascade", type: 'number' },
     { name: "initialBonusSpins", type: 'number' },
     { name: "currentBonusSpin", type: 'number' },
     { name: "currentBonus", type: 'object' },
@@ -64,6 +63,7 @@ export const gameModelVariables: IFlowstateVariable[] = [
     { name: "isWildReel", type: 'boolean[]' },
     { name: "shouldReelSlowDown", type: 'boolean[]' },
     { name: "displayReels", type: 'object' },
+    { name: "bonusTutorialSeen", type: 'boolean' },
 ];
 
 /**

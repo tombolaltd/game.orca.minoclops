@@ -3,7 +3,7 @@ $ npm i
 
 **RUN**
 + new terminal
-$ cd ./ticket-fetchers/splittingsymbols
+$ cd ./ticket-fetchers/minoclops
 $ npm run dev
 
 **TEST**

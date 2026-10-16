@@ -15,38 +15,17 @@ export const definition: CustomNodeDefinition = {
   icon: '🧩',
   color: '#8e44ad',
   nodeType: 'property',
-  inputs: [
-    { name: 'currentCascade', type: 'int', description: 'the cascade outcome we are at'}
-  ],
+  inputs: [],
   outputs: [
-    { name: 'locations', type: 'number[][]' },
-    { name: 'outcomes', type: 'number[][]' }
+    { name: 'locations', type: 'any' },
+    { name: 'outcomes', type: 'any' }
+
   ]
 };
 
-interface CascadeLocationsResult {
-  locations: number[][];
-  outcomes: number[][];
-}
-
-export async function run(currentCascade: number): Promise<CascadeLocationsResult> {
-  console.log('[cascadeLocations] running', currentCascade);
-
-  const outcome = gameModel.unplayedSpinOutcomes[currentCascade];
-  if (!outcome) return { locations: [], outcomes: [] };
-
-  // Wilds appear in every ways win they substitute for, so de-duplicate positions.
-  const seen = new Set<string>();
-  const locations: number[][] = [];
-  for (const result of outcome.Results ?? []) {
-    for (const { Reel, Row } of result.Positions ?? []) {
-      const key = `${Reel},${Row}`;
-      if (seen.has(key)) continue;
-      seen.add(key);
-      locations.push([Reel, Row]);
-    }
-  }
-  locations.sort((a, b) => a[0] - b[0] || a[1] - b[1]);
-
-  return { locations, outcomes: outcome.DisplayReels };
+export async function run(): Promise<{ locations: number[][]; outcomes: number[][] }> {
+  return {
+    locations: gameModel.currentCascadeTargets(0),
+    outcomes: gameModel.getReelsAfterCascade()
+  };
 }

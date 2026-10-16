@@ -34,9 +34,40 @@
         "noteText": "TODO: Play bonus win if needed or big win. Set cabinet values and other end of game things",
         "width": 250,
         "height": 180
+      },
+      {
+        "id": "n88iott5",
+        "title": "endCabinetGame",
+        "x": 715.6090498925639,
+        "y": 174.8647592855023,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
+      },
+      {
+        "id": "n152ds7e",
+        "title": "GAME_COMPLETE",
+        "x": 1011.6624172347099,
+        "y": 179.4905931502233,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "⚡",
+        "isStarter": false
       }
     ],
-    "links": [],
+    "links": [
+      {
+        "id": "lygjpzyk",
+        "from": "settle_003",
+        "to": "n88iott5"
+      },
+      {
+        "id": "lsvfnlxi",
+        "from": "n88iott5",
+        "to": "n152ds7e"
+      }
+    ],
     "groups": [],
     "variables": [],
     "viewState": {

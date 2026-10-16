@@ -66,24 +66,7 @@
         {
           "name": "condition",
           "type": "bool",
-          "sourceNodeId": "nt7791av"
-        }
-      ]
-    },
-    {
-      "id": "nt7791av",
-      "title": "equals",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "T",
-          "sourceNodeId": "nipb74mu"
-        },
-        {
-          "name": "b",
-          "type": "T",
-          "sourceNodeId": "n8u6ewfk"
+          "sourceNodeId": "n67zu366"
         }
       ]
     },
@@ -95,7 +78,24 @@
         {
           "name": "propertyName",
           "type": "modelProperty",
-          "value": "currentCascade"
+          "value": "_currentCascade"
+        }
+      ]
+    },
+    {
+      "id": "n67zu366",
+      "title": "greaterThanOrEqual",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "n8u6ewfk"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "sourceNodeId": "nipb74mu"
         }
       ]
     }
@@ -119,22 +119,22 @@
       "outIdx": 1
     },
     {
-      "id": "lzirqzfg",
-      "from": "nipb74mu",
-      "to": "nt7791av",
-      "propertyType": "T",
+      "id": "lhal07cm",
+      "from": "n8u6ewfk",
+      "to": "n67zu366",
+      "propertyType": "float",
       "propertyName": "a"
     },
     {
-      "id": "ldwts75y",
-      "from": "n8u6ewfk",
-      "to": "nt7791av",
-      "propertyType": "T",
+      "id": "lq5k15wk",
+      "from": "nipb74mu",
+      "to": "n67zu366",
+      "propertyType": "float",
       "propertyName": "b"
     },
     {
-      "id": "ltjjeiky",
-      "from": "nt7791av",
+      "id": "lgzgqcbe",
+      "from": "n67zu366",
       "to": "nigin0xz",
       "propertyType": "bool",
       "propertyName": "condition"

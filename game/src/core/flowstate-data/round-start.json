@@ -13,7 +13,7 @@
         {
           "name": "eventName",
           "type": "customEventRef",
-          "value": "splitReveal"
+          "value": "cascadeStep"
         },
         {
           "name": "propertyNames",
@@ -392,92 +392,6 @@
           }
         ]
       }
-    },
-    {
-      "id": "nfofoxjt",
-      "title": "spinReels",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "mode",
-          "type": "string",
-          "value": "fullSequence"
-        },
-        {
-          "name": "endPositions",
-          "type": "string",
-          "value": ""
-        },
-        {
-          "name": "startPositions?",
-          "type": "string",
-          "value": ""
-        }
-      ]
-    },
-    {
-      "id": "nikrn399",
-      "title": "waitForReelsToStop",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "timeoutSeconds",
-          "type": "float",
-          "value": 2.5
-        }
-      ]
-    },
-    {
-      "id": "npevewfe",
-      "title": "runCascade",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef"
-        },
-        {
-          "name": "locations",
-          "type": "string",
-          "value": ""
-        },
-        {
-          "name": "outcome",
-          "type": "string",
-          "value": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "nguqaqdp",
-      "title": "Note",
-      "isNote": true,
-      "noteText": "TODO: needs to cascade instead of spin. figure it out"
     }
   ],
   "links": [
@@ -487,24 +401,14 @@
       "to": "rounds_039"
     },
     {
-      "id": "lubul166",
+      "id": "lgnzpw35",
       "from": "rounds_001",
       "to": "rounds_036"
     },
     {
-      "id": "l6yf4ru7",
-      "from": "nikrn399",
-      "to": "rounds_029"
-    },
-    {
-      "id": "llb0gban",
+      "id": "lpnauol5",
       "from": "rounds_039",
-      "to": "nfofoxjt"
-    },
-    {
-      "id": "lqto52k9",
-      "from": "nfofoxjt",
-      "to": "nikrn399"
+      "to": "rounds_029"
     }
   ]
 }
