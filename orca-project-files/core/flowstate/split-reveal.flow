@@ -6,20 +6,20 @@
       {
         "id": "splitr_note",
         "title": "Note",
-        "x": 80,
-        "y": -164,
+        "x": 477.62876796346177,
+        "y": 297.51969162571237,
         "rootType": "note",
         "isNote": true,
-        "noteText": "The split beat: hotspot fades in, the chosen cell splits x2, matching cells follow; show-step ticks the ways.",
-        "width": 620,
-        "height": 210
+        "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off ",
+        "width": 389,
+        "height": 205
       },
       {
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -41.79288640384431,
-        "y": 123.44696848312765,
+        "x": 53.7168972913143,
+        "y": 90.7916191686865,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -39,8 +39,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 965.0440257731863,
-        "y": 107.51584835132931,
+        "x": 710.9655727616841,
+        "y": 94.65966204773017,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -63,8 +63,8 @@
       {
         "id": "nmes1rq5",
         "title": "getGameModelProperty",
-        "x": 85.14500908406046,
-        "y": 331.62227739874686,
+        "x": -234.79128734952116,
+        "y": 436.37048640398797,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -75,16 +75,66 @@
             "type": "modelProperty",
             "propertyValue": "gameModel"
           }
+        ],
+        "propertyValues": {
+          "propertyName": "splitSymbolDetails"
+        }
+      },
+      {
+        "id": "nlvizkwr",
+        "title": "parseObject",
+        "friendlyTitle": "Parse Object",
+        "x": 124.90660616423605,
+        "y": 359.10767855852816,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🔎",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "Split",
+            "type": "int",
+            "path": "splitSymbolDetails[0].Split"
+          },
+          {
+            "name": "Symbol",
+            "type": "int",
+            "path": "Symbol"
+          },
+          {
+            "name": "HighlightedPosition",
+            "type": "object",
+            "path": "HighlightedPosition"
+          }
         ]
       }
     ],
-    "links": [],
+    "links": [
+      {
+        "id": "lmq9wtjf",
+        "from": "nmes1rq5",
+        "to": "nlvizkwr",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "lt3xj1zm",
+        "from": "splitr_008",
+        "to": "splitr_070"
+      }
+    ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 151.6432545467228,
-      "panY": 64.98386515829424,
-      "scale": 0.856087356938775
+      "panX": 229.26260981139592,
+      "panY": 191.98722054936337,
+      "scale": 0.630139754356543
     }
   }
 }

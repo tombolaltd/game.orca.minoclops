@@ -440,6 +440,10 @@ function planReferences() {
     } else if (lower.endsWith('.skel') || lower.endsWith('.json')) {
       const atlas = ref.replace(/\.(skel|json)$/i, '.atlas');
       if (existsAnywhere(bucket, atlas)) want(bucket, atlas, ref, false);
+    } else if (lower.endsWith('.ogg')) {
+      // The runtime falls back to this sibling where the device cannot play Ogg.
+      const mp3 = ref.replace(/\.ogg$/i, '.mp3');
+      if (existsAnywhere(bucket, mp3)) want(bucket, mp3, ref, false);
     } else if (lower.endsWith('.atlas')) {
       let text = '';
       try { text = fs.readFileSync(from, 'utf8'); } catch (err) { /* unreadable atlas */ }

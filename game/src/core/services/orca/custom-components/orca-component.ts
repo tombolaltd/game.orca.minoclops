@@ -106,10 +106,14 @@
  * Inspector and arrives as the plain event NAME — the string you pass to
  * "this.orca.on(...)" / "this.orca.emit(...)". It is empty when nothing is
  * selected, and keeps its value if the event is later renamed or deleted.
+ *
+ * Any other name is one of the project's Custom Types (Data Browser ▸ Types):
+ * an enum arrives as its member string, a struct as a plain object. Import
+ * them from './orca-types'.
  */
 export type OrcaComponentPropertyType =
   | 'string' | 'int' | 'float' | 'bool' | 'color' | 'vector2' | 'enum' | 'assetRef'
-  | 'customEventRef';
+  | 'customEventRef' | (string & {});
 
 /** One authored property, surfaced as a field in the Inspector. */
 export interface OrcaComponentPropertyDef {

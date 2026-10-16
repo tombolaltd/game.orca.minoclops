@@ -1,100 +1,8 @@
-import { IBaseGameModel, IBaseMessageResponse, IBaseServerResponse } from '@game-studio/arcade-base';
+import { IBaseGameModel, IBaseServerResponse } from '@game-studio/arcade-base';
 import { gameSettings } from './game-settings';
 import { IFlowStateServerResponse } from '../services/orca/types';
 import { sendServerResponseToEditor } from '../services/orca/editor-integration';
-
-//types
-
-export interface IServerResponse extends IBaseServerResponse {
-    GameMessage: IGameMessageResponse;
-}
-
-export interface IGameMessageResponse extends IBaseMessageResponse {
-    ArcadeGameType: string;
-    Payout: number;
-    Winner: boolean;
-    BonusRound?: IBonusRound;
-    Game: IGame;
-}
-
-export interface IReelPosition {
-    Reel: number;
-    Row: number;
-}
-
-export interface IGame {
-    GameResult: IGameResult;
-    BonusRound?: IBonusRound;
-}
-
-export interface IGameResult {
-    Bonus: boolean;
-    CascadeCount: number;
-    Outcomes: IOutcome[];
-    ScatterResult: IScatterResult | null;
-    SplitSymbolDetails: ISplitSymbolDetail[];
-}
-
-export interface IOutcome {
-    DisplayReels: number[][];
-    Prize: number;
-    Results: IOutcomeResult[];
-    SplitSymbols: ISplitSymbol[];
-    Stops: number[];
-    WinWays: number;
-}
-
-export interface IOutcomeResult {
-    Positions: IReelPosition[];
-    OutcomeType: string;
-    Matched: number;
-    Symbol: number;
-    Prize: number;
-    Wild: boolean;
-    IsSplit: boolean;
-    SymbolMultiplier: number;
-    SplitMultiplier: number;
-    TotalMultiplier: number;
-}
-
-export interface ISplitSymbolDetail {
-    HighlightedPosition: ISplitSymbol[];
-    Split: number;
-    Symbol: number;
-}
-
-export interface ISplitSymbol {
-    Reel: number;
-    Row: number;
-}
-
-export interface IPrizeResult {
-    Prize: number;
-    Positions: IReelPosition[];
-    Symbol: number;
-    Matched: number;
-    Multiplier: number;
-    OutcomeType: string;
-    Wild: boolean;
-}
-
-export interface IScatterResult {
-    Bonus: boolean;
-    Count: number;
-    Multiplier: number;
-    OutcomeType: string;
-    Positions: IReelPosition[];
-    Prize: number;
-    Symbol: number;
-}
-
-export interface IBonusRound extends IGameResult {
-    BonusPayout: number;
-    TotalBonusPayout: number;
-    Number: number;
-    Remaining: number;
-}
-
+import { IBonusRound, IOutcome, IScatterResult, ISplitSymbolDetail, IGameMessageResponse, IGameResult, IServerResponse } from '../services/orca/generated-types';
 
 //model
 export class GameModel implements IBaseGameModel {
@@ -135,7 +43,6 @@ export class GameModel implements IBaseGameModel {
         Bonus: false,
         CascadeCount: 0,
         Outcomes: [],
-        ScatterResult: null,
         SplitSymbolDetails: []
     };
     public currentBonusSpinPayout: number = 0;
@@ -159,7 +66,6 @@ export class GameModel implements IBaseGameModel {
         Bonus: false,
         CascadeCount: 0,
         Outcomes: [],
-        ScatterResult: null,
         SplitSymbolDetails: []
     };
     public scatterResult: IScatterResult | null = null;
@@ -312,7 +218,6 @@ export class GameModel implements IBaseGameModel {
         if (!responseData) {
             return;
         }
-
         const message = responseData.GameMessage;
         const game = message.Game;
         const gameResult = game.GameResult;
@@ -340,7 +245,7 @@ export class GameModel implements IBaseGameModel {
         // Trigger stage (Bonus landed, no Game.BonusRound yet): seed the award; the bonus block overrides with Remaining.
         this.bonusSpinsRemaining = this.hasBonus ? gameSettings.initialBonusSpins : 0;
         this.cascadeCount = gameResult.CascadeCount;
-        this.scatterResult = gameResult.ScatterResult;
+        this.scatterResult = gameResult.ScatterResult ?? null;
         this.splitSymbolDetails = gameResult.SplitSymbolDetails;
         // GameResult is empty {} on a Continue, so guard the spread; a Resume carries the full triggering spin.
         this.unplayedSpinOutcomes = gameResult.Outcomes ? [...gameResult.Outcomes] : [];

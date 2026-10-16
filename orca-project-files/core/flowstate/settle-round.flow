@@ -7,8 +7,8 @@
         "id": "settle_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
+        "x": 300.49808088503545,
+        "y": 127.70972310786837,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -24,15 +24,25 @@
         "propertyValues": {
           "eventName": "settleRound"
         }
+      },
+      {
+        "id": "n6ldbe9v",
+        "title": "Note",
+        "x": 325.21345466006096,
+        "y": -82.65074356647708,
+        "isNote": true,
+        "noteText": "TODO: Play bonus win if needed or big win. Set cabinet values and other end of game things",
+        "width": 250,
+        "height": 180
       }
     ],
     "links": [],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 216.20549747084237,
-      "panY": 262.9492746953541,
-      "scale": 0.8281637643517208
+      "panX": 344.0222931738086,
+      "panY": 140.43689907288308,
+      "scale": 0.6485317215733871
     }
   }
 }

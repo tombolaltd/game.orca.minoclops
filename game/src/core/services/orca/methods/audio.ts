@@ -1,4 +1,5 @@
 import { AssetManager, container, Sound } from "@game-studio/arcade-base";
+import { Howler } from "howler";
 import { Assets, checkExtension, DOMAdapter, extensions, ExtensionType, LoaderParserPriority } from "pixi.js";
 import {
     ORCA_AUDIO_DEFAULT_MUSIC_BUS,
@@ -128,6 +129,34 @@ function looksLikeAudioPath(name: string): boolean {
     return AUDIO_PATH_EXT_RE.test(bare);
 }
 
+/** The editor-generated `<stem>.mp3` beside an `.ogg` path, or `null` for any other file. */
+function mp3SiblingOf(name: string): string | null {
+    const match = /^([^?#]*)\.ogg([?#].*)?$/i.exec(name);
+    return match ? `${match[1]}.mp3${match[2] ?? ""}` : null;
+}
+
+let oggPlayable: boolean | undefined;
+
+/** Whether this device decodes Ogg Vorbis (iOS Safari before 17.4 does not). */
+function canPlayOgg(): boolean {
+    if (oggPlayable !== undefined) return oggPlayable;
+    let playable = false;
+    try {
+        playable = Howler.codecs("ogg");
+    } catch {
+        playable = false;
+    }
+    if (!playable && typeof document !== "undefined") {
+        try {
+            playable = document.createElement("audio").canPlayType('audio/ogg; codecs="vorbis"').replace(/^no$/, "") !== "";
+        } catch {
+            playable = false;
+        }
+    }
+    oggPlayable = playable;
+    return playable;
+}
+
 /**
  * Resolve a bucket-relative asset path to its loadable runtime URL.
  *
@@ -178,6 +207,10 @@ function audioAliasExists(name: string): boolean {
  * re-register is a silent no-op) and demands a whole `IAssetConfig`
  * (baseUrl/skin/version) that is meaningless for a single ad-hoc file, whereas
  * `Sound.load()` hands back exactly the decode promise this registry needs.
+ *
+ * An `.ogg` keeps its own name as the alias but loads the editor-generated
+ * `<stem>.mp3` beside it on a device that cannot play Ogg, and falls back to
+ * that `.mp3` once if the `.ogg` itself fails to load or decode.
  */
 function ensureAudioRegistered(name: string): Promise<string | null> {
     const alias = name;
@@ -192,18 +225,35 @@ function ensureAudioRegistered(name: string): Promise<string | null> {
         return resolved;
     }
 
+    const loadFrom = async (path: string): Promise<void> => {
+        ensureAudioParser();
+        const bytes = await Assets.load<Blob>({ src: toAudioAssetUrl(path), parser: ORCA_AUDIO_PARSER });
+        const format = (AUDIO_PATH_EXT_RE.exec(path.split("?")[0].split("#")[0])?.[1] ?? "mp3").toLowerCase();
+        // The object URL has no extension, so howler needs the format named.
+        const sound = new Sound({ name: alias, src: [URL.createObjectURL(bytes)], format: [format] });
+        await sound.load();
+        AssetManager.sounds[alias] = sound;
+    };
+
+    // The alias stays the .ogg name; only the file loaded behind it changes.
+    const mp3 = mp3SiblingOf(name);
+    const loadPath = mp3 && !canPlayOgg() ? mp3 : name;
+
     const loadPromise = (async (): Promise<string | null> => {
         try {
-            ensureAudioParser();
-            const bytes = await Assets.load<Blob>({ src: toAudioAssetUrl(name), parser: ORCA_AUDIO_PARSER });
-            const format = (AUDIO_PATH_EXT_RE.exec(name.split("?")[0].split("#")[0])?.[1] ?? "mp3").toLowerCase();
-            // The object URL has no extension, so howler needs the format named.
-            const sound = new Sound({ name: alias, src: [URL.createObjectURL(bytes)], format: [format] });
-            await sound.load();
-            AssetManager.sounds[alias] = sound;
+            await loadFrom(loadPath);
             return alias;
         } catch (err) {
-            console.warn("[FlowState audio] failed to load audio path, skipping:", name, err);
+            if (mp3 && loadPath !== mp3) {
+                try {
+                    await loadFrom(mp3);
+                    return alias;
+                } catch (fallbackErr) {
+                    console.warn("[FlowState audio] failed to load audio path and its .mp3 fallback, skipping:", name, err, fallbackErr);
+                    return null;
+                }
+            }
+            console.warn("[FlowState audio] failed to load audio path, skipping:", loadPath, err);
             return null;
         }
     })();

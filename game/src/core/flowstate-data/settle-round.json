@@ -11,6 +11,12 @@
           "value": "settleRound"
         }
       ]
+    },
+    {
+      "id": "n6ldbe9v",
+      "title": "Note",
+      "isNote": true,
+      "noteText": "TODO: Play bonus win if needed or big win. Set cabinet values and other end of game things"
     }
   ],
   "links": []

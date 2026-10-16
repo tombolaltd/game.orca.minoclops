@@ -5,7 +5,7 @@
       "title": "Note",
       "rootType": "note",
       "isNote": true,
-      "noteText": "The split beat: hotspot fades in, the chosen cell splits x2, matching cells follow; show-step ticks the ways."
+      "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off "
     },
     {
       "id": "splitr_008",
@@ -43,10 +43,53 @@
       "properties": [
         {
           "name": "propertyName",
-          "type": "modelProperty"
+          "type": "modelProperty",
+          "value": "splitSymbolDetails"
+        }
+      ]
+    },
+    {
+      "id": "nlvizkwr",
+      "title": "parseObject",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "nmes1rq5"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Split",
+          "type": "int",
+          "path": "splitSymbolDetails[0].Split"
+        },
+        {
+          "name": "Symbol",
+          "type": "int",
+          "path": "Symbol"
+        },
+        {
+          "name": "HighlightedPosition",
+          "type": "object",
+          "path": "HighlightedPosition"
         }
       ]
     }
   ],
-  "links": []
+  "links": [
+    {
+      "id": "lmq9wtjf",
+      "from": "nmes1rq5",
+      "to": "nlvizkwr",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "lt3xj1zm",
+      "from": "splitr_008",
+      "to": "splitr_070"
+    }
+  ]
 }

@@ -7,8 +7,8 @@
         "id": "cascad_007",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
+        "x": 211.95198946426274,
+        "y": 99.0967145403148,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "cascad_021",
         "title": "fireCustomEvent",
-        "x": 882.7206112839349,
-        "y": 115.89099908709784,
+        "x": 903.62389674362,
+        "y": 100.21353499233396,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -45,259 +45,26 @@
           }
         ],
         "propertyValues": {
-          "eventName": "showStep",
+          "eventName": "splitReveal",
           "propertyNames": []
-        }
-      },
-      {
-        "id": "cascad_022",
-        "title": "State",
-        "displayName": "Clear winners",
-        "x": 440.6303330290326,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "cascad_008",
-        "exitSourceId": "cascad_005",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "cascad_023",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "cascad_005",
-              "title": "loop",
-              "friendlyTitle": "Repeat For Each",
-              "x": 1758,
-              "y": 120,
-              "rootType": "loop",
-              "color": "#9b59b6",
-              "icon": "🔁",
-              "properties": [
-                {
-                  "name": "items",
-                  "type": "TArray"
-                },
-                {
-                  "name": "count",
-                  "type": "int",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "count": 1
-              }
-            },
-            {
-              "id": "cascad_006",
-              "title": "parseObject",
-              "friendlyTitle": "Parse Object",
-              "x": 1789.8813783207406,
-              "y": 658.6261471799893,
-              "rootType": "objectOps",
-              "color": "#607d8b",
-              "icon": "🔎",
-              "properties": [
-                {
-                  "name": "source",
-                  "type": "object"
-                }
-              ],
-              "propertyValues": {},
-              "outputs": [
-                {
-                  "name": "reel",
-                  "type": "int",
-                  "path": "Reel"
-                },
-                {
-                  "name": "row",
-                  "type": "int",
-                  "path": "Row"
-                }
-              ]
-            },
-            {
-              "id": "cascad_008",
-              "title": "resetSymbolVisuals",
-              "displayName": "Undo highlight",
-              "friendlyTitle": "Reset Symbol Visuals",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": -1
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": -1,
-                "rowIndex": -1,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "cascad_009",
-              "title": "playSound",
-              "displayName": "Clear burst",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "soundName",
-                  "type": "audioRef"
-                },
-                {
-                  "name": "volume",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
-                },
-                {
-                  "name": "pitch",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "fadeIn",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "pan",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "bus",
-                  "type": "string",
-                  "default": "",
-                  "optionsFrom": "project.audio.buses"
-                }
-              ],
-              "propertyValues": {
-                "volume": 0.55,
-                "loop": false,
-                "pitch": 1,
-                "fadeIn": 0,
-                "pan": 0,
-                "bus": "",
-                "soundName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/sfx/blast.mp3"
-                }
-              }
-            },
-            {
-              "id": "cascad_032",
-              "title": "getGameModelProperty",
-              "x": 1034,
-              "y": 481.8696311976498,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "step"
-              }
-            },
-            {
-              "id": "cascad_024",
-              "title": "Exit",
-              "x": 2219.672034379563,
-              "y": 336.1208242648388,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_cascad_5",
-              "from": "cascad_005",
-              "to": "cascad_006",
-              "propertyType": "object",
-              "propertyName": "source",
-              "sourceOutputName": "item"
-            },
-            {
-              "id": "l_cascad_20",
-              "from": "cascad_008",
-              "to": "cascad_009"
-            },
-            {
-              "id": "l_cascad_24",
-              "from": "cascad_009",
-              "to": "cascad_005"
-            },
-            {
-              "id": "l_cascad_26",
-              "from": "cascad_023",
-              "to": "cascad_008"
-            },
-            {
-              "id": "l_cascad_27",
-              "from": "cascad_005",
-              "to": "cascad_024",
-              "outIdx": 1
-            }
-          ],
-          "groups": []
         }
       },
       {
         "id": "cascad_028",
         "title": "State",
         "displayName": "Drop in",
-        "x": 652.7206112839349,
-        "y": 115.89099908709784,
+        "x": 632.8104518439641,
+        "y": 136.65229339040084,
         "isState": true,
         "entryTargetId": "cascad_017",
-        "exitSourceId": "cascad_020",
+        "exitSourceId": "nh90ofe9",
         "subgraph": {
           "nodes": [
             {
               "id": "cascad_029",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 1145.4282259649683,
+              "y": -75.25345810013715,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -306,8 +73,8 @@
               "id": "cascad_017",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1034,
-              "y": 120,
+              "x": 1328.8575755728182,
+              "y": 114.76581362799553,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -344,8 +111,8 @@
                 }
               ],
               "propertyValues": {
-                "locations": "[[0],[0],[0],[0],[0]]",
-                "outcome": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+                "locations": "",
+                "outcome": "",
                 "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
@@ -358,8 +125,8 @@
             {
               "id": "cascad_018",
               "title": "getGameModelProperty",
-              "x": 1396,
-              "y": 204,
+              "x": 954.0179795443073,
+              "y": 508.53328126760687,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -371,37 +138,15 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "stepIndex"
-              }
-            },
-            {
-              "id": "cascad_019",
-              "title": "add",
-              "x": 1758,
-              "y": 204,
-              "rootType": "math",
-              "color": "#16a085",
-              "icon": "➕",
-              "properties": [
-                {
-                  "name": "a",
-                  "type": "T"
-                },
-                {
-                  "name": "b",
-                  "type": "T"
-                }
-              ],
-              "propertyValues": {
-                "b": 1
+                "propertyName": "currentCascade"
               }
             },
             {
               "id": "cascad_020",
               "title": "setGameModelProperty",
-              "displayName": "Next step",
-              "x": 2120,
-              "y": 120,
+              "displayName": "iterate cascade count",
+              "x": 1712.599538258626,
+              "y": 145.99045983028225,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "✏️",
@@ -419,53 +164,23 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "stepIndex"
+                "propertyName": "currentCascade"
               }
             },
             {
-              "id": "cascad_033",
-              "title": "parseObject",
-              "friendlyTitle": "Parse Object",
-              "x": 672,
-              "y": 204,
-              "rootType": "objectOps",
-              "color": "#607d8b",
-              "icon": "🔎",
-              "properties": [
-                {
-                  "name": "source",
-                  "type": "object"
-                }
-              ],
-              "propertyValues": {},
-              "outputs": [
-                {
-                  "name": "badges",
-                  "type": "ObjectArray",
-                  "path": "CascadeBadges"
-                },
-                {
-                  "name": "clear",
-                  "type": "IntArray",
-                  "path": "ClearLocations"
-                },
-                {
-                  "name": "grid",
-                  "type": "IntArray",
-                  "path": "CascadeGrid"
-                },
-                {
-                  "name": "wins",
-                  "type": "ObjectArray",
-                  "path": "WinPositions"
-                }
-              ]
+              "id": "cascad_030",
+              "title": "Exit",
+              "x": 2072.6606190218104,
+              "y": 123.28786651388106,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
             },
             {
-              "id": "cascad_034",
+              "id": "nr6zf4u8",
               "title": "getGameModelProperty",
-              "x": 310,
-              "y": 204,
+              "x": -7.554775378865486,
+              "y": 218.03304890951804,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -477,50 +192,120 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "step"
+                "propertyName": "currentCascade"
               }
             },
             {
-              "id": "cascad_030",
-              "title": "Exit",
-              "x": 2482,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
+              "id": "nlbg0i8g",
+              "title": "add",
+              "x": 1354.36432697597,
+              "y": 452.22356093543635,
+              "rootType": "math",
+              "color": "#16a085",
+              "icon": "➕",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "T"
+                },
+                {
+                  "name": "b",
+                  "type": "T",
+                  "propertyValue": 1
+                }
+              ]
+            },
+            {
+              "id": "nqbuiglb",
+              "title": "int",
+              "x": 1080.2487572649943,
+              "y": 630.4735762119723,
+              "rootType": "properties",
+              "color": "#e67e22",
+              "icon": "🔢",
+              "isStarter": false,
+              "propertyValue": 1
+            },
+            {
+              "id": "n57yc4vj",
+              "title": "cascadeLocations",
+              "friendlyTitle": "Return Cascade Locations",
+              "x": 616.4728415310208,
+              "y": 210.87751310494252,
+              "rootType": "custom",
+              "color": "#8e44ad",
+              "icon": "🧩",
+              "isStarter": false,
+              "overrideNodeType": "property",
+              "properties": [
+                {
+                  "name": "currentCascade",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nfspbw22",
+              "title": "toInt",
+              "x": 301.9197636634403,
+              "y": 221.18091943407086,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nsd30wuj",
+              "title": "parseObject",
+              "friendlyTitle": "Parse Object",
+              "x": 933.9549403820688,
+              "y": 139.37547063134744,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ]
+            },
+            {
+              "id": "n6m9nav5",
+              "title": "parseObject",
+              "friendlyTitle": "Parse Object",
+              "x": 934.7454485679184,
+              "y": 301.941625787876,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🔎",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ]
+            },
+            {
+              "id": "nh90ofe9",
+              "title": "Note",
+              "x": 650.2345843384575,
+              "y": -82.98552865474056,
+              "isNote": true,
+              "noteText": "TODO: cascades need a 2d number array but I can't return that from a custom script yet. While Brad gets that in maybe figure out a way to get that to work with parse objects or turning itno a json",
+              "width": 291,
+              "height": 193
             }
           ],
           "links": [
-            {
-              "id": "l_cascad_16",
-              "from": "cascad_033",
-              "to": "cascad_017",
-              "propertyType": "string",
-              "propertyName": "locations",
-              "sourceOutputName": "clear"
-            },
-            {
-              "id": "l_cascad_17",
-              "from": "cascad_033",
-              "to": "cascad_017",
-              "propertyType": "string",
-              "propertyName": "outcome",
-              "sourceOutputName": "grid"
-            },
-            {
-              "id": "l_cascad_18",
-              "from": "cascad_018",
-              "to": "cascad_019",
-              "propertyType": "T",
-              "propertyName": "a"
-            },
-            {
-              "id": "l_cascad_19",
-              "from": "cascad_019",
-              "to": "cascad_020",
-              "propertyType": "dynamic",
-              "propertyName": "value"
-            },
             {
               "id": "l_cascad_33",
               "from": "cascad_017",
@@ -537,11 +322,55 @@
               "to": "cascad_030"
             },
             {
-              "id": "l_cascad_39",
-              "from": "cascad_034",
-              "to": "cascad_033",
+              "id": "lzyx8hvq",
+              "from": "cascad_018",
+              "to": "nlbg0i8g",
+              "propertyType": "T",
+              "propertyName": "a"
+            },
+            {
+              "id": "ljw7zogk",
+              "from": "nqbuiglb",
+              "to": "nlbg0i8g",
+              "propertyType": "T",
+              "propertyName": "b"
+            },
+            {
+              "id": "lbz24khd",
+              "from": "nlbg0i8g",
+              "to": "cascad_020",
+              "propertyType": "float",
+              "propertyName": "value"
+            },
+            {
+              "id": "lw88lhpc",
+              "from": "nr6zf4u8",
+              "to": "nfspbw22",
+              "propertyType": "float",
+              "propertyName": "value"
+            },
+            {
+              "id": "l7e9446r",
+              "from": "nfspbw22",
+              "to": "n57yc4vj",
+              "propertyType": "int",
+              "propertyName": "currentCascade"
+            },
+            {
+              "id": "ljy97hei",
+              "from": "n57yc4vj",
+              "to": "nsd30wuj",
               "propertyType": "object",
-              "propertyName": "source"
+              "propertyName": "source",
+              "sourceOutputName": "locations"
+            },
+            {
+              "id": "lm14crxw",
+              "from": "n57yc4vj",
+              "to": "n6m9nav5",
+              "propertyType": "object",
+              "propertyName": "source",
+              "sourceOutputName": "outcomes"
             }
           ],
           "groups": []
@@ -555,22 +384,17 @@
         "to": "cascad_021"
       },
       {
-        "id": "l_cascad_37",
+        "id": "lk1alfno",
         "from": "cascad_007",
-        "to": "cascad_022"
-      },
-      {
-        "id": "l2y9cqbl",
-        "from": "cascad_022",
         "to": "cascad_028"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 6.939765634257128,
-      "panY": 169.80718786000335,
-      "scale": 0.5887123272382689
+      "panX": -768.0323655787527,
+      "panY": 33.91259948045388,
+      "scale": 0.9915044958215244
     }
   }
 }

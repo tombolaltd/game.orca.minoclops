@@ -252,7 +252,7 @@
         "id": "gamebo_066",
         "title": "State",
         "displayName": "Game font labels",
-        "x": 357.94462602202685,
+        "x": 354.5325150037094,
         "y": 170.01107479559462,
         "isState": true,
         "entryTargetId": "gamebo_007",
@@ -269,59 +269,9 @@
               "isEntry": true
             },
             {
-              "id": "gamebo_007",
-              "title": "setTextFontSize",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 41,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_008",
-              "title": "setTextFontSize",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 40,
-                "target": null
-              }
-            },
-            {
               "id": "gamebo_009",
               "title": "setTextFontSize",
-              "x": 1034,
+              "x": 305.8329297556352,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -351,7 +301,7 @@
             {
               "id": "gamebo_010",
               "title": "setTextFontSize",
-              "x": 1396,
+              "x": 667.8329297556352,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -381,7 +331,7 @@
             {
               "id": "gamebo_011",
               "title": "setTextFontSize",
-              "x": 1758,
+              "x": 1029.8329297556352,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -411,7 +361,7 @@
             {
               "id": "gamebo_012",
               "title": "setTextFontSize",
-              "x": 2120,
+              "x": 1391.8329297556352,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -441,7 +391,7 @@
             {
               "id": "gamebo_013",
               "title": "setTextFontSize",
-              "x": 2482,
+              "x": 1753.8329297556352,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -471,7 +421,7 @@
             {
               "id": "gamebo_014",
               "title": "setTextFontSize",
-              "x": 2844,
+              "x": 2115.832929755635,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -501,7 +451,7 @@
             {
               "id": "gamebo_015",
               "title": "setTextFontSize",
-              "x": 3206,
+              "x": 2477.832929755635,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -531,7 +481,7 @@
             {
               "id": "gamebo_016",
               "title": "setTextFontSize",
-              "x": 3568,
+              "x": 2839.832929755635,
               "y": 120,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -559,376 +509,16 @@
               }
             },
             {
-              "id": "gamebo_017",
-              "title": "setTextFontSize",
-              "x": 3930,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_018",
-              "title": "setTextFontSize",
-              "x": 4292,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_019",
-              "title": "setTextFontSize",
-              "x": 4654,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_020",
-              "title": "setTextFontSize",
-              "x": 5016,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_021",
-              "title": "setTextFontSize",
-              "x": 5378,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_022",
-              "title": "setTextFontSize",
-              "x": 5740,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_023",
-              "title": "setTextFontSize",
-              "x": 6102,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_024",
-              "title": "setTextFontSize",
-              "x": 6464,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_025",
-              "title": "setTextFontSize",
-              "x": 6826,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_026",
-              "title": "setTextFontSize",
-              "x": 7188,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_027",
-              "title": "setTextFontSize",
-              "x": 7550,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_028",
-              "title": "setTextFontSize",
-              "x": 7912,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_029",
-              "title": "setTextFontSize",
-              "x": 8274,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_030",
-              "title": "setTextFontSize",
-              "x": 8636,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
               "id": "gamebo_068",
               "title": "Exit",
-              "x": 8998,
-              "y": 120,
+              "x": 3313.832929755635,
+              "y": 168,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
             }
           ],
           "links": [
-            {
-              "id": "l_gamebo_10",
-              "from": "gamebo_007",
-              "to": "gamebo_008"
-            },
-            {
-              "id": "l_gamebo_11",
-              "from": "gamebo_008",
-              "to": "gamebo_009"
-            },
             {
               "id": "l_gamebo_12",
               "from": "gamebo_009",
@@ -965,83 +555,13 @@
               "to": "gamebo_016"
             },
             {
-              "id": "l_gamebo_19",
-              "from": "gamebo_016",
-              "to": "gamebo_017"
-            },
-            {
-              "id": "l_gamebo_20",
-              "from": "gamebo_017",
-              "to": "gamebo_018"
-            },
-            {
-              "id": "l_gamebo_21",
-              "from": "gamebo_018",
-              "to": "gamebo_019"
-            },
-            {
-              "id": "l_gamebo_22",
-              "from": "gamebo_019",
-              "to": "gamebo_020"
-            },
-            {
-              "id": "l_gamebo_23",
-              "from": "gamebo_020",
-              "to": "gamebo_021"
-            },
-            {
-              "id": "l_gamebo_24",
-              "from": "gamebo_021",
-              "to": "gamebo_022"
-            },
-            {
-              "id": "l_gamebo_25",
-              "from": "gamebo_022",
-              "to": "gamebo_023"
-            },
-            {
-              "id": "l_gamebo_26",
-              "from": "gamebo_023",
-              "to": "gamebo_024"
-            },
-            {
-              "id": "l_gamebo_27",
-              "from": "gamebo_024",
-              "to": "gamebo_025"
-            },
-            {
-              "id": "l_gamebo_28",
-              "from": "gamebo_025",
-              "to": "gamebo_026"
-            },
-            {
-              "id": "l_gamebo_29",
-              "from": "gamebo_026",
-              "to": "gamebo_027"
-            },
-            {
-              "id": "l_gamebo_30",
-              "from": "gamebo_027",
-              "to": "gamebo_028"
-            },
-            {
-              "id": "l_gamebo_31",
-              "from": "gamebo_028",
-              "to": "gamebo_029"
-            },
-            {
-              "id": "l_gamebo_32",
-              "from": "gamebo_029",
-              "to": "gamebo_030"
-            },
-            {
-              "id": "l_gamebo_33",
+              "id": "l30nk4vh",
               "from": "gamebo_067",
-              "to": "gamebo_007"
+              "to": "gamebo_009"
             },
             {
-              "id": "l_gamebo_34",
-              "from": "gamebo_030",
+              "id": "l3i4i7zo",
+              "from": "gamebo_016",
               "to": "gamebo_068"
             }
           ],
@@ -1088,60 +608,10 @@
               }
             },
             {
-              "id": "gamebo_039",
-              "title": "setTextFontSize",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 41,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_040",
-              "title": "setTextFontSize",
-              "x": 1034,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 40,
-                "target": null
-              }
-            },
-            {
               "id": "gamebo_041",
               "title": "setTextFontSize",
-              "x": 1396,
-              "y": 120,
+              "x": 648,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1170,8 +640,8 @@
             {
               "id": "gamebo_042",
               "title": "setTextFontSize",
-              "x": 1758,
-              "y": 120,
+              "x": 1010,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1200,8 +670,8 @@
             {
               "id": "gamebo_043",
               "title": "setTextFontSize",
-              "x": 2120,
-              "y": 120,
+              "x": 1372,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1230,8 +700,8 @@
             {
               "id": "gamebo_044",
               "title": "setTextFontSize",
-              "x": 2482,
-              "y": 120,
+              "x": 1734,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1260,8 +730,8 @@
             {
               "id": "gamebo_045",
               "title": "setTextFontSize",
-              "x": 2844,
-              "y": 120,
+              "x": 2096,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1290,8 +760,8 @@
             {
               "id": "gamebo_046",
               "title": "setTextFontSize",
-              "x": 3206,
-              "y": 120,
+              "x": 2458,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1320,8 +790,8 @@
             {
               "id": "gamebo_047",
               "title": "setTextFontSize",
-              "x": 3568,
-              "y": 120,
+              "x": 2820,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1350,8 +820,8 @@
             {
               "id": "gamebo_048",
               "title": "setTextFontSize",
-              "x": 3930,
-              "y": 120,
+              "x": 3182,
+              "y": 96,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1378,381 +848,16 @@
               }
             },
             {
-              "id": "gamebo_049",
-              "title": "setTextFontSize",
-              "x": 4292,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_050",
-              "title": "setTextFontSize",
-              "x": 4654,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_051",
-              "title": "setTextFontSize",
-              "x": 5016,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_052",
-              "title": "setTextFontSize",
-              "x": 5378,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_053",
-              "title": "setTextFontSize",
-              "x": 5740,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_054",
-              "title": "setTextFontSize",
-              "x": 6102,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_055",
-              "title": "setTextFontSize",
-              "x": 6464,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_056",
-              "title": "setTextFontSize",
-              "x": 6826,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_057",
-              "title": "setTextFontSize",
-              "x": 7188,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 31,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_058",
-              "title": "setTextFontSize",
-              "x": 7550,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 30,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_059",
-              "title": "setTextFontSize",
-              "x": 7912,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_060",
-              "title": "setTextFontSize",
-              "x": 8274,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_061",
-              "title": "setTextFontSize",
-              "x": 8636,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 27,
-                "target": null
-              }
-            },
-            {
-              "id": "gamebo_062",
-              "title": "setTextFontSize",
-              "x": 8998,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "fontSize",
-                  "type": "int",
-                  "default": 32
-                }
-              ],
-              "propertyValues": {
-                "fontSize": 26,
-                "target": null
-              }
-            },
-            {
               "id": "gamebo_074",
               "title": "Exit",
-              "x": 9360,
-              "y": 120,
+              "x": 3560,
+              "y": 116,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
             }
           ],
           "links": [
-            {
-              "id": "l_gamebo_44",
-              "from": "gamebo_038",
-              "to": "gamebo_039"
-            },
-            {
-              "id": "l_gamebo_45",
-              "from": "gamebo_039",
-              "to": "gamebo_040"
-            },
-            {
-              "id": "l_gamebo_46",
-              "from": "gamebo_040",
-              "to": "gamebo_041"
-            },
             {
               "id": "l_gamebo_47",
               "from": "gamebo_041",
@@ -1789,84 +894,19 @@
               "to": "gamebo_048"
             },
             {
-              "id": "l_gamebo_54",
-              "from": "gamebo_048",
-              "to": "gamebo_049"
-            },
-            {
-              "id": "l_gamebo_55",
-              "from": "gamebo_049",
-              "to": "gamebo_050"
-            },
-            {
-              "id": "l_gamebo_56",
-              "from": "gamebo_050",
-              "to": "gamebo_051"
-            },
-            {
-              "id": "l_gamebo_57",
-              "from": "gamebo_051",
-              "to": "gamebo_052"
-            },
-            {
-              "id": "l_gamebo_58",
-              "from": "gamebo_052",
-              "to": "gamebo_053"
-            },
-            {
-              "id": "l_gamebo_59",
-              "from": "gamebo_053",
-              "to": "gamebo_054"
-            },
-            {
-              "id": "l_gamebo_60",
-              "from": "gamebo_054",
-              "to": "gamebo_055"
-            },
-            {
-              "id": "l_gamebo_61",
-              "from": "gamebo_055",
-              "to": "gamebo_056"
-            },
-            {
-              "id": "l_gamebo_62",
-              "from": "gamebo_056",
-              "to": "gamebo_057"
-            },
-            {
-              "id": "l_gamebo_63",
-              "from": "gamebo_057",
-              "to": "gamebo_058"
-            },
-            {
-              "id": "l_gamebo_64",
-              "from": "gamebo_058",
-              "to": "gamebo_059"
-            },
-            {
-              "id": "l_gamebo_65",
-              "from": "gamebo_059",
-              "to": "gamebo_060"
-            },
-            {
-              "id": "l_gamebo_66",
-              "from": "gamebo_060",
-              "to": "gamebo_061"
-            },
-            {
-              "id": "l_gamebo_67",
-              "from": "gamebo_061",
-              "to": "gamebo_062"
-            },
-            {
               "id": "l_gamebo_68",
               "from": "gamebo_073",
               "to": "gamebo_038"
             },
             {
-              "id": "l_gamebo_69",
-              "from": "gamebo_062",
+              "id": "l0fgrm92",
+              "from": "gamebo_048",
               "to": "gamebo_074"
+            },
+            {
+              "id": "l96k4uwy",
+              "from": "gamebo_038",
+              "to": "gamebo_041"
             }
           ],
           "groups": []
@@ -1893,9 +933,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 278.8670675999316,
-      "panY": 148.08533956318882,
-      "scale": 0.8598095556984068
+      "panX": -27.811664682788887,
+      "panY": 168.5544641510449,
+      "scale": 0.5861473994437124
     }
   }
 }

@@ -5,7 +5,7 @@
       "title": "Note",
       "rootType": "note",
       "isNote": true,
-      "noteText": "The board has settled: next free spin, bonus trigger, or settle the round."
+      "noteText": "TODO: make sure this all routes to the correct places based off of the game model"
     },
     {
       "id": "stepsd_001",
@@ -39,7 +39,7 @@
         {
           "name": "propertyName",
           "type": "modelProperty",
-          "value": "inBonus"
+          "value": "bonus"
         }
       ]
     },

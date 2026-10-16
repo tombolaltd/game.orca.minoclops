@@ -6,13 +6,13 @@
       {
         "id": "stepsd_note",
         "title": "Note",
-        "x": 80,
-        "y": -164,
+        "x": 786.7234692594895,
+        "y": 485.68517502489976,
         "rootType": "note",
         "isNote": true,
-        "noteText": "The board has settled: next free spin, bonus trigger, or settle the round.",
-        "width": 620,
-        "height": 210
+        "noteText": "TODO: make sure this all routes to the correct places based off of the game model",
+        "width": 328,
+        "height": 173
       },
       {
         "id": "stepsd_001",
@@ -71,7 +71,7 @@
           }
         ],
         "propertyValues": {
-          "propertyName": "inBonus"
+          "propertyName": "bonus"
         }
       },
       {
@@ -235,9 +235,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -342.3167576624953,
-      "panY": 48.454363206660105,
-      "scale": 0.7357788920737262
+      "panX": 167.85277024525055,
+      "panY": 96.76545626686016,
+      "scale": 0.5558117485732993
     }
   }
 }

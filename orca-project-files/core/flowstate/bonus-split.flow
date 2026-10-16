@@ -2181,12 +2181,14 @@
                 {
                   "name": "reelIndex",
                   "type": "int",
-                  "default": 0
+                  "default": 0,
+                  "linkable": true
                 },
                 {
                   "name": "rowIndex",
                   "type": "int",
-                  "default": 0
+                  "default": 0,
+                  "linkable": true
                 }
               ],
               "propertyValues": {

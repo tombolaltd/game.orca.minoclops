@@ -45,7 +45,99 @@
           "value": []
         }
       ]
+    },
+    {
+      "id": "nipb74mu",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "cascadeCount"
+        }
+      ]
+    },
+    {
+      "id": "nigin0xz",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "nt7791av"
+        }
+      ]
+    },
+    {
+      "id": "nt7791av",
+      "title": "equals",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "nipb74mu"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "sourceNodeId": "n8u6ewfk"
+        }
+      ]
+    },
+    {
+      "id": "n8u6ewfk",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "currentCascade"
+        }
+      ]
     }
   ],
-  "links": []
+  "links": [
+    {
+      "id": "ld0bfaex",
+      "from": "showst_005",
+      "to": "nigin0xz"
+    },
+    {
+      "id": "lokn1072",
+      "from": "nigin0xz",
+      "to": "showst_076",
+      "outIdx": 0
+    },
+    {
+      "id": "ldcg6f6c",
+      "from": "nigin0xz",
+      "to": "showst_075",
+      "outIdx": 1
+    },
+    {
+      "id": "lzirqzfg",
+      "from": "nipb74mu",
+      "to": "nt7791av",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "ldwts75y",
+      "from": "n8u6ewfk",
+      "to": "nt7791av",
+      "propertyType": "T",
+      "propertyName": "b"
+    },
+    {
+      "id": "ltjjeiky",
+      "from": "nt7791av",
+      "to": "nigin0xz",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    }
+  ]
 }

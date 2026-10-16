@@ -21,8 +21,8 @@
       {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 1762.230586594877,
-        "y": -101.49290145721676,
+        "x": 2073.3774410744486,
+        "y": -114.44659934192842,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -46,8 +46,8 @@
         "id": "rounds_033",
         "title": "State",
         "displayName": "Reset round",
-        "x": 769.1617007138018,
-        "y": -73.00100310302629,
+        "x": 745.8173518048393,
+        "y": -254.75343389423415,
         "isState": true,
         "entryTargetId": "rounds_006",
         "exitSourceId": "rounds_011",
@@ -348,8 +348,8 @@
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": 968.8962369343765,
-        "y": -77.8241583970742,
+        "x": 805.1177071332417,
+        "y": -99.54988173804105,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -457,9 +457,9 @@
       {
         "id": "rounds_039",
         "title": "State",
-        "displayName": "Reset Game Model",
-        "x": 1173.4474909703906,
-        "y": -84.52577971932769,
+        "displayName": "Reset labels",
+        "x": 1024.709846559156,
+        "y": -96.22424613369445,
         "isState": true,
         "entryTargetId": "rounds_016",
         "exitSourceId": "rounds_022",
@@ -563,8 +563,8 @@
       {
         "id": "nfofoxjt",
         "title": "spinReels",
-        "x": 1384.2041691590537,
-        "y": -117.76687549976013,
+        "x": 1272.6514442446762,
+        "y": -331.8061967327141,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -620,41 +620,130 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "nikrn399",
+        "title": "waitForReelsToStop",
+        "friendlyTitle": "Wait For Reels To Stop",
+        "x": 1676.1069290418288,
+        "y": -95.25964745601465,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "timeoutSeconds",
+            "type": "float",
+            "default": 30
+          }
+        ],
+        "propertyValues": {
+          "timeoutSeconds": 2.5,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "npevewfe",
+        "title": "runCascade",
+        "x": 1255.690285936363,
+        "y": 192.69548613537333,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "locations",
+            "type": "string",
+            "default": "[[0],[0],[0],[0],[0]]"
+          },
+          {
+            "name": "outcome",
+            "type": "string",
+            "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for the cascade)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "locations": "",
+          "outcome": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+          "sequenceNodeOn": "immediate"
+        }
+      },
+      {
+        "id": "nguqaqdp",
+        "title": "Note",
+        "x": 1264.3783260689008,
+        "y": -23.059588958306236,
+        "isNote": true,
+        "noteText": "TODO: needs to cascade instead of spin. figure it out",
+        "width": 288,
+        "height": 176
       }
     ],
     "links": [
-      {
-        "id": "l_rounds_16",
-        "from": "rounds_033",
-        "to": "rounds_036"
-      },
       {
         "id": "l_rounds_22",
         "from": "rounds_036",
         "to": "rounds_039"
       },
       {
-        "id": "l4cxjzwc",
+        "id": "lubul166",
         "from": "rounds_001",
-        "to": "rounds_033"
+        "to": "rounds_036"
       },
       {
-        "id": "lpzwb0z2",
+        "id": "l6yf4ru7",
+        "from": "nikrn399",
+        "to": "rounds_029"
+      },
+      {
+        "id": "llb0gban",
         "from": "rounds_039",
         "to": "nfofoxjt"
       },
       {
-        "id": "lfj5o1oj",
+        "id": "lqto52k9",
         "from": "nfofoxjt",
-        "to": "rounds_029"
+        "to": "nikrn399"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -279.4913264715972,
-      "panY": 315.67448545371406,
-      "scale": 0.6498279727278928
+      "panX": -272.55392041438995,
+      "panY": 314.8336338543604,
+      "scale": 0.599650456130215
     }
   }
 }

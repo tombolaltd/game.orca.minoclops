@@ -3204,41 +3204,59 @@
                 "cascadeFallOffset": 0,
                 "cascadeBounceDuration": 0.1,
                 "cascadeBounceOffset": 20,
-                "cascadeRemoveDelay": 0.15,
+                "cascadeRemoveDelay": 0,
                 "cascadeBlockFallDelay": 0,
                 "previewCascadeLocations": [
                   [
-                    0
+                    0,
+                    1,
+                    2
                   ],
-                  [],
-                  [],
-                  [],
-                  []
+                  [
+                    0,
+                    1,
+                    2
+                  ],
+                  [
+                    0,
+                    1,
+                    2
+                  ],
+                  [
+                    0,
+                    1,
+                    2
+                  ],
+                  [
+                    0,
+                    1,
+                    2
+                  ]
                 ],
                 "previewCascadeOutcome": [
                   [
-                    3,
+                    0,
+                    7,
+                    5
+                  ],
+                  [
+                    5,
                     3,
                     3
                   ],
                   [
-                    3,
-                    3,
-                    3
-                  ],
-                  [
-                    3,
+                    9,
                     3,
                     3
                   ],
                   [
-                    3,
-                    3,
-                    3
+                    10,
+                    2,
+                    5
                   ],
                   [
-                    3,
-                    3,
+                    2,
+                    6,
                     3
                   ]
                 ],

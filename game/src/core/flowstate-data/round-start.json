@@ -424,33 +424,87 @@
           "value": ""
         }
       ]
+    },
+    {
+      "id": "nikrn399",
+      "title": "waitForReelsToStop",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "timeoutSeconds",
+          "type": "float",
+          "value": 2.5
+        }
+      ]
+    },
+    {
+      "id": "npevewfe",
+      "title": "runCascade",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef"
+        },
+        {
+          "name": "locations",
+          "type": "string",
+          "value": ""
+        },
+        {
+          "name": "outcome",
+          "type": "string",
+          "value": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "nguqaqdp",
+      "title": "Note",
+      "isNote": true,
+      "noteText": "TODO: needs to cascade instead of spin. figure it out"
     }
   ],
   "links": [
-    {
-      "id": "l_rounds_16",
-      "from": "rounds_033",
-      "to": "rounds_036"
-    },
     {
       "id": "l_rounds_22",
       "from": "rounds_036",
       "to": "rounds_039"
     },
     {
-      "id": "l4cxjzwc",
+      "id": "lubul166",
       "from": "rounds_001",
-      "to": "rounds_033"
+      "to": "rounds_036"
     },
     {
-      "id": "lpzwb0z2",
+      "id": "l6yf4ru7",
+      "from": "nikrn399",
+      "to": "rounds_029"
+    },
+    {
+      "id": "llb0gban",
       "from": "rounds_039",
       "to": "nfofoxjt"
     },
     {
-      "id": "lfj5o1oj",
+      "id": "lqto52k9",
       "from": "nfofoxjt",
-      "to": "rounds_029"
+      "to": "nikrn399"
     }
   ]
 }
