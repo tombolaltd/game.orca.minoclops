@@ -134,7 +134,7 @@ function primaryImage(component: HtpPreviewComponent): string {
 }
 
 function getSymbolText(symbols: unknown, symbolId: number): string {
-  return coreGetSymbolText(symbols, symbolId, props.translations)
+  return coreGetSymbolText(symbols, symbolId, props.translations, props.tokens)
 }
 
 function componentStyle(component: HtpPreviewComponent): Record<string, string> {

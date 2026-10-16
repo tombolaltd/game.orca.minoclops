@@ -153,16 +153,26 @@ export default defineComponent({
         },
         /** `{{RTP}}` / `{{STAKES}}` / … placeholders authored in the document. */
         tokens(): Record<string, string> {
-            const rtp = settingsField<string>('rtp') ?? '';
+            // gameSettings is not reactive: re-read on every open so Resume data replaces boot blanks.
+            void this.isVisible;
+            const rtp = String(settingsField<unknown>('rtp') ?? '');
+            const totalRtp = String(settingsField<unknown>('totalrtp') ?? settingsField<unknown>('totalRtp') ?? rtp);
+            const base = parseFloat(rtp);
+            const total = parseFloat(totalRtp);
+            const jackpotRtp = Number.isFinite(base) && Number.isFinite(total)
+                ? String(Number((total - base).toFixed(2)))
+                : '';
             const stakeOptions = settingsField<number[]>('stakeOptions') ?? [];
             const maxWin = settingsField<number>('maxWinStakeMultiplier');
             const defaultStake = settingsField<number>('defaultStake');
             return {
                 RTP: rtp,
-                TotalRTP: rtp,
+                TotalRTP: totalRtp,
+                JRTP: jackpotRtp,
                 STAKES: stakeOptions.map(formatCurrency).join(', '),
                 MAX_PAYOUT: maxWin === undefined ? '' : formatCurrency(maxWin * readCurrentStake()),
-                defaultStake: defaultStake === undefined ? '' : formatCurrency(defaultStake)
+                defaultStake: defaultStake === undefined ? '' : formatCurrency(defaultStake),
+                displayName: this.gameName
             };
         },
         currentStake(): number {

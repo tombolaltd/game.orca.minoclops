@@ -31,6 +31,11 @@ export const objectOps = {
     parseObject(source: unknown): unknown {
         return source;
     },
+
+    // "Properties": same passthrough; its per-field output paths are derived by the editor.
+    structFields(source: unknown): unknown {
+        return source;
+    },
 };
 
 /**

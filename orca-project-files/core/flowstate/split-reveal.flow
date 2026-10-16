@@ -6,8 +6,8 @@
       {
         "id": "splitr_note",
         "title": "Note",
-        "x": 477.62876796346177,
-        "y": 297.51969162571237,
+        "x": 1060.0169392700784,
+        "y": 75.57703086536762,
         "rootType": "note",
         "isNote": true,
         "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off ",
@@ -61,14 +61,13 @@
         }
       },
       {
-        "id": "nmes1rq5",
+        "id": "n6wdkvrw",
         "title": "getGameModelProperty",
-        "x": -234.79128734952116,
-        "y": 436.37048640398797,
+        "x": -136.76987020492675,
+        "y": 302.66934287416234,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
-        "isStarter": false,
         "properties": [
           {
             "name": "propertyName",
@@ -81,60 +80,110 @@
         }
       },
       {
-        "id": "nlvizkwr",
-        "title": "parseObject",
-        "friendlyTitle": "Parse Object",
-        "x": 124.90660616423605,
-        "y": 359.10767855852816,
+        "id": "n9dn8wn9",
+        "title": "int",
+        "x": -48.520541765724104,
+        "y": 443.80704911279867,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "🔢",
+        "isStarter": false,
+        "propertyValue": 0
+      },
+      {
+        "id": "nwxdrps1",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": 808.8902107325516,
+        "y": 319.124905132195,
         "rootType": "objectOps",
         "color": "#607d8b",
-        "icon": "🔎",
+        "icon": "🧩",
         "isStarter": false,
         "properties": [
           {
             "name": "source",
             "type": "object"
           }
-        ],
-        "outputs": [
-          {
-            "name": "Split",
-            "type": "int",
-            "path": "splitSymbolDetails[0].Split"
-          },
-          {
-            "name": "Symbol",
-            "type": "int",
-            "path": "Symbol"
-          },
-          {
-            "name": "HighlightedPosition",
-            "type": "object",
-            "path": "HighlightedPosition"
-          }
         ]
+      },
+      {
+        "id": "nnachejm",
+        "title": "at",
+        "friendlyTitle": "Get",
+        "x": 295.7498965768222,
+        "y": 335.3527423048432,
+        "rootType": "array",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ],
+        "propertyValues": {
+          "index": 0
+        }
+      },
+      {
+        "id": "n6tyug9t",
+        "title": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "x": 566.1849925143629,
+        "y": 487.47055359725596,
+        "rootType": "loop",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
       }
     ],
     "links": [
       {
-        "id": "lmq9wtjf",
-        "from": "nmes1rq5",
-        "to": "nlvizkwr",
-        "propertyType": "object",
-        "propertyName": "source"
-      },
-      {
         "id": "lt3xj1zm",
         "from": "splitr_008",
         "to": "splitr_070"
+      },
+      {
+        "id": "l9v9yq4g",
+        "from": "n6wdkvrw",
+        "to": "nnachejm",
+        "propertyType": "TArray",
+        "propertyName": "array"
+      },
+      {
+        "id": "lwiex14r",
+        "from": "nnachejm",
+        "to": "nwxdrps1",
+        "propertyType": "object",
+        "propertyName": "source"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 229.26260981139592,
-      "panY": 191.98722054936337,
-      "scale": 0.630139754356543
+      "panX": 150.51095458018676,
+      "panY": 9.707577515635307,
+      "scale": 1.0298738799710228
     }
   }
 }

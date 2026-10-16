@@ -37,7 +37,7 @@
       ]
     },
     {
-      "id": "nmes1rq5",
+      "id": "n6wdkvrw",
       "title": "getGameModelProperty",
       "rootType": "properties",
       "properties": [
@@ -49,47 +49,70 @@
       ]
     },
     {
-      "id": "nlvizkwr",
-      "title": "parseObject",
+      "id": "nwxdrps1",
+      "title": "structFields",
       "rootType": "objectOps",
       "properties": [
         {
           "name": "source",
           "type": "object",
-          "sourceNodeId": "nmes1rq5"
+          "sourceNodeId": "nnachejm"
         }
-      ],
-      "outputs": [
+      ]
+    },
+    {
+      "id": "nnachejm",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
         {
-          "name": "Split",
-          "type": "int",
-          "path": "splitSymbolDetails[0].Split"
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "n6wdkvrw"
         },
         {
-          "name": "Symbol",
+          "name": "index",
           "type": "int",
-          "path": "Symbol"
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "n6tyug9t",
+      "title": "loop",
+      "rootType": "loop",
+      "properties": [
+        {
+          "name": "items",
+          "type": "TArray"
         },
         {
-          "name": "HighlightedPosition",
-          "type": "object",
-          "path": "HighlightedPosition"
+          "name": "count",
+          "type": "int",
+          "value": 1
         }
       ]
     }
   ],
   "links": [
     {
-      "id": "lmq9wtjf",
-      "from": "nmes1rq5",
-      "to": "nlvizkwr",
-      "propertyType": "object",
-      "propertyName": "source"
-    },
-    {
       "id": "lt3xj1zm",
       "from": "splitr_008",
       "to": "splitr_070"
+    },
+    {
+      "id": "l9v9yq4g",
+      "from": "n6wdkvrw",
+      "to": "nnachejm",
+      "propertyType": "TArray",
+      "propertyName": "array"
+    },
+    {
+      "id": "lwiex14r",
+      "from": "nnachejm",
+      "to": "nwxdrps1",
+      "propertyType": "object",
+      "propertyName": "source"
     }
   ]
 }

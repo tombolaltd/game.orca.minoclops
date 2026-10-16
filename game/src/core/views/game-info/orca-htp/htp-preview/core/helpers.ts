@@ -20,6 +20,10 @@ export const TOKEN_MAP: Record<string, keyof HtpTokenValues> = {
   MAX_PAYOUT: 'MAX_PAYOUT',
   DEFAULTSTAKE: 'defaultStake',
   DISPLAYNAME: 'displayName',
+  // Legacy arcade-base token names.
+  GAMESTAKES: 'STAKES',
+  GAME_RTP: 'TotalRTP',
+  JACKPOT_RTP: 'JRTP',
 }
 
 export interface HtpTextResolverOptions {
@@ -27,23 +31,37 @@ export interface HtpTextResolverOptions {
   translations?: HtpTranslations
 }
 
+const TOKEN_PATTERN = /\{\{([^}]+)\}\}/g
+
+function tokenKeyOf(rawKey: string): string {
+  return rawKey.replace(/<[^>]*>/g, '').trim()
+}
+
+function tokenValue(key: string, tokens?: HtpTokenValues): string | undefined {
+  const tokenKey = TOKEN_MAP[key.toUpperCase()]
+  return tokenKey && tokens?.[tokenKey] != null ? tokens[tokenKey] : undefined
+}
+
+/** Fills only TOKEN_MAP tokens — never looks up translation terms, so it cannot recurse. */
+export function resolveTokens(text: string, tokens?: HtpTokenValues): string {
+  return text.replace(TOKEN_PATTERN, (match, rawKey) => tokenValue(tokenKeyOf(rawKey), tokens) ?? match)
+}
+
 export function resolveText(text: string | undefined, options: HtpTextResolverOptions = {}): string {
   if (!text) return ''
 
-  const resolved = text.replace(/\{\{([^}]+)\}\}/g, (match, rawKey) => {
-    const key = rawKey.trim()
-    const tokenKey = TOKEN_MAP[key.toUpperCase()]
-    if (tokenKey && options.tokens?.[tokenKey] != null) {
-      return options.tokens[tokenKey]!
-    }
+  const resolved = text.replace(TOKEN_PATTERN, (match, rawKey) => {
+    const key = tokenKeyOf(rawKey)
+    const token = tokenValue(key, options.tokens)
+    if (token != null) return token
     if (options.translations?.[key] != null) {
-      return options.translations[key]
+      return resolveTokens(options.translations[key], options.tokens)
     }
     return match
   })
 
   if (options.translations?.[resolved] != null) {
-    return options.translations[resolved]
+    return resolveTokens(options.translations[resolved], options.tokens)
   }
 
   return resolved
@@ -228,7 +246,7 @@ export function symbolGridStyle(component: HtpPreviewComponent): Record<string, 
   return { gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))` }
 }
 
-export function getSymbolText(symbols: unknown, symbolId: number, translations?: HtpTranslations): string {
+export function getSymbolText(symbols: unknown, symbolId: number, translations?: HtpTranslations, tokens?: HtpTokenValues): string {
   if (!Array.isArray(symbols)) {
     return ''
   }
@@ -240,12 +258,12 @@ export function getSymbolText(symbols: unknown, symbolId: number, translations?:
         if (sym.usePoEditor && typeof sym.poEditorTerm === 'string' && sym.poEditorTerm) {
           const poTerm = sym.poEditorTerm
           if (translations && poTerm in translations) {
-            return translations[poTerm]
+            return resolveTokens(translations[poTerm], tokens)
           }
           return poTerm
         }
         if (typeof sym.text === 'string') {
-          return sym.text
+          return resolveText(sym.text, { tokens, translations })
         }
       }
     }

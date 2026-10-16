@@ -34,7 +34,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "cascad_017",
-      "exitSourceId": "nh90ofe9",
+      "exitSourceId": "n3w1ih06",
       "subgraph": {
         "nodes": [
           {
@@ -168,9 +168,7 @@
             "properties": [
               {
                 "name": "source",
-                "type": "object",
-                "sourceNodeId": "n57yc4vj",
-                "sourceOutputName": "locations"
+                "type": "object"
               }
             ]
           },
@@ -181,9 +179,7 @@
             "properties": [
               {
                 "name": "source",
-                "type": "object",
-                "sourceNodeId": "n57yc4vj",
-                "sourceOutputName": "outcomes"
+                "type": "object"
               }
             ]
           },
@@ -237,22 +233,6 @@
             "to": "n57yc4vj",
             "propertyType": "int",
             "propertyName": "currentCascade"
-          },
-          {
-            "id": "ljy97hei",
-            "from": "n57yc4vj",
-            "to": "nsd30wuj",
-            "propertyType": "object",
-            "propertyName": "source",
-            "sourceOutputName": "locations"
-          },
-          {
-            "id": "lm14crxw",
-            "from": "n57yc4vj",
-            "to": "n6m9nav5",
-            "propertyType": "object",
-            "propertyName": "source",
-            "sourceOutputName": "outcomes"
           }
         ]
       }

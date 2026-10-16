@@ -28,6 +28,11 @@
  *     2+ outputs -> value node. run returns an OBJECT keyed by each output name.
  *   Declaring any output forces nodeType to 'property' automatically.
  * - "run" may be async; the walker awaits it.
+ * - Inputs and outputs may be LISTS: up to three [] on string/int/float/bool/
+ *   any/object or a project type (e.g. 'int[][]', 'Prize[]'), passed and
+ *   returned as nested arrays. List inputs take no default (null or omit it);
+ *   nodeRef/audioRef/sceneRef cannot be lists. 2D output example:
+ *     outputs: [{ name: 'grid', type: 'int[][]' }]  -> run returns [[1, 2], [3, 4]]
  *
  * WORKED EXAMPLE — save as scripts/rollDice.ts:
  *

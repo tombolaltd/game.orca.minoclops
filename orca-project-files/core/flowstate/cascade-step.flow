@@ -57,14 +57,14 @@
         "y": 136.65229339040084,
         "isState": true,
         "entryTargetId": "cascad_017",
-        "exitSourceId": "nh90ofe9",
+        "exitSourceId": "n3w1ih06",
         "subgraph": {
           "nodes": [
             {
               "id": "cascad_029",
               "title": "Entry",
-              "x": 1145.4282259649683,
-              "y": -75.25345810013715,
+              "x": 1061.6296073486124,
+              "y": -14.067165142163041,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -243,6 +243,16 @@
                   "name": "currentCascade",
                   "type": "int"
                 }
+              ],
+              "outputs": [
+                {
+                  "name": "locations",
+                  "type": "number[][]"
+                },
+                {
+                  "name": "outcomes",
+                  "type": "number[][]"
+                }
               ]
             },
             {
@@ -264,8 +274,8 @@
               "id": "nsd30wuj",
               "title": "parseObject",
               "friendlyTitle": "Parse Object",
-              "x": 933.9549403820688,
-              "y": 139.37547063134744,
+              "x": 598.4711845992016,
+              "y": -1.1262732435284875,
               "rootType": "objectOps",
               "color": "#607d8b",
               "icon": "🔎",
@@ -297,8 +307,8 @@
             {
               "id": "nh90ofe9",
               "title": "Note",
-              "x": 650.2345843384575,
-              "y": -82.98552865474056,
+              "x": 1498.8618649294897,
+              "y": -172.1046944848333,
               "isNote": true,
               "noteText": "TODO: cascades need a 2d number array but I can't return that from a custom script yet. While Brad gets that in maybe figure out a way to get that to work with parse objects or turning itno a json",
               "width": 291,
@@ -355,22 +365,6 @@
               "to": "n57yc4vj",
               "propertyType": "int",
               "propertyName": "currentCascade"
-            },
-            {
-              "id": "ljy97hei",
-              "from": "n57yc4vj",
-              "to": "nsd30wuj",
-              "propertyType": "object",
-              "propertyName": "source",
-              "sourceOutputName": "locations"
-            },
-            {
-              "id": "lm14crxw",
-              "from": "n57yc4vj",
-              "to": "n6m9nav5",
-              "propertyType": "object",
-              "propertyName": "source",
-              "sourceOutputName": "outcomes"
             }
           ],
           "groups": []
@@ -392,9 +386,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -768.0323655787527,
-      "panY": 33.91259948045388,
-      "scale": 0.9915044958215244
+      "panX": -215.40149848945373,
+      "panY": 128.35055192167522,
+      "scale": 1.0462503592191077
     }
   }
 }

@@ -19,8 +19,8 @@ export const definition: CustomNodeDefinition = {
     { name: 'currentCascade', type: 'int', description: 'the cascade outcome we are at'}
   ],
   outputs: [
-    { name: 'locations', type: 'object' },
-    { name: 'outcomes', type: 'object' }
+    { name: 'locations', type: 'number[][]' },
+    { name: 'outcomes', type: 'number[][]' }
   ]
 };
 
