@@ -302,25 +302,31 @@ export class GameModel implements IBaseGameModel {
         // Trigger stage (Bonus landed, no Game.BonusRound yet): seed the award; the bonus block overrides with Remaining.
         this.bonusSpinsRemaining = this.hasBonus ? gameSettings.initialBonusSpins : 0;
         this.cascadeCount = gameResult.CascadeCount ?? 0;
-        this.scatterResult = gameResult.ScatterResult ?? null;
-        this.splitSymbolDetails = gameResult.SplitSymbolDetails ?? [];
-        this.unplayedSpinOutcomes = gameResult.Outcomes ? [...gameResult.Outcomes] : [];
+        this.scatterResult = this.toClientScatter(gameResult.ScatterResult);
+        this.splitSymbolDetails = this.toClientSplitDetails(gameResult.SplitSymbolDetails);
+        this.unplayedSpinOutcomes = (gameResult.Outcomes ?? []).map(outcome => this.toClientOutcome(outcome));
 
         if (bonusRound) {
             // Free spin (Continue/Resume): cascades and counters live under Game.BonusRound.
-            this.currentBonus = { ...bonusRound };
-            this.bonusRound = { ...bonusRound };
+            const clientBonusRound: IBonusRound = {
+                ...bonusRound,
+                Outcomes: (bonusRound.Outcomes ?? []).map(outcome => this.toClientOutcome(outcome)),
+                ScatterResult: this.toClientScatter(bonusRound.ScatterResult) ?? undefined,
+                SplitSymbolDetails: this.toClientSplitDetails(bonusRound.SplitSymbolDetails)
+            };
+            this.currentBonus = { ...clientBonusRound };
+            this.bonusRound = clientBonusRound;
             this.bonus = true;
-            this.scatterResult = bonusRound.ScatterResult ?? null;
+            this.scatterResult = clientBonusRound.ScatterResult ?? null;
             this.hasBonus = bonusRound.ScatterResult?.Bonus === true;
             this.cascadeCount = bonusRound.CascadeCount ?? 0;
-            this.splitSymbolDetails = bonusRound.SplitSymbolDetails ?? [];
+            this.splitSymbolDetails = clientBonusRound.SplitSymbolDetails;
             this.bonusSpinsRemaining = bonusRound.Remaining;
             this.currentBonusSpin = bonusRound.Number;
             this.currentBonusSpinPayout = bonusRound.BonusPayout;
             this.totalBonusPayout = bonusRound.TotalBonusPayout;
             this.mainGamePayout = this.payout - this.totalBonusPayout;
-            this.unplayedSpinOutcomes = bonusRound.Outcomes ? [...bonusRound.Outcomes] : [];
+            this.unplayedSpinOutcomes = [...clientBonusRound.Outcomes];
         }
 
         // On a Resume the spin already played out; keep only its settled board.
@@ -333,6 +339,23 @@ export class GameModel implements IBaseGameModel {
 
         this.displayReels = [];
         this.currentCascade = 0;
+    }
+
+    // Engine symbol IDs are 1-based; the reel symbol entries are 0-based.
+    private toClientOutcome(outcome: IOutcome): IOutcome {
+        return {
+            ...outcome,
+            DisplayReels: (outcome.DisplayReels ?? []).map(reel => reel.map(symbol => symbol - 1)),
+            Results: (outcome.Results ?? []).map(result => ({ ...result, Symbol: result.Symbol - 1 }))
+        };
+    }
+
+    private toClientScatter(scatter: IScatterResult | undefined): IScatterResult | null {
+        return scatter ? { ...scatter, Symbol: scatter.Symbol - 1 } : null;
+    }
+
+    private toClientSplitDetails(details: ISplitSymbolDetail[] | undefined): ISplitSymbolDetail[] {
+        return (details ?? []).map(detail => ({ ...detail, Symbol: detail.Symbol - 1 }));
     }
 
 
