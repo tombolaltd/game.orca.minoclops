@@ -2819,112 +2819,6 @@
           "zIndex": 0,
           "children": [
             {
-              "id": "node_ss_hotspot",
-              "name": "Hotspot",
-              "type": "sprite",
-              "transform": {
-                "x": 0,
-                "y": 0,
-                "scaleX": 1,
-                "scaleY": 1,
-                "rotation": 0,
-                "pivotX": 0.5,
-                "pivotY": 0.5,
-                "skewX": 0,
-                "skewY": 0
-              },
-              "visible": true,
-              "alpha": 0,
-              "interactive": false,
-              "zIndex": 0,
-              "children": [
-                {
-                  "id": "node_ss_hotspot_label",
-                  "name": "Label",
-                  "type": "text",
-                  "transform": {
-                    "x": 0,
-                    "y": 88,
-                    "scaleX": 1,
-                    "scaleY": 1,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 1,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "text": "SPLIT x2",
-                  "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
-                  "fontSize": 30,
-                  "fill": 16777215,
-                  "fontWeight": "normal",
-                  "fontStyle": "normal",
-                  "align": "center",
-                  "wordWrap": false,
-                  "wordWrapWidth": 200,
-                  "stroke": 1772339,
-                  "strokeThickness": 6,
-                  "dropShadow": true,
-                  "dropShadowOptions": {
-                    "color": 0,
-                    "blur": 4,
-                    "angle": 1.2,
-                    "distance": 3,
-                    "alpha": 0.6
-                  },
-                  "letterSpacing": 1,
-                  "rectTransform": null
-                }
-              ],
-              "customProperties": {},
-              "locked": false,
-              "expanded": false,
-              "texture": "assets/ui/hotspot-gold.png",
-              "tint": 16777215,
-              "blendMode": "normal",
-              "width": 0,
-              "height": 0,
-              "rectTransform": null
-            },
-            {
-              "id": "node_ss_reel_hotspot",
-              "name": "ReelHotspot",
-              "type": "sprite",
-              "transform": {
-                "x": 0,
-                "y": 0,
-                "scaleX": 1,
-                "scaleY": 1,
-                "rotation": 0,
-                "pivotX": 0.5,
-                "pivotY": 0.5,
-                "skewX": 0,
-                "skewY": 0
-              },
-              "visible": true,
-              "alpha": 0,
-              "interactive": false,
-              "zIndex": 0,
-              "children": [],
-              "customProperties": {},
-              "locked": false,
-              "expanded": false,
-              "texture": "assets/ui/hotspot-blue.png",
-              "tint": 16777215,
-              "blendMode": "normal",
-              "width": 0,
-              "height": 0,
-              "rectTransform": null
-            },
-            {
               "id": "node_ss_reel_frame",
               "name": "ReelFrame",
               "type": "container",
@@ -2990,6 +2884,37 @@
               "rectTransform": null
             },
             {
+              "id": "node_1792499758800_4pkgdglr6",
+              "name": "HotSpot",
+              "type": "spine",
+              "transform": {
+                "x": -6.907890265333658,
+                "y": -11.199653425610917,
+                "scaleX": 0.6903625932377622,
+                "scaleY": 0.6742752411215187,
+                "rotation": 0,
+                "pivotX": 0.5,
+                "pivotY": 0.5,
+                "skewX": 0,
+                "skewY": 0
+              },
+              "visible": false,
+              "alpha": 1,
+              "interactive": false,
+              "zIndex": 0,
+              "children": [],
+              "customProperties": {},
+              "locked": false,
+              "expanded": false,
+              "skeleton": "assets/reel/hotspot.json",
+              "atlas": "assets/reel/hotspot.atlas",
+              "animation": "hotspotIDLE",
+              "playOnLoad": false,
+              "loop": true,
+              "skin": "default",
+              "timeScale": 1
+            },
+            {
               "id": "node_ss_reels",
               "name": "Reels",
               "type": "reels",
@@ -3011,7 +2936,7 @@
               "children": [],
               "customProperties": {},
               "locked": false,
-              "expanded": false,
+              "expanded": true,
               "reelCount": 5,
               "rowCount": 3,
               "symbolWidth": 250,
@@ -3413,6 +3338,20 @@
                       "skewX": 0,
                       "skewY": 0
                     }
+                  },
+                  "node_1792499758800_4pkgdglr6": {
+                    "visible": false,
+                    "transform": {
+                      "x": -6.907890265333658,
+                      "y": -11.199653425610917,
+                      "scaleX": 0.6903625932377622,
+                      "scaleY": 0.6742752411215187,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
                   }
                 }
               },
@@ -3487,6 +3426,20 @@
                       "y": 0.4049031677202386,
                       "scaleX": 0.7,
                       "scaleY": 0.6084006331244758,
+                      "rotation": 0,
+                      "pivotX": 0.5,
+                      "pivotY": 0.5,
+                      "skewX": 0,
+                      "skewY": 0
+                    }
+                  },
+                  "node_1792499758800_4pkgdglr6": {
+                    "visible": true,
+                    "transform": {
+                      "x": 0,
+                      "y": 0,
+                      "scaleX": 1,
+                      "scaleY": 1,
                       "rotation": 0,
                       "pivotX": 0.5,
                       "pivotY": 0.5,
@@ -3683,7 +3636,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": true,
+          "expanded": false,
           "dontDestroyOnLoad": false,
           "responsiveScaler": {
             "mode": "bestFit",

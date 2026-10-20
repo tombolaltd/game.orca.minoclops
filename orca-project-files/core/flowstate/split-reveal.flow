@@ -6,8 +6,8 @@
       {
         "id": "splitr_note",
         "title": "Note",
-        "x": 1060.0169392700784,
-        "y": 75.57703086536762,
+        "x": 971.360814253042,
+        "y": 914.1767707806141,
         "rootType": "note",
         "isNote": true,
         "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off ",
@@ -18,8 +18,8 @@
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -176.94469777783195,
-        "y": 61.824814206514645,
+        "x": -993.5243684055775,
+        "y": 51.04713782988472,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -39,8 +39,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 710.9655727616841,
-        "y": 94.65966204773017,
+        "x": 471.6545542008197,
+        "y": 2.372756881204481,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -61,13 +61,34 @@
         }
       },
       {
-        "id": "n6wdkvrw",
+        "id": "ncejedmd",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 65.82106683997279,
+        "y": 30.836466106003968,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.75
+        }
+      },
+      {
+        "id": "nr2lpth7",
         "title": "getGameModelProperty",
-        "x": -136.76987020492675,
-        "y": 302.66934287416234,
+        "x": -901.5299420659604,
+        "y": 362.32880032925976,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
+        "isStarter": false,
         "properties": [
           {
             "name": "propertyName",
@@ -80,63 +101,11 @@
         }
       },
       {
-        "id": "n9dn8wn9",
-        "title": "int",
-        "x": -48.520541765724104,
-        "y": 443.80704911279867,
-        "rootType": "properties",
-        "color": "#e67e22",
-        "icon": "🔢",
-        "isStarter": false,
-        "propertyValue": 0
-      },
-      {
-        "id": "nwxdrps1",
-        "title": "structFields",
-        "friendlyTitle": "Properties",
-        "x": 808.8902107325516,
-        "y": 319.124905132195,
-        "rootType": "objectOps",
-        "color": "#607d8b",
-        "icon": "🧩",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "source",
-            "type": "object"
-          }
-        ]
-      },
-      {
-        "id": "nnachejm",
-        "title": "at",
-        "friendlyTitle": "Get",
-        "x": 295.7498965768222,
-        "y": 335.3527423048432,
-        "rootType": "array",
-        "color": "#2980b9",
-        "icon": "🎯",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "array",
-            "type": "TArray"
-          },
-          {
-            "name": "index",
-            "type": "int"
-          }
-        ],
-        "propertyValues": {
-          "index": 0
-        }
-      },
-      {
-        "id": "n6tyug9t",
+        "id": "nccjlbfj",
         "title": "loop",
         "friendlyTitle": "Repeat For Each",
-        "x": 566.1849925143629,
-        "y": 487.47055359725596,
+        "x": -356.269796194446,
+        "y": 115.55870216804678,
         "rootType": "loop",
         "color": "#9b59b6",
         "icon": "🔁",
@@ -157,58 +126,190 @@
         }
       },
       {
-        "id": "ncejedmd",
-        "title": "delay",
-        "friendlyTitle": "Wait",
-        "x": 306.93242155219934,
-        "y": 54.88908817682284,
-        "rootType": "delay",
-        "color": "#8e44ad",
-        "icon": "⏱️",
+        "id": "njpv296w",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": -162.43884764474012,
+        "y": 381.6247103227962,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🧩",
         "isStarter": false,
         "properties": [
           {
-            "name": "seconds",
-            "type": "float"
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "HighlightedPosition",
+            "type": "ISplitSymbol[]",
+            "path": "HighlightedPosition"
+          },
+          {
+            "name": "Split",
+            "type": "float",
+            "path": "Split"
+          },
+          {
+            "name": "Symbol",
+            "type": "float",
+            "path": "Symbol"
+          }
+        ]
+      },
+      {
+        "id": "n10e0ksf",
+        "title": "playSplitSymbols",
+        "friendlyTitle": "Play split symbols",
+        "x": 871.0291972822281,
+        "y": 146.55845784318646,
+        "rootType": "custom",
+        "color": "#8e44ad",
+        "icon": "🧩",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "split",
+            "type": "int"
+          },
+          {
+            "name": "symbol",
+            "type": "int"
+          },
+          {
+            "name": "reels",
+            "type": "nodeRef"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
           }
         ],
         "propertyValues": {
-          "seconds": 2
+          "animationName": "split",
+          "loop": false,
+          "reels": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
         }
+      },
+      {
+        "id": "nw34zng2",
+        "title": "toInt",
+        "x": 196.38955639686878,
+        "y": 415.0114255772547,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nvu1cf10",
+        "title": "toInt",
+        "x": 181.85235847889328,
+        "y": 553.1165092638103,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
       }
     ],
     "links": [
       {
-        "id": "l9v9yq4g",
-        "from": "n6wdkvrw",
-        "to": "nnachejm",
+        "id": "l2vtss1h",
+        "from": "nr2lpth7",
+        "to": "nccjlbfj",
         "propertyType": "TArray",
-        "propertyName": "array"
+        "propertyName": "items"
       },
       {
-        "id": "lwiex14r",
-        "from": "nnachejm",
-        "to": "nwxdrps1",
-        "propertyType": "object",
-        "propertyName": "source"
+        "id": "llsd45bo",
+        "from": "nw34zng2",
+        "to": "n10e0ksf",
+        "propertyType": "int",
+        "propertyName": "split"
       },
       {
-        "id": "lio9xz18",
+        "id": "l6gj8nwi",
+        "from": "nvu1cf10",
+        "to": "n10e0ksf",
+        "propertyType": "int",
+        "propertyName": "symbol"
+      },
+      {
+        "id": "lyfhyejo",
         "from": "splitr_008",
-        "to": "ncejedmd"
+        "to": "nccjlbfj"
       },
       {
-        "id": "lxzmfn1m",
+        "id": "l6ilo4ti",
         "from": "ncejedmd",
         "to": "splitr_070"
+      },
+      {
+        "id": "lm8syv2w",
+        "from": "nccjlbfj",
+        "to": "ncejedmd",
+        "outIdx": 1
+      },
+      {
+        "id": "ly44nto1",
+        "from": "nccjlbfj",
+        "to": "n10e0ksf",
+        "outIdx": 0
+      },
+      {
+        "id": "lm39r9br",
+        "from": "nccjlbfj",
+        "to": "njpv296w",
+        "propertyType": "object",
+        "propertyName": "source",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l0c3h61f",
+        "from": "njpv296w",
+        "to": "nw34zng2",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "Split"
+      },
+      {
+        "id": "ll02xldg",
+        "from": "njpv296w",
+        "to": "nvu1cf10",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "Symbol"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 292.3397409361339,
-      "panY": 62.14293034112694,
-      "scale": 0.9321014186845828
+      "panX": 679.4707203207338,
+      "panY": 22.397275330654452,
+      "scale": 0.627950233847469
     }
   }
 }

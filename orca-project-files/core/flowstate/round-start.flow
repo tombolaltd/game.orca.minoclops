@@ -8,8 +8,8 @@
         "title": "onBeginGame",
         "displayName": "BUY pressed",
         "friendlyTitle": "On Buy In",
-        "x": 528.471050835921,
-        "y": -158.0492718153419,
+        "x": 395.26655046690433,
+        "y": -185.1616922444338,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -21,8 +21,8 @@
       {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 1242.0928050947941,
-        "y": -178.53840611688074,
+        "x": 1428.0380862943591,
+        "y": -194.55977103292688,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -348,8 +348,8 @@
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": 777.6402703381287,
-        "y": -153.16496770087141,
+        "x": 614.9657477635774,
+        "y": -161.41657391842114,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -458,7 +458,7 @@
         "id": "rounds_039",
         "title": "State",
         "displayName": "Reset labels",
-        "x": 1016.8560114032884,
+        "x": 815.2810595174315,
         "y": -163.00194181070822,
         "isState": true,
         "entryTargetId": "rounds_016",
@@ -559,6 +559,32 @@
           ],
           "groups": []
         }
+      },
+      {
+        "id": "n285entq",
+        "title": "setGameModelProperty",
+        "x": 1028.3343455397537,
+        "y": -190.40518600933396,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "hotSpotPlayed"
+        }
       }
     ],
     "links": [
@@ -573,17 +599,22 @@
         "to": "rounds_036"
       },
       {
-        "id": "lpnauol5",
+        "id": "lv35ipwm",
         "from": "rounds_039",
+        "to": "n285entq"
+      },
+      {
+        "id": "lqncloyv",
+        "from": "n285entq",
         "to": "rounds_029"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -783.4137364785374,
-      "panY": 309.4625114927152,
-      "scale": 1.091393847915723
+      "panX": -241.07934254067288,
+      "panY": 444.9809513411723,
+      "scale": 0.8947170773477109
     }
   }
 }

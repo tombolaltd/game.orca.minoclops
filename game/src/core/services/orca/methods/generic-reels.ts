@@ -969,8 +969,8 @@ export class GenericReelsMethods {
     public spinReels(
         target: NodeRefLike,
         mode?: string,
-        endPositions?: string,
-        startPositions?: string,
+        endPositions?: unknown,
+        startPositions?: unknown,
     ): void {
         const service = getService(target);
         if (!service) return;
@@ -1100,7 +1100,7 @@ export class GenericReelsMethods {
      * @param target - NodeRef to a Reels scene node
      * @param endPositions - JSON string encoding `number[]` of stop positions
      */
-    public stopReels(target: NodeRefLike, endPositions?: string): void {
+    public stopReels(target: NodeRefLike, endPositions?: unknown): void {
         const service = getService(target);
         if (!service) return;
 
@@ -1804,7 +1804,7 @@ export class GenericReelsMethods {
      * @param reelIndex - 0-based reel, or `-1` to apply the same column to every reel
      * @param symbols - JSON string encoding `number[]`, e.g. `"[3,0,1]"`
      */
-    public setReelSymbols(target: NodeRefLike, reelIndex: number, symbols: string): void {
+    public setReelSymbols(target: NodeRefLike, reelIndex: number, symbols: unknown): void {
         const root = getReelsRoot(target, "setReelSymbols");
         if (!root) return;
         const grid = getGridSize(root, "setReelSymbols");
@@ -1883,7 +1883,7 @@ export class GenericReelsMethods {
      * @param target - NodeRef to a Reels scene node
      * @param order - JSON string encoding `number[]`, e.g. `"[2,0,1]"`
      */
-    public setSymbolDrawOrder(target: NodeRefLike, order: string): void {
+    public setSymbolDrawOrder(target: NodeRefLike, order: unknown): void {
         const root = getReelsRoot(target, "setSymbolDrawOrder");
         if (!root) return;
         const apply = root._flowstateSetSymbolDrawOrder;
@@ -1893,17 +1893,10 @@ export class GenericReelsMethods {
             );
             return;
         }
-        let parsed: unknown;
-        try {
-            parsed = JSON.parse(String(order ?? "").trim() || "[]");
-        } catch (err) {
-            console.warn(`[FlowState/reels] setSymbolDrawOrder: failed to parse order JSON`, order, err);
-            return;
-        }
-        if (!Array.isArray(parsed)) {
-            console.warn(`[FlowState/reels] setSymbolDrawOrder: expected JSON-encoded number[], got`, order);
-            return;
-        }
+        // Empty input restores the authored order; an unreadable one is ignored (parsePositions warns).
+        const isEmpty = order === undefined || order === null || (!Array.isArray(order) && String(order).trim() === "");
+        const parsed = isEmpty ? [] : parsePositions(order, "setSymbolDrawOrder");
+        if (!parsed) return;
         const authoredCount = root._flowstateAuthoredSymbolCount;
         if (typeof authoredCount === "number" && authoredCount > 0) {
             for (const id of parsed) {

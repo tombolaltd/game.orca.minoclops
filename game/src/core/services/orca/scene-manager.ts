@@ -217,9 +217,9 @@ function guardVideoSourcePlayStart(): void {
 // Before any VideoSource is built: each one binds `_onPlayStart` in its constructor.
 guardVideoSourcePlayStart();
 
-/** Project-global 3D switch; read at call time only (import-cycle safety). */
+/** Project-global 3D switch, off unless explicitly true; read at call time only (import-cycle safety). */
 function isScene3DEnabled(): boolean {
-    return (activeSkinExports as unknown as { ENABLE_3D?: unknown }).ENABLE_3D !== false;
+    return (activeSkinExports as unknown as { ENABLE_3D?: unknown }).ENABLE_3D === true;
 }
 
 /** Project 3D shadow tier, untrusted; absent in an older active-skin.ts, which the layer treats as 'medium'. */

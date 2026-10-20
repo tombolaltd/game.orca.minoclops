@@ -7,8 +7,8 @@
         "id": "cascad_007",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 211.95198946426274,
-        "y": 99.0967145403148,
+        "x": -232.31628284649315,
+        "y": 68.83926946372537,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "cascad_021",
         "title": "fireCustomEvent",
-        "x": 903.62389674362,
-        "y": 100.21353499233396,
+        "x": 2207.5544658349554,
+        "y": 191.30713345494763,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "cascad_028",
         "title": "State",
         "displayName": "Drop in",
-        "x": 632.8104518439641,
-        "y": 136.65229339040084,
+        "x": 90.82438303889933,
+        "y": 88.465327445283,
         "isState": true,
         "entryTargetId": "cascad_017",
         "exitSourceId": "n0mjeqyp",
@@ -73,8 +73,8 @@
               "id": "cascad_017",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 998.3903480304673,
-              "y": 82.26752899706008,
+              "x": 1116.0602202069922,
+              "y": 71.37175792350055,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -87,11 +87,25 @@
                 {
                   "name": "locations",
                   "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
                   "default": "[[0],[0],[0],[0],[0]]"
                 },
                 {
                   "name": "outcome",
                   "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
                   "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
                 },
                 {
@@ -113,7 +127,7 @@
               "propertyValues": {
                 "locations": "",
                 "outcome": "",
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_ss_reels",
@@ -209,16 +223,6 @@
               "propertyValue": 1
             },
             {
-              "id": "nh90ofe9",
-              "title": "Note",
-              "x": 1498.8618649294897,
-              "y": -172.1046944848333,
-              "isNote": true,
-              "noteText": "TODO: cascades need a 2d number array but I can't return that from a custom script yet. While Brad gets that in maybe figure out a way to get that to work with parse objects or turning itno a json",
-              "width": 291,
-              "height": 193
-            },
-            {
               "id": "nnqo51iy",
               "title": "cascadeLocations",
               "friendlyTitle": "Return Cascade Locations",
@@ -239,38 +243,6 @@
                   "type": "any"
                 }
               ]
-            },
-            {
-              "id": "n0mjeqyp",
-              "title": "waitForReelsToStop",
-              "friendlyTitle": "Wait For Reels To Stop",
-              "x": 1367.8358672265142,
-              "y": 190.5448690046179,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "isStarter": false,
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "timeoutSeconds",
-                  "type": "float",
-                  "default": 30
-                }
-              ],
-              "propertyValues": {
-                "timeoutSeconds": 5,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
             }
           ],
           "links": [
@@ -306,16 +278,6 @@
               "propertyName": "a"
             },
             {
-              "id": "lh6uzuai",
-              "from": "cascad_017",
-              "to": "n0mjeqyp"
-            },
-            {
-              "id": "l6tv1ug8",
-              "from": "n0mjeqyp",
-              "to": "cascad_020"
-            },
-            {
               "id": "lk7lmeod",
               "from": "nnqo51iy",
               "to": "cascad_017",
@@ -330,30 +292,835 @@
               "propertyType": "string",
               "propertyName": "outcome",
               "sourceOutputName": "outcomes"
+            },
+            {
+              "id": "lkigy86k",
+              "from": "cascad_017",
+              "to": "cascad_020"
             }
           ],
           "groups": []
+        }
+      },
+      {
+        "id": "n0hcvofq",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 812.8470179693281,
+        "y": 101.33694081902749,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 1
+        }
+      },
+      {
+        "id": "ngebnbzi",
+        "title": "playAnimation",
+        "x": 1542.593268707296,
+        "y": 277.38618859546966,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 0,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1792499758800_4pkgdglr6",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "hotspotOFF"
+        }
+      },
+      {
+        "id": "nq9naulk",
+        "title": "branch",
+        "x": 1200.1801042545985,
+        "y": 168.5628944385603,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "id": "nqmfqlb9",
+        "title": "getGameModelProperty",
+        "x": 817.0486196703533,
+        "y": 298.9693951005424,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "hotSpotPlayed"
+        }
+      },
+      {
+        "id": "nn0yuk1m",
+        "title": "setGameModelProperty",
+        "x": 1865.506075466912,
+        "y": 279.71608181316253,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "hotSpotPlayed",
+          "value": true
+        }
+      },
+      {
+        "id": "nbbg0gg4",
+        "title": "State",
+        "displayName": "Hotspot Selection",
+        "x": 618.5700164393365,
+        "y": 187.7339094584713,
+        "isState": true,
+        "entryTargetId": "n5cwk6cf",
+        "exitSourceId": "nbl300pd",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "nm44e678",
+              "title": "Entry",
+              "x": -87.01660000739703,
+              "y": 364.74935952066295,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "nq3sjev2",
+              "title": "Exit",
+              "x": 1729.3531475323273,
+              "y": 397.57008232293,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "n5cwk6cf",
+              "title": "getGameModelProperty",
+              "x": -2224.3939597545714,
+              "y": 534.9888642795697,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "splitSymbolDetails"
+              }
+            },
+            {
+              "id": "nar6sxi1",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -1568.0748302692375,
+              "y": 535.0100921515418,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "HighlightedPosition",
+                  "type": "ISplitSymbol[]",
+                  "path": "HighlightedPosition"
+                },
+                {
+                  "name": "Split",
+                  "type": "float",
+                  "path": "Split"
+                },
+                {
+                  "name": "Symbol",
+                  "type": "float",
+                  "path": "Symbol"
+                }
+              ]
+            },
+            {
+              "id": "n3urxqok",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1888.403270231962,
+              "y": 533.9319840332446,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nrpyag6u",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -890.831587658203,
+              "y": 544.3267839936049,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "Reel",
+                  "type": "float",
+                  "path": "Reel"
+                },
+                {
+                  "name": "Row",
+                  "type": "float",
+                  "path": "Row"
+                }
+              ]
+            },
+            {
+              "id": "nv9f321t",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1245.1892424507048,
+              "y": 534.3044794267014,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "n1s2jh06",
+              "title": "toInt",
+              "x": -496.8197486737372,
+              "y": 497.1788870366835,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nzyjsbcr",
+              "title": "toInt",
+              "x": -495.2049290237642,
+              "y": 618.7574430059284,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nbc9m4ak",
+              "title": "getReelSymbolSpine",
+              "friendlyTitle": "Get Reel Symbol Spine",
+              "x": -162.84036342952777,
+              "y": 517.1562651514711,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🎰",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0,
+                  "linkable": true
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0,
+                  "linkable": true
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nxukw6ep",
+              "title": "setNodeVisible",
+              "x": 162.68208191285908,
+              "y": 321.01352356855733,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": true,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nh3prdn1",
+              "title": "playAnimation",
+              "x": 890.9381161711,
+              "y": 395.2144484580246,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotON"
+              }
+            },
+            {
+              "id": "nphoeud0",
+              "title": "playAnimation",
+              "x": 1302.4545075636863,
+              "y": 396.8585004491162,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotIDLE"
+              }
+            },
+            {
+              "id": "na9xkg12",
+              "title": "setNodeGlobalPosition",
+              "x": 552.8427560217566,
+              "y": 405.0608109075193,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "x",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "y",
+                  "type": "float",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "x": 0,
+                "y": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nbl300pd",
+              "title": "getNodeGlobalPosition",
+              "friendlyTitle": "Get Global Position",
+              "x": 185.4359998348325,
+              "y": 562.1540388423653,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🌐",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ]
+            }
+          ],
+          "links": [
+            {
+              "id": "l1oz346h",
+              "from": "n5cwk6cf",
+              "to": "n3urxqok",
+              "propertyType": "TArray",
+              "propertyName": "array"
+            },
+            {
+              "id": "l9tb9nc6",
+              "from": "n3urxqok",
+              "to": "nar6sxi1",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "lgyiu22p",
+              "from": "nar6sxi1",
+              "to": "nv9f321t",
+              "propertyType": "TArray",
+              "propertyName": "array",
+              "sourceOutputName": "HighlightedPosition"
+            },
+            {
+              "id": "lcbopfke",
+              "from": "nv9f321t",
+              "to": "nrpyag6u",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l3i74idv",
+              "from": "nrpyag6u",
+              "to": "n1s2jh06",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Reel"
+            },
+            {
+              "id": "lhpq2f31",
+              "from": "nrpyag6u",
+              "to": "nzyjsbcr",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Row"
+            },
+            {
+              "id": "l9mxo4t8",
+              "from": "n1s2jh06",
+              "to": "nbc9m4ak",
+              "propertyType": "int",
+              "propertyName": "reelIndex"
+            },
+            {
+              "id": "l9mtezqm",
+              "from": "nzyjsbcr",
+              "to": "nbc9m4ak",
+              "propertyType": "int",
+              "propertyName": "rowIndex"
+            },
+            {
+              "id": "lhprcj2o",
+              "from": "nh3prdn1",
+              "to": "nphoeud0"
+            },
+            {
+              "id": "lfp8sirf",
+              "from": "nphoeud0",
+              "to": "nq3sjev2"
+            },
+            {
+              "id": "lqwo3eh0",
+              "from": "nxukw6ep",
+              "to": "na9xkg12"
+            },
+            {
+              "id": "l9zq58zh",
+              "from": "na9xkg12",
+              "to": "nh3prdn1"
+            },
+            {
+              "id": "lzk5911o",
+              "from": "nm44e678",
+              "to": "nxukw6ep"
+            },
+            {
+              "id": "lkhxqs0m",
+              "from": "nbc9m4ak",
+              "to": "nbl300pd",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "lnwvv9gs",
+              "from": "nbl300pd",
+              "to": "na9xkg12",
+              "propertyType": "float",
+              "propertyName": "x",
+              "sourceOutputName": "x"
+            },
+            {
+              "id": "lu4ih8zr",
+              "from": "nbl300pd",
+              "to": "na9xkg12",
+              "propertyType": "float",
+              "propertyName": "y",
+              "sourceOutputName": "y"
+            }
+          ],
+          "groups": []
+        }
+      },
+      {
+        "id": "nv1tpbd0",
+        "title": "branch",
+        "x": 296.8390447055735,
+        "y": 79.41746019341203,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "id": "nqmukt6e",
+        "title": "getGameModelProperty",
+        "x": -145.09245198654804,
+        "y": 259.3378968419144,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "hotSpotPlayed"
         }
       }
     ],
     "links": [
       {
-        "id": "l_cascad_36",
-        "from": "cascad_028",
+        "id": "lh83p4f2",
+        "from": "cascad_007",
+        "to": "cascad_028"
+      },
+      {
+        "id": "la51bna5",
+        "from": "nqmfqlb9",
+        "to": "nq9naulk",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "llzt8p2s",
+        "from": "nq9naulk",
+        "to": "ngebnbzi",
+        "outIdx": 1
+      },
+      {
+        "id": "l2lu2ptp",
+        "from": "n0hcvofq",
+        "to": "nq9naulk"
+      },
+      {
+        "id": "ll5d4izj",
+        "from": "nq9naulk",
+        "to": "cascad_021",
+        "outIdx": 0
+      },
+      {
+        "id": "l897968m",
+        "from": "ngebnbzi",
+        "to": "nn0yuk1m"
+      },
+      {
+        "id": "lltrpa7n",
+        "from": "nn0yuk1m",
         "to": "cascad_021"
       },
       {
-        "id": "lk1alfno",
-        "from": "cascad_007",
-        "to": "cascad_028"
+        "id": "lanq9hq3",
+        "from": "nbbg0gg4",
+        "to": "n0hcvofq"
+      },
+      {
+        "id": "l7d2txuf",
+        "from": "nqmukt6e",
+        "to": "nv1tpbd0",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "luiz8o61",
+        "from": "cascad_028",
+        "to": "nv1tpbd0"
+      },
+      {
+        "id": "lslvw8rg",
+        "from": "nv1tpbd0",
+        "to": "nbbg0gg4",
+        "outIdx": 1
+      },
+      {
+        "id": "lbiw2idk",
+        "from": "nv1tpbd0",
+        "to": "n0hcvofq",
+        "outIdx": 0
       }
     ],
     "groups": [],
-    "variables": [],
+    "variables": [
+      {
+        "name": "Hotspot tracker",
+        "type": "bool",
+        "defaultValue": false
+      }
+    ],
     "viewState": {
-      "panX": -411.67214572743796,
-      "panY": 190.0043680886401,
-      "scale": 0.8186149293979738
+      "panX": 314.32872719870704,
+      "panY": -217.33818025607457,
+      "scale": 0.8501909045559641
     }
   }
 }

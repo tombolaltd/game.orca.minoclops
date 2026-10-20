@@ -19,7 +19,6 @@ export const definition: CustomNodeDefinition = {
   outputs: [
     { name: 'locations', type: 'any' },
     { name: 'outcomes', type: 'any' }
-
   ]
 };
 

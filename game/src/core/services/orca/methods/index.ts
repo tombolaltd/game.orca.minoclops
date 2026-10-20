@@ -14,7 +14,7 @@
  *                            videoSequencer | particles | scratchableItem |
  *                            text | cabinet | casinoCabinet | audio | mixer |
  *                            reels | bigwin | scene | animation | jackpots |
- *                            continueRequest | network | scene3d }`
+ *                            continueRequest | network | scene3d | settings }`
  * - Game state / info: `gameState`, `wallet`, `deviceInfo`
  * - Event dispatchers: `fireEvent.{ globalFireEvents | popupFireEvents |
  *                                    cabinetFireEvents | casinoCabinetFireEvents |
@@ -64,6 +64,7 @@ import { scene } from "./scene";
 import { sceneQuery } from "./scene-query";
 import { scene3d } from "./scene3d";
 import { scratchableItem } from "./scratchable-item";
+import { settings } from "./settings";
 import { spine } from "./spine";
 import { string } from "./string";
 import { text } from "./text";
@@ -120,7 +121,9 @@ const buildActions = () => ({
     /** HTTP POST of a JSON body (`httpPost`). */
     network: networkActions,
     /** `scene3d` node controls (target: node3dRef) — transform, tweens, lights, camera, model clips. */
-    scene3d
+    scene3d,
+    /** In-game settings menu — show / hide / toggle. */
+    settings
 });
 
 const buildFireEvent = () => ({

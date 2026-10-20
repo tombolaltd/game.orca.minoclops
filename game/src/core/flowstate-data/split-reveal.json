@@ -37,7 +37,19 @@
       ]
     },
     {
-      "id": "n6wdkvrw",
+      "id": "ncejedmd",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.75
+        }
+      ]
+    },
+    {
+      "id": "nr2lpth7",
       "title": "getGameModelProperty",
       "rootType": "properties",
       "properties": [
@@ -49,42 +61,14 @@
       ]
     },
     {
-      "id": "nwxdrps1",
-      "title": "structFields",
-      "rootType": "objectOps",
-      "properties": [
-        {
-          "name": "source",
-          "type": "object",
-          "sourceNodeId": "nnachejm"
-        }
-      ]
-    },
-    {
-      "id": "nnachejm",
-      "title": "at",
-      "rootType": "array",
-      "properties": [
-        {
-          "name": "array",
-          "type": "TArray",
-          "sourceNodeId": "n6wdkvrw"
-        },
-        {
-          "name": "index",
-          "type": "int",
-          "value": 0
-        }
-      ]
-    },
-    {
-      "id": "n6tyug9t",
+      "id": "nccjlbfj",
       "title": "loop",
       "rootType": "loop",
       "properties": [
         {
           "name": "items",
-          "type": "TArray"
+          "type": "TArray",
+          "sourceNodeId": "nr2lpth7"
         },
         {
           "name": "count",
@@ -94,42 +78,166 @@
       ]
     },
     {
-      "id": "ncejedmd",
-      "title": "delay",
-      "rootType": "delay",
+      "id": "njpv296w",
+      "title": "structFields",
+      "rootType": "objectOps",
       "properties": [
         {
-          "name": "seconds",
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "nccjlbfj",
+          "sourceOutputName": "item"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "HighlightedPosition",
+          "type": "ISplitSymbol[]",
+          "path": "HighlightedPosition"
+        },
+        {
+          "name": "Split",
           "type": "float",
-          "value": 2
+          "path": "Split"
+        },
+        {
+          "name": "Symbol",
+          "type": "float",
+          "path": "Symbol"
+        }
+      ]
+    },
+    {
+      "id": "n10e0ksf",
+      "title": "playSplitSymbols",
+      "rootType": "custom",
+      "properties": [
+        {
+          "name": "split",
+          "type": "int",
+          "sourceNodeId": "nw34zng2"
+        },
+        {
+          "name": "symbol",
+          "type": "int",
+          "sourceNodeId": "nvu1cf10"
+        },
+        {
+          "name": "reels",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "split"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "nw34zng2",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "njpv296w",
+          "sourceOutputName": "Split"
+        }
+      ]
+    },
+    {
+      "id": "nvu1cf10",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "njpv296w",
+          "sourceOutputName": "Symbol"
         }
       ]
     }
   ],
   "links": [
     {
-      "id": "l9v9yq4g",
-      "from": "n6wdkvrw",
-      "to": "nnachejm",
+      "id": "l2vtss1h",
+      "from": "nr2lpth7",
+      "to": "nccjlbfj",
       "propertyType": "TArray",
-      "propertyName": "array"
+      "propertyName": "items"
     },
     {
-      "id": "lwiex14r",
-      "from": "nnachejm",
-      "to": "nwxdrps1",
-      "propertyType": "object",
-      "propertyName": "source"
+      "id": "llsd45bo",
+      "from": "nw34zng2",
+      "to": "n10e0ksf",
+      "propertyType": "int",
+      "propertyName": "split"
     },
     {
-      "id": "lio9xz18",
+      "id": "l6gj8nwi",
+      "from": "nvu1cf10",
+      "to": "n10e0ksf",
+      "propertyType": "int",
+      "propertyName": "symbol"
+    },
+    {
+      "id": "lyfhyejo",
       "from": "splitr_008",
-      "to": "ncejedmd"
+      "to": "nccjlbfj"
     },
     {
-      "id": "lxzmfn1m",
+      "id": "l6ilo4ti",
       "from": "ncejedmd",
       "to": "splitr_070"
+    },
+    {
+      "id": "lm8syv2w",
+      "from": "nccjlbfj",
+      "to": "ncejedmd",
+      "outIdx": 1
+    },
+    {
+      "id": "ly44nto1",
+      "from": "nccjlbfj",
+      "to": "n10e0ksf",
+      "outIdx": 0
+    },
+    {
+      "id": "lm39r9br",
+      "from": "nccjlbfj",
+      "to": "njpv296w",
+      "propertyType": "object",
+      "propertyName": "source",
+      "sourceOutputName": "item"
+    },
+    {
+      "id": "l0c3h61f",
+      "from": "njpv296w",
+      "to": "nw34zng2",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "Split"
+    },
+    {
+      "id": "ll02xldg",
+      "from": "njpv296w",
+      "to": "nvu1cf10",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "Symbol"
     }
   ]
 }

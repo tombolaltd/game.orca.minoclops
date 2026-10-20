@@ -37,22 +37,28 @@ function getPlayer(target: NodeRefLike): FlowstateReelsWinlinePlayer | null {
 }
 
 class ReelsWinlineMethods {
-    public playWinline(target: NodeRefLike, lines: string): void {
+    public playWinline(target: NodeRefLike, lines: unknown): void {
         const player = getPlayer(target);
         if (!player) return;
 
-        let parsed: unknown;
-        try {
-            parsed = JSON.parse(lines);
-        } catch (err) {
-            console.warn('[FlowState/reels] playWinline: lines is not valid JSON', err);
-            return;
+        let parsed: unknown = lines;
+        if (!Array.isArray(lines)) {
+            try {
+                parsed = JSON.parse(String(lines ?? '').trim());
+            } catch (err) {
+                console.warn('[FlowState/reels] playWinline: lines is not valid JSON', err);
+                return;
+            }
         }
         if (!Array.isArray(parsed)) {
             console.warn('[FlowState/reels] playWinline: parsed lines is not an array');
             return;
         }
-        player.playWinline(parsed as number[][]);
+        if (!parsed.every((row) => Array.isArray(row) && row.every((n) => typeof n === 'number'))) {
+            console.warn('[FlowState/reels] playWinline: expected an array of number arrays, got', lines);
+            return;
+        }
+        player.playWinline((parsed as number[][]).map((row) => row.slice()));
     }
 
     public clearWinline(target: NodeRefLike): void {

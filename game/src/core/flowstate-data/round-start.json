@@ -392,6 +392,22 @@
           }
         ]
       }
+    },
+    {
+      "id": "n285entq",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "hotSpotPlayed"
+        },
+        {
+          "name": "value",
+          "type": "dynamic"
+        }
+      ]
     }
   ],
   "links": [
@@ -406,8 +422,13 @@
       "to": "rounds_036"
     },
     {
-      "id": "lpnauol5",
+      "id": "lv35ipwm",
       "from": "rounds_039",
+      "to": "n285entq"
+    },
+    {
+      "id": "lqncloyv",
+      "from": "n285entq",
       "to": "rounds_029"
     }
   ]
