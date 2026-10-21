@@ -197,6 +197,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "nmcxhd6c",
+      "exitSourceId": "nwlmbxs9",
       "subgraph": {
         "nodes": [
           {
@@ -252,14 +253,31 @@
                 "value": "displayReels"
               }
             ]
+          },
+          {
+            "id": "n2gt7hvh",
+            "title": "playAllOffAnimations",
+            "rootType": "custom",
+            "properties": [
+              {
+                "name": "locations",
+                "type": "any",
+                "value": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]"
+              },
+              {
+                "name": "reels",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
           }
         ],
         "links": [
-          {
-            "id": "lkdbzvew",
-            "from": "ng1arby3",
-            "to": "nmcxhd6c"
-          },
           {
             "id": "lfz5rfjv",
             "from": "nh47ncan",
@@ -268,9 +286,19 @@
             "propertyName": "outcome"
           },
           {
-            "id": "lybywukb",
+            "id": "lszmxcmv",
             "from": "nmcxhd6c",
             "to": "nxnpr19r"
+          },
+          {
+            "id": "li8glefo",
+            "from": "ng1arby3",
+            "to": "n2gt7hvh"
+          },
+          {
+            "id": "lynfghds",
+            "from": "n2gt7hvh",
+            "to": "nmcxhd6c"
           }
         ]
       }

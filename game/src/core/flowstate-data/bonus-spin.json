@@ -197,14 +197,31 @@
                 "value": "displayReels"
               }
             ]
+          },
+          {
+            "id": "nv0vli7d",
+            "title": "playAllOffAnimations",
+            "rootType": "custom",
+            "properties": [
+              {
+                "name": "locations",
+                "type": "any",
+                "value": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]"
+              },
+              {
+                "name": "reels",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
           }
         ],
         "links": [
-          {
-            "id": "l6gd9o7r",
-            "from": "ngoj25r0",
-            "to": "nxyuus62"
-          },
           {
             "id": "l4ge4dyq",
             "from": "niebzplq",
@@ -216,6 +233,16 @@
             "id": "laooyeu2",
             "from": "nxyuus62",
             "to": "nqyjxbvh"
+          },
+          {
+            "id": "ltibgm7u",
+            "from": "ngoj25r0",
+            "to": "nv0vli7d"
+          },
+          {
+            "id": "ltrqod9k",
+            "from": "nv0vli7d",
+            "to": "nxyuus62"
           }
         ]
       }

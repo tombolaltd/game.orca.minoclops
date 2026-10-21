@@ -6,8 +6,8 @@
       {
         "id": "bonuse_note",
         "title": "Note",
-        "x": 122.16967870275238,
-        "y": -310.7504818855784,
+        "x": 845.2927465777404,
+        "y": -164.63999899302937,
         "rootType": "note",
         "isNote": true,
         "noteText": "TODO: add more here",
@@ -18,8 +18,8 @@
         "id": "bonuse_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
+        "x": 120.59568513482,
+        "y": 112.52184747516475,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -39,8 +39,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 2754.275259705181,
-        "y": 118.60267609074234,
+        "x": 2612.452900232449,
+        "y": 114.47958354524633,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -346,8 +346,8 @@
         "id": "n1vlv51b",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 417.87978012876204,
-        "y": 117.43920485283584,
+        "x": 432.83608517843254,
+        "y": 113.16597483864427,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -365,8 +365,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 2381.0417298206985,
-        "y": 116.597123433212,
+        "x": 2302.9673637618903,
+        "y": 114.54253485271704,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -435,9 +435,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -173.51989657764375,
-      "panY": 125.57494848774407,
-      "scale": 0.46634684284137917
+      "panX": -108.22246497523156,
+      "panY": 187.06669380789236,
+      "scale": 0.40350127809076475
     }
   }
 }

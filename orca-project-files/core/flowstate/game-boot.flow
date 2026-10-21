@@ -22,8 +22,8 @@
         "id": "gamebo_063",
         "title": "State",
         "displayName": "Music & board",
-        "x": 137.2490120305096,
-        "y": 168.8480265445343,
+        "x": 71.87097271547816,
+        "y": 186.15397812792497,
         "isState": true,
         "entryTargetId": "gamebo_002",
         "exitSourceId": "gamebo_006",
@@ -259,8 +259,8 @@
         "id": "gamebo_066",
         "title": "State",
         "displayName": "Game font labels",
-        "x": 354.5325150037094,
-        "y": 170.01107479559462,
+        "x": 254.54257252189666,
+        "y": 185.39414286971964,
         "isState": true,
         "entryTargetId": "gamebo_007",
         "exitSourceId": "gamebo_030",
@@ -579,8 +579,8 @@
         "id": "gamebo_072",
         "title": "State",
         "displayName": "Game font (late)",
-        "x": 575.7254650251812,
-        "y": 170.73969072475805,
+        "x": 440.16217762195424,
+        "y": 185.16131704425027,
         "isState": true,
         "entryTargetId": "gamebo_038",
         "exitSourceId": "gamebo_062",
@@ -940,9 +940,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -14.589485805270044,
-      "panY": 92.92952385694986,
-      "scale": 0.6416715525415888
+      "panX": 262.6486405941361,
+      "panY": 84.02386401684396,
+      "scale": 1.0401046087101873
     }
   }
 }

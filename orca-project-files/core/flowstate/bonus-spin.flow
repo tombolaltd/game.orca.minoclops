@@ -6,8 +6,8 @@
       {
         "id": "bonuss_027",
         "title": "fireCustomEvent",
-        "x": 661.8542959375601,
-        "y": 123.02539995812157,
+        "x": 537.9734914807267,
+        "y": 98.04103603405434,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -31,8 +31,8 @@
         "id": "bonuss_037",
         "title": "State",
         "displayName": "Request spin",
-        "x": 64.11433736503463,
-        "y": 153.0860857552682,
+        "x": -19.16687571518949,
+        "y": 116.65055503267016,
         "isState": true,
         "entryTargetId": "bonuss_021",
         "exitSourceId": "nqof5i54",
@@ -206,8 +206,8 @@
         "id": "nzelkdw4",
         "title": "State",
         "displayName": "Drop in first board",
-        "x": 244.71341866616126,
-        "y": 151.69242947060442,
+        "x": 161.43220558593714,
+        "y": 115.25689874800639,
         "isState": true,
         "entryTargetId": "nxyuus62",
         "subgraph": {
@@ -215,8 +215,8 @@
             {
               "id": "ngoj25r0",
               "title": "Entry",
-              "x": 766.9966210966763,
-              "y": 31.23545772801446,
+              "x": 601.9966210966763,
+              "y": -37.76454227198554,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -315,14 +315,39 @@
               "propertyValues": {
                 "propertyName": "displayReels"
               }
+            },
+            {
+              "id": "nv0vli7d",
+              "title": "playAllOffAnimations",
+              "friendlyTitle": "Play off animations",
+              "x": 791.0808685752709,
+              "y": 6.006732825757524,
+              "rootType": "custom",
+              "color": "#8e44ad",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "locations",
+                  "type": "any"
+                },
+                {
+                  "name": "reels",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
+                "reels": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
-            {
-              "id": "l6gd9o7r",
-              "from": "ngoj25r0",
-              "to": "nxyuus62"
-            },
             {
               "id": "l4ge4dyq",
               "from": "niebzplq",
@@ -334,6 +359,16 @@
               "id": "laooyeu2",
               "from": "nxyuus62",
               "to": "nqyjxbvh"
+            },
+            {
+              "id": "ltibgm7u",
+              "from": "ngoj25r0",
+              "to": "nv0vli7d"
+            },
+            {
+              "id": "ltrqod9k",
+              "from": "nv0vli7d",
+              "to": "nxyuus62"
             }
           ],
           "groups": []
@@ -343,8 +378,8 @@
         "id": "naqirlvw",
         "title": "State",
         "displayName": "Hotspot Selection",
-        "x": 433.39633210302395,
-        "y": 153.4073859330602,
+        "x": 350.11511902279983,
+        "y": 116.97185521046217,
         "isState": true,
         "entryTargetId": "nnwp6j0d",
         "exitSourceId": "nfacfcp4",
@@ -1017,9 +1052,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 274.99472171104514,
-      "panY": 83.3877721986008,
-      "scale": 0.9606008010826727
+      "panX": -556.0808685752709,
+      "panY": 204.19639217424248,
+      "scale": 1
     }
   }
 }

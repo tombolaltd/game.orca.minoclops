@@ -177,14 +177,6 @@
             "propertyName": "a"
           },
           {
-            "id": "lk7lmeod",
-            "from": "nnqo51iy",
-            "to": "cascad_017",
-            "propertyType": "string",
-            "propertyName": "locations",
-            "sourceOutputName": "locations"
-          },
-          {
             "id": "lxtpih9o",
             "from": "nnqo51iy",
             "to": "cascad_017",
@@ -212,6 +204,14 @@
             "from": "nnqo51iy",
             "to": "nst8icqa",
             "propertyType": "any",
+            "propertyName": "locations",
+            "sourceOutputName": "locations"
+          },
+          {
+            "id": "lsqyafo6",
+            "from": "nnqo51iy",
+            "to": "cascad_017",
+            "propertyType": "string",
             "propertyName": "locations",
             "sourceOutputName": "locations"
           }

@@ -8,8 +8,8 @@
         "title": "onBeginGame",
         "displayName": "BUY pressed",
         "friendlyTitle": "On Buy In",
-        "x": -1231.5231068281628,
-        "y": -60.73828238282478,
+        "x": -793.7220754117102,
+        "y": -52.60433249861107,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -21,8 +21,8 @@
       {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 1315.7048476493474,
-        "y": -29.113082864754347,
+        "x": 1335.2290808377645,
+        "y": -40.80102366064797,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -46,8 +46,8 @@
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": -1011.8239095314898,
-        "y": -38.103940078139075,
+        "x": -614.9414839748534,
+        "y": -21.705611872917054,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -151,8 +151,8 @@
         "id": "rounds_039",
         "title": "State",
         "displayName": "Reset labels",
-        "x": -811.5085977776357,
-        "y": -38.5785319490992,
+        "x": -436.6547704899395,
+        "y": -21.437929621504598,
         "isState": true,
         "entryTargetId": "rounds_016",
         "exitSourceId": "rounds_022",
@@ -256,8 +256,8 @@
       {
         "id": "n285entq",
         "title": "setGameModelProperty",
-        "x": -598.4553117553135,
-        "y": -65.98177614772494,
+        "x": -257.8623651536729,
+        "y": -39.122894857950556,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -283,17 +283,18 @@
         "id": "n220qasg",
         "title": "State",
         "displayName": "Drop in first board",
-        "x": -234.80670811521367,
-        "y": -34.494605020712896,
+        "x": 49.804170454655576,
+        "y": -20.914742002549886,
         "isState": true,
         "entryTargetId": "nmcxhd6c",
+        "exitSourceId": "nwlmbxs9",
         "subgraph": {
           "nodes": [
             {
               "id": "ng1arby3",
               "title": "Entry",
-              "x": 766.9966210966763,
-              "y": 31.23545772801446,
+              "x": 796.7965300873387,
+              "y": 10.113267933945579,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -302,8 +303,8 @@
               "id": "nmcxhd6c",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1116.0602202069922,
-              "y": 71.37175792350055,
+              "x": 1313.2931261522726,
+              "y": 66.11221376495975,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -368,8 +369,8 @@
             {
               "id": "nxnpr19r",
               "title": "Exit",
-              "x": 1522.1547434253284,
-              "y": 114.52981849302793,
+              "x": 1665.0307218511502,
+              "y": 68.1711340148966,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -377,8 +378,8 @@
             {
               "id": "nh47ncan",
               "title": "getGameModelProperty",
-              "x": 700.0069937252131,
-              "y": 204.47630675792342,
+              "x": 824.1596354141282,
+              "y": 233.39783795479752,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -392,14 +393,39 @@
               "propertyValues": {
                 "propertyName": "displayReels"
               }
+            },
+            {
+              "id": "n2gt7hvh",
+              "title": "playAllOffAnimations",
+              "friendlyTitle": "Play off animations",
+              "x": 977.4136259692445,
+              "y": 10.81586584945265,
+              "rootType": "custom",
+              "color": "#8e44ad",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "locations",
+                  "type": "any"
+                },
+                {
+                  "name": "reels",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
+                "reels": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
-            {
-              "id": "lkdbzvew",
-              "from": "ng1arby3",
-              "to": "nmcxhd6c"
-            },
             {
               "id": "lfz5rfjv",
               "from": "nh47ncan",
@@ -408,9 +434,19 @@
               "propertyName": "outcome"
             },
             {
-              "id": "lybywukb",
+              "id": "lszmxcmv",
               "from": "nmcxhd6c",
               "to": "nxnpr19r"
+            },
+            {
+              "id": "li8glefo",
+              "from": "ng1arby3",
+              "to": "n2gt7hvh"
+            },
+            {
+              "id": "lynfghds",
+              "from": "n2gt7hvh",
+              "to": "nmcxhd6c"
             }
           ],
           "groups": []
@@ -420,8 +456,8 @@
         "id": "nl63tci0",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 237.90129536855613,
-        "y": -48.971373701234384,
+        "x": 410.1102007269688,
+        "y": -41.32120865794501,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -439,8 +475,8 @@
       {
         "id": "n9udeeri",
         "title": "playAnimation",
-        "x": 620.2278636004306,
-        "y": -42.34293263419217,
+        "x": 717.4759236886091,
+        "y": -40.744729915758484,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -502,8 +538,8 @@
       {
         "id": "n7pratho",
         "title": "setGameModelProperty",
-        "x": 974.8700597598122,
-        "y": -21.89604324866022,
+        "x": 1026.3742484599975,
+        "y": -41.28560521605712,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -530,8 +566,8 @@
         "id": "nw8mlvyc",
         "title": "State",
         "displayName": "Hotspot Selection",
-        "x": 32.851679605318395,
-        "y": -27.210090461267257,
+        "x": 230.29534141514253,
+        "y": -21.929392074828733,
         "isState": true,
         "entryTargetId": "n94tocw2",
         "exitSourceId": "n0kbqy7g",
@@ -1123,9 +1159,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 281.4807113282922,
-      "panY": 121.04858274959216,
-      "scale": 0.6990420640299145
+      "panX": -625.8204103574869,
+      "panY": 93.34387341184828,
+      "scale": 0.8989750481612311
     }
   }
 }

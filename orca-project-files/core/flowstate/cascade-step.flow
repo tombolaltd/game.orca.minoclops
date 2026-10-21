@@ -28,8 +28,8 @@
       {
         "id": "cascad_021",
         "title": "fireCustomEvent",
-        "x": 1157.7595893818839,
-        "y": 108.45993061958312,
+        "x": 1079.1741318154411,
+        "y": 114.66404569061807,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "cascad_028",
         "title": "State",
         "displayName": "Drop in",
-        "x": 601.2286706015296,
-        "y": 118.31723481966304,
+        "x": 592.956517173483,
+        "y": 133.82752249725038,
         "isState": true,
         "entryTargetId": "cascad_017",
         "exitSourceId": "ntft2oyr",
@@ -63,8 +63,8 @@
             {
               "id": "cascad_029",
               "title": "Entry",
-              "x": 259.40938471193624,
-              "y": 79.40324492345292,
+              "x": 822.0208758845217,
+              "y": 69.45305326482959,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -73,8 +73,8 @@
               "id": "cascad_017",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1156.84582309156,
-              "y": 115.42020903883395,
+              "x": 1375.1694270638664,
+              "y": 116.99526619404472,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -125,7 +125,7 @@
                 }
               ],
               "propertyValues": {
-                "locations": "",
+                "locations": "[1,2.3]",
                 "outcome": "",
                 "sequenceNodeOn": "onComplete",
                 "target": {
@@ -139,8 +139,8 @@
             {
               "id": "cascad_018",
               "title": "getGameModelProperty",
-              "x": 954.0179795443073,
-              "y": 508.53328126760687,
+              "x": 1069.6010640002344,
+              "y": 450.02826320966864,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -184,8 +184,8 @@
             {
               "id": "cascad_030",
               "title": "Exit",
-              "x": 2072.6606190218104,
-              "y": 123.28786651388106,
+              "x": 2021.2903592636208,
+              "y": 134.70347979347875,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -193,8 +193,8 @@
             {
               "id": "nlbg0i8g",
               "title": "add",
-              "x": 1354.36432697597,
-              "y": 452.22356093543635,
+              "x": 1390.0381184747132,
+              "y": 435.10014101603974,
               "rootType": "math",
               "color": "#16a085",
               "icon": "➕",
@@ -214,8 +214,8 @@
             {
               "id": "nqbuiglb",
               "title": "int",
-              "x": 1080.2487572649943,
-              "y": 630.4735762119723,
+              "x": 1197.2587933808713,
+              "y": 566.2607515142353,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "🔢",
@@ -226,8 +226,8 @@
               "id": "nnqo51iy",
               "title": "cascadeLocations",
               "friendlyTitle": "Return Cascade Locations",
-              "x": 112.47865465377515,
-              "y": 387.92096076379823,
+              "x": 751.9147156974973,
+              "y": 370.85738300599553,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -248,8 +248,8 @@
               "id": "nst8icqa",
               "title": "playWinAnimations",
               "friendlyTitle": "Play win animations",
-              "x": 611.259830353865,
-              "y": 68.82570360095745,
+              "x": 1018.7995045643412,
+              "y": 73.10228414069276,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -302,14 +302,6 @@
               "propertyName": "a"
             },
             {
-              "id": "lk7lmeod",
-              "from": "nnqo51iy",
-              "to": "cascad_017",
-              "propertyType": "string",
-              "propertyName": "locations",
-              "sourceOutputName": "locations"
-            },
-            {
               "id": "lxtpih9o",
               "from": "nnqo51iy",
               "to": "cascad_017",
@@ -339,6 +331,14 @@
               "propertyType": "any",
               "propertyName": "locations",
               "sourceOutputName": "locations"
+            },
+            {
+              "id": "lsqyafo6",
+              "from": "nnqo51iy",
+              "to": "cascad_017",
+              "propertyType": "string",
+              "propertyName": "locations",
+              "sourceOutputName": "locations"
             }
           ],
           "groups": []
@@ -348,8 +348,8 @@
         "id": "n0hcvofq",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 812.8470179693281,
-        "y": 101.33694081902749,
+        "x": 770.4522316505893,
+        "y": 114.77919013960317,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -391,9 +391,9 @@
       }
     ],
     "viewState": {
-      "panX": 191.9077110247597,
-      "panY": 181.57984126143566,
-      "scale": 0.5394039946243522
+      "panX": -511.8170120661598,
+      "panY": -7.391861136894988,
+      "scale": 0.7819548805883351
     }
   }
 }

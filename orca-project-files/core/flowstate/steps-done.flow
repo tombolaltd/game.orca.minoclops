@@ -6,8 +6,8 @@
       {
         "id": "stepsd_note",
         "title": "Note",
-        "x": 786.7234692594895,
-        "y": 485.68517502489976,
+        "x": 493.15982823250283,
+        "y": 569.7815451080521,
         "rootType": "note",
         "isNote": true,
         "noteText": "TODO: make sure this all routes to the correct places based off of the game model",
@@ -17,8 +17,8 @@
       {
         "id": "stepsd_001",
         "title": "getGameModelProperty",
-        "x": 469.9931344221135,
-        "y": 363.8024716016933,
+        "x": 499.04302169771404,
+        "y": 334.7525843260927,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -37,8 +37,8 @@
         "id": "stepsd_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
+        "x": 156.44707177789644,
+        "y": 83.30540554660969,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -58,8 +58,8 @@
       {
         "id": "stepsd_004",
         "title": "getGameModelProperty",
-        "x": 91.06041809257533,
-        "y": 312.4448493447836,
+        "x": 167.50748987047177,
+        "y": 275.7502548913933,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -97,8 +97,8 @@
       {
         "id": "stepsd_006",
         "title": "fireCustomEvent",
-        "x": 922.0444170632791,
-        "y": 37.160184528290316,
+        "x": 821.5119866834459,
+        "y": 96.56571157091898,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -122,8 +122,8 @@
         "id": "stepsd_008",
         "title": "branch",
         "displayName": "Bonus triggered?",
-        "x": 903.8230545144125,
-        "y": 282.03412216079585,
+        "x": 821.5692478400038,
+        "y": 280.51090351867714,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -141,8 +141,8 @@
       {
         "id": "stepsd_009",
         "title": "fireCustomEvent",
-        "x": 1410.0380833327351,
-        "y": 215.32475572573165,
+        "x": 1171.817617879889,
+        "y": 218.41245902944013,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -165,8 +165,8 @@
       {
         "id": "stepsd_010",
         "title": "fireCustomEvent",
-        "x": 1371.897452729575,
-        "y": 497.45979436520327,
+        "x": 1162.618141476984,
+        "y": 395.4454113627226,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -235,9 +235,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 84.42065778231529,
-      "panY": 72.92112020552992,
-      "scale": 0.6565045702231393
+      "panX": 88.32766879228495,
+      "panY": 74.216547369623,
+      "scale": 0.6545380078309799
     }
   }
 }

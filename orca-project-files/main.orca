@@ -5,7 +5,8 @@
       "name": "samsplit",
       "isJackpot": false,
       "runtimeGameIdLocked": true,
-      "tileName": "minoclop"
+      "tileName": "minoclop",
+      "runtimeGameIdCleared": true
     }
   ],
   "activeSkin": "samsplit",
