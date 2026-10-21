@@ -3,7 +3,7 @@ $ npm i
 
 **RUN**
 + new terminal
-$ cd ./ticket-fetchers/minoclops
+$ cd ./ticket-fetchers/minoclop
 $ npm run dev
 
 **TEST**

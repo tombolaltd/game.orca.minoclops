@@ -397,8 +397,8 @@
             {
               "id": "nu2qo2lc",
               "title": "Exit",
-              "x": 1664.1102997395185,
-              "y": 123.86837938724369,
+              "x": 1587.255326153717,
+              "y": 128.99204429296378,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -546,8 +546,8 @@
             {
               "id": "nsm0vnrw",
               "title": "playAnimation",
-              "x": 843.4564323431736,
-              "y": -228.3403375601431,
+              "x": 876.9424997532244,
+              "y": -306.47449485026175,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -596,7 +596,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1791297984204_qg9p9detx",
@@ -639,8 +639,8 @@
             {
               "id": "n334drom",
               "title": "playAnimation",
-              "x": 681.4499913715213,
-              "y": 182.43835714961992,
+              "x": 879.5758902143219,
+              "y": 28.96054818688691,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -689,7 +689,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1791297984204_qg9p9detx",
@@ -702,8 +702,8 @@
             {
               "id": "nm4m2t6d",
               "title": "playAnimation",
-              "x": 617.5982551897762,
-              "y": 596.946810231344,
+              "x": 877.11527761767,
+              "y": 368.12534959599674,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -752,7 +752,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1791297984204_qg9p9detx",
@@ -765,8 +765,8 @@
             {
               "id": "nk4hleto",
               "title": "playAnimation",
-              "x": 850.9539563631591,
-              "y": -594.8095800552496,
+              "x": 873.278001303193,
+              "y": -642.2481755528216,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -815,7 +815,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1791297984204_qg9p9detx",
@@ -828,7 +828,7 @@
             {
               "id": "nzgxppxz",
               "title": "playAnimation",
-              "x": 869.4690822081061,
+              "x": 872.2595878256102,
               "y": -973.182564616468,
               "rootType": "Action",
               "color": "#3b6ef5",
@@ -878,7 +878,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1791297984204_qg9p9detx",
@@ -1008,8 +1008,8 @@
         "id": "nh466c9z",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -334.4341262479628,
-        "y": 96.27683016439818,
+        "x": -556.190513814245,
+        "y": 73.493639661013,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -1071,8 +1071,8 @@
         "id": "nu5ndst9",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 25.15160248501455,
-        "y": 291.5119882861964,
+        "x": 16.382908187747958,
+        "y": 216.10121732970367,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -1141,6 +1141,146 @@
         "propertyValues": {
           "propertyName": "waysShown"
         }
+      },
+      {
+        "id": "nma44hip",
+        "title": "State",
+        "displayName": "Reset labels",
+        "x": -220.73929977248397,
+        "y": 114.53933471510382,
+        "isState": true,
+        "exitSourceId": "nocvfvec",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "n8hii9sj",
+              "title": "Entry",
+              "x": 1038.0297404539187,
+              "y": 167.85745428732363,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "nralbraw",
+              "title": "setText",
+              "displayName": "Ways 243",
+              "x": 1612.9399928404018,
+              "y": 177.34930515612007,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "text"
+                },
+                {
+                  "name": "value",
+                  "type": "string"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "value": "243"
+              }
+            },
+            {
+              "id": "nbnrpbnt",
+              "title": "setGameModelProperty",
+              "x": 1917.5906876842814,
+              "y": 179.03604942541773,
+              "rootType": "properties",
+              "color": "#e67e22",
+              "icon": "✏️",
+              "overrideNodeType": "sequence",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                },
+                {
+                  "name": "value",
+                  "type": "dynamic",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "waysShown",
+                "value": 243
+              }
+            },
+            {
+              "id": "ne44jxmi",
+              "title": "Exit",
+              "x": 2234.7455234458052,
+              "y": 172.73008759413116,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "nocvfvec",
+              "title": "setText",
+              "x": 1249.67225632451,
+              "y": 177.096925031462,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "text"
+                },
+                {
+                  "name": "value",
+                  "type": "string"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "value": "0p"
+              }
+            }
+          ],
+          "links": [
+            {
+              "id": "lrwf1zxw",
+              "from": "nralbraw",
+              "to": "nbnrpbnt"
+            },
+            {
+              "id": "ldzbfbid",
+              "from": "nbnrpbnt",
+              "to": "ne44jxmi"
+            },
+            {
+              "id": "lt23mss8",
+              "from": "n8hii9sj",
+              "to": "nocvfvec"
+            },
+            {
+              "id": "ls1abdwd",
+              "from": "nocvfvec",
+              "to": "nralbraw"
+            }
+          ],
+          "groups": []
+        }
       }
     ],
     "links": [
@@ -1153,11 +1293,6 @@
         "id": "lyqr3zu2",
         "from": "naqirlvw",
         "to": "bonuss_027"
-      },
-      {
-        "id": "lbhzuekw",
-        "from": "nh466c9z",
-        "to": "bonuss_037"
       },
       {
         "id": "l3gqbciw",
@@ -1190,14 +1325,24 @@
         "id": "la6ba6rn",
         "from": "nxlqjjc9",
         "to": "naqirlvw"
+      },
+      {
+        "id": "lqpt58tk",
+        "from": "nh466c9z",
+        "to": "nma44hip"
+      },
+      {
+        "id": "lwib2e7g",
+        "from": "nma44hip",
+        "to": "bonuss_037"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 533.2414450095566,
-      "panY": 51.25635321254143,
-      "scale": 0.5702103221409622
+      "panX": 577.659958940939,
+      "panY": 203.09101774746017,
+      "scale": 0.6583801332728739
     }
   }
 }

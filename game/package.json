@@ -1,7 +1,7 @@
 {
-	"name": "@arcade-client/minoclops",
+	"name": "@arcade-client/minoclop",
 	"version": "0.0.0",
-	"description": "tombola arcade minoclops",
+	"description": "tombola arcade minoclop",
 	"author": "tombola",
 	"publishConfig": {
 		"registry": "https://packages.tombola.com/repository/npm-private-client/"

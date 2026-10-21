@@ -1,4 +1,4 @@
-## Minoclops Build Setup
+## Minoclop Build Setup
 
 ``` bash
 # install dependencies

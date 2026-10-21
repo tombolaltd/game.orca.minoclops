@@ -129,7 +129,7 @@ export class GameModel implements IBaseGameModel {
             GameComplete: true,
             PlayMode: 'real',
             Stake: 0,
-            Skin: 'minoclops',
+            Skin: 'minoclop',
             ArcadeGameType: 'splitting-symbols',
             Payout: 0,
             Winner: false,

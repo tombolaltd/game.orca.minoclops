@@ -1,9 +1,9 @@
 {
-  "moduleName": "minoclops",
-  "angularModuleName": "Minoclops",
-  "gameName": "minoclops",
-  "friendlyName": "Minoclops",
+  "moduleName": "minoclop",
+  "angularModuleName": "Minoclop",
+  "gameName": "minoclop",
+  "friendlyName": "Minoclop",
   "locale": {
-    "localeName": "MINOCLOPS"
+    "localeName": "MINOCLOP"
   }
 }

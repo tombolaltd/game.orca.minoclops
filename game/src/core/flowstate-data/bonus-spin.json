@@ -411,7 +411,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "immediate"
+                "value": "onComplete"
               }
             ]
           },
@@ -471,7 +471,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "immediate"
+                "value": "onComplete"
               }
             ]
           },
@@ -508,7 +508,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "immediate"
+                "value": "onComplete"
               }
             ]
           },
@@ -545,7 +545,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "immediate"
+                "value": "onComplete"
               }
             ]
           },
@@ -582,7 +582,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "immediate"
+                "value": "onComplete"
               }
             ]
           }
@@ -803,6 +803,109 @@
           "sourceOutputName": "WinWays"
         }
       ]
+    },
+    {
+      "id": "nma44hip",
+      "title": "State",
+      "isState": true,
+      "exitSourceId": "nocvfvec",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "n8hii9sj",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "nralbraw",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_ways_count",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "243"
+              }
+            ]
+          },
+          {
+            "id": "nbnrpbnt",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "waysShown"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": 243
+              }
+            ]
+          },
+          {
+            "id": "ne44jxmi",
+            "title": "Exit",
+            "isExit": true
+          },
+          {
+            "id": "nocvfvec",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "0p"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "lrwf1zxw",
+            "from": "nralbraw",
+            "to": "nbnrpbnt"
+          },
+          {
+            "id": "ldzbfbid",
+            "from": "nbnrpbnt",
+            "to": "ne44jxmi"
+          },
+          {
+            "id": "lt23mss8",
+            "from": "n8hii9sj",
+            "to": "nocvfvec"
+          },
+          {
+            "id": "ls1abdwd",
+            "from": "nocvfvec",
+            "to": "nralbraw"
+          }
+        ]
+      }
     }
   ],
   "links": [
@@ -815,11 +918,6 @@
       "id": "lyqr3zu2",
       "from": "naqirlvw",
       "to": "bonuss_027"
-    },
-    {
-      "id": "lbhzuekw",
-      "from": "nh466c9z",
-      "to": "bonuss_037"
     },
     {
       "id": "l3gqbciw",
@@ -852,6 +950,16 @@
       "id": "la6ba6rn",
       "from": "nxlqjjc9",
       "to": "naqirlvw"
+    },
+    {
+      "id": "lqpt58tk",
+      "from": "nh466c9z",
+      "to": "nma44hip"
+    },
+    {
+      "id": "lwib2e7g",
+      "from": "nma44hip",
+      "to": "bonuss_037"
     }
   ]
 }

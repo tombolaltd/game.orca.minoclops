@@ -60,7 +60,9 @@ export interface OrcaDebugServerSettingsGroup {
 export const ORCA_DEBUG_TICKET_OPTIONS: OrcaDebugTicketOption[] = [
     {
         name: 'Bonus',
-        data: {}
+        data: {
+            ReelStops: [70, 34, 51, 70, 15]
+        }
     }
 ];
 

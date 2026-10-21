@@ -1,6 +1,6 @@
 {
-    "GameName": "minoclops",
-    "CDNFolderName": "minoclops",
+    "GameName": "minoclop",
+    "CDNFolderName": "minoclop",
     "FontCSSFilepath": "./static/fonts/fonts-v2.css",
     "GameMessageObjectName": "GameMessage",
     "AssetDesignWidth": 1136,

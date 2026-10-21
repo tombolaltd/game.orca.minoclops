@@ -3515,7 +3515,7 @@
           "atlas": "assets/character/character.atlas",
           "animation": "idle",
           "playOnLoad": true,
-          "loop": true,
+          "loop": false,
           "skin": "base",
           "timeScale": 1,
           "rectTransform": null

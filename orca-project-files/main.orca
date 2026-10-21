@@ -11,9 +11,9 @@
   ],
   "activeSkin": "samsplit",
   "projectSettings": {
-    "gameNameLower": "minoclops",
-    "gameNameTitle": "Minoclops",
-    "gameNameUpper": "MINOCLOPS",
+    "gameNameLower": "minoclop",
+    "gameNameTitle": "Minoclop",
+    "gameNameUpper": "MINOCLOP",
     "engineNameUnknown": false,
     "fullscreenPortrait": false,
     "sessionDataJustification": "default",
@@ -153,7 +153,15 @@
       "id": "splitting-symbols-debug",
       "name": "Bonus",
       "kind": "ticket",
-      "data": {}
+      "data": {
+        "ReelStops": [
+          70,
+          34,
+          51,
+          70,
+          15
+        ]
+      }
     }
   ],
   "coreGraphFolders": [
