@@ -34,7 +34,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "cascad_017",
-      "exitSourceId": "n0mjeqyp",
+      "exitSourceId": "ntft2oyr",
       "subgraph": {
         "nodes": [
           {
@@ -131,14 +131,32 @@
             "id": "nnqo51iy",
             "title": "cascadeLocations",
             "rootType": "custom"
+          },
+          {
+            "id": "nst8icqa",
+            "title": "playWinAnimations",
+            "rootType": "custom",
+            "properties": [
+              {
+                "name": "locations",
+                "type": "any",
+                "sourceNodeId": "nnqo51iy",
+                "sourceOutputName": "locations"
+              },
+              {
+                "name": "reels",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
           }
         ],
         "links": [
-          {
-            "id": "l_cascad_34",
-            "from": "cascad_029",
-            "to": "cascad_017"
-          },
           {
             "id": "l_cascad_35",
             "from": "cascad_020",
@@ -178,6 +196,24 @@
             "id": "lkigy86k",
             "from": "cascad_017",
             "to": "cascad_020"
+          },
+          {
+            "id": "lznxrdss",
+            "from": "nst8icqa",
+            "to": "cascad_017"
+          },
+          {
+            "id": "lu8ziho3",
+            "from": "cascad_029",
+            "to": "nst8icqa"
+          },
+          {
+            "id": "ldklzvh8",
+            "from": "nnqo51iy",
+            "to": "nst8icqa",
+            "propertyType": "any",
+            "propertyName": "locations",
+            "sourceOutputName": "locations"
           }
         ]
       }

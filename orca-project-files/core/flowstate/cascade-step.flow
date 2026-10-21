@@ -53,18 +53,18 @@
         "id": "cascad_028",
         "title": "State",
         "displayName": "Drop in",
-        "x": 599.7035661471434,
+        "x": 601.2286706015296,
         "y": 118.31723481966304,
         "isState": true,
         "entryTargetId": "cascad_017",
-        "exitSourceId": "n0mjeqyp",
+        "exitSourceId": "ntft2oyr",
         "subgraph": {
           "nodes": [
             {
               "id": "cascad_029",
               "title": "Entry",
-              "x": 600.593708700467,
-              "y": -35.075477287016334,
+              "x": 259.40938471193624,
+              "y": 79.40324492345292,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -73,8 +73,8 @@
               "id": "cascad_017",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1116.0602202069922,
-              "y": 71.37175792350055,
+              "x": 1156.84582309156,
+              "y": 115.42020903883395,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -226,8 +226,8 @@
               "id": "nnqo51iy",
               "title": "cascadeLocations",
               "friendlyTitle": "Return Cascade Locations",
-              "x": 705.9046533542158,
-              "y": 159.74235948651528,
+              "x": 112.47865465377515,
+              "y": 387.92096076379823,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -243,14 +243,38 @@
                   "type": "any"
                 }
               ]
+            },
+            {
+              "id": "nst8icqa",
+              "title": "playWinAnimations",
+              "friendlyTitle": "Play win animations",
+              "x": 611.259830353865,
+              "y": 68.82570360095745,
+              "rootType": "custom",
+              "color": "#8e44ad",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "locations",
+                  "type": "any"
+                },
+                {
+                  "name": "reels",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "reels": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
-            {
-              "id": "l_cascad_34",
-              "from": "cascad_029",
-              "to": "cascad_017"
-            },
             {
               "id": "l_cascad_35",
               "from": "cascad_020",
@@ -297,6 +321,24 @@
               "id": "lkigy86k",
               "from": "cascad_017",
               "to": "cascad_020"
+            },
+            {
+              "id": "lznxrdss",
+              "from": "nst8icqa",
+              "to": "cascad_017"
+            },
+            {
+              "id": "lu8ziho3",
+              "from": "cascad_029",
+              "to": "nst8icqa"
+            },
+            {
+              "id": "ldklzvh8",
+              "from": "nnqo51iy",
+              "to": "nst8icqa",
+              "propertyType": "any",
+              "propertyName": "locations",
+              "sourceOutputName": "locations"
             }
           ],
           "groups": []
@@ -349,9 +391,9 @@
       }
     ],
     "viewState": {
-      "panX": -174.65576208206505,
-      "panY": 110.98265595901265,
-      "scale": 0.6556927934502725
+      "panX": 191.9077110247597,
+      "panY": 181.57984126143566,
+      "scale": 0.5394039946243522
     }
   }
 }

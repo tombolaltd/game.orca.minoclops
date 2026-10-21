@@ -39,8 +39,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 2624.0434646936646,
-        "y": 140.2730539077056,
+        "x": 2754.275259705181,
+        "y": 118.60267609074234,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -363,14 +363,31 @@
         }
       },
       {
-        "id": "nrgu4p5z",
-        "title": "exitCabinetBonusState",
-        "x": 2324.1578928074055,
-        "y": 142.65752090865334,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false
+        "id": "np0dck1y",
+        "title": "setGameModelProperty",
+        "x": 2381.0417298206985,
+        "y": 116.597123433212,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "isInBonusRound",
+          "value": false
+        }
       }
     ],
     "links": [
@@ -405,22 +422,22 @@
         "to": "n8048a23"
       },
       {
-        "id": "l3holhv4",
+        "id": "lhd9zgyt",
         "from": "nbg1mt0t",
-        "to": "nrgu4p5z"
+        "to": "np0dck1y"
       },
       {
-        "id": "lhrs9is3",
-        "from": "nrgu4p5z",
+        "id": "lh1n7isk",
+        "from": "np0dck1y",
         "to": "bonuse_031"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -774.444814329948,
-      "panY": 129.18369943458717,
-      "scale": 0.7060454803772443
+      "panX": -173.51989657764375,
+      "panY": 125.57494848774407,
+      "scale": 0.46634684284137917
     }
   }
 }

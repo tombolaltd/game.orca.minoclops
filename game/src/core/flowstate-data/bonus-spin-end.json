@@ -56,7 +56,7 @@
         {
           "name": "eventName",
           "type": "customEventRef",
-          "value": "bonusSpin"
+          "value": "bonusStart"
         },
         {
           "name": "propertyNames",

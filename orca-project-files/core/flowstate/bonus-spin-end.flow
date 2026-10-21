@@ -103,7 +103,7 @@
           }
         ],
         "propertyValues": {
-          "eventName": "bonusSpin",
+          "eventName": "bonusStart",
           "propertyNames": []
         }
       },
@@ -149,7 +149,10 @@
             "name": "b",
             "type": "float"
           }
-        ]
+        ],
+        "propertyValues": {
+          "b": 0
+        }
       }
     ],
     "links": [
@@ -193,9 +196,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -107.16576951793127,
-      "panY": 156.00619031907513,
-      "scale": 0.7002445668345125
+      "panX": 24.826392505387503,
+      "panY": -0.6683158327726346,
+      "scale": 0.7644676087042883
     }
   }
 }
