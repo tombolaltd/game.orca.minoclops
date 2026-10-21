@@ -156,8 +156,8 @@
       {
         "id": "ne35vfca",
         "title": "getGameModelProperty",
-        "x": -578.80301362547,
-        "y": -205.9149719148217,
+        "x": -743.4897268339018,
+        "y": -283.4413626221183,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -177,8 +177,8 @@
         "id": "no8mqs7g",
         "title": "at",
         "friendlyTitle": "Get",
-        "x": -223.80671489677218,
-        "y": -161.4922678782579,
+        "x": -388.4934281052039,
+        "y": -239.01865858555448,
         "rootType": "array",
         "color": "#2980b9",
         "icon": "🎯",
@@ -198,8 +198,8 @@
         "id": "nrc6dlvf",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 132.24821068584754,
-        "y": -121.13389834899857,
+        "x": -60.37948626240886,
+        "y": -222.8758082974765,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -246,8 +246,8 @@
       {
         "id": "nmn2eyvc",
         "title": "getGameModelProperty",
-        "x": -881.6600040502735,
-        "y": -78.9927085623188,
+        "x": -1046.3467172587052,
+        "y": -156.51909926961537,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -266,26 +266,11 @@
       {
         "id": "nsau775g",
         "title": "toInt",
-        "x": -565.499409236413,
-        "y": -85.25676703501375,
+        "x": -730.1861224448448,
+        "y": -162.78315774231032,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
-        "properties": [
-          {
-            "name": "value",
-            "type": "T"
-          }
-        ]
-      },
-      {
-        "id": "nfmo3vja",
-        "title": "toString",
-        "x": 517.9358627372807,
-        "y": -193.96858212953492,
-        "rootType": "string",
-        "color": "#c0392b",
-        "icon": "🔤",
         "properties": [
           {
             "name": "value",
@@ -321,6 +306,39 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "nko5gx4y",
+        "title": "formatPrize",
+        "friendlyTitle": "Format money prize for displahy",
+        "x": 573.3872858096764,
+        "y": -189.50531003026796,
+        "rootType": "custom",
+        "color": "#8e44ad",
+        "icon": "🧩",
+        "isStarter": false,
+        "overrideNodeType": "property",
+        "properties": [
+          {
+            "name": "amount",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "ntr1bb0u",
+        "title": "toInt",
+        "x": 270.18627918913967,
+        "y": -193.67365409282678,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
       }
     ],
     "links": [
@@ -386,21 +404,6 @@
         "propertyName": "index"
       },
       {
-        "id": "l89513xg",
-        "from": "nrc6dlvf",
-        "to": "nfmo3vja",
-        "propertyType": "float",
-        "propertyName": "value",
-        "sourceOutputName": "Prize"
-      },
-      {
-        "id": "l327brdz",
-        "from": "nfmo3vja",
-        "to": "nx5kazgi",
-        "propertyType": "string",
-        "propertyName": "value"
-      },
-      {
         "id": "l2zes7ld",
         "from": "nx5kazgi",
         "to": "nigin0xz"
@@ -409,14 +412,36 @@
         "id": "lysydggv",
         "from": "showst_005",
         "to": "nx5kazgi"
+      },
+      {
+        "id": "llpmrped",
+        "from": "nrc6dlvf",
+        "to": "ntr1bb0u",
+        "propertyType": "float",
+        "propertyName": "value",
+        "sourceOutputName": "Prize"
+      },
+      {
+        "id": "l1bwwvyw",
+        "from": "ntr1bb0u",
+        "to": "nko5gx4y",
+        "propertyType": "int",
+        "propertyName": "amount"
+      },
+      {
+        "id": "l6dweeem",
+        "from": "nko5gx4y",
+        "to": "nx5kazgi",
+        "propertyType": "string",
+        "propertyName": "value"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -7.471510684481018,
-      "panY": 326.4048431580742,
-      "scale": 0.536443324875918
+      "panX": 504.2747669866283,
+      "panY": 273.9223026516331,
+      "scale": 0.489537426589729
     }
   }
 }

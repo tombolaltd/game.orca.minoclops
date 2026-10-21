@@ -197,19 +197,6 @@
       ]
     },
     {
-      "id": "nfmo3vja",
-      "title": "toString",
-      "rootType": "string",
-      "properties": [
-        {
-          "name": "value",
-          "type": "T",
-          "sourceNodeId": "nrc6dlvf",
-          "sourceOutputName": "Prize"
-        }
-      ]
-    },
-    {
       "id": "nx5kazgi",
       "title": "setText",
       "rootType": "Action",
@@ -227,7 +214,32 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "nfmo3vja"
+          "sourceNodeId": "nko5gx4y"
+        }
+      ]
+    },
+    {
+      "id": "nko5gx4y",
+      "title": "formatPrize",
+      "rootType": "custom",
+      "properties": [
+        {
+          "name": "amount",
+          "type": "int",
+          "sourceNodeId": "ntr1bb0u"
+        }
+      ]
+    },
+    {
+      "id": "ntr1bb0u",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nrc6dlvf",
+          "sourceOutputName": "Prize"
         }
       ]
     }
@@ -295,21 +307,6 @@
       "propertyName": "index"
     },
     {
-      "id": "l89513xg",
-      "from": "nrc6dlvf",
-      "to": "nfmo3vja",
-      "propertyType": "float",
-      "propertyName": "value",
-      "sourceOutputName": "Prize"
-    },
-    {
-      "id": "l327brdz",
-      "from": "nfmo3vja",
-      "to": "nx5kazgi",
-      "propertyType": "string",
-      "propertyName": "value"
-    },
-    {
       "id": "l2zes7ld",
       "from": "nx5kazgi",
       "to": "nigin0xz"
@@ -318,6 +315,28 @@
       "id": "lysydggv",
       "from": "showst_005",
       "to": "nx5kazgi"
+    },
+    {
+      "id": "llpmrped",
+      "from": "nrc6dlvf",
+      "to": "ntr1bb0u",
+      "propertyType": "float",
+      "propertyName": "value",
+      "sourceOutputName": "Prize"
+    },
+    {
+      "id": "l1bwwvyw",
+      "from": "ntr1bb0u",
+      "to": "nko5gx4y",
+      "propertyType": "int",
+      "propertyName": "amount"
+    },
+    {
+      "id": "l6dweeem",
+      "from": "nko5gx4y",
+      "to": "nx5kazgi",
+      "propertyType": "string",
+      "propertyName": "value"
     }
   ]
 }
