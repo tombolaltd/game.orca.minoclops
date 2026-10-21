@@ -104,7 +104,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "rounds_016",
-      "exitSourceId": "rounds_022",
+      "exitSourceId": "nzrj1v80",
       "subgraph": {
         "nodes": [
           {
@@ -155,6 +155,28 @@
             "id": "rounds_041",
             "title": "Exit",
             "isExit": true
+          },
+          {
+            "id": "nzrj1v80",
+            "title": "setText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_win_amount",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "value",
+                "type": "string",
+                "value": "0p"
+              }
+            ]
           }
         ],
         "links": [
@@ -164,14 +186,19 @@
             "to": "rounds_021"
           },
           {
-            "id": "l4pu1ssz",
-            "from": "rounds_040",
-            "to": "rounds_020"
-          },
-          {
             "id": "lu6ryi15",
             "from": "rounds_021",
             "to": "rounds_041"
+          },
+          {
+            "id": "lodjpd6x",
+            "from": "rounds_040",
+            "to": "nzrj1v80"
+          },
+          {
+            "id": "le1fog43",
+            "from": "nzrj1v80",
+            "to": "rounds_020"
           }
         ]
       }
@@ -788,6 +815,97 @@
           }
         ]
       }
+    },
+    {
+      "id": "nt9w2dck",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "unplayedSpinOutcomes"
+        }
+      ]
+    },
+    {
+      "id": "nuoyxbo1",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
+        {
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "nt9w2dck"
+        },
+        {
+          "name": "index",
+          "type": "int",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "nzwcgg7r",
+      "title": "structFields",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "nuoyxbo1"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DisplayReels",
+          "type": "float[][]",
+          "path": "DisplayReels"
+        },
+        {
+          "name": "Prize",
+          "type": "float",
+          "path": "Prize"
+        },
+        {
+          "name": "Results",
+          "type": "IOutcomeResult[]",
+          "path": "Results"
+        },
+        {
+          "name": "SplitSymbols",
+          "type": "ISplitSymbol[]",
+          "path": "SplitSymbols"
+        },
+        {
+          "name": "Stops",
+          "type": "float[]",
+          "path": "Stops"
+        },
+        {
+          "name": "WinWays",
+          "type": "float",
+          "path": "WinWays"
+        }
+      ]
+    },
+    {
+      "id": "nldhipxk",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "waysShown"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "sourceNodeId": "nzwcgg7r",
+          "sourceOutputName": "WinWays"
+        }
+      ]
     }
   ],
   "links": [
@@ -832,8 +950,35 @@
       "to": "n9udeeri"
     },
     {
-      "id": "l772c3z2",
+      "id": "lvg0482s",
+      "from": "nt9w2dck",
+      "to": "nuoyxbo1",
+      "propertyType": "TArray",
+      "propertyName": "array"
+    },
+    {
+      "id": "lx30yhge",
+      "from": "nuoyxbo1",
+      "to": "nzwcgg7r",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "lrwgc10g",
+      "from": "nzwcgg7r",
+      "to": "nldhipxk",
+      "propertyType": "float",
+      "propertyName": "value",
+      "sourceOutputName": "WinWays"
+    },
+    {
+      "id": "le4penaf",
       "from": "n220qasg",
+      "to": "nldhipxk"
+    },
+    {
+      "id": "lg2swtd1",
+      "from": "nldhipxk",
       "to": "nw8mlvyc"
     }
   ]

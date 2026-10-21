@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "splitr_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off "
-    },
-    {
       "id": "splitr_008",
       "title": "onCustomEvent",
       "rootType": "StarterNodes",
@@ -169,6 +162,52 @@
           "sourceOutputName": "Symbol"
         }
       ]
+    },
+    {
+      "id": "n8gf47cf",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "waysShown"
+        }
+      ]
+    },
+    {
+      "id": "nawnf2j8",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "n8gf47cf"
+        }
+      ]
+    },
+    {
+      "id": "nlnialvt",
+      "title": "setText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_ways_count",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "sourceNodeId": "nawnf2j8"
+        }
+      ]
     }
   ],
   "links": [
@@ -204,12 +243,6 @@
       "to": "splitr_070"
     },
     {
-      "id": "lm8syv2w",
-      "from": "nccjlbfj",
-      "to": "ncejedmd",
-      "outIdx": 1
-    },
-    {
       "id": "ly44nto1",
       "from": "nccjlbfj",
       "to": "n10e0ksf",
@@ -238,6 +271,31 @@
       "propertyType": "T",
       "propertyName": "value",
       "sourceOutputName": "Symbol"
+    },
+    {
+      "id": "lt0uwdu2",
+      "from": "n8gf47cf",
+      "to": "nawnf2j8",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "l70gekq5",
+      "from": "nawnf2j8",
+      "to": "nlnialvt",
+      "propertyType": "string",
+      "propertyName": "value"
+    },
+    {
+      "id": "ll0wzr8v",
+      "from": "nccjlbfj",
+      "to": "nlnialvt",
+      "outIdx": 1
+    },
+    {
+      "id": "lzl5ag3o",
+      "from": "nlnialvt",
+      "to": "ncejedmd"
     }
   ]
 }

@@ -7,8 +7,8 @@
         "id": "showst_005",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 1200.4453676451208,
-        "y": -275.4452536496467,
+        "x": 773.263672834893,
+        "y": -369.93097037939384,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -152,14 +152,178 @@
             "type": "float"
           }
         ]
+      },
+      {
+        "id": "ne35vfca",
+        "title": "getGameModelProperty",
+        "x": -578.80301362547,
+        "y": -205.9149719148217,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "unplayedSpinOutcomes"
+        }
+      },
+      {
+        "id": "no8mqs7g",
+        "title": "at",
+        "friendlyTitle": "Get",
+        "x": -223.80671489677218,
+        "y": -161.4922678782579,
+        "rootType": "array",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "nrc6dlvf",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": 132.24821068584754,
+        "y": -121.13389834899857,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🧩",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "DisplayReels",
+            "type": "float[][]",
+            "path": "DisplayReels"
+          },
+          {
+            "name": "Prize",
+            "type": "float",
+            "path": "Prize"
+          },
+          {
+            "name": "Results",
+            "type": "IOutcomeResult[]",
+            "path": "Results"
+          },
+          {
+            "name": "SplitSymbols",
+            "type": "ISplitSymbol[]",
+            "path": "SplitSymbols"
+          },
+          {
+            "name": "Stops",
+            "type": "float[]",
+            "path": "Stops"
+          },
+          {
+            "name": "WinWays",
+            "type": "float",
+            "path": "WinWays"
+          }
+        ]
+      },
+      {
+        "id": "nmn2eyvc",
+        "title": "getGameModelProperty",
+        "x": -881.6600040502735,
+        "y": -78.9927085623188,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "_currentCascade"
+        }
+      },
+      {
+        "id": "nsau775g",
+        "title": "toInt",
+        "x": -565.499409236413,
+        "y": -85.25676703501375,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nfmo3vja",
+        "title": "toString",
+        "x": 517.9358627372807,
+        "y": -193.96858212953492,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nx5kazgi",
+        "title": "setText",
+        "x": 1137.369877162249,
+        "y": -341.4882776262348,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "text"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_win_amount",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
       }
     ],
     "links": [
-      {
-        "id": "ld0bfaex",
-        "from": "showst_005",
-        "to": "nigin0xz"
-      },
       {
         "id": "lokn1072",
         "from": "nigin0xz",
@@ -192,14 +356,67 @@
         "to": "nigin0xz",
         "propertyType": "bool",
         "propertyName": "condition"
+      },
+      {
+        "id": "lo17mlgd",
+        "from": "ne35vfca",
+        "to": "no8mqs7g",
+        "propertyType": "TArray",
+        "propertyName": "array"
+      },
+      {
+        "id": "lz658jeq",
+        "from": "no8mqs7g",
+        "to": "nrc6dlvf",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "lkt465mj",
+        "from": "nmn2eyvc",
+        "to": "nsau775g",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "lg5hrt20",
+        "from": "nsau775g",
+        "to": "no8mqs7g",
+        "propertyType": "int",
+        "propertyName": "index"
+      },
+      {
+        "id": "l89513xg",
+        "from": "nrc6dlvf",
+        "to": "nfmo3vja",
+        "propertyType": "float",
+        "propertyName": "value",
+        "sourceOutputName": "Prize"
+      },
+      {
+        "id": "l327brdz",
+        "from": "nfmo3vja",
+        "to": "nx5kazgi",
+        "propertyType": "string",
+        "propertyName": "value"
+      },
+      {
+        "id": "l2zes7ld",
+        "from": "nx5kazgi",
+        "to": "nigin0xz"
+      },
+      {
+        "id": "lysydggv",
+        "from": "showst_005",
+        "to": "nx5kazgi"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -330.2615255539324,
-      "panY": 336.61684032834575,
-      "scale": 0.6840020521670661
+      "panX": -7.471510684481018,
+      "panY": 326.4048431580742,
+      "scale": 0.536443324875918
     }
   }
 }

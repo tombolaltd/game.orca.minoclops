@@ -229,23 +229,179 @@
           "value": 1
         }
       ]
+    },
+    {
+      "id": "nkyg503d",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "unplayedSpinOutcomes"
+        }
+      ]
+    },
+    {
+      "id": "n6lo9w6y",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
+        {
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "nkyg503d"
+        },
+        {
+          "name": "index",
+          "type": "int",
+          "sourceNodeId": "n8axj3zo"
+        }
+      ]
+    },
+    {
+      "id": "n7tjxefy",
+      "title": "structFields",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "n6lo9w6y"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DisplayReels",
+          "type": "float[][]",
+          "path": "DisplayReels"
+        },
+        {
+          "name": "Prize",
+          "type": "float",
+          "path": "Prize"
+        },
+        {
+          "name": "Results",
+          "type": "IOutcomeResult[]",
+          "path": "Results"
+        },
+        {
+          "name": "SplitSymbols",
+          "type": "ISplitSymbol[]",
+          "path": "SplitSymbols"
+        },
+        {
+          "name": "Stops",
+          "type": "float[]",
+          "path": "Stops"
+        },
+        {
+          "name": "WinWays",
+          "type": "float",
+          "path": "WinWays"
+        }
+      ]
+    },
+    {
+      "id": "nefve23b",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "waysShown"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "sourceNodeId": "n7tjxefy",
+          "sourceOutputName": "WinWays"
+        }
+      ]
+    },
+    {
+      "id": "nlikljc0",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "_currentCascade"
+        }
+      ]
+    },
+    {
+      "id": "n8axj3zo",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nlikljc0"
+        }
+      ]
     }
   ],
   "links": [
     {
-      "id": "lh83p4f2",
-      "from": "cascad_007",
-      "to": "cascad_028"
-    },
-    {
-      "id": "lwm7gt0z",
-      "from": "cascad_028",
-      "to": "n0hcvofq"
-    },
-    {
       "id": "lvpl4p3l",
       "from": "n0hcvofq",
       "to": "cascad_021"
+    },
+    {
+      "id": "l4t4dz6m",
+      "from": "nkyg503d",
+      "to": "n6lo9w6y",
+      "propertyType": "TArray",
+      "propertyName": "array"
+    },
+    {
+      "id": "lwzvxkfd",
+      "from": "n6lo9w6y",
+      "to": "n7tjxefy",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "lujz5xmg",
+      "from": "n7tjxefy",
+      "to": "nefve23b",
+      "propertyType": "float",
+      "propertyName": "value",
+      "sourceOutputName": "WinWays"
+    },
+    {
+      "id": "l7i4rhqq",
+      "from": "nefve23b",
+      "to": "n0hcvofq"
+    },
+    {
+      "id": "lbaxc7df",
+      "from": "nlikljc0",
+      "to": "n8axj3zo",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "l2wy2awd",
+      "from": "n8axj3zo",
+      "to": "n6lo9w6y",
+      "propertyType": "int",
+      "propertyName": "index"
+    },
+    {
+      "id": "lhhwkpxe",
+      "from": "cascad_028",
+      "to": "nefve23b"
+    },
+    {
+      "id": "l8ora1sp",
+      "from": "cascad_007",
+      "to": "cascad_028"
     }
   ],
   "variables": [

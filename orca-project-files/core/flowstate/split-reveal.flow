@@ -4,22 +4,11 @@
   "graph": {
     "nodes": [
       {
-        "id": "splitr_note",
-        "title": "Note",
-        "x": 971.360814253042,
-        "y": 914.1767707806141,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "TODO: search out splitting symbols then animate them. \n\norder: Hotspot on -> hotspot idle -> split symbol as found in symbol details in the game model(or symbols in bonus game) -> hotspot off ",
-        "width": 389,
-        "height": 205
-      },
-      {
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -640.1491217682944,
-        "y": 72.28827287365583,
+        "x": -660.4247176904053,
+        "y": 79.38147224828246,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -39,8 +28,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 341.2995140486366,
-        "y": 171.02350212101126,
+        "x": 694.9091427884298,
+        "y": 212.97813291928568,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -64,8 +53,8 @@
         "id": "ncejedmd",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 21.712300335200155,
-        "y": 172.65503732217192,
+        "x": 377.66519197807725,
+        "y": 214.60966812044634,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -83,8 +72,8 @@
       {
         "id": "nr2lpth7",
         "title": "getGameModelProperty",
-        "x": -636.9812601571747,
-        "y": 254.1921128336977,
+        "x": -657.2568560792854,
+        "y": 261.28531220832434,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -104,8 +93,8 @@
         "id": "nccjlbfj",
         "title": "loop",
         "friendlyTitle": "Repeat For Each",
-        "x": -311.8565138301973,
-        "y": 136.7998372118179,
+        "x": -332.13210975230805,
+        "y": 143.89303658644454,
         "rootType": "loop",
         "color": "#9b59b6",
         "icon": "🔁",
@@ -129,8 +118,8 @@
         "id": "njpv296w",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 21.55320280306904,
-        "y": 350.9593685814947,
+        "x": 47.147166590963366,
+        "y": 412.3646146373821,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -163,8 +152,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 698.4563865213416,
-        "y": 157.68067262870701,
+        "x": 1116.8883782060495,
+        "y": 193.0526858008445,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -207,8 +196,8 @@
       {
         "id": "nw34zng2",
         "title": "toInt",
-        "x": 345.88309738571377,
-        "y": 347.93099051815767,
+        "x": 371.4770611736081,
+        "y": 409.33623657404513,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -222,8 +211,8 @@
       {
         "id": "nvu1cf10",
         "title": "toInt",
-        "x": 346.6526381526372,
-        "y": 466.8270207093512,
+        "x": 372.24660194053155,
+        "y": 528.2322667652386,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -233,6 +222,70 @@
             "type": "T"
           }
         ]
+      },
+      {
+        "id": "n8gf47cf",
+        "title": "getGameModelProperty",
+        "x": -646.4669825435765,
+        "y": 401.06061406532854,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "waysShown"
+        }
+      },
+      {
+        "id": "nawnf2j8",
+        "title": "toString",
+        "x": -303.322780612144,
+        "y": 396.91029991589585,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nlnialvt",
+        "title": "setText",
+        "x": 44.13771085759589,
+        "y": 207.11696006627437,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "text"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_ways_count",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
       }
     ],
     "links": [
@@ -248,14 +301,26 @@
         "from": "nw34zng2",
         "to": "n10e0ksf",
         "propertyType": "int",
-        "propertyName": "split"
+        "propertyName": "split",
+        "points": [
+          {
+            "x": 1030.997804163852,
+            "y": 464.71348270839917
+          }
+        ]
       },
       {
         "id": "l6gj8nwi",
         "from": "nvu1cf10",
         "to": "n10e0ksf",
         "propertyType": "int",
-        "propertyName": "symbol"
+        "propertyName": "symbol",
+        "points": [
+          {
+            "x": 1063.8034848070267,
+            "y": 481.1163230299866
+          }
+        ]
       },
       {
         "id": "lyfhyejo",
@@ -268,12 +333,6 @@
         "to": "splitr_070"
       },
       {
-        "id": "lm8syv2w",
-        "from": "nccjlbfj",
-        "to": "ncejedmd",
-        "outIdx": 1
-      },
-      {
         "id": "ly44nto1",
         "from": "nccjlbfj",
         "to": "n10e0ksf",
@@ -284,8 +343,8 @@
             "y": 143.89450326447533
           },
           {
-            "x": 622.7892202567494,
-            "y": 143.89450326447533
+            "x": 1036.002589567239,
+            "y": 151.74048968945561
           }
         ]
       },
@@ -312,14 +371,39 @@
         "propertyType": "T",
         "propertyName": "value",
         "sourceOutputName": "Symbol"
+      },
+      {
+        "id": "lt0uwdu2",
+        "from": "n8gf47cf",
+        "to": "nawnf2j8",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "l70gekq5",
+        "from": "nawnf2j8",
+        "to": "nlnialvt",
+        "propertyType": "string",
+        "propertyName": "value"
+      },
+      {
+        "id": "ll0wzr8v",
+        "from": "nccjlbfj",
+        "to": "nlnialvt",
+        "outIdx": 1
+      },
+      {
+        "id": "lzl5ag3o",
+        "from": "nlnialvt",
+        "to": "ncejedmd"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 477.04273889620583,
-      "panY": 105.31688491984477,
-      "scale": 0.6121399408312883
+      "panX": 541.4548537485337,
+      "panY": 17.052959719075773,
+      "scale": 0.424839273697971
     }
   }
 }

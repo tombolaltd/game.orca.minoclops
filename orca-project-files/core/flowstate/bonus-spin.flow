@@ -6,8 +6,8 @@
       {
         "id": "bonuss_027",
         "title": "fireCustomEvent",
-        "x": 537.9734914807267,
-        "y": 98.04103603405434,
+        "x": 881.8152571517561,
+        "y": 107.56832448102318,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -378,8 +378,8 @@
         "id": "naqirlvw",
         "title": "State",
         "displayName": "Hotspot Selection",
-        "x": 350.11511902279983,
-        "y": 116.97185521046217,
+        "x": 693.9568846938292,
+        "y": 126.499143657431,
         "isState": true,
         "entryTargetId": "nnwp6j0d",
         "exitSourceId": "nfacfcp4",
@@ -1025,14 +1025,125 @@
         "propertyValues": {
           "eventName": "bonusStart"
         }
+      },
+      {
+        "id": "nnos8lwo",
+        "title": "getGameModelProperty",
+        "x": -679.9540347983544,
+        "y": 283.70227394919704,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "unplayedSpinOutcomes"
+        }
+      },
+      {
+        "id": "n4brgzie",
+        "title": "at",
+        "friendlyTitle": "Get",
+        "x": -322.938522249813,
+        "y": 283.702273949197,
+        "rootType": "array",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "nu5ndst9",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": 25.15160248501455,
+        "y": 291.5119882861964,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🧩",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "DisplayReels",
+            "type": "float[][]",
+            "path": "DisplayReels"
+          },
+          {
+            "name": "Prize",
+            "type": "float",
+            "path": "Prize"
+          },
+          {
+            "name": "Results",
+            "type": "IOutcomeResult[]",
+            "path": "Results"
+          },
+          {
+            "name": "SplitSymbols",
+            "type": "ISplitSymbol[]",
+            "path": "SplitSymbols"
+          },
+          {
+            "name": "Stops",
+            "type": "float[]",
+            "path": "Stops"
+          },
+          {
+            "name": "WinWays",
+            "type": "float",
+            "path": "WinWays"
+          }
+        ]
+      },
+      {
+        "id": "nxlqjjc9",
+        "title": "setGameModelProperty",
+        "x": 365.8204445043575,
+        "y": 101.2193675560444,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "waysShown"
+        }
       }
     ],
     "links": [
-      {
-        "id": "lso9gp9w",
-        "from": "nzelkdw4",
-        "to": "naqirlvw"
-      },
       {
         "id": "ll9ucb8w",
         "from": "bonuss_037",
@@ -1047,14 +1158,46 @@
         "id": "lbhzuekw",
         "from": "nh466c9z",
         "to": "bonuss_037"
+      },
+      {
+        "id": "l3gqbciw",
+        "from": "nnos8lwo",
+        "to": "n4brgzie",
+        "propertyType": "TArray",
+        "propertyName": "array"
+      },
+      {
+        "id": "lukmjgbk",
+        "from": "n4brgzie",
+        "to": "nu5ndst9",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "ldhxktpk",
+        "from": "nu5ndst9",
+        "to": "nxlqjjc9",
+        "propertyType": "float",
+        "propertyName": "value",
+        "sourceOutputName": "WinWays"
+      },
+      {
+        "id": "lpw4rz1w",
+        "from": "nzelkdw4",
+        "to": "nxlqjjc9"
+      },
+      {
+        "id": "la6ba6rn",
+        "from": "nxlqjjc9",
+        "to": "naqirlvw"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -556.0808685752709,
-      "panY": 204.19639217424248,
-      "scale": 1
+      "panX": 533.2414450095566,
+      "panY": 51.25635321254143,
+      "scale": 0.5702103221409622
     }
   }
 }

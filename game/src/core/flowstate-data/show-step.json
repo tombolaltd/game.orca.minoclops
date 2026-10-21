@@ -98,14 +98,141 @@
           "sourceNodeId": "nipb74mu"
         }
       ]
+    },
+    {
+      "id": "ne35vfca",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "unplayedSpinOutcomes"
+        }
+      ]
+    },
+    {
+      "id": "no8mqs7g",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
+        {
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "ne35vfca"
+        },
+        {
+          "name": "index",
+          "type": "int",
+          "sourceNodeId": "nsau775g"
+        }
+      ]
+    },
+    {
+      "id": "nrc6dlvf",
+      "title": "structFields",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "no8mqs7g"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DisplayReels",
+          "type": "float[][]",
+          "path": "DisplayReels"
+        },
+        {
+          "name": "Prize",
+          "type": "float",
+          "path": "Prize"
+        },
+        {
+          "name": "Results",
+          "type": "IOutcomeResult[]",
+          "path": "Results"
+        },
+        {
+          "name": "SplitSymbols",
+          "type": "ISplitSymbol[]",
+          "path": "SplitSymbols"
+        },
+        {
+          "name": "Stops",
+          "type": "float[]",
+          "path": "Stops"
+        },
+        {
+          "name": "WinWays",
+          "type": "float",
+          "path": "WinWays"
+        }
+      ]
+    },
+    {
+      "id": "nmn2eyvc",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "_currentCascade"
+        }
+      ]
+    },
+    {
+      "id": "nsau775g",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nmn2eyvc"
+        }
+      ]
+    },
+    {
+      "id": "nfmo3vja",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nrc6dlvf",
+          "sourceOutputName": "Prize"
+        }
+      ]
+    },
+    {
+      "id": "nx5kazgi",
+      "title": "setText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_win_amount",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "sourceNodeId": "nfmo3vja"
+        }
+      ]
     }
   ],
   "links": [
-    {
-      "id": "ld0bfaex",
-      "from": "showst_005",
-      "to": "nigin0xz"
-    },
     {
       "id": "lokn1072",
       "from": "nigin0xz",
@@ -138,6 +265,59 @@
       "to": "nigin0xz",
       "propertyType": "bool",
       "propertyName": "condition"
+    },
+    {
+      "id": "lo17mlgd",
+      "from": "ne35vfca",
+      "to": "no8mqs7g",
+      "propertyType": "TArray",
+      "propertyName": "array"
+    },
+    {
+      "id": "lz658jeq",
+      "from": "no8mqs7g",
+      "to": "nrc6dlvf",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "lkt465mj",
+      "from": "nmn2eyvc",
+      "to": "nsau775g",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "lg5hrt20",
+      "from": "nsau775g",
+      "to": "no8mqs7g",
+      "propertyType": "int",
+      "propertyName": "index"
+    },
+    {
+      "id": "l89513xg",
+      "from": "nrc6dlvf",
+      "to": "nfmo3vja",
+      "propertyType": "float",
+      "propertyName": "value",
+      "sourceOutputName": "Prize"
+    },
+    {
+      "id": "l327brdz",
+      "from": "nfmo3vja",
+      "to": "nx5kazgi",
+      "propertyType": "string",
+      "propertyName": "value"
+    },
+    {
+      "id": "l2zes7ld",
+      "from": "nx5kazgi",
+      "to": "nigin0xz"
+    },
+    {
+      "id": "lysydggv",
+      "from": "showst_005",
+      "to": "nx5kazgi"
     }
   ]
 }

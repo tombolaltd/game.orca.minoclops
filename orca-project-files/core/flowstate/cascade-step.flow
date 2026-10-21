@@ -7,8 +7,8 @@
         "id": "cascad_007",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 280.9414172633814,
-        "y": 114.01598634381213,
+        "x": 239.51004574255109,
+        "y": 105.33926769233378,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "cascad_021",
         "title": "fireCustomEvent",
-        "x": 1079.1741318154411,
-        "y": 114.66404569061807,
+        "x": 1385.4383901797485,
+        "y": 114.3510106856397,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "cascad_028",
         "title": "State",
         "displayName": "Drop in",
-        "x": 592.956517173483,
-        "y": 133.82752249725038,
+        "x": 588.0798968740098,
+        "y": 135.0850990931199,
         "isState": true,
         "entryTargetId": "cascad_017",
         "exitSourceId": "ntft2oyr",
@@ -348,8 +348,8 @@
         "id": "n0hcvofq",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 770.4522316505893,
-        "y": 114.77919013960317,
+        "x": 1076.7164900148966,
+        "y": 114.4661551346248,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -363,23 +363,215 @@
         "propertyValues": {
           "seconds": 1
         }
+      },
+      {
+        "id": "nkyg503d",
+        "title": "getGameModelProperty",
+        "x": -302.5744726939288,
+        "y": 239.02562815546725,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "unplayedSpinOutcomes"
+        }
+      },
+      {
+        "id": "n6lo9w6y",
+        "title": "at",
+        "friendlyTitle": "Get",
+        "x": 52.42182603476908,
+        "y": 283.44833219203105,
+        "rootType": "array",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "n7tjxefy",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": 408.4767516173888,
+        "y": 323.8067017212905,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🧩",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "DisplayReels",
+            "type": "float[][]",
+            "path": "DisplayReels"
+          },
+          {
+            "name": "Prize",
+            "type": "float",
+            "path": "Prize"
+          },
+          {
+            "name": "Results",
+            "type": "IOutcomeResult[]",
+            "path": "Results"
+          },
+          {
+            "name": "SplitSymbols",
+            "type": "ISplitSymbol[]",
+            "path": "SplitSymbols"
+          },
+          {
+            "name": "Stops",
+            "type": "float[]",
+            "path": "Stops"
+          },
+          {
+            "name": "WinWays",
+            "type": "float",
+            "path": "WinWays"
+          }
+        ]
+      },
+      {
+        "id": "nefve23b",
+        "title": "setGameModelProperty",
+        "x": 768.9031712015474,
+        "y": 114.09974529803222,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "waysShown"
+        }
+      },
+      {
+        "id": "nlikljc0",
+        "title": "getGameModelProperty",
+        "x": -625.9368911665961,
+        "y": 365.9478915079702,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "_currentCascade"
+        }
+      },
+      {
+        "id": "n8axj3zo",
+        "title": "toInt",
+        "x": -289.2708683048718,
+        "y": 359.68383303527526,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
       }
     ],
     "links": [
       {
-        "id": "lh83p4f2",
-        "from": "cascad_007",
-        "to": "cascad_028"
-      },
-      {
-        "id": "lwm7gt0z",
-        "from": "cascad_028",
-        "to": "n0hcvofq"
-      },
-      {
         "id": "lvpl4p3l",
         "from": "n0hcvofq",
         "to": "cascad_021"
+      },
+      {
+        "id": "l4t4dz6m",
+        "from": "nkyg503d",
+        "to": "n6lo9w6y",
+        "propertyType": "TArray",
+        "propertyName": "array"
+      },
+      {
+        "id": "lwzvxkfd",
+        "from": "n6lo9w6y",
+        "to": "n7tjxefy",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "lujz5xmg",
+        "from": "n7tjxefy",
+        "to": "nefve23b",
+        "propertyType": "float",
+        "propertyName": "value",
+        "sourceOutputName": "WinWays"
+      },
+      {
+        "id": "l7i4rhqq",
+        "from": "nefve23b",
+        "to": "n0hcvofq"
+      },
+      {
+        "id": "lbaxc7df",
+        "from": "nlikljc0",
+        "to": "n8axj3zo",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "l2wy2awd",
+        "from": "n8axj3zo",
+        "to": "n6lo9w6y",
+        "propertyType": "int",
+        "propertyName": "index"
+      },
+      {
+        "id": "lhhwkpxe",
+        "from": "cascad_028",
+        "to": "nefve23b"
+      },
+      {
+        "id": "l8ora1sp",
+        "from": "cascad_007",
+        "to": "cascad_028"
       }
     ],
     "groups": [],
@@ -391,9 +583,9 @@
       }
     ],
     "viewState": {
-      "panX": -511.8170120661598,
-      "panY": -7.391861136894988,
-      "scale": 0.7819548805883351
+      "panX": 394.3914116511559,
+      "panY": 96.18116887096156,
+      "scale": 0.5233293079672025
     }
   }
 }
