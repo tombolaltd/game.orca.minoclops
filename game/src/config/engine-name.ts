@@ -2,18 +2,18 @@ import { SupportedLocale } from '../types';
 
 export const engineName: Record<SupportedLocale, Record<string, string>> = {
     'en-gb': {
-        'samsplit': 'samsplit',
+        'minoclop': 'minoclop',
     },
     'it-it': {
-        'samsplit': 'samsplit',
+        'minoclop': 'minoclop',
     },
     'dk-dk': {
-        'samsplit': 'samsplit',
+        'minoclop': 'minoclop',
     },
     'es-es': {
-        'samsplit': 'samsplit',
+        'minoclop': 'minoclop',
     },
     'se-se': {
-        'samsplit': 'samsplit',
+        'minoclop': 'minoclop',
     },
 };

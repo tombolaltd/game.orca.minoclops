@@ -8,8 +8,8 @@
         "title": "onBeginGame",
         "displayName": "BUY pressed",
         "friendlyTitle": "On Buy In",
-        "x": 395.26655046690433,
-        "y": -185.1616922444338,
+        "x": -1231.5231068281628,
+        "y": -60.73828238282478,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -21,8 +21,8 @@
       {
         "id": "rounds_029",
         "title": "fireCustomEvent",
-        "x": 1428.0380862943591,
-        "y": -194.55977103292688,
+        "x": 1315.7048476493474,
+        "y": -29.113082864754347,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -38,318 +38,16 @@
           }
         ],
         "propertyValues": {
-          "eventName": "cascadeStep",
+          "eventName": "splitReveal",
           "propertyNames": []
-        }
-      },
-      {
-        "id": "rounds_033",
-        "title": "State",
-        "displayName": "Reset round",
-        "x": 720.8651467562859,
-        "y": -345.2051771952403,
-        "isState": true,
-        "entryTargetId": "rounds_006",
-        "exitSourceId": "rounds_011",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "rounds_034",
-              "title": "Entry",
-              "x": -73.67362219370744,
-              "y": 22.942975456605822,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "rounds_006",
-              "title": "setGameModelProperty",
-              "displayName": "No win yet",
-              "x": 163.8075409042841,
-              "y": 14.499156239728777,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "payout",
-                "value": 0
-              }
-            },
-            {
-              "id": "rounds_007",
-              "title": "setGameModelProperty",
-              "displayName": "Base game",
-              "x": 512.5115022146942,
-              "y": 2.2484502257175123,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "playedSpinOutcomes",
-                "value": "[]"
-              }
-            },
-            {
-              "id": "rounds_008",
-              "title": "setGameModelProperty",
-              "displayName": "No free spins",
-              "x": 852.5157783491336,
-              "y": 2.554250124394841,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsPlayed",
-                "value": 0
-              }
-            },
-            {
-              "id": "rounds_009",
-              "title": "setGameModelProperty",
-              "displayName": "No free spins",
-              "x": 1167.8605109980042,
-              "y": 21.403036015238456,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsTotal",
-                "value": 0
-              }
-            },
-            {
-              "id": "rounds_010",
-              "title": "formatMoney",
-              "friendlyTitle": "Format Money",
-              "x": 1806.5744866291943,
-              "y": 246.3450116784939,
-              "rootType": "Info & UI",
-              "color": "#1abc9c",
-              "icon": "📊",
-              "overrideNodeType": "property",
-              "properties": [
-                {
-                  "name": "amount",
-                  "type": "int",
-                  "default": 0
-                },
-                {
-                  "name": "rounded",
-                  "type": "bool",
-                  "default": false
-                }
-              ],
-              "propertyValue": "0",
-              "propertyValues": {
-                "amount": 0,
-                "rounded": false
-              }
-            },
-            {
-              "id": "rounds_011",
-              "title": "setText",
-              "displayName": "Win reads 0",
-              "x": 2142.2422347911947,
-              "y": 37.09712486918414,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "value",
-                  "type": "string",
-                  "propertyValue": "0"
-                }
-              ],
-              "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_win_amount",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "rounds_035",
-              "title": "Exit",
-              "x": 2498.1670762098765,
-              "y": 79.57927701170067,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            },
-            {
-              "id": "not0n7z6",
-              "title": "setGameModelProperty",
-              "displayName": "No free spins",
-              "x": 1482.820721491674,
-              "y": 15.44118125150446,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "currentCascade",
-                "value": 0
-              }
-            },
-            {
-              "id": "nlcxj9rv",
-              "title": "setGameModelProperty",
-              "displayName": "No free spins",
-              "x": 1806.4585802978781,
-              "y": 13.818642610836307,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "currentBonusSpin",
-                "value": 0
-              }
-            }
-          ],
-          "links": [
-            {
-              "id": "l_rounds_1",
-              "from": "rounds_010",
-              "to": "rounds_011",
-              "propertyType": "string",
-              "propertyName": "value"
-            },
-            {
-              "id": "l_rounds_10",
-              "from": "rounds_006",
-              "to": "rounds_007"
-            },
-            {
-              "id": "l_rounds_11",
-              "from": "rounds_007",
-              "to": "rounds_008"
-            },
-            {
-              "id": "l_rounds_12",
-              "from": "rounds_008",
-              "to": "rounds_009"
-            },
-            {
-              "id": "l_rounds_14",
-              "from": "rounds_034",
-              "to": "rounds_006"
-            },
-            {
-              "id": "l_rounds_15",
-              "from": "rounds_011",
-              "to": "rounds_035"
-            },
-            {
-              "id": "ln5jn8un",
-              "from": "rounds_009",
-              "to": "not0n7z6"
-            },
-            {
-              "id": "l5y622pq",
-              "from": "not0n7z6",
-              "to": "nlcxj9rv"
-            },
-            {
-              "id": "l98bpkds",
-              "from": "nlcxj9rv",
-              "to": "rounds_011"
-            }
-          ],
-          "groups": []
         }
       },
       {
         "id": "rounds_036",
         "title": "State",
         "displayName": "Clear reels",
-        "x": 614.9657477635774,
-        "y": -161.41657391842114,
+        "x": -1011.8239095314898,
+        "y": -38.103940078139075,
         "isState": true,
         "entryTargetId": "rounds_012",
         "exitSourceId": "rounds_015",
@@ -358,8 +56,8 @@
             {
               "id": "rounds_037",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 174.41491921032042,
+              "y": -85.9961873679718,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -388,7 +86,7 @@
                 "alpha": 0,
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -418,7 +116,7 @@
                 "alpha": 0,
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_reel_hotspot",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -427,8 +125,8 @@
             {
               "id": "rounds_038",
               "title": "Exit",
-              "x": 1120.327027027027,
-              "y": 120,
+              "x": 764.1252863699092,
+              "y": -80.27407105219478,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -441,14 +139,9 @@
               "to": "rounds_015"
             },
             {
-              "id": "l_rounds_21",
-              "from": "rounds_015",
-              "to": "rounds_038"
-            },
-            {
-              "id": "lhl8j6fi",
+              "id": "lrybh3n2",
               "from": "rounds_037",
-              "to": "rounds_014"
+              "to": "rounds_038"
             }
           ],
           "groups": []
@@ -458,8 +151,8 @@
         "id": "rounds_039",
         "title": "State",
         "displayName": "Reset labels",
-        "x": 815.2810595174315,
-        "y": -163.00194181070822,
+        "x": -811.5085977776357,
+        "y": -38.5785319490992,
         "isState": true,
         "entryTargetId": "rounds_016",
         "exitSourceId": "rounds_022",
@@ -563,8 +256,8 @@
       {
         "id": "n285entq",
         "title": "setGameModelProperty",
-        "x": 1028.3343455397537,
-        "y": -190.40518600933396,
+        "x": -598.4553117553135,
+        "y": -65.98177614772494,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -585,6 +278,799 @@
         "propertyValues": {
           "propertyName": "hotSpotPlayed"
         }
+      },
+      {
+        "id": "n220qasg",
+        "title": "State",
+        "displayName": "Drop in first board",
+        "x": -234.80670811521367,
+        "y": -34.494605020712896,
+        "isState": true,
+        "entryTargetId": "nmcxhd6c",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "ng1arby3",
+              "title": "Entry",
+              "x": 766.9966210966763,
+              "y": 31.23545772801446,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "nmcxhd6c",
+              "title": "runCascade",
+              "displayName": "Cascade",
+              "x": 1116.0602202069922,
+              "y": 71.37175792350055,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "locations",
+                  "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0],[0],[0],[0],[0]]"
+                },
+                {
+                  "name": "outcome",
+                  "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for the cascade)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
+                "outcome": "",
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nxnpr19r",
+              "title": "Exit",
+              "x": 1522.1547434253284,
+              "y": 114.52981849302793,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "nh47ncan",
+              "title": "getGameModelProperty",
+              "x": 700.0069937252131,
+              "y": 204.47630675792342,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "displayReels"
+              }
+            }
+          ],
+          "links": [
+            {
+              "id": "lkdbzvew",
+              "from": "ng1arby3",
+              "to": "nmcxhd6c"
+            },
+            {
+              "id": "lfz5rfjv",
+              "from": "nh47ncan",
+              "to": "nmcxhd6c",
+              "propertyType": "string",
+              "propertyName": "outcome"
+            },
+            {
+              "id": "lybywukb",
+              "from": "nmcxhd6c",
+              "to": "nxnpr19r"
+            }
+          ],
+          "groups": []
+        }
+      },
+      {
+        "id": "nl63tci0",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 237.90129536855613,
+        "y": -48.971373701234384,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 1
+        }
+      },
+      {
+        "id": "n9udeeri",
+        "title": "playAnimation",
+        "x": 620.2278636004306,
+        "y": -42.34293263419217,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 0,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1792499758800_4pkgdglr6",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "hotspotOFF"
+        }
+      },
+      {
+        "id": "n7pratho",
+        "title": "setGameModelProperty",
+        "x": 974.8700597598122,
+        "y": -21.89604324866022,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "isStarter": false,
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "hotSpotPlayed",
+          "value": true
+        }
+      },
+      {
+        "id": "nw8mlvyc",
+        "title": "State",
+        "displayName": "Hotspot Selection",
+        "x": 32.851679605318395,
+        "y": -27.210090461267257,
+        "isState": true,
+        "entryTargetId": "n94tocw2",
+        "exitSourceId": "n0kbqy7g",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "n7dtry43",
+              "title": "Entry",
+              "x": -223.32510482783943,
+              "y": 301.0367497053037,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "ny97oned",
+              "title": "Exit",
+              "x": 1686.1419985986759,
+              "y": 410.28046455628953,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "n94tocw2",
+              "title": "getGameModelProperty",
+              "x": -2267.514822521952,
+              "y": 530.2222966906555,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "splitSymbolDetails"
+              }
+            },
+            {
+              "id": "nolb7ia4",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -1611.1956930366177,
+              "y": 530.2435245626276,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "HighlightedPosition",
+                  "type": "ISplitSymbol[]",
+                  "path": "HighlightedPosition"
+                },
+                {
+                  "name": "Split",
+                  "type": "float",
+                  "path": "Split"
+                },
+                {
+                  "name": "Symbol",
+                  "type": "float",
+                  "path": "Symbol"
+                }
+              ]
+            },
+            {
+              "id": "nn5w3kxj",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1931.5241329993423,
+              "y": 529.1654164443304,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nyqsgbai",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -933.9524504255833,
+              "y": 539.5602164046907,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "Reel",
+                  "type": "float",
+                  "path": "Reel"
+                },
+                {
+                  "name": "Row",
+                  "type": "float",
+                  "path": "Row"
+                }
+              ]
+            },
+            {
+              "id": "nux8pypq",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1288.310105218085,
+              "y": 529.5379118377872,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nafg42z9",
+              "title": "toInt",
+              "x": -508.15243018084266,
+              "y": 464.86256235553117,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nh71kgh0",
+              "title": "toInt",
+              "x": -506.53761053086964,
+              "y": 669.0903896014905,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "n87v9hje",
+              "title": "getReelSymbolSpine",
+              "friendlyTitle": "Get Reel Symbol Spine",
+              "x": -162.84036342952777,
+              "y": 517.1562651514711,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🎰",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reelIndex",
+                  "type": "int",
+                  "default": 0,
+                  "linkable": true
+                },
+                {
+                  "name": "rowIndex",
+                  "type": "int",
+                  "default": 0,
+                  "linkable": true
+                }
+              ],
+              "propertyValues": {
+                "reelIndex": 0,
+                "rowIndex": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nqum0ita",
+              "title": "setNodeVisible",
+              "x": 162.68208191285908,
+              "y": 321.01352356855733,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": true,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "ntthdei5",
+              "title": "playAnimation",
+              "x": 890.9381161711,
+              "y": 395.2144484580246,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotON"
+              }
+            },
+            {
+              "id": "npyth0jt",
+              "title": "playAnimation",
+              "x": 1302.4545075636863,
+              "y": 396.8585004491162,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotIDLE"
+              }
+            },
+            {
+              "id": "n6xdtszk",
+              "title": "setNodeGlobalPosition",
+              "x": 552.8427560217566,
+              "y": 405.0608109075193,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "x",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "y",
+                  "type": "float",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "x": 0,
+                "y": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n8cpiozm",
+              "title": "getNodeGlobalPosition",
+              "friendlyTitle": "Get Global Position",
+              "x": 185.4359998348325,
+              "y": 562.1540388423653,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🌐",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ]
+            }
+          ],
+          "links": [
+            {
+              "id": "l0f723ro",
+              "from": "n94tocw2",
+              "to": "nn5w3kxj",
+              "propertyType": "TArray",
+              "propertyName": "array"
+            },
+            {
+              "id": "ltsewl2p",
+              "from": "nn5w3kxj",
+              "to": "nolb7ia4",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "lt9ki16s",
+              "from": "nolb7ia4",
+              "to": "nux8pypq",
+              "propertyType": "TArray",
+              "propertyName": "array",
+              "sourceOutputName": "HighlightedPosition"
+            },
+            {
+              "id": "llsd1n75",
+              "from": "nux8pypq",
+              "to": "nyqsgbai",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l8tzy498",
+              "from": "nyqsgbai",
+              "to": "nafg42z9",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Reel"
+            },
+            {
+              "id": "lgscpyrf",
+              "from": "nyqsgbai",
+              "to": "nh71kgh0",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Row"
+            },
+            {
+              "id": "libmvyu5",
+              "from": "nafg42z9",
+              "to": "n87v9hje",
+              "propertyType": "int",
+              "propertyName": "reelIndex"
+            },
+            {
+              "id": "l4vxeq73",
+              "from": "nh71kgh0",
+              "to": "n87v9hje",
+              "propertyType": "int",
+              "propertyName": "rowIndex"
+            },
+            {
+              "id": "l6lcwv5b",
+              "from": "ntthdei5",
+              "to": "npyth0jt"
+            },
+            {
+              "id": "lxugrgo7",
+              "from": "npyth0jt",
+              "to": "ny97oned"
+            },
+            {
+              "id": "l4i24vvh",
+              "from": "nqum0ita",
+              "to": "n6xdtszk"
+            },
+            {
+              "id": "lr6f677q",
+              "from": "n6xdtszk",
+              "to": "ntthdei5"
+            },
+            {
+              "id": "lgwcl5tq",
+              "from": "n87v9hje",
+              "to": "n8cpiozm",
+              "propertyType": "nodeRef",
+              "propertyName": "target"
+            },
+            {
+              "id": "l2vi4fg5",
+              "from": "n8cpiozm",
+              "to": "n6xdtszk",
+              "propertyType": "float",
+              "propertyName": "x",
+              "sourceOutputName": "x"
+            },
+            {
+              "id": "l8f3hwwo",
+              "from": "n8cpiozm",
+              "to": "n6xdtszk",
+              "propertyType": "float",
+              "propertyName": "y",
+              "sourceOutputName": "y"
+            },
+            {
+              "id": "leyutqx9",
+              "from": "n7dtry43",
+              "to": "nqum0ita"
+            }
+          ],
+          "groups": []
+        }
       }
     ],
     "links": [
@@ -604,17 +1090,42 @@
         "to": "n285entq"
       },
       {
-        "id": "lqncloyv",
+        "id": "l83r60z9",
+        "from": "n9udeeri",
+        "to": "n7pratho"
+      },
+      {
+        "id": "lwnwln1s",
+        "from": "nw8mlvyc",
+        "to": "nl63tci0"
+      },
+      {
+        "id": "ljv3pmb3",
         "from": "n285entq",
+        "to": "n220qasg"
+      },
+      {
+        "id": "lrjkbgav",
+        "from": "n7pratho",
         "to": "rounds_029"
+      },
+      {
+        "id": "l1bir9ws",
+        "from": "nl63tci0",
+        "to": "n9udeeri"
+      },
+      {
+        "id": "l772c3z2",
+        "from": "n220qasg",
+        "to": "nw8mlvyc"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -241.07934254067288,
-      "panY": 444.9809513411723,
-      "scale": 0.8947170773477109
+      "panX": 281.4807113282922,
+      "panY": 121.04858274959216,
+      "scale": 0.6990420640299145
     }
   }
 }

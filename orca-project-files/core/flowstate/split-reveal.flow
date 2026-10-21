@@ -163,8 +163,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 871.0291972822281,
-        "y": 146.55845784318646,
+        "x": 791.2256970105053,
+        "y": 267.859778256205,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -307,9 +307,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 679.4707203207338,
-      "panY": 22.397275330654452,
-      "scale": 0.627950233847469
+      "panX": 633.5071053232974,
+      "panY": 192.96712735150356,
+      "scale": 0.4364661911467164
     }
   }
 }

@@ -4,7 +4,6 @@
     {
       "name": "samsplit",
       "isJackpot": false,
-      "runtimeGameId": "samsplit",
       "runtimeGameIdLocked": true,
       "tileName": "minoclop"
     }
@@ -18,7 +17,8 @@
     "fullscreenPortrait": false,
     "sessionDataJustification": "default",
     "gameHeightRatio": 0.67,
-    "enable3D": false
+    "enable3D": false,
+    "cabinetMode": "standard"
   },
   "coreGraphOrder": [
     "game-boot",
@@ -29,9 +29,7 @@
     "steps-done",
     "settle-round",
     "bonus-trigger",
-    "bonus-start",
     "bonus-spin",
-    "bonus-split",
     "bonus-spin-end",
     "bonus-end"
   ],
@@ -152,323 +150,9 @@
   "debugOptions": [
     {
       "id": "splitting-symbols-debug",
-      "name": "Splitting Symbols",
-      "kind": "serverSettings",
-      "base": {
-        "DebugInfo": {
-          "ReelStops": "",
-          "SplittingSymbolDetails": []
-        }
-      },
-      "settings": [
-        {
-          "id": "outcome",
-          "name": "outcome",
-          "control": "enum",
-          "choices": [
-            {
-              "id": "outcome-no-win",
-              "label": "No Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "2,57,20,0,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 11,
-                      "Split": 2,
-                      "Position": [
-                        1,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-low-win",
-              "label": "Low Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "0,15,63,17,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 10,
-                      "Split": 2,
-                      "Position": [
-                        1,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-low-win-split",
-              "label": "Low Win split",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "0,15,63,17,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 11,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        1
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-mid-win",
-              "label": "Mid Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "14,5,20,4,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 11,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-mid-win-split",
-              "label": "Mid Win split",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "14,5,20,4,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 7,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        1
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-high-win",
-              "label": "High Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "17,86,41,17,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 10,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-high-win-split",
-              "label": "High Win split",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "17,86,40,17,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 3,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        2
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-bonus",
-              "label": "Bonus",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "91,33,35,1,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 11,
-                      "Split": 2,
-                      "Position": [
-                        1,
-                        1
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-big-win",
-              "label": "Big Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "87,102,11,0,0"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 7,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-huge-win",
-              "label": "Huge Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "17,20,39,5,45"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 3,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        2
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-mega-win",
-              "label": "Mega Win",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "70,34,51,70,15"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 5,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            {
-              "id": "outcome-max-prize",
-              "label": "Max Prize",
-              "patches": [
-                {
-                  "op": "set",
-                  "path": "DebugInfo.ReelStops",
-                  "value": "26,3,23,17,6"
-                },
-                {
-                  "op": "set",
-                  "path": "DebugInfo.SplittingSymbolDetails",
-                  "value": [
-                    {
-                      "Symbol": 10,
-                      "Split": 2,
-                      "Position": [
-                        0,
-                        0
-                      ]
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+      "name": "Bonus",
+      "kind": "ticket",
+      "data": {}
     }
   ],
   "coreGraphFolders": [
@@ -515,5 +199,12 @@
     "reelsSymbolMode": true
   },
   "schemaVersion": 141,
-  "skinsConsolidated": true
+  "skinsConsolidated": true,
+  "debugDataSchema": [
+    {
+      "key": "ReelStops",
+      "type": "int[]",
+      "description": "Base-game reel stop positions."
+    }
+  ]
 }

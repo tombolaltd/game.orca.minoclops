@@ -2912,7 +2912,8 @@
               "playOnLoad": false,
               "loop": true,
               "skin": "default",
-              "timeScale": 1
+              "timeScale": 1,
+              "rectTransform": null
             },
             {
               "id": "node_ss_reels",
@@ -3311,7 +3312,8 @@
                       "pivotY": 0.5,
                       "skewX": 0,
                       "skewY": 0
-                    }
+                    },
+                    "visible": true
                   },
                   "node_1791296555660_uqk9no210": {
                     "transform": {
@@ -3337,7 +3339,8 @@
                       "pivotY": 0.5,
                       "skewX": 0,
                       "skewY": 0
-                    }
+                    },
+                    "visible": true
                   },
                   "node_1792499758800_4pkgdglr6": {
                     "visible": false,
@@ -3418,7 +3421,8 @@
                       "pivotY": 0.5,
                       "skewX": 0,
                       "skewY": 0
-                    }
+                    },
+                    "visible": true
                   },
                   "node_1791295520191_9uj0li4ny": {
                     "transform": {
@@ -3431,7 +3435,8 @@
                       "pivotY": 0.5,
                       "skewX": 0,
                       "skewY": 0
-                    }
+                    },
+                    "visible": true
                   },
                   "node_1792499758800_4pkgdglr6": {
                     "visible": true,
@@ -3636,7 +3641,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": false,
+          "expanded": true,
           "dontDestroyOnLoad": false,
           "responsiveScaler": {
             "mode": "bestFit",

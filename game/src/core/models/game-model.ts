@@ -147,7 +147,6 @@ export class GameModel implements IBaseGameModel {
         }
     }
 
-
     public get freeSpinsRemaining(): number{
         return this.bonusSpinsRemaining;
     }
@@ -383,10 +382,6 @@ export class GameModel implements IBaseGameModel {
         const outcome = this.unplayedSpinOutcomes[this.currentCascade];
         if (!outcome) {
             return [];
-        }
-        // The first board of a spin drops in whole.
-        if (this.currentCascade === 0) {
-            return this.getFullReelRemovals(topOffset);
         }
         const locations: number[][] = outcome.DisplayReels.map(() => []);
         for (const result of outcome.Results ?? []) {

@@ -13,7 +13,7 @@
         {
           "name": "eventName",
           "type": "customEventRef",
-          "value": "cascadeStep"
+          "value": "splitReveal"
         },
         {
           "name": "propertyNames",
@@ -21,218 +21,6 @@
           "value": []
         }
       ]
-    },
-    {
-      "id": "rounds_033",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "rounds_006",
-      "exitSourceId": "rounds_011",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "rounds_034",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "rounds_006",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "payout"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "rounds_007",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "playedSpinOutcomes"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": "[]"
-              }
-            ]
-          },
-          {
-            "id": "rounds_008",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "bonusSpinsPlayed"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "rounds_009",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "bonusSpinsTotal"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "rounds_010",
-            "title": "formatMoney",
-            "rootType": "Info & UI",
-            "properties": [
-              {
-                "name": "amount",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "rounded",
-                "type": "bool",
-                "value": false
-              }
-            ],
-            "propertyValue": "0"
-          },
-          {
-            "id": "rounds_011",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_win_amount",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "sourceNodeId": "rounds_010"
-              }
-            ]
-          },
-          {
-            "id": "rounds_035",
-            "title": "Exit",
-            "isExit": true
-          },
-          {
-            "id": "not0n7z6",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "currentCascade"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "nlcxj9rv",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "currentBonusSpin"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "value": 0
-              }
-            ]
-          }
-        ],
-        "links": [
-          {
-            "id": "l_rounds_1",
-            "from": "rounds_010",
-            "to": "rounds_011",
-            "propertyType": "string",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_rounds_10",
-            "from": "rounds_006",
-            "to": "rounds_007"
-          },
-          {
-            "id": "l_rounds_11",
-            "from": "rounds_007",
-            "to": "rounds_008"
-          },
-          {
-            "id": "l_rounds_12",
-            "from": "rounds_008",
-            "to": "rounds_009"
-          },
-          {
-            "id": "l_rounds_14",
-            "from": "rounds_034",
-            "to": "rounds_006"
-          },
-          {
-            "id": "l_rounds_15",
-            "from": "rounds_011",
-            "to": "rounds_035"
-          },
-          {
-            "id": "ln5jn8un",
-            "from": "rounds_009",
-            "to": "not0n7z6"
-          },
-          {
-            "id": "l5y622pq",
-            "from": "not0n7z6",
-            "to": "nlcxj9rv"
-          },
-          {
-            "id": "l98bpkds",
-            "from": "nlcxj9rv",
-            "to": "rounds_011"
-          }
-        ]
-      }
     },
     {
       "id": "rounds_036",
@@ -257,7 +45,7 @@
                 "type": "nodeRef",
                 "value": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -279,7 +67,7 @@
                 "type": "nodeRef",
                 "value": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_reel_hotspot",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -304,14 +92,9 @@
             "to": "rounds_015"
           },
           {
-            "id": "l_rounds_21",
-            "from": "rounds_015",
-            "to": "rounds_038"
-          },
-          {
-            "id": "lhl8j6fi",
+            "id": "lrybh3n2",
             "from": "rounds_037",
-            "to": "rounds_014"
+            "to": "rounds_038"
           }
         ]
       }
@@ -408,6 +191,575 @@
           "type": "dynamic"
         }
       ]
+    },
+    {
+      "id": "n220qasg",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "nmcxhd6c",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "ng1arby3",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "nmcxhd6c",
+            "title": "runCascade",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "locations",
+                "type": "string",
+                "value": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]"
+              },
+              {
+                "name": "outcome",
+                "type": "string",
+                "sourceNodeId": "nh47ncan"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "nxnpr19r",
+            "title": "Exit",
+            "isExit": true
+          },
+          {
+            "id": "nh47ncan",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "displayReels"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "lkdbzvew",
+            "from": "ng1arby3",
+            "to": "nmcxhd6c"
+          },
+          {
+            "id": "lfz5rfjv",
+            "from": "nh47ncan",
+            "to": "nmcxhd6c",
+            "propertyType": "string",
+            "propertyName": "outcome"
+          },
+          {
+            "id": "lybywukb",
+            "from": "nmcxhd6c",
+            "to": "nxnpr19r"
+          }
+        ]
+      }
+    },
+    {
+      "id": "nl63tci0",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "n9udeeri",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1792499758800_4pkgdglr6",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "hotspotOFF"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "n7pratho",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "hotSpotPlayed"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "nw8mlvyc",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "n94tocw2",
+      "exitSourceId": "n0kbqy7g",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "n7dtry43",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "ny97oned",
+            "title": "Exit",
+            "isExit": true
+          },
+          {
+            "id": "n94tocw2",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "splitSymbolDetails"
+              }
+            ]
+          },
+          {
+            "id": "nolb7ia4",
+            "title": "structFields",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "nn5w3kxj"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "HighlightedPosition",
+                "type": "ISplitSymbol[]",
+                "path": "HighlightedPosition"
+              },
+              {
+                "name": "Split",
+                "type": "float",
+                "path": "Split"
+              },
+              {
+                "name": "Symbol",
+                "type": "float",
+                "path": "Symbol"
+              }
+            ]
+          },
+          {
+            "id": "nn5w3kxj",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "sourceNodeId": "n94tocw2"
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "nyqsgbai",
+            "title": "structFields",
+            "rootType": "objectOps",
+            "properties": [
+              {
+                "name": "source",
+                "type": "object",
+                "sourceNodeId": "nux8pypq"
+              }
+            ],
+            "outputs": [
+              {
+                "name": "Reel",
+                "type": "float",
+                "path": "Reel"
+              },
+              {
+                "name": "Row",
+                "type": "float",
+                "path": "Row"
+              }
+            ]
+          },
+          {
+            "id": "nux8pypq",
+            "title": "at",
+            "rootType": "array",
+            "properties": [
+              {
+                "name": "array",
+                "type": "TArray",
+                "sourceNodeId": "nolb7ia4",
+                "sourceOutputName": "HighlightedPosition"
+              },
+              {
+                "name": "index",
+                "type": "int",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "nafg42z9",
+            "title": "toInt",
+            "rootType": "cast",
+            "properties": [
+              {
+                "name": "value",
+                "type": "T",
+                "sourceNodeId": "nyqsgbai",
+                "sourceOutputName": "Reel"
+              }
+            ]
+          },
+          {
+            "id": "nh71kgh0",
+            "title": "toInt",
+            "rootType": "cast",
+            "properties": [
+              {
+                "name": "value",
+                "type": "T",
+                "sourceNodeId": "nyqsgbai",
+                "sourceOutputName": "Row"
+              }
+            ]
+          },
+          {
+            "id": "n87v9hje",
+            "title": "getReelSymbolSpine",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "nafg42z9"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "nh71kgh0"
+              }
+            ]
+          },
+          {
+            "id": "nqum0ita",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "ntthdei5",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "hotspotON"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "npyth0jt",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "hotspotIDLE"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": true
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "n6xdtszk",
+            "title": "setNodeGlobalPosition",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "x",
+                "type": "float",
+                "sourceNodeId": "n8cpiozm",
+                "sourceOutputName": "x"
+              },
+              {
+                "name": "y",
+                "type": "float",
+                "sourceNodeId": "n8cpiozm",
+                "sourceOutputName": "y"
+              }
+            ]
+          },
+          {
+            "id": "n8cpiozm",
+            "title": "getNodeGlobalPosition",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "n87v9hje"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "l0f723ro",
+            "from": "n94tocw2",
+            "to": "nn5w3kxj",
+            "propertyType": "TArray",
+            "propertyName": "array"
+          },
+          {
+            "id": "ltsewl2p",
+            "from": "nn5w3kxj",
+            "to": "nolb7ia4",
+            "propertyType": "object",
+            "propertyName": "source"
+          },
+          {
+            "id": "lt9ki16s",
+            "from": "nolb7ia4",
+            "to": "nux8pypq",
+            "propertyType": "TArray",
+            "propertyName": "array",
+            "sourceOutputName": "HighlightedPosition"
+          },
+          {
+            "id": "llsd1n75",
+            "from": "nux8pypq",
+            "to": "nyqsgbai",
+            "propertyType": "object",
+            "propertyName": "source"
+          },
+          {
+            "id": "l8tzy498",
+            "from": "nyqsgbai",
+            "to": "nafg42z9",
+            "propertyType": "float",
+            "propertyName": "value",
+            "sourceOutputName": "Reel"
+          },
+          {
+            "id": "lgscpyrf",
+            "from": "nyqsgbai",
+            "to": "nh71kgh0",
+            "propertyType": "float",
+            "propertyName": "value",
+            "sourceOutputName": "Row"
+          },
+          {
+            "id": "libmvyu5",
+            "from": "nafg42z9",
+            "to": "n87v9hje",
+            "propertyType": "int",
+            "propertyName": "reelIndex"
+          },
+          {
+            "id": "l4vxeq73",
+            "from": "nh71kgh0",
+            "to": "n87v9hje",
+            "propertyType": "int",
+            "propertyName": "rowIndex"
+          },
+          {
+            "id": "l6lcwv5b",
+            "from": "ntthdei5",
+            "to": "npyth0jt"
+          },
+          {
+            "id": "lxugrgo7",
+            "from": "npyth0jt",
+            "to": "ny97oned"
+          },
+          {
+            "id": "l4i24vvh",
+            "from": "nqum0ita",
+            "to": "n6xdtszk"
+          },
+          {
+            "id": "lr6f677q",
+            "from": "n6xdtszk",
+            "to": "ntthdei5"
+          },
+          {
+            "id": "lgwcl5tq",
+            "from": "n87v9hje",
+            "to": "n8cpiozm",
+            "propertyType": "nodeRef",
+            "propertyName": "target"
+          },
+          {
+            "id": "l2vi4fg5",
+            "from": "n8cpiozm",
+            "to": "n6xdtszk",
+            "propertyType": "float",
+            "propertyName": "x",
+            "sourceOutputName": "x"
+          },
+          {
+            "id": "l8f3hwwo",
+            "from": "n8cpiozm",
+            "to": "n6xdtszk",
+            "propertyType": "float",
+            "propertyName": "y",
+            "sourceOutputName": "y"
+          },
+          {
+            "id": "leyutqx9",
+            "from": "n7dtry43",
+            "to": "nqum0ita"
+          }
+        ]
+      }
     }
   ],
   "links": [
@@ -427,9 +779,34 @@
       "to": "n285entq"
     },
     {
-      "id": "lqncloyv",
+      "id": "l83r60z9",
+      "from": "n9udeeri",
+      "to": "n7pratho"
+    },
+    {
+      "id": "lwnwln1s",
+      "from": "nw8mlvyc",
+      "to": "nl63tci0"
+    },
+    {
+      "id": "ljv3pmb3",
       "from": "n285entq",
+      "to": "n220qasg"
+    },
+    {
+      "id": "lrjkbgav",
+      "from": "n7pratho",
       "to": "rounds_029"
+    },
+    {
+      "id": "l1bir9ws",
+      "from": "nl63tci0",
+      "to": "n9udeeri"
+    },
+    {
+      "id": "l772c3z2",
+      "from": "n220qasg",
+      "to": "nw8mlvyc"
     }
   ]
 }

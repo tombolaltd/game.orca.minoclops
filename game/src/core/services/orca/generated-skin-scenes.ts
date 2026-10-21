@@ -4,7 +4,7 @@ import type { OrcaSceneData } from './scene-manager';
 import { ACTIVE_SKIN } from './active-skin';
 
 export const SKIN_SCENES_BY_SKIN: Record<string, Record<string, OrcaSceneData>> = {
-  'samsplit': {},
+  'minoclop': {},
 };
 
 export const SKIN_SCENES: Record<string, OrcaSceneData> = SKIN_SCENES_BY_SKIN[ACTIVE_SKIN] ?? {};

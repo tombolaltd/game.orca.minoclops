@@ -4,7 +4,7 @@ import type { IFlowstateData } from './types';
 import { ACTIVE_SKIN } from './active-skin';
 
 export const SKIN_FLOWSTATE_GRAPHS_BY_SKIN: Record<string, Record<string, IFlowstateData>> = {
-  'samsplit': {},
+  'minoclop': {},
 };
 
 export const SKIN_FLOWSTATE_GRAPHS: Record<string, IFlowstateData> = SKIN_FLOWSTATE_GRAPHS_BY_SKIN[ACTIVE_SKIN] ?? {};

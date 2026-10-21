@@ -4,43 +4,10 @@
   "graph": {
     "nodes": [
       {
-        "id": "bonuss_note",
-        "title": "Note",
-        "x": 80,
-        "y": -164,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "One free spin: clear the last board, ask the server for the spin, land it, then split the hotspot reel.",
-        "width": 620,
-        "height": 210
-      },
-      {
-        "id": "bonuss_004",
-        "title": "onCustomEvent",
-        "friendlyTitle": "On Custom Event",
-        "x": 80,
-        "y": 120,
-        "rootType": "StarterNodes",
-        "color": "#ff6b35",
-        "icon": "📣",
-        "isStarter": true,
-        "starterNodeType": "customEvent",
-        "properties": [
-          {
-            "name": "eventName",
-            "type": "customEventRef",
-            "default": ""
-          }
-        ],
-        "propertyValues": {
-          "eventName": "bonusSpin"
-        }
-      },
-      {
         "id": "bonuss_027",
         "title": "fireCustomEvent",
-        "x": 1592,
-        "y": 120,
+        "x": 661.8542959375601,
+        "y": 123.02539995812157,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -56,701 +23,26 @@
           }
         ],
         "propertyValues": {
-          "eventName": "bonusSplit",
+          "eventName": "splitReveal",
           "propertyNames": []
-        }
-      },
-      {
-        "id": "bonuss_028",
-        "title": "State",
-        "displayName": "Next free spin",
-        "x": 442,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "bonuss_006",
-        "exitSourceId": "bonuss_006",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "bonuss_029",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "bonuss_003",
-              "title": "getGameModelProperty",
-              "x": 310,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsPlayed"
-              }
-            },
-            {
-              "id": "bonuss_005",
-              "title": "add",
-              "x": 672,
-              "y": 204,
-              "rootType": "math",
-              "color": "#16a085",
-              "icon": "➕",
-              "properties": [
-                {
-                  "name": "a",
-                  "type": "T"
-                },
-                {
-                  "name": "b",
-                  "type": "T"
-                }
-              ],
-              "propertyValues": {
-                "b": 1
-              }
-            },
-            {
-              "id": "bonuss_006",
-              "title": "setGameModelProperty",
-              "displayName": "Count the spin",
-              "x": 1034,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsPlayed"
-              }
-            },
-            {
-              "id": "bonuss_030",
-              "title": "Exit",
-              "x": 1396,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_bonuss_2",
-              "from": "bonuss_003",
-              "to": "bonuss_005",
-              "propertyType": "T",
-              "propertyName": "a"
-            },
-            {
-              "id": "l_bonuss_3",
-              "from": "bonuss_005",
-              "to": "bonuss_006",
-              "propertyType": "dynamic",
-              "propertyName": "value"
-            },
-            {
-              "id": "l_bonuss_13",
-              "from": "bonuss_029",
-              "to": "bonuss_006"
-            },
-            {
-              "id": "l_bonuss_14",
-              "from": "bonuss_006",
-              "to": "bonuss_030"
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
-        "id": "bonuss_031",
-        "title": "State",
-        "displayName": "Clear reels",
-        "x": 672,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "bonuss_009",
-        "exitSourceId": "bonuss_012",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "bonuss_032",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "bonuss_009",
-              "title": "resetSymbolVisuals",
-              "displayName": "Undo highlights",
-              "friendlyTitle": "Reset Symbol Visuals",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": -1
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": -1,
-                "rowIndex": -1,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_010",
-              "title": "clearSymbolTexts",
-              "displayName": "Drop badges",
-              "friendlyTitle": "Clear Symbol Texts",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reelIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "rowIndex",
-                  "type": "int",
-                  "default": -1
-                },
-                {
-                  "name": "textIndex",
-                  "type": "int",
-                  "default": -1
-                }
-              ],
-              "propertyValues": {
-                "reelIndex": -1,
-                "rowIndex": -1,
-                "textIndex": -1,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_011",
-              "title": "setNodeAlpha",
-              "displayName": "Hide hotspot",
-              "x": 1034,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_hotspot",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_012",
-              "title": "setNodeAlpha",
-              "displayName": "Hide reel hotspot",
-              "x": 1396,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reel_hotspot",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_033",
-              "title": "Exit",
-              "x": 1758,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_bonuss_16",
-              "from": "bonuss_009",
-              "to": "bonuss_010"
-            },
-            {
-              "id": "l_bonuss_17",
-              "from": "bonuss_010",
-              "to": "bonuss_011"
-            },
-            {
-              "id": "l_bonuss_18",
-              "from": "bonuss_011",
-              "to": "bonuss_012"
-            },
-            {
-              "id": "l_bonuss_19",
-              "from": "bonuss_032",
-              "to": "bonuss_009"
-            },
-            {
-              "id": "l_bonuss_20",
-              "from": "bonuss_012",
-              "to": "bonuss_033"
-            }
-          ],
-          "groups": []
-        }
-      },
-      {
-        "id": "bonuss_034",
-        "title": "State",
-        "displayName": "Reset panels",
-        "x": 902,
-        "y": 120,
-        "isState": true,
-        "entryTargetId": "bonuss_013",
-        "exitSourceId": "bonuss_019",
-        "subgraph": {
-          "nodes": [
-            {
-              "id": "bonuss_035",
-              "title": "Entry",
-              "x": 80,
-              "y": 120,
-              "color": "#4CAF50",
-              "icon": "⭣",
-              "isEntry": true
-            },
-            {
-              "id": "bonuss_007",
-              "title": "getGameModelProperty",
-              "x": 1396,
-              "y": 339,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsTotal"
-              }
-            },
-            {
-              "id": "bonuss_008",
-              "title": "stringBuilder",
-              "friendlyTitle": "String Builder",
-              "x": 1758,
-              "y": 204,
-              "rootType": "string",
-              "color": "#c0392b",
-              "icon": "🧱",
-              "properties": [
-                {
-                  "name": "part0",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part1",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part2",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part3",
-                  "type": "T",
-                  "default": ""
-                }
-              ],
-              "propertyValues": {
-                "part0": "FREE SPIN ",
-                "part2": " OF ",
-                "part1": ""
-              }
-            },
-            {
-              "id": "bonuss_013",
-              "title": "hideNode",
-              "displayName": "Hide split card",
-              "x": 310,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "bonuss_014",
-              "title": "hideNode",
-              "displayName": "Hide split cards",
-              "x": 672,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ],
-              "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_bonus_panel",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_015",
-              "title": "setChildrenVisible",
-              "displayName": "Hide hints",
-              "friendlyTitle": "Set Children Visible",
-              "x": 1034,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "visible",
-                  "type": "bool",
-                  "default": false
-                }
-              ],
-              "propertyValues": {
-                "visible": false,
-                "target": null
-              }
-            },
-            {
-              "id": "bonuss_016",
-              "title": "setText",
-              "displayName": "Header",
-              "x": 2120,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "value",
-                  "type": "string"
-                }
-              ],
-              "propertyValues": {
-                "target": null
-              }
-            },
-            {
-              "id": "bonuss_017",
-              "title": "setText",
-              "displayName": "Ways 243",
-              "x": 2482,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "value",
-                  "type": "string"
-                }
-              ],
-              "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_ways_count",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                },
-                "value": "243"
-              }
-            },
-            {
-              "id": "bonuss_018",
-              "title": "setGameModelProperty",
-              "x": 2844,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "waysShown",
-                "value": 243
-              }
-            },
-            {
-              "id": "bonuss_019",
-              "title": "setGameModelProperty",
-              "displayName": "First step",
-              "x": 3206,
-              "y": 120,
-              "rootType": "properties",
-              "color": "#e67e22",
-              "icon": "✏️",
-              "overrideNodeType": "sequence",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                },
-                {
-                  "name": "value",
-                  "type": "dynamic",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "stepIndex",
-                "value": 0
-              }
-            },
-            {
-              "id": "bonuss_043",
-              "title": "getGameModelProperty",
-              "x": 1396,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpinsPlayed"
-              }
-            },
-            {
-              "id": "bonuss_036",
-              "title": "Exit",
-              "x": 3568,
-              "y": 120,
-              "color": "#FF5722",
-              "icon": "⭡",
-              "isExit": true
-            }
-          ],
-          "links": [
-            {
-              "id": "l_bonuss_4",
-              "from": "bonuss_043",
-              "to": "bonuss_008",
-              "propertyType": "T",
-              "propertyName": "part1"
-            },
-            {
-              "id": "l_bonuss_5",
-              "from": "bonuss_007",
-              "to": "bonuss_008",
-              "propertyType": "T",
-              "propertyName": "part3"
-            },
-            {
-              "id": "l_bonuss_6",
-              "from": "bonuss_008",
-              "to": "bonuss_016",
-              "propertyType": "string",
-              "propertyName": "value"
-            },
-            {
-              "id": "l_bonuss_22",
-              "from": "bonuss_013",
-              "to": "bonuss_014"
-            },
-            {
-              "id": "l_bonuss_23",
-              "from": "bonuss_014",
-              "to": "bonuss_015"
-            },
-            {
-              "id": "l_bonuss_24",
-              "from": "bonuss_015",
-              "to": "bonuss_016"
-            },
-            {
-              "id": "l_bonuss_25",
-              "from": "bonuss_016",
-              "to": "bonuss_017"
-            },
-            {
-              "id": "l_bonuss_26",
-              "from": "bonuss_017",
-              "to": "bonuss_018"
-            },
-            {
-              "id": "l_bonuss_27",
-              "from": "bonuss_018",
-              "to": "bonuss_019"
-            },
-            {
-              "id": "l_bonuss_28",
-              "from": "bonuss_035",
-              "to": "bonuss_013"
-            },
-            {
-              "id": "l_bonuss_29",
-              "from": "bonuss_019",
-              "to": "bonuss_036"
-            }
-          ],
-          "groups": []
         }
       },
       {
         "id": "bonuss_037",
         "title": "State",
         "displayName": "Request spin",
-        "x": 1132,
-        "y": 120,
+        "x": 64.11433736503463,
+        "y": 153.0860857552682,
         "isState": true,
         "entryTargetId": "bonuss_021",
-        "exitSourceId": "bonuss_021",
+        "exitSourceId": "nqof5i54",
         "subgraph": {
           "nodes": [
             {
               "id": "bonuss_038",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 138.91219096334186,
+              "y": -8.34441602728046,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -758,8 +50,8 @@
             {
               "id": "bonuss_020",
               "title": "getGameModelProperty",
-              "x": 310,
-              "y": 204,
+              "x": 171.13554987212274,
+              "y": 165.075873827792,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -778,8 +70,8 @@
               "id": "bonuss_021",
               "title": "sendContinueRequest",
               "friendlyTitle": "Send Continue Request",
-              "x": 672,
-              "y": 120,
+              "x": 735.8147145741981,
+              "y": 121.08160533176607,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -809,8 +101,8 @@
             {
               "id": "bonuss_044",
               "title": "getGameModelProperty",
-              "x": 310,
-              "y": 339,
+              "x": 99.5993179880648,
+              "y": 335.84398976982095,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -822,17 +114,49 @@
                 }
               ],
               "propertyValues": {
-                "propertyName": "bonusSpinsPlayed"
+                "propertyName": "currentBonusSpin"
               }
             },
             {
               "id": "bonuss_039",
               "title": "Exit",
-              "x": 1034,
-              "y": 120,
+              "x": 1092.3021541596086,
+              "y": 122.16645122420266,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
+            },
+            {
+              "id": "n8sqgbzu",
+              "title": "add",
+              "x": 411.63908499584113,
+              "y": 307.55331199593667,
+              "rootType": "math",
+              "color": "#16a085",
+              "icon": "➕",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "a",
+                  "type": "T"
+                },
+                {
+                  "name": "b",
+                  "type": "T",
+                  "propertyValue": 1
+                }
+              ]
+            },
+            {
+              "id": "nqof5i54",
+              "title": "int",
+              "x": 211.80488741348404,
+              "y": 457.4781939738645,
+              "rootType": "properties",
+              "color": "#e67e22",
+              "icon": "🔢",
+              "isStarter": false,
+              "propertyValue": 1
             }
           ],
           "links": [
@@ -844,13 +168,6 @@
               "propertyName": "part0"
             },
             {
-              "id": "l_bonuss_8",
-              "from": "bonuss_044",
-              "to": "bonuss_021",
-              "propertyType": "T",
-              "propertyName": "part1"
-            },
-            {
               "id": "l_bonuss_31",
               "from": "bonuss_038",
               "to": "bonuss_021"
@@ -859,224 +176,57 @@
               "id": "l_bonuss_32",
               "from": "bonuss_021",
               "to": "bonuss_039"
+            },
+            {
+              "id": "lnf4z3vh",
+              "from": "bonuss_044",
+              "to": "n8sqgbzu",
+              "propertyType": "T",
+              "propertyName": "a"
+            },
+            {
+              "id": "li135ie3",
+              "from": "nqof5i54",
+              "to": "n8sqgbzu",
+              "propertyType": "T",
+              "propertyName": "b"
+            },
+            {
+              "id": "l7a42jrv",
+              "from": "n8sqgbzu",
+              "to": "bonuss_021",
+              "propertyType": "T",
+              "propertyName": "part1"
             }
           ],
           "groups": []
         }
       },
       {
-        "id": "bonuss_040",
+        "id": "nzelkdw4",
         "title": "State",
-        "displayName": "Land spin",
-        "x": 1362,
-        "y": 120,
+        "displayName": "Drop in first board",
+        "x": 244.71341866616126,
+        "y": 151.69242947060442,
         "isState": true,
-        "entryTargetId": "bonuss_023",
-        "exitSourceId": "bonuss_026",
+        "entryTargetId": "nxyuus62",
         "subgraph": {
           "nodes": [
             {
-              "id": "bonuss_041",
+              "id": "ngoj25r0",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 766.9966210966763,
+              "y": 31.23545772801446,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
             },
             {
-              "id": "bonuss_001",
-              "title": "getGameModelProperty",
-              "x": 310,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "bonusSpin"
-              }
-            },
-            {
-              "id": "bonuss_002",
-              "title": "parseObject",
-              "friendlyTitle": "Parse Object",
-              "x": 672,
-              "y": 204,
-              "rootType": "objectOps",
-              "color": "#607d8b",
-              "icon": "🔎",
-              "properties": [
-                {
-                  "name": "source",
-                  "type": "object"
-                }
-              ],
-              "propertyValues": {},
-              "outputs": [
-                {
-                  "name": "total",
-                  "type": "int",
-                  "path": "Total"
-                },
-                {
-                  "name": "remaining",
-                  "type": "int",
-                  "path": "Remaining"
-                }
-              ]
-            },
-            {
-              "id": "bonuss_022",
-              "title": "stringBuilder",
-              "friendlyTitle": "String Builder",
-              "x": 1034,
-              "y": 204,
-              "rootType": "string",
-              "color": "#c0392b",
-              "icon": "🧱",
-              "properties": [
-                {
-                  "name": "part0",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part1",
-                  "type": "T",
-                  "default": ""
-                },
-                {
-                  "name": "part2",
-                  "type": "T",
-                  "default": ""
-                }
-              ],
-              "propertyValues": {
-                "part1": " / ",
-                "part0": ""
-              }
-            },
-            {
-              "id": "bonuss_023",
-              "title": "setText",
-              "displayName": "Spins left",
-              "x": 1396,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "text"
-                },
-                {
-                  "name": "value",
-                  "type": "string"
-                }
-              ],
-              "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_free_spins_count",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "bonuss_024",
-              "title": "playSound",
-              "displayName": "Spin sound",
-              "x": 1758,
-              "y": 120,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "soundName",
-                  "type": "audioRef"
-                },
-                {
-                  "name": "volume",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "loop",
-                  "type": "bool",
-                  "default": false
-                },
-                {
-                  "name": "pitch",
-                  "type": "float",
-                  "default": 1
-                },
-                {
-                  "name": "fadeIn",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "pan",
-                  "type": "float",
-                  "default": 0
-                },
-                {
-                  "name": "bus",
-                  "type": "string",
-                  "default": "",
-                  "optionsFrom": "project.audio.buses"
-                }
-              ],
-              "propertyValues": {
-                "volume": 0.6,
-                "loop": false,
-                "pitch": 1,
-                "fadeIn": 0,
-                "pan": 0,
-                "bus": "",
-                "soundName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/sfx/spin-start.mp3"
-                }
-              }
-            },
-            {
-              "id": "bonuss_025",
-              "title": "getGameModelProperty",
-              "x": 2120,
-              "y": 204,
-              "rootType": "properties",
-              "color": "#3498db",
-              "icon": "📖",
-              "properties": [
-                {
-                  "name": "propertyName",
-                  "type": "modelProperty",
-                  "propertyValue": "gameModel"
-                }
-              ],
-              "propertyValues": {
-                "propertyName": "reelSymbols"
-              }
-            },
-            {
-              "id": "bonuss_026",
-              "title": "spinReelsToGrid",
-              "displayName": "Land the grid",
-              "friendlyTitle": "Spin Reels To Grid",
-              "x": 2482,
-              "y": 120,
+              "id": "nxyuus62",
+              "title": "runCascade",
+              "displayName": "Cascade",
+              "x": 1116.0602202069922,
+              "y": 71.37175792350055,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1087,19 +237,33 @@
                   "sceneNodeType": "reels"
                 },
                 {
-                  "name": "grid",
-                  "type": "any",
-                  "default": ""
+                  "name": "locations",
+                  "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0],[0],[0],[0],[0]]"
                 },
                 {
-                  "name": "fillerSymbols",
-                  "type": "any",
-                  "default": ""
+                  "name": "outcome",
+                  "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
                 },
                 {
                   "name": "sequenceNodeOn",
                   "type": "string",
-                  "default": "onComplete",
+                  "default": "immediate",
                   "options": [
                     {
                       "value": "immediate",
@@ -1107,25 +271,14 @@
                     },
                     {
                       "value": "onComplete",
-                      "label": "On Complete (wait for the reels to land)"
+                      "label": "On Complete (wait for the cascade)"
                     }
                   ]
                 }
               ],
               "propertyValues": {
-                "grid": "",
-                "fillerSymbols": [
-                  2,
-                  3,
-                  4,
-                  5,
-                  6,
-                  7,
-                  8,
-                  9,
-                  10,
-                  11
-                ],
+                "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
+                "outcome": "",
                 "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
@@ -1136,116 +289,737 @@
               }
             },
             {
-              "id": "bonuss_042",
+              "id": "nqyjxbvh",
               "title": "Exit",
-              "x": 2844,
-              "y": 120,
+              "x": 1522.1547434253284,
+              "y": 114.52981849302793,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
+            },
+            {
+              "id": "niebzplq",
+              "title": "getGameModelProperty",
+              "x": 700.0069937252131,
+              "y": 204.47630675792342,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "displayReels"
+              }
             }
           ],
           "links": [
             {
-              "id": "l_bonuss_1",
-              "from": "bonuss_001",
-              "to": "bonuss_002",
+              "id": "l6gd9o7r",
+              "from": "ngoj25r0",
+              "to": "nxyuus62"
+            },
+            {
+              "id": "l4ge4dyq",
+              "from": "niebzplq",
+              "to": "nxyuus62",
+              "propertyType": "string",
+              "propertyName": "outcome"
+            },
+            {
+              "id": "laooyeu2",
+              "from": "nxyuus62",
+              "to": "nqyjxbvh"
+            }
+          ],
+          "groups": []
+        }
+      },
+      {
+        "id": "naqirlvw",
+        "title": "State",
+        "displayName": "Hotspot Selection",
+        "x": 433.39633210302395,
+        "y": 153.4073859330602,
+        "isState": true,
+        "entryTargetId": "nnwp6j0d",
+        "exitSourceId": "nfacfcp4",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "neivwzs2",
+              "title": "Entry",
+              "x": -284.2097928119654,
+              "y": -338.6544051623101,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "nu2qo2lc",
+              "title": "Exit",
+              "x": 1664.1102997395185,
+              "y": 123.86837938724369,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "nnwp6j0d",
+              "title": "getGameModelProperty",
+              "x": -1858.3995978396138,
+              "y": -181.63309424667483,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "splitSymbolDetails"
+              }
+            },
+            {
+              "id": "na6kd9h1",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -1202.0804683542797,
+              "y": -181.61186637470274,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "HighlightedPosition",
+                  "type": "ISplitSymbol[]",
+                  "path": "HighlightedPosition"
+                },
+                {
+                  "name": "Split",
+                  "type": "float",
+                  "path": "Split"
+                },
+                {
+                  "name": "Symbol",
+                  "type": "float",
+                  "path": "Symbol"
+                }
+              ]
+            },
+            {
+              "id": "n0rr0cdn",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1522.4089083170043,
+              "y": -182.68997449299997,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nvchlnr9",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -524.8372257432452,
+              "y": -172.2951745326397,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "Reel",
+                  "type": "float",
+                  "path": "Reel"
+                },
+                {
+                  "name": "Row",
+                  "type": "float",
+                  "path": "Row"
+                }
+              ]
+            },
+            {
+              "id": "nyfiant1",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -879.194880535747,
+              "y": -182.31747909954316,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "njdk8z3k",
+              "title": "toInt",
+              "x": -208.91759682388005,
+              "y": -173.7392343648822,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nsm0vnrw",
+              "title": "playAnimation",
+              "x": 843.4564323431736,
+              "y": -228.3403375601431,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotReel3"
+              }
+            },
+            {
+              "id": "nfacfcp4",
+              "title": "switch",
+              "x": 146.22289011822724,
+              "y": -321.18264657597,
+              "rootType": "switch",
+              "color": "#e67e22",
+              "icon": "🔢",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                },
+                {
+                  "name": "cases",
+                  "type": "TArray",
+                  "default": []
+                }
+              ],
+              "propertyValues": {
+                "cases": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            },
+            {
+              "id": "n334drom",
+              "title": "playAnimation",
+              "x": 681.4499913715213,
+              "y": 182.43835714961992,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotReel4"
+              }
+            },
+            {
+              "id": "nm4m2t6d",
+              "title": "playAnimation",
+              "x": 617.5982551897762,
+              "y": 596.946810231344,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotReel5"
+              }
+            },
+            {
+              "id": "nk4hleto",
+              "title": "playAnimation",
+              "x": 850.9539563631591,
+              "y": -594.8095800552496,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotReel2"
+              }
+            },
+            {
+              "id": "nzgxppxz",
+              "title": "playAnimation",
+              "x": 869.4690822081061,
+              "y": -973.182564616468,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspotReel1"
+              }
+            }
+          ],
+          "links": [
+            {
+              "id": "lrpqe5nr",
+              "from": "nnwp6j0d",
+              "to": "n0rr0cdn",
+              "propertyType": "TArray",
+              "propertyName": "array"
+            },
+            {
+              "id": "loyocxel",
+              "from": "n0rr0cdn",
+              "to": "na6kd9h1",
               "propertyType": "object",
               "propertyName": "source"
             },
             {
-              "id": "l_bonuss_9",
-              "from": "bonuss_002",
-              "to": "bonuss_022",
-              "propertyType": "T",
-              "propertyName": "part0",
-              "sourceOutputName": "remaining"
+              "id": "ld73wb7p",
+              "from": "na6kd9h1",
+              "to": "nyfiant1",
+              "propertyType": "TArray",
+              "propertyName": "array",
+              "sourceOutputName": "HighlightedPosition"
             },
             {
-              "id": "l_bonuss_10",
-              "from": "bonuss_002",
-              "to": "bonuss_022",
-              "propertyType": "T",
-              "propertyName": "part2",
-              "sourceOutputName": "total"
+              "id": "l2r0nxrl",
+              "from": "nyfiant1",
+              "to": "nvchlnr9",
+              "propertyType": "object",
+              "propertyName": "source"
             },
             {
-              "id": "l_bonuss_11",
-              "from": "bonuss_022",
-              "to": "bonuss_023",
-              "propertyType": "string",
+              "id": "lb3p2nc2",
+              "from": "nvchlnr9",
+              "to": "njdk8z3k",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Reel"
+            },
+            {
+              "id": "lpt8a21q",
+              "from": "njdk8z3k",
+              "to": "nfacfcp4",
+              "propertyType": "T",
               "propertyName": "value"
             },
             {
-              "id": "l_bonuss_12",
-              "from": "bonuss_025",
-              "to": "bonuss_026",
-              "propertyType": "any",
-              "propertyName": "grid"
+              "id": "lusc3tzt",
+              "from": "nfacfcp4",
+              "to": "nzgxppxz",
+              "outIdx": 0
             },
             {
-              "id": "l_bonuss_34",
-              "from": "bonuss_023",
-              "to": "bonuss_024"
+              "id": "lejwmm77",
+              "from": "nfacfcp4",
+              "to": "nk4hleto",
+              "outIdx": 1
             },
             {
-              "id": "l_bonuss_35",
-              "from": "bonuss_024",
-              "to": "bonuss_026"
+              "id": "lrxikabu",
+              "from": "nfacfcp4",
+              "to": "nsm0vnrw",
+              "outIdx": 2
             },
             {
-              "id": "l_bonuss_36",
-              "from": "bonuss_041",
-              "to": "bonuss_023"
+              "id": "lcqhkkxn",
+              "from": "nfacfcp4",
+              "to": "n334drom",
+              "outIdx": 3
             },
             {
-              "id": "l_bonuss_37",
-              "from": "bonuss_026",
-              "to": "bonuss_042"
+              "id": "l1wwg114",
+              "from": "nfacfcp4",
+              "to": "nm4m2t6d",
+              "outIdx": 4
+            },
+            {
+              "id": "l11c2mxg",
+              "from": "nfacfcp4",
+              "to": "nzgxppxz",
+              "outIdx": -1
+            },
+            {
+              "id": "leejan67",
+              "from": "nzgxppxz",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "loz4e8gy",
+              "from": "nk4hleto",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "lqye7qgv",
+              "from": "nsm0vnrw",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "lglawe2w",
+              "from": "n334drom",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "lt81j063",
+              "from": "nm4m2t6d",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "lyb1it83",
+              "from": "neivwzs2",
+              "to": "nfacfcp4"
             }
           ],
           "groups": []
+        }
+      },
+      {
+        "id": "nh466c9z",
+        "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
+        "x": -334.4341262479628,
+        "y": 96.27683016439818,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusStart"
         }
       }
     ],
     "links": [
       {
-        "id": "l_bonuss_15",
-        "from": "bonuss_028",
-        "to": "bonuss_031"
+        "id": "lso9gp9w",
+        "from": "nzelkdw4",
+        "to": "naqirlvw"
       },
       {
-        "id": "l_bonuss_21",
-        "from": "bonuss_031",
-        "to": "bonuss_034"
-      },
-      {
-        "id": "l_bonuss_30",
-        "from": "bonuss_034",
-        "to": "bonuss_037"
-      },
-      {
-        "id": "l_bonuss_33",
+        "id": "ll9ucb8w",
         "from": "bonuss_037",
-        "to": "bonuss_040"
+        "to": "nzelkdw4"
       },
       {
-        "id": "l_bonuss_38",
-        "from": "bonuss_040",
+        "id": "lyqr3zu2",
+        "from": "naqirlvw",
         "to": "bonuss_027"
       },
       {
-        "id": "l_bonuss_39",
-        "from": "bonuss_004",
-        "to": "bonuss_028"
+        "id": "lbhzuekw",
+        "from": "nh466c9z",
+        "to": "bonuss_037"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": 441.3156212601571,
+      "panY": 152.05280699676416,
+      "scale": 0.7105639305633891
     }
   }
 }

@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "bonust_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "3+ BONUS on the settled board: name the award, pulse the BONUS symbols, bank any 1,000x prize, then enter free spins."
-    },
-    {
       "id": "bonust_005",
       "title": "onCustomEvent",
       "rootType": "StarterNodes",
@@ -16,36 +9,6 @@
           "name": "eventName",
           "type": "customEventRef",
           "value": "bonusTrigger"
-        }
-      ]
-    },
-    {
-      "id": "bonust_012",
-      "title": "greaterThan",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "float",
-          "sourceNodeId": "bonust_046",
-          "sourceOutputName": "scatter"
-        },
-        {
-          "name": "b",
-          "type": "float",
-          "value": 0
-        }
-      ]
-    },
-    {
-      "id": "bonust_013",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "bonust_012"
         }
       ]
     },
@@ -79,1378 +42,280 @@
       ]
     },
     {
-      "id": "bonust_035",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "bonust_007",
-      "exitSourceId": "bonust_008",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "bonust_036",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "bonust_006",
-            "title": "stringBuilder",
-            "rootType": "string",
-            "properties": [
-              {
-                "name": "part0",
-                "type": "T",
-                "sourceNodeId": "bonust_044",
-                "sourceOutputName": "tier"
-              },
-              {
-                "name": "part1",
-                "type": "T",
-                "value": " BONUS - "
-              },
-              {
-                "name": "part2",
-                "type": "T",
-                "sourceNodeId": "bonust_044",
-                "sourceOutputName": "spins"
-              },
-              {
-                "name": "part3",
-                "type": "T",
-                "value": " FREE SPINS"
-              }
-            ]
-          },
-          {
-            "id": "bonust_007",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": null
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "sourceNodeId": "bonust_006"
-              }
-            ]
-          },
-          {
-            "id": "bonust_008",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/bonus-trigger.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.9
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "bonust_044",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "bonust_045"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "tier",
-                "type": "int",
-                "path": "BonusTier"
-              },
-              {
-                "name": "spins",
-                "type": "int",
-                "path": "FreeSpins"
-              },
-              {
-                "name": "positions",
-                "type": "ObjectArray",
-                "path": "BonusPositions"
-              },
-              {
-                "name": "scatter",
-                "type": "int",
-                "path": "ScatterAward"
-              },
-              {
-                "name": "after",
-                "type": "int",
-                "path": "WinAfterScatter"
-              }
-            ]
-          },
-          {
-            "id": "bonust_045",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "roundInfo"
-              }
-            ]
-          },
-          {
-            "id": "bonust_037",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_bonust_4",
-            "from": "bonust_044",
-            "to": "bonust_006",
-            "propertyType": "T",
-            "propertyName": "part0",
-            "sourceOutputName": "tier"
-          },
-          {
-            "id": "l_bonust_5",
-            "from": "bonust_044",
-            "to": "bonust_006",
-            "propertyType": "T",
-            "propertyName": "part2",
-            "sourceOutputName": "spins"
-          },
-          {
-            "id": "l_bonust_6",
-            "from": "bonust_006",
-            "to": "bonust_007",
-            "propertyType": "string",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_bonust_18",
-            "from": "bonust_007",
-            "to": "bonust_008"
-          },
-          {
-            "id": "l_bonust_19",
-            "from": "bonust_036",
-            "to": "bonust_007"
-          },
-          {
-            "id": "l_bonust_20",
-            "from": "bonust_008",
-            "to": "bonust_037"
-          },
-          {
-            "id": "l_bonust_50",
-            "from": "bonust_045",
-            "to": "bonust_044",
-            "propertyType": "object",
-            "propertyName": "source"
-          }
-        ]
-      }
+      "id": "n8qlbhx4",
+      "title": "onEnterBonusRound",
+      "rootType": "StarterNodes"
     },
     {
-      "id": "bonust_038",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "bonust_003",
-      "exitSourceId": "bonust_003",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "bonust_039",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "bonust_001",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "roundInfo"
-              }
-            ]
-          },
-          {
-            "id": "bonust_002",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "bonust_001"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "tier",
-                "type": "int",
-                "path": "BonusTier"
-              },
-              {
-                "name": "spins",
-                "type": "int",
-                "path": "FreeSpins"
-              },
-              {
-                "name": "positions",
-                "type": "ObjectArray",
-                "path": "BonusPositions"
-              },
-              {
-                "name": "scatter",
-                "type": "int",
-                "path": "ScatterAward"
-              },
-              {
-                "name": "after",
-                "type": "int",
-                "path": "WinAfterScatter"
-              }
-            ]
-          },
-          {
-            "id": "bonust_003",
-            "title": "loop",
-            "rootType": "loop",
-            "properties": [
-              {
-                "name": "items",
-                "type": "TArray",
-                "sourceNodeId": "bonust_002",
-                "sourceOutputName": "positions"
-              },
-              {
-                "name": "count",
-                "type": "int",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "bonust_004",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "bonust_003",
-                "sourceOutputName": "item"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "reel",
-                "type": "int",
-                "path": "Reel"
-              },
-              {
-                "name": "row",
-                "type": "int",
-                "path": "Row"
-              }
-            ]
-          },
-          {
-            "id": "bonust_009",
-            "title": "getReelSymbolNode",
-            "rootType": "getters",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "sourceNodeId": "bonust_004",
-                "sourceOutputName": "reel"
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "sourceNodeId": "bonust_004",
-                "sourceOutputName": "row"
-              }
-            ]
-          },
-          {
-            "id": "bonust_010",
-            "title": "tweenNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "bonust_009"
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 1.25
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 1.25
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 180
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "bonust_011",
-            "title": "tweenNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "bonust_009"
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 220
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "back.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "bonust_040",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_bonust_1",
-            "from": "bonust_001",
-            "to": "bonust_002",
-            "propertyType": "object",
-            "propertyName": "source"
-          },
-          {
-            "id": "l_bonust_2",
-            "from": "bonust_002",
-            "to": "bonust_003",
-            "propertyType": "TArray",
-            "propertyName": "items",
-            "sourceOutputName": "positions"
-          },
-          {
-            "id": "l_bonust_3",
-            "from": "bonust_003",
-            "to": "bonust_004",
-            "propertyType": "object",
-            "propertyName": "source",
-            "sourceOutputName": "item"
-          },
-          {
-            "id": "l_bonust_7",
-            "from": "bonust_004",
-            "to": "bonust_009",
-            "propertyType": "int",
-            "propertyName": "reelIndex",
-            "sourceOutputName": "reel"
-          },
-          {
-            "id": "l_bonust_8",
-            "from": "bonust_004",
-            "to": "bonust_009",
-            "propertyType": "int",
-            "propertyName": "rowIndex",
-            "sourceOutputName": "row"
-          },
-          {
-            "id": "l_bonust_9",
-            "from": "bonust_009",
-            "to": "bonust_010",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l_bonust_10",
-            "from": "bonust_009",
-            "to": "bonust_011",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l_bonust_22",
-            "from": "bonust_010",
-            "to": "bonust_011"
-          },
-          {
-            "id": "l_bonust_23",
-            "from": "bonust_003",
-            "to": "bonust_010",
-            "outIdx": 0
-          },
-          {
-            "id": "l_bonust_24",
-            "from": "bonust_039",
-            "to": "bonust_003"
-          },
-          {
-            "id": "l_bonust_25",
-            "from": "bonust_003",
-            "to": "bonust_040",
-            "outIdx": 1
-          }
-        ]
-      }
-    },
-    {
-      "id": "bonust_041",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "bonust_014",
-      "exitSourceId": "bonust_032",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "bonust_042",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "bonust_014",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win_title",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "value": "5 BONUS"
-              }
-            ]
-          },
-          {
-            "id": "bonust_015",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win_sub",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "value": "SCATTER PRIZE"
-              }
-            ]
-          },
-          {
-            "id": "bonust_016",
-            "title": "formatMoney",
-            "rootType": "Info & UI",
-            "properties": [
-              {
-                "name": "amount",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "rounded",
-                "type": "bool",
-                "value": false
-              }
-            ]
-          },
-          {
-            "id": "bonust_017",
-            "title": "setText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win_amount",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "value",
-                "type": "string",
-                "sourceNodeId": "bonust_016"
-              }
-            ]
-          },
-          {
-            "id": "bonust_018",
-            "title": "setNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "bonust_019",
-            "title": "setNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 0.92
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 0.92
-              }
-            ]
-          },
-          {
-            "id": "bonust_020",
-            "title": "showNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            ]
-          },
-          {
-            "id": "bonust_021",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/win-big.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.8
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "bonust_022",
-            "title": "tweenNodeScale",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "scaleX",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "scaleY",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 360
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "back.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          },
-          {
-            "id": "bonust_023",
-            "title": "tweenNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 260
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "bonust_024",
-            "title": "countUpText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win_amount",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "from",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "to",
-                "type": "float",
-                "sourceNodeId": "bonust_048",
-                "sourceOutputName": "scatter"
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 2000
-              },
-              {
-                "name": "format",
-                "type": "string",
-                "value": "currency"
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          },
-          {
-            "id": "bonust_025",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "winAmountSoFar"
-              }
-            ]
-          },
-          {
-            "id": "bonust_026",
-            "title": "countUpText",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_win_amount",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "from",
-                "type": "float",
-                "sourceNodeId": "bonust_025"
-              },
-              {
-                "name": "to",
-                "type": "float",
-                "sourceNodeId": "bonust_048",
-                "sourceOutputName": "after"
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 2000
-              },
-              {
-                "name": "format",
-                "type": "string",
-                "value": "currency"
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.out"
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "bonust_027",
-            "title": "setGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "winAmountSoFar"
-              },
-              {
-                "name": "value",
-                "type": "dynamic",
-                "sourceNodeId": "bonust_048",
-                "sourceOutputName": "after"
-              }
-            ]
-          },
-          {
-            "id": "bonust_028",
-            "title": "playSound",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "soundName",
-                "type": "audioRef",
-                "value": "core/assets/audio/sfx/cash-land.mp3"
-              },
-              {
-                "name": "volume",
-                "type": "float",
-                "value": 0.8
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "pitch",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "fadeIn",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "pan",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "bus",
-                "type": "string",
-                "value": ""
-              }
-            ]
-          },
-          {
-            "id": "bonust_029",
-            "title": "delay",
-            "rootType": "delay",
-            "properties": [
-              {
-                "name": "seconds",
-                "type": "float",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "bonust_030",
-            "title": "tweenNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 0
-              },
-              {
-                "name": "durationMS",
-                "type": "int",
-                "value": 220
-              },
-              {
-                "name": "ease",
-                "type": "string",
-                "value": "power2.in"
-              },
-              {
-                "name": "easeStrength",
-                "type": "float",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "bonust_031",
-            "title": "hideNode",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            ]
-          },
-          {
-            "id": "bonust_032",
-            "title": "setNodeAlpha",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_big_win",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "alpha",
-                "type": "float",
-                "value": 1
-              }
-            ]
-          },
-          {
-            "id": "bonust_048",
-            "title": "parseObject",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "bonust_049"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "tier",
-                "type": "int",
-                "path": "BonusTier"
-              },
-              {
-                "name": "spins",
-                "type": "int",
-                "path": "FreeSpins"
-              },
-              {
-                "name": "positions",
-                "type": "ObjectArray",
-                "path": "BonusPositions"
-              },
-              {
-                "name": "scatter",
-                "type": "int",
-                "path": "ScatterAward"
-              },
-              {
-                "name": "after",
-                "type": "int",
-                "path": "WinAfterScatter"
-              }
-            ]
-          },
-          {
-            "id": "bonust_049",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "roundInfo"
-              }
-            ]
-          },
-          {
-            "id": "bonust_043",
-            "title": "Exit",
-            "isExit": true
-          }
-        ],
-        "links": [
-          {
-            "id": "l_bonust_13",
-            "from": "bonust_016",
-            "to": "bonust_017",
-            "propertyType": "string",
-            "propertyName": "value"
-          },
-          {
-            "id": "l_bonust_14",
-            "from": "bonust_048",
-            "to": "bonust_024",
-            "propertyType": "float",
-            "propertyName": "to",
-            "sourceOutputName": "scatter"
-          },
-          {
-            "id": "l_bonust_15",
-            "from": "bonust_025",
-            "to": "bonust_026",
-            "propertyType": "float",
-            "propertyName": "from"
-          },
-          {
-            "id": "l_bonust_16",
-            "from": "bonust_048",
-            "to": "bonust_026",
-            "propertyType": "float",
-            "propertyName": "to",
-            "sourceOutputName": "after"
-          },
-          {
-            "id": "l_bonust_17",
-            "from": "bonust_048",
-            "to": "bonust_027",
-            "propertyType": "dynamic",
-            "propertyName": "value",
-            "sourceOutputName": "after"
-          },
-          {
-            "id": "l_bonust_26",
-            "from": "bonust_014",
-            "to": "bonust_015"
-          },
-          {
-            "id": "l_bonust_27",
-            "from": "bonust_015",
-            "to": "bonust_017"
-          },
-          {
-            "id": "l_bonust_28",
-            "from": "bonust_017",
-            "to": "bonust_018"
-          },
-          {
-            "id": "l_bonust_29",
-            "from": "bonust_018",
-            "to": "bonust_019"
-          },
-          {
-            "id": "l_bonust_30",
-            "from": "bonust_019",
-            "to": "bonust_020"
-          },
-          {
-            "id": "l_bonust_31",
-            "from": "bonust_020",
-            "to": "bonust_021"
-          },
-          {
-            "id": "l_bonust_32",
-            "from": "bonust_021",
-            "to": "bonust_022"
-          },
-          {
-            "id": "l_bonust_33",
-            "from": "bonust_022",
-            "to": "bonust_023"
-          },
-          {
-            "id": "l_bonust_34",
-            "from": "bonust_023",
-            "to": "bonust_024"
-          },
-          {
-            "id": "l_bonust_35",
-            "from": "bonust_024",
-            "to": "bonust_026"
-          },
-          {
-            "id": "l_bonust_36",
-            "from": "bonust_026",
-            "to": "bonust_027"
-          },
-          {
-            "id": "l_bonust_37",
-            "from": "bonust_027",
-            "to": "bonust_028"
-          },
-          {
-            "id": "l_bonust_38",
-            "from": "bonust_028",
-            "to": "bonust_029"
-          },
-          {
-            "id": "l_bonust_39",
-            "from": "bonust_029",
-            "to": "bonust_030"
-          },
-          {
-            "id": "l_bonust_40",
-            "from": "bonust_030",
-            "to": "bonust_031"
-          },
-          {
-            "id": "l_bonust_41",
-            "from": "bonust_031",
-            "to": "bonust_032"
-          },
-          {
-            "id": "l_bonust_42",
-            "from": "bonust_042",
-            "to": "bonust_014"
-          },
-          {
-            "id": "l_bonust_43",
-            "from": "bonust_032",
-            "to": "bonust_043"
-          },
-          {
-            "id": "l_bonust_52",
-            "from": "bonust_049",
-            "to": "bonust_048",
-            "propertyType": "object",
-            "propertyName": "source"
-          }
-        ]
-      }
-    },
-    {
-      "id": "bonust_046",
-      "title": "parseObject",
-      "rootType": "objectOps",
+      "id": "n5vsn9ck",
+      "title": "playAnimation",
+      "rootType": "Action",
       "properties": [
         {
-          "name": "source",
-          "type": "object",
-          "sourceNodeId": "bonust_047"
-        }
-      ],
-      "outputs": [
-        {
-          "name": "tier",
-          "type": "int",
-          "path": "BonusTier"
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791298581468_z4rigcjll",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
         },
         {
-          "name": "spins",
-          "type": "int",
-          "path": "FreeSpins"
+          "name": "animationName",
+          "type": "string",
+          "value": "BaseToBonus"
         },
         {
-          "name": "positions",
-          "type": "ObjectArray",
-          "path": "BonusPositions"
+          "name": "loop",
+          "type": "bool",
+          "value": false
         },
         {
-          "name": "scatter",
+          "name": "trackIndex",
           "type": "int",
-          "path": "ScatterAward"
+          "value": 0
         },
         {
-          "name": "after",
-          "type": "int",
-          "path": "WinAfterScatter"
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
         }
       ]
     },
     {
-      "id": "bonust_047",
-      "title": "getGameModelProperty",
+      "id": "nfif4ycm",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "transition/BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "nimumjxz",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791292732465_cieppe22a",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "ngherq9m",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791293688069_efpsdyk4c",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "nmkr6ov8",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_bonus_bg",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "n73y7a6t",
+      "title": "setGameModelProperty",
       "rootType": "properties",
       "properties": [
         {
           "name": "propertyName",
           "type": "modelProperty",
-          "value": "roundInfo"
+          "value": "isInBonusRound"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "nwf68o3c",
+      "title": "hideCabinet",
+      "rootType": "Action"
+    },
+    {
+      "id": "n3473a3p",
+      "title": "showCabinet",
+      "rootType": "Action"
+    },
+    {
+      "id": "nesw0bts",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.5
         }
       ]
     }
   ],
   "links": [
     {
-      "id": "l_bonust_11",
-      "from": "bonust_046",
-      "to": "bonust_012",
-      "propertyType": "float",
-      "propertyName": "a",
-      "sourceOutputName": "scatter"
-    },
-    {
-      "id": "l_bonust_12",
-      "from": "bonust_012",
-      "to": "bonust_013",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
-      "id": "l_bonust_21",
-      "from": "bonust_035",
-      "to": "bonust_038"
-    },
-    {
-      "id": "l_bonust_44",
-      "from": "bonust_038",
-      "to": "bonust_013"
-    },
-    {
-      "id": "l_bonust_45",
-      "from": "bonust_013",
-      "to": "bonust_041",
-      "outIdx": 0
-    },
-    {
-      "id": "l_bonust_46",
-      "from": "bonust_041",
+      "id": "ljol3aqz",
+      "from": "bonust_005",
       "to": "bonust_033"
     },
     {
-      "id": "l_bonust_47",
-      "from": "bonust_013",
-      "to": "bonust_033",
-      "outIdx": 1
+      "id": "lctcmlm8",
+      "from": "n5vsn9ck",
+      "to": "nfif4ycm"
     },
     {
-      "id": "l_bonust_48",
+      "id": "lpucz67m",
+      "from": "nfif4ycm",
+      "to": "nimumjxz"
+    },
+    {
+      "id": "lkpdfkyp",
+      "from": "nimumjxz",
+      "to": "nmkr6ov8"
+    },
+    {
+      "id": "lzzzerze",
+      "from": "nmkr6ov8",
+      "to": "ngherq9m"
+    },
+    {
+      "id": "lq18fj4c",
+      "from": "ngherq9m",
+      "to": "n73y7a6t"
+    },
+    {
+      "id": "lm8zr8ds",
+      "from": "n73y7a6t",
+      "to": "n3473a3p"
+    },
+    {
+      "id": "loitjohz",
+      "from": "n8qlbhx4",
+      "to": "nwf68o3c"
+    },
+    {
+      "id": "l8as1qqo",
       "from": "bonust_033",
+      "to": "nwf68o3c"
+    },
+    {
+      "id": "lmiizt9p",
+      "from": "nwf68o3c",
+      "to": "n5vsn9ck"
+    },
+    {
+      "id": "l9quskbv",
+      "from": "n3473a3p",
+      "to": "nesw0bts"
+    },
+    {
+      "id": "lfmcu9jn",
+      "from": "nesw0bts",
       "to": "bonust_034"
-    },
-    {
-      "id": "l_bonust_49",
-      "from": "bonust_005",
-      "to": "bonust_035"
-    },
-    {
-      "id": "l_bonust_51",
-      "from": "bonust_047",
-      "to": "bonust_046",
-      "propertyType": "object",
-      "propertyName": "source"
     }
   ]
 }

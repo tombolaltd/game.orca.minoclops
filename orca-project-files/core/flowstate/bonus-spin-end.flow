@@ -4,21 +4,10 @@
   "graph": {
     "nodes": [
       {
-        "id": "bonuss_note",
-        "title": "Note",
-        "x": 80,
-        "y": -164,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "Short pause between free spins, then the next spin or the end of the bonus.",
-        "width": 620,
-        "height": 210
-      },
-      {
         "id": "bonuss_001",
         "title": "getGameModelProperty",
-        "x": 804,
-        "y": 204,
+        "x": 99.749516132287,
+        "y": 319.32843129980836,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -30,32 +19,8 @@
           }
         ],
         "propertyValues": {
-          "propertyName": "roundInfo"
+          "propertyName": "bonusSpinsRemaining"
         }
-      },
-      {
-        "id": "bonuss_002",
-        "title": "parseObject",
-        "friendlyTitle": "Parse Object",
-        "x": 1166,
-        "y": 204,
-        "rootType": "objectOps",
-        "color": "#607d8b",
-        "icon": "🔎",
-        "properties": [
-          {
-            "name": "source",
-            "type": "object"
-          }
-        ],
-        "propertyValues": {},
-        "outputs": [
-          {
-            "name": "complete",
-            "type": "bool",
-            "path": "GameComplete"
-          }
-        ]
       },
       {
         "id": "bonuss_003",
@@ -99,31 +64,11 @@
         }
       },
       {
-        "id": "bonuss_005",
-        "title": "not",
-        "friendlyTitle": "NOT",
-        "x": 1528,
-        "y": 204,
-        "rootType": "logic",
-        "color": "#3f51b5",
-        "icon": "!",
-        "properties": [
-          {
-            "name": "value",
-            "type": "bool",
-            "default": false
-          }
-        ],
-        "propertyValues": {
-          "value": false
-        }
-      },
-      {
         "id": "bonuss_006",
         "title": "branch",
         "displayName": "Spins left?",
-        "x": 1890,
-        "y": 120,
+        "x": 862.5853615084341,
+        "y": 127.93370377213566,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -141,8 +86,8 @@
       {
         "id": "bonuss_007",
         "title": "fireCustomEvent",
-        "x": 2252,
-        "y": 120,
+        "x": 1224.585361508434,
+        "y": 127.93370377213566,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -165,8 +110,8 @@
       {
         "id": "bonuss_008",
         "title": "fireCustomEvent",
-        "x": 2252,
-        "y": 443,
+        "x": 1224.585361508434,
+        "y": 450.9337037721357,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -185,31 +130,29 @@
           "eventName": "bonusEnd",
           "propertyNames": []
         }
+      },
+      {
+        "id": "ns16ica8",
+        "title": "greaterThan",
+        "x": 435.2166116964777,
+        "y": 322.0399627280498,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ]
       }
     ],
     "links": [
-      {
-        "id": "l_bonuss_1",
-        "from": "bonuss_001",
-        "to": "bonuss_002",
-        "propertyType": "object",
-        "propertyName": "source"
-      },
-      {
-        "id": "l_bonuss_2",
-        "from": "bonuss_002",
-        "to": "bonuss_005",
-        "propertyType": "bool",
-        "propertyName": "value",
-        "sourceOutputName": "complete"
-      },
-      {
-        "id": "l_bonuss_3",
-        "from": "bonuss_005",
-        "to": "bonuss_006",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
       {
         "id": "l_bonuss_4",
         "from": "bonuss_004",
@@ -231,14 +174,28 @@
         "id": "l_bonuss_7",
         "from": "bonuss_003",
         "to": "bonuss_004"
+      },
+      {
+        "id": "lb58frpy",
+        "from": "bonuss_001",
+        "to": "ns16ica8",
+        "propertyType": "float",
+        "propertyName": "a"
+      },
+      {
+        "id": "lv65l5ie",
+        "from": "ns16ica8",
+        "to": "bonuss_006",
+        "propertyType": "bool",
+        "propertyName": "condition"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -107.16576951793127,
+      "panY": 156.00619031907513,
+      "scale": 0.7002445668345125
     }
   }
 }

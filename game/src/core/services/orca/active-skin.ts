@@ -9,10 +9,10 @@ export interface OrcaSkinTableEntry {
 }
 
 export const SKIN_TABLE: Record<string, OrcaSkinTableEntry> = {
-    'samsplit': { realName: 'samsplit', entrySceneName: 'main', entrySceneScope: 'core', isJackpot: false },
+    'minoclop': { realName: 'samsplit', entrySceneName: 'main', entrySceneScope: 'core', isJackpot: false },
 };
 
-export const DEFAULT_SKIN: string = 'samsplit';
+export const DEFAULT_SKIN: string = 'minoclop';
 
 export const ACTIVE_SKIN: string = resolveSkinFolder(SKIN_TABLE, DEFAULT_SKIN);
 export const ACTIVE_SKIN_NAME: string = SKIN_TABLE[ACTIVE_SKIN]?.realName ?? ACTIVE_SKIN;
