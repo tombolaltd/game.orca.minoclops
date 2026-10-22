@@ -32,7 +32,8 @@
     "bonus-trigger",
     "bonus-spin",
     "bonus-spin-end",
-    "bonus-end"
+    "bonus-end",
+    "Character-split"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -107,6 +108,16 @@
     {
       "name": "settleRound",
       "description": "Round over: big-win ladder, cabinet message, end the game."
+    },
+    {
+      "name": "symbolsSplitting",
+      "description": "when the symbols split. Either a 2x split or a 3x split",
+      "passProps": [
+        {
+          "name": "splitAmount",
+          "type": "int"
+        }
+      ]
     }
   ],
   "serverConnectionMapping": {
@@ -169,10 +180,7 @@
       "id": "splitting-folder-1",
       "name": "Boot & UI",
       "graphs": [
-        "game-boot",
-        "reel-stop-sfx",
-        "tutorial",
-        "help-popup"
+        "game-boot"
       ]
     },
     {
@@ -180,25 +188,32 @@
       "name": "Base round",
       "graphs": [
         "round-start",
-        "bonus-tease",
         "split-reveal",
         "show-step",
         "cascade-step",
         "steps-done",
         "settle-round"
-      ]
+      ],
+      "collapsed": false
     },
     {
       "id": "splitting-folder-3",
       "name": "Free spins",
       "graphs": [
         "bonus-trigger",
-        "bonus-start",
         "bonus-spin",
-        "bonus-split",
         "bonus-spin-end",
         "bonus-end"
-      ]
+      ],
+      "collapsed": false
+    },
+    {
+      "id": "folder-1792663262025-q0vc50",
+      "name": "Character",
+      "graphs": [
+        "Character-split"
+      ],
+      "collapsed": false
     }
   ],
   "migrations": {
@@ -214,6 +229,10 @@
       "key": "ReelStops",
       "type": "int[]",
       "description": "Base-game reel stop positions."
+    },
+    {
+      "key": "DebugField1",
+      "type": "int"
     }
   ]
 }

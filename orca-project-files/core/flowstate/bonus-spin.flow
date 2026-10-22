@@ -382,7 +382,7 @@
         "y": 126.499143657431,
         "isState": true,
         "entryTargetId": "nnwp6j0d",
-        "exitSourceId": "nfacfcp4",
+        "exitSourceId": "n1fuz9ox",
         "subgraph": {
           "nodes": [
             {
@@ -397,8 +397,8 @@
             {
               "id": "nu2qo2lc",
               "title": "Exit",
-              "x": 1587.255326153717,
-              "y": 128.99204429296378,
+              "x": 1732.5045828771295,
+              "y": 243.73138028408283,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -887,6 +887,26 @@
                 },
                 "animationName": "hotspotReel1"
               }
+            },
+            {
+              "id": "n1fuz9ox",
+              "title": "delay",
+              "friendlyTitle": "Wait",
+              "x": 1396.7972117654558,
+              "y": 255.27392304577563,
+              "rootType": "delay",
+              "color": "#8e44ad",
+              "icon": "⏱️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "seconds",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "seconds": 0.5
+              }
             }
           ],
           "links": [
@@ -971,34 +991,39 @@
               "outIdx": -1
             },
             {
-              "id": "leejan67",
-              "from": "nzgxppxz",
-              "to": "nu2qo2lc"
-            },
-            {
-              "id": "loz4e8gy",
-              "from": "nk4hleto",
-              "to": "nu2qo2lc"
-            },
-            {
-              "id": "lqye7qgv",
-              "from": "nsm0vnrw",
-              "to": "nu2qo2lc"
-            },
-            {
-              "id": "lglawe2w",
-              "from": "n334drom",
-              "to": "nu2qo2lc"
-            },
-            {
-              "id": "lt81j063",
-              "from": "nm4m2t6d",
-              "to": "nu2qo2lc"
-            },
-            {
               "id": "lyb1it83",
               "from": "neivwzs2",
               "to": "nfacfcp4"
+            },
+            {
+              "id": "lpg3gr5c",
+              "from": "n1fuz9ox",
+              "to": "nu2qo2lc"
+            },
+            {
+              "id": "lb2w096h",
+              "from": "nzgxppxz",
+              "to": "n1fuz9ox"
+            },
+            {
+              "id": "l2ggcoh3",
+              "from": "nk4hleto",
+              "to": "n1fuz9ox"
+            },
+            {
+              "id": "lc7bzsjy",
+              "from": "nsm0vnrw",
+              "to": "n1fuz9ox"
+            },
+            {
+              "id": "lsts2gl9",
+              "from": "n334drom",
+              "to": "n1fuz9ox"
+            },
+            {
+              "id": "l129fg9h",
+              "from": "nm4m2t6d",
+              "to": "n1fuz9ox"
             }
           ],
           "groups": []
@@ -1340,9 +1365,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 577.659958940939,
-      "panY": 203.09101774746017,
-      "scale": 0.6583801332728739
+      "panX": 99.02806637127037,
+      "panY": 407.611259087475,
+      "scale": 0.5123618004030133
     }
   }
 }

@@ -252,7 +252,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "nnwp6j0d",
-      "exitSourceId": "nfacfcp4",
+      "exitSourceId": "n1fuz9ox",
       "subgraph": {
         "nodes": [
           {
@@ -585,6 +585,18 @@
                 "value": "onComplete"
               }
             ]
+          },
+          {
+            "id": "n1fuz9ox",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 0.5
+              }
+            ]
           }
         ],
         "links": [
@@ -669,34 +681,39 @@
             "outIdx": -1
           },
           {
-            "id": "leejan67",
-            "from": "nzgxppxz",
-            "to": "nu2qo2lc"
-          },
-          {
-            "id": "loz4e8gy",
-            "from": "nk4hleto",
-            "to": "nu2qo2lc"
-          },
-          {
-            "id": "lqye7qgv",
-            "from": "nsm0vnrw",
-            "to": "nu2qo2lc"
-          },
-          {
-            "id": "lglawe2w",
-            "from": "n334drom",
-            "to": "nu2qo2lc"
-          },
-          {
-            "id": "lt81j063",
-            "from": "nm4m2t6d",
-            "to": "nu2qo2lc"
-          },
-          {
             "id": "lyb1it83",
             "from": "neivwzs2",
             "to": "nfacfcp4"
+          },
+          {
+            "id": "lpg3gr5c",
+            "from": "n1fuz9ox",
+            "to": "nu2qo2lc"
+          },
+          {
+            "id": "lb2w096h",
+            "from": "nzgxppxz",
+            "to": "n1fuz9ox"
+          },
+          {
+            "id": "l2ggcoh3",
+            "from": "nk4hleto",
+            "to": "n1fuz9ox"
+          },
+          {
+            "id": "lc7bzsjy",
+            "from": "nsm0vnrw",
+            "to": "n1fuz9ox"
+          },
+          {
+            "id": "lsts2gl9",
+            "from": "n334drom",
+            "to": "n1fuz9ox"
+          },
+          {
+            "id": "l129fg9h",
+            "from": "nm4m2t6d",
+            "to": "n1fuz9ox"
           }
         ]
       }

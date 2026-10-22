@@ -1,0 +1,143 @@
+{
+  "nodes": [
+    {
+      "id": "n1p0g3rz",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "symbolsSplitting"
+        }
+      ]
+    },
+    {
+      "id": "nwtk7yr8",
+      "title": "switch",
+      "rootType": "switch",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "n1p0g3rz",
+          "sourceOutputName": "splitAmount"
+        },
+        {
+          "name": "cases",
+          "type": "TArray",
+          "value": [
+            2,
+            3
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nkq9oo01",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "slice2x"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "ngnxopfl",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "slice3x"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "lw8dhnng",
+      "from": "n1p0g3rz",
+      "to": "nwtk7yr8"
+    },
+    {
+      "id": "lepeigca",
+      "from": "n1p0g3rz",
+      "to": "nwtk7yr8",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "splitAmount"
+    },
+    {
+      "id": "l7g5dq1l",
+      "from": "nwtk7yr8",
+      "to": "nkq9oo01"
+    },
+    {
+      "id": "lm5pntbg",
+      "from": "nwtk7yr8",
+      "to": "ngnxopfl",
+      "outIdx": 1
+    },
+    {
+      "id": "lg2qcgv6",
+      "from": "nwtk7yr8",
+      "to": "nkq9oo01",
+      "outIdx": -1
+    }
+  ]
+}
