@@ -5,17 +5,34 @@ filter: Linear, Linear
 repeat: none
 pma: false
 bonus/back
-  bounds: 3, 3671, 250, 250
-bonus/circle
-  bounds: 3, 3925, 146, 146
-bonus/Clouids
-  bounds: 3008, 3, 3001, 587
+  bounds: 520, 3278, 250, 250
+bonus/backSection
+  bounds: 2200, 7, 1686, 900
+bonus/cloudBottomTr
+  bounds: 7, 1678, 1929, 410
+  offsets: 1, 0, 1930, 410
+bonus/cloudMidTr
+  bounds: 1652, 2110, 1075, 334
+  offsets: 7, 0, 1082, 334
   rotate: 90
-bonus/Foreground
-  bounds: 3, 3, 3001, 1660
+bonus/Clouids copy
+  bounds: 7, 7, 2171, 520
+  offsets: 0, 0, 2184, 525
+bonus/dust1
+  bounds: 520, 2110, 1146, 1110
+  offsets: 19, 90, 1200, 1200
+  rotate: 90
+bonus/frontL
+  bounds: 1542, 3278, 1091, 627
+bonus/frontR
+  bounds: 7, 3567, 691, 519
 bonus/Maze
-  bounds: 3599, 3, 1435, 491
+  bounds: 7, 2110, 1435, 491
   rotate: 90
+bonus/midSection
+  bounds: 2029, 929, 2000, 1047
 bonus/Mountains
-  bounds: 3, 1667, 2000, 1107
+  bounds: 7, 549, 2000, 1107
+bonus/skeleton
+  bounds: 792, 3278, 735, 728
   rotate: 90

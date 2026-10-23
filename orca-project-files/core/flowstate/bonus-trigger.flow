@@ -47,8 +47,8 @@
       {
         "id": "bonust_034",
         "title": "fireCustomEvent",
-        "x": 2499.0237082270232,
-        "y": 324.3547126812918,
+        "x": 2991.8720147709882,
+        "y": 319.11164559039855,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -262,7 +262,7 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 0,
-          "sequenceNodeOn": "onComplete",
+          "sequenceNodeOn": "immediate",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791292732465_cieppe22a",
@@ -368,8 +368,8 @@
       {
         "id": "n73y7a6t",
         "title": "setGameModelProperty",
-        "x": 1667.1048512579007,
-        "y": 321.0983709421596,
+        "x": 2112.6269459254263,
+        "y": 312.1367196126404,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -405,8 +405,8 @@
       {
         "id": "n3473a3p",
         "title": "showCabinet",
-        "x": 1979.920506579917,
-        "y": 310.21694411955104,
+        "x": 2472.768813123882,
+        "y": 304.9738770286578,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -416,8 +416,8 @@
         "id": "nesw0bts",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 2179.4368154543117,
-        "y": 321.2839155926957,
+        "x": 2672.2851219982767,
+        "y": 316.04084850180243,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -429,6 +429,69 @@
         ],
         "propertyValues": {
           "seconds": 0.5
+        }
+      },
+      {
+        "id": "nmqqadkr",
+        "title": "playAnimation",
+        "x": 1707.8765161888614,
+        "y": 322.71266951370694,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": true,
+          "trackIndex": 0,
+          "sequenceNodeOn": "onComplete",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791293688069_efpsdyk4c",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "idle"
         }
       }
     ],
@@ -459,11 +522,6 @@
         "to": "ngherq9m"
       },
       {
-        "id": "lq18fj4c",
-        "from": "ngherq9m",
-        "to": "n73y7a6t"
-      },
-      {
         "id": "lm8zr8ds",
         "from": "n73y7a6t",
         "to": "n3473a3p"
@@ -492,14 +550,24 @@
         "id": "lfmcu9jn",
         "from": "nesw0bts",
         "to": "bonust_034"
+      },
+      {
+        "id": "ljtjjmek",
+        "from": "ngherq9m",
+        "to": "nmqqadkr"
+      },
+      {
+        "id": "l51ldg9w",
+        "from": "nmqqadkr",
+        "to": "n73y7a6t"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 157.78194041517736,
-      "panY": 152.88120141067276,
-      "scale": 0.4085894727522234
+      "panX": 9.115809818099024,
+      "panY": 271.9088635790473,
+      "scale": 0.41977166885374473
     }
   }
 }

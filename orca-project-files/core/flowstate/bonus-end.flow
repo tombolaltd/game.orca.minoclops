@@ -39,8 +39,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 2612.452900232449,
-        "y": 114.47958354524633,
+        "x": 2964.1092202853583,
+        "y": 110.80980613305348,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -315,8 +315,8 @@
       {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 1995.657810124252,
-        "y": 115.62313346484072,
+        "x": 2347.3141301771616,
+        "y": 111.95335605264788,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -365,8 +365,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 2302.9673637618903,
-        "y": 114.54253485271704,
+        "x": 2654.6236838148,
+        "y": 110.8727574405242,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -388,6 +388,69 @@
           "propertyName": "isInBonusRound",
           "value": false
         }
+      },
+      {
+        "id": "n9d42r4t",
+        "title": "playAnimation",
+        "x": 2022.2615016216878,
+        "y": 114.37484808079165,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": true,
+          "trackIndex": 0,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791292732465_cieppe22a",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "idle"
+        }
       }
     ],
     "links": [
@@ -405,11 +468,6 @@
         "id": "lokae73v",
         "from": "n0oum3nj",
         "to": "nv07dskb"
-      },
-      {
-        "id": "lfa3oacn",
-        "from": "nv07dskb",
-        "to": "nbg1mt0t"
       },
       {
         "id": "lahj8adf",
@@ -430,14 +488,24 @@
         "id": "lh1n7isk",
         "from": "np0dck1y",
         "to": "bonuse_031"
+      },
+      {
+        "id": "lbbl0eyh",
+        "from": "nv07dskb",
+        "to": "n9d42r4t"
+      },
+      {
+        "id": "lc3328d4",
+        "from": "n9d42r4t",
+        "to": "nbg1mt0t"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -108.22246497523156,
-      "panY": 187.06669380789236,
-      "scale": 0.40350127809076475
+      "panX": -2095.569864018907,
+      "panY": 66.24690337739418,
+      "scale": 0.9318572663053035
     }
   }
 }

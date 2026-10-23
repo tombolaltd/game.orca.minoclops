@@ -234,6 +234,43 @@
           "value": false
         }
       ]
+    },
+    {
+      "id": "n9d42r4t",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791292732465_cieppe22a",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
     }
   ],
   "links": [
@@ -251,11 +288,6 @@
       "id": "lokae73v",
       "from": "n0oum3nj",
       "to": "nv07dskb"
-    },
-    {
-      "id": "lfa3oacn",
-      "from": "nv07dskb",
-      "to": "nbg1mt0t"
     },
     {
       "id": "lahj8adf",
@@ -276,6 +308,16 @@
       "id": "lh1n7isk",
       "from": "np0dck1y",
       "to": "bonuse_031"
+    },
+    {
+      "id": "lbbl0eyh",
+      "from": "nv07dskb",
+      "to": "n9d42r4t"
+    },
+    {
+      "id": "lc3328d4",
+      "from": "n9d42r4t",
+      "to": "nbg1mt0t"
     }
   ]
 }
