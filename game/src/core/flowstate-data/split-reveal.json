@@ -37,7 +37,7 @@
         {
           "name": "seconds",
           "type": "float",
-          "value": 0.75
+          "value": 1.75
         }
       ]
     },
@@ -193,12 +193,12 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "nshvy250"
+          "sourceNodeId": "ns0fqres"
         }
       ]
     },
     {
-      "id": "nshvy250",
+      "id": "ns0fqres",
       "title": "toString",
       "rootType": "string",
       "properties": [
@@ -266,12 +266,6 @@
       "sourceOutputName": "Symbol"
     },
     {
-      "id": "ll0wzr8v",
-      "from": "nccjlbfj",
-      "to": "nlnialvt",
-      "outIdx": 1
-    },
-    {
       "id": "lv37eij1",
       "from": "nvu1cf10",
       "to": "n10e0ksf",
@@ -279,20 +273,26 @@
       "propertyName": "symbol"
     },
     {
-      "id": "lxp2ir61",
+      "id": "l0a3pwi5",
+      "from": "nccjlbfj",
+      "to": "nlnialvt",
+      "outIdx": 1
+    },
+    {
+      "id": "lq1tllgz",
       "from": "nlnialvt",
       "to": "ncejedmd"
     },
     {
-      "id": "l8dkmuba",
+      "id": "l4apr86o",
       "from": "n8gf47cf",
-      "to": "nshvy250",
+      "to": "ns0fqres",
       "propertyType": "float",
       "propertyName": "value"
     },
     {
-      "id": "li9dt05m",
-      "from": "nshvy250",
+      "id": "l1gjhyte",
+      "from": "ns0fqres",
       "to": "nlnialvt",
       "propertyType": "string",
       "propertyName": "value"

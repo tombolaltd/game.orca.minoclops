@@ -1,57 +1,147 @@
-reel.webp
-size: 2048, 4096
+reel-0.webp
+size: 4096, 4096
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 pma: false
 reel/back
-  bounds: 1942, 695, 129, 79
+  bounds: 3993, 270, 129, 79
   rotate: 90
 reel/backGuide
-  bounds: 1942, 836, 125, 75
+  bounds: 3983, 411, 125, 75
   rotate: 90
 reel/divider
-  bounds: 2018, 21, 4, 74
+  bounds: 4057, 60, 4, 74
 reel/frame 2
-  bounds: 1942, 973, 43, 43
+  bounds: 3983, 548, 43, 43
 reel/frame
-  bounds: 1942, 545, 138, 85
-  rotate: 90
+  bounds: 3843, 270, 138, 85
 reel/frame1
-  bounds: 21, 1596, 646, 214
+  bounds: 3843, 767, 323, 107
+  rotate: 90
 reel/frame2
-  bounds: 1772, 1726, 296, 253
+  bounds: 3843, 21, 237, 202
   rotate: 90
 reel/hotspot
-  bounds: 21, 995, 589, 1370
+  bounds: 4057, 21, 12, 27
+reel/hotspot/0000
+  bounds: 1494, 21, 429, 771
+  rotate: 90
+reel/hotspot/0001
+  bounds: 2277, 21, 429, 771
+  rotate: 90
+reel/hotspot/0002
+  bounds: 3060, 21, 429, 771
+  rotate: 90
+reel/hotspot/0003
+  bounds: 1494, 462, 429, 771
+  rotate: 90
+reel/hotspot/0004
+  bounds: 2277, 462, 429, 771
+  rotate: 90
+reel/hotspot/0005
+  bounds: 3060, 462, 429, 771
+  rotate: 90
+reel/hotspot/0006
+  bounds: 1494, 903, 429, 771
+  rotate: 90
+reel/hotspot/0007
+  bounds: 21, 995, 429, 771
+  rotate: 90
+reel/hotspot/0008
+  bounds: 804, 995, 429, 771
+reel/hotspot/0009
+  bounds: 21, 1436, 429, 771
+  rotate: 90
+reel/hotspot/0010
+  bounds: 2277, 903, 429, 771
+  rotate: 90
+reel/hotspot/0011
+  bounds: 3060, 903, 429, 771
+  rotate: 90
+reel/hotspot/0012
+  bounds: 21, 1877, 429, 771
+reel/hotspot/0013
+  bounds: 21, 2660, 429, 771
+reel/hotspot/0014
+  bounds: 21, 3443, 429, 771
+  rotate: 90
+reel/hotspot/0015
+  bounds: 462, 1877, 429, 771
+reel/hotspot/0016
+  bounds: 462, 2660, 429, 771
+reel/hotspot/0017
+  bounds: 804, 3443, 429, 771
+  rotate: 90
+reel/hotspot/0018
+  bounds: 903, 1778, 429, 771
+reel/hotspot/0019
+  bounds: 903, 2561, 429, 771
+reel/hotspot/0020
+  bounds: 1344, 1344, 429, 771
+reel/hotspot/0021
+  bounds: 1344, 2127, 429, 771
+reel/hotspot/0022
+  bounds: 1344, 2910, 429, 771
+  rotate: 90
+reel/hotspot/0023
+  bounds: 1587, 3351, 429, 771
+  rotate: 90
+reel/hotspot/0024
+  bounds: 1785, 1344, 429, 771
+reel/hotspot/0025
+  bounds: 1785, 2127, 429, 771
+reel/hotspot/0026
+  bounds: 2127, 2910, 429, 771
+  rotate: 90
+reel/hotspot/0027
+  bounds: 2370, 3351, 429, 771
+  rotate: 90
+reel/hotspot/0028
+  bounds: 3153, 1344, 429, 771
+  rotate: 90
+reel/hotspot/0029
+  bounds: 2226, 1344, 429, 771
+  rotate: 90
+reel/hotspot/0030
+  bounds: 3153, 1785, 429, 771
+  rotate: 90
+reel/hotspot/0031
+  bounds: 2226, 1785, 429, 771
+  rotate: 90
+reel/hotspot/0032
+  bounds: 3153, 2226, 429, 771
+  rotate: 90
+reel/hotspot/0033
+  bounds: 2226, 2226, 429, 771
+  rotate: 90
+reel/hotspot/0034
+  bounds: 3153, 2667, 429, 771
+  rotate: 90
+reel/hotspot/0035
+  bounds: 3153, 3108, 429, 771
+  rotate: 90
+reel/hotspot/0036
+  bounds: 3153, 3549, 429, 771
   rotate: 90
 reel/Reel copy
-  bounds: 679, 1596, 646, 214
+  bounds: 3843, 367, 388, 128
+  rotate: 90
 reel/Reel
   bounds: 21, 21, 1461, 962
-reel/symbols/h1 2
-  bounds: 1494, 545, 376, 436
+
+reel-1.webp
+size: 1024, 2048
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+reel/hotspot/0037
+  bounds: 21, 21, 429, 771
   rotate: 90
-reel/symbols/h1
-  bounds: 1494, 933, 376, 436
+reel/hotspot/0038
+  bounds: 21, 462, 429, 771
   rotate: 90
-reel/symbols/h2
-  bounds: 1403, 1321, 393, 427
+reel/hotspot/0039
+  bounds: 21, 903, 429, 771
   rotate: 90
-reel/symbols/h3
-  bounds: 1337, 1726, 423, 396
-reel/symbols/l1
-  bounds: 21, 1822, 326, 355
-  rotate: 90
-reel/symbols/l2
-  bounds: 743, 2100, 296, 314
-  rotate: 90
-reel/symbols/l3
-  bounds: 388, 1822, 343, 314
-reel/symbols/l4
-  bounds: 1772, 2034, 226, 317
-reel/symbols/l5
-  bounds: 743, 1822, 266, 322
-  rotate: 90
-reel/symbols/wild
-  bounds: 1494, 21, 512, 512

@@ -42,7 +42,7 @@ const patchedViews = new WeakSet<object>();
 const SPLIT_TRACK = 2;
 const SPLIT_PLAY_TIMEOUT_MS = 5000;
 
-// Called once per SplitSymbolDetails entry; each call splits that entry's symbol wherever SplitSymbols marks it on the board.
+// Called once per SplitSymbolDetails entry; each call starts that entry's symbol splitting without waiting, so the loop splits all symbols together.
 export async function run(split: number, symbol: number, reelsNode: NodeRefLike, baseAnimationName: string): Promise<void> {
   const root = resolveNode<any>(reelsNode);
   const outcomes = gameModel.unplayedSpinOutcomes;
@@ -58,8 +58,9 @@ export async function run(split: number, symbol: number, reelsNode: NodeRefLike,
 
   const animationName = `${baseAnimationName}${split}x`;
   const cells = (outcome.SplitSymbols ?? []).filter(({ Reel, Row }) => outcome.DisplayReels?.[Reel]?.[Row] === symbol);
-  await Promise.all(cells.map(({ Reel, Row }) =>
-    splitCell(symbolViewAt(root, Reel, Row), animationName, carriedSplits.has(cellKey(Reel, Row)), outcomes)));
+  for (const { Reel, Row } of cells) {
+    void splitCell(symbolViewAt(root, Reel, Row), animationName, carriedSplits.has(cellKey(Reel, Row)), outcomes);
+  }
 
   // This board's winning symbols are removed by the next cascade, so they must not stay split.
   for (const result of outcome.Results ?? []) {
@@ -90,7 +91,8 @@ async function splitCell(view: any, animationName: string, carried: boolean, out
     holdSplitPose(view, animationName);
     return;
   }
-  await playSplit(view, live, animationName);
+  // Not awaited: the graph's own delay after this node decides how long the split gets.
+  void playSplit(view, live, animationName);
 }
 
 // The reel clears every track when a symbol is re-skinned (each cascade fall), so re-apply the held split straight after.
@@ -159,10 +161,14 @@ function cellKey(reel: number, row: number): string {
   return `${reel},${row}`;
 }
 
-// Runs on the first call for a board: later calls split other symbols on the same board, so the highest level is read from SplitSymbolDetails.
+function splitLevelsBySymbol(): Map<number, number> {
+  const levels = new Map<number, number>();
+  for (const detail of gameModel.splitSymbolDetails) levels.set(detail.Symbol, detail.Split);
+  return levels;
+}
+
 function fireSplittingEvent(outcome: IOutcome): void {
-  const splitBySymbol = new Map<number, number>();
-  for (const detail of gameModel.splitSymbolDetails) splitBySymbol.set(detail.Symbol, detail.Split);
+  const splitBySymbol = splitLevelsBySymbol();
 
   let highest = 0;
   for (const { Reel, Row } of outcome.SplitSymbols ?? []) {

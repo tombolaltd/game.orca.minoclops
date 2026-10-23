@@ -2400,7 +2400,7 @@
                       "expanded": false,
                       "skeleton": "assets/reel/reelForeground.json",
                       "atlas": "assets/reel/reel.atlas",
-                      "animation": "",
+                      "animation": "idleBase",
                       "playOnLoad": false,
                       "loop": false,
                       "skin": "default",
@@ -2410,7 +2410,7 @@
                   ],
                   "customProperties": {},
                   "locked": false,
-                  "expanded": false,
+                  "expanded": true,
                   "texture": {
                     "guid": "fd2a187c-9c4c-48da-ad0d-52103b6cd95e"
                   },
@@ -2762,9 +2762,9 @@
                   "expanded": false,
                   "skeleton": "assets/reel/reel.json",
                   "atlas": "assets/reel/reel.atlas",
-                  "animation": "",
-                  "playOnLoad": false,
-                  "loop": false,
+                  "animation": "idleBase",
+                  "playOnLoad": true,
+                  "loop": true,
                   "skin": "default",
                   "timeScale": 1,
                   "rectTransform": null
@@ -3062,10 +3062,10 @@
                   },
                   "node_ss_hud": {
                     "transform": {
-                      "x": -19.152628364996684,
-                      "y": -21.348927574277816,
-                      "scaleX": 1.5333403846690588,
-                      "scaleY": 1.4375905292948008
+                      "x": -26.05608843807303,
+                      "y": -77.360096898983,
+                      "scaleX": 1.529979310892868,
+                      "scaleY": 1.3138865248081248
                     }
                   },
                   "node_1791298581468_z4rigcjll": {
@@ -3102,6 +3102,27 @@
                     "transform": {
                       "scaleX": 1,
                       "scaleY": 1
+                    }
+                  },
+                  "node_1791295520191_9uj0li4ny": {
+                    "transform": {
+                      "x": -12.731402344482841,
+                      "y": 1.6600280020612193,
+                      "scaleX": 0.986108628003949,
+                      "scaleY": 0.8498236820182985
+                    }
+                  },
+                  "node_1791297984204_qg9p9detx": {
+                    "transform": {
+                      "y": 98.52709516637424,
+                      "x": -91.3865277136968,
+                      "scaleX": 1.1465374919154925,
+                      "scaleY": 1.171524934281985
+                    }
+                  },
+                  "node_ss_reel_area": {
+                    "transform": {
+                      "y": -4.601830201189667
                     }
                   }
                 }

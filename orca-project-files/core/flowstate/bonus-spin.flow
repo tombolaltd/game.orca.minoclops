@@ -6,8 +6,8 @@
       {
         "id": "bonuss_027",
         "title": "fireCustomEvent",
-        "x": 881.8152571517561,
-        "y": 107.56832448102318,
+        "x": 1363.064423874482,
+        "y": 113.615512359435,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -377,7 +377,7 @@
       {
         "id": "naqirlvw",
         "title": "State",
-        "displayName": "Hotspot Selection",
+        "displayName": "Bonus Hotspot Selection",
         "x": 693.9568846938292,
         "y": 126.499143657431,
         "isState": true,
@@ -397,8 +397,8 @@
             {
               "id": "nu2qo2lc",
               "title": "Exit",
-              "x": 1732.5045828771295,
-              "y": 243.73138028408283,
+              "x": 1928.1651275792738,
+              "y": -204.32415113164956,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -603,7 +603,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 },
-                "animationName": "hotspotReel3"
+                "animationName": "hotspot/hotspotReel3_ON"
               }
             },
             {
@@ -696,7 +696,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 },
-                "animationName": "hotspotReel4"
+                "animationName": "hotspot/hotspotReel4_ON"
               }
             },
             {
@@ -759,7 +759,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 },
-                "animationName": "hotspotReel5"
+                "animationName": "hotspot/hotspotReel5_ON"
               }
             },
             {
@@ -822,7 +822,7 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 },
-                "animationName": "hotspotReel2"
+                "animationName": "hotspot/hotspotReel2_ON"
               }
             },
             {
@@ -885,27 +885,322 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 },
-                "animationName": "hotspotReel1"
+                "animationName": "hotspot/hotspotReel1_ON"
               }
             },
             {
-              "id": "n1fuz9ox",
-              "title": "delay",
-              "friendlyTitle": "Wait",
-              "x": 1396.7972117654558,
-              "y": 255.27392304577563,
-              "rootType": "delay",
-              "color": "#8e44ad",
-              "icon": "⏱️",
+              "id": "nr9farb4",
+              "title": "playAnimation",
+              "x": 1239.6523218328098,
+              "y": -969.1099813939418,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
               "isStarter": false,
               "properties": [
                 {
-                  "name": "seconds",
-                  "type": "float"
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
                 }
               ],
               "propertyValues": {
-                "seconds": 0.5
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel1_IDLE"
+              }
+            },
+            {
+              "id": "nt59cmaq",
+              "title": "playAnimation",
+              "x": 1239.701412963244,
+              "y": -620.742913039669,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel2_IDLE"
+              }
+            },
+            {
+              "id": "nckfe0vy",
+              "title": "playAnimation",
+              "x": 1239.8361978421992,
+              "y": -278.62594982432927,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel3_IDLE"
+              }
+            },
+            {
+              "id": "nef1crwc",
+              "title": "playAnimation",
+              "x": 1236.6389485363989,
+              "y": 51.59265259334387,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel4_IDLE"
+              }
+            },
+            {
+              "id": "ndf31x2x",
+              "title": "playAnimation",
+              "x": 1237.7717752270073,
+              "y": 383.25461367648654,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel5_IDLE"
               }
             }
           ],
@@ -996,34 +1291,54 @@
               "to": "nfacfcp4"
             },
             {
-              "id": "lpg3gr5c",
-              "from": "n1fuz9ox",
+              "id": "ldkfw53b",
+              "from": "nzgxppxz",
+              "to": "nr9farb4"
+            },
+            {
+              "id": "lwno8dbv",
+              "from": "nk4hleto",
+              "to": "nt59cmaq"
+            },
+            {
+              "id": "lc27io9j",
+              "from": "nsm0vnrw",
+              "to": "nckfe0vy"
+            },
+            {
+              "id": "lvfbhnz1",
+              "from": "n334drom",
+              "to": "nef1crwc"
+            },
+            {
+              "id": "lgxayfj5",
+              "from": "nm4m2t6d",
+              "to": "ndf31x2x"
+            },
+            {
+              "id": "ltnj8fqq",
+              "from": "nr9farb4",
               "to": "nu2qo2lc"
             },
             {
-              "id": "lb2w096h",
-              "from": "nzgxppxz",
-              "to": "n1fuz9ox"
+              "id": "l2iluzmh",
+              "from": "nt59cmaq",
+              "to": "nu2qo2lc"
             },
             {
-              "id": "l2ggcoh3",
-              "from": "nk4hleto",
-              "to": "n1fuz9ox"
+              "id": "lx1tjtqy",
+              "from": "nckfe0vy",
+              "to": "nu2qo2lc"
             },
             {
-              "id": "lc7bzsjy",
-              "from": "nsm0vnrw",
-              "to": "n1fuz9ox"
+              "id": "l6ut5q6a",
+              "from": "nef1crwc",
+              "to": "nu2qo2lc"
             },
             {
-              "id": "lsts2gl9",
-              "from": "n334drom",
-              "to": "n1fuz9ox"
-            },
-            {
-              "id": "l129fg9h",
-              "from": "nm4m2t6d",
-              "to": "n1fuz9ox"
+              "id": "lekvwsdz",
+              "from": "ndf31x2x",
+              "to": "nu2qo2lc"
             }
           ],
           "groups": []
@@ -1306,6 +1621,655 @@
           ],
           "groups": []
         }
+      },
+      {
+        "id": "nkybvdkr",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 876.9885181797005,
+        "y": 109.6017740390366,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 1.5
+        }
+      },
+      {
+        "id": "ntrprk5u",
+        "title": "State",
+        "displayName": "Bonus hotspot Off",
+        "x": 1170.5547794244437,
+        "y": 128.38912189801746,
+        "isState": true,
+        "entryTargetId": "nx0oj8i4",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "n2iqvt5v",
+              "title": "Entry",
+              "x": -284.2097928119654,
+              "y": -338.6544051623101,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "ng9oonhi",
+              "title": "Exit",
+              "x": 1492.1927829554231,
+              "y": -198.73476209801044,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "nx0oj8i4",
+              "title": "getGameModelProperty",
+              "x": -1858.3995978396138,
+              "y": -181.63309424667483,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "splitSymbolDetails"
+              }
+            },
+            {
+              "id": "nnbykuak",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -1202.0804683542797,
+              "y": -181.61186637470274,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "HighlightedPosition",
+                  "type": "ISplitSymbol[]",
+                  "path": "HighlightedPosition"
+                },
+                {
+                  "name": "Split",
+                  "type": "float",
+                  "path": "Split"
+                },
+                {
+                  "name": "Symbol",
+                  "type": "float",
+                  "path": "Symbol"
+                }
+              ]
+            },
+            {
+              "id": "nrd6pgp3",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -1522.4089083170043,
+              "y": -182.68997449299997,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nc6cd3iy",
+              "title": "structFields",
+              "friendlyTitle": "Properties",
+              "x": -524.8372257432452,
+              "y": -172.2951745326397,
+              "rootType": "objectOps",
+              "color": "#607d8b",
+              "icon": "🧩",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "source",
+                  "type": "object"
+                }
+              ],
+              "outputs": [
+                {
+                  "name": "Reel",
+                  "type": "float",
+                  "path": "Reel"
+                },
+                {
+                  "name": "Row",
+                  "type": "float",
+                  "path": "Row"
+                }
+              ]
+            },
+            {
+              "id": "nw2wtgdc",
+              "title": "at",
+              "friendlyTitle": "Get",
+              "x": -879.194880535747,
+              "y": -182.31747909954316,
+              "rootType": "array",
+              "color": "#2980b9",
+              "icon": "🎯",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "array",
+                  "type": "TArray"
+                },
+                {
+                  "name": "index",
+                  "type": "int"
+                }
+              ]
+            },
+            {
+              "id": "nt9ktx82",
+              "title": "toInt",
+              "x": -208.91759682388005,
+              "y": -173.7392343648822,
+              "rootType": "cast",
+              "color": "#6c5ce7",
+              "icon": "🔢",
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                }
+              ]
+            },
+            {
+              "id": "nucmxilf",
+              "title": "playAnimation",
+              "x": 876.9424997532244,
+              "y": -306.47449485026175,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel3_OFF"
+              }
+            },
+            {
+              "id": "n4n8eoho",
+              "title": "switch",
+              "x": 146.22289011822724,
+              "y": -321.18264657597,
+              "rootType": "switch",
+              "color": "#e67e22",
+              "icon": "🔢",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "value",
+                  "type": "T"
+                },
+                {
+                  "name": "cases",
+                  "type": "TArray",
+                  "default": []
+                }
+              ],
+              "propertyValues": {
+                "cases": [
+                  0,
+                  1,
+                  2,
+                  3,
+                  4
+                ]
+              }
+            },
+            {
+              "id": "nrq6o46r",
+              "title": "playAnimation",
+              "x": 879.5758902143219,
+              "y": 28.96054818688691,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel4_OFF"
+              }
+            },
+            {
+              "id": "nwdzzkrh",
+              "title": "playAnimation",
+              "x": 877.11527761767,
+              "y": 368.12534959599674,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel5_OFF"
+              }
+            },
+            {
+              "id": "nmjj9598",
+              "title": "playAnimation",
+              "x": 873.278001303193,
+              "y": -642.2481755528216,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel2_OFF"
+              }
+            },
+            {
+              "id": "ncm0mh3c",
+              "title": "playAnimation",
+              "x": 872.2595878256102,
+              "y": -973.182564616468,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "hotspot/hotspotReel1_OFF"
+              }
+            }
+          ],
+          "links": [
+            {
+              "id": "lbljj1u4",
+              "from": "nx0oj8i4",
+              "to": "nrd6pgp3",
+              "propertyType": "TArray",
+              "propertyName": "array"
+            },
+            {
+              "id": "l4f1zqmn",
+              "from": "nrd6pgp3",
+              "to": "nnbykuak",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l19754ep",
+              "from": "nnbykuak",
+              "to": "nw2wtgdc",
+              "propertyType": "TArray",
+              "propertyName": "array",
+              "sourceOutputName": "HighlightedPosition"
+            },
+            {
+              "id": "l28fi6q7",
+              "from": "nw2wtgdc",
+              "to": "nc6cd3iy",
+              "propertyType": "object",
+              "propertyName": "source"
+            },
+            {
+              "id": "l4rxor4z",
+              "from": "nc6cd3iy",
+              "to": "nt9ktx82",
+              "propertyType": "float",
+              "propertyName": "value",
+              "sourceOutputName": "Reel"
+            },
+            {
+              "id": "lpio8rt2",
+              "from": "nt9ktx82",
+              "to": "n4n8eoho",
+              "propertyType": "T",
+              "propertyName": "value"
+            },
+            {
+              "id": "leocsb4v",
+              "from": "n4n8eoho",
+              "to": "ncm0mh3c",
+              "outIdx": 0
+            },
+            {
+              "id": "lbdzst7i",
+              "from": "n4n8eoho",
+              "to": "nmjj9598",
+              "outIdx": 1
+            },
+            {
+              "id": "lkceji8z",
+              "from": "n4n8eoho",
+              "to": "nucmxilf",
+              "outIdx": 2
+            },
+            {
+              "id": "ldfcjncj",
+              "from": "n4n8eoho",
+              "to": "nrq6o46r",
+              "outIdx": 3
+            },
+            {
+              "id": "llnuzm0v",
+              "from": "n4n8eoho",
+              "to": "nwdzzkrh",
+              "outIdx": 4
+            },
+            {
+              "id": "lvq48ht2",
+              "from": "n4n8eoho",
+              "to": "ncm0mh3c",
+              "outIdx": -1
+            },
+            {
+              "id": "lft770wd",
+              "from": "n2iqvt5v",
+              "to": "n4n8eoho"
+            },
+            {
+              "id": "l25e1vsh",
+              "from": "ncm0mh3c",
+              "to": "ng9oonhi"
+            },
+            {
+              "id": "lj4glgy0",
+              "from": "nmjj9598",
+              "to": "ng9oonhi"
+            },
+            {
+              "id": "l3taflg4",
+              "from": "nucmxilf",
+              "to": "ng9oonhi"
+            },
+            {
+              "id": "lbe25yf0",
+              "from": "nrq6o46r",
+              "to": "ng9oonhi"
+            },
+            {
+              "id": "lj87brky",
+              "from": "nwdzzkrh",
+              "to": "ng9oonhi"
+            }
+          ],
+          "groups": []
+        }
       }
     ],
     "links": [
@@ -1313,11 +2277,6 @@
         "id": "ll9ucb8w",
         "from": "bonuss_037",
         "to": "nzelkdw4"
-      },
-      {
-        "id": "lyqr3zu2",
-        "from": "naqirlvw",
-        "to": "bonuss_027"
       },
       {
         "id": "l3gqbciw",
@@ -1360,14 +2319,29 @@
         "id": "lwib2e7g",
         "from": "nma44hip",
         "to": "bonuss_037"
+      },
+      {
+        "id": "l2n0iqma",
+        "from": "naqirlvw",
+        "to": "nkybvdkr"
+      },
+      {
+        "id": "lwp3ca2q",
+        "from": "nkybvdkr",
+        "to": "ntrprk5u"
+      },
+      {
+        "id": "l6609wlu",
+        "from": "ntrprk5u",
+        "to": "bonuss_027"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 149.44350250911566,
-      "panY": 437.0478613554307,
-      "scale": 0.41324162679476334
+      "panX": -461.83472646277346,
+      "panY": 165.54698825156285,
+      "scale": 0.7597283368469976
     }
   }
 }

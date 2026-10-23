@@ -7,8 +7,8 @@
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -660.4247176904053,
-        "y": 79.38147224828246,
+        "x": -834.5120559073682,
+        "y": 81.1223456304521,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 705.1956485961321,
-        "y": 188.29051898080036,
+        "x": 488.2753582395009,
+        "y": 204.0298660867154,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "ncejedmd",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 387.95169778577946,
-        "y": 189.92205418196102,
+        "x": 171.03140742914832,
+        "y": 205.66140128787606,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -66,14 +66,14 @@
           }
         ],
         "propertyValues": {
-          "seconds": 0.75
+          "seconds": 1.75
         }
       },
       {
         "id": "nr2lpth7",
         "title": "getGameModelProperty",
-        "x": -657.2568560792854,
-        "y": 261.28531220832434,
+        "x": -831.3441942962484,
+        "y": 263.026185590494,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -93,8 +93,8 @@
         "id": "nccjlbfj",
         "title": "loop",
         "friendlyTitle": "Repeat For Each",
-        "x": -332.13210975230805,
-        "y": 143.89303658644454,
+        "x": -506.2194479692711,
+        "y": 145.63390996861418,
         "rootType": "loop",
         "color": "#9b59b6",
         "icon": "🔁",
@@ -118,8 +118,8 @@
         "id": "njpv296w",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 47.147166590963366,
-        "y": 412.3646146373821,
+        "x": -154.61702295847914,
+        "y": 441.86027693128005,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -152,8 +152,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 1092.6471171157084,
-        "y": 243.22948470904163,
+        "x": 820.252945538987,
+        "y": 259.57255844681833,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -196,8 +196,8 @@
       {
         "id": "nw34zng2",
         "title": "toInt",
-        "x": 371.4770611736081,
-        "y": 409.33623657404513,
+        "x": 169.7128716241656,
+        "y": 438.8318988679431,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -211,8 +211,8 @@
       {
         "id": "nvu1cf10",
         "title": "toInt",
-        "x": 372.24660194053155,
-        "y": 528.2322667652386,
+        "x": 170.48241239108904,
+        "y": 557.7279290591366,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -226,8 +226,8 @@
       {
         "id": "n8gf47cf",
         "title": "getGameModelProperty",
-        "x": -622.6746561537847,
-        "y": 412.3547309290776,
+        "x": -859.3692227967122,
+        "y": 415.5437342415055,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -246,8 +246,8 @@
       {
         "id": "nlnialvt",
         "title": "setText",
-        "x": 54.424216665298104,
-        "y": 182.42934612778905,
+        "x": -143.50347446290138,
+        "y": 205.57722004239315,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -274,10 +274,10 @@
         }
       },
       {
-        "id": "nshvy250",
+        "id": "ns0fqres",
         "title": "toString",
-        "x": -316.5974032360191,
-        "y": 420.24188203921767,
+        "x": -512.2434102769364,
+        "y": 413.21282069942197,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -305,8 +305,8 @@
         "propertyName": "split",
         "points": [
           {
-            "x": 995.3385462458008,
-            "y": 449.93075546025403
+            "x": 712.6152622841921,
+            "y": 482.63998381519497
           }
         ]
       },
@@ -327,12 +327,12 @@
         "outIdx": 0,
         "points": [
           {
-            "x": 18.382377647625887,
-            "y": 143.89450326447533
+            "x": -149.94256314984648,
+            "y": 143.5520177000914
           },
           {
-            "x": 1008.8941101072376,
-            "y": 143.96231401639704
+            "x": 771.6704066063456,
+            "y": 145.2941972270407
           }
         ]
       },
@@ -361,12 +361,6 @@
         "sourceOutputName": "Symbol"
       },
       {
-        "id": "ll0wzr8v",
-        "from": "nccjlbfj",
-        "to": "nlnialvt",
-        "outIdx": 1
-      },
-      {
         "id": "lv37eij1",
         "from": "nvu1cf10",
         "to": "n10e0ksf",
@@ -374,26 +368,32 @@
         "propertyName": "symbol",
         "points": [
           {
-            "x": 1018.5766557225495,
-            "y": 496.4069744137513
+            "x": 743.020055730186,
+            "y": 520.1988463073051
           }
         ]
       },
       {
-        "id": "lxp2ir61",
+        "id": "l0a3pwi5",
+        "from": "nccjlbfj",
+        "to": "nlnialvt",
+        "outIdx": 1
+      },
+      {
+        "id": "lq1tllgz",
         "from": "nlnialvt",
         "to": "ncejedmd"
       },
       {
-        "id": "l8dkmuba",
+        "id": "l4apr86o",
         "from": "n8gf47cf",
-        "to": "nshvy250",
+        "to": "ns0fqres",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "li9dt05m",
-        "from": "nshvy250",
+        "id": "l1gjhyte",
+        "from": "ns0fqres",
         "to": "nlnialvt",
         "propertyType": "string",
         "propertyName": "value"
@@ -402,9 +402,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 367.47883162307255,
-      "panY": 154.98218638544742,
-      "scale": 0.5160059765685437
+      "panX": 773.5408657393259,
+      "panY": -99.48367016537054,
+      "scale": 0.9783508498808655
     }
   }
 }
