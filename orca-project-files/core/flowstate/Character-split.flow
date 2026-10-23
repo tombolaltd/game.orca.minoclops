@@ -111,7 +111,7 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 1,
-          "sequenceNodeOn": "onComplete",
+          "sequenceNodeOn": "immediate",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791296555660_uqk9no210",
@@ -174,7 +174,7 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 1,
-          "sequenceNodeOn": "onComplete",
+          "sequenceNodeOn": "immediate",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791296555660_uqk9no210",
@@ -183,22 +183,135 @@
           },
           "animationName": "slice3x"
         }
+      },
+      {
+        "id": "nsh83d21",
+        "title": "playAnimation",
+        "x": 1412.232492208389,
+        "y": 43.051688005425376,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 1,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791292732465_cieppe22a",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "slice"
+        }
+      },
+      {
+        "id": "n4h2rk0b",
+        "title": "playAnimation",
+        "x": 1782.135671974169,
+        "y": 40.789691281893724,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 1,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791293688069_efpsdyk4c",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "slice"
+        }
       }
     ],
     "links": [
-      {
-        "id": "lw8dhnng",
-        "from": "n1p0g3rz",
-        "to": "nwtk7yr8"
-      },
-      {
-        "id": "lepeigca",
-        "from": "n1p0g3rz",
-        "to": "nwtk7yr8",
-        "propertyType": "T",
-        "propertyName": "value",
-        "sourceOutputName": "splitAmount"
-      },
       {
         "id": "l7g5dq1l",
         "from": "nwtk7yr8",
@@ -215,14 +328,42 @@
         "from": "nwtk7yr8",
         "to": "nkq9oo01",
         "outIdx": -1
+      },
+      {
+        "id": "ltyib4p8",
+        "from": "n1p0g3rz",
+        "to": "nwtk7yr8"
+      },
+      {
+        "id": "lbxwnjc6",
+        "from": "n1p0g3rz",
+        "to": "nwtk7yr8",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "splitAmount"
+      },
+      {
+        "id": "l3z271f4",
+        "from": "nkq9oo01",
+        "to": "nsh83d21"
+      },
+      {
+        "id": "lipyhi58",
+        "from": "ngnxopfl",
+        "to": "nsh83d21"
+      },
+      {
+        "id": "l2u7zxkm",
+        "from": "nsh83d21",
+        "to": "n4h2rk0b"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -229.4089014069756,
-      "panY": 161.0144333066516,
-      "scale": 0.7087974655972811
+      "panX": -755.5744442800501,
+      "panY": 252.56867099619433,
+      "scale": 0.8094215232181093
     }
   }
 }

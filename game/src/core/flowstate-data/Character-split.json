@@ -66,7 +66,7 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "onComplete"
+          "value": "immediate"
         }
       ]
     },
@@ -103,25 +103,86 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "onComplete"
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "nsh83d21",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791292732465_cieppe22a",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "slice"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "n4h2rk0b",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791293688069_efpsdyk4c",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "slice"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
         }
       ]
     }
   ],
   "links": [
-    {
-      "id": "lw8dhnng",
-      "from": "n1p0g3rz",
-      "to": "nwtk7yr8"
-    },
-    {
-      "id": "lepeigca",
-      "from": "n1p0g3rz",
-      "to": "nwtk7yr8",
-      "propertyType": "T",
-      "propertyName": "value",
-      "sourceOutputName": "splitAmount"
-    },
     {
       "id": "l7g5dq1l",
       "from": "nwtk7yr8",
@@ -138,6 +199,34 @@
       "from": "nwtk7yr8",
       "to": "nkq9oo01",
       "outIdx": -1
+    },
+    {
+      "id": "ltyib4p8",
+      "from": "n1p0g3rz",
+      "to": "nwtk7yr8"
+    },
+    {
+      "id": "lbxwnjc6",
+      "from": "n1p0g3rz",
+      "to": "nwtk7yr8",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "splitAmount"
+    },
+    {
+      "id": "l3z271f4",
+      "from": "nkq9oo01",
+      "to": "nsh83d21"
+    },
+    {
+      "id": "lipyhi58",
+      "from": "ngnxopfl",
+      "to": "nsh83d21"
+    },
+    {
+      "id": "l2u7zxkm",
+      "from": "nsh83d21",
+      "to": "n4h2rk0b"
     }
   ]
 }
