@@ -57,20 +57,15 @@ export interface OrcaDebugServerSettingsGroup {
     settings: OrcaDebugServerSetting[];
 }
 
-export const ORCA_DEBUG_TICKET_OPTIONS: OrcaDebugTicketOption[] = [
-    {
-        name: 'Bonus',
-        data: {
-            ReelStops: [70, 34, 51, 70, 15]
-        }
-    }
-];
+export const ORCA_DEBUG_TICKET_OPTIONS: OrcaDebugTicketOption[] = [];
 
 export const ORCA_DEBUG_EVENT_BUTTONS: OrcaDebugEventButton[] = [];
 
 export const ORCA_DEBUG_MODEL_PROPERTY_SETTINGS: OrcaDebugModelPropertySetting[] = [];
 
-export const ORCA_DEBUG_SERVER_SETTINGS: OrcaDebugServerSettingsGroup[] = [];
+export const ORCA_DEBUG_SERVER_SETTINGS: OrcaDebugServerSettingsGroup[] = [
+    { id: 'splitting-symbols-debug', name: 'Bonus', base: { DebugInfo: { ReelStops: '91,33,35,1,0', SplittingSymbolDetails: [{ Symbol: 11, Split: 2, Position: [1, 1] }] } }, settings: [{ id: '6bdb63ce-2e7a-41d4-8e15-ffc56ae2160b', name: 'setting', control: 'enum', choices: [{ id: '626bef20-18bb-49d1-b22f-dc906065ac30', label: 'Bonus', patches: [] }] }] }
+];
 
 /**
  * Orca: if `option` is one of the fire-a-custom-event buttons authored in the
