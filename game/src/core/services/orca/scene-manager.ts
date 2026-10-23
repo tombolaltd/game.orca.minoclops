@@ -183,6 +183,12 @@ import {
     type FitAreaRect,
     type FitAreaSettings,
 } from './fit-area';
+import {
+    resolveActiveLayoutProfile,
+    type LayoutProfileCondition,
+    type LayoutProfileEnvironment,
+    type LayoutProfilePlatform,
+} from './layout-profiles';
 import { OrcaParticleEmitter } from './particle-emitter';
 import { resolveFlexLayoutStyle } from './scene-flex-layout';
 import type { FlexLayoutValue } from './scene-flex-layout';
@@ -482,6 +488,21 @@ export interface OrcaLayoutManager {
     modes: Partial<Record<'portrait' | 'portraitChat' | 'landscape' | 'desktop', { entries: Record<string, OrcaLayoutEntry> }>>;
 }
 
+/**
+ * Mirrors the editor's AdvancedLayoutManager component: ordered profiles, the
+ * first enabled one whose conditions all hold on the live screen applies its
+ * SPARSE entries (`layout-profiles.ts`); no match leaves the subtree authored.
+ */
+export interface OrcaAdvancedLayoutManager {
+    profiles: Array<{
+        id: string;
+        name: string;
+        enabled?: boolean;
+        conditions: LayoutProfileCondition[];
+        entries: Record<string, OrcaLayoutEntry>;
+    }>;
+}
+
 export type OrcaActiveLayoutMode = 'portrait' | 'landscape' | 'desktop';
 
 /**
@@ -713,6 +734,7 @@ export interface OrcaSceneNode {
     parentAnchor?: { point: string } | null;
     responsiveScaler?: OrcaResponsiveScaler;
     layoutManager?: OrcaLayoutManager;
+    advancedLayoutManager?: OrcaAdvancedLayoutManager;
     localizationManager?: OrcaLocalizationManager;
 
     // canvas
@@ -2784,7 +2806,9 @@ class SceneManager {
 
         if (!camera) {
             this.scene3dLayer?.setFrame(null, viewportWidth, viewportHeight);
-            const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, activeMode, portraitChatOpen);
+            const layoutOverrides = this.buildLayoutOverrideMap(
+                this.currentScene.nodes, activeMode, portraitChatOpen, this.resolveLayoutProfileEnvironment(viewportWidth, viewportHeight),
+            );
             this.currentContainer.position.set(0, 0);
             this.currentContainer.scale.set(1);
             // Reset counter-scale to identity when there's no camera state.
@@ -2832,7 +2856,10 @@ class SceneManager {
         // Frame mode (activeMode) still drives transposition and the crop gate; only the override bucket may differ.
         const overrideMode = resolveChatBandLayoutMode(frameWidth, frameHeight, chatBandRatio, activeMode);
         const cropLandscape = isChatBandLandscape(frameWidth, frameHeight, chatBandRatio);
-        const layoutOverrides = this.buildLayoutOverrideMap(this.currentScene.nodes, overrideMode, portraitChatOpen);
+        // Profiles match the LIVE viewport, not the chat-band override bucket.
+        const layoutOverrides = this.buildLayoutOverrideMap(
+            this.currentScene.nodes, overrideMode, portraitChatOpen, this.resolveLayoutProfileEnvironment(viewportWidth, viewportHeight),
+        );
 
         // Resolve effective camera transform (LayoutManager override merges
         // shallowly over the camera's own transform).
@@ -2928,6 +2955,16 @@ class SceneManager {
     private chatOverlaysGame(): boolean {
         try {
             return gameConfig.features?.canHideChat === true && !queryStringParams.isSubGame;
+        } catch {
+            return false;
+        }
+    }
+
+    /** True when launched as a game in game; the arcade-base getter can throw. */
+    private isSubGame(): boolean {
+        try {
+            const value: unknown = queryStringParams.isSubGame;
+            return value === true || value === 'true';
         } catch {
             return false;
         }
@@ -5723,6 +5760,21 @@ class SceneManager {
         return 'landscape';
     }
 
+    /**
+     * The screen Advanced Layout Manager profiles are matched against. A sub-game
+     * (game in game) wins over the device type; a hybrid (touch-enabled desktop)
+     * counts as desktop; anything unclassified as mobile.
+     */
+    private resolveLayoutProfileEnvironment(width: number, height: number): LayoutProfileEnvironment {
+        const type = device?.type;
+        let platform: LayoutProfilePlatform = 'mobile';
+        if (this.isSubGame()) platform = 'gameInGame';
+        else if (type?.isDesktop) platform = 'desktop';
+        else if (type?.isTablet) platform = 'tablet';
+        else if (type?.isHybrid) platform = 'desktop';
+        return { platform, width, height };
+    }
+
     private resolveLayoutManagerMode(
         layoutManager: OrcaLayoutManager,
         activeMode: OrcaActiveLayoutMode,
@@ -5753,21 +5805,29 @@ class SceneManager {
 
     /**
      * Build a per-draw map of node id → resolved LayoutEntry. Walks the scene
-     * tree and tracks the innermost ancestor LayoutManager — when a deeper
-     * LayoutManager is encountered it fully replaces the outer one for that
-     * subtree. The editor enforces no-nesting; this is a defensive runtime
-     * implementation.
+     * tree and tracks the innermost ancestor host of EITHER kind
+     * (LayoutManager or AdvancedLayoutManager) — a deeper host fully replaces
+     * the outer one for that subtree, and an advanced host with no matching
+     * profile gives its subtree no overrides. The editor enforces no-nesting;
+     * this is a defensive runtime implementation.
      */
     private buildLayoutOverrideMap(
         roots: OrcaSceneNode[],
         activeMode: OrcaActiveLayoutMode,
         portraitChatOpen: boolean,
+        profileEnv: LayoutProfileEnvironment,
     ): Map<string, OrcaLayoutEntry> {
         const overrides = new Map<string, OrcaLayoutEntry>();
 
         const walk = (node: OrcaSceneNode, activeEntries: Record<string, OrcaLayoutEntry> | null): void => {
             let nextActiveEntries = activeEntries;
-            if (node.layoutManager) {
+            // The editor refuses the advanced component on the camera; ignore it there.
+            const advanced = node.type !== 'camera' ? node.advancedLayoutManager : undefined;
+            if (advanced) {
+                // Same node carrying both: the advanced host wins, as in the editor.
+                const profile = resolveActiveLayoutProfile(Array.isArray(advanced.profiles) ? advanced.profiles : [], profileEnv);
+                nextActiveEntries = profile?.entries ?? null;
+            } else if (node.layoutManager) {
                 const resolvedMode = this.resolveLayoutManagerMode(node.layoutManager, activeMode, portraitChatOpen);
                 nextActiveEntries = resolvedMode
                     ? (node.layoutManager.modes[resolvedMode]?.entries ?? null)

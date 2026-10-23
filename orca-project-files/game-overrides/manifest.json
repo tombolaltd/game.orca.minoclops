@@ -67,6 +67,7 @@
   },
   "overrides": {
     "build/webpack.prod.conf.js": "a52c4552fea8a5d7fe581dd0f8e27fa9650e57a3fe3a23ce340f2e41f426a879",
+    "package-lock.json": "4fdb913ed1c5246b6772da223fd1740b065cadaa3f2c3a570aef988cead01bc8",
     "package.json": "99ba8db33a570827274a0cf6b347e4ffb7d9e52b9dddb9115251cede6a3bdd6d",
     "src/main.ts": "10bff340193e963b3ea21ddc25c5b237adc72e89c5cf903368058c03f00e9637"
   },

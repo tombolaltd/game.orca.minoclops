@@ -20,7 +20,7 @@ export const ENTRY_SCENE_NAME: string = SKIN_TABLE[ACTIVE_SKIN]?.entrySceneName 
 export const ENTRY_SCENE_SCOPE: string = SKIN_TABLE[ACTIVE_SKIN]?.entrySceneScope ?? '';
 export const IS_JACKPOT: boolean = SKIN_TABLE[ACTIVE_SKIN]?.isJackpot ?? false;
 
-export const PORTRAIT_CHAT_CROP: boolean = false;
+export const PORTRAIT_CHAT_CROP: boolean = true;
 export const ENABLE_3D: boolean = false;
 export const SCENE3D_SHADOW_QUALITY: string = 'medium';
 export const CABINET_MODE: string = 'standard';

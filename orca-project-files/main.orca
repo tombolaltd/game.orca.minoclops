@@ -19,7 +19,8 @@
     "sessionDataJustification": "default",
     "gameHeightRatio": 0.67,
     "enable3D": false,
-    "cabinetMode": "standard"
+    "cabinetMode": "standard",
+    "portraitChatCrop": true
   },
   "coreGraphOrder": [
     "game-boot",
@@ -255,5 +256,5 @@
       "type": "int"
     }
   ],
-  "lastOpenedOrcaVersion": "0.5.12"
+  "lastOpenedOrcaVersion": "0.5.13"
 }

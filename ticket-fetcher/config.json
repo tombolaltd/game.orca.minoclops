@@ -1,9 +1,10 @@
 {
-    "GameName": "minoclop",
-    "CDNFolderName": "minoclop",
-    "FontCSSFilepath": "./static/fonts/fonts-v2.css",
-    "GameMessageObjectName": "GameMessage",
-    "AssetDesignWidth": 1136,
-    "AssetDesignHeight": 640,
-    "GameHeightRatio": 0.67
+  "GameName": "minoclop",
+  "CDNFolderName": "minoclop",
+  "FontCSSFilepath": "./static/fonts/fonts-v2.css",
+  "GameMessageObjectName": "GameMessage",
+  "AssetDesignWidth": 1136,
+  "AssetDesignHeight": 640,
+  "GameHeightRatio": 0.67,
+  "FullscreenPortrait": false
 }
