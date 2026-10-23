@@ -4607,8 +4607,8 @@ class SceneManager {
                 const anim = frames.length > 0
                     ? new Pixi.AnimatedSprite(frames)
                     : new Pixi.AnimatedSprite([Pixi.Texture.EMPTY]);
-                if (node.width  && node.width  > 0) anim.width  = node.width;
-                if (node.height && node.height > 0) anim.height = node.height;
+                // No `anim.width =`: Pixi re-applies a set width on every frame change, dropping the
+                // node's scale. applyTransform's size override sizes it instead.
                 if (node.tint        !== undefined) anim.tint        = node.tint;
                 if (node.animationSpeed !== undefined) anim.animationSpeed = node.animationSpeed;
                 anim.loop = node.loop ?? true;

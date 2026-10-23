@@ -308,12 +308,15 @@ export function installGameFeelProbe(stage: unknown): void {
 // `spin` replays the round already in the model (GAME_BEGIN is what the
 // cabinet emits AFTER the engine answers a buy), so it sends no begin request;
 // `buy` presses the cabinet's buy action, which does.
+// Version 4 adds `counters.reelMoves`, counted every frame after `arm()`.
 
-const PLAYTEST_VERSION = 3;
+const PLAYTEST_VERSION = 4;
 const MAX_ERRORS = 20;
 const MAX_OVERLAPS = 8;
 /** Smallest share of the reel window an object must cover to be reported. */
 const MIN_COVERAGE = 0.02;
+/** How often the per-frame motion watcher looks for the reels again (scene swaps). */
+const REEL_LOOKUP_MS = 500;
 
 interface PlaytestRect {
     x: number;
@@ -347,7 +350,8 @@ interface PlaytestSnapshot {
     reels: null | { name: string; reelCount: number; spinning: boolean; speeds: number[]; rect: PlaytestRect | null };
     spinControl: SpinControlState;
     overlaps: PlaytestOverlap[];
-    counters: { begins: number; endGames: number; completes: number; hooked: boolean };
+    /** `reelMoves`: frames in which a reel moved — catches a spin shorter than the editor's poll. */
+    counters: { begins: number; endGames: number; completes: number; hooked: boolean; reelMoves: number };
     errors: string[];
 }
 
@@ -474,9 +478,31 @@ function collectOverlaps(stage: UnknownRecord, reelsRoot: UnknownRecord, reelRec
 function installPlaytestApi(stage: unknown): void {
     const w = window as unknown as UnknownRecord;
     if (w.__orcaPlaytest) return;
-    const counters = { begins: 0, endGames: 0, completes: 0, hooked: false };
+    const counters = { begins: 0, endGames: 0, completes: 0, hooked: false, reelMoves: 0 };
     const errors: string[] = [];
     let armed = false;
+
+    const watchReelMotion = (): void => {
+        if (typeof requestAnimationFrame !== 'function') return;
+        let views: UnknownRecord[] = [];
+        let lookedAt = -Infinity;
+        const frame = (): void => {
+            try {
+                const now = Date.now();
+                if (now - lookedAt >= REEL_LOOKUP_MS) {
+                    lookedAt = now;
+                    const roots: UnknownRecord[] = [];
+                    collectReelRoots(stage, roots, 0);
+                    views = roots[0] ? (roots[0]._flowstateReelViews as UnknownRecord[]).slice(0, MAX_REELS) : [];
+                }
+                if (views.length > 0 && readReelSample(views, 0).speeds.some((s) => s > 0.01)) counters.reelMoves += 1;
+            } catch {
+                // A scene mid-swap reads as still.
+            }
+            requestAnimationFrame(frame);
+        };
+        requestAnimationFrame(frame);
+    };
 
     const pushError = (message: unknown): void => {
         const text = String(message ?? '').slice(0, 300);
@@ -510,6 +536,7 @@ function installPlaytestApi(stage: unknown): void {
         } catch {
             // A cabinet that cannot be wrapped: the editor falls back to reel motion.
         }
+        watchReelMotion();
         return { ok: true };
     };
 

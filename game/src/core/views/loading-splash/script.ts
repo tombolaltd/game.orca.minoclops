@@ -19,6 +19,7 @@ interface LayoutScales {
 
 // Read optionally so a stale generated module (no border/layout fields) can never crash boot.
 interface LayoutFields {
+    backgroundImage?: unknown;
     progressBorder?: { color?: unknown; width?: unknown };
     layout?: { portrait?: Partial<Record<keyof LayoutScales, unknown>>; landscape?: Partial<Record<keyof LayoutScales, unknown>> };
 }
@@ -72,6 +73,11 @@ function resolveConfig(): OrcaLoadingScreenConfig {
 function gradientCss(gradient: OrcaLoadingScreenGradient): string {
     const stops = gradient.stops.map((stop) => `${stop.color} ${stop.position}%`).join(', ');
     return `linear-gradient(${gradient.angle}deg, ${stops})`;
+}
+
+function backgroundCss(gradient: string, url: unknown): string {
+    if (typeof url !== 'string' || !url) return gradient;
+    return `url("${url.replace(/["\\]/g, '\\$&')}") center / cover no-repeat, ${gradient}`;
 }
 
 export default defineComponent({
@@ -141,7 +147,10 @@ export default defineComponent({
                 overflow: 'hidden',
                 pointerEvents: 'auto',
                 userSelect: 'none',
-                background: gradientCss(this.config.background)
+                background: backgroundCss(
+                    gradientCss(this.config.background),
+                    (this.config as object as LayoutFields).backgroundImage
+                )
             };
         },
         logoBoxStyle(): Style {

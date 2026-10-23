@@ -18,6 +18,7 @@ export interface OrcaLoadingScreenLayout {
 }
 export interface OrcaLoadingScreenConfig {
     background: OrcaLoadingScreenGradient;
+    backgroundImage: string | null; // data URL
     logo: string | null; // data URL
     progressIcon: string | null; // data URL
     progressFill: OrcaLoadingScreenGradient;
@@ -31,6 +32,7 @@ export const ORCA_LOADING_SCREEN_DEFAULT: OrcaLoadingScreenConfig = {
         angle: 180,
         stops: [{ color: "#0b1f5c", position: 0 }, { color: "#2f6fd6", position: 55 }, { color: "#07123a", position: 100 }],
     },
+    backgroundImage: null,
     logo: null,
     progressIcon: null,
     progressFill: {

@@ -1,4 +1,4 @@
-import { eventEmitter } from "@game-studio/arcade-base";
+import { BaseChip, CasinoCabinet, container, eventEmitter } from "@game-studio/arcade-base";
 
 /**
  * Event-name starter auto-registration (custom AND built-in).
@@ -34,6 +34,15 @@ import { eventEmitter } from "@game-studio/arcade-base";
  * for a starter-args bag, so anything non-object (or an array) forwards
  * `undefined` instead.
  *
+ * Built-in event arguments
+ * ------------------------
+ * An `onEventFire` whose event opts in is exported with an extra
+ * `argNames` (TArray) property. Its listener then zips EVERY emitted
+ * argument by index into `values[argNames[i]]`, adds Orca-derived values
+ * from `BUILT_IN_ENRICHERS` (e.g. a chip's pence value), and dispatches
+ * `values` as starter args. Without `argNames` the plain-object rule
+ * above applies unchanged.
+ *
  * The callback is provided by `flowstate.ts` (`runFlowsByStarterId`)
  * to avoid a circular import.
  *
@@ -61,7 +70,39 @@ interface RegisteredGraphLite {
  * the next sweep, preventing duplicate `eventEmitter.on` handlers from
  * stacking across repeated binds. Keyed by `${graphId}:${nodeId}`.
  */
-const attached = new Map<string, { eventName: string; handler: (payload?: unknown) => void }>();
+const attached = new Map<string, { eventName: string; handler: (...emitted: unknown[]) => void }>();
+
+/** Pence value of the casino chip at `index`, or 0 when unavailable. */
+function casinoChipValue(index: unknown): number {
+    if (typeof index !== 'number' || !Number.isInteger(index) || index < 0) return 0;
+    const cabinet = container.cabinet;
+    if (!(cabinet instanceof CasinoCabinet) || !cabinet.chipSelector) return 0;
+    const chips = (cabinet.chipSelector as unknown as { _chips?: BaseChip[] })._chips;
+    const value = Array.isArray(chips) ? chips[index]?.value : undefined;
+    return typeof value === 'number' && Number.isFinite(value) ? value : 0;
+}
+
+// Keys written here mirror the menu's `listenerOutputs` in src/menu/fireEvent/casino-cabinet-fire-events.json.
+const BUILT_IN_ENRICHERS: Record<string, (values: Record<string, unknown>) => void> = {
+    CASINO_CABINET_CHIP_SELECTED: (values) => { values.chipValue = casinoChipValue(values.chipIndex); },
+};
+
+function readArgNames(starter: MinimalStarter): string[] | null {
+    if (starter.title !== 'onEventFire') return null;
+    const prop = starter.properties?.find(p => p.name === 'argNames');
+    if (!prop || !Array.isArray(prop.value)) return null;
+    return prop.value.map((n: unknown) => (typeof n === 'string' ? n : ''));
+}
+
+function builtInEventValues(eventName: string, argNames: string[], emitted: unknown[]): Record<string, unknown> {
+    const values: Record<string, unknown> = {};
+    argNames.forEach((name, i) => { if (name) values[name] = emitted[i]; });
+    const enrich = BUILT_IN_ENRICHERS[eventName];
+    if (enrich) {
+        try { enrich(values); } catch (err) { console.warn(`[custom-events] ${eventName} enricher failed:`, err); }
+    }
+    return values;
+}
 
 export function detachAllCustomEventStarters(): void {
     for (const { eventName, handler } of attached.values()) {
@@ -91,9 +132,15 @@ export function bindCustomEventStarters(
             const eventName = typeof nameProp?.value === 'string' ? nameProp.value.trim() : '';
             if (!eventName) continue;
 
+            const argNames = readArgNames(starter);
             // Only a PLAIN OBJECT payload becomes starter args — built-in
             // fire-events (via the shared `onEventFire` starter) emit scalars.
-            const handler = (payload?: unknown) => {
+            const handler = (...emitted: unknown[]) => {
+                if (argNames) {
+                    dispatch(graph.id, starter.id, builtInEventValues(eventName, argNames, emitted));
+                    return;
+                }
+                const payload = emitted[0];
                 const args =
                     payload && typeof payload === 'object' && !Array.isArray(payload)
                         ? (payload as Record<string, unknown>)

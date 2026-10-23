@@ -19,3 +19,4 @@ export const PORTRAIT_CHAT_CROP: boolean;
 export const ENABLE_3D: boolean;
 export const SCENE3D_SHADOW_QUALITY: string;
 export const CABINET_MODE: string;
+export const CABINET_OPTIONS: Record<string, unknown>;

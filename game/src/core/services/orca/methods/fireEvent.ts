@@ -166,6 +166,14 @@ class CasinoCabinetFireEventMethods {
     public CASINO_CABINET_CHIP_SELECTED(chipID: number): void {
         eventEmitter.emit('CASINO_CABINET_CHIP_SELECTED', chipID);
     }
+
+    public CASINO_CABINET_DRAG_CHIP_PLACED(x: number, y: number, chipID: number): void {
+        eventEmitter.emit('CASINO_CABINET_DRAG_CHIP_PLACED', { x: Number(x) || 0, y: Number(y) || 0 }, chipID);
+    }
+
+    public CASINO_CABINET_DRAG_CHIP_RELEASED(x: number, y: number, chipID: number): void {
+        eventEmitter.emit('CASINO_CABINET_DRAG_CHIP_RELEASED', { x: Number(x) || 0, y: Number(y) || 0 }, chipID);
+    }
 }
 
 class GameFireEventMethods {

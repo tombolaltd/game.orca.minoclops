@@ -12,6 +12,7 @@ import { GameApplication } from '@/src/core/views/game/application';
 import { ACTIVE_SKIN } from '@/src/core/services/orca/active-skin';
 import { preloadOrcaGameRules } from '@/src/core/services/orca/game-rules';
 import { createOrcaCabinet } from '@/src/core/services/orca/cabinet-factory';
+import { installOrcaRequestFields } from '@/src/core/services/orca/request-fields';
 
 // arcade-base throws when the host supplied no `?skin=` — see `skin-resolver.ts`.
 function readRequestedSkin(): string {
@@ -59,6 +60,8 @@ export const containerModule = new ContainerModule((bind, _, __, rebind) => {
 
     bind<() => void>(Injects.ComponentsFactory).toFactory(() => {
         return () => {
+            // Orca Server request fields (Data Browser): extra Begin / Resume request data.
+            installOrcaRequestFields();
             const cabinetOptions: ICabinetOptions = {
                 // TODO: Configure your cabinet by passing in any desired options
             };

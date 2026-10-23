@@ -28,8 +28,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 694.9091427884298,
-        "y": 212.97813291928568,
+        "x": 705.1956485961321,
+        "y": 188.29051898080036,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "ncejedmd",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 377.66519197807725,
-        "y": 214.60966812044634,
+        "x": 387.95169778577946,
+        "y": 189.92205418196102,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -245,7 +245,6 @@
       },
       {
         "id": "nawnf2j8",
-        "title": "toString",
         "x": -303.322780612144,
         "y": 396.91029991589585,
         "rootType": "string",
@@ -256,13 +255,14 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       },
       {
         "id": "nlnialvt",
         "title": "setText",
-        "x": 44.13771085759589,
-        "y": 207.11696006627437,
+        "x": 54.424216665298104,
+        "y": 182.42934612778905,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -275,7 +275,8 @@
           },
           {
             "name": "value",
-            "type": "string"
+            "type": "string",
+            "propertyValue": null
           }
         ],
         "propertyValues": {
@@ -304,21 +305,8 @@
         "propertyName": "split",
         "points": [
           {
-            "x": 1030.997804163852,
-            "y": 464.71348270839917
-          }
-        ]
-      },
-      {
-        "id": "l6gj8nwi",
-        "from": "nvu1cf10",
-        "to": "n10e0ksf",
-        "propertyType": "int",
-        "propertyName": "symbol",
-        "points": [
-          {
-            "x": 1063.8034848070267,
-            "y": 481.1163230299866
+            "x": 1038.6330445981896,
+            "y": 488.47279244576634
           }
         ]
       },
@@ -396,14 +384,27 @@
         "id": "lzl5ag3o",
         "from": "nlnialvt",
         "to": "ncejedmd"
+      },
+      {
+        "id": "lv37eij1",
+        "from": "nvu1cf10",
+        "to": "n10e0ksf",
+        "propertyType": "int",
+        "propertyName": "symbol",
+        "points": [
+          {
+            "x": 1066.7919854122872,
+            "y": 505.36815693422494
+          }
+        ]
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 539.7208101504261,
-      "panY": 16.135677770558345,
-      "scale": 0.4264354118629238
+      "panX": 194.14631820363195,
+      "panY": 60.76968009279591,
+      "scale": 0.7046424863571944
     }
   }
 }

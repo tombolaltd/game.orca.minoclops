@@ -177,7 +177,6 @@
     },
     {
       "id": "nawnf2j8",
-      "title": "toString",
       "rootType": "string",
       "properties": [
         {
@@ -185,7 +184,8 @@
           "type": "T",
           "sourceNodeId": "n8gf47cf"
         }
-      ]
+      ],
+      "propertyValue": null
     },
     {
       "id": "nlnialvt",
@@ -224,13 +224,6 @@
       "to": "n10e0ksf",
       "propertyType": "int",
       "propertyName": "split"
-    },
-    {
-      "id": "l6gj8nwi",
-      "from": "nvu1cf10",
-      "to": "n10e0ksf",
-      "propertyType": "int",
-      "propertyName": "symbol"
     },
     {
       "id": "lyfhyejo",
@@ -296,6 +289,13 @@
       "id": "lzl5ag3o",
       "from": "nlnialvt",
       "to": "ncejedmd"
+    },
+    {
+      "id": "lv37eij1",
+      "from": "nvu1cf10",
+      "to": "n10e0ksf",
+      "propertyType": "int",
+      "propertyName": "symbol"
     }
   ]
 }

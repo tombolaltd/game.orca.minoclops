@@ -31,7 +31,7 @@
     "src/config/engine-name.ts": "0fa5563a6acb2cd78064dd6ff73390285dae7d0450ec87d89a238ba33b19b8a6",
     "src/config/features.ts": "6b06b747b6a2f20a1914ab6fb2426f4aa71fec7711c0eed3fc9a14255ee69d49",
     "src/core/dev/chat-placeholder.ts": "8f1bfc849f2d7e6063c3b43465ea994360a9824ba169e1d96c6c280190d85a75",
-    "src/core/inversify/bindings.ts": "303e5ecdcf979f4ccc0697e4082b1ab906f4550b955b43906e0980ee2b770ab8",
+    "src/core/inversify/bindings.ts": "0df33880e6f779a48235df7ccd348b5192ed450e4be61d0969509d92ef0988d7",
     "src/core/inversify/index.ts": "40b79a4fbd67c55fad2d1c30184313fa0be0adb4b4605fc1bd10c30cf4eb8b5e",
     "src/core/inversify/variants/denmark/bindings.ts": "43705b2babdfbb4065e7cc94c62eaf6e1434b7f062b1d0906d8e8d5f6613bd0c",
     "src/core/inversify/variants/italy/bindings.ts": "d689e2ac69b82df7b96136996da2dece083d45d74fe8e3e7a422676ed724461a",
