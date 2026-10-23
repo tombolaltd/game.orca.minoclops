@@ -65,9 +65,9 @@
         "zoom": 1,
         "showSessionData": true,
         "sessionDataJustification": "default",
-        "mode": "portrait9x16",
-        "frameWidth": 1080,
-        "frameHeight": 1920,
+        "mode": "landscape720p",
+        "frameWidth": 1280,
+        "frameHeight": 720,
         "rectTransform": null
       },
       {
@@ -156,7 +156,7 @@
                 "zIndex": 0,
                 "children": [],
                 "customProperties": {},
-                "locked": true,
+                "locked": false,
                 "expanded": false,
                 "skeleton": "assets/foreground/foreground.json",
                 "atlas": "assets/foreground/foreground.atlas",
@@ -365,9 +365,7 @@
                         "customProperties": {},
                         "locked": false,
                         "expanded": false,
-                        "texture": {
-                          "guid": "a20e0eb3-7c58-4575-81fd-0018344a02ca"
-                        },
+                        "texture": null,
                         "tint": 16777215,
                         "blendMode": "normal",
                         "width": 0,
@@ -397,9 +395,7 @@
                         "customProperties": {},
                         "locked": false,
                         "expanded": false,
-                        "texture": {
-                          "guid": "a80e9d58-3908-491d-8382-3219abcce757"
-                        },
+                        "texture": null,
                         "tint": 16777215,
                         "blendMode": "normal",
                         "width": 0,
@@ -1326,9 +1322,7 @@
                                 "customProperties": {},
                                 "locked": false,
                                 "expanded": false,
-                                "texture": {
-                                  "guid": "d713fbd7-6a22-41ad-87a5-b956132382dc"
-                                },
+                                "texture": null,
                                 "tint": 16777215,
                                 "blendMode": "normal",
                                 "width": 0,
@@ -1817,9 +1811,7 @@
                                 "customProperties": {},
                                 "locked": false,
                                 "expanded": false,
-                                "texture": {
-                                  "guid": "d713fbd7-6a22-41ad-87a5-b956132382dc"
-                                },
+                                "texture": null,
                                 "tint": 16777215,
                                 "blendMode": "normal",
                                 "width": 0,
@@ -2308,9 +2300,7 @@
                                 "customProperties": {},
                                 "locked": false,
                                 "expanded": false,
-                                "texture": {
-                                  "guid": "d713fbd7-6a22-41ad-87a5-b956132382dc"
-                                },
+                                "texture": null,
                                 "tint": 16777215,
                                 "blendMode": "normal",
                                 "width": 0,
@@ -3024,6 +3014,20 @@
                     },
                     "node_1791296555660_uqk9no210": {
                       "visible": false
+                    },
+                    "node_ss_hud": {
+                      "transform": {
+                        "y": -136.97278596956872,
+                        "x": -12.377630182278264
+                      }
+                    },
+                    "node_1791298581468_z4rigcjll": {
+                      "transform": {
+                        "x": -17.14966138839833,
+                        "y": -41.86704365181102,
+                        "scaleX": 0.9902123744878729,
+                        "scaleY": 0.888040143699643
+                      }
                     }
                   }
                 },
@@ -3041,12 +3045,30 @@
                   "entries": {
                     "node_1791298947613_fe3k1nuxq": {
                       "transform": {
-                        "y": 41.13156280956906
+                        "y": 41.13156280956906,
+                        "x": -16.869515236365096,
+                        "scaleX": 1.0139486417566974
                       }
                     },
                     "node_1791296555660_uqk9no210": {
                       "transform": {
                         "x": -744.9843992228059
+                      }
+                    },
+                    "node_ss_hud": {
+                      "transform": {
+                        "x": -19.152628364996684,
+                        "y": -21.348927574277816,
+                        "scaleX": 1.5333403846690588,
+                        "scaleY": 1.4375905292948008
+                      }
+                    },
+                    "node_1791298581468_z4rigcjll": {
+                      "transform": {
+                        "x": -11.681399233045923,
+                        "y": -11.582909282988155,
+                        "scaleX": 0.9745220337781461,
+                        "scaleY": 0.8625870381644242
                       }
                     }
                   }
