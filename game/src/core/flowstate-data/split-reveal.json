@@ -176,18 +176,6 @@
       ]
     },
     {
-      "id": "nawnf2j8",
-      "rootType": "string",
-      "properties": [
-        {
-          "name": "value",
-          "type": "T",
-          "sourceNodeId": "n8gf47cf"
-        }
-      ],
-      "propertyValue": null
-    },
-    {
       "id": "nlnialvt",
       "title": "setText",
       "rootType": "Action",
@@ -205,7 +193,19 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "nawnf2j8"
+          "sourceNodeId": "nshvy250"
+        }
+      ]
+    },
+    {
+      "id": "nshvy250",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "n8gf47cf"
         }
       ]
     }
@@ -266,29 +266,10 @@
       "sourceOutputName": "Symbol"
     },
     {
-      "id": "lt0uwdu2",
-      "from": "n8gf47cf",
-      "to": "nawnf2j8",
-      "propertyType": "float",
-      "propertyName": "value"
-    },
-    {
-      "id": "l70gekq5",
-      "from": "nawnf2j8",
-      "to": "nlnialvt",
-      "propertyType": "string",
-      "propertyName": "value"
-    },
-    {
       "id": "ll0wzr8v",
       "from": "nccjlbfj",
       "to": "nlnialvt",
       "outIdx": 1
-    },
-    {
-      "id": "lzl5ag3o",
-      "from": "nlnialvt",
-      "to": "ncejedmd"
     },
     {
       "id": "lv37eij1",
@@ -296,6 +277,25 @@
       "to": "n10e0ksf",
       "propertyType": "int",
       "propertyName": "symbol"
+    },
+    {
+      "id": "lxp2ir61",
+      "from": "nlnialvt",
+      "to": "ncejedmd"
+    },
+    {
+      "id": "l8dkmuba",
+      "from": "n8gf47cf",
+      "to": "nshvy250",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "li9dt05m",
+      "from": "nshvy250",
+      "to": "nlnialvt",
+      "propertyType": "string",
+      "propertyName": "value"
     }
   ]
 }

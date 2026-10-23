@@ -152,8 +152,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 1116.8883782060495,
-        "y": 193.0526858008445,
+        "x": 1092.6471171157084,
+        "y": 243.22948470904163,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -226,8 +226,8 @@
       {
         "id": "n8gf47cf",
         "title": "getGameModelProperty",
-        "x": -646.4669825435765,
-        "y": 401.06061406532854,
+        "x": -622.6746561537847,
+        "y": 412.3547309290776,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -242,21 +242,6 @@
         "propertyValues": {
           "propertyName": "waysShown"
         }
-      },
-      {
-        "id": "nawnf2j8",
-        "x": -303.322780612144,
-        "y": 396.91029991589585,
-        "rootType": "string",
-        "color": "#c0392b",
-        "icon": "🔤",
-        "properties": [
-          {
-            "name": "value",
-            "type": "T"
-          }
-        ],
-        "propertyValue": null
       },
       {
         "id": "nlnialvt",
@@ -287,6 +272,21 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "nshvy250",
+        "title": "toString",
+        "x": -316.5974032360191,
+        "y": 420.24188203921767,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
       }
     ],
     "links": [
@@ -305,8 +305,8 @@
         "propertyName": "split",
         "points": [
           {
-            "x": 1038.6330445981896,
-            "y": 488.47279244576634
+            "x": 995.3385462458008,
+            "y": 449.93075546025403
           }
         ]
       },
@@ -331,8 +331,8 @@
             "y": 143.89450326447533
           },
           {
-            "x": 1036.002589567239,
-            "y": 151.74048968945561
+            "x": 1008.8941101072376,
+            "y": 143.96231401639704
           }
         ]
       },
@@ -361,29 +361,10 @@
         "sourceOutputName": "Symbol"
       },
       {
-        "id": "lt0uwdu2",
-        "from": "n8gf47cf",
-        "to": "nawnf2j8",
-        "propertyType": "float",
-        "propertyName": "value"
-      },
-      {
-        "id": "l70gekq5",
-        "from": "nawnf2j8",
-        "to": "nlnialvt",
-        "propertyType": "string",
-        "propertyName": "value"
-      },
-      {
         "id": "ll0wzr8v",
         "from": "nccjlbfj",
         "to": "nlnialvt",
         "outIdx": 1
-      },
-      {
-        "id": "lzl5ag3o",
-        "from": "nlnialvt",
-        "to": "ncejedmd"
       },
       {
         "id": "lv37eij1",
@@ -393,18 +374,37 @@
         "propertyName": "symbol",
         "points": [
           {
-            "x": 1066.7919854122872,
-            "y": 505.36815693422494
+            "x": 1018.5766557225495,
+            "y": 496.4069744137513
           }
         ]
+      },
+      {
+        "id": "lxp2ir61",
+        "from": "nlnialvt",
+        "to": "ncejedmd"
+      },
+      {
+        "id": "l8dkmuba",
+        "from": "n8gf47cf",
+        "to": "nshvy250",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "li9dt05m",
+        "from": "nshvy250",
+        "to": "nlnialvt",
+        "propertyType": "string",
+        "propertyName": "value"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 194.14631820363195,
-      "panY": 60.76968009279591,
-      "scale": 0.7046424863571944
+      "panX": 367.47883162307255,
+      "panY": 154.98218638544742,
+      "scale": 0.5160059765685437
     }
   }
 }

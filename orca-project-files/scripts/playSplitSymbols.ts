@@ -2,6 +2,7 @@ import type { CustomNodeDefinition } from './orca-custom-node';
 import { gameModel } from '../../../models/game-model';
 import { resolveNode } from '../methods/node-ref';
 import type { NodeRefLike } from '../methods/node-ref';
+import { customFireEvents } from '../methods/fireEvent';
 import type { IOutcome } from './orca-types';
 
 /**
@@ -52,6 +53,7 @@ export async function run(split: number, symbol: number, reelsNode: NodeRefLike,
     carriedSplits = outcomes === spinOutcomes && shownOutcome ? splitsAfterCascade(shownOutcome) : new Set();
     spinOutcomes = outcomes;
     shownOutcome = outcome;
+    fireSplittingEvent(outcome);
   }
 
   const animationName = `${baseAnimationName}${split}x`;
@@ -155,6 +157,20 @@ function playSplit(view: any, live: any, animationName: string): Promise<void> {
 
 function cellKey(reel: number, row: number): string {
   return `${reel},${row}`;
+}
+
+// Runs on the first call for a board: later calls split other symbols on the same board, so the highest level is read from SplitSymbolDetails.
+function fireSplittingEvent(outcome: IOutcome): void {
+  const splitBySymbol = new Map<number, number>();
+  for (const detail of gameModel.splitSymbolDetails) splitBySymbol.set(detail.Symbol, detail.Split);
+
+  let highest = 0;
+  for (const { Reel, Row } of outcome.SplitSymbols ?? []) {
+    if (carriedSplits.has(cellKey(Reel, Row))) continue;
+    const level = splitBySymbol.get(outcome.DisplayReels?.[Reel]?.[Row] ?? -1) ?? 0;
+    if (level > highest) highest = level;
+  }
+  if (highest > 0) customFireEvents.fireCustomEvent('symbolsSplitting', ['splitAmount'], highest);
 }
 
 // Where the previous board's split symbols end up once its winning cells are removed and the rest fall.
