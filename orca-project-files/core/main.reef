@@ -2969,11 +2969,7 @@
                 "locked": false,
                 "expanded": true,
                 "dontDestroyOnLoad": false,
-                "responsiveScaler": {
-                  "mode": "bestFit",
-                  "referenceWidth": 1920,
-                  "referenceHeight": 1080
-                },
+                "responsiveScaler": null,
                 "rectTransform": null
               }
             ],
@@ -3014,8 +3010,9 @@
                     },
                     "node_ss_hud": {
                       "transform": {
-                        "y": -37.36051900744975,
-                        "x": -12.377630182278264
+                        "y": -34.31851731154329,
+                        "x": 1.0357742751082126,
+                        "scaleX": 1.0904285136226084
                       }
                     },
                     "node_1791298581468_z4rigcjll": {
@@ -3064,6 +3061,30 @@
                         "y": 189.6033257206975,
                         "scaleX": 0.5554619931015492,
                         "scaleY": 0.536428557152358
+                      }
+                    },
+                    "node_ss_reel_area": {
+                      "transform": {
+                        "x": 36.71840577631008,
+                        "y": 43.65399016835438,
+                        "scaleX": 1.3648709236704026,
+                        "scaleY": 1.3744965087849466
+                      }
+                    },
+                    "node_ss_background": {
+                      "transform": {
+                        "x": -25.849164895724698,
+                        "y": 7.601724584492075,
+                        "scaleX": 1.1709559461160264,
+                        "scaleY": 1.2161119773302798
+                      }
+                    },
+                    "node_ss_bonus_bg": {
+                      "transform": {
+                        "x": 115.9713410479635,
+                        "y": -152.39179466486735,
+                        "scaleX": 0.865612765931694,
+                        "scaleY": 0.8412075088416103
                       }
                     }
                   }
