@@ -677,6 +677,43 @@
           }
         ]
       }
+    },
+    {
+      "id": "nny85vt2",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
     }
   ],
   "links": [
@@ -694,6 +731,11 @@
       "id": "lwxr2sdb",
       "from": "gamebo_066",
       "to": "gamebo_072"
+    },
+    {
+      "id": "lovten4j",
+      "from": "gamebo_072",
+      "to": "nny85vt2"
     }
   ]
 }

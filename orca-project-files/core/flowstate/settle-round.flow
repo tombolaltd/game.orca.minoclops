@@ -7,8 +7,8 @@
         "id": "settle_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 300.49808088503545,
-        "y": 127.70972310786837,
+        "x": -185.00947801280762,
+        "y": 101.10934283379933,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "n6ldbe9v",
         "title": "Note",
-        "x": 325.21345466006096,
-        "y": -82.65074356647708,
+        "x": 334.00511717020294,
+        "y": -103.16462275680828,
         "isNote": true,
         "noteText": "TODO: Play bonus win if needed or big win. Set cabinet values and other end of game things",
         "width": 250,
@@ -38,8 +38,8 @@
       {
         "id": "n88iott5",
         "title": "endCabinetGame",
-        "x": 623.0923725981435,
-        "y": 120.8966975304237,
+        "x": 217.2455755028078,
+        "y": 107.82264616357824,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -48,8 +48,8 @@
       {
         "id": "n152ds7e",
         "title": "GAME_COMPLETE",
-        "x": 849.7582319694741,
-        "y": 120.89669753042367,
+        "x": 443.9114348741384,
+        "y": 107.82264616357821,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "⚡",
@@ -58,22 +58,22 @@
     ],
     "links": [
       {
-        "id": "lygjpzyk",
-        "from": "settle_003",
-        "to": "n88iott5"
-      },
-      {
         "id": "lsvfnlxi",
         "from": "n88iott5",
         "to": "n152ds7e"
+      },
+      {
+        "id": "lockx5ul",
+        "from": "settle_003",
+        "to": "n88iott5"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 344.0222931738086,
-      "panY": 140.43689907288308,
-      "scale": 0.6485317215733871
+      "panX": 357.71391467747276,
+      "panY": 164.6232111865998,
+      "scale": 0.6824647776320435
     }
   }
 }

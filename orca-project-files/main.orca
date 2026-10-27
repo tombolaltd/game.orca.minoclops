@@ -34,7 +34,9 @@
     "bonus-spin",
     "bonus-spin-end",
     "bonus-end",
-    "Character-split"
+    "Character-split",
+    "background-split",
+    "character-spin-end"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -232,7 +234,16 @@
       "id": "folder-1792663262025-q0vc50",
       "name": "Character",
       "graphs": [
-        "Character-split"
+        "Character-split",
+        "character-spin-end"
+      ],
+      "collapsed": false
+    },
+    {
+      "id": "folder-1793034053152-jt8gew",
+      "name": "Background flows",
+      "graphs": [
+        "background-split"
       ],
       "collapsed": false
     }

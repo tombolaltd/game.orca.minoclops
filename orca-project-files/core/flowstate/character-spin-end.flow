@@ -1,0 +1,137 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "ng7c2yvx",
+        "title": "playAnimation",
+        "x": 553.5116221824926,
+        "y": 63.262538446183996,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": true,
+          "trackIndex": 1,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "idle"
+        }
+      },
+      {
+        "id": "nvbp6ycl",
+        "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
+        "x": -176.03483343780198,
+        "y": 70.09728850805647,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "settleRound"
+        }
+      },
+      {
+        "id": "n0454ihj",
+        "title": "clearTracks",
+        "x": 175.32833383048785,
+        "y": 61.39507202886176,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "lgtxb1ia",
+        "from": "nvbp6ycl",
+        "to": "n0454ihj"
+      },
+      {
+        "id": "lpptnby5",
+        "from": "n0454ihj",
+        "to": "ng7c2yvx"
+      }
+    ],
+    "groups": [],
+    "variables": [],
+    "viewState": {
+      "panX": 362.26443634021206,
+      "panY": 153.54501683371572,
+      "scale": 0.6987236258385962
+    }
+  }
+}

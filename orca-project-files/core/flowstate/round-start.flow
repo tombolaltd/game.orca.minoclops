@@ -63,66 +63,6 @@
               "isEntry": true
             },
             {
-              "id": "rounds_014",
-              "title": "setNodeAlpha",
-              "displayName": "Hide hotspot",
-              "x": 360.6067567567569,
-              "y": 116.03108108108108,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "rounds_015",
-              "title": "setNodeAlpha",
-              "displayName": "Hide reel hotspot",
-              "x": 753.035135135135,
-              "y": 117.35405405405405,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "alpha",
-                  "type": "float",
-                  "default": 1
-                }
-              ],
-              "propertyValues": {
-                "alpha": 0,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
               "id": "rounds_038",
               "title": "Exit",
               "x": 764.1252863699092,
@@ -130,17 +70,42 @@
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
+            },
+            {
+              "id": "ngmctx09",
+              "title": "setToSetupPose",
+              "x": 392.35717589715233,
+              "y": -66.01653496465241,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791296555660_uqk9no210",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
             {
-              "id": "l_rounds_19",
-              "from": "rounds_014",
-              "to": "rounds_015"
+              "id": "l6lysrp9",
+              "from": "rounds_037",
+              "to": "ngmctx09"
             },
             {
-              "id": "lrybh3n2",
-              "from": "rounds_037",
+              "id": "l1zl53xi",
+              "from": "ngmctx09",
               "to": "rounds_038"
             }
           ],
@@ -601,7 +566,7 @@
         "id": "nw8mlvyc",
         "title": "State",
         "displayName": "Hotspot Selection",
-        "x": 572.212118826532,
+        "x": 569.5973085531629,
         "y": -25.34855984894262,
         "isState": true,
         "entryTargetId": "n94tocw2",
@@ -620,8 +585,8 @@
             {
               "id": "ny97oned",
               "title": "Exit",
-              "x": 1686.1419985986759,
-              "y": 410.28046455628953,
+              "x": 2183.6759214309814,
+              "y": 360.00133063949323,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -854,8 +819,124 @@
             {
               "id": "ntthdei5",
               "title": "playAnimation",
-              "x": 890.9381161711,
-              "y": 395.2144484580246,
+              "x": 838.6093413260568,
+              "y": 349.0420000653393,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791296555660_uqk9no210",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "split/splitSTART"
+              }
+            },
+            {
+              "id": "n6xdtszk",
+              "title": "setNodeGlobalPosition",
+              "x": 505.79459469198366,
+              "y": 352.1316294115248,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "x",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "y",
+                  "type": "float",
+                  "default": 0
+                }
+              ],
+              "propertyValues": {
+                "x": 0,
+                "y": 0,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n8cpiozm",
+              "title": "getNodeGlobalPosition",
+              "friendlyTitle": "Get Global Position",
+              "x": 185.4359998348325,
+              "y": 562.1540388423653,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🌐",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ]
+            },
+            {
+              "id": "nm1is3s8",
+              "title": "playAnimation",
+              "x": 1165.4192770449852,
+              "y": 352.4280270813071,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -915,10 +996,10 @@
               }
             },
             {
-              "id": "npyth0jt",
+              "id": "n40wvegi",
               "title": "playAnimation",
-              "x": 1302.4545075636863,
-              "y": 396.8585004491162,
+              "x": 1493.476476240397,
+              "y": 351.33853102972824,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -967,7 +1048,7 @@
               "propertyValues": {
                 "loop": true,
                 "trackIndex": 0,
-                "sequenceNodeOn": "immediate",
+                "sequenceNodeOn": "onComplete",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1792499758800_4pkgdglr6",
@@ -978,10 +1059,10 @@
               }
             },
             {
-              "id": "n6xdtszk",
-              "title": "setNodeGlobalPosition",
-              "x": 552.8427560217566,
-              "y": 405.0608109075193,
+              "id": "nmiidie8",
+              "title": "playAnimation",
+              "x": 1830.691858486448,
+              "y": 354.64688077125646,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -989,46 +1070,56 @@
               "properties": [
                 {
                   "name": "target",
-                  "type": "nodeRef"
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
                 },
                 {
-                  "name": "x",
-                  "type": "float",
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
                   "default": 0
                 },
                 {
-                  "name": "y",
-                  "type": "float",
-                  "default": 0
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
                 }
               ],
               "propertyValues": {
-                "x": 0,
-                "y": 0,
+                "loop": true,
+                "trackIndex": 1,
+                "sequenceNodeOn": "immediate",
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
+                  "nodeId": "node_1791296555660_uqk9no210",
                   "sceneScope": "core",
                   "sceneName": "main"
-                }
+                },
+                "animationName": "split/splitIDLE"
               }
-            },
-            {
-              "id": "n8cpiozm",
-              "title": "getNodeGlobalPosition",
-              "friendlyTitle": "Get Global Position",
-              "x": 185.4359998348325,
-              "y": 562.1540388423653,
-              "rootType": "getters",
-              "color": "#0e7c86",
-              "icon": "🌐",
-              "isStarter": false,
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                }
-              ]
             }
           ],
           "links": [
@@ -1092,16 +1183,6 @@
               "propertyName": "rowIndex"
             },
             {
-              "id": "l6lcwv5b",
-              "from": "ntthdei5",
-              "to": "npyth0jt"
-            },
-            {
-              "id": "lxugrgo7",
-              "from": "npyth0jt",
-              "to": "ny97oned"
-            },
-            {
               "id": "l4i24vvh",
               "from": "nqum0ita",
               "to": "n6xdtszk"
@@ -1138,6 +1219,26 @@
               "id": "leyutqx9",
               "from": "n7dtry43",
               "to": "nqum0ita"
+            },
+            {
+              "id": "lq6qf6xi",
+              "from": "nm1is3s8",
+              "to": "n40wvegi"
+            },
+            {
+              "id": "lsacr62c",
+              "from": "ntthdei5",
+              "to": "nm1is3s8"
+            },
+            {
+              "id": "lg5fk48l",
+              "from": "n40wvegi",
+              "to": "nmiidie8"
+            },
+            {
+              "id": "lnwuumsy",
+              "from": "nmiidie8",
+              "to": "ny97oned"
             }
           ],
           "groups": []
@@ -1337,9 +1438,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -251.97479203913258,
-      "panY": 215.50328926304408,
-      "scale": 0.7018397319842999
+      "panX": -97.79799575904576,
+      "panY": -95.6756755343659,
+      "scale": 0.611266157914834
     }
   }
 }

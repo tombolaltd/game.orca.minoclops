@@ -28,8 +28,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 488.2753582395009,
-        "y": 204.0298660867154,
+        "x": 538.4338826688881,
+        "y": 206.28908078821078,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "ncejedmd",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 171.03140742914832,
-        "y": 205.66140128787606,
+        "x": 206.10270571678893,
+        "y": 205.661401287876,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -66,7 +66,7 @@
           }
         ],
         "propertyValues": {
-          "seconds": 1.75
+          "seconds": 1
         }
       },
       {
@@ -152,8 +152,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 820.252945538987,
-        "y": 259.57255844681833,
+        "x": 923.5730489008613,
+        "y": 201.9782444186635,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -246,7 +246,7 @@
       {
         "id": "nlnialvt",
         "title": "setText",
-        "x": -143.50347446290138,
+        "x": -143.5034744629014,
         "y": 205.57722004239315,
         "rootType": "Action",
         "color": "#3b6ef5",
@@ -274,10 +274,9 @@
         }
       },
       {
-        "id": "ns0fqres",
-        "title": "toString",
-        "x": -512.2434102769364,
-        "y": 413.21282069942197,
+        "id": "n423jic2",
+        "x": -497.7234726996525,
+        "y": 409.29581901042303,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -286,7 +285,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       }
     ],
     "links": [
@@ -305,8 +305,12 @@
         "propertyName": "split",
         "points": [
           {
-            "x": 712.6152622841921,
-            "y": 482.63998381519497
+            "x": 492.82078948864813,
+            "y": 582.9315771504148
+          },
+          {
+            "x": 735.3186310389402,
+            "y": 548.8967923714264
           }
         ]
       },
@@ -314,11 +318,6 @@
         "id": "lyfhyejo",
         "from": "splitr_008",
         "to": "nccjlbfj"
-      },
-      {
-        "id": "l6ilo4ti",
-        "from": "ncejedmd",
-        "to": "splitr_070"
       },
       {
         "id": "ly44nto1",
@@ -331,8 +330,8 @@
             "y": 143.5520177000914
           },
           {
-            "x": 771.6704066063456,
-            "y": 145.2941972270407
+            "x": 826.7871151324714,
+            "y": 146.86089716962636
           }
         ]
       },
@@ -368,8 +367,8 @@
         "propertyName": "symbol",
         "points": [
           {
-            "x": 743.020055730186,
-            "y": 520.1988463073051
+            "x": 762.9718936718683,
+            "y": 563.7870107122338
           }
         ]
       },
@@ -380,31 +379,36 @@
         "outIdx": 1
       },
       {
-        "id": "lq1tllgz",
-        "from": "nlnialvt",
-        "to": "ncejedmd"
-      },
-      {
-        "id": "l4apr86o",
+        "id": "luxn4xf8",
         "from": "n8gf47cf",
-        "to": "ns0fqres",
+        "to": "n423jic2",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "l1gjhyte",
-        "from": "ns0fqres",
+        "id": "lym30h2k",
+        "from": "n423jic2",
         "to": "nlnialvt",
         "propertyType": "string",
         "propertyName": "value"
+      },
+      {
+        "id": "lfoak1y5",
+        "from": "ncejedmd",
+        "to": "splitr_070"
+      },
+      {
+        "id": "ljpbgo3z",
+        "from": "nlnialvt",
+        "to": "ncejedmd"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 773.5408657393259,
-      "panY": -99.48367016537054,
-      "scale": 0.9783508498808655
+      "panX": 473.3213605426905,
+      "panY": 24.162748515390263,
+      "scale": 0.47010727712542266
     }
   }
 }

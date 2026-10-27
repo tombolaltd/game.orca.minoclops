@@ -1,65 +1,185 @@
 character.webp
-size: 2048, 4096
+size: 4096, 4096
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 pma: false
+character/arm1
+  bounds: 1270, 1002, 459, 159
+  rotate: 90
 character/Axe
-  bounds: 3, 3, 2051, 825
+  bounds: 1444, 3, 1436, 578
+character/AxeBlur
+  bounds: 3, 3, 1437, 712
+character/axePart
+  bounds: 3, 719, 513, 645
   rotate: 90
+character/AxePath
+  bounds: 2866, 620, 649, 830
+  rotate: 90
+character/beltChest
+  bounds: 2058, 776, 438, 382
+character/beltChest2
+  bounds: 1433, 1222, 407, 370
 character/Brow
-  bounds: 1714, 3, 357, 268
-  rotate: 90
+  bounds: 3232, 1520, 250, 188
 character/Ear L
-  bounds: 289, 3705, 209, 143
+  bounds: 510, 1486, 146, 100
   rotate: 90
 character/Ear R
-  bounds: 1714, 1033, 280, 218
-character/ForearmL
-  bounds: 1714, 364, 336, 325
+  bounds: 1024, 2034, 196, 153
   rotate: 90
+character/eyewhite
+  bounds: 1030, 1882, 155, 148
+character/eyewhiteRed
+  bounds: 1030, 1727, 157, 151
+character/ForearmL
+  bounds: 2851, 1523, 235, 227
+character/forearmL3
+  bounds: 2058, 1162, 298, 425
+  rotate: 90
+character/ForearmL4
+  bounds: 3700, 806, 285, 390
+  rotate: 90
+character/ForearmL5
+  bounds: 3488, 1273, 193, 247
+character/ForearmL_
+  bounds: 1844, 1222, 210, 225
 character/ForearmR
-  bounds: 1613, 2455, 379, 530
+  bounds: 649, 2014, 265, 371
+  rotate: 90
+character/ForearmR3
+  bounds: 2865, 1273, 246, 363
+  rotate: 90
+character/ForearmR5
+  bounds: 3700, 1095, 216, 384
+  rotate: 90
+character/ForearmR_
+  bounds: 327, 2700, 187, 300
+  rotate: 90
 character/handL
-  bounds: 3, 3705, 260, 282
+  bounds: 1837, 1756, 181, 195
+  rotate: 90
+character/handL3
+  bounds: 448, 1723, 201, 200
+  offsets: 0, 9, 207, 209
+  rotate: 90
+character/handL4
+  bounds: 3486, 1689, 224, 226
   rotate: 90
 character/handR
-  bounds: 1748, 1584, 304, 267
+  bounds: 1213, 1673, 209, 180
+character/handR3
+  bounds: 1213, 1465, 204, 211
   rotate: 90
 character/Head Base
-  bounds: 832, 3, 1273, 878
+  bounds: 2884, 3, 890, 613
+character/head_
+  bounds: 3, 1236, 426, 503
+  rotate: 90
+character/hornL
+  bounds: 652, 1727, 283, 374
+  rotate: 90
+character/hornR
+  bounds: 2500, 1140, 308, 361
+  rotate: 90
+character/jaw2
+  bounds: 377, 2370, 326, 260
+  offsets: 20, 0, 346, 260
   rotate: 90
 character/Layer 49
-  bounds: 1542, 1917, 534, 444
+  bounds: 3778, 3, 374, 311
   rotate: 90
 character/Layer 50
-  bounds: 3, 3062, 1940, 267
+  bounds: 1444, 585, 1358, 187
 character/Lower Jaw
-  bounds: 487, 3333, 371, 379
+  bounds: 377, 2106, 260, 265
   rotate: 90
-character/placeholder
-  bounds: 3, 2058, 1000, 1000
+character/Lower Jaw3
+  bounds: 3, 2663, 320, 271
+  offsets: 0, 0, 342, 271
+character/lowerLid
+  bounds: 2806, 585, 209, 56
+  rotate: 90
+character/nose1
+  bounds: 988, 2431, 321, 188
+  rotate: 90
+character/nose2
+  bounds: 1270, 719, 279, 166
+  offsets: 11, 0, 290, 175
+  rotate: 90
+character/nose3
+  bounds: 510, 1236, 246, 118
+  rotate: 90
 character/pupil
-  bounds: 832, 1917, 114, 109
+  bounds: 3090, 1523, 80, 76
+character/pupilRed
+  bounds: 510, 1636, 92, 83
 character/Shinn copy
-  bounds: 870, 3333, 206, 275
-  rotate: 90
+  bounds: 1024, 2234, 144, 193
 character/Shinn
-  bounds: 1149, 3333, 205, 275
+  bounds: 3916, 1315, 144, 193
+character/shoulder3
+  bounds: 1191, 1857, 296, 229
+  rotate: 90
+character/shoulderGuard
+  bounds: 3, 2042, 370, 341
+character/shoulderGuardR3
+  bounds: 1424, 1891, 341, 344
+  rotate: 90
+character/ShoulderGuardR5
+  bounds: 3232, 1273, 243, 252
   rotate: 90
 character/ShoulderL
-  bounds: 3, 3333, 368, 480
+  bounds: 641, 2511, 258, 336
+  rotate: 90
+character/ShoulderL3
+  bounds: 1428, 1596, 291, 405
+  offsets: 0, 11, 291, 416
+  rotate: 90
+character/ShoulderL4
+  bounds: 2057, 1464, 346, 351
+  offsets: 0, 1, 346, 352
+  rotate: 90
+character/ShoulderL5
+  bounds: 1844, 1451, 301, 209
+  offsets: 0, 0, 307, 209
   rotate: 90
 character/ShoulderR
-  bounds: 1007, 1917, 531, 630
-character/slash
-  bounds: 1613, 2989, 45, 228
+  bounds: 3, 1666, 372, 441
   rotate: 90
+character/ShoulderR5
+  bounds: 2500, 776, 360, 302
+  rotate: 90
+character/ShoulderR5_
+  bounds: 646, 2283, 338, 224
+  offsets: 22, 0, 360, 224
+character/ShoulderR_
+  bounds: 3, 2387, 272, 323
+  rotate: 90
+character/sideAxe
+  bounds: 1181, 2157, 237, 278
+character/sideAxeBlur
+  bounds: 2487, 1452, 360, 300
+  offsets: 0, 0, 361, 300
+character/slash
+  bounds: 3700, 620, 31, 160
+character/Steam R
+  bounds: 448, 1928, 197, 174
 character/Tail
-  bounds: 1007, 2551, 602, 443
+  bounds: 3778, 381, 421, 310
+  rotate: 90
 character/Thi copy
-  bounds: 1714, 704, 262, 325
+  bounds: 3685, 1315, 183, 227
+  rotate: 90
 character/Thi
-  bounds: 1748, 1255, 262, 325
+  bounds: 3685, 1502, 183, 227
+  rotate: 90
 character/torso
-  bounds: 832, 1280, 912, 633
+  bounds: 652, 719, 614, 443
+  offsets: 0, 0, 638, 443
+character/torso2
+  bounds: 652, 1166, 557, 557
+character/torso_
+  bounds: 1440, 776, 614, 442
+  offsets: 0, 0, 637, 442
