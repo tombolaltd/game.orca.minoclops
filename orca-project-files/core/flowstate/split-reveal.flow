@@ -274,9 +274,10 @@
         }
       },
       {
-        "id": "n423jic2",
-        "x": -497.7234726996525,
-        "y": 409.29581901042303,
+        "id": "nsx8vcgi",
+        "title": "toString",
+        "x": -502.28987377031905,
+        "y": 406.45065900361254,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -285,8 +286,7 @@
             "name": "value",
             "type": "T"
           }
-        ],
-        "propertyValue": null
+        ]
       }
     ],
     "links": [
@@ -379,20 +379,6 @@
         "outIdx": 1
       },
       {
-        "id": "luxn4xf8",
-        "from": "n8gf47cf",
-        "to": "n423jic2",
-        "propertyType": "float",
-        "propertyName": "value"
-      },
-      {
-        "id": "lym30h2k",
-        "from": "n423jic2",
-        "to": "nlnialvt",
-        "propertyType": "string",
-        "propertyName": "value"
-      },
-      {
         "id": "lfoak1y5",
         "from": "ncejedmd",
         "to": "splitr_070"
@@ -401,14 +387,28 @@
         "id": "ljpbgo3z",
         "from": "nlnialvt",
         "to": "ncejedmd"
+      },
+      {
+        "id": "l998bhza",
+        "from": "n8gf47cf",
+        "to": "nsx8vcgi",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "lr7qp6di",
+        "from": "nsx8vcgi",
+        "to": "nlnialvt",
+        "propertyType": "string",
+        "propertyName": "value"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 473.3213605426905,
-      "panY": 24.162748515390263,
-      "scale": 0.47010727712542266
+      "panX": 571.5491253215873,
+      "panY": -103.09362771223351,
+      "scale": 0.77526966049757
     }
   }
 }

@@ -193,12 +193,13 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "n423jic2"
+          "sourceNodeId": "nsx8vcgi"
         }
       ]
     },
     {
-      "id": "n423jic2",
+      "id": "nsx8vcgi",
+      "title": "toString",
       "rootType": "string",
       "properties": [
         {
@@ -206,8 +207,7 @@
           "type": "T",
           "sourceNodeId": "n8gf47cf"
         }
-      ],
-      "propertyValue": null
+      ]
     }
   ],
   "links": [
@@ -274,20 +274,6 @@
       "outIdx": 1
     },
     {
-      "id": "luxn4xf8",
-      "from": "n8gf47cf",
-      "to": "n423jic2",
-      "propertyType": "float",
-      "propertyName": "value"
-    },
-    {
-      "id": "lym30h2k",
-      "from": "n423jic2",
-      "to": "nlnialvt",
-      "propertyType": "string",
-      "propertyName": "value"
-    },
-    {
       "id": "lfoak1y5",
       "from": "ncejedmd",
       "to": "splitr_070"
@@ -296,6 +282,20 @@
       "id": "ljpbgo3z",
       "from": "nlnialvt",
       "to": "ncejedmd"
+    },
+    {
+      "id": "l998bhza",
+      "from": "n8gf47cf",
+      "to": "nsx8vcgi",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "lr7qp6di",
+      "from": "nsx8vcgi",
+      "to": "nlnialvt",
+      "propertyType": "string",
+      "propertyName": "value"
     }
   ]
 }
