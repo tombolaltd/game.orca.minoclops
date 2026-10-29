@@ -504,7 +504,8 @@
                         "type": "float",
                         "path": "Symbol"
                       }
-                    ]
+                    ],
+                    "propertyValues": {}
                   },
                   {
                     "id": "ne5fpopb",
@@ -525,7 +526,8 @@
                         "name": "index",
                         "type": "int"
                       }
-                    ]
+                    ],
+                    "propertyValues": {}
                   },
                   {
                     "id": "nyuqkkkz",
@@ -554,7 +556,8 @@
                         "type": "float",
                         "path": "Row"
                       }
-                    ]
+                    ],
+                    "propertyValues": {}
                   },
                   {
                     "id": "n2z1onve",
@@ -575,7 +578,8 @@
                         "name": "index",
                         "type": "int"
                       }
-                    ]
+                    ],
+                    "propertyValues": {}
                   },
                   {
                     "id": "n4jl9lln",
@@ -590,7 +594,9 @@
                         "name": "value",
                         "type": "T"
                       }
-                    ]
+                    ],
+                    "friendlyTitle": "To Whole Number",
+                    "propertyValues": {}
                   },
                   {
                     "id": "nol0vzjj",
@@ -605,7 +611,9 @@
                         "name": "value",
                         "type": "T"
                       }
-                    ]
+                    ],
+                    "friendlyTitle": "To Whole Number",
+                    "propertyValues": {}
                   },
                   {
                     "id": "nj33icuu",
@@ -791,7 +799,18 @@
                         "name": "target",
                         "type": "nodeRef"
                       }
-                    ]
+                    ],
+                    "outputs": [
+                      {
+                        "name": "x",
+                        "type": "float"
+                      },
+                      {
+                        "name": "y",
+                        "type": "float"
+                      }
+                    ],
+                    "propertyValues": {}
                   },
                   {
                     "id": "nm77g9xk",
@@ -1350,7 +1369,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nzwcgg7r",
@@ -1399,7 +1419,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nldhipxk",

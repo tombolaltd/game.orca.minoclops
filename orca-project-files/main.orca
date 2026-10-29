@@ -20,7 +20,11 @@
     "gameHeightRatio": 0.67,
     "enable3D": false,
     "cabinetMode": "standard",
-    "portraitChatCrop": true
+    "portraitChatCrop": true,
+    "mockEngine": {
+      "enabled": false,
+      "mechanic": "ways-slot"
+    }
   },
   "coreGraphOrder": [
     "game-boot",
@@ -38,7 +42,8 @@
     "background-split",
     "character-spin-end",
     "Character-bonus-transition",
-    "Character-main-transition-copy"
+    "Character-main-transition-copy",
+    "reel-shake"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -248,6 +253,14 @@
       "name": "Background flows",
       "graphs": [
         "background-split"
+      ],
+      "collapsed": false
+    },
+    {
+      "id": "folder-1793290885226-0d35sa",
+      "name": "Reel flows",
+      "graphs": [
+        "reel-shake"
       ],
       "collapsed": false
     }

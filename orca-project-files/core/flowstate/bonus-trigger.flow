@@ -400,7 +400,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "n3473a3p",
@@ -410,7 +412,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nesw0bts",

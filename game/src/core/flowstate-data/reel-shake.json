@@ -1,0 +1,718 @@
+{
+  "nodes": [
+    {
+      "id": "reelsh_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Each time the symbols split (split2x / split3x), the reels shake from the cut. A 3x split hits harder than a 2x. The HUD shakes with them so the win and ways stay on the frame's plates."
+    },
+    {
+      "id": "reelsh_001",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "symbolsSplitting"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_002",
+      "title": "getNodePosition",
+      "rootType": "getters",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reelsh_003",
+      "title": "getNodePosition",
+      "rootType": "getters",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_hud",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reelsh_004",
+      "title": "multiply",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "reelsh_001",
+          "sourceOutputName": "splitAmount"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "reelsh_005",
+      "title": "multiply",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "reelsh_001",
+          "sourceOutputName": "splitAmount"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "id": "reelsh_006",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.13
+        }
+      ]
+    },
+    {
+      "id": "reelsh_007",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsX"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "reelsh_002",
+          "sourceOutputName": "x"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_008",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsY"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "reelsh_002",
+          "sourceOutputName": "y"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_009",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudX"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "reelsh_003",
+          "sourceOutputName": "x"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_010",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudY"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "reelsh_003",
+          "sourceOutputName": "y"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_011",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsX"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_012",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "reelsh_011"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "sourceNodeId": "reelsh_004"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_013",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsY"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_014",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "reelsh_013"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "sourceNodeId": "reelsh_005"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_015",
+      "title": "setNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "reelsh_012"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "reelsh_014"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_016",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudX"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_017",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "reelsh_016"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "sourceNodeId": "reelsh_004"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_018",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudY"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_019",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "reelsh_018"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "sourceNodeId": "reelsh_005"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_020",
+      "title": "setNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_hud",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "reelsh_017"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "reelsh_019"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_021",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudX"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_022",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "hudY"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_023",
+      "title": "tweenNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_hud",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "reelsh_021"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "reelsh_022"
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 400
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "elastic.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_024",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsX"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_025",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "reelsY"
+        }
+      ]
+    },
+    {
+      "id": "reelsh_026",
+      "title": "tweenNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "reelsh_024"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "reelsh_025"
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 450
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "elastic.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 3
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_reelsh_1",
+      "from": "reelsh_001",
+      "to": "reelsh_004",
+      "propertyType": "float",
+      "propertyName": "a",
+      "sourceOutputName": "splitAmount"
+    },
+    {
+      "id": "l_reelsh_2",
+      "from": "reelsh_001",
+      "to": "reelsh_005",
+      "propertyType": "float",
+      "propertyName": "a",
+      "sourceOutputName": "splitAmount"
+    },
+    {
+      "id": "l_reelsh_3",
+      "from": "reelsh_002",
+      "to": "reelsh_007",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "x"
+    },
+    {
+      "id": "l_reelsh_4",
+      "from": "reelsh_002",
+      "to": "reelsh_008",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "y"
+    },
+    {
+      "id": "l_reelsh_5",
+      "from": "reelsh_003",
+      "to": "reelsh_009",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "x"
+    },
+    {
+      "id": "l_reelsh_6",
+      "from": "reelsh_003",
+      "to": "reelsh_010",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "y"
+    },
+    {
+      "id": "l_reelsh_7",
+      "from": "reelsh_011",
+      "to": "reelsh_012",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_reelsh_8",
+      "from": "reelsh_004",
+      "to": "reelsh_012",
+      "propertyType": "T",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_reelsh_9",
+      "from": "reelsh_013",
+      "to": "reelsh_014",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_reelsh_10",
+      "from": "reelsh_005",
+      "to": "reelsh_014",
+      "propertyType": "T",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_reelsh_11",
+      "from": "reelsh_012",
+      "to": "reelsh_015",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_reelsh_12",
+      "from": "reelsh_014",
+      "to": "reelsh_015",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_reelsh_13",
+      "from": "reelsh_016",
+      "to": "reelsh_017",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_reelsh_14",
+      "from": "reelsh_004",
+      "to": "reelsh_017",
+      "propertyType": "T",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_reelsh_15",
+      "from": "reelsh_018",
+      "to": "reelsh_019",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_reelsh_16",
+      "from": "reelsh_005",
+      "to": "reelsh_019",
+      "propertyType": "T",
+      "propertyName": "b"
+    },
+    {
+      "id": "l_reelsh_17",
+      "from": "reelsh_017",
+      "to": "reelsh_020",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_reelsh_18",
+      "from": "reelsh_019",
+      "to": "reelsh_020",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_reelsh_19",
+      "from": "reelsh_021",
+      "to": "reelsh_023",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_reelsh_20",
+      "from": "reelsh_022",
+      "to": "reelsh_023",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_reelsh_21",
+      "from": "reelsh_024",
+      "to": "reelsh_026",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_reelsh_22",
+      "from": "reelsh_025",
+      "to": "reelsh_026",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_reelsh_23",
+      "from": "reelsh_006",
+      "to": "reelsh_007"
+    },
+    {
+      "id": "l_reelsh_24",
+      "from": "reelsh_007",
+      "to": "reelsh_008"
+    },
+    {
+      "id": "l_reelsh_25",
+      "from": "reelsh_008",
+      "to": "reelsh_009"
+    },
+    {
+      "id": "l_reelsh_26",
+      "from": "reelsh_009",
+      "to": "reelsh_010"
+    },
+    {
+      "id": "l_reelsh_27",
+      "from": "reelsh_010",
+      "to": "reelsh_015"
+    },
+    {
+      "id": "l_reelsh_28",
+      "from": "reelsh_015",
+      "to": "reelsh_020"
+    },
+    {
+      "id": "l_reelsh_29",
+      "from": "reelsh_020",
+      "to": "reelsh_023"
+    },
+    {
+      "id": "l_reelsh_30",
+      "from": "reelsh_023",
+      "to": "reelsh_026"
+    },
+    {
+      "id": "l_reelsh_31",
+      "from": "reelsh_001",
+      "to": "reelsh_006"
+    }
+  ],
+  "variables": [
+    {
+      "name": "reelsX",
+      "type": "float",
+      "defaultValue": 0
+    },
+    {
+      "name": "reelsY",
+      "type": "float",
+      "defaultValue": 0
+    },
+    {
+      "name": "hudX",
+      "type": "float",
+      "defaultValue": 0
+    },
+    {
+      "name": "hudY",
+      "type": "float",
+      "defaultValue": 0
+    }
+  ]
+}

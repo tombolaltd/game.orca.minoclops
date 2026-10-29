@@ -209,7 +209,8 @@
                   "type": "T",
                   "propertyValue": 1
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nqbuiglb",
@@ -220,7 +221,9 @@
               "color": "#e67e22",
               "icon": "🔢",
               "isStarter": false,
-              "propertyValue": 1
+              "propertyValue": 1,
+              "properties": [],
+              "propertyValues": {}
             },
             {
               "id": "nnqo51iy",
@@ -242,7 +245,9 @@
                   "name": "outcomes",
                   "type": "any"
                 }
-              ]
+              ],
+              "properties": [],
+              "propertyValues": {}
             },
             {
               "id": "nst8icqa",
@@ -403,7 +408,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n7tjxefy",
@@ -452,7 +458,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nefve23b",
@@ -513,7 +520,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       }
     ],
     "links": [

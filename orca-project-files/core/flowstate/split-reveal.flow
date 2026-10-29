@@ -146,7 +146,8 @@
             "type": "float",
             "path": "Symbol"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n10e0ksf",
@@ -206,7 +207,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "nvu1cf10",
@@ -221,7 +224,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "n8gf47cf",
@@ -286,7 +291,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       }
     ],
     "links": [
