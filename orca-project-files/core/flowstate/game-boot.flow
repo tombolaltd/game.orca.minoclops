@@ -1070,8 +1070,8 @@
       {
         "id": "ntf182g4",
         "title": "getGameModelProperty",
-        "x": 657.8743381728767,
-        "y": 444.4312510182035,
+        "x": 868.7051767402588,
+        "y": 468.75788623751686,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -1084,14 +1084,14 @@
           }
         ],
         "propertyValues": {
-          "propertyName": "isInBonusRound"
+          "propertyName": "bonusOnResume"
         }
       },
       {
         "id": "nwr5jsmk",
         "title": "branch",
-        "x": 1047.3930534805932,
-        "y": 159.47479308252025,
+        "x": 1295.524732717589,
+        "y": 63.79002788655457,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -1110,8 +1110,8 @@
       {
         "id": "nxdtrgsd",
         "title": "fireCustomEvent",
-        "x": 1418.8746237361167,
-        "y": 26.039434210386133,
+        "x": 1667.0063029731125,
+        "y": -69.64533098557955,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -1155,13 +1155,6 @@
         "to": "nny85vt2"
       },
       {
-        "id": "lsq2riim",
-        "from": "ntf182g4",
-        "to": "nwr5jsmk",
-        "propertyType": "bool",
-        "propertyName": "condition"
-      },
-      {
         "id": "lum5f947",
         "from": "nny85vt2",
         "to": "nwr5jsmk"
@@ -1171,6 +1164,13 @@
         "from": "nwr5jsmk",
         "to": "nxdtrgsd",
         "outIdx": 0
+      },
+      {
+        "id": "lgwrfclg",
+        "from": "ntf182g4",
+        "to": "nwr5jsmk",
+        "propertyType": "bool",
+        "propertyName": "condition"
       }
     ],
     "groups": [],

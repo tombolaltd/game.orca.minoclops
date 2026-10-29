@@ -784,7 +784,7 @@
         {
           "name": "propertyName",
           "type": "modelProperty",
-          "value": "isInBonusRound"
+          "value": "bonusOnResume"
         }
       ]
     },
@@ -840,13 +840,6 @@
       "to": "nny85vt2"
     },
     {
-      "id": "lsq2riim",
-      "from": "ntf182g4",
-      "to": "nwr5jsmk",
-      "propertyType": "bool",
-      "propertyName": "condition"
-    },
-    {
       "id": "lum5f947",
       "from": "nny85vt2",
       "to": "nwr5jsmk"
@@ -856,6 +849,13 @@
       "from": "nwr5jsmk",
       "to": "nxdtrgsd",
       "outIdx": 0
+    },
+    {
+      "id": "lgwrfclg",
+      "from": "ntf182g4",
+      "to": "nwr5jsmk",
+      "propertyType": "bool",
+      "propertyName": "condition"
     }
   ]
 }
