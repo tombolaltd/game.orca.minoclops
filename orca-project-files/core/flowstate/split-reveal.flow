@@ -279,9 +279,10 @@
         }
       },
       {
-        "id": "n2amf9t3",
-        "x": -489,
-        "y": 394.79888059425775,
+        "id": "nvhey3py",
+        "title": "toString",
+        "x": -506.54255167974816,
+        "y": 392.48403423861487,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -290,8 +291,7 @@
             "name": "value",
             "type": "T"
           }
-        ],
-        "propertyValue": null
+        ]
       }
     ],
     "links": [
@@ -394,15 +394,15 @@
         "to": "ncejedmd"
       },
       {
-        "id": "ljbk5d77",
+        "id": "lhcp2qkr",
         "from": "n8gf47cf",
-        "to": "n2amf9t3",
+        "to": "nvhey3py",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "lz4d11hn",
-        "from": "n2amf9t3",
+        "id": "ltyhp541",
+        "from": "nvhey3py",
         "to": "nlnialvt",
         "propertyType": "string",
         "propertyName": "value"
