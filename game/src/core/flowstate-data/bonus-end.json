@@ -180,7 +180,7 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "onComplete"
+          "value": "immediate"
         }
       ]
     },
@@ -271,6 +271,43 @@
           "value": "immediate"
         }
       ]
+    },
+    {
+      "id": "nve6gtd3",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791297984204_qg9p9detx",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "BonusToBase"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
     }
   ],
   "links": [
@@ -315,8 +352,13 @@
       "to": "n9d42r4t"
     },
     {
-      "id": "lc3328d4",
+      "id": "lpj1jrqn",
       "from": "n9d42r4t",
+      "to": "nve6gtd3"
+    },
+    {
+      "id": "lu4om2xk",
+      "from": "nve6gtd3",
       "to": "nbg1mt0t"
     }
   ]

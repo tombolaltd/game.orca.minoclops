@@ -39,8 +39,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 2964.1092202853583,
-        "y": 110.80980613305348,
+        "x": 3269.4820834751245,
+        "y": 117.96562099016086,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -302,7 +302,7 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 0,
-          "sequenceNodeOn": "onComplete",
+          "sequenceNodeOn": "immediate",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791293688069_efpsdyk4c",
@@ -315,8 +315,8 @@
       {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 2347.3141301771616,
-        "y": 111.95335605264788,
+        "x": 2654.0318962682964,
+        "y": 118.8151871039174,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -365,8 +365,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 2654.6236838148,
-        "y": 110.8727574405242,
+        "x": 2959.9965470045663,
+        "y": 118.02857229763157,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -451,6 +451,69 @@
           },
           "animationName": "idle"
         }
+      },
+      {
+        "id": "nve6gtd3",
+        "title": "playAnimation",
+        "x": 2347.890551227389,
+        "y": 116.46794629298319,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 0,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791297984204_qg9p9detx",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "BonusToBase"
+        }
       }
     ],
     "links": [
@@ -495,17 +558,22 @@
         "to": "n9d42r4t"
       },
       {
-        "id": "lc3328d4",
+        "id": "lpj1jrqn",
         "from": "n9d42r4t",
+        "to": "nve6gtd3"
+      },
+      {
+        "id": "lu4om2xk",
+        "from": "nve6gtd3",
         "to": "nbg1mt0t"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -414.28206533679986,
-      "panY": 115.2177317291389,
-      "scale": 0.5084278418348794
+      "panX": -885.3291728062165,
+      "panY": 146.10272036053732,
+      "scale": 0.5538109048278569
     }
   }
 }

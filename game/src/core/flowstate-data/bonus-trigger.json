@@ -190,7 +190,7 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "onComplete"
+          "value": "immediate"
         }
       ]
     },
@@ -251,7 +251,7 @@
         {
           "name": "seconds",
           "type": "float",
-          "value": 0.5
+          "value": 5
         }
       ]
     },
@@ -289,6 +289,43 @@
           "name": "sequenceNodeOn",
           "type": "string",
           "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "nn1b6vey",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791297984204_qg9p9detx",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
         }
       ]
     }
@@ -355,8 +392,13 @@
       "to": "nmqqadkr"
     },
     {
-      "id": "l51ldg9w",
+      "id": "lwyj6min",
       "from": "nmqqadkr",
+      "to": "nn1b6vey"
+    },
+    {
+      "id": "l3gwmxzf",
+      "from": "nn1b6vey",
       "to": "n73y7a6t"
     }
   ]
