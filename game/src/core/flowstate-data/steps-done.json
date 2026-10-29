@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "stepsd_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "TODO: make sure this all routes to the correct places based off of the game model"
-    },
-    {
       "id": "stepsd_001",
       "title": "getGameModelProperty",
       "rootType": "properties",

@@ -20,7 +20,7 @@
 // PROTOTYPING AID ONLY. It measures motion in a dev preview; it certifies
 // nothing and is never part of a production build path.
 
-import { container, device, eventEmitter } from '@game-studio/arcade-base';
+import { container, device, eventEmitter, Injects } from '@game-studio/arcade-base';
 import { getGameModelProperty, getSettingsModelProperty } from './methods/model';
 
 /** Bumped only when the TRACE SHAPE changes; the editor reports a mismatch. */
@@ -309,8 +309,10 @@ export function installGameFeelProbe(stage: unknown): void {
 // cabinet emits AFTER the engine answers a buy), so it sends no begin request;
 // `buy` presses the cabinet's buy action, which does.
 // Version 4 adds `counters.reelMoves`, counted every frame after `arm()`.
+// Version 5 adds `debug` (list / selectTicket / setSetting / openMenu) for the
+// editor's Game view Debug panel: the in-game debug menu without the long press.
 
-const PLAYTEST_VERSION = 4;
+const PLAYTEST_VERSION = 5;
 const MAX_ERRORS = 20;
 const MAX_OVERLAPS = 8;
 /** Smallest share of the reel window an object must cover to be reported. */
@@ -473,6 +475,231 @@ function collectOverlaps(stage: UnknownRecord, reelsRoot: UnknownRecord, reelRec
 
     walk(stage, 1, []);
     return out.sort((a, b) => b.coverage - a.coverage).slice(0, MAX_OVERLAPS);
+}
+
+// ── Debug menu ───────────────────────────────────────────────────────────
+
+interface DebugTicketInfo {
+    index: number;
+    name: string;
+    hasData: boolean;
+    /** `data` is an empty object: the option sends nothing to the server. */
+    emptyData: boolean;
+    /** A Debug Panel "fire custom event" button: fires, never stays selected. */
+    isEvent: boolean;
+    selected: boolean;
+}
+
+interface DebugSettingInfo {
+    index: number;
+    name: string;
+    type: 'enum' | 'slider' | 'trigger' | 'other';
+    availableValues?: string[];
+    min?: number;
+    max?: number;
+    steps?: number;
+    currentValue?: number | string | boolean;
+}
+
+type DebugFailure = { ok: false; reason: string; message?: string };
+type DebugList = { ok: true; tickets: DebugTicketInfo[]; settings: DebugSettingInfo[]; active: boolean } | DebugFailure;
+
+function isDebugModel(value: unknown): value is UnknownRecord {
+    return !!value && typeof value === 'object' && Array.isArray((value as UnknownRecord).debugTicketOptions);
+}
+
+/** The game's debug model, looked up on every call (variants may rebind it). */
+function resolveDebugModel(): UnknownRecord | null {
+    const c = container as unknown as UnknownRecord | undefined;
+    try {
+        if (isDebugModel(c?.debugModel)) return c?.debugModel as UnknownRecord;
+    } catch {
+        // Not bound yet.
+    }
+    try {
+        const key = (Injects as unknown as UnknownRecord | undefined)?.DebugModel;
+        const get = c?.get;
+        if (key !== undefined && typeof get === 'function') {
+            const model = (get as (k: unknown) => unknown).call(c, key);
+            if (isDebugModel(model)) return model;
+        }
+    } catch {
+        // Not bound yet.
+    }
+    return null;
+}
+
+function debugSettings(model: UnknownRecord): UnknownRecord[] {
+    return Array.isArray(model.debugSettingOptions) ? (model.debugSettingOptions as UnknownRecord[]) : [];
+}
+
+// arcade-base's in-game debug overlay (Vue 2) keeps its OWN copy of the selected
+// ticket (`selectedOption` data) and of each enum's label (DebugSetting
+// `selectedEnum`, read once at mount), so a model change made here must be
+// mirrored into those instances or the in-game menu keeps showing the old choice.
+const MAX_VM_DEPTH = 6;
+
+function debugOverlayVms(): UnknownRecord[] {
+    const doc = (globalThis as unknown as { document?: { querySelectorAll?: (s: string) => ArrayLike<unknown> } }).document;
+    if (!doc || typeof doc.querySelectorAll !== 'function') return [];
+    const found: UnknownRecord[] = [];
+    try {
+        for (const el of Array.from(doc.querySelectorAll('.debug-overlay'))) {
+            let node = el as UnknownRecord | null;
+            for (let depth = 0; node && depth < 4; depth += 1, node = (node.parentElement as UnknownRecord | null) ?? null) {
+                const vm = node.__vue__ as UnknownRecord | undefined;
+                if (vm && typeof vm.updateDebugOption === 'function' && 'selectedOption' in vm) {
+                    if (!found.includes(vm)) found.push(vm);
+                    break;
+                }
+            }
+        }
+    } catch {
+        // A document without the overlay; nothing to mirror.
+    }
+    return found;
+}
+
+function syncOverlayTicket(model: UnknownRecord): void {
+    for (const vm of debugOverlayVms()) {
+        try {
+            vm.selectedOption = model.selectedOption;
+        } catch {
+            // Display only; the model already holds the choice.
+        }
+    }
+}
+
+function settingVms(vm: UnknownRecord, setting: UnknownRecord, depth: number, out: UnknownRecord[]): void {
+    if (depth > MAX_VM_DEPTH) return;
+    const children = Array.isArray(vm.$children) ? (vm.$children as UnknownRecord[]) : [];
+    for (const child of children) {
+        if (child && child.setting === setting && 'selectedEnum' in child) out.push(child);
+        else if (child) settingVms(child, setting, depth + 1, out);
+    }
+}
+
+function syncOverlaySetting(setting: UnknownRecord): void {
+    const vms: UnknownRecord[] = [];
+    for (const overlay of debugOverlayVms()) settingVms(overlay, setting, 0, vms);
+    for (const vm of vms) {
+        try {
+            if (setting.type === 'enum' && Array.isArray(setting.availableValues)) {
+                vm.selectedEnum = (setting.availableValues as unknown[])[setting.currentValue as number];
+            }
+            if (typeof vm.$forceUpdate === 'function') (vm.$forceUpdate as () => void).call(vm);
+        } catch {
+            // Display only.
+        }
+    }
+}
+
+function plainScalar(value: unknown): number | string | boolean | undefined {
+    if (typeof value === 'number') return Number.isFinite(value) ? value : undefined;
+    return typeof value === 'string' || typeof value === 'boolean' ? value : undefined;
+}
+
+function finiteOrUndefined(value: unknown): number | undefined {
+    return typeof value === 'number' && Number.isFinite(value) ? value : undefined;
+}
+
+function listDebug(): DebugList {
+    const model = resolveDebugModel();
+    if (!model) return { ok: false, reason: 'no-debug-model' };
+    try {
+        const options = model.debugTicketOptions as UnknownRecord[];
+        const selected = model.selectedOption as UnknownRecord | undefined;
+        let selectedIndex = selected ? options.indexOf(selected) : -1;
+        if (selectedIndex < 0 && selected) selectedIndex = options.findIndex((o) => o?.name === selected.name);
+        const tickets = options.map((o, index): DebugTicketInfo => ({
+            index,
+            name: String(o?.name ?? ''),
+            hasData: o?.data !== undefined,
+            emptyData: !!o?.data && typeof o.data === 'object' && !Array.isArray(o.data) && Object.keys(o.data as object).length === 0,
+            isEvent: typeof o?.orcaEventName === 'string' && o.orcaEventName !== '',
+            selected: index === selectedIndex,
+        }));
+        const settings = debugSettings(model).map((s, index): DebugSettingInfo => {
+            const raw = s?.type;
+            const type = raw === 'enum' || raw === 'slider' || raw === 'trigger' ? raw : 'other';
+            const info: DebugSettingInfo = { index, name: String(s?.name ?? ''), type };
+            if (type === 'enum' && Array.isArray(s.availableValues)) info.availableValues = (s.availableValues as unknown[]).map((v) => String(v));
+            if (type === 'slider') {
+                const min = finiteOrUndefined(s.min);
+                const max = finiteOrUndefined(s.max);
+                const steps = finiteOrUndefined(s.steps);
+                if (min !== undefined) info.min = min;
+                if (max !== undefined) info.max = max;
+                if (steps !== undefined) info.steps = steps;
+            }
+            const current = plainScalar(s?.currentValue);
+            if (current !== undefined) info.currentValue = current;
+            return info;
+        });
+        let active = false;
+        try { active = model.shouldSendDebugData === true; } catch { active = false; }
+        return { ok: true, tickets, settings, active };
+    } catch (error) {
+        return { ok: false, reason: 'threw', message: String((error as { message?: unknown } | null)?.message ?? error) };
+    }
+}
+
+function selectDebugTicket(index: unknown, name: unknown): { ok: true; state: DebugList } | DebugFailure {
+    const model = resolveDebugModel();
+    if (!model) return { ok: false, reason: 'no-debug-model' };
+    const options = model.debugTicketOptions as UnknownRecord[];
+    const option = typeof index === 'number' && Number.isInteger(index) ? options[index] : undefined;
+    if (!option || option.name !== name) return { ok: false, reason: 'stale' };
+    try {
+        (model.updateDebugOption as (o: unknown) => unknown).call(model, option);
+    } catch (error) {
+        return { ok: false, reason: 'threw', message: String((error as { message?: unknown } | null)?.message ?? error) };
+    }
+    syncOverlayTicket(model);
+    return { ok: true, state: listDebug() };
+}
+
+async function setDebugSetting(index: unknown, name: unknown, value: unknown): Promise<{ ok: true; state: DebugList } | DebugFailure> {
+    const model = resolveDebugModel();
+    if (!model) return { ok: false, reason: 'no-debug-model' };
+    const settings = debugSettings(model);
+    const setting = typeof index === 'number' && Number.isInteger(index) ? settings[index] : undefined;
+    if (!setting || setting.name !== name) return { ok: false, reason: 'stale' };
+    const onChange = setting.onChange;
+    if (typeof onChange !== 'function') return { ok: false, reason: 'no-onchange' };
+    try {
+        let result: unknown;
+        if (setting.type === 'enum') {
+            const count = Array.isArray(setting.availableValues) ? (setting.availableValues as unknown[]).length : 0;
+            if (typeof value !== 'number' || !Number.isInteger(value) || value < 0 || value >= count) return { ok: false, reason: 'bad-value' };
+            setting.currentValue = value;
+            result = (onChange as (s: unknown) => unknown).call(setting, setting);
+        } else if (setting.type === 'slider') {
+            if (typeof value !== 'number' || !Number.isFinite(value)) return { ok: false, reason: 'bad-value' };
+            const min = finiteOrUndefined(setting.min) ?? -Infinity;
+            const max = finiteOrUndefined(setting.max) ?? Infinity;
+            setting.currentValue = Math.min(max, Math.max(min, value));
+            result = (onChange as (s: unknown) => unknown).call(setting, setting);
+        } else if (setting.type === 'trigger') {
+            result = (onChange as (s: unknown) => unknown).call(setting, setting);
+        } else {
+            return { ok: false, reason: 'unsupported-type' };
+        }
+        syncOverlaySetting(setting);
+        if (result && typeof (result as { then?: unknown }).then === 'function') await result;
+    } catch (error) {
+        return { ok: false, reason: 'threw', message: String((error as { message?: unknown } | null)?.message ?? error) };
+    }
+    return { ok: true, state: listDebug() };
+}
+
+function openDebugMenu(): { ok: boolean } {
+    try {
+        (eventEmitter.emit as (name: string, ...args: unknown[]) => unknown)('POPUP_TOGGLE_DEBUG_OVERLAY', true);
+        return { ok: true };
+    } catch {
+        return { ok: false };
+    }
 }
 
 function installPlaytestApi(stage: unknown): void {
@@ -648,5 +875,6 @@ function installPlaytestApi(stage: unknown): void {
         }
     };
 
-    w.__orcaPlaytest = { version: PLAYTEST_VERSION, arm, snapshot, spin, layout: readLayout, fire, read, cabinet: cabinetState, buy };
+    const debug = { list: listDebug, selectTicket: selectDebugTicket, setSetting: setDebugSetting, openMenu: openDebugMenu };
+    w.__orcaPlaytest = { version: PLAYTEST_VERSION, arm, snapshot, spin, layout: readLayout, fire, read, cabinet: cabinetState, buy, debug };
 }

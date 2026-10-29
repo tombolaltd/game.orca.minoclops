@@ -10,7 +10,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "gamebo_002",
-      "exitSourceId": "gamebo_006",
+      "exitSourceId": "npiqvup7",
       "subgraph": {
         "nodes": [
           {
@@ -133,6 +133,28 @@
             "id": "gamebo_065",
             "title": "Exit",
             "isExit": true
+          },
+          {
+            "id": "nbfjraug",
+            "title": "setOnScreenReels",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reels",
+                "type": "string",
+                "sourceNodeId": "gamebo_003"
+              }
+            ]
           }
         ],
         "links": [
@@ -147,11 +169,6 @@
             "id": "l_gamebo_5",
             "from": "gamebo_002",
             "to": "gamebo_004"
-          },
-          {
-            "id": "l_gamebo_6",
-            "from": "gamebo_004",
-            "to": "gamebo_006"
           },
           {
             "id": "l_gamebo_7",
@@ -169,6 +186,23 @@
             "to": "gamebo_004",
             "propertyType": "string",
             "propertyName": "reels"
+          },
+          {
+            "id": "l2tqxagp",
+            "from": "gamebo_004",
+            "to": "nbfjraug"
+          },
+          {
+            "id": "lvekqlo1",
+            "from": "gamebo_003",
+            "to": "nbfjraug",
+            "propertyType": "string",
+            "propertyName": "reels"
+          },
+          {
+            "id": "lzwb4a1b",
+            "from": "nbfjraug",
+            "to": "gamebo_006"
           }
         ]
       }

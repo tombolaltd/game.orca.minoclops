@@ -4,17 +4,6 @@
   "graph": {
     "nodes": [
       {
-        "id": "stepsd_note",
-        "title": "Note",
-        "x": 493.15982823250283,
-        "y": 569.7815451080521,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "TODO: make sure this all routes to the correct places based off of the game model",
-        "width": 328,
-        "height": 173
-      },
-      {
         "id": "stepsd_001",
         "title": "getGameModelProperty",
         "x": 499.04302169771404,

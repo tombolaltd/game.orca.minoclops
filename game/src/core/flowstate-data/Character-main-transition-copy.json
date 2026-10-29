@@ -1,0 +1,62 @@
+{
+  "nodes": [
+    {
+      "id": "n1p0g3rz",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "bonusEnd"
+        }
+      ]
+    },
+    {
+      "id": "nlsc464h",
+      "title": "setSkin",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "skinName",
+          "type": "string",
+          "value": "base"
+        }
+      ]
+    },
+    {
+      "id": "n91xt96d",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 1.5
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l4l5rcq0",
+      "from": "n1p0g3rz",
+      "to": "n91xt96d"
+    },
+    {
+      "id": "lpf3le5m",
+      "from": "n91xt96d",
+      "to": "nlsc464h"
+    }
+  ]
+}

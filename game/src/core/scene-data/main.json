@@ -180,206 +180,36 @@
               "alpha": 1,
               "interactive": false,
               "zIndex": 0,
-              "children": [
-                {
-                  "id": "node_ss_big_win_sub",
-                  "name": "Sub",
-                  "type": "text",
-                  "transform": {
-                    "x": 0,
-                    "y": 165,
-                    "scaleX": 1,
-                    "scaleY": 1,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 1,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "text": "",
-                  "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
-                  "fontSize": 42,
-                  "fill": 16774064,
-                  "fontWeight": "normal",
-                  "fontStyle": "normal",
-                  "align": "center",
-                  "wordWrap": false,
-                  "wordWrapWidth": 200,
-                  "stroke": 2757632,
-                  "strokeThickness": 7,
-                  "dropShadow": true,
-                  "dropShadowOptions": {
-                    "color": 0,
-                    "blur": 4,
-                    "angle": 1.2,
-                    "distance": 3,
-                    "alpha": 0.6
-                  },
-                  "letterSpacing": 1,
-                  "rectTransform": null
-                },
-                {
-                  "id": "node_ss_big_win_amount",
-                  "name": "Amount",
-                  "type": "text",
-                  "transform": {
-                    "x": 0,
-                    "y": 60,
-                    "scaleX": 1,
-                    "scaleY": 1,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 1,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "text": "£0.00",
-                  "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
-                  "fontSize": 112,
-                  "fill": 16777215,
-                  "fontWeight": "normal",
-                  "fontStyle": "normal",
-                  "align": "center",
-                  "wordWrap": false,
-                  "wordWrapWidth": 200,
-                  "stroke": 2757632,
-                  "strokeThickness": 10,
-                  "dropShadow": true,
-                  "dropShadowOptions": {
-                    "color": 0,
-                    "blur": 4,
-                    "angle": 1.2,
-                    "distance": 3,
-                    "alpha": 0.6
-                  },
-                  "letterSpacing": 1,
-                  "rectTransform": null
-                },
-                {
-                  "id": "node_ss_big_win_title",
-                  "name": "TierTitle",
-                  "type": "text",
-                  "transform": {
-                    "x": 0,
-                    "y": -85,
-                    "scaleX": 1,
-                    "scaleY": 1,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 1,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "text": "BIG WIN",
-                  "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
-                  "fontSize": 124,
-                  "fill": 16765258,
-                  "fontWeight": "normal",
-                  "fontStyle": "normal",
-                  "align": "center",
-                  "wordWrap": false,
-                  "wordWrapWidth": 200,
-                  "stroke": 2757632,
-                  "strokeThickness": 12,
-                  "dropShadow": true,
-                  "dropShadowOptions": {
-                    "color": 0,
-                    "blur": 4,
-                    "angle": 1.2,
-                    "distance": 3,
-                    "alpha": 0.6
-                  },
-                  "letterSpacing": 1,
-                  "rectTransform": null
-                },
-                {
-                  "id": "node_ss_big_win_burst",
-                  "name": "Burst",
-                  "type": "sprite",
-                  "transform": {
-                    "x": 0,
-                    "y": -10,
-                    "scaleX": 0.95,
-                    "scaleY": 0.95,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 0.85,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "texture": "",
-                  "tint": 16777215,
-                  "blendMode": "normal",
-                  "width": 0,
-                  "height": 0,
-                  "rectTransform": null
-                },
-                {
-                  "id": "node_ss_big_win_shade",
-                  "name": "Shade",
-                  "type": "sprite",
-                  "transform": {
-                    "x": 0,
-                    "y": 0,
-                    "scaleX": 56,
-                    "scaleY": 56,
-                    "rotation": 0,
-                    "pivotX": 0.5,
-                    "pivotY": 0.5,
-                    "skewX": 0,
-                    "skewY": 0
-                  },
-                  "visible": true,
-                  "alpha": 0.65,
-                  "interactive": false,
-                  "zIndex": 0,
-                  "children": [],
-                  "customProperties": {},
-                  "locked": false,
-                  "expanded": false,
-                  "texture": "",
-                  "tint": 16777215,
-                  "blendMode": "normal",
-                  "width": 0,
-                  "height": 0,
-                  "rectTransform": null
-                }
-              ],
+              "children": [],
               "customProperties": {},
               "locked": false,
-              "expanded": false,
+              "expanded": true,
+              "dontDestroyOnLoad": false,
+              "rectTransform": null
+            },
+            {
+              "id": "node_1793116075833_ynzvhp186",
+              "name": "bonusWin",
+              "type": "container",
+              "transform": {
+                "x": 0,
+                "y": 0,
+                "scaleX": 1,
+                "scaleY": 1,
+                "rotation": 0,
+                "pivotX": 0.5,
+                "pivotY": 0.5,
+                "skewX": 0,
+                "skewY": 0
+              },
+              "visible": true,
+              "alpha": 1,
+              "interactive": false,
+              "zIndex": 0,
+              "children": [],
+              "customProperties": {},
+              "locked": false,
+              "expanded": true,
               "dontDestroyOnLoad": false,
               "rectTransform": null
             }
@@ -2305,7 +2135,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": true,
+          "expanded": false,
           "dontDestroyOnLoad": false,
           "responsiveScaler": null,
           "layoutManager": null,
@@ -2386,7 +2216,7 @@
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": true,
+              "expanded": false,
               "texture": {
                 "guid": "fd2a187c-9c4c-48da-ad0d-52103b6cd95e"
               },
@@ -2426,6 +2256,879 @@
               "loop": true,
               "skin": "default",
               "timeScale": 1,
+              "rectTransform": null
+            },
+            {
+              "id": "node_1793269745802_0eedyuuz5",
+              "name": "Crumble Spines",
+              "type": "container",
+              "transform": {
+                "x": 0,
+                "y": 0,
+                "scaleX": 1,
+                "scaleY": 1,
+                "rotation": 0,
+                "pivotX": 0.5,
+                "pivotY": 0.5,
+                "skewX": 0,
+                "skewY": 0
+              },
+              "visible": true,
+              "alpha": 1,
+              "interactive": false,
+              "zIndex": 0,
+              "children": [
+                {
+                  "id": "node_1793270292061_mjnvv9ymh",
+                  "name": "Top",
+                  "type": "container",
+                  "transform": {
+                    "x": 0,
+                    "y": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "rotation": 0,
+                    "pivotX": 0,
+                    "pivotY": 0,
+                    "skewX": 0,
+                    "skewY": 0
+                  },
+                  "visible": true,
+                  "alpha": 1,
+                  "interactive": false,
+                  "zIndex": 0,
+                  "children": [
+                    {
+                      "id": "node_1793269887162_ei1pgab1r",
+                      "name": "Spine",
+                      "type": "spine",
+                      "transform": {
+                        "x": 0,
+                        "y": 0,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270313675_kjfd9fsel",
+                      "name": "Spine Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 20,
+                        "y": 20,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270485707_r8t7h0goc",
+                      "name": "Spine Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 40,
+                        "y": 40,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270488575_mwzboqctd",
+                      "name": "Spine Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 60,
+                        "y": 60,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270491770_5vu7b4uhw",
+                      "name": "Spine Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 80,
+                        "y": 80,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    }
+                  ],
+                  "customProperties": {},
+                  "locked": false,
+                  "expanded": true,
+                  "dontDestroyOnLoad": false,
+                  "rectTransform": null
+                },
+                {
+                  "id": "node_1793270297601_6fvzikear",
+                  "name": "Middle",
+                  "type": "container",
+                  "transform": {
+                    "x": 0,
+                    "y": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "rotation": 0,
+                    "pivotX": 0,
+                    "pivotY": 0,
+                    "skewX": 0,
+                    "skewY": 0
+                  },
+                  "visible": true,
+                  "alpha": 1,
+                  "interactive": false,
+                  "zIndex": 0,
+                  "children": [
+                    {
+                      "id": "node_1793269940604_ktecklg1i",
+                      "name": "Spine Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 20,
+                        "y": 20,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270632816_yycnbeif7",
+                      "name": "Spine Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 40,
+                        "y": 40,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270635710_0iz0hvz9u",
+                      "name": "Spine Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 60,
+                        "y": 60,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270640830_ii47ryhuw",
+                      "name": "Spine Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 80,
+                        "y": 80,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270644546_bgc1310oy",
+                      "name": "Spine Copy Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 100,
+                        "y": 100,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    }
+                  ],
+                  "customProperties": {},
+                  "locked": false,
+                  "expanded": false,
+                  "dontDestroyOnLoad": false,
+                  "rectTransform": null
+                },
+                {
+                  "id": "node_1793270305481_n9sf1w1e0",
+                  "name": "bottom",
+                  "type": "container",
+                  "transform": {
+                    "x": 0,
+                    "y": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "rotation": 0,
+                    "pivotX": 0,
+                    "pivotY": 0,
+                    "skewX": 0,
+                    "skewY": 0
+                  },
+                  "visible": true,
+                  "alpha": 1,
+                  "interactive": false,
+                  "zIndex": 0,
+                  "children": [
+                    {
+                      "id": "node_1793270089346_9llw54dfq",
+                      "name": "Spine Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 40,
+                        "y": 40,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270653097_35e53pj1l",
+                      "name": "Spine Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 60,
+                        "y": 60,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270653102_7w6zppjo7",
+                      "name": "Spine Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 80,
+                        "y": 80,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270653103_mxxteqoc6",
+                      "name": "Spine Copy Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 100,
+                        "y": 100,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    },
+                    {
+                      "id": "node_1793270653105_82psvj09g",
+                      "name": "Spine Copy Copy Copy Copy Copy Copy",
+                      "type": "spine",
+                      "transform": {
+                        "x": 120,
+                        "y": 120,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "skeleton": "assets/symbols/symbols.json",
+                      "atlas": "assets/symbols/symbols.atlas",
+                      "animation": "",
+                      "playOnLoad": false,
+                      "loop": true,
+                      "skin": "default",
+                      "timeScale": 1,
+                      "rectTransform": null
+                    }
+                  ],
+                  "customProperties": {},
+                  "locked": false,
+                  "expanded": false,
+                  "dontDestroyOnLoad": false,
+                  "rectTransform": null
+                }
+              ],
+              "customProperties": {},
+              "locked": true,
+              "expanded": false,
+              "dontDestroyOnLoad": false,
+              "rectTransform": null
+            },
+            {
+              "id": "node_1793271562350_onrurgfcq",
+              "name": "Crumble Reels",
+              "type": "reels",
+              "transform": {
+                "x": -429.5375973433746,
+                "y": -236.99528778358865,
+                "scaleX": 0.6769229464574643,
+                "scaleY": 0.6719101410843265,
+                "rotation": 0,
+                "pivotX": 0,
+                "pivotY": 0,
+                "skewX": 0,
+                "skewY": 0
+              },
+              "visible": true,
+              "alpha": 1,
+              "interactive": false,
+              "zIndex": 0,
+              "children": [],
+              "customProperties": {},
+              "locked": false,
+              "expanded": true,
+              "reelCount": 5,
+              "rowCount": 3,
+              "symbolWidth": 250,
+              "symbolHeight": 250,
+              "symbolRectMode": "shared",
+              "symbolRects": [],
+              "symbolSpacingX": 12,
+              "symbolSpacingY": 0,
+              "reelSpacing": 0,
+              "reelSpacingMode": "shared",
+              "reelSpacings": [],
+              "reelYOffset": 0,
+              "reelYOffsetMode": "shared",
+              "reelYOffsets": [],
+              "reelGizmoColor": 3800852,
+              "reelOffsets": [
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                },
+                {
+                  "x": 0,
+                  "y": 0
+                }
+              ],
+              "maskPadding": 0,
+              "symbols": [
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                "",
+                ""
+              ],
+              "symbolStaticsImage": "",
+              "symbolStaticsAtlas": "",
+              "symbolEntries": [
+                {
+                  "sprite": "",
+                  "skin": "1",
+                  "winAnimation": "win1",
+                  "scale": 0.95
+                },
+                {
+                  "sprite": "",
+                  "skin": "2",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "3",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "4",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "5",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "6",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "7",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "8",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "9",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "10",
+                  "winAnimation": "win1"
+                },
+                {
+                  "sprite": "",
+                  "skin": "11",
+                  "winAnimation": "win1"
+                }
+              ],
+              "symbolMode": "spine",
+              "sharedSpineAnimation": "assets/symbols/symbols.json",
+              "showDebugCells": false,
+              "spinStopMode": "shared",
+              "sharedStopSpeed": 70,
+              "sharedStopDelay": 160,
+              "spinProfileActions": [],
+              "winningSymbolBehavior": "playAnimation",
+              "winningTweenStyle": "pulse",
+              "winningTweenDurationSec": 0.6,
+              "winningTweenIntensity": 0.5,
+              "winningTweenEase": "sine.inOut",
+              "nonWinningSymbolBehavior": "darken",
+              "nonWinningAlpha": 0.3,
+              "nonWinningDarkenColor": 5263456,
+              "winlineMultiPlayMode": "concurrent",
+              "winlineColors": [
+                {
+                  "kind": "solid",
+                  "color": 16766720
+                }
+              ],
+              "winlineColor": 16766720,
+              "winlineThickness": 4,
+              "winlineAlpha": 1,
+              "winlineLeadLength": 40,
+              "winlineDrawOrder": "inFront",
+              "winlineRopeStyle": "plain",
+              "winlineCycleDelaySec": 1,
+              "winlineFillMode": "colors",
+              "winlineTexture": null,
+              "winlinePathAnimation": "none",
+              "winlinePathAnimationDurationSec": 1,
+              "winlinePathAnimationIntensity": 0.5,
+              "winlinePathAnimationEase": "sine.inOut",
+              "winlineStrokeStyle": "solid",
+              "winlineDashLength": 16,
+              "winlineDashGap": 8,
+              "winlineDotSize": 6,
+              "winlineDotGap": 2,
+              "winlineGlowEnabled": false,
+              "winlineGlowColor": 16766720,
+              "winlineGlowDistance": 12,
+              "winlineGlowStrength": 2,
+              "winlineGlowAlpha": 1,
+              "winlineGlowQuality": 0.3,
+              "previewWinlines": [
+                [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              ],
+              "cascadeFallTime": 0.5,
+              "cascadeFallOffset": 0,
+              "cascadeBounceDuration": 0.1,
+              "cascadeBounceOffset": 20,
+              "cascadeRemoveDelay": 0,
+              "cascadeBlockFallDelay": 0,
+              "previewCascadeLocations": [
+                [
+                  1
+                ],
+                [
+                  1
+                ],
+                [
+                  1
+                ],
+                [
+                  1
+                ],
+                [
+                  0,
+                  1,
+                  2
+                ]
+              ],
+              "previewCascadeOutcome": [
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  0
+                ],
+                [
+                  0,
+                  0,
+                  10
+                ]
+              ],
+              "winSymbolEffect": "glow",
+              "reelBlurStrength": 6,
+              "reelBlurSpeedTrigger": 20,
+              "symbolTextsEnabled": false,
+              "symbolTexts": [
+                {
+                  "name": "Badge",
+                  "symbols": [
+                    12,
+                    13,
+                    14,
+                    15,
+                    16,
+                    17,
+                    18,
+                    19,
+                    20,
+                    21
+                  ],
+                  "offsetX": 55,
+                  "offsetY": -55,
+                  "anchorX": 0.5,
+                  "anchorY": 0.5,
+                  "maxWidth": 38,
+                  "previewText": "x2",
+                  "fillerTexts": [],
+                  "style": {
+                    "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
+                    "fontSize": 26,
+                    "fontWeight": "normal",
+                    "fill": 16777215,
+                    "stroke": 1772339,
+                    "strokeThickness": 5,
+                    "dropShadow": false,
+                    "dropShadowColor": 0,
+                    "dropShadowBlur": 2,
+                    "dropShadowDistance": 2,
+                    "dropShadowAlpha": 0.5,
+                    "letterSpacing": 0
+                  }
+                }
+              ],
               "rectTransform": null
             },
             {
@@ -2937,7 +3640,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": true,
+          "expanded": false,
           "dontDestroyOnLoad": false,
           "responsiveScaler": null,
           "rectTransform": null
@@ -2980,9 +3683,10 @@
               },
               "node_ss_hud": {
                 "transform": {
-                  "y": -34.31851731154306,
-                  "x": -8.127440655485668,
-                  "scaleX": 1.1331700357807466
+                  "y": 2.880700458213326,
+                  "x": -1.5972761384010852,
+                  "scaleX": 1.1476301785731124,
+                  "scaleY": 1.025463582750402
                 }
               },
               "node_1791298581468_z4rigcjll": {
@@ -2995,7 +3699,7 @@
               },
               "node_1791292732465_cieppe22a": {
                 "transform": {
-                  "x": -4.77711901965381,
+                  "x": 61.156391282457164,
                   "y": -922.9097393552968,
                   "scaleX": 1.5422475370238506,
                   "scaleY": 1.681552470535155
@@ -3088,8 +3792,8 @@
               },
               "node_ss_hud": {
                 "transform": {
-                  "x": -36.938730680801754,
-                  "y": -83.16660762873101,
+                  "x": -27.524576217518884,
+                  "y": -54.41636524582499,
                   "scaleX": 1.0253118243530643,
                   "scaleY": 0.8694239317525483
                 }
@@ -3142,16 +3846,169 @@
               },
               "node_1791297984204_qg9p9detx": {
                 "transform": {
-                  "y": 98.52709516637424,
+                  "y": 124.76934287231137,
                   "x": -91.3865277136968,
                   "scaleX": 1.1465374919154925,
-                  "scaleY": 1.171524934281985
+                  "scaleY": 1.1701602156212831
                 }
               },
               "node_ss_reel_area": {
                 "transform": {
                   "y": -4.601830201189667
                 }
+              },
+              "node_1793269837844_w3w2fh17v": {
+                "transform": {
+                  "x": 215.54388542729828,
+                  "y": -5.5707628716463375,
+                  "scaleX": 4.592398090454971,
+                  "scaleY": 3.9503273474086784
+                }
+              },
+              "node_1793269887162_ei1pgab1r": {
+                "transform": {
+                  "x": -362,
+                  "y": -170,
+                  "scaleX": 0.7,
+                  "scaleY": 0.7
+                }
+              },
+              "node_1793269940604_ktecklg1i": {
+                "transform": {
+                  "x": -362,
+                  "y": 1.0441543104537616,
+                  "scaleX": 0.7,
+                  "scaleY": 0.7
+                }
+              },
+              "node_1793269972439_i162yexct": {
+                "transform": {
+                  "y": -99.03561403867282
+                }
+              },
+              "node_1793269972439_9zdyihm5d": {
+                "transform": {
+                  "y": -79.03561403867282
+                }
+              },
+              "node_1793270089346_9llw54dfq": {
+                "transform": {
+                  "x": -362,
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 166.03240918943027
+                }
+              },
+              "node_1793270313675_kjfd9fsel": {
+                "transform": {
+                  "y": -166.04279460070788,
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "x": -179.69041661913684
+                }
+              },
+              "node_1793270485707_r8t7h0goc": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": -165.83017241496486,
+                  "x": -10.615512217621443
+                }
+              },
+              "node_1793270488575_mwzboqctd": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": -160.41937065575675,
+                  "x": 166.09409051550685
+                }
+              },
+              "node_1793270491770_5vu7b4uhw": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": -163.6035879095189,
+                  "x": 333.2000383079064
+                }
+              },
+              "node_1793270632816_yycnbeif7": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": -3.666835238556594,
+                  "x": -181.529878733995
+                }
+              },
+              "node_1793270635710_0iz0hvz9u": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": -8.414208120864298,
+                  "x": -9.824719209735468
+                }
+              },
+              "node_1793270640830_ii47ryhuw": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 4.150578232564435,
+                  "x": 166.93361015926686
+                }
+              },
+              "node_1793270644546_bgc1310oy": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 13.41220787310749,
+                  "x": 342.051009035005
+                }
+              },
+              "node_1793270653097_35e53pj1l": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 167.94818184732867,
+                  "x": -186.33444547073424
+                }
+              },
+              "node_1793270653102_7w6zppjo7": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 172.34132118230957,
+                  "x": -11.374874233402336
+                }
+              },
+              "node_1793270653103_mxxteqoc6": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 164.32076461586604,
+                  "x": 169.27453086120738
+                }
+              },
+              "node_1793270653105_82psvj09g": {
+                "transform": {
+                  "scaleX": 0.7,
+                  "scaleY": 0.7,
+                  "y": 178.48583621606667,
+                  "x": 341.18470011420607
+                }
+              },
+              "node_1793270292061_mjnvv9ymh": {
+                "visible": false
+              },
+              "node_1793270297601_6fvzikear": {
+                "visible": false
+              },
+              "node_1793270305481_n9sf1w1e0": {
+                "visible": false
+              },
+              "node_1793269745802_0eedyuuz5": {
+                "visible": false
+              },
+              "node_1793271562350_onrurgfcq": {
+                "visible": false
               }
             }
           }

@@ -102,7 +102,13 @@
 		"@game-studio/asset-manager": "6.0.0-pixi-8.26-09-08.15-03.LF.eae4a498.0",
 		"@game-studio/cabinet": "5.0.0-pixi-8.26-09-08.15-03.LF.eae4a498.0",
 		"@game-studio/htp-preview-core": "0.3.0-htp.26-09-01.09-05.bf.ad63fe6c.0",
-		"@game-studio/sound-manager": "5.0.0-pixi-8.26-09-08.15-03.LF.eae4a498.0"
+		"@game-studio/sound-manager": "5.0.0-pixi-8.26-09-08.15-03.LF.eae4a498.0",
+		"form-data": "^4.0.6",
+		"axios@^1": "^1.20.0",
+		"@xmldom/xmldom": "^0.8.15",
+		"nanoid@^3": "^3.3.18",
+		"source-map-js": "^1.2.2",
+		"brace-expansion@^1": "^1.1.20"
 	},
 	"engines": {
 		"node": ">= 14.0.0",

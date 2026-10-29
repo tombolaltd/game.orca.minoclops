@@ -177,7 +177,7 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "onComplete"
+                "value": "immediate"
               }
             ]
           },
@@ -199,7 +199,7 @@
             ]
           },
           {
-            "id": "nv0vli7d",
+            "id": "niy065uh",
             "title": "playAllOffAnimations",
             "rootType": "custom",
             "properties": [
@@ -213,7 +213,75 @@
                 "type": "nodeRef",
                 "value": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nw3kx9oq",
+            "title": "setOnScreenReels",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reels",
+                "type": "string",
+                "sourceNodeId": "niebzplq"
+              }
+            ]
+          },
+          {
+            "id": "nckl179j",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "n5k5y3vz",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 0.25
+              }
+            ]
+          },
+          {
+            "id": "n6o56hli",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -230,18 +298,45 @@
             "propertyName": "outcome"
           },
           {
-            "id": "laooyeu2",
+            "id": "l76o2cli",
+            "from": "n5k5y3vz",
+            "to": "n6o56hli"
+          },
+          {
+            "id": "lp2lh34v",
+            "from": "nw3kx9oq",
+            "to": "nckl179j"
+          },
+          {
+            "id": "l338kbd7",
+            "from": "nckl179j",
+            "to": "niy065uh"
+          },
+          {
+            "id": "lrrdf371",
+            "from": "niy065uh",
+            "to": "n5k5y3vz"
+          },
+          {
+            "id": "lmrm251a",
+            "from": "niebzplq",
+            "to": "nw3kx9oq",
+            "propertyType": "string",
+            "propertyName": "reels"
+          },
+          {
+            "id": "lsdu4uhk",
             "from": "nxyuus62",
+            "to": "nw3kx9oq"
+          },
+          {
+            "id": "lwupfwlh",
+            "from": "n6o56hli",
             "to": "nqyjxbvh"
           },
           {
-            "id": "ltibgm7u",
+            "id": "lv5ntk9q",
             "from": "ngoj25r0",
-            "to": "nv0vli7d"
-          },
-          {
-            "id": "ltrqod9k",
-            "from": "nv0vli7d",
             "to": "nxyuus62"
           }
         ]

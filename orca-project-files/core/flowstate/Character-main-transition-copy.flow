@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "n1p0g3rz",
+        "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
+        "x": 61.16535132104872,
+        "y": 66.47220955623638,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusEnd"
+        }
+      },
+      {
+        "id": "nlsc464h",
+        "title": "setSkin",
+        "x": 731.1360265400103,
+        "y": 66.42729782473874,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "skinName",
+            "type": "string",
+            "optionsFrom": "target.spine.skins"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "skinName": "base"
+        }
+      },
+      {
+        "id": "n91xt96d",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 399.50376076094784,
+        "y": 78.23774790549709,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 1.5
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "l4l5rcq0",
+        "from": "n1p0g3rz",
+        "to": "n91xt96d"
+      },
+      {
+        "id": "lpf3le5m",
+        "from": "n91xt96d",
+        "to": "nlsc464h"
+      }
+    ],
+    "groups": [],
+    "variables": [],
+    "viewState": {
+      "panX": 142.99023635300216,
+      "panY": 168.46593920557876,
+      "scale": 0.7672619653324045
+    }
+  }
+}

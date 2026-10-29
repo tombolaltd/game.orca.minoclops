@@ -391,10 +391,9 @@
         }
       },
       {
-        "id": "n1el1soq",
-        "title": "toString",
-        "x": 502.44333866091927,
-        "y": -375.90658142529196,
+        "id": "n3rhcx7u",
+        "x": 486.9483146867826,
+        "y": -382.79325874713055,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -403,7 +402,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       }
     ],
     "links": [
@@ -506,15 +506,15 @@
         "to": "nx5kazgi"
       },
       {
-        "id": "lp0en5gu",
+        "id": "lqqpce3m",
         "from": "n7qrfhq1",
-        "to": "n1el1soq",
+        "to": "n3rhcx7u",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "lirgbks4",
-        "from": "n1el1soq",
+        "id": "lo087oeq",
+        "from": "n3rhcx7u",
         "to": "njyp4t5x",
         "propertyType": "string",
         "propertyName": "value"

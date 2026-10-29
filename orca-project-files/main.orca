@@ -36,7 +36,9 @@
     "bonus-end",
     "Character-split",
     "background-split",
-    "character-spin-end"
+    "character-spin-end",
+    "Character-bonus-transition",
+    "Character-main-transition-copy"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -235,7 +237,9 @@
       "name": "Character",
       "graphs": [
         "Character-split",
-        "character-spin-end"
+        "character-spin-end",
+        "Character-bonus-transition",
+        "Character-main-transition-copy"
       ],
       "collapsed": false
     },
@@ -267,5 +271,5 @@
       "type": "int"
     }
   ],
-  "lastOpenedOrcaVersion": "0.5.13"
+  "lastOpenedOrcaVersion": "0.5.14"
 }

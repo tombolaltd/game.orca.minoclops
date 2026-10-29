@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "n1p0g3rz",
+        "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
+        "x": 150.68208449792894,
+        "y": 105.78569012855242,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusTrigger"
+        }
+      },
+      {
+        "id": "nlsc464h",
+        "title": "setSkin",
+        "x": 784.8243024410422,
+        "y": 107.81201049845075,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "skinName",
+            "type": "string",
+            "optionsFrom": "target.spine.skins"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "skinName": "bonus"
+        }
+      },
+      {
+        "id": "n1l6sjlf",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 470.3153425588058,
+        "y": 107.77021767288522,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 1.5
+        }
+      }
+    ],
+    "links": [
+      {
+        "id": "lkm0v6im",
+        "from": "n1p0g3rz",
+        "to": "n1l6sjlf"
+      },
+      {
+        "id": "lsjt1n0c",
+        "from": "n1l6sjlf",
+        "to": "nlsc464h"
+      }
+    ],
+    "groups": [],
+    "variables": [],
+    "viewState": {
+      "panX": -66.00940055359524,
+      "panY": 26.546368965405236,
+      "scale": 0.8940499428307686
+    }
+  }
+}

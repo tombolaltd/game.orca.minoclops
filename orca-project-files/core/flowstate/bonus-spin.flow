@@ -215,8 +215,8 @@
             {
               "id": "ngoj25r0",
               "title": "Entry",
-              "x": 601.9966210966763,
-              "y": -37.76454227198554,
+              "x": 898.039062164949,
+              "y": 88.41013701445016,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -279,7 +279,7 @@
               "propertyValues": {
                 "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
                 "outcome": "",
-                "sequenceNodeOn": "onComplete",
+                "sequenceNodeOn": "immediate",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_ss_reels",
@@ -291,8 +291,8 @@
             {
               "id": "nqyjxbvh",
               "title": "Exit",
-              "x": 1522.1547434253284,
-              "y": 114.52981849302793,
+              "x": 3160.9643689330464,
+              "y": 283.3060964168962,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -300,8 +300,8 @@
             {
               "id": "niebzplq",
               "title": "getGameModelProperty",
-              "x": 700.0069937252131,
-              "y": 204.47630675792342,
+              "x": 513.3164369854915,
+              "y": 361.99646400706354,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -317,11 +317,11 @@
               }
             },
             {
-              "id": "nv0vli7d",
+              "id": "niy065uh",
               "title": "playAllOffAnimations",
               "friendlyTitle": "Play off animations",
-              "x": 791.0808685752709,
-              "y": 6.006732825757524,
+              "x": 2153.068890422772,
+              "y": 327.08175467925633,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -340,7 +340,113 @@
                 "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
                 "reels": {
                   "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nw3kx9oq",
+              "title": "setOnScreenReels",
+              "displayName": "Show last board",
+              "x": 1483.351119833221,
+              "y": 293.5216422797415,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reels",
+                  "type": "string",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+                }
+              ],
+              "propertyValues": {
+                "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nckl179j",
+              "title": "showNode",
+              "x": 1808.4797414745622,
+              "y": 312.30252657707484,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n5k5y3vz",
+              "title": "delay",
+              "friendlyTitle": "Wait",
+              "x": 2484.10367004239,
+              "y": 319.10839086490097,
+              "rootType": "delay",
+              "color": "#8e44ad",
+              "icon": "⏱️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "seconds",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "seconds": 0.25
+              }
+            },
+            {
+              "id": "n6o56hli",
+              "title": "hideNode",
+              "x": 2825.5492592793303,
+              "y": 291.63499613809165,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -356,18 +462,45 @@
               "propertyName": "outcome"
             },
             {
-              "id": "laooyeu2",
+              "id": "l76o2cli",
+              "from": "n5k5y3vz",
+              "to": "n6o56hli"
+            },
+            {
+              "id": "lp2lh34v",
+              "from": "nw3kx9oq",
+              "to": "nckl179j"
+            },
+            {
+              "id": "l338kbd7",
+              "from": "nckl179j",
+              "to": "niy065uh"
+            },
+            {
+              "id": "lrrdf371",
+              "from": "niy065uh",
+              "to": "n5k5y3vz"
+            },
+            {
+              "id": "lmrm251a",
+              "from": "niebzplq",
+              "to": "nw3kx9oq",
+              "propertyType": "string",
+              "propertyName": "reels"
+            },
+            {
+              "id": "lsdu4uhk",
               "from": "nxyuus62",
+              "to": "nw3kx9oq"
+            },
+            {
+              "id": "lwupfwlh",
+              "from": "n6o56hli",
               "to": "nqyjxbvh"
             },
             {
-              "id": "ltibgm7u",
+              "id": "lv5ntk9q",
               "from": "ngoj25r0",
-              "to": "nv0vli7d"
-            },
-            {
-              "id": "ltrqod9k",
-              "from": "nv0vli7d",
               "to": "nxyuus62"
             }
           ],
@@ -2339,9 +2472,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -461.83472646277346,
-      "panY": 165.54698825156285,
-      "scale": 0.7597283368469976
+      "panX": -155.2931815900929,
+      "panY": 163.95390479323953,
+      "scale": 0.6805035735897977
     }
   }
 }

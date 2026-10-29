@@ -261,7 +261,7 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "n1el1soq"
+          "sourceNodeId": "n3rhcx7u"
         }
       ]
     },
@@ -278,8 +278,7 @@
       ]
     },
     {
-      "id": "n1el1soq",
-      "title": "toString",
+      "id": "n3rhcx7u",
       "rootType": "string",
       "properties": [
         {
@@ -287,7 +286,8 @@
           "type": "T",
           "sourceNodeId": "n7qrfhq1"
         }
-      ]
+      ],
+      "propertyValue": null
     }
   ],
   "links": [
@@ -390,15 +390,15 @@
       "to": "nx5kazgi"
     },
     {
-      "id": "lp0en5gu",
+      "id": "lqqpce3m",
       "from": "n7qrfhq1",
-      "to": "n1el1soq",
+      "to": "n3rhcx7u",
       "propertyType": "float",
       "propertyName": "value"
     },
     {
-      "id": "lirgbks4",
-      "from": "n1el1soq",
+      "id": "lo087oeq",
+      "from": "n3rhcx7u",
       "to": "njyp4t5x",
       "propertyType": "string",
       "propertyName": "value"

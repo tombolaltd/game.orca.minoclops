@@ -226,8 +226,8 @@
       {
         "id": "n8gf47cf",
         "title": "getGameModelProperty",
-        "x": -859.3692227967122,
-        "y": 415.5437342415055,
+        "x": -833.5596949901909,
+        "y": 385.76350984936556,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -274,10 +274,9 @@
         }
       },
       {
-        "id": "nsx8vcgi",
-        "title": "toString",
-        "x": -502.28987377031905,
-        "y": 406.45065900361254,
+        "id": "n7wqzawo",
+        "x": -507.65151940091823,
+        "y": 391.36442245828954,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -286,7 +285,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       }
     ],
     "links": [
@@ -389,15 +389,15 @@
         "to": "ncejedmd"
       },
       {
-        "id": "l998bhza",
+        "id": "l7cupv20",
         "from": "n8gf47cf",
-        "to": "nsx8vcgi",
+        "to": "n7wqzawo",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "lr7qp6di",
-        "from": "nsx8vcgi",
+        "id": "l9dl0ptu",
+        "from": "n7wqzawo",
         "to": "nlnialvt",
         "propertyType": "string",
         "propertyName": "value"
@@ -406,9 +406,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 571.5491253215873,
-      "panY": -103.09362771223351,
-      "scale": 0.77526966049757
+      "panX": 425.41186588769364,
+      "panY": 96.45807168221114,
+      "scale": 0.5036899588963153
     }
   }
 }
