@@ -10,7 +10,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "gamebo_002",
-      "exitSourceId": "nnkz2o11",
+      "exitSourceId": "nzu3d44j",
       "subgraph": {
         "nodes": [
           {
@@ -135,28 +135,6 @@
             "isExit": true
           },
           {
-            "id": "ngq6kju9",
-            "title": "setDisplayReels",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reels",
-                "type": "any",
-                "sourceNodeId": "gamebo_003"
-              }
-            ]
-          },
-          {
             "id": "nnkz2o11",
             "title": "setNodeVisible",
             "rootType": "Action",
@@ -166,7 +144,7 @@
                 "type": "nodeRef",
                 "value": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "nodeId": "node_1793281709637_xjkk041qq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -175,6 +153,28 @@
                 "name": "visible",
                 "type": "bool",
                 "value": false
+              }
+            ]
+          },
+          {
+            "id": "nzu3d44j",
+            "title": "setOnScreenReels",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793281709637_xjkk041qq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reels",
+                "type": "any",
+                "sourceNodeId": "gamebo_003"
               }
             ]
           }
@@ -210,24 +210,24 @@
             "propertyName": "reels"
           },
           {
-            "id": "luq5ymq3",
+            "id": "l1yxnpep",
+            "from": "gamebo_004",
+            "to": "nzu3d44j"
+          },
+          {
+            "id": "laufxgtr",
+            "from": "nzu3d44j",
+            "to": "nnkz2o11"
+          },
+          {
+            "id": "l307aqvs",
             "from": "gamebo_003",
-            "to": "ngq6kju9",
+            "to": "nzu3d44j",
             "propertyType": "any",
             "propertyName": "reels"
           },
           {
-            "id": "lsro73t5",
-            "from": "gamebo_004",
-            "to": "ngq6kju9"
-          },
-          {
-            "id": "liwzlzvn",
-            "from": "ngq6kju9",
-            "to": "nnkz2o11"
-          },
-          {
-            "id": "l4httlj8",
+            "id": "lynjp934",
             "from": "nnkz2o11",
             "to": "gamebo_006"
           }

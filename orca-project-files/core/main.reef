@@ -2265,12 +2265,12 @@
                 "rectTransform": null
               },
               {
-                "id": "node_1793271562350_onrurgfcq",
+                "id": "node_1793281709637_xjkk041qq",
                 "name": "Crumble Reels",
                 "type": "reels",
                 "transform": {
-                  "x": -429.5375973433746,
-                  "y": -236.99528778358865,
+                  "x": -409.5375973433746,
+                  "y": -216.99528778358865,
                   "scaleX": 0.6769229464574643,
                   "scaleY": 0.6719101410843265,
                   "rotation": 0,
@@ -2344,58 +2344,47 @@
                   {
                     "sprite": null,
                     "skin": "1",
-                    "winAnimation": "win1",
                     "scale": 0.95
                   },
                   {
                     "sprite": null,
-                    "skin": "2",
-                    "winAnimation": "win1"
+                    "skin": "2"
                   },
                   {
                     "sprite": null,
-                    "skin": "3",
-                    "winAnimation": "win1"
+                    "skin": "3"
                   },
                   {
                     "sprite": null,
-                    "skin": "4",
-                    "winAnimation": "win1"
+                    "skin": "4"
                   },
                   {
                     "sprite": null,
-                    "skin": "5",
-                    "winAnimation": "win1"
+                    "skin": "5"
                   },
                   {
                     "sprite": null,
-                    "skin": "6",
-                    "winAnimation": "win1"
+                    "skin": "6"
                   },
                   {
                     "sprite": null,
-                    "skin": "7",
-                    "winAnimation": "win1"
+                    "skin": "7"
                   },
                   {
                     "sprite": null,
-                    "skin": "8",
-                    "winAnimation": "win1"
+                    "skin": "8"
                   },
                   {
                     "sprite": null,
-                    "skin": "9",
-                    "winAnimation": "win1"
+                    "skin": "9"
                   },
                   {
                     "sprite": null,
-                    "skin": "10",
-                    "winAnimation": "win1"
+                    "skin": "10"
                   },
                   {
                     "sprite": null,
-                    "skin": "11",
-                    "winAnimation": "win1"
+                    "skin": "11"
                   }
                 ],
                 "symbolMode": "spine",
@@ -3184,6 +3173,12 @@
                     "x": -448.3118767798903,
                     "y": -261.39232095997454
                   }
+                },
+                "node_1793281709637_xjkk041qq": {
+                  "transform": {
+                    "y": -261.12539299517294,
+                    "x": -448.49382815084215
+                  }
                 }
               }
             },
@@ -3435,6 +3430,12 @@
                   "transform": {
                     "y": -257.27952116029627,
                     "x": -446.63738334539937
+                  }
+                },
+                "node_1793281709637_xjkk041qq": {
+                  "transform": {
+                    "y": -260.1678269789013,
+                    "x": -446.1221022179783
                   }
                 }
               }

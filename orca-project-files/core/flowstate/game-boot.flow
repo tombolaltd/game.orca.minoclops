@@ -22,11 +22,11 @@
         "id": "gamebo_063",
         "title": "State",
         "displayName": "Music & board",
-        "x": 71.87097271547816,
+        "x": 73.74674722996946,
         "y": 186.15397812792497,
         "isState": true,
         "entryTargetId": "gamebo_002",
-        "exitSourceId": "nnkz2o11",
+        "exitSourceId": "nzu3d44j",
         "subgraph": {
           "nodes": [
             {
@@ -152,8 +152,8 @@
               "id": "gamebo_005",
               "title": "formatMoney",
               "friendlyTitle": "Format Money",
-              "x": 1699.5663031020958,
-              "y": 448.3142547979473,
+              "x": 1822.0171694698988,
+              "y": 450.0762304350331,
               "rootType": "Info & UI",
               "color": "#1abc9c",
               "icon": "📊",
@@ -180,8 +180,8 @@
               "id": "gamebo_006",
               "title": "setText",
               "displayName": "Win reads 0",
-              "x": 2079.5343798863983,
-              "y": 139.5135915186276,
+              "x": 2201.9852462542012,
+              "y": 141.27556715571342,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -209,17 +209,47 @@
             {
               "id": "gamebo_065",
               "title": "Exit",
-              "x": 2441.5343798863987,
-              "y": 139.5135915186276,
+              "x": 2585.389865289757,
+              "y": 151.97787667349078,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
             },
             {
-              "id": "ngq6kju9",
-              "title": "setDisplayReels",
-              "x": 1431.7329979286515,
-              "y": 128.35258237775275,
+              "id": "nnkz2o11",
+              "title": "setNodeVisible",
+              "x": 1746.746075312183,
+              "y": 131.0292317149695,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793281709637_xjkk041qq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nzu3d44j",
+              "title": "setOnScreenReels",
+              "x": 1426.5419725123077,
+              "y": 129.2791226576961,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -247,37 +277,7 @@
                 "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "nnkz2o11",
-              "title": "setNodeVisible",
-              "x": 1746.746075312183,
-              "y": 131.0292317149695,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "isStarter": false,
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef"
-                },
-                {
-                  "name": "visible",
-                  "type": "bool",
-                  "default": true
-                }
-              ],
-              "propertyValues": {
-                "visible": false,
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "nodeId": "node_1793281709637_xjkk041qq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -315,24 +315,24 @@
               "propertyName": "reels"
             },
             {
-              "id": "luq5ymq3",
+              "id": "l1yxnpep",
+              "from": "gamebo_004",
+              "to": "nzu3d44j"
+            },
+            {
+              "id": "laufxgtr",
+              "from": "nzu3d44j",
+              "to": "nnkz2o11"
+            },
+            {
+              "id": "l307aqvs",
               "from": "gamebo_003",
-              "to": "ngq6kju9",
+              "to": "nzu3d44j",
               "propertyType": "any",
               "propertyName": "reels"
             },
             {
-              "id": "lsro73t5",
-              "from": "gamebo_004",
-              "to": "ngq6kju9"
-            },
-            {
-              "id": "liwzlzvn",
-              "from": "ngq6kju9",
-              "to": "nnkz2o11"
-            },
-            {
-              "id": "l4httlj8",
+              "id": "lynjp934",
               "from": "nnkz2o11",
               "to": "gamebo_006"
             }
@@ -1093,9 +1093,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -620.9576737297821,
-      "panY": 110.84510212965691,
-      "scale": 0.6533412878498874
+      "panX": -177.01172987336008,
+      "panY": 117.98091922976548,
+      "scale": 0.4671888802780933
     }
   }
 }

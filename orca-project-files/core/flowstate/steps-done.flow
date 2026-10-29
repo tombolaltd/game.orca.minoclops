@@ -207,7 +207,7 @@
           "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
           "target": {
             "kind": "nodeRef",
-            "nodeId": "node_1793271562350_onrurgfcq",
+            "nodeId": "node_1793281709637_xjkk041qq",
             "sceneScope": "core",
             "sceneName": "main"
           }
@@ -428,9 +428,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 253.3700036536199,
-      "panY": 37.59558354420926,
-      "scale": 0.5545625779829266
+      "panX": 126.65286476289276,
+      "panY": 74.52748566294207,
+      "scale": 0.6154967437622839
     }
   }
 }

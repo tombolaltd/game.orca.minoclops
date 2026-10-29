@@ -177,7 +177,7 @@
         "id": "no8mqs7g",
         "title": "at",
         "friendlyTitle": "Get",
-        "x": -89.64566583601567,
+        "x": -66.28640024835494,
         "y": -272.5146445676234,
         "rootType": "array",
         "color": "#2980b9",
@@ -198,7 +198,7 @@
         "id": "nrc6dlvf",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 238.46827600677938,
+        "x": 261.8275415944401,
         "y": -256.37179427954544,
         "rootType": "objectOps",
         "color": "#607d8b",
@@ -281,7 +281,7 @@
       {
         "id": "nx5kazgi",
         "title": "setText",
-        "x": 1208.279419952284,
+        "x": 1213.6700197032824,
         "y": -344.71121883372865,
         "rootType": "Action",
         "color": "#3b6ef5",
@@ -311,7 +311,7 @@
         "id": "nko5gx4y",
         "title": "formatPrize",
         "friendlyTitle": "Format money prize for displahy",
-        "x": 878.1802751352171,
+        "x": 901.5395407228779,
         "y": -224.48760277642498,
         "rootType": "custom",
         "color": "#8e44ad",
@@ -328,7 +328,7 @@
       {
         "id": "ntr1bb0u",
         "title": "toInt",
-        "x": 563.0888144019755,
+        "x": 586.4480799896362,
         "y": -230.1422536030719,
         "rootType": "cast",
         "color": "#6c5ce7",
@@ -392,7 +392,6 @@
       },
       {
         "id": "n86a4d3t",
-        "title": "toString",
         "x": 499,
         "y": -374.781732825283,
         "rootType": "string",
@@ -403,7 +402,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       }
     ],
     "links": [
@@ -523,9 +523,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -2.1056648320329714,
-      "panY": 311.50402868953324,
-      "scale": 0.5336343773593195
+      "panX": 247.96606265817638,
+      "panY": 336.33482740803004,
+      "scale": 0.39414186890982084
     }
   }
 }

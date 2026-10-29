@@ -418,7 +418,7 @@
                 "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
                 "reels": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "nodeId": "node_1793281709637_xjkk041qq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -1123,7 +1123,7 @@
               "propertyValues": {
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "nodeId": "node_1793281709637_xjkk041qq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -1167,7 +1167,7 @@
               "propertyValues": {
                 "target": {
                   "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "nodeId": "node_1793281709637_xjkk041qq",
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
@@ -1495,9 +1495,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 400.2013784995055,
-      "panY": 230.81151691753138,
-      "scale": 0.44602547489177
+      "panX": -124.9896383030084,
+      "panY": 159.47725570840413,
+      "scale": 0.6570232835053933
     }
   }
 }
