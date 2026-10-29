@@ -279,7 +279,6 @@
     },
     {
       "id": "nckpmwne",
-      "title": "toString",
       "rootType": "string",
       "properties": [
         {
@@ -287,7 +286,8 @@
           "type": "T",
           "sourceNodeId": "n7qrfhq1"
         }
-      ]
+      ],
+      "propertyValue": null
     }
   ],
   "links": [

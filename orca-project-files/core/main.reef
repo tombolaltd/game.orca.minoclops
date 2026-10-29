@@ -2619,57 +2619,78 @@
                     "sprite": null,
                     "skin": "1",
                     "winAnimation": "win1",
-                    "scale": 0.95
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "2",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "3",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "4",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "5",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "6",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "7",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "8",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "9",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "10",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   },
                   {
                     "sprite": null,
                     "skin": "11",
-                    "winAnimation": "win1"
+                    "winAnimation": "win1",
+                    "landAnimation": "land",
+                    "landAnimationEnabled": true
                   }
                 ],
                 "symbolMode": "spine",
@@ -2684,7 +2705,7 @@
                 "winningTweenDurationSec": 0.6,
                 "winningTweenIntensity": 0.5,
                 "winningTweenEase": "sine.inOut",
-                "nonWinningSymbolBehavior": "darken",
+                "nonWinningSymbolBehavior": "none",
                 "nonWinningAlpha": 0.3,
                 "nonWinningDarkenColor": 5263456,
                 "winlineMultiPlayMode": "concurrent",

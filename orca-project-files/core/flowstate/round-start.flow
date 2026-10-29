@@ -287,14 +287,14 @@
         "y": -26.16309284229546,
         "isState": true,
         "entryTargetId": "nmcxhd6c",
-        "exitSourceId": "numb55o0",
+        "exitSourceId": "nwb5joxm",
         "subgraph": {
           "nodes": [
             {
               "id": "ng1arby3",
               "title": "Entry",
-              "x": 351.4004165222889,
-              "y": -66.26460613292859,
+              "x": 387.5603393401647,
+              "y": -38.14022171902516,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -369,8 +369,8 @@
             {
               "id": "nxnpr19r",
               "title": "Exit",
-              "x": 2542.564242966737,
-              "y": 40.509749252547465,
+              "x": 3079.2928416562368,
+              "y": 84.14566177209461,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -378,8 +378,8 @@
             {
               "id": "nh47ncan",
               "title": "getGameModelProperty",
-              "x": 147.24977051369632,
-              "y": 303.4653838822936,
+              "x": 250.37251336467557,
+              "y": 256.59140985912126,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -398,8 +398,8 @@
               "id": "n2gt7hvh",
               "title": "playAllOffAnimations",
               "friendlyTitle": "Play off animations",
-              "x": 1258.5502644736512,
-              "y": 95.69231791545815,
+              "x": 1933.2446773996735,
+              "y": 88.34086430411647,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -428,8 +428,8 @@
               "id": "ne3xal1j",
               "title": "State",
               "displayName": "Hotspot Selection",
-              "x": 2301.2732326199257,
-              "y": 64.4548174067751,
+              "x": 2879.9914269466285,
+              "y": 108.09072992632227,
               "isState": true,
               "entryTargetId": "nquc7i9d",
               "subgraph": {
@@ -1108,8 +1108,8 @@
             {
               "id": "nnu5km0b",
               "title": "showNode",
-              "x": 913.9611155254418,
-              "y": 80.91308981327663,
+              "x": 1614.9644894086566,
+              "y": 88.1337356501245,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1133,8 +1133,8 @@
               "id": "nm8g4ed9",
               "title": "delay",
               "friendlyTitle": "Wait",
-              "x": 1589.5850440932697,
-              "y": 87.71895410110278,
+              "x": 2255.281686525606,
+              "y": 86.3660141522186,
               "rootType": "delay",
               "color": "#8e44ad",
               "icon": "⏱️",
@@ -1152,8 +1152,8 @@
             {
               "id": "numb55o0",
               "title": "hideNode",
-              "x": 1931.0306333302099,
-              "y": 60.245559374293435,
+              "x": 2569.7339642814873,
+              "y": 88.88518773769681,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1171,6 +1171,119 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
+              }
+            },
+            {
+              "id": "n0adjch2",
+              "title": "getReelSymbolSpines",
+              "friendlyTitle": "Get Reel Symbol Spines",
+              "x": 590.2833835360623,
+              "y": 587.6539281848152,
+              "rootType": "getters",
+              "color": "#0e7c86",
+              "icon": "🎰",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "njmpgsgy",
+              "title": "loop",
+              "friendlyTitle": "Repeat For Each",
+              "x": 949.7085227848371,
+              "y": 376.49908686688855,
+              "rootType": "loop",
+              "color": "#9b59b6",
+              "icon": "🔁",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "items",
+                  "type": "TArray"
+                },
+                {
+                  "name": "count",
+                  "type": "int",
+                  "default": 1
+                }
+              ],
+              "propertyValues": {
+                "count": 1
+              }
+            },
+            {
+              "id": "nwb5joxm",
+              "title": "addAnimation",
+              "x": 1297.9801163988122,
+              "y": 412.7303372585306,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "delay",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "delay": 0,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate"
               }
             }
           ],
@@ -1198,11 +1311,6 @@
               "to": "nm8g4ed9"
             },
             {
-              "id": "lastsoo4",
-              "from": "nmcxhd6c",
-              "to": "nnu5km0b"
-            },
-            {
               "id": "ld6ll3gn",
               "from": "ng1arby3",
               "to": "nmcxhd6c"
@@ -1216,6 +1324,32 @@
               "id": "lqzlyzqt",
               "from": "ne3xal1j",
               "to": "nxnpr19r"
+            },
+            {
+              "id": "lksg2a5s",
+              "from": "n0adjch2",
+              "to": "njmpgsgy",
+              "propertyType": "TArray",
+              "propertyName": "items"
+            },
+            {
+              "id": "listk9hj",
+              "from": "njmpgsgy",
+              "to": "nwb5joxm",
+              "propertyType": "nodeRef",
+              "propertyName": "target",
+              "sourceOutputName": "item"
+            },
+            {
+              "id": "l9xqpm8b",
+              "from": "njmpgsgy",
+              "to": "nwb5joxm",
+              "outIdx": 0
+            },
+            {
+              "id": "lsxc45ed",
+              "from": "nmcxhd6c",
+              "to": "nnu5km0b"
             }
           ],
           "groups": []
@@ -1495,9 +1629,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -412.08002966507127,
-      "panY": -36.26741215101845,
-      "scale": 0.5453680663745559
+      "panX": -109.2947575245604,
+      "panY": 114.11131472972525,
+      "scale": 0.5708982044606907
     }
   }
 }

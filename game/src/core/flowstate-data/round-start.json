@@ -197,7 +197,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "nmcxhd6c",
-      "exitSourceId": "numb55o0",
+      "exitSourceId": "nwb5joxm",
       "subgraph": {
         "nodes": [
           {
@@ -824,6 +824,78 @@
                 }
               }
             ]
+          },
+          {
+            "id": "n0adjch2",
+            "title": "getReelSymbolSpines",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "njmpgsgy",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray",
+                "sourceNodeId": "n0adjch2"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "nwb5joxm",
+            "title": "addAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "sourceNodeId": "njmpgsgy",
+                "sourceOutputName": "item"
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": ""
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": true
+              },
+              {
+                "name": "delay",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
           }
         ],
         "links": [
@@ -850,11 +922,6 @@
             "to": "nm8g4ed9"
           },
           {
-            "id": "lastsoo4",
-            "from": "nmcxhd6c",
-            "to": "nnu5km0b"
-          },
-          {
             "id": "ld6ll3gn",
             "from": "ng1arby3",
             "to": "nmcxhd6c"
@@ -868,6 +935,32 @@
             "id": "lqzlyzqt",
             "from": "ne3xal1j",
             "to": "nxnpr19r"
+          },
+          {
+            "id": "lksg2a5s",
+            "from": "n0adjch2",
+            "to": "njmpgsgy",
+            "propertyType": "TArray",
+            "propertyName": "items"
+          },
+          {
+            "id": "listk9hj",
+            "from": "njmpgsgy",
+            "to": "nwb5joxm",
+            "propertyType": "nodeRef",
+            "propertyName": "target",
+            "sourceOutputName": "item"
+          },
+          {
+            "id": "l9xqpm8b",
+            "from": "njmpgsgy",
+            "to": "nwb5joxm",
+            "outIdx": 0
+          },
+          {
+            "id": "lsxc45ed",
+            "from": "nmcxhd6c",
+            "to": "nnu5km0b"
           }
         ]
       }

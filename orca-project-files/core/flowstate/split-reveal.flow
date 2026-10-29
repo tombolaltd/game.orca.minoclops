@@ -275,7 +275,6 @@
       },
       {
         "id": "n2amf9t3",
-        "title": "toString",
         "x": -489,
         "y": 394.79888059425775,
         "rootType": "string",
@@ -286,7 +285,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValue": null
       }
     ],
     "links": [
@@ -406,9 +406,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 892.111422447043,
-      "panY": 53.21682514831406,
-      "scale": 0.5364433248758932
+      "panX": 558.5217902893531,
+      "panY": 44.78594765544847,
+      "scale": 0.5708982044606907
     }
   }
 }
