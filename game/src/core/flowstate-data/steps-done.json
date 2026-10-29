@@ -110,6 +110,40 @@
           "value": []
         }
       ]
+    },
+    {
+      "id": "nyhbxfep",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "displayReels"
+        }
+      ]
+    },
+    {
+      "id": "nxtoxjod",
+      "title": "setOnScreenReels",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793271562350_onrurgfcq",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "reels",
+          "type": "string",
+          "sourceNodeId": "nyhbxfep"
+        }
+      ]
     }
   ],
   "links": [
@@ -145,16 +179,28 @@
       "outIdx": 1
     },
     {
-      "id": "l_stepsd_9",
-      "from": "stepsd_003",
-      "to": "stepsd_005"
-    },
-    {
       "id": "l4so82it",
       "from": "stepsd_001",
       "to": "stepsd_008",
       "propertyType": "bool",
       "propertyName": "condition"
+    },
+    {
+      "id": "lkz3xoea",
+      "from": "nyhbxfep",
+      "to": "nxtoxjod",
+      "propertyType": "string",
+      "propertyName": "reels"
+    },
+    {
+      "id": "lftcig5c",
+      "from": "stepsd_003",
+      "to": "nxtoxjod"
+    },
+    {
+      "id": "lt45jqzn",
+      "from": "nxtoxjod",
+      "to": "stepsd_005"
     }
   ]
 }

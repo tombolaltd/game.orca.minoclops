@@ -26,8 +26,8 @@
         "id": "stepsd_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 156.44707177789644,
-        "y": 83.30540554660969,
+        "x": -188.3566581336069,
+        "y": 15.123877033035583,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -174,6 +174,63 @@
           "eventName": "settleRound",
           "propertyNames": []
         }
+      },
+      {
+        "id": "nyhbxfep",
+        "title": "getGameModelProperty",
+        "x": -190.3993939849156,
+        "y": 216.1120582924859,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "displayReels"
+        }
+      },
+      {
+        "id": "nxtoxjod",
+        "title": "setOnScreenReels",
+        "displayName": "Show last board",
+        "x": 146.9224130350027,
+        "y": 48.46593941346933,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "reels",
+            "type": "string",
+            "acceptsTypes": [
+              "string",
+              "int[][]",
+              "float[][]",
+              "ObjectArray",
+              "TArray"
+            ],
+            "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+          }
+        ],
+        "propertyValues": {
+          "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793271562350_onrurgfcq",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
       }
     ],
     "links": [
@@ -209,24 +266,36 @@
         "outIdx": 1
       },
       {
-        "id": "l_stepsd_9",
-        "from": "stepsd_003",
-        "to": "stepsd_005"
-      },
-      {
         "id": "l4so82it",
         "from": "stepsd_001",
         "to": "stepsd_008",
         "propertyType": "bool",
         "propertyName": "condition"
+      },
+      {
+        "id": "lkz3xoea",
+        "from": "nyhbxfep",
+        "to": "nxtoxjod",
+        "propertyType": "string",
+        "propertyName": "reels"
+      },
+      {
+        "id": "lftcig5c",
+        "from": "stepsd_003",
+        "to": "nxtoxjod"
+      },
+      {
+        "id": "lt45jqzn",
+        "from": "nxtoxjod",
+        "to": "stepsd_005"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -52.50912226036303,
-      "panY": 31.49123225523826,
-      "scale": 0.718869367767454
+      "panX": 243.5599392768073,
+      "panY": 84.07248393660865,
+      "scale": 0.5041781385950708
     }
   }
 }

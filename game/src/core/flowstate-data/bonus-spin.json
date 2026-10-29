@@ -221,28 +221,6 @@
             ]
           },
           {
-            "id": "nw3kx9oq",
-            "title": "setOnScreenReels",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reels",
-                "type": "string",
-                "sourceNodeId": "niebzplq"
-              }
-            ]
-          },
-          {
             "id": "nckl179j",
             "title": "showNode",
             "rootType": "Action",
@@ -303,11 +281,6 @@
             "to": "n6o56hli"
           },
           {
-            "id": "lp2lh34v",
-            "from": "nw3kx9oq",
-            "to": "nckl179j"
-          },
-          {
             "id": "l338kbd7",
             "from": "nckl179j",
             "to": "niy065uh"
@@ -318,18 +291,6 @@
             "to": "n5k5y3vz"
           },
           {
-            "id": "lmrm251a",
-            "from": "niebzplq",
-            "to": "nw3kx9oq",
-            "propertyType": "string",
-            "propertyName": "reels"
-          },
-          {
-            "id": "lsdu4uhk",
-            "from": "nxyuus62",
-            "to": "nw3kx9oq"
-          },
-          {
             "id": "lwupfwlh",
             "from": "n6o56hli",
             "to": "nqyjxbvh"
@@ -338,6 +299,11 @@
             "id": "lv5ntk9q",
             "from": "ngoj25r0",
             "to": "nxyuus62"
+          },
+          {
+            "id": "l16kifvz",
+            "from": "nxyuus62",
+            "to": "nckl179j"
           }
         ]
       }

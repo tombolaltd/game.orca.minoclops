@@ -32,8 +32,8 @@
             {
               "id": "gamebo_064",
               "title": "Entry",
-              "x": 80,
-              "y": 120,
+              "x": 421.20399146217164,
+              "y": 122.27469327641447,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -42,8 +42,8 @@
               "id": "gamebo_002",
               "title": "playMusic",
               "displayName": "Base music",
-              "x": 310,
-              "y": 120,
+              "x": 651.2039914621716,
+              "y": 122.27469327641447,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -94,8 +94,8 @@
             {
               "id": "gamebo_003",
               "title": "getGameModelProperty",
-              "x": 753.8043891946378,
-              "y": 384.9974006762461,
+              "x": 645.8558212197926,
+              "y": 544.577070282206,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -152,8 +152,8 @@
               "id": "gamebo_005",
               "title": "formatMoney",
               "friendlyTitle": "Format Money",
-              "x": 1815.6268538473787,
-              "y": 393.999378798821,
+              "x": 1376.6110514993843,
+              "y": 396.27407207523544,
               "rootType": "Info & UI",
               "color": "#1abc9c",
               "icon": "📊",
@@ -180,8 +180,8 @@
               "id": "gamebo_006",
               "title": "setText",
               "displayName": "Win reads 0",
-              "x": 2130.920603892212,
-              "y": 125.78656061139753,
+              "x": 1739.6733603489217,
+              "y": 128.06125388781197,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -209,8 +209,8 @@
             {
               "id": "gamebo_065",
               "title": "Exit",
-              "x": 2492.920603892212,
-              "y": 125.78656061139753,
+              "x": 2101.673360348922,
+              "y": 128.06125388781197,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -219,8 +219,8 @@
               "id": "nbfjraug",
               "title": "setOnScreenReels",
               "displayName": "Show last board",
-              "x": 1477.887565131778,
-              "y": 122.22098363529986,
+              "x": 1391.449220628028,
+              "y": 124.49567691171433,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -294,7 +294,13 @@
               "from": "gamebo_003",
               "to": "nbfjraug",
               "propertyType": "string",
-              "propertyName": "reels"
+              "propertyName": "reels",
+              "points": [
+                {
+                  "x": 1245.9723579394035,
+                  "y": 587.8776090471882
+                }
+              ]
             },
             {
               "id": "lzwb4a1b",
@@ -1058,9 +1064,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 196.44503164848948,
-      "panY": 75.98363297834072,
-      "scale": 0.6716631193693842
+      "panX": 30.245992521951052,
+      "panY": 142.76054061172596,
+      "scale": 0.43961971065227146
     }
   }
 }

@@ -215,8 +215,8 @@
             {
               "id": "ngoj25r0",
               "title": "Entry",
-              "x": 898.039062164949,
-              "y": 88.41013701445016,
+              "x": 1213.189074992054,
+              "y": 283.3055396838442,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -225,8 +225,8 @@
               "id": "nxyuus62",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1116.0602202069922,
-              "y": 71.37175792350055,
+              "x": 1431.2102330340972,
+              "y": 266.2671605928946,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -300,8 +300,8 @@
             {
               "id": "niebzplq",
               "title": "getGameModelProperty",
-              "x": 513.3164369854915,
-              "y": 361.99646400706354,
+              "x": 828.4664498125965,
+              "y": 556.8918666764575,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -339,44 +339,6 @@
               "propertyValues": {
                 "locations": "[[0,1,2],[0,1,2],[0,1,2],[0,1,2],[0,1,2]]",
                 "reels": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
-              "id": "nw3kx9oq",
-              "title": "setOnScreenReels",
-              "displayName": "Show last board",
-              "x": 1483.351119833221,
-              "y": 293.5216422797415,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reels",
-                  "type": "string",
-                  "acceptsTypes": [
-                    "string",
-                    "int[][]",
-                    "float[][]",
-                    "ObjectArray",
-                    "TArray"
-                  ],
-                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
-                }
-              ],
-              "propertyValues": {
-                "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
-                "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1793271562350_onrurgfcq",
                   "sceneScope": "core",
@@ -467,11 +429,6 @@
               "to": "n6o56hli"
             },
             {
-              "id": "lp2lh34v",
-              "from": "nw3kx9oq",
-              "to": "nckl179j"
-            },
-            {
               "id": "l338kbd7",
               "from": "nckl179j",
               "to": "niy065uh"
@@ -482,18 +439,6 @@
               "to": "n5k5y3vz"
             },
             {
-              "id": "lmrm251a",
-              "from": "niebzplq",
-              "to": "nw3kx9oq",
-              "propertyType": "string",
-              "propertyName": "reels"
-            },
-            {
-              "id": "lsdu4uhk",
-              "from": "nxyuus62",
-              "to": "nw3kx9oq"
-            },
-            {
               "id": "lwupfwlh",
               "from": "n6o56hli",
               "to": "nqyjxbvh"
@@ -502,6 +447,11 @@
               "id": "lv5ntk9q",
               "from": "ngoj25r0",
               "to": "nxyuus62"
+            },
+            {
+              "id": "l16kifvz",
+              "from": "nxyuus62",
+              "to": "nckl179j"
             }
           ],
           "groups": []
@@ -2472,9 +2422,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -155.2931815900929,
-      "panY": 163.95390479323953,
-      "scale": 0.6805035735897977
+      "panX": -293.15511232720894,
+      "panY": 101.29543606191964,
+      "scale": 0.4823099914750405
     }
   }
 }

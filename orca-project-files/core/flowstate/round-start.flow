@@ -369,8 +369,8 @@
             {
               "id": "nxnpr19r",
               "title": "Exit",
-              "x": 2973.2374836638082,
-              "y": 164.26642761377485,
+              "x": 2542.564242966737,
+              "y": 40.509749252547465,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -398,8 +398,8 @@
               "id": "n2gt7hvh",
               "title": "playAllOffAnimations",
               "friendlyTitle": "Play off animations",
-              "x": 1964.2438839814633,
-              "y": 221.6145110704709,
+              "x": 1533.570643284392,
+              "y": 97.85783270924352,
               "rootType": "custom",
               "color": "#8e44ad",
               "icon": "🧩",
@@ -1106,48 +1106,10 @@
               }
             },
             {
-              "id": "nmpq5fwb",
-              "title": "setOnScreenReels",
-              "displayName": "Show last board",
-              "x": 1198.5850719055265,
-              "y": 158.53407821360645,
-              "rootType": "Action",
-              "color": "#3b6ef5",
-              "icon": "⚙️",
-              "properties": [
-                {
-                  "name": "target",
-                  "type": "nodeRef",
-                  "sceneNodeType": "reels"
-                },
-                {
-                  "name": "reels",
-                  "type": "string",
-                  "acceptsTypes": [
-                    "string",
-                    "int[][]",
-                    "float[][]",
-                    "ObjectArray",
-                    "TArray"
-                  ],
-                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
-                }
-              ],
-              "propertyValues": {
-                "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1793271562350_onrurgfcq",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              }
-            },
-            {
               "id": "nnu5km0b",
               "title": "showNode",
-              "x": 1619.654735033254,
-              "y": 206.8352829682894,
+              "x": 1188.9814943361825,
+              "y": 83.078604607062,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1171,8 +1133,8 @@
               "id": "nm8g4ed9",
               "title": "delay",
               "friendlyTitle": "Wait",
-              "x": 2295.278663601082,
-              "y": 213.64114725611554,
+              "x": 1864.6054229040105,
+              "y": 89.88446889488816,
               "rootType": "delay",
               "color": "#8e44ad",
               "icon": "⏱️",
@@ -1190,8 +1152,8 @@
             {
               "id": "numb55o0",
               "title": "hideNode",
-              "x": 2636.724252838022,
-              "y": 186.1677525293062,
+              "x": 2206.0510121409507,
+              "y": 62.41107416807881,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -1231,18 +1193,6 @@
               "to": "ne3xal1j"
             },
             {
-              "id": "loo0h74p",
-              "from": "nh47ncan",
-              "to": "nmpq5fwb",
-              "propertyType": "string",
-              "propertyName": "reels"
-            },
-            {
-              "id": "l1zcaa5v",
-              "from": "nmcxhd6c",
-              "to": "nmpq5fwb"
-            },
-            {
               "id": "lbtrghdl",
               "from": "nm8g4ed9",
               "to": "numb55o0"
@@ -1253,11 +1203,6 @@
               "to": "nxnpr19r"
             },
             {
-              "id": "lqxzbb1d",
-              "from": "nmpq5fwb",
-              "to": "nnu5km0b"
-            },
-            {
               "id": "lkeqbeap",
               "from": "nnu5km0b",
               "to": "n2gt7hvh"
@@ -1266,6 +1211,11 @@
               "id": "l6y0xp0p",
               "from": "n2gt7hvh",
               "to": "nm8g4ed9"
+            },
+            {
+              "id": "lastsoo4",
+              "from": "nmcxhd6c",
+              "to": "nnu5km0b"
             }
           ],
           "groups": []
@@ -2252,9 +2202,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -182.8290640494414,
-      "panY": 145.5526953024961,
-      "scale": 0.4163150820532147
+      "panX": -134.6649995873653,
+      "panY": 238.78129820198723,
+      "scale": 0.4621304293059067
     }
   }
 }
