@@ -274,9 +274,10 @@
         }
       },
       {
-        "id": "nr3csuj9",
-        "x": -506.9292920258372,
-        "y": 391.2967180548477,
+        "id": "n2amf9t3",
+        "title": "toString",
+        "x": -489,
+        "y": 394.79888059425775,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -285,8 +286,7 @@
             "name": "value",
             "type": "T"
           }
-        ],
-        "propertyValue": null
+        ]
       }
     ],
     "links": [
@@ -389,15 +389,15 @@
         "to": "ncejedmd"
       },
       {
-        "id": "ly3fcpt1",
+        "id": "ljbk5d77",
         "from": "n8gf47cf",
-        "to": "nr3csuj9",
+        "to": "n2amf9t3",
         "propertyType": "float",
         "propertyName": "value"
       },
       {
-        "id": "lsz5g01o",
-        "from": "nr3csuj9",
+        "id": "lz4d11hn",
+        "from": "n2amf9t3",
         "to": "nlnialvt",
         "propertyType": "string",
         "propertyName": "value"
@@ -406,8 +406,8 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 445.11142244704297,
-      "panY": 86.21682514831406,
+      "panX": 892.111422447043,
+      "panY": 53.21682514831406,
       "scale": 0.5364433248758932
     }
   }

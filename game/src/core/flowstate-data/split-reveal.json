@@ -193,12 +193,13 @@
         {
           "name": "value",
           "type": "string",
-          "sourceNodeId": "nr3csuj9"
+          "sourceNodeId": "n2amf9t3"
         }
       ]
     },
     {
-      "id": "nr3csuj9",
+      "id": "n2amf9t3",
+      "title": "toString",
       "rootType": "string",
       "properties": [
         {
@@ -206,8 +207,7 @@
           "type": "T",
           "sourceNodeId": "n8gf47cf"
         }
-      ],
-      "propertyValue": null
+      ]
     }
   ],
   "links": [
@@ -284,15 +284,15 @@
       "to": "ncejedmd"
     },
     {
-      "id": "ly3fcpt1",
+      "id": "ljbk5d77",
       "from": "n8gf47cf",
-      "to": "nr3csuj9",
+      "to": "n2amf9t3",
       "propertyType": "float",
       "propertyName": "value"
     },
     {
-      "id": "lsz5g01o",
-      "from": "nr3csuj9",
+      "id": "lz4d11hn",
+      "from": "n2amf9t3",
       "to": "nlnialvt",
       "propertyType": "string",
       "propertyName": "value"
