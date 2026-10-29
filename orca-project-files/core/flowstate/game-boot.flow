@@ -85,10 +85,7 @@
                 "pitch": 1,
                 "fadeIn": 1,
                 "bus": "",
-                "musicName": {
-                  "kind": "audioRef",
-                  "path": "assets/audio/music/base-loop.mp3"
-                }
+                "musicName": null
               }
             },
             {

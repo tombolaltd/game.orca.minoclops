@@ -118,9 +118,8 @@ module.exports = {
       {
         // `asset/resource`, NOT url-loader: url-loader delegates anything over
         // its limit to `file-loader`, which is not a dependency of this
-        // project — so a large font (e.g. the 115 KB OTF bundled in
-        // `@game-studio/htp-preview-vue2`'s scoped `<style>`) would fail the
-        // build outright.
+        // project — so a large font (e.g. the 115 KB OTF the How-To-Play
+        // renderer's scoped `<style>` loads) would fail the build outright.
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
         type: 'asset/resource',
         generator: {

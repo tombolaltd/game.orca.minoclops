@@ -26,6 +26,21 @@ try {
 const HOST = process.env.HOST;
 const PORT = process.env.PORT && Number(process.env.PORT);
 
+// webpack-dev-server 5 only accepts `proxy` as an ARRAY of
+// `{ context, ...options }` entries. `config.dev.proxyTable` keeps the
+// older `{ '<path>': options }` object shape, so convert it here (an array
+// is passed through unchanged).
+function toDevServerProxyList(table) {
+  if (!table) return [];
+  if (Array.isArray(table)) return table;
+  return Object.keys(table).map((context) => {
+    const entry = table[context];
+    return typeof entry === 'string'
+      ? { context: [context], target: entry }
+      : Object.assign({ context: [context] }, entry);
+  });
+}
+
 // Note: ./static population is owned by the `preserve` npm script
 // (build/copy-runtime-assets.js), which runs to completion before
 // webpack-dev-server boots. The previous in-config
@@ -156,7 +171,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
 
       return middlewares;
     },
-    proxy: config.dev.proxyTable
+    proxy: toDevServerProxyList(config.dev.proxyTable)
   },
   watchOptions: {
     aggregateTimeout: 200,
