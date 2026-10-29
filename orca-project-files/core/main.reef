@@ -65,9 +65,9 @@
         "zoom": 1,
         "showSessionData": true,
         "sessionDataJustification": "default",
-        "mode": "landscape720p",
-        "frameWidth": 1280,
-        "frameHeight": 720,
+        "mode": "landscape16x9",
+        "frameWidth": 1920,
+        "frameHeight": 1080,
         "rectTransform": null
       },
       {
@@ -2727,7 +2727,7 @@
                     0
                   ]
                 ],
-                "cascadeFallTime": 0.5,
+                "cascadeFallTime": 0.325,
                 "cascadeFallOffset": 0,
                 "cascadeBounceDuration": 0.1,
                 "cascadeBounceOffset": 20,
