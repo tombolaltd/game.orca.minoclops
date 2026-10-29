@@ -775,6 +775,47 @@
           "value": "immediate"
         }
       ]
+    },
+    {
+      "id": "ntf182g4",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "isInBonusRound"
+        }
+      ]
+    },
+    {
+      "id": "nwr5jsmk",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "ntf182g4"
+        }
+      ]
+    },
+    {
+      "id": "nxdtrgsd",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "bonusTrigger"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
     }
   ],
   "links": [
@@ -797,6 +838,24 @@
       "id": "lovten4j",
       "from": "gamebo_072",
       "to": "nny85vt2"
+    },
+    {
+      "id": "lsq2riim",
+      "from": "ntf182g4",
+      "to": "nwr5jsmk",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "lum5f947",
+      "from": "nny85vt2",
+      "to": "nwr5jsmk"
+    },
+    {
+      "id": "l06xfy7y",
+      "from": "nwr5jsmk",
+      "to": "nxdtrgsd",
+      "outIdx": 0
     }
   ]
 }

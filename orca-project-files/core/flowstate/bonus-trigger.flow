@@ -73,8 +73,8 @@
         "title": "onEnterBonusRound",
         "displayName": "Resumed in free spins",
         "friendlyTitle": "On Bonus Start",
-        "x": -529.6655038046101,
-        "y": 208.44608372038843,
+        "x": -590.035635653143,
+        "y": 205.63817061115432,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -565,9 +565,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -15.283180897866032,
-      "panY": 207.04729246696223,
-      "scale": 0.3282287972707997
+      "panX": 947.9966188790602,
+      "panY": -8.101102751908257,
+      "scale": 0.9672537957688515
     }
   }
 }

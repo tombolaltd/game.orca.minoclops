@@ -8,8 +8,8 @@
         "title": "onApplicationInit",
         "displayName": "Game loaded",
         "friendlyTitle": "On Application Start",
-        "x": -109.57686492283543,
-        "y": 156.05449578287056,
+        "x": -161.8065546875704,
+        "y": 169.1119182240543,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -1066,6 +1066,71 @@
           },
           "animationName": "idle"
         }
+      },
+      {
+        "id": "ntf182g4",
+        "title": "getGameModelProperty",
+        "x": 657.8743381728767,
+        "y": 444.4312510182035,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "isInBonusRound"
+        }
+      },
+      {
+        "id": "nwr5jsmk",
+        "title": "branch",
+        "x": 1047.3930534805932,
+        "y": 159.47479308252025,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "id": "nxdtrgsd",
+        "title": "fireCustomEvent",
+        "x": 1418.8746237361167,
+        "y": 26.039434210386133,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "bonusTrigger",
+          "propertyNames": []
+        }
       }
     ],
     "links": [
@@ -1088,14 +1153,32 @@
         "id": "lovten4j",
         "from": "gamebo_072",
         "to": "nny85vt2"
+      },
+      {
+        "id": "lsq2riim",
+        "from": "ntf182g4",
+        "to": "nwr5jsmk",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "lum5f947",
+        "from": "nny85vt2",
+        "to": "nwr5jsmk"
+      },
+      {
+        "id": "l06xfy7y",
+        "from": "nwr5jsmk",
+        "to": "nxdtrgsd",
+        "outIdx": 0
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -177.01172987336008,
-      "panY": 117.98091922976548,
-      "scale": 0.4671888802780933
+      "panX": -216.2182140418679,
+      "panY": 93.28126990286944,
+      "scale": 0.6166080867645541
     }
   }
 }

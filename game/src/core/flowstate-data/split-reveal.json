@@ -134,6 +134,11 @@
           "name": "loop",
           "type": "bool",
           "value": false
+        },
+        {
+          "name": "idleAnimationName",
+          "type": "string",
+          "value": ""
         }
       ]
     },
