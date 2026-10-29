@@ -10,7 +10,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "gamebo_002",
-      "exitSourceId": "npiqvup7",
+      "exitSourceId": "nnkz2o11",
       "subgraph": {
         "nodes": [
           {
@@ -135,8 +135,8 @@
             "isExit": true
           },
           {
-            "id": "nbfjraug",
-            "title": "setOnScreenReels",
+            "id": "ngq6kju9",
+            "title": "setDisplayReels",
             "rootType": "Action",
             "properties": [
               {
@@ -151,8 +151,30 @@
               },
               {
                 "name": "reels",
-                "type": "string",
+                "type": "any",
                 "sourceNodeId": "gamebo_003"
+              }
+            ]
+          },
+          {
+            "id": "nnkz2o11",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
               }
             ]
           }
@@ -188,20 +210,25 @@
             "propertyName": "reels"
           },
           {
-            "id": "l2tqxagp",
-            "from": "gamebo_004",
-            "to": "nbfjraug"
-          },
-          {
-            "id": "lvekqlo1",
+            "id": "luq5ymq3",
             "from": "gamebo_003",
-            "to": "nbfjraug",
-            "propertyType": "string",
+            "to": "ngq6kju9",
+            "propertyType": "any",
             "propertyName": "reels"
           },
           {
-            "id": "lzwb4a1b",
-            "from": "nbfjraug",
+            "id": "lsro73t5",
+            "from": "gamebo_004",
+            "to": "ngq6kju9"
+          },
+          {
+            "id": "liwzlzvn",
+            "from": "ngq6kju9",
+            "to": "nnkz2o11"
+          },
+          {
+            "id": "l4httlj8",
+            "from": "nnkz2o11",
             "to": "gamebo_006"
           }
         ]

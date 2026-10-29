@@ -176,25 +176,6 @@
         }
       },
       {
-        "id": "nyhbxfep",
-        "title": "getGameModelProperty",
-        "x": -190.3993939849156,
-        "y": 216.1120582924859,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "displayReels"
-        }
-      },
-      {
         "id": "nxtoxjod",
         "title": "setOnScreenReels",
         "displayName": "Show last board",
@@ -231,6 +212,131 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "n5vaijwc",
+        "title": "getGameModelProperty",
+        "x": -890.2949441786748,
+        "y": 182.67307955327442,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "unplayedSpinOutcomes"
+        }
+      },
+      {
+        "id": "np14wh0n",
+        "title": "at",
+        "friendlyTitle": "Get",
+        "x": -535.2986454499769,
+        "y": 227.09578358983822,
+        "rootType": "array",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ]
+      },
+      {
+        "id": "n0twjmvb",
+        "title": "structFields",
+        "friendlyTitle": "Properties",
+        "x": -179.24371986735713,
+        "y": 267.45415311909767,
+        "rootType": "objectOps",
+        "color": "#607d8b",
+        "icon": "🧩",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "source",
+            "type": "object"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "DisplayReels",
+            "type": "float[][]",
+            "path": "DisplayReels"
+          },
+          {
+            "name": "Prize",
+            "type": "float",
+            "path": "Prize"
+          },
+          {
+            "name": "Results",
+            "type": "IOutcomeResult[]",
+            "path": "Results"
+          },
+          {
+            "name": "SplitSymbols",
+            "type": "ISplitSymbol[]",
+            "path": "SplitSymbols"
+          },
+          {
+            "name": "Stops",
+            "type": "float[]",
+            "path": "Stops"
+          },
+          {
+            "name": "WinWays",
+            "type": "float",
+            "path": "WinWays"
+          }
+        ]
+      },
+      {
+        "id": "nt62glx5",
+        "title": "getGameModelProperty",
+        "x": -1213.657362651342,
+        "y": 309.5953429057774,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "_currentCascade"
+        }
+      },
+      {
+        "id": "nl5477v2",
+        "title": "toInt",
+        "x": -876.9913397896178,
+        "y": 303.33128443308243,
+        "rootType": "cast",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
       }
     ],
     "links": [
@@ -273,13 +379,6 @@
         "propertyName": "condition"
       },
       {
-        "id": "lkz3xoea",
-        "from": "nyhbxfep",
-        "to": "nxtoxjod",
-        "propertyType": "string",
-        "propertyName": "reels"
-      },
-      {
         "id": "lftcig5c",
         "from": "stepsd_003",
         "to": "nxtoxjod"
@@ -288,14 +387,50 @@
         "id": "lt45jqzn",
         "from": "nxtoxjod",
         "to": "stepsd_005"
+      },
+      {
+        "id": "lrnighq2",
+        "from": "n5vaijwc",
+        "to": "np14wh0n",
+        "propertyType": "TArray",
+        "propertyName": "array"
+      },
+      {
+        "id": "lq1k5ubq",
+        "from": "np14wh0n",
+        "to": "n0twjmvb",
+        "propertyType": "object",
+        "propertyName": "source"
+      },
+      {
+        "id": "l86uo1rz",
+        "from": "nt62glx5",
+        "to": "nl5477v2",
+        "propertyType": "float",
+        "propertyName": "value"
+      },
+      {
+        "id": "liw1atyo",
+        "from": "nl5477v2",
+        "to": "np14wh0n",
+        "propertyType": "int",
+        "propertyName": "index"
+      },
+      {
+        "id": "lxzgb0ll",
+        "from": "n0twjmvb",
+        "to": "nxtoxjod",
+        "propertyType": "string",
+        "propertyName": "reels",
+        "sourceOutputName": "DisplayReels"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 243.5599392768073,
-      "panY": 84.07248393660865,
-      "scale": 0.5041781385950708
+      "panX": 253.3700036536199,
+      "panY": 37.59558354420926,
+      "scale": 0.5545625779829266
     }
   }
 }

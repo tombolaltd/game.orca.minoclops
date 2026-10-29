@@ -26,7 +26,7 @@
         "y": 186.15397812792497,
         "isState": true,
         "entryTargetId": "gamebo_002",
-        "exitSourceId": "npiqvup7",
+        "exitSourceId": "nnkz2o11",
         "subgraph": {
           "nodes": [
             {
@@ -152,8 +152,8 @@
               "id": "gamebo_005",
               "title": "formatMoney",
               "friendlyTitle": "Format Money",
-              "x": 1376.6110514993843,
-              "y": 396.27407207523544,
+              "x": 1699.5663031020958,
+              "y": 448.3142547979473,
               "rootType": "Info & UI",
               "color": "#1abc9c",
               "icon": "📊",
@@ -180,8 +180,8 @@
               "id": "gamebo_006",
               "title": "setText",
               "displayName": "Win reads 0",
-              "x": 1739.6733603489217,
-              "y": 128.06125388781197,
+              "x": 2079.5343798863983,
+              "y": 139.5135915186276,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -209,21 +209,21 @@
             {
               "id": "gamebo_065",
               "title": "Exit",
-              "x": 2101.673360348922,
-              "y": 128.06125388781197,
+              "x": 2441.5343798863987,
+              "y": 139.5135915186276,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
             },
             {
-              "id": "nbfjraug",
-              "title": "setOnScreenReels",
-              "displayName": "Show last board",
-              "x": 1391.449220628028,
-              "y": 124.49567691171433,
+              "id": "ngq6kju9",
+              "title": "setDisplayReels",
+              "x": 1431.7329979286515,
+              "y": 128.35258237775275,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
+              "isStarter": false,
               "properties": [
                 {
                   "name": "target",
@@ -232,7 +232,7 @@
                 },
                 {
                   "name": "reels",
-                  "type": "string",
+                  "type": "any",
                   "acceptsTypes": [
                     "string",
                     "int[][]",
@@ -245,6 +245,36 @@
               ],
               "propertyValues": {
                 "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793271562350_onrurgfcq",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nnkz2o11",
+              "title": "setNodeVisible",
+              "x": 1746.746075312183,
+              "y": 131.0292317149695,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1793271562350_onrurgfcq",
@@ -285,26 +315,25 @@
               "propertyName": "reels"
             },
             {
-              "id": "l2tqxagp",
-              "from": "gamebo_004",
-              "to": "nbfjraug"
-            },
-            {
-              "id": "lvekqlo1",
+              "id": "luq5ymq3",
               "from": "gamebo_003",
-              "to": "nbfjraug",
-              "propertyType": "string",
-              "propertyName": "reels",
-              "points": [
-                {
-                  "x": 1245.9723579394035,
-                  "y": 587.8776090471882
-                }
-              ]
+              "to": "ngq6kju9",
+              "propertyType": "any",
+              "propertyName": "reels"
             },
             {
-              "id": "lzwb4a1b",
-              "from": "nbfjraug",
+              "id": "lsro73t5",
+              "from": "gamebo_004",
+              "to": "ngq6kju9"
+            },
+            {
+              "id": "liwzlzvn",
+              "from": "ngq6kju9",
+              "to": "nnkz2o11"
+            },
+            {
+              "id": "l4httlj8",
+              "from": "nnkz2o11",
               "to": "gamebo_006"
             }
           ],
@@ -1064,9 +1093,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 30.245992521951052,
-      "panY": 142.76054061172596,
-      "scale": 0.43961971065227146
+      "panX": -620.9576737297821,
+      "panY": 110.84510212965691,
+      "scale": 0.6533412878498874
     }
   }
 }

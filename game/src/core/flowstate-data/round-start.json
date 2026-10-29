@@ -835,24 +835,9 @@
             "propertyName": "outcome"
           },
           {
-            "id": "lcmbjeg0",
-            "from": "ne3xal1j",
-            "to": "nmcxhd6c"
-          },
-          {
-            "id": "l7inlddf",
-            "from": "ng1arby3",
-            "to": "ne3xal1j"
-          },
-          {
             "id": "lbtrghdl",
             "from": "nm8g4ed9",
             "to": "numb55o0"
-          },
-          {
-            "id": "lszzptyx",
-            "from": "numb55o0",
-            "to": "nxnpr19r"
           },
           {
             "id": "lkeqbeap",
@@ -868,21 +853,24 @@
             "id": "lastsoo4",
             "from": "nmcxhd6c",
             "to": "nnu5km0b"
+          },
+          {
+            "id": "ld6ll3gn",
+            "from": "ng1arby3",
+            "to": "nmcxhd6c"
+          },
+          {
+            "id": "l6f9mt7l",
+            "from": "numb55o0",
+            "to": "ne3xal1j"
+          },
+          {
+            "id": "lqzlyzqt",
+            "from": "ne3xal1j",
+            "to": "nxnpr19r"
           }
         ]
       }
-    },
-    {
-      "id": "nl63tci0",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 0
-        }
-      ]
     },
     {
       "id": "n9udeeri",
@@ -937,510 +925,6 @@
           "value": true
         }
       ]
-    },
-    {
-      "id": "nw8mlvyc",
-      "title": "State",
-      "isState": true,
-      "entryTargetId": "n94tocw2",
-      "exitSourceId": "n0kbqy7g",
-      "subgraph": {
-        "nodes": [
-          {
-            "id": "n7dtry43",
-            "title": "Entry",
-            "isEntry": true
-          },
-          {
-            "id": "ny97oned",
-            "title": "Exit",
-            "isExit": true
-          },
-          {
-            "id": "n94tocw2",
-            "title": "getGameModelProperty",
-            "rootType": "properties",
-            "properties": [
-              {
-                "name": "propertyName",
-                "type": "modelProperty",
-                "value": "splitSymbolDetails"
-              }
-            ]
-          },
-          {
-            "id": "nolb7ia4",
-            "title": "structFields",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "nn5w3kxj"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "HighlightedPosition",
-                "type": "ISplitSymbol[]",
-                "path": "HighlightedPosition"
-              },
-              {
-                "name": "Split",
-                "type": "float",
-                "path": "Split"
-              },
-              {
-                "name": "Symbol",
-                "type": "float",
-                "path": "Symbol"
-              }
-            ]
-          },
-          {
-            "id": "nn5w3kxj",
-            "title": "at",
-            "rootType": "array",
-            "properties": [
-              {
-                "name": "array",
-                "type": "TArray",
-                "sourceNodeId": "n94tocw2"
-              },
-              {
-                "name": "index",
-                "type": "int",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "nyqsgbai",
-            "title": "structFields",
-            "rootType": "objectOps",
-            "properties": [
-              {
-                "name": "source",
-                "type": "object",
-                "sourceNodeId": "nux8pypq"
-              }
-            ],
-            "outputs": [
-              {
-                "name": "Reel",
-                "type": "float",
-                "path": "Reel"
-              },
-              {
-                "name": "Row",
-                "type": "float",
-                "path": "Row"
-              }
-            ]
-          },
-          {
-            "id": "nux8pypq",
-            "title": "at",
-            "rootType": "array",
-            "properties": [
-              {
-                "name": "array",
-                "type": "TArray",
-                "sourceNodeId": "nolb7ia4",
-                "sourceOutputName": "HighlightedPosition"
-              },
-              {
-                "name": "index",
-                "type": "int",
-                "value": 0
-              }
-            ]
-          },
-          {
-            "id": "nafg42z9",
-            "title": "toInt",
-            "rootType": "cast",
-            "properties": [
-              {
-                "name": "value",
-                "type": "T",
-                "sourceNodeId": "nyqsgbai",
-                "sourceOutputName": "Reel"
-              }
-            ]
-          },
-          {
-            "id": "nh71kgh0",
-            "title": "toInt",
-            "rootType": "cast",
-            "properties": [
-              {
-                "name": "value",
-                "type": "T",
-                "sourceNodeId": "nyqsgbai",
-                "sourceOutputName": "Row"
-              }
-            ]
-          },
-          {
-            "id": "n87v9hje",
-            "title": "getReelSymbolSpine",
-            "rootType": "getters",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "reelIndex",
-                "type": "int",
-                "sourceNodeId": "nafg42z9"
-              },
-              {
-                "name": "rowIndex",
-                "type": "int",
-                "sourceNodeId": "nh71kgh0"
-              }
-            ]
-          },
-          {
-            "id": "nqum0ita",
-            "title": "setNodeVisible",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "visible",
-                "type": "bool",
-                "value": true
-              }
-            ]
-          },
-          {
-            "id": "ntthdei5",
-            "title": "playAnimation",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1791296555660_uqk9no210",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "animationName",
-                "type": "string",
-                "value": "split/splitSTART"
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "trackIndex",
-                "type": "int",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          },
-          {
-            "id": "n6xdtszk",
-            "title": "setNodeGlobalPosition",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "x",
-                "type": "float",
-                "sourceNodeId": "n8cpiozm",
-                "sourceOutputName": "x"
-              },
-              {
-                "name": "y",
-                "type": "float",
-                "sourceNodeId": "n8cpiozm",
-                "sourceOutputName": "y"
-              }
-            ]
-          },
-          {
-            "id": "n8cpiozm",
-            "title": "getNodeGlobalPosition",
-            "rootType": "getters",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "n87v9hje"
-              }
-            ]
-          },
-          {
-            "id": "nm1is3s8",
-            "title": "playAnimation",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "animationName",
-                "type": "string",
-                "value": "hotspotON"
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": false
-              },
-              {
-                "name": "trackIndex",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "n40wvegi",
-            "title": "playAnimation",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1792499758800_4pkgdglr6",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "animationName",
-                "type": "string",
-                "value": "hotspotIDLE"
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": true
-              },
-              {
-                "name": "trackIndex",
-                "type": "int",
-                "value": 0
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "onComplete"
-              }
-            ]
-          },
-          {
-            "id": "nmiidie8",
-            "title": "playAnimation",
-            "rootType": "Action",
-            "properties": [
-              {
-                "name": "target",
-                "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_1791296555660_uqk9no210",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
-              },
-              {
-                "name": "animationName",
-                "type": "string",
-                "value": "split/splitIDLE"
-              },
-              {
-                "name": "loop",
-                "type": "bool",
-                "value": true
-              },
-              {
-                "name": "trackIndex",
-                "type": "int",
-                "value": 1
-              },
-              {
-                "name": "sequenceNodeOn",
-                "type": "string",
-                "value": "immediate"
-              }
-            ]
-          }
-        ],
-        "links": [
-          {
-            "id": "l0f723ro",
-            "from": "n94tocw2",
-            "to": "nn5w3kxj",
-            "propertyType": "TArray",
-            "propertyName": "array"
-          },
-          {
-            "id": "ltsewl2p",
-            "from": "nn5w3kxj",
-            "to": "nolb7ia4",
-            "propertyType": "object",
-            "propertyName": "source"
-          },
-          {
-            "id": "lt9ki16s",
-            "from": "nolb7ia4",
-            "to": "nux8pypq",
-            "propertyType": "TArray",
-            "propertyName": "array",
-            "sourceOutputName": "HighlightedPosition"
-          },
-          {
-            "id": "llsd1n75",
-            "from": "nux8pypq",
-            "to": "nyqsgbai",
-            "propertyType": "object",
-            "propertyName": "source"
-          },
-          {
-            "id": "l8tzy498",
-            "from": "nyqsgbai",
-            "to": "nafg42z9",
-            "propertyType": "float",
-            "propertyName": "value",
-            "sourceOutputName": "Reel"
-          },
-          {
-            "id": "lgscpyrf",
-            "from": "nyqsgbai",
-            "to": "nh71kgh0",
-            "propertyType": "float",
-            "propertyName": "value",
-            "sourceOutputName": "Row"
-          },
-          {
-            "id": "libmvyu5",
-            "from": "nafg42z9",
-            "to": "n87v9hje",
-            "propertyType": "int",
-            "propertyName": "reelIndex"
-          },
-          {
-            "id": "l4vxeq73",
-            "from": "nh71kgh0",
-            "to": "n87v9hje",
-            "propertyType": "int",
-            "propertyName": "rowIndex"
-          },
-          {
-            "id": "l4i24vvh",
-            "from": "nqum0ita",
-            "to": "n6xdtszk"
-          },
-          {
-            "id": "lr6f677q",
-            "from": "n6xdtszk",
-            "to": "ntthdei5"
-          },
-          {
-            "id": "lgwcl5tq",
-            "from": "n87v9hje",
-            "to": "n8cpiozm",
-            "propertyType": "nodeRef",
-            "propertyName": "target"
-          },
-          {
-            "id": "l2vi4fg5",
-            "from": "n8cpiozm",
-            "to": "n6xdtszk",
-            "propertyType": "float",
-            "propertyName": "x",
-            "sourceOutputName": "x"
-          },
-          {
-            "id": "l8f3hwwo",
-            "from": "n8cpiozm",
-            "to": "n6xdtszk",
-            "propertyType": "float",
-            "propertyName": "y",
-            "sourceOutputName": "y"
-          },
-          {
-            "id": "leyutqx9",
-            "from": "n7dtry43",
-            "to": "nqum0ita"
-          },
-          {
-            "id": "lq6qf6xi",
-            "from": "nm1is3s8",
-            "to": "n40wvegi"
-          },
-          {
-            "id": "lsacr62c",
-            "from": "ntthdei5",
-            "to": "nm1is3s8"
-          },
-          {
-            "id": "lg5fk48l",
-            "from": "n40wvegi",
-            "to": "nmiidie8"
-          },
-          {
-            "id": "lnwuumsy",
-            "from": "nmiidie8",
-            "to": "ny97oned"
-          }
-        ]
-      }
     },
     {
       "id": "nt9w2dck",
@@ -1561,11 +1045,6 @@
       "to": "rounds_029"
     },
     {
-      "id": "l1bir9ws",
-      "from": "nl63tci0",
-      "to": "n9udeeri"
-    },
-    {
       "id": "lvg0482s",
       "from": "nt9w2dck",
       "to": "nuoyxbo1",
@@ -1593,14 +1072,14 @@
       "to": "n220qasg"
     },
     {
-      "id": "lfwk58l2",
-      "from": "n220qasg",
-      "to": "nl63tci0"
-    },
-    {
       "id": "lrafmbd6",
       "from": "n285entq",
       "to": "nldhipxk"
+    },
+    {
+      "id": "ldcfvg7q",
+      "from": "n220qasg",
+      "to": "n9udeeri"
     }
   ]
 }

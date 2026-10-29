@@ -112,18 +112,6 @@
       ]
     },
     {
-      "id": "nyhbxfep",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "displayReels"
-        }
-      ]
-    },
-    {
       "id": "nxtoxjod",
       "title": "setOnScreenReels",
       "rootType": "Action",
@@ -141,7 +129,105 @@
         {
           "name": "reels",
           "type": "string",
-          "sourceNodeId": "nyhbxfep"
+          "sourceNodeId": "n0twjmvb",
+          "sourceOutputName": "DisplayReels"
+        }
+      ]
+    },
+    {
+      "id": "n5vaijwc",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "unplayedSpinOutcomes"
+        }
+      ]
+    },
+    {
+      "id": "np14wh0n",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
+        {
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "n5vaijwc"
+        },
+        {
+          "name": "index",
+          "type": "int",
+          "sourceNodeId": "nl5477v2"
+        }
+      ]
+    },
+    {
+      "id": "n0twjmvb",
+      "title": "structFields",
+      "rootType": "objectOps",
+      "properties": [
+        {
+          "name": "source",
+          "type": "object",
+          "sourceNodeId": "np14wh0n"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "DisplayReels",
+          "type": "float[][]",
+          "path": "DisplayReels"
+        },
+        {
+          "name": "Prize",
+          "type": "float",
+          "path": "Prize"
+        },
+        {
+          "name": "Results",
+          "type": "IOutcomeResult[]",
+          "path": "Results"
+        },
+        {
+          "name": "SplitSymbols",
+          "type": "ISplitSymbol[]",
+          "path": "SplitSymbols"
+        },
+        {
+          "name": "Stops",
+          "type": "float[]",
+          "path": "Stops"
+        },
+        {
+          "name": "WinWays",
+          "type": "float",
+          "path": "WinWays"
+        }
+      ]
+    },
+    {
+      "id": "nt62glx5",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "_currentCascade"
+        }
+      ]
+    },
+    {
+      "id": "nl5477v2",
+      "title": "toInt",
+      "rootType": "cast",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nt62glx5"
         }
       ]
     }
@@ -186,13 +272,6 @@
       "propertyName": "condition"
     },
     {
-      "id": "lkz3xoea",
-      "from": "nyhbxfep",
-      "to": "nxtoxjod",
-      "propertyType": "string",
-      "propertyName": "reels"
-    },
-    {
       "id": "lftcig5c",
       "from": "stepsd_003",
       "to": "nxtoxjod"
@@ -201,6 +280,42 @@
       "id": "lt45jqzn",
       "from": "nxtoxjod",
       "to": "stepsd_005"
+    },
+    {
+      "id": "lrnighq2",
+      "from": "n5vaijwc",
+      "to": "np14wh0n",
+      "propertyType": "TArray",
+      "propertyName": "array"
+    },
+    {
+      "id": "lq1k5ubq",
+      "from": "np14wh0n",
+      "to": "n0twjmvb",
+      "propertyType": "object",
+      "propertyName": "source"
+    },
+    {
+      "id": "l86uo1rz",
+      "from": "nt62glx5",
+      "to": "nl5477v2",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "liw1atyo",
+      "from": "nl5477v2",
+      "to": "np14wh0n",
+      "propertyType": "int",
+      "propertyName": "index"
+    },
+    {
+      "id": "lxzgb0ll",
+      "from": "n0twjmvb",
+      "to": "nxtoxjod",
+      "propertyType": "string",
+      "propertyName": "reels",
+      "sourceOutputName": "DisplayReels"
     }
   ]
 }
