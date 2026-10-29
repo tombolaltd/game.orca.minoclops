@@ -8,7 +8,7 @@ const gameFeatures: IGameFeatures = {
     usingLocalAssets: true,
     batchLoadAssets: false,
     enableChat: true,
-    canHideChat: false,
+    canHideChat: true,
     sessionDataJustification: { portrait: 'default', landscape: 'default' },
     enableActionMenu: true,
     enableGameInGame: false,

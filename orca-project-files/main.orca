@@ -15,7 +15,7 @@
     "gameNameTitle": "Minoclop",
     "gameNameUpper": "MINOCLOP",
     "engineNameUnknown": false,
-    "fullscreenPortrait": false,
+    "fullscreenPortrait": true,
     "sessionDataJustification": "default",
     "gameHeightRatio": 0.67,
     "enable3D": false,

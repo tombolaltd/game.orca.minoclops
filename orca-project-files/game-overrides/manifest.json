@@ -29,7 +29,6 @@
     "src/assets/minoclop/base/sounds/big-win.ogg": "1b17e6bb300a18ca7590dce0848bbec83a7693b9a6a46f41570d60cf80610809",
     "src/assets/minoclop/it/README.md": "ddddf5663a0ba9bde620d8a9ce417bda5c1d6fc9ccd992446f8e3dd37f5324d8",
     "src/config/engine-name.ts": "0fa5563a6acb2cd78064dd6ff73390285dae7d0450ec87d89a238ba33b19b8a6",
-    "src/config/features.ts": "6b06b747b6a2f20a1914ab6fb2426f4aa71fec7711c0eed3fc9a14255ee69d49",
     "src/core/dev/chat-placeholder.ts": "8f1bfc849f2d7e6063c3b43465ea994360a9824ba169e1d96c6c280190d85a75",
     "src/core/inversify/bindings.ts": "0df33880e6f779a48235df7ccd348b5192ed450e4be61d0969509d92ef0988d7",
     "src/core/inversify/index.ts": "40b79a4fbd67c55fad2d1c30184313fa0be0adb4b4605fc1bd10c30cf4eb8b5e",
@@ -69,6 +68,7 @@
     "build/webpack.prod.conf.js": "a52c4552fea8a5d7fe581dd0f8e27fa9650e57a3fe3a23ce340f2e41f426a879",
     "package-lock.json": "4fdb913ed1c5246b6772da223fd1740b065cadaa3f2c3a570aef988cead01bc8",
     "package.json": "80a2f001230851f69b08ef7ea709f3749cd675f17ffdc7a467e0398ab130e4a3",
+    "src/config/features.ts": "dc88ccb22e2d7f7d315b63c5332c983a0f71e154ff78558b3a603906b817ccc7",
     "src/main.ts": "10bff340193e963b3ea21ddc25c5b237adc72e89c5cf903368058c03f00e9637"
   },
   "deleted": []
