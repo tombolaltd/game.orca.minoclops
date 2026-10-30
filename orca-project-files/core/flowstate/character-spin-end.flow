@@ -4,10 +4,57 @@
   "graph": {
     "nodes": [
       {
-        "id": "ng7c2yvx",
-        "title": "playAnimation",
-        "x": 553.5116221824926,
-        "y": 63.262538446183996,
+        "id": "nvbp6ycl",
+        "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
+        "x": -176.03483343780198,
+        "y": 70.09728850805647,
+        "rootType": "StarterNodes",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "settleRound"
+        }
+      },
+      {
+        "id": "n0454ihj",
+        "title": "clearTracks",
+        "x": 145.2909650411043,
+        "y": -116.69332149476645,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nb7v7o09",
+        "title": "addAnimation",
+        "x": 291.46091584928473,
+        "y": 70.5839985274195,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -27,6 +74,11 @@
             "name": "loop",
             "type": "bool",
             "default": false
+          },
+          {
+            "name": "delay",
+            "type": "float",
+            "default": 0
           },
           {
             "name": "trackIndex",
@@ -55,6 +107,7 @@
         ],
         "propertyValues": {
           "loop": true,
+          "delay": 0,
           "trackIndex": 1,
           "sequenceNodeOn": "immediate",
           "target": {
@@ -65,73 +118,21 @@
           },
           "animationName": "idle"
         }
-      },
-      {
-        "id": "nvbp6ycl",
-        "title": "onCustomEvent",
-        "friendlyTitle": "On Custom Event",
-        "x": -176.03483343780198,
-        "y": 70.09728850805647,
-        "rootType": "StarterNodes",
-        "color": "#ff6b35",
-        "icon": "📣",
-        "isStarter": true,
-        "starterNodeType": "customEvent",
-        "properties": [
-          {
-            "name": "eventName",
-            "type": "customEventRef",
-            "default": ""
-          }
-        ],
-        "propertyValues": {
-          "eventName": "settleRound"
-        }
-      },
-      {
-        "id": "n0454ihj",
-        "title": "clearTracks",
-        "x": 175.32833383048785,
-        "y": 61.39507202886176,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          }
-        ],
-        "propertyValues": {
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791296555660_uqk9no210",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
       }
     ],
     "links": [
       {
-        "id": "lgtxb1ia",
+        "id": "ll9ee9dn",
         "from": "nvbp6ycl",
-        "to": "n0454ihj"
-      },
-      {
-        "id": "lpptnby5",
-        "from": "n0454ihj",
-        "to": "ng7c2yvx"
+        "to": "nb7v7o09"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 141.71366682772467,
-      "panY": 155.13133911750037,
-      "scale": 0.867582768689038
+      "panX": 201.7466641008681,
+      "panY": 187.8164390400775,
+      "scale": 0.784628939788221
     }
   }
 }

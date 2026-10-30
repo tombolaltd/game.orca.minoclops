@@ -34,8 +34,8 @@
       {
         "id": "nddy8k0u",
         "title": "playAnimation",
-        "x": 737.7308935197188,
-        "y": 90.45189798631378,
+        "x": 660.0173840169591,
+        "y": 84.54350485326378,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -84,7 +84,7 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 1,
-          "sequenceNodeOn": "immediate",
+          "sequenceNodeOn": "onComplete",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791296555660_uqk9no210",
@@ -93,6 +93,75 @@
           },
           "animationName": "split/splitSTART"
         }
+      },
+      {
+        "id": "no6tkx8y",
+        "title": "addAnimation",
+        "x": 977.484470549851,
+        "y": 84.88126494177477,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "delay",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": true,
+          "delay": 0,
+          "trackIndex": 1,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "idle"
+        }
       }
     ],
     "links": [
@@ -100,14 +169,19 @@
         "id": "lfzigzvl",
         "from": "n1p0g3rz",
         "to": "nddy8k0u"
+      },
+      {
+        "id": "lcbtvz4z",
+        "from": "nddy8k0u",
+        "to": "no6tkx8y"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 75.51383182700374,
-      "panY": 105.3504517476008,
-      "scale": 0.804290818125202
+      "panX": 54.971715620620046,
+      "panY": 103.9895498639018,
+      "scale": 0.8244454000066694
     }
   }
 }

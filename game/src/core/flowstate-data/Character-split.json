@@ -45,6 +45,48 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "no6tkx8y",
+      "title": "addAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "delay",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
           "value": "immediate"
         }
       ]
@@ -55,6 +97,11 @@
       "id": "lfzigzvl",
       "from": "n1p0g3rz",
       "to": "nddy8k0u"
+    },
+    {
+      "id": "lcbtvz4z",
+      "from": "nddy8k0u",
+      "to": "no6tkx8y"
     }
   ]
 }

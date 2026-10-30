@@ -1,43 +1,6 @@
 {
   "nodes": [
     {
-      "id": "ng7c2yvx",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791296555660_uqk9no210",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "idle"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": true
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
       "id": "nvbp6ycl",
       "title": "onCustomEvent",
       "rootType": "StarterNodes",
@@ -65,18 +28,55 @@
           }
         }
       ]
+    },
+    {
+      "id": "nb7v7o09",
+      "title": "addAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "delay",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
     }
   ],
   "links": [
     {
-      "id": "lgtxb1ia",
+      "id": "ll9ee9dn",
       "from": "nvbp6ycl",
-      "to": "n0454ihj"
-    },
-    {
-      "id": "lpptnby5",
-      "from": "n0454ihj",
-      "to": "ng7c2yvx"
+      "to": "nb7v7o09"
     }
   ]
 }
