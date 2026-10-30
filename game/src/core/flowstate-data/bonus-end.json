@@ -194,7 +194,7 @@
           "type": "nodeRef",
           "value": {
             "kind": "nodeRef",
-            "nodeId": "node_ss_bonus_bg",
+            "nodeId": "node_1793296223016_0wj250trj",
             "sceneScope": "core",
             "sceneName": "main"
           }
@@ -308,6 +308,72 @@
           "value": "immediate"
         }
       ]
+    },
+    {
+      "id": "nstnudyn",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "nuj0zzk6",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": false
+        }
+      ]
+    },
+    {
+      "id": "ni0pjyu9",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": false
+        }
+      ]
     }
   ],
   "links": [
@@ -357,8 +423,23 @@
       "to": "nve6gtd3"
     },
     {
-      "id": "lu4om2xk",
+      "id": "l2vp84v4",
+      "from": "nstnudyn",
+      "to": "nuj0zzk6"
+    },
+    {
+      "id": "lrn0u71r",
       "from": "nve6gtd3",
+      "to": "nstnudyn"
+    },
+    {
+      "id": "ld9z41fc",
+      "from": "nuj0zzk6",
+      "to": "ni0pjyu9"
+    },
+    {
+      "id": "lhfa3n81",
+      "from": "ni0pjyu9",
       "to": "nbg1mt0t"
     }
   ]

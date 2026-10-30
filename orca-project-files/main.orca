@@ -38,7 +38,9 @@
     "background-split",
     "character-spin-end",
     "Character-bonus-transition",
-    "Character-main-transition-copy"
+    "Character-main-transition-copy",
+    "big-win",
+    "bonus-win"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -205,8 +207,11 @@
       "id": "splitting-folder-1",
       "name": "Boot & UI",
       "graphs": [
-        "game-boot"
-      ]
+        "game-boot",
+        "bonus-win",
+        "big-win"
+      ],
+      "collapsed": false
     },
     {
       "id": "splitting-folder-2",

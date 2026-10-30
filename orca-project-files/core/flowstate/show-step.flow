@@ -7,8 +7,8 @@
         "id": "showst_005",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 485.2050557072909,
-        "y": -561.8641130528961,
+        "x": 799.4221840263099,
+        "y": -397.5170450847286,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "showst_075",
         "title": "fireCustomEvent",
-        "x": 1841.5224093065713,
-        "y": -89.63875371333074,
+        "x": 2165.0202723448,
+        "y": -162.8520755263046,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -52,8 +52,8 @@
       {
         "id": "showst_076",
         "title": "fireCustomEvent",
-        "x": 1840.221564827948,
-        "y": -261.4724855029227,
+        "x": 1495.7972846989476,
+        "y": -352.81205102699926,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -76,8 +76,8 @@
       {
         "id": "nipb74mu",
         "title": "getGameModelProperty",
-        "x": 890.512888183361,
-        "y": 2.621634586006735,
+        "x": 491.0683697012229,
+        "y": -114.28895618925324,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -96,8 +96,8 @@
       {
         "id": "nigin0xz",
         "title": "branch",
-        "x": 1521.582340440424,
-        "y": -199.39708767630586,
+        "x": 1122.137821958286,
+        "y": -316.30767845156583,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -116,8 +116,8 @@
       {
         "id": "n8u6ewfk",
         "title": "getGameModelProperty",
-        "x": 887.4168743880807,
-        "y": -107.30275843613649,
+        "x": 487.97235590594255,
+        "y": -224.21334921139646,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -136,8 +136,8 @@
       {
         "id": "n67zu366",
         "title": "greaterThanOrEqual",
-        "x": 1203.528867796369,
-        "y": -98.85091986552044,
+        "x": 804.0843493142308,
+        "y": -215.76151064078041,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -156,8 +156,8 @@
       {
         "id": "ne35vfca",
         "title": "getGameModelProperty",
-        "x": -428.5801840438669,
-        "y": -330.66430382961215,
+        "x": 195.38460185009598,
+        "y": 40.589196358474936,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -177,8 +177,8 @@
         "id": "no8mqs7g",
         "title": "at",
         "friendlyTitle": "Get",
-        "x": -66.28640024835494,
-        "y": -272.5146445676234,
+        "x": 557.6783856456079,
+        "y": 98.73885562046368,
         "rootType": "array",
         "color": "#2980b9",
         "icon": "🎯",
@@ -198,8 +198,8 @@
         "id": "nrc6dlvf",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": 261.8275415944401,
-        "y": -256.37179427954544,
+        "x": 874.5408122046856,
+        "y": 69.8756447736726,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -246,8 +246,8 @@
       {
         "id": "nmn2eyvc",
         "title": "getGameModelProperty",
-        "x": -731.4371744686703,
-        "y": -203.74204047710924,
+        "x": -107.4723885747074,
+        "y": 167.51145971097785,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -266,8 +266,8 @@
       {
         "id": "nsau775g",
         "title": "toInt",
-        "x": -415.2765796548099,
-        "y": -210.0060989498042,
+        "x": 208.68820623915298,
+        "y": 161.2474012382829,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -281,8 +281,8 @@
       {
         "id": "nx5kazgi",
         "title": "setText",
-        "x": 1213.6700197032824,
-        "y": -344.71121883372865,
+        "x": 1833.4040036770903,
+        "y": -161.4918912423758,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -311,8 +311,8 @@
         "id": "nko5gx4y",
         "title": "formatPrize",
         "friendlyTitle": "Format money prize for displahy",
-        "x": 901.5395407228779,
-        "y": -224.48760277642498,
+        "x": 1514.2528113331234,
+        "y": 101.75983627679307,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -328,8 +328,8 @@
       {
         "id": "ntr1bb0u",
         "title": "toInt",
-        "x": 586.4480799896362,
-        "y": -230.1422536030719,
+        "x": 1199.1613505998819,
+        "y": 96.10518545014611,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -343,8 +343,8 @@
       {
         "id": "njyp4t5x",
         "title": "setText",
-        "x": 832.3791918681455,
-        "y": -485.245622506968,
+        "x": 1498.4002778421896,
+        "y": -160.25720234077764,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -373,8 +373,8 @@
       {
         "id": "n7qrfhq1",
         "title": "getGameModelProperty",
-        "x": 164.86201995967923,
-        "y": -376.48409185581824,
+        "x": 830.8831059337233,
+        "y": -51.49567168962787,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -393,8 +393,8 @@
       {
         "id": "ncbrc28u",
         "title": "toString",
-        "x": 503.7253495718993,
-        "y": -374.2958051372076,
+        "x": 1169.7464355459433,
+        "y": -49.307384971017285,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -412,12 +412,6 @@
         "from": "nigin0xz",
         "to": "showst_076",
         "outIdx": 0
-      },
-      {
-        "id": "ldcg6f6c",
-        "from": "nigin0xz",
-        "to": "showst_075",
-        "outIdx": 1
       },
       {
         "id": "lhal07cm",
@@ -469,11 +463,6 @@
         "propertyName": "index"
       },
       {
-        "id": "l2zes7ld",
-        "from": "nx5kazgi",
-        "to": "nigin0xz"
-      },
-      {
         "id": "llpmrped",
         "from": "nrc6dlvf",
         "to": "ntr1bb0u",
@@ -496,11 +485,6 @@
         "propertyName": "value"
       },
       {
-        "id": "l20fi42o",
-        "from": "showst_005",
-        "to": "njyp4t5x"
-      },
-      {
         "id": "lfprvaiq",
         "from": "njyp4t5x",
         "to": "nx5kazgi"
@@ -518,14 +502,30 @@
         "to": "njyp4t5x",
         "propertyType": "string",
         "propertyName": "value"
+      },
+      {
+        "id": "ln13qgyy",
+        "from": "showst_005",
+        "to": "nigin0xz"
+      },
+      {
+        "id": "lbb5g5k4",
+        "from": "nigin0xz",
+        "to": "njyp4t5x",
+        "outIdx": 1
+      },
+      {
+        "id": "lfus9rdr",
+        "from": "nx5kazgi",
+        "to": "showst_075"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -155.28490930529233,
-      "panY": 740.7713900945287,
-      "scale": 0.7661150508781325
+      "panX": -939.8797411886896,
+      "panY": 310.30307928640946,
+      "scale": 0.8356337173638221
     }
   }
 }

@@ -222,7 +222,7 @@
             ],
             "customProperties": {},
             "locked": false,
-            "expanded": true,
+            "expanded": false,
             "dontDestroyOnLoad": false,
             "responsiveScaler": null,
             "layoutManager": null,
@@ -401,7 +401,7 @@
                         ],
                         "customProperties": {},
                         "locked": false,
-                        "expanded": true,
+                        "expanded": false,
                         "dontDestroyOnLoad": false,
                         "rectTransform": null
                       },
@@ -570,10 +570,54 @@
                         "alpha": 1,
                         "interactive": false,
                         "zIndex": 0,
-                        "children": [],
+                        "children": [
+                          {
+                            "id": "node_1793370057374_fr7kaqqrk",
+                            "name": "Text",
+                            "type": "text",
+                            "transform": {
+                              "x": 0,
+                              "y": 0,
+                              "scaleX": 1,
+                              "scaleY": 1,
+                              "rotation": 0,
+                              "pivotX": 0.5,
+                              "pivotY": 0.5,
+                              "skewX": 0,
+                              "skewY": 0
+                            },
+                            "visible": true,
+                            "alpha": 1,
+                            "interactive": false,
+                            "zIndex": 0,
+                            "children": [],
+                            "customProperties": {},
+                            "locked": false,
+                            "expanded": false,
+                            "text": "x2",
+                            "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
+                            "fontSize": 24,
+                            "fill": 16777215,
+                            "fontWeight": "normal",
+                            "fontStyle": "normal",
+                            "align": "left",
+                            "wordWrap": false,
+                            "wordWrapWidth": 200,
+                            "stroke": 0,
+                            "strokeThickness": 0,
+                            "dropShadow": false,
+                            "dropShadowOptions": {
+                              "color": 0,
+                              "blur": 4,
+                              "angle": 45,
+                              "distance": 4,
+                              "alpha": 0.5
+                            }
+                          }
+                        ],
                         "customProperties": {},
                         "locked": false,
-                        "expanded": false,
+                        "expanded": true,
                         "skeleton": "assets/symbols/symbols.json",
                         "atlas": "assets/symbols/symbols.atlas",
                         "animation": "",
@@ -602,10 +646,54 @@
                         "alpha": 1,
                         "interactive": false,
                         "zIndex": 0,
-                        "children": [],
+                        "children": [
+                          {
+                            "id": "node_1793370158987_rqwugo96n",
+                            "name": "Text Copy",
+                            "type": "text",
+                            "transform": {
+                              "x": 20,
+                              "y": 20,
+                              "scaleX": 1,
+                              "scaleY": 1,
+                              "rotation": 0,
+                              "pivotX": 0.5,
+                              "pivotY": 0.5,
+                              "skewX": 0,
+                              "skewY": 0
+                            },
+                            "visible": true,
+                            "alpha": 1,
+                            "interactive": false,
+                            "zIndex": 0,
+                            "children": [],
+                            "customProperties": {},
+                            "locked": false,
+                            "expanded": false,
+                            "text": "x2",
+                            "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
+                            "fontSize": 24,
+                            "fill": 16777215,
+                            "fontWeight": "normal",
+                            "fontStyle": "normal",
+                            "align": "left",
+                            "wordWrap": false,
+                            "wordWrapWidth": 200,
+                            "stroke": 0,
+                            "strokeThickness": 0,
+                            "dropShadow": false,
+                            "dropShadowOptions": {
+                              "color": 0,
+                              "blur": 4,
+                              "angle": 45,
+                              "distance": 4,
+                              "alpha": 0.5
+                            }
+                          }
+                        ],
                         "customProperties": {},
                         "locked": false,
-                        "expanded": false,
+                        "expanded": true,
                         "skeleton": "assets/symbols/symbols.json",
                         "atlas": "assets/symbols/symbols.atlas",
                         "animation": "",
@@ -634,10 +722,54 @@
                         "alpha": 1,
                         "interactive": false,
                         "zIndex": 0,
-                        "children": [],
+                        "children": [
+                          {
+                            "id": "node_1793370190708_j7qz6cpiv",
+                            "name": "Text Copy Copy",
+                            "type": "text",
+                            "transform": {
+                              "x": 40,
+                              "y": 40,
+                              "scaleX": 1,
+                              "scaleY": 1,
+                              "rotation": 0,
+                              "pivotX": 0.5,
+                              "pivotY": 0.5,
+                              "skewX": 0,
+                              "skewY": 0
+                            },
+                            "visible": true,
+                            "alpha": 1,
+                            "interactive": false,
+                            "zIndex": 0,
+                            "children": [],
+                            "customProperties": {},
+                            "locked": false,
+                            "expanded": false,
+                            "text": "x2",
+                            "fontFamily": "assets/fonts/GemunuLibre-ExtraBold.ttf",
+                            "fontSize": 24,
+                            "fill": 16777215,
+                            "fontWeight": "normal",
+                            "fontStyle": "normal",
+                            "align": "left",
+                            "wordWrap": false,
+                            "wordWrapWidth": 200,
+                            "stroke": 0,
+                            "strokeThickness": 0,
+                            "dropShadow": false,
+                            "dropShadowOptions": {
+                              "color": 0,
+                              "blur": 4,
+                              "angle": 45,
+                              "distance": 4,
+                              "alpha": 0.5
+                            }
+                          }
+                        ],
                         "customProperties": {},
                         "locked": false,
-                        "expanded": false,
+                        "expanded": true,
                         "skeleton": "assets/symbols/symbols.json",
                         "atlas": "assets/symbols/symbols.atlas",
                         "animation": "",
@@ -650,7 +782,7 @@
                     ],
                     "customProperties": {},
                     "locked": false,
-                    "expanded": false,
+                    "expanded": true,
                     "dontDestroyOnLoad": false,
                     "rectTransform": null
                   },
@@ -679,7 +811,7 @@
                     "expanded": false,
                     "skeleton": "assets/reel/reelForeground.json",
                     "atlas": "assets/reel/reel.atlas",
-                    "animation": "",
+                    "animation": "idleBase",
                     "playOnLoad": true,
                     "loop": true,
                     "skin": "default",
@@ -1991,12 +2123,11 @@
                 },
                 "node_1793296072486_udhkkhjds": {
                   "transform": {
-                    "x": -98.50179898860443,
+                    "x": -95.9312770805967,
                     "y": -358.32358852572025,
                     "scaleX": 0.41309800439972205,
                     "scaleY": 0.41309800439972205
-                  },
-                  "visible": false
+                  }
                 },
                 "node_1793296223016_0wj250trj": {
                   "transform": {
@@ -2004,8 +2135,7 @@
                     "x": 58.999571781162885,
                     "scaleX": 0.37796511476182654,
                     "scaleY": 0.37796511476182654
-                  },
-                  "visible": false
+                  }
                 },
                 "node_1793296220293_41gc6usix": {
                   "transform": {
@@ -2013,8 +2143,31 @@
                     "x": -255.76091624283958,
                     "scaleX": 0.4026559911573903,
                     "scaleY": 0.4026559911573903
-                  },
-                  "visible": false
+                  }
+                },
+                "node_1793370057374_fr7kaqqrk": {
+                  "transform": {
+                    "x": 67.555442017594,
+                    "y": 73.76949657267694,
+                    "scaleX": 4.2983953156035914,
+                    "scaleY": 3.8915236433098808
+                  }
+                },
+                "node_1793370158987_rqwugo96n": {
+                  "transform": {
+                    "y": 66.72840223568119,
+                    "x": 73.8133146703141,
+                    "scaleX": 3.936823978673823,
+                    "scaleY": 3.936823978673823
+                  }
+                },
+                "node_1793370190708_j7qz6cpiv": {
+                  "transform": {
+                    "x": 71.49252849165441,
+                    "y": 62.78009888358736,
+                    "scaleX": 3.716747880037086,
+                    "scaleY": 3.716747880037086
+                  }
                 }
               }
             }

@@ -126,8 +126,8 @@
             {
               "id": "rounds_040",
               "title": "Entry",
-              "x": 1038.0297404539187,
-              "y": 167.85745428732363,
+              "x": 1036.431468649027,
+              "y": 171.05399789710756,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -191,8 +191,8 @@
             {
               "id": "rounds_041",
               "title": "Exit",
-              "x": 2234.7455234458052,
-              "y": 172.73008759413116,
+              "x": 3231.8198280067,
+              "y": 186.29308530268418,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -200,8 +200,8 @@
             {
               "id": "nzrj1v80",
               "title": "setText",
-              "x": 1249.67225632451,
-              "y": 177.096925031462,
+              "x": 1235.8130896990046,
+              "y": 176.91284899283738,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -226,6 +226,96 @@
                 },
                 "value": "0p"
               }
+            },
+            {
+              "id": "neoq7sap",
+              "title": "setNodeVisible",
+              "x": 2232.8847982423686,
+              "y": 173.19605223256232,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296072486_udhkkhjds",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nidkmmq9",
+              "title": "setNodeVisible",
+              "x": 2552.173125189201,
+              "y": 173.65424012539708,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296220293_41gc6usix",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "ng6rdpe6",
+              "title": "setNodeVisible",
+              "x": 2883.0641550687537,
+              "y": 175.6643768807875,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296223016_0wj250trj",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
@@ -235,19 +325,34 @@
               "to": "rounds_021"
             },
             {
-              "id": "lu6ryi15",
-              "from": "rounds_021",
-              "to": "rounds_041"
-            },
-            {
-              "id": "lodjpd6x",
+              "id": "l6t7psh8",
               "from": "rounds_040",
               "to": "nzrj1v80"
             },
             {
-              "id": "le1fog43",
+              "id": "l23mxbgl",
               "from": "nzrj1v80",
               "to": "rounds_020"
+            },
+            {
+              "id": "lhnlh64u",
+              "from": "neoq7sap",
+              "to": "nidkmmq9"
+            },
+            {
+              "id": "l13ak08k",
+              "from": "rounds_021",
+              "to": "neoq7sap"
+            },
+            {
+              "id": "la2kuy0k",
+              "from": "nidkmmq9",
+              "to": "ng6rdpe6"
+            },
+            {
+              "id": "lzvcq7qt",
+              "from": "ng6rdpe6",
+              "to": "rounds_041"
             }
           ],
           "groups": []
@@ -1603,9 +1708,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -19.76650347847692,
-      "panY": -275.9905012788324,
-      "scale": 1.1772787590837805
+      "panX": -954.2092295942318,
+      "panY": 142.93630969811966,
+      "scale": 0.7166912504987252
     }
   }
 }

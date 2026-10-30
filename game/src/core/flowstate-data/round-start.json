@@ -150,6 +150,72 @@
                 "value": "0p"
               }
             ]
+          },
+          {
+            "id": "neoq7sap",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296072486_udhkkhjds",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "nidkmmq9",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296220293_41gc6usix",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "ng6rdpe6",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296223016_0wj250trj",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": false
+              }
+            ]
           }
         ],
         "links": [
@@ -159,19 +225,34 @@
             "to": "rounds_021"
           },
           {
-            "id": "lu6ryi15",
-            "from": "rounds_021",
-            "to": "rounds_041"
-          },
-          {
-            "id": "lodjpd6x",
+            "id": "l6t7psh8",
             "from": "rounds_040",
             "to": "nzrj1v80"
           },
           {
-            "id": "le1fog43",
+            "id": "l23mxbgl",
             "from": "nzrj1v80",
             "to": "rounds_020"
+          },
+          {
+            "id": "lhnlh64u",
+            "from": "neoq7sap",
+            "to": "nidkmmq9"
+          },
+          {
+            "id": "l13ak08k",
+            "from": "rounds_021",
+            "to": "neoq7sap"
+          },
+          {
+            "id": "la2kuy0k",
+            "from": "nidkmmq9",
+            "to": "ng6rdpe6"
+          },
+          {
+            "id": "lzvcq7qt",
+            "from": "ng6rdpe6",
+            "to": "rounds_041"
           }
         ]
       }

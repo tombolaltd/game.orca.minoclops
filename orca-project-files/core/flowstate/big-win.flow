@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [],
+    "links": [],
+    "groups": [],
+    "variables": [],
+    "viewState": {
+      "panX": 50,
+      "panY": 50,
+      "scale": 1
+    }
+  }
+}

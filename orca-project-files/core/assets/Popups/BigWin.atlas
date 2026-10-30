@@ -1,0 +1,23 @@
+BigWin.webp
+size: 2459, 106
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+BigWin/BIG WIN
+  bounds: 1722, 3, 433, 88
+BigWin/HUGE WIN
+  bounds: 1157, 3, 561, 88
+BigWin/MEGA WIN
+  bounds: 3, 3, 579, 88
+BigWin/placeholder
+  bounds: 2159, 53, 10, 10
+BigWin/solid
+  bounds: 2356, 3, 100, 100
+BigWin/TOP PRIZE
+  bounds: 586, 3, 567, 88
+BigWin/VALUE
+  bounds: 2173, 53, 3, 3
+  offsets: 0, 43, 193, 46
+BigWin/VALUE_
+  bounds: 2159, 3, 193, 46

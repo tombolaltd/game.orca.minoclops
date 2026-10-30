@@ -298,12 +298,6 @@
       "outIdx": 0
     },
     {
-      "id": "ldcg6f6c",
-      "from": "nigin0xz",
-      "to": "showst_075",
-      "outIdx": 1
-    },
-    {
       "id": "lhal07cm",
       "from": "n8u6ewfk",
       "to": "n67zu366",
@@ -353,11 +347,6 @@
       "propertyName": "index"
     },
     {
-      "id": "l2zes7ld",
-      "from": "nx5kazgi",
-      "to": "nigin0xz"
-    },
-    {
       "id": "llpmrped",
       "from": "nrc6dlvf",
       "to": "ntr1bb0u",
@@ -380,11 +369,6 @@
       "propertyName": "value"
     },
     {
-      "id": "l20fi42o",
-      "from": "showst_005",
-      "to": "njyp4t5x"
-    },
-    {
       "id": "lfprvaiq",
       "from": "njyp4t5x",
       "to": "nx5kazgi"
@@ -402,6 +386,22 @@
       "to": "njyp4t5x",
       "propertyType": "string",
       "propertyName": "value"
+    },
+    {
+      "id": "ln13qgyy",
+      "from": "showst_005",
+      "to": "nigin0xz"
+    },
+    {
+      "id": "lbb5g5k4",
+      "from": "nigin0xz",
+      "to": "njyp4t5x",
+      "outIdx": 1
+    },
+    {
+      "id": "lfus9rdr",
+      "from": "nx5kazgi",
+      "to": "showst_075"
     }
   ]
 }

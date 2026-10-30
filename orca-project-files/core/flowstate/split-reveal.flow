@@ -7,8 +7,8 @@
         "id": "splitr_008",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -834.5120559073682,
-        "y": 81.1223456304521,
+        "x": -1036.4333690548224,
+        "y": 81.2019449765779,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -28,8 +28,8 @@
       {
         "id": "splitr_070",
         "title": "fireCustomEvent",
-        "x": 538.4338826688881,
-        "y": 206.28908078821078,
+        "x": 739.124304599412,
+        "y": 167.60177053654354,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -53,8 +53,8 @@
         "id": "ncejedmd",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 206.10270571678893,
-        "y": 205.661401287876,
+        "x": 406.79312764731276,
+        "y": 166.97409103620876,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -72,8 +72,8 @@
       {
         "id": "nr2lpth7",
         "title": "getGameModelProperty",
-        "x": -831.3441942962484,
-        "y": 263.026185590494,
+        "x": -1033.2655074437025,
+        "y": 263.1057849366198,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -93,8 +93,8 @@
         "id": "nccjlbfj",
         "title": "loop",
         "friendlyTitle": "Repeat For Each",
-        "x": -506.2194479692711,
-        "y": 145.63390996861418,
+        "x": -708.1407611167252,
+        "y": 145.71350931473998,
         "rootType": "loop",
         "color": "#9b59b6",
         "icon": "🔁",
@@ -118,8 +118,8 @@
         "id": "njpv296w",
         "title": "structFields",
         "friendlyTitle": "Properties",
-        "x": -154.61702295847914,
-        "y": 441.86027693128005,
+        "x": -243.06095923430783,
+        "y": 551.6030835142152,
         "rootType": "objectOps",
         "color": "#607d8b",
         "icon": "🧩",
@@ -152,8 +152,8 @@
         "id": "n10e0ksf",
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
-        "x": 923.5730489008613,
-        "y": 201.9782444186635,
+        "x": 1194.3467252353128,
+        "y": 111.33323166918117,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -201,8 +201,8 @@
       {
         "id": "nw34zng2",
         "title": "toInt",
-        "x": 169.7128716241656,
-        "y": 438.8318988679431,
+        "x": 284.50469719074385,
+        "y": 529.6188453466942,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -216,8 +216,8 @@
       {
         "id": "nvu1cf10",
         "title": "toInt",
-        "x": 170.48241239108904,
-        "y": 557.7279290591366,
+        "x": 285.2742379576673,
+        "y": 648.5148755378877,
         "rootType": "cast",
         "color": "#6c5ce7",
         "icon": "🔢",
@@ -231,8 +231,8 @@
       {
         "id": "n8gf47cf",
         "title": "getGameModelProperty",
-        "x": -833.5596949901909,
-        "y": 385.76350984936556,
+        "x": -251.35766666037853,
+        "y": 378.4743753245219,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -251,8 +251,8 @@
       {
         "id": "nlnialvt",
         "title": "setText",
-        "x": -143.5034744629014,
-        "y": 205.57722004239315,
+        "x": 57.18694746762242,
+        "y": 166.8899097907259,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -281,8 +281,8 @@
       {
         "id": "nvhey3py",
         "title": "toString",
-        "x": -506.54255167974816,
-        "y": 392.48403423861487,
+        "x": 75.65947665006433,
+        "y": 385.1948997137712,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -290,6 +290,395 @@
           {
             "name": "value",
             "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nyfqvsq8",
+        "title": "switch",
+        "x": 1546.1731782652082,
+        "y": 410.2842592022646,
+        "rootType": "switch",
+        "color": "#e67e22",
+        "icon": "🔢",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          },
+          {
+            "name": "cases",
+            "type": "TArray",
+            "default": []
+          }
+        ],
+        "propertyValues": {
+          "cases": [
+            0,
+            1,
+            2
+          ]
+        }
+      },
+      {
+        "id": "nmn0z0nt",
+        "title": "setNodeVisible",
+        "x": 1907.7333177944913,
+        "y": 389.25815641064406,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": true,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "n7yaoyts",
+        "title": "setSkin",
+        "x": 2340.709658893824,
+        "y": 390.4689068094841,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "skinName",
+            "type": "string",
+            "optionsFrom": "target.spine.skins"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "no1h5fiv",
+        "title": "toString",
+        "x": 1872.5559714796607,
+        "y": 1038.3131952615324,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nafzlx51",
+        "title": "add",
+        "x": 291.778198050955,
+        "y": 766.2661210114082,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T",
+            "propertyValue": 1
+          }
+        ]
+      },
+      {
+        "id": "nvfslstu",
+        "title": "int",
+        "x": 69.1172905784081,
+        "y": 839.1776773015101,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "🔢",
+        "isStarter": false,
+        "propertyValue": 1
+      },
+      {
+        "id": "nltcs3cr",
+        "title": "setNodeVisible",
+        "x": 1896.7449263902943,
+        "y": 586.9662828398355,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": true,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "npo6h8r7",
+        "title": "setSkin",
+        "x": 2337.5435895425762,
+        "y": 602.1342099520738,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "skinName",
+            "type": "string",
+            "optionsFrom": "target.spine.skins"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "n9w52zig",
+        "title": "setNodeVisible",
+        "x": 1893.9219805692435,
+        "y": 793.6665565204422,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": true,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296223016_0wj250trj",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nklccsx6",
+        "title": "setSkin",
+        "x": 2335.57159339005,
+        "y": 819.8775618978234,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "skinName",
+            "type": "string",
+            "optionsFrom": "target.spine.skins"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296223016_0wj250trj",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nnsfuvmg",
+        "title": "setText",
+        "x": 3038.0337274794465,
+        "y": 388.10491616716047,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "text"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370057374_fr7kaqqrk",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nzjd9c5f",
+        "title": "setText",
+        "x": 3038.475858869514,
+        "y": 600.6555857417171,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "text"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370158987_rqwugo96n",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nq5v3tts",
+        "title": "setText",
+        "x": 3040.8633028444133,
+        "y": 819.1396901303453,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "text"
+          },
+          {
+            "name": "value",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370190708_j7qz6cpiv",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "n4bfvkch",
+        "title": "toString",
+        "x": 2143.860668299003,
+        "y": 1202.6945764463712,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "n3je7mbr",
+        "title": "string",
+        "x": 2274.2717765239827,
+        "y": 1093.3021831128071,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "🔤",
+        "isStarter": false,
+        "propertyValue": "x"
+      },
+      {
+        "id": "nlbirw7n",
+        "title": "concat",
+        "x": 2488.3162881408507,
+        "y": 1094.1729505343142,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔗",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "a",
+            "type": "string",
+            "propertyValue": "x"
+          },
+          {
+            "name": "b",
+            "type": "string"
           }
         ]
       }
@@ -310,12 +699,8 @@
         "propertyName": "split",
         "points": [
           {
-            "x": 492.82078948864813,
-            "y": 582.9315771504148
-          },
-          {
-            "x": 735.3186310389402,
-            "y": 548.8967923714264
+            "x": 966.4709828888238,
+            "y": 551.6692138907347
           }
         ]
       },
@@ -331,12 +716,12 @@
         "outIdx": 0,
         "points": [
           {
-            "x": -149.94256314984648,
-            "y": 143.5520177000914
+            "x": -285.6513706940369,
+            "y": 132.80297298890375
           },
           {
-            "x": 826.7871151324714,
-            "y": 146.86089716962636
+            "x": 1104.6738414752544,
+            "y": 132.80297298890375
           }
         ]
       },
@@ -372,8 +757,8 @@
         "propertyName": "symbol",
         "points": [
           {
-            "x": 762.9718936718683,
-            "y": 563.7870107122338
+            "x": 1021.5908264565802,
+            "y": 583.3267040053335
           }
         ]
       },
@@ -405,15 +790,176 @@
         "from": "nvhey3py",
         "to": "nlnialvt",
         "propertyType": "string",
+        "propertyName": "value",
+        "points": [
+          {
+            "x": 357.6280990996959,
+            "y": 370.08937848282426
+          },
+          {
+            "x": 57.88685066576793,
+            "y": 365.2548422177609
+          }
+        ]
+      },
+      {
+        "id": "ldoy3176",
+        "from": "nccjlbfj",
+        "to": "nyfqvsq8",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "index",
+        "points": [
+          {
+            "x": -238.07202100725564,
+            "y": 509.0053157994972
+          }
+        ]
+      },
+      {
+        "id": "ljr92ozh",
+        "from": "n10e0ksf",
+        "to": "nyfqvsq8"
+      },
+      {
+        "id": "ldzjx20t",
+        "from": "nyfqvsq8",
+        "to": "nmn0z0nt"
+      },
+      {
+        "id": "ls7cxgbp",
+        "from": "nmn0z0nt",
+        "to": "n7yaoyts"
+      },
+      {
+        "id": "l2wepe4b",
+        "from": "no1h5fiv",
+        "to": "n7yaoyts",
+        "propertyType": "string",
+        "propertyName": "skinName"
+      },
+      {
+        "id": "l4it1l6t",
+        "from": "njpv296w",
+        "to": "nafzlx51",
+        "propertyType": "T",
+        "propertyName": "a",
+        "sourceOutputName": "Symbol"
+      },
+      {
+        "id": "lgami5ix",
+        "from": "nafzlx51",
+        "to": "no1h5fiv",
+        "propertyType": "T",
+        "propertyName": "value"
+      },
+      {
+        "id": "lu3nasgf",
+        "from": "nvfslstu",
+        "to": "nafzlx51",
+        "propertyType": "T",
+        "propertyName": "b"
+      },
+      {
+        "id": "lgn24dsm",
+        "from": "nltcs3cr",
+        "to": "npo6h8r7"
+      },
+      {
+        "id": "lzfikg94",
+        "from": "nyfqvsq8",
+        "to": "nltcs3cr",
+        "outIdx": 1
+      },
+      {
+        "id": "lvqh25ni",
+        "from": "no1h5fiv",
+        "to": "npo6h8r7",
+        "propertyType": "string",
+        "propertyName": "skinName"
+      },
+      {
+        "id": "lajjmj1c",
+        "from": "n9w52zig",
+        "to": "nklccsx6"
+      },
+      {
+        "id": "lhssv6q6",
+        "from": "no1h5fiv",
+        "to": "nklccsx6",
+        "propertyType": "string",
+        "propertyName": "skinName"
+      },
+      {
+        "id": "liloth1x",
+        "from": "nyfqvsq8",
+        "to": "n9w52zig",
+        "outIdx": 2
+      },
+      {
+        "id": "lviwak0l",
+        "from": "n7yaoyts",
+        "to": "nnsfuvmg"
+      },
+      {
+        "id": "lyegpyx7",
+        "from": "npo6h8r7",
+        "to": "nzjd9c5f"
+      },
+      {
+        "id": "lwwmzqwc",
+        "from": "nklccsx6",
+        "to": "nq5v3tts"
+      },
+      {
+        "id": "llg01vsp",
+        "from": "nw34zng2",
+        "to": "n4bfvkch",
+        "propertyType": "T",
+        "propertyName": "value"
+      },
+      {
+        "id": "lh2xjbre",
+        "from": "n3je7mbr",
+        "to": "nlbirw7n",
+        "propertyType": "string",
+        "propertyName": "a"
+      },
+      {
+        "id": "lxzndny6",
+        "from": "n4bfvkch",
+        "to": "nlbirw7n",
+        "propertyType": "string",
+        "propertyName": "b"
+      },
+      {
+        "id": "l1faddla",
+        "from": "nlbirw7n",
+        "to": "nnsfuvmg",
+        "propertyType": "string",
+        "propertyName": "value"
+      },
+      {
+        "id": "lpbmkj85",
+        "from": "nlbirw7n",
+        "to": "nzjd9c5f",
+        "propertyType": "string",
+        "propertyName": "value"
+      },
+      {
+        "id": "loobxuzj",
+        "from": "nlbirw7n",
+        "to": "nq5v3tts",
+        "propertyType": "string",
         "propertyName": "value"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 592.3534892620053,
-      "panY": 211.52161292704875,
-      "scale": 0.7661150508781325
+      "panX": 292.2387824354049,
+      "panY": 115.04987786922544,
+      "scale": 0.2863488772302636
     }
   }
 }

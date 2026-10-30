@@ -1,0 +1,16 @@
+BonusWin.webp
+size: 106, 765
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+pma: false
+BonusWin/BONUS WIN
+  bounds: 3, 3, 641, 88
+  rotate: 90
+BonusWin/placeholder
+  bounds: 3, 752, 10, 10
+BonusWin/solid
+  bounds: 3, 648, 100, 100
+BonusWin/VALUE
+  bounds: 95, 3, 3, 3
+  offsets: 0, 43, 193, 46

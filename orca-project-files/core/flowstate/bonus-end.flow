@@ -39,8 +39,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 3269.4820834751245,
-        "y": 117.96562099016086,
+        "x": 4240.235725443903,
+        "y": 123.92891074088698,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -315,8 +315,8 @@
       {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 2654.0318962682964,
-        "y": 118.8151871039174,
+        "x": 3624.785538237076,
+        "y": 121.00091360773035,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -336,7 +336,7 @@
           "visible": false,
           "target": {
             "kind": "nodeRef",
-            "nodeId": "node_ss_bonus_bg",
+            "nodeId": "node_1793296223016_0wj250trj",
             "sceneScope": "core",
             "sceneName": "main"
           }
@@ -365,8 +365,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 2959.9965470045663,
-        "y": 118.02857229763157,
+        "x": 3930.7501889733453,
+        "y": 123.99186204835769,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -514,6 +514,96 @@
           },
           "animationName": "BonusToBase"
         }
+      },
+      {
+        "id": "nstnudyn",
+        "title": "setNodeVisible",
+        "x": 2674.6667894935626,
+        "y": 110.13710641422404,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": false,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "nuj0zzk6",
+        "title": "setNodeVisible",
+        "x": 3011.6798995462204,
+        "y": 125.08433459007125,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": false,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "ni0pjyu9",
+        "title": "setNodeVisible",
+        "x": 3309.886890077055,
+        "y": 124.86382861476602,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "visible",
+            "type": "bool",
+            "default": true
+          }
+        ],
+        "propertyValues": {
+          "visible": false,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
       }
     ],
     "links": [
@@ -563,17 +653,32 @@
         "to": "nve6gtd3"
       },
       {
-        "id": "lu4om2xk",
+        "id": "l2vp84v4",
+        "from": "nstnudyn",
+        "to": "nuj0zzk6"
+      },
+      {
+        "id": "lrn0u71r",
         "from": "nve6gtd3",
+        "to": "nstnudyn"
+      },
+      {
+        "id": "ld9z41fc",
+        "from": "nuj0zzk6",
+        "to": "ni0pjyu9"
+      },
+      {
+        "id": "lhfa3n81",
+        "from": "ni0pjyu9",
         "to": "nbg1mt0t"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -885.3291728062165,
-      "panY": 146.10272036053732,
-      "scale": 0.5538109048278569
+      "panX": -1629.9021117418129,
+      "panY": 184.69484217815744,
+      "scale": 0.7188445525883796
     }
   }
 }

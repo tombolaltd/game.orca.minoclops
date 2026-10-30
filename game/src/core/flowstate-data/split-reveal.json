@@ -213,6 +213,285 @@
           "sourceNodeId": "n8gf47cf"
         }
       ]
+    },
+    {
+      "id": "nyfqvsq8",
+      "title": "switch",
+      "rootType": "switch",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nccjlbfj",
+          "sourceOutputName": "index"
+        },
+        {
+          "name": "cases",
+          "type": "TArray",
+          "value": [
+            0,
+            1,
+            2
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nmn0z0nt",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "n7yaoyts",
+      "title": "setSkin",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296072486_udhkkhjds",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "skinName",
+          "type": "string",
+          "sourceNodeId": "no1h5fiv"
+        }
+      ]
+    },
+    {
+      "id": "no1h5fiv",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nafzlx51"
+        }
+      ]
+    },
+    {
+      "id": "nafzlx51",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "njpv296w",
+          "sourceOutputName": "Symbol"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "nltcs3cr",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "npo6h8r7",
+      "title": "setSkin",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296220293_41gc6usix",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "skinName",
+          "type": "string",
+          "sourceNodeId": "no1h5fiv"
+        }
+      ]
+    },
+    {
+      "id": "n9w52zig",
+      "title": "setNodeVisible",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296223016_0wj250trj",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "visible",
+          "type": "bool",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "nklccsx6",
+      "title": "setSkin",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296223016_0wj250trj",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "skinName",
+          "type": "string",
+          "sourceNodeId": "no1h5fiv"
+        }
+      ]
+    },
+    {
+      "id": "nnsfuvmg",
+      "title": "setText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370057374_fr7kaqqrk",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "sourceNodeId": "nlbirw7n"
+        }
+      ]
+    },
+    {
+      "id": "nzjd9c5f",
+      "title": "setText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370158987_rqwugo96n",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "sourceNodeId": "nlbirw7n"
+        }
+      ]
+    },
+    {
+      "id": "nq5v3tts",
+      "title": "setText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793370190708_j7qz6cpiv",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "sourceNodeId": "nlbirw7n"
+        }
+      ]
+    },
+    {
+      "id": "n4bfvkch",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nw34zng2"
+        }
+      ]
+    },
+    {
+      "id": "nlbirw7n",
+      "title": "concat",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "a",
+          "type": "string",
+          "value": "x"
+        },
+        {
+          "name": "b",
+          "type": "string",
+          "sourceNodeId": "n4bfvkch"
+        }
+      ]
     }
   ],
   "links": [
@@ -299,6 +578,137 @@
       "id": "ltyhp541",
       "from": "nvhey3py",
       "to": "nlnialvt",
+      "propertyType": "string",
+      "propertyName": "value"
+    },
+    {
+      "id": "ldoy3176",
+      "from": "nccjlbfj",
+      "to": "nyfqvsq8",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "index"
+    },
+    {
+      "id": "ljr92ozh",
+      "from": "n10e0ksf",
+      "to": "nyfqvsq8"
+    },
+    {
+      "id": "ldzjx20t",
+      "from": "nyfqvsq8",
+      "to": "nmn0z0nt"
+    },
+    {
+      "id": "ls7cxgbp",
+      "from": "nmn0z0nt",
+      "to": "n7yaoyts"
+    },
+    {
+      "id": "l2wepe4b",
+      "from": "no1h5fiv",
+      "to": "n7yaoyts",
+      "propertyType": "string",
+      "propertyName": "skinName"
+    },
+    {
+      "id": "l4it1l6t",
+      "from": "njpv296w",
+      "to": "nafzlx51",
+      "propertyType": "T",
+      "propertyName": "a",
+      "sourceOutputName": "Symbol"
+    },
+    {
+      "id": "lgami5ix",
+      "from": "nafzlx51",
+      "to": "no1h5fiv",
+      "propertyType": "T",
+      "propertyName": "value"
+    },
+    {
+      "id": "lgn24dsm",
+      "from": "nltcs3cr",
+      "to": "npo6h8r7"
+    },
+    {
+      "id": "lzfikg94",
+      "from": "nyfqvsq8",
+      "to": "nltcs3cr",
+      "outIdx": 1
+    },
+    {
+      "id": "lvqh25ni",
+      "from": "no1h5fiv",
+      "to": "npo6h8r7",
+      "propertyType": "string",
+      "propertyName": "skinName"
+    },
+    {
+      "id": "lajjmj1c",
+      "from": "n9w52zig",
+      "to": "nklccsx6"
+    },
+    {
+      "id": "lhssv6q6",
+      "from": "no1h5fiv",
+      "to": "nklccsx6",
+      "propertyType": "string",
+      "propertyName": "skinName"
+    },
+    {
+      "id": "liloth1x",
+      "from": "nyfqvsq8",
+      "to": "n9w52zig",
+      "outIdx": 2
+    },
+    {
+      "id": "lviwak0l",
+      "from": "n7yaoyts",
+      "to": "nnsfuvmg"
+    },
+    {
+      "id": "lyegpyx7",
+      "from": "npo6h8r7",
+      "to": "nzjd9c5f"
+    },
+    {
+      "id": "lwwmzqwc",
+      "from": "nklccsx6",
+      "to": "nq5v3tts"
+    },
+    {
+      "id": "llg01vsp",
+      "from": "nw34zng2",
+      "to": "n4bfvkch",
+      "propertyType": "T",
+      "propertyName": "value"
+    },
+    {
+      "id": "lxzndny6",
+      "from": "n4bfvkch",
+      "to": "nlbirw7n",
+      "propertyType": "string",
+      "propertyName": "b"
+    },
+    {
+      "id": "l1faddla",
+      "from": "nlbirw7n",
+      "to": "nnsfuvmg",
+      "propertyType": "string",
+      "propertyName": "value"
+    },
+    {
+      "id": "lpbmkj85",
+      "from": "nlbirw7n",
+      "to": "nzjd9c5f",
+      "propertyType": "string",
+      "propertyName": "value"
+    },
+    {
+      "id": "loobxuzj",
+      "from": "nlbirw7n",
+      "to": "nq5v3tts",
       "propertyType": "string",
       "propertyName": "value"
     }

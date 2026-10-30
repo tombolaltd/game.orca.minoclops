@@ -1643,8 +1643,8 @@
             {
               "id": "ne44jxmi",
               "title": "Exit",
-              "x": 2234.7455234458052,
-              "y": 172.73008759413116,
+              "x": 3270.2104468182683,
+              "y": 193.36868072408797,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -1678,6 +1678,96 @@
                 },
                 "value": "0p"
               }
+            },
+            {
+              "id": "n514tmeq",
+              "title": "setNodeVisible",
+              "x": 2272.96789475231,
+              "y": 175.26981099630075,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296072486_udhkkhjds",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nb6juyd0",
+              "title": "setNodeVisible",
+              "x": 2609.9810048049676,
+              "y": 190.21703917214796,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296220293_41gc6usix",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nypjb7le",
+              "title": "setNodeVisible",
+              "x": 2932.1164870087937,
+              "y": 191.0034909517653,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "visible",
+                  "type": "bool",
+                  "default": true
+                }
+              ],
+              "propertyValues": {
+                "visible": false,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296223016_0wj250trj",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
@@ -1685,11 +1775,6 @@
               "id": "lrwf1zxw",
               "from": "nralbraw",
               "to": "nbnrpbnt"
-            },
-            {
-              "id": "ldzbfbid",
-              "from": "nbnrpbnt",
-              "to": "ne44jxmi"
             },
             {
               "id": "lt23mss8",
@@ -1700,6 +1785,26 @@
               "id": "ls1abdwd",
               "from": "nocvfvec",
               "to": "nralbraw"
+            },
+            {
+              "id": "leloaxgd",
+              "from": "n514tmeq",
+              "to": "nb6juyd0"
+            },
+            {
+              "id": "laylbsdq",
+              "from": "nbnrpbnt",
+              "to": "n514tmeq"
+            },
+            {
+              "id": "lzti1eov",
+              "from": "nb6juyd0",
+              "to": "nypjb7le"
+            },
+            {
+              "id": "le1h47ab",
+              "from": "nypjb7le",
+              "to": "ne44jxmi"
             }
           ],
           "groups": []
@@ -2422,9 +2527,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -810.5819061718448,
-      "panY": 59.585741058446786,
-      "scale": 0.6531962197672646
+      "panX": -1033.7830089355098,
+      "panY": 95.87093749950276,
+      "scale": 0.7188445525883796
     }
   }
 }
