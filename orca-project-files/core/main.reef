@@ -401,7 +401,7 @@
                         ],
                         "customProperties": {},
                         "locked": false,
-                        "expanded": false,
+                        "expanded": true,
                         "dontDestroyOnLoad": false,
                         "rectTransform": null
                       },
@@ -525,7 +525,7 @@
                     ],
                     "customProperties": {},
                     "locked": false,
-                    "expanded": false,
+                    "expanded": true,
                     "dontDestroyOnLoad": false,
                     "responsiveScaler": null,
                     "layoutManager": null,
@@ -650,8 +650,9 @@
                     ],
                     "customProperties": {},
                     "locked": false,
-                    "expanded": true,
-                    "dontDestroyOnLoad": false
+                    "expanded": false,
+                    "dontDestroyOnLoad": false,
+                    "rectTransform": null
                   },
                   {
                     "id": "node_1791297984204_qg9p9detx",
@@ -678,7 +679,7 @@
                     "expanded": false,
                     "skeleton": "assets/reel/reelForeground.json",
                     "atlas": "assets/reel/reel.atlas",
-                    "animation": "idleBase",
+                    "animation": "",
                     "playOnLoad": true,
                     "loop": true,
                     "skin": "default",
@@ -1610,10 +1611,10 @@
                 },
                 "node_ss_hud": {
                   "transform": {
-                    "y": 72.59896104871723,
-                    "x": -109.41761623945649,
-                    "scaleX": 0.7,
-                    "scaleY": 0.7
+                    "y": 50.19897246867565,
+                    "x": -113.25877271438085,
+                    "scaleX": 0.6747421655824404,
+                    "scaleY": 0.6747421655824404
                   }
                 },
                 "node_1791298581468_z4rigcjll": {
@@ -1698,6 +1699,23 @@
                   "transform": {
                     "y": -261.12539299517294,
                     "x": -448.49382815084215
+                  }
+                },
+                "node_1793296072486_udhkkhjds": {
+                  "visible": false
+                },
+                "node_1793296220293_41gc6usix": {
+                  "visible": false
+                },
+                "node_1793296223016_0wj250trj": {
+                  "visible": false
+                },
+                "node_1791297984204_qg9p9detx": {
+                  "transform": {
+                    "y": 48.05987571055765,
+                    "scaleY": 0.7141826004033358,
+                    "x": -86.02552538592116,
+                    "scaleX": 0.8153844994277764
                   }
                 }
               }

@@ -833,12 +833,7 @@
               {
                 "name": "target",
                 "type": "nodeRef",
-                "value": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "value": null
               }
             ]
           },
@@ -849,8 +844,7 @@
             "properties": [
               {
                 "name": "items",
-                "type": "TArray",
-                "sourceNodeId": "n0adjch2"
+                "type": "TArray"
               },
               {
                 "name": "count",
@@ -866,9 +860,7 @@
             "properties": [
               {
                 "name": "target",
-                "type": "nodeRef",
-                "sourceNodeId": "njmpgsgy",
-                "sourceOutputName": "item"
+                "type": "nodeRef"
               },
               {
                 "name": "animationName",
@@ -935,27 +927,6 @@
             "id": "lqzlyzqt",
             "from": "ne3xal1j",
             "to": "nxnpr19r"
-          },
-          {
-            "id": "lksg2a5s",
-            "from": "n0adjch2",
-            "to": "njmpgsgy",
-            "propertyType": "TArray",
-            "propertyName": "items"
-          },
-          {
-            "id": "listk9hj",
-            "from": "njmpgsgy",
-            "to": "nwb5joxm",
-            "propertyType": "nodeRef",
-            "propertyName": "target",
-            "sourceOutputName": "item"
-          },
-          {
-            "id": "l9xqpm8b",
-            "from": "njmpgsgy",
-            "to": "nwb5joxm",
-            "outIdx": 0
           },
           {
             "id": "lsxc45ed",

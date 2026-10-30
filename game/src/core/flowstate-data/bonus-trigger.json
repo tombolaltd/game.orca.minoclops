@@ -251,7 +251,7 @@
         {
           "name": "seconds",
           "type": "float",
-          "value": 5
+          "value": 4
         }
       ]
     },

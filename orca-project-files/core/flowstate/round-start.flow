@@ -1191,12 +1191,7 @@
                 }
               ],
               "propertyValues": {
-                "target": {
-                  "kind": "nodeRef",
-                  "nodeId": "node_ss_reels",
-                  "sceneScope": "core",
-                  "sceneName": "main"
-                }
+                "target": null
               }
             },
             {
@@ -1324,27 +1319,6 @@
               "id": "lqzlyzqt",
               "from": "ne3xal1j",
               "to": "nxnpr19r"
-            },
-            {
-              "id": "lksg2a5s",
-              "from": "n0adjch2",
-              "to": "njmpgsgy",
-              "propertyType": "TArray",
-              "propertyName": "items"
-            },
-            {
-              "id": "listk9hj",
-              "from": "njmpgsgy",
-              "to": "nwb5joxm",
-              "propertyType": "nodeRef",
-              "propertyName": "target",
-              "sourceOutputName": "item"
-            },
-            {
-              "id": "l9xqpm8b",
-              "from": "njmpgsgy",
-              "to": "nwb5joxm",
-              "outIdx": 0
             },
             {
               "id": "lsxc45ed",
@@ -1629,9 +1603,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -74.7180429539203,
-      "panY": 137.47678670594368,
-      "scale": 0.4534844217748248
+      "panX": -19.76650347847692,
+      "panY": -275.9905012788324,
+      "scale": 1.1772787590837805
     }
   }
 }

@@ -101,8 +101,8 @@
             {
               "id": "bonuss_044",
               "title": "getGameModelProperty",
-              "x": 99.5993179880648,
-              "y": 335.84398976982095,
+              "x": 51.35026354179732,
+              "y": 307.9667583119775,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -150,8 +150,8 @@
             {
               "id": "nqof5i54",
               "title": "int",
-              "x": 211.80488741348404,
-              "y": 457.4781939738645,
+              "x": 156.05042449779722,
+              "y": 439.2507734052746,
               "rootType": "properties",
               "color": "#e67e22",
               "icon": "🔢",
@@ -1569,8 +1569,8 @@
         "id": "nma44hip",
         "title": "State",
         "displayName": "Reset labels",
-        "x": -220.73929977248397,
-        "y": 114.53933471510382,
+        "x": -216.77299580573947,
+        "y": 114.53517311257602,
         "isState": true,
         "exitSourceId": "nocvfvec",
         "subgraph": {
@@ -2394,16 +2394,6 @@
         "to": "naqirlvw"
       },
       {
-        "id": "lqpt58tk",
-        "from": "nh466c9z",
-        "to": "nma44hip"
-      },
-      {
-        "id": "lwib2e7g",
-        "from": "nma44hip",
-        "to": "bonuss_037"
-      },
-      {
         "id": "l2n0iqma",
         "from": "naqirlvw",
         "to": "nkybvdkr"
@@ -2417,14 +2407,24 @@
         "id": "l6609wlu",
         "from": "ntrprk5u",
         "to": "bonuss_027"
+      },
+      {
+        "id": "l9x8lsb3",
+        "from": "nh466c9z",
+        "to": "nma44hip"
+      },
+      {
+        "id": "lniiv8bo",
+        "from": "nma44hip",
+        "to": "bonuss_037"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 515.4035337105238,
-      "panY": 121.85235109478018,
-      "scale": 0.7198044439072794
+      "panX": -810.5819061718448,
+      "panY": 59.585741058446786,
+      "scale": 0.6531962197672646
     }
   }
 }
