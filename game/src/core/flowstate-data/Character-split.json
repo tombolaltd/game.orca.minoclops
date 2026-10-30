@@ -13,7 +13,7 @@
       ]
     },
     {
-      "id": "ngnxopfl",
+      "id": "nddy8k0u",
       "title": "playAnimation",
       "rootType": "Action",
       "properties": [
@@ -30,7 +30,7 @@
         {
           "name": "animationName",
           "type": "string",
-          "value": "split/splitOFF"
+          "value": "split/splitSTART"
         },
         {
           "name": "loop",
@@ -45,16 +45,16 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "onComplete"
+          "value": "immediate"
         }
       ]
     }
   ],
   "links": [
     {
-      "id": "ly6gphh1",
+      "id": "lfzigzvl",
       "from": "n1p0g3rz",
-      "to": "ngnxopfl"
+      "to": "nddy8k0u"
     }
   ]
 }

@@ -497,30 +497,7 @@ function buildSymbolTextStyle(slot: NormalizedSymbolTextSlot, family: string): P
   };
 }
 
-/** What a reels root's symbol visual resolver returns for one symbol index. */
-type FlowstateReelsSymbolVisual = { texture: PIXI.Texture; hasSprite: boolean; hasSpine: boolean; skin?: string; spineSkeletonPath?: string; winAnimation?: string; landAnimation?: string; landAnimationEnabled?: boolean; landAnimationLoop?: boolean; symbolScale?: number; drawPriority?: number };
-type FlowstateReelsSymbolVisualResolver = (skinIndex: number) => FlowstateReelsSymbolVisual;
-type FlowstateReelsAnimspriteFrameProvider = (skinIndex: number) => { path: string; frames: PIXI.Texture[] | null; animationSpeed: number } | null;
-
-// Defaults for a view whose service has no resolver (never the case once
-// `buildFlowstateReelsDisplay` has run): render nothing, play nothing.
-const EMPTY_SYMBOL_VISUAL_RESOLVER: FlowstateReelsSymbolVisualResolver = () => ({
-  texture: PIXI.Texture.EMPTY,
-  hasSprite: false,
-  hasSpine: false,
-});
-const NO_ANIMSPRITE_FRAME_PROVIDER: FlowstateReelsAnimspriteFrameProvider = () => null;
-
-class FlowstateInjectedReelService extends GCService {
-  // PER REELS ROOT (one service per `buildFlowstateReelsDisplay`), read by
-  // the symbol views through `_service` — same channel as `__orcaSymbolTexts`.
-  // These used to be `static` on `FlowstateInjectedSymbolView`, so with two
-  // reels nodes in one scene the LAST-built node's tables served BOTH nodes'
-  // symbols (e.g. a hidden overlay board reading the main board's still-empty
-  // spine bakes and showing the grey placeholder square).
-  public __orcaSymbolVisualResolver: FlowstateReelsSymbolVisualResolver = EMPTY_SYMBOL_VISUAL_RESOLVER;
-  public __orcaAnimspriteFrameProvider: FlowstateReelsAnimspriteFrameProvider = NO_ANIMSPRITE_FRAME_PROVIDER;
-}
+class FlowstateInjectedReelService extends GCService {}
 
 // ═══════════════════════════════════════════════════════════════════════════
 // ORCA_TEMP_DIAG — TEMPORARY DIAGNOSTIC INSTRUMENTATION. NOT A FIX.
@@ -723,6 +700,11 @@ function orcaTempDiagOnSettle(view: unknown): void {
 
 
 class FlowstateInjectedSymbolView extends GCSymbolView {
+  private static symbolVisualResolver: (skinIndex: number) => { texture: PIXI.Texture; hasSprite: boolean; hasSpine: boolean; skin?: string; spineSkeletonPath?: string; winAnimation?: string; landAnimation?: string; landAnimationEnabled?: boolean; landAnimationLoop?: boolean; symbolScale?: number; drawPriority?: number } = () => ({
+    texture: PIXI.Texture.EMPTY,
+    hasSprite: false,
+    hasSpine: false,
+  });
   private readonly sprite: PIXI.Sprite;
   private lastRenderableTexture: PIXI.Texture | null = null;
   // Live spin-blur state. While the reel spins fast (speed >= trigger AND
@@ -1011,31 +993,27 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
     holder.scale.set(fit, fit);
   }
 
-  /** THIS view's reels root service (set by the package's `initialiseSymbol`
-   *  before any skin is applied). Null only on a not-yet-initialised view. */
-  private get reelService(): FlowstateInjectedReelService | null {
-    return (this as unknown as { _service?: FlowstateInjectedReelService })._service ?? null;
-  }
-
-  /** Resolve a symbol index against THIS view's own reels root (never another
-   *  reels node in the same scene) — see `FlowstateInjectedReelService`. */
-  private resolveVisualFor(skinIndex: number): FlowstateReelsSymbolVisual {
-    return (this.reelService?.__orcaSymbolVisualResolver ?? EMPTY_SYMBOL_VISUAL_RESOLVER)(skinIndex);
+  public static configureSymbolVisualResolver(resolver: (skinIndex: number) => { texture: PIXI.Texture; hasSprite: boolean; hasSpine: boolean; skin?: string; spineSkeletonPath?: string; winAnimation?: string; landAnimation?: string; landAnimationEnabled?: boolean; landAnimationLoop?: boolean; symbolScale?: number; drawPriority?: number }): void {
+    FlowstateInjectedSymbolView.symbolVisualResolver = resolver;
   }
 
   /**
    * Per-symbol-INDEX animsprite frame provider (sprite / legacy
-   * `animatedSprite` mode) for THIS view's reels root. Installed on the
-   * service by `buildFlowstateReelsDisplay`, which owns the index→frames
-   * registry so every symbol VIEW currently showing a given symbol index
-   * shares ONE decoded frame list.
+   * `animatedSprite` mode). Installed by `buildFlowstateReelsDisplay`, which
+   * owns the index→frames registry so every symbol VIEW currently showing a
+   * given symbol index shares ONE decoded frame list.
    *
    * `frames === null` means "not resolved yet" — the provider kicks the async
    * resolve as a side effect, so `playSymbolAnimation` returns false and the
-   * caller can simply re-fire.
+   * caller can simply re-fire. Same static-resolver convention (and the same
+   * last-built-node-wins caveat) as `symbolVisualResolver` above.
    */
-  private animspriteFramesFor(skinIndex: number): ReturnType<FlowstateReelsAnimspriteFrameProvider> {
-    return (this.reelService?.__orcaAnimspriteFrameProvider ?? NO_ANIMSPRITE_FRAME_PROVIDER)(skinIndex);
+  private static animspriteFrameProvider: (skinIndex: number) => { path: string; frames: PIXI.Texture[] | null; animationSpeed: number } | null = () => null;
+
+  public static configureAnimspriteFrameProvider(
+    provider: (skinIndex: number) => { path: string; frames: PIXI.Texture[] | null; animationSpeed: number } | null,
+  ): void {
+    FlowstateInjectedSymbolView.animspriteFrameProvider = provider;
   }
 
   /**
@@ -1098,11 +1076,6 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
     if (!spine) return;
     spine.visible = true;
     this.sprite.visible = false;
-    // Hide the "no texture" placeholder too, as the land branch of
-    // `applySkin` does — otherwise a cell still on the placeholder shows a
-    // grey square UNDER the revealed spine until `restoreStaticAfterSpine`.
-    const frame = findAncestorReelFrameTransform(this) ?? this.symbolSettings.frameTransfrom;
-    this.drawPlaceholderBackground(frame.width, frame.height, false);
   }
 
   /**
@@ -1176,7 +1149,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
   /**
    * Swap this view to a different symbol INDEX. `symbolData.skin` is the
    * NUMBER index into the node's `symbolEntries[]` (NOT the spine skin
-   * string) — this root's visual resolver normalizes it modulo the entry
+   * string) — the shared visual resolver normalizes it modulo the entry
    * count, so any in-range-ish value resolves.
    */
   public setSymbolIndex(index: number): void {
@@ -1216,7 +1189,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
 
     let animsprite: { path: string; frames: PIXI.Texture[] | null; animationSpeed: number } | null = null;
     try {
-      animsprite = this.animspriteFramesFor(symbolIndex);
+      animsprite = FlowstateInjectedSymbolView.animspriteFrameProvider(symbolIndex);
     } catch (err) {
       console.warn('[FlowState/reels] playSymbolAnimation: animsprite frame provider failed', err);
     }
@@ -1364,9 +1337,9 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
     return Number.isFinite(raw) ? raw : 0;
   }
 
-  private readVisual(): FlowstateReelsSymbolVisual | null {
+  private readVisual(): ReturnType<typeof FlowstateInjectedSymbolView.symbolVisualResolver> | null {
     try {
-      return this.resolveVisualFor(this.resolveSymbolIndex());
+      return FlowstateInjectedSymbolView.symbolVisualResolver(this.resolveSymbolIndex());
     } catch (err) {
       console.warn('[FlowState/reels] playSymbolAnimation: symbol visual resolve failed', err);
       return null;
@@ -1387,7 +1360,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
    * untouched: only the rendered artwork inside the cell changes size.
    */
   private resolveSymbolScale(
-    visual?: FlowstateReelsSymbolVisual | null,
+    visual?: ReturnType<typeof FlowstateInjectedSymbolView.symbolVisualResolver> | null,
   ): number {
     const resolved = visual === undefined ? this.readVisual() : visual;
     return clampSymbolScale(resolved?.symbolScale);
@@ -1583,7 +1556,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
       ? this.symbolData.skin
       : 0;
     const symbolSkin = Number.isFinite(rawSymbolSkin) ? rawSymbolSkin : 0;
-    const visual = this.resolveVisualFor(symbolSkin);
+    const visual = FlowstateInjectedSymbolView.symbolVisualResolver(symbolSkin);
     const texture = this.resolveStaticTexture(visual);
     const parentFrame = findAncestorReelFrameTransform(this);
     const frame = parentFrame ?? this.symbolSettings.frameTransfrom;
@@ -1729,7 +1702,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
    * never enables — and it is immediately superseded by the post-flag call.)
    */
   private holdLiveLandAnimation(
-    visual: FlowstateReelsSymbolVisual,
+    visual: ReturnType<typeof FlowstateInjectedSymbolView.symbolVisualResolver>,
     frame: PIXI.Rectangle,
     showSpine: boolean,
     sameCell: boolean,
@@ -1877,7 +1850,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
   }
 
   private resolveStaticTexture(
-    visual: FlowstateReelsSymbolVisual,
+    visual: ReturnType<typeof FlowstateInjectedSymbolView.symbolVisualResolver>,
   ): PIXI.Texture | null {
     const resolved = visual.texture;
     if (isRenderableTexture(resolved)) return resolved;
@@ -1890,7 +1863,7 @@ class FlowstateInjectedSymbolView extends GCSymbolView {
    * `Spine` is constructed just to answer the question.
    */
   private resolveLandAnimationName(
-    visual: FlowstateReelsSymbolVisual,
+    visual: ReturnType<typeof FlowstateInjectedSymbolView.symbolVisualResolver>,
   ): string | null {
     if (visual.landAnimationEnabled !== true) return null;
     if (!visual.hasSpine || !visual.spineSkeletonPath) return null;
@@ -2332,61 +2305,39 @@ function normalizeReelSpinePath(rawPath: string): string {
     .replace(/^\/+/, '');
 }
 
-// Every reels root waiting on an in-flight load, per normalized path. The
-// LOAD is de-duped by path, but the NOTIFICATION must not be: two reels nodes
-// sharing one skeleton each need their own `onLoaded` (each bakes + re-skins
-// its own symbols), or the second root is never told the data landed.
-const REELS_SPINE_LOAD_CALLBACKS = new Map<string, Set<() => void>>();
-
 // Kick off (once) the scope-aware async load + parse of a reels spine
 // skeleton, populating `REELS_PARSED_SPINE_CACHE` so the sync resolver
-// self-heals a lookup miss. The load is de-duped by normalized path; EVERY
-// caller's `onLoaded` fires after a successful populate so each root's
-// already-stopped reels re-bake and re-read their skin. Returns an
-// unsubscribe (for root teardown before the load settles).
+// self-heals a lookup miss. De-duped by normalized path; `onLoaded` fires
+// after a successful populate so already-stopped reels re-read their skin and
+// the pending-bake retry ticker picks up the newly-cached data.
 function ensureReelSpineDataLoaded(
   rawPath: string,
   loadSpineData: (skeletonPath: string) => Promise<unknown | null>,
   onLoaded?: () => void,
-): () => void {
-  const noop = (): void => { /* nothing registered */ };
+): void {
   const normalized = normalizeReelSpinePath(rawPath);
-  if (!normalized) return noop;
-  if (REELS_PARSED_SPINE_CACHE.has(normalized)) return noop;
-
-  let callbacks = REELS_SPINE_LOAD_CALLBACKS.get(normalized);
-  if (!callbacks) {
-    callbacks = new Set<() => void>();
-    REELS_SPINE_LOAD_CALLBACKS.set(normalized, callbacks);
-  }
-  if (onLoaded) callbacks.add(onLoaded);
-  const unsubscribe = (): void => {
-    if (onLoaded) REELS_SPINE_LOAD_CALLBACKS.get(normalized)?.delete(onLoaded);
-  };
-  if (REELS_SPINE_LOAD_PROMISES.has(normalized)) return unsubscribe;
+  if (!normalized) return;
+  if (REELS_PARSED_SPINE_CACHE.has(normalized)) return;
+  if (REELS_SPINE_LOAD_PROMISES.has(normalized)) return;
 
   const promise = loadSpineData(rawPath)
     .then((data) => {
       REELS_SPINE_LOAD_PROMISES.delete(normalized);
-      const waiting = REELS_SPINE_LOAD_CALLBACKS.get(normalized);
-      REELS_SPINE_LOAD_CALLBACKS.delete(normalized);
       if (data) {
         REELS_PARSED_SPINE_CACHE.set(normalized, data);
-        for (const callback of waiting ?? []) {
-          try { callback(); } catch { /* refresh is best-effort */ }
+        if (onLoaded) {
+          try { onLoaded(); } catch { /* refresh is best-effort */ }
         }
       }
       return data;
     })
     .catch((err) => {
       REELS_SPINE_LOAD_PROMISES.delete(normalized);
-      REELS_SPINE_LOAD_CALLBACKS.delete(normalized);
       console.warn('[FlowState/reels] async spine data load failed', rawPath, err);
       return null;
     });
 
   REELS_SPINE_LOAD_PROMISES.set(normalized, promise);
-  return unsubscribe;
 }
 
 // Mirrors the loader-resource lookup that `SceneManager.resolveSpineData`
@@ -2994,9 +2945,9 @@ export function buildFlowstateReelsDisplay(
     _flowstateReelsGridSize?: { reelCount: number; rowCount: number };
     _flowstateResolveSymbolCell?: (reelIndex: number, rowIndex: number) => FlowstateInjectedSymbolView | null;
     // Runtime symbol DRAW-ORDER override (`methods/generic-reels.ts`
-    // `setSymbolDrawOrder`). PER-ROOT, not static, like the visual resolver
-    // it feeds (hung on this root's reel service), so two reels nodes in one
-    // scene keep independent draw orders.
+    // `setSymbolDrawOrder`). PER-ROOT, not static: the visual resolver is a
+    // `private static` with a last-built-node-wins caveat, so a static handle
+    // would widen that bug across multiple reels nodes in one scene.
     _flowstateSetSymbolDrawOrder?: (order: number[]) => void;
     /** AUTHORED symbol count — the permutation length the methods layer
      *  validates against (NOT the padded `symbolEntries.length`). */
@@ -3134,6 +3085,23 @@ export function buildFlowstateReelsDisplay(
   // case we retry on the shared ticker for a bounded window, then give up
   // (falling back to the authored sprite / empty texture).
   if (isSpineSymbolMode) {
+    // Self-heal spine data from the SCOPE-QUALIFIED URLs so a preload /
+    // registration-key miss (the sync resolver can't reproduce the
+    // scope-qualified AssetManager key) still resolves without a manual
+    // reload. Populates REELS_PARSED_SPINE_CACHE; the pending-bake retry
+    // ticker below and reel-stop `ensureSpine` both read it once the async
+    // load completes. De-duped per distinct skeleton by the loader.
+    if (loadSpineData) {
+      const spineSkeletons = new Set<string>();
+      for (const entry of symbolEntries) {
+        const skeletonPath = (node.sharedSpineAnimation || entry.spineAnimation || '').trim();
+        if (skeletonPath) spineSkeletons.add(skeletonPath);
+      }
+      for (const skeletonPath of spineSkeletons) {
+        ensureReelSpineDataLoaded(skeletonPath, loadSpineData, refreshAllSymbolSkins);
+      }
+    }
+
     const pendingSpineBakes: number[] = [];
     symbolEntries.forEach((entry, index) => {
       const skeletonPath = (node.sharedSpineAnimation || entry.spineAnimation || '').trim();
@@ -3146,55 +3114,25 @@ export function buildFlowstateReelsDisplay(
       }
     });
 
-    // Bake whatever is still pending into THIS root's `textures[]`. Shared by
-    // the async-load callback and the retry ticker; returns whether any bake
-    // resolved (the caller re-skins).
-    const runPendingSpineBakes = (): boolean => {
-      let resolvedAny = false;
-      for (let i = pendingSpineBakes.length - 1; i >= 0; i -= 1) {
-        const index = pendingSpineBakes[i];
-        const entry = symbolEntries[index];
-        const skeletonPath = (node.sharedSpineAnimation || entry.spineAnimation || '').trim();
-        const baked = bakeSpineStaticTexture(skeletonPath, entry.skin ?? null, symbolWidth, symbolHeight);
-        if (baked) {
-          textures[index] = baked;
-          pendingSpineBakes.splice(i, 1);
-          resolvedAny = true;
-        }
-      }
-      return resolvedAny;
-    };
-
-    // Self-heal spine data from the SCOPE-QUALIFIED URLs so a preload /
-    // registration-key miss (the sync resolver can't reproduce the
-    // scope-qualified AssetManager key) still resolves without a manual
-    // reload. Populates REELS_PARSED_SPINE_CACHE; the load is de-duped per
-    // distinct skeleton, but EVERY reels root sharing it is notified and
-    // bakes its own pending symbols BEFORE re-skinning (re-skinning first
-    // would re-read still-EMPTY textures and show the placeholder).
-    if (loadSpineData) {
-      const spineSkeletons = new Set<string>();
-      for (const entry of symbolEntries) {
-        const skeletonPath = (node.sharedSpineAnimation || entry.spineAnimation || '').trim();
-        if (skeletonPath) spineSkeletons.add(skeletonPath);
-      }
-      const onSpineDataLoaded = (): void => {
-        runPendingSpineBakes();
-        refreshAllSymbolSkins();
-      };
-      for (const skeletonPath of spineSkeletons) {
-        const unsubscribe = ensureReelSpineDataLoaded(skeletonPath, loadSpineData, onSpineDataLoaded);
-        root.once('destroyed', unsubscribe);
-      }
-    }
-
     if (pendingSpineBakes.length > 0) {
       const ticker = PIXI.Ticker.shared;
       let framesWaited = 0;
       const maxFrames = 300; // ~5s @60fps before giving up on late spine data.
       const retrySpineBakes = (): void => {
         framesWaited += 1;
-        if (runPendingSpineBakes()) refreshAllSymbolSkins();
+        let resolvedAny = false;
+        for (let i = pendingSpineBakes.length - 1; i >= 0; i -= 1) {
+          const index = pendingSpineBakes[i];
+          const entry = symbolEntries[index];
+          const skeletonPath = (node.sharedSpineAnimation || entry.spineAnimation || '').trim();
+          const baked = bakeSpineStaticTexture(skeletonPath, entry.skin ?? null, symbolWidth, symbolHeight);
+          if (baked) {
+            textures[index] = baked;
+            pendingSpineBakes.splice(i, 1);
+            resolvedAny = true;
+          }
+        }
+        if (resolvedAny) refreshAllSymbolSkins();
         if (pendingSpineBakes.length === 0 || framesWaited >= maxFrames) {
           try { ticker.remove(retrySpineBakes); } catch { /* no-op */ }
         }
@@ -3223,9 +3161,7 @@ export function buildFlowstateReelsDisplay(
     refreshAllSymbolSkins();
   };
 
-  // This root's symbol visual resolver. Installed on THIS root's reel service
-  // (below), never on a static — see `FlowstateInjectedReelService`.
-  const symbolVisualResolver: FlowstateReelsSymbolVisualResolver = (skinIndex: number) => {
+  FlowstateInjectedSymbolView.configureSymbolVisualResolver((skinIndex: number) => {
     if (textures.length === 0) {
       return {
         texture: PIXI.Texture.EMPTY,
@@ -3257,19 +3193,6 @@ export function buildFlowstateReelsDisplay(
     // names the skin applied via `skeleton.setSkinByName`.
     const spineSkeletonPath = (node.sharedSpineAnimation || entry?.spineAnimation || '').trim();
 
-    // Spine-mode safety net: if this symbol's bake hasn't landed in
-    // `textures[]` yet (e.g. a notification raced the retry ticker), try the
-    // bake now. Usually a `SPINE_STATIC_CACHE` hit (another root sharing the
-    // skeleton already baked it); returns null cheaply while the skeleton
-    // data is still loading, in which case nothing changes.
-    if (isSpineSymbolMode && spineSkeletonPath && !isSymbolTextureCandidate(texture)) {
-      const baked = bakeSpineStaticTexture(spineSkeletonPath, entry?.skin ?? null, symbolWidth, symbolHeight);
-      if (baked) {
-        texture = baked;
-        textures[normalizedIndex] = baked;
-      }
-    }
-
     return {
       texture: texture || PIXI.Texture.EMPTY,
       hasSprite: !!entry?.sprite,
@@ -3298,7 +3221,7 @@ export function buildFlowstateReelsDisplay(
       // padded tail clones inherit their source symbol's depth.
       drawPriority: symbolDrawPriorityFor(symbolDrawPriorities, normalizedIndex),
     };
-  };
+  });
 
   // Per-symbol-INDEX animsprite frame registry (sprite / legacy
   // `animatedSprite` mode), backing `FlowstateInjectedSymbolView.playSymbolAnimation`.
@@ -3309,7 +3232,7 @@ export function buildFlowstateReelsDisplay(
   // so every symbol VIEW showing that symbol shares one decoded frame list.
   const animspriteFramesByIndex = new Map<number, { frames: PIXI.Texture[]; animationSpeed: number }>();
   const animspriteFrameRequests = new Set<number>();
-  const animspriteFrameProvider: FlowstateReelsAnimspriteFrameProvider = (skinIndex: number) => {
+  FlowstateInjectedSymbolView.configureAnimspriteFrameProvider((skinIndex: number) => {
     if (!isSpriteSymbolMode || symbolEntries.length === 0) return null;
     const finiteSkinIndex = Number.isFinite(skinIndex) ? skinIndex : 0;
     const normalizedIndex = ((Math.round(finiteSkinIndex) % symbolEntries.length) + symbolEntries.length) % symbolEntries.length;
@@ -3331,14 +3254,9 @@ export function buildFlowstateReelsDisplay(
       frames: resolved ? resolved.frames : null,
       animationSpeed: resolved ? resolved.animationSpeed : 1,
     };
-  };
+  });
 
   const reelService = new FlowstateInjectedReelService();
-  // This root's visual resolver + animsprite frames: hung on the service
-  // BEFORE any reel view exists (the package skins symbols while building
-  // the reels), and read by each view through its own `_service`.
-  reelService.__orcaSymbolVisualResolver = symbolVisualResolver;
-  reelService.__orcaAnimspriteFrameProvider = animspriteFrameProvider;
   // Symbol texts: hung on the service BEFORE any reel view exists, because the
   // views' skin codec reaches the state through `_service`.
   const symbolTextSlots = normalizeSymbolTextSlots(node.symbolTexts);

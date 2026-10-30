@@ -11,7 +11,7 @@
  * Categories:
  * - Core utilities: `debug`, `delay`
  * - Game actions: `actions.{ transform | spine | animatedSprite | video |
- *                            videoSequencer | particles | scratchableItem |
+ *                            videoSequencer | particles | scratchableItem | scrollBar |
  *                            text | cabinet | casinoCabinet | audio | mixer |
  *                            reels | bigwin | scene | animation | jackpots |
  *                            continueRequest | network | scene3d | settings }`
@@ -64,6 +64,7 @@ import { scene } from "./scene";
 import { sceneQuery } from "./scene-query";
 import { scene3d } from "./scene3d";
 import { scratchableItem } from "./scratchable-item";
+import { scrollBar } from "./scroll-bar";
 import { settings } from "./settings";
 import { spine } from "./spine";
 import { string } from "./string";
@@ -91,6 +92,8 @@ const buildActions = () => ({
     particles,
     /** Scratch-card panel control (reset/reveal/enable/brush size/progress). */
     scratchableItem,
+    /** Scroll bar content + thumb position (setScrollBarRange / setScrollBarPosition / getScrollBarPosition). */
+    scrollBar,
     /** Text node content + style control. */
     text,
     /** Generic cabinet/chrome control (visibility, messages, buttons). */

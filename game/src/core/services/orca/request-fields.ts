@@ -68,7 +68,8 @@ export function buildRequestFieldTokens(): OrcaRequestFieldTokens {
     return {
         SKIN: readQueryString('currentSkin') || ACTIVE_SKIN,
         SKIN_FOLDER: ACTIVE_SKIN,
-        SKIN_NAME: ACTIVE_SKIN_NAME,
+        // Escaped so scaffold / Build Clean token substitution cannot rewrite this key.
+        'SKIN\u005FNAME': ACTIVE_SKIN_NAME,
         ENGINE_NAME: readEngineName(),
         LOCALE: readQueryString('locale'),
     };

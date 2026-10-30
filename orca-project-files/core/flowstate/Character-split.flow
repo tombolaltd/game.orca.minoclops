@@ -32,10 +32,10 @@
         ]
       },
       {
-        "id": "ngnxopfl",
+        "id": "nddy8k0u",
         "title": "playAnimation",
-        "x": 739.0072268062979,
-        "y": 50.56682769475219,
+        "x": 737.7308935197188,
+        "y": 90.45189798631378,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -84,30 +84,30 @@
         "propertyValues": {
           "loop": false,
           "trackIndex": 1,
-          "sequenceNodeOn": "onComplete",
+          "sequenceNodeOn": "immediate",
           "target": {
             "kind": "nodeRef",
             "nodeId": "node_1791296555660_uqk9no210",
             "sceneScope": "core",
             "sceneName": "main"
           },
-          "animationName": "split/splitOFF"
+          "animationName": "split/splitSTART"
         }
       }
     ],
     "links": [
       {
-        "id": "ly6gphh1",
+        "id": "lfzigzvl",
         "from": "n1p0g3rz",
-        "to": "ngnxopfl"
+        "to": "nddy8k0u"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -298.42144823472256,
-      "panY": 109.5362183510384,
-      "scale": 0.8188991332653274
+      "panX": 75.51383182700374,
+      "panY": 105.3504517476008,
+      "scale": 0.804290818125202
     }
   }
 }

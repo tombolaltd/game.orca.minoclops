@@ -383,7 +383,8 @@ export abstract class Flowstate {
     private static flowstateEditorHandshake(): void {
         const cleanup = initFlowstateHandshake({
             version: packageConfig.version,
-            gameName: 'GAME_NAME_TITLE_CASE'
+            // The every-open runtime refresh copies this file unsubstituted, so no scaffold token here.
+            gameName: packageConfig.name.replace(/^@[^/]+\//, '')
         });
         window.addEventListener('beforeunload', cleanup);
     }

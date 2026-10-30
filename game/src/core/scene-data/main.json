@@ -853,7 +853,7 @@
               "expanded": false,
               "skeleton": "assets/reel/hotspot.json",
               "atlas": "assets/reel/hotspot.atlas",
-              "animation": "hotspotIDLE",
+              "animation": "hotspotON",
               "playOnLoad": false,
               "loop": true,
               "skin": "default",

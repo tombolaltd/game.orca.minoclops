@@ -174,6 +174,59 @@ import {
     type NormalizedParallax,
 } from './parallax';
 import {
+    BINGO_TICKET_MAX_SEED,
+    bingoTicketBodyRect,
+    bingoTicketCellRadii,
+    bingoTicketCellRect,
+    bingoTicketCellState,
+    bingoTicketDabRadius,
+    bingoTicketGridFromNumbers,
+    bingoTicketHeaderRect,
+    bingoTicketPreview,
+    bingoTicketSize,
+    bingoTicketToGoColor,
+    bingoTicketToGoLabel,
+    bingoTicketToGoRect,
+    normalizeBingoTicket,
+    type BingoTicketRect,
+    type BingoTicketSource,
+    type BingoTicketVisual,
+    type NormalizedBingoTicket,
+} from './bingo-ticket';
+import {
+    bingoTicketHolderClampScroll,
+    bingoTicketHolderDragScroll,
+    bingoTicketHolderMaxScroll,
+    bingoTicketHolderNextChildVisible,
+    bingoTicketHolderOrder,
+    bingoTicketHolderScrollAxis,
+    bingoTicketHolderScrollBarRange,
+    bingoTicketHolderScrollOffset,
+    bingoTicketHolderScrollPitch,
+    bingoTicketHolderSlot,
+    bingoTicketHolderSnapScroll,
+    bingoTicketHolderWheelScroll,
+    bingoTicketHolderViewport,
+    bingoTicketHolderVisibleCount,
+    normalizeBingoTicketHolder,
+    type BingoTicketHolderEntry,
+    type BingoTicketHolderLayoutMode,
+    type BingoTicketHolderPoint,
+    type BingoTicketHolderSize,
+    type NormalizedBingoTicketHolder,
+} from './bingo-ticket-holder';
+import {
+    normalizeScrollBar,
+    scrollBarClampPosition,
+    scrollBarPageFromTrackClick,
+    scrollBarPositionFromPointer,
+    scrollBarShouldShow,
+    scrollBarSize,
+    scrollBarThumbRect,
+    type NormalizedScrollBar,
+    type ScrollBarRect,
+} from './scroll-bar';
+import {
     fitAreaChildAnchorRect,
     normalizeFitAreaMargin,
     normalizeFitAreaSettings,
@@ -354,6 +407,1479 @@ interface OrcaParallaxView {
     data: NormalizedParallax;
     layers: OrcaParallaxLayerView[];
     travel: number;
+}
+
+/**
+ * The runtime handle a built `bingoTicket` node carries as `__orcaBingoTicket`
+ * (and that `getBingoTickets()` lists). Starts on the editor's sample preview;
+ * a host (the bingo template's data binding, a FlowState method, a script)
+ * pushes real data through the setters. Every setter updates the drawing in
+ * place. Inert (every call a no-op) once its node is destroyed.
+ */
+export interface OrcaBingoTicketHandle {
+    readonly nodeId: string;
+    /** Which game ticket feeds this one. Mutable: a data binding reads it on every refresh. */
+    binding: { source: BingoTicketSource; ticketIndex: number; autoBind: boolean };
+    /** The normalised authored config (a copy). */
+    getConfig(): NormalizedBingoTicket;
+    /** rows × cols numbers shown now, 0 = blank (a copy). */
+    getGrid(): number[][];
+    /** rows × cols daubed mask (free cells excluded; a copy). */
+    getMarked(): boolean[][];
+    getWinningRows(): number[];
+    /** The to-go value the badge shows now; null when cleared. */
+    getToGo(): number | null;
+    /** False while the ticket still shows the editor's sample preview. */
+    hasLiveData(): boolean;
+    isDisposed(): boolean;
+    /** A flat list in ticket order (laid out like the editor), or a rows × cols grid (0 = blank). */
+    setTicket(numbers: number[] | number[][]): void;
+    setCalled(values: number[]): void;
+    /** Daubed numbers, or a rows × cols mask. Never animates (see `daub`). */
+    setMarked(values: number[] | boolean[][]): void;
+    /** Daub one cell; `animate` pops the dab from `dab.popScale` to 1 over `dab.popMs`. */
+    daub(row: number, col: number, animate?: boolean): void;
+    setWinningRows(rows: number[]): void;
+    /** null hides the badge. */
+    setToGo(n: number | null): void;
+    /** Blank grid, nothing called / daubed / winning, badge hidden. */
+    clear(): void;
+    /** Rebuild every display object from the config, keeping the state. */
+    redraw(): void;
+}
+
+/** One live `bingoTicket` node, as listed by `SceneManager.getBingoTickets()`. */
+export interface OrcaBingoTicketEntry {
+    id: string;
+    displayObject: PixiContainer;
+    handle: OrcaBingoTicketHandle;
+}
+
+/** One copy a `bingoTicketHolder` made: game ticket `ticketIndex`, drawn by `displayObject` (the copy's slot). */
+export interface OrcaBingoTicketHolderCopy {
+    ticketIndex: number;
+    displayObject: PixiContainer;
+}
+
+/**
+ * The runtime handle a built `bingoTicketHolder` node carries as
+ * `__orcaBingoTicketHolder` (and that `getBingoTicketHolders()` lists). Scroll
+ * positions are whole slots (rows, for a grid), clamped by the twin. Inert
+ * (every call a no-op, getters empty) once its node is destroyed.
+ */
+export interface OrcaBingoTicketHolderHandle {
+    readonly nodeId: string;
+    /** The normalised authored config (a copy; `ticketTemplate` is not part of it). */
+    getConfig(): NormalizedBingoTicketHolder;
+    /** The `ticketIndex` shown in each slot, slot 0 first (visible copies only). */
+    getOrder(): number[];
+    /** Copies showing now (a copy whose ticket is hidden — past the game's count — takes no slot). */
+    getVisibleCount(): number;
+    /**
+     * The viewport's slot count in the current LayoutManager override bucket
+     * (`portraitVisibleCount` in 'portrait' when set, else `visibleCount`;
+     * 0 = every slot shows). Follows the bucket every `drawScene` picks.
+     */
+    getVisibleSlots(): number;
+    getScroll(): number;
+    /** Which game tickets the copies show ('current' | 'next'). */
+    getSource(): BingoTicketSource;
+    /**
+     * Switch every copy to the game's 'current' or 'next' tickets: re-binds each
+     * copy's tickets (autoBind stays on; the bingo binding re-pushes promptly via
+     * `onBingoTicketRebound`), re-applies the `nextChildName` rule and re-sorts.
+     * Any other value is ignored (warned).
+     */
+    setSource(source: BingoTicketSource): void;
+    /** Scroll so slot (row) `index` is the viewport's first; tweens over `reorderMs` when `animate`. */
+    scrollTo(index: number, animate?: boolean): void;
+    scrollBy(delta: number, animate?: boolean): void;
+    /** Re-read every copy's to-go / visibility and re-lay them out now. */
+    refresh(): void;
+    /** Every copy, in ticket order. */
+    getCopies(): OrcaBingoTicketHolderCopy[];
+    isDisposed(): boolean;
+}
+
+/** One live `bingoTicketHolder` node, as listed by `SceneManager.getBingoTicketHolders()`. */
+export interface OrcaBingoTicketHolderEntry {
+    id: string;
+    displayObject: PixiContainer;
+    handle: OrcaBingoTicketHolderHandle;
+}
+
+/** A scroll bar's content, in items: position 0 = the start, `total − visible` = the end. */
+export interface OrcaScrollBarRange {
+    total: number;
+    visible: number;
+    position: number;
+}
+
+/** What `onUserChange` listeners get when the USER moves a scroll bar (thumb drag / track click). */
+export interface OrcaScrollBarUserChange {
+    position: number;
+    /** True while the thumb is being dragged (a linked holder snaps instead of sliding). */
+    dragging: boolean;
+}
+
+/**
+ * The runtime handle a built `scrollBar` node carries as `__orcaScrollBar`
+ * (and that `getScrollBars()` / `getScrollBar(id)` return). Starts on the
+ * node's preview content. Positions are clamped (and stepped) by the
+ * `scroll-bar.ts` twin. Inert (every call a no-op) once its node is destroyed.
+ */
+export interface OrcaScrollBarHandle {
+    readonly nodeId: string;
+    /** The normalised authored config (a copy). */
+    getConfig(): NormalizedScrollBar;
+    /** Content size + (optionally) position in one go; the position keeps its value when omitted. Never fires `onUserChange`. */
+    setRange(total: number, visible: number, position?: number): void;
+    /** Move the thumb (clamped / stepped). Never fires `onUserChange`. */
+    setPosition(position: number): void;
+    getPosition(): number;
+    getRange(): OrcaScrollBarRange;
+    /** Run `fn` when the USER moves the bar (drag / track paging). Returns an unsubscribe. */
+    onUserChange(fn: (change: OrcaScrollBarUserChange) => void): () => void;
+    isDisposed(): boolean;
+}
+
+/** One live `scrollBar` node, as listed by `SceneManager.getScrollBars()`. */
+export interface OrcaScrollBarEntry {
+    id: string;
+    displayObject: PixiContainer;
+    handle: OrcaScrollBarHandle;
+}
+
+/** Every image a scroll bar draws with (unique, non-empty) — same list as the editor's `scrollBarTexturePaths`. */
+function scrollBarTextureRefs(data: NormalizedScrollBar): string[] {
+    return [...new Set([data.track.enabled ? data.track.texture : '', data.thumb.texture].filter(Boolean))];
+}
+
+/** Every image a ticket draws with (unique, non-empty) — same list as the editor's `bingoTicketTexturePaths`. */
+function bingoTicketTextureRefs(data: NormalizedBingoTicket): string[] {
+    const paths = [
+        data.background.enabled ? data.background.texture : '',
+        data.cellStates.blank.texture,
+        data.cellStates.number.texture,
+        data.cellStates.called.texture,
+        data.cellStates.daubed.texture,
+        data.cellStates.winning.texture,
+        data.dab.enabled ? data.dab.texture : '',
+    ];
+    return Array.from(new Set(paths.filter(Boolean)));
+}
+
+function bingoTicketFontRefs(data: NormalizedBingoTicket): string[] {
+    return Array.from(new Set([data.numberStyle.fontFamily, data.header.fontFamily, data.toGo.fontFamily].filter(Boolean)));
+}
+
+/** A rect path with its own radius per corner `[topLeft, topRight, bottomRight, bottomLeft]` — the editor's `cornerRectPath`. */
+function bingoTicketCornerRectPath(g: Pixi.Graphics, r: BingoTicketRect, radii: [number, number, number, number]): Pixi.Graphics {
+    const [tl, tr, br, bl] = radii;
+    if (!tl && !tr && !br && !bl) return g.rect(r.x, r.y, r.width, r.height);
+    const { x, y, width: w, height: h } = r;
+    g.moveTo(x + tl, y);
+    g.lineTo(x + w - tr, y);
+    if (tr) g.arcTo(x + w, y, x + w, y + tr, tr);
+    g.lineTo(x + w, y + h - br);
+    if (br) g.arcTo(x + w, y + h, x + w - br, y + h, br);
+    g.lineTo(x + bl, y + h);
+    if (bl) g.arcTo(x, y + h, x, y + h - bl, bl);
+    g.lineTo(x, y + tl);
+    if (tl) g.arcTo(x, y, x + tl, y, tl);
+    return g.closePath();
+}
+
+/** A surface (body / cell): an image stretched over its rect, else a fill in its colour. */
+interface OrcaBingoSurfaceSlot {
+    container: PixiContainer;
+    sprite: Pixi.Sprite | null;
+    graphics: Pixi.Graphics | null;
+    key: string;
+}
+
+interface OrcaBingoCellView {
+    row: number;
+    col: number;
+    rect: BingoTicketRect;
+    radii: [number, number, number, number];
+    surface: OrcaBingoSurfaceSlot;
+    dab: PixiContainer;
+    label: Pixi.Text;
+}
+
+interface OrcaBingoTicketViewDeps {
+    /** A drawable texture for a bare image ref, resolved at build; null → draw the colour. */
+    texture(path: string): PixiTexture | null;
+    /** The family string a Text uses for an authored font (hashed family for a font file). */
+    font(raw: string): string;
+}
+
+/**
+ * The drawing of one `bingoTicket` node: built once from the config (rects,
+ * radii and colours all from the `bingo-ticket.ts` twin, so it lays out exactly
+ * like the editor canvas), then updated in place as the state changes.
+ */
+class OrcaBingoTicketView implements OrcaBingoTicketHandle {
+    public binding: { source: BingoTicketSource; ticketIndex: number; autoBind: boolean };
+    private grid: number[][];
+    private marked: boolean[][];
+    private called: Set<number> = new Set();
+    private winning: Set<number> = new Set();
+    private toGo: number | null;
+    private live = false;
+    private disposed = false;
+    private readonly free: boolean[][];
+    private cells: OrcaBingoCellView[][] = [];
+    private body: OrcaBingoSurfaceSlot | null = null;
+    private badge: { graphics: Pixi.Graphics; label: Pixi.Text; rect: BingoTicketRect; key: string } | null = null;
+    private texts: Array<{ text: Pixi.Text; raw: string }> = [];
+    private textureListeners: Array<() => void> = [];
+    /** Running dab pops: cell → elapsed ms. */
+    private pops: Map<OrcaBingoCellView, number> = new Map();
+
+    constructor(
+        public readonly nodeId: string,
+        private readonly data: NormalizedBingoTicket,
+        private readonly drawing: PixiContainer,
+        private readonly deps: OrcaBingoTicketViewDeps,
+    ) {
+        this.binding = { source: data.source, ticketIndex: data.ticketIndex, autoBind: data.autoBind };
+        this.free = this.emptyMask();
+        for (const cell of data.freeCells) this.free[cell.row][cell.col] = true;
+        // What the editor showed: the sample numbers, the first previewCalled daubed.
+        const preview = bingoTicketPreview(data);
+        this.grid = preview.grid.map((row) => row.slice());
+        this.marked = preview.daubed.map((row, r) => row.map((daubed, c) => daubed && !this.free[r][c]));
+        this.winning = new Set(preview.winningRows);
+        this.toGo = data.previewToGo;
+        this.build();
+    }
+
+    // ── Handle API ──────────────────────────────────────────────────────────
+
+    public getConfig(): NormalizedBingoTicket { return JSON.parse(JSON.stringify(this.data)) as NormalizedBingoTicket; }
+    public getGrid(): number[][] { return this.grid.map((row) => row.slice()); }
+    public getMarked(): boolean[][] { return this.marked.map((row) => row.slice()); }
+    public getWinningRows(): number[] { return Array.from(this.winning).sort((a, b) => a - b); }
+    public getToGo(): number | null { return this.toGo; }
+    public hasLiveData(): boolean { return this.live; }
+    public isDisposed(): boolean { return this.disposed; }
+
+    public setTicket(numbers: number[] | number[][]): void {
+        if (this.disposed) return;
+        const list: unknown[] = Array.isArray(numbers) ? numbers : [];
+        const next = list.some((entry) => Array.isArray(entry))
+            ? this.gridFromRows(list)
+            : bingoTicketGridFromNumbers(this.data, list.map((v) => Math.floor(Number(v))).filter((v) => Number.isFinite(v)));
+        this.live = true;
+        if (!this.sameGrid(next, this.grid)) {
+            // A different ticket: its marks and wins start over.
+            this.grid = next;
+            this.marked = this.emptyMask();
+            this.winning.clear();
+            this.stopPops();
+        }
+        this.apply();
+    }
+
+    public setCalled(values: number[]): void {
+        if (this.disposed) return;
+        this.live = true;
+        this.called = new Set((Array.isArray(values) ? values : []).map((v) => Math.floor(Number(v))).filter((v) => v > 0));
+        this.apply();
+    }
+
+    public setMarked(values: number[] | boolean[][]): void {
+        if (this.disposed) return;
+        this.live = true;
+        const list: unknown[] = Array.isArray(values) ? values : [];
+        if (list.some((entry) => Array.isArray(entry))) {
+            this.marked = this.grid.map((row, r) => row.map((_, c) => (list[r] as unknown[] | undefined)?.[c] === true));
+        } else {
+            const set = new Set(list.map((v) => Math.floor(Number(v))).filter((v) => v > 0));
+            this.marked = this.grid.map((row) => row.map((value) => value > 0 && set.has(value)));
+        }
+        this.apply();
+    }
+
+    public daub(row: number, col: number, animate = true): void {
+        if (this.disposed) return;
+        const r = Math.trunc(Number(row));
+        const c = Math.trunc(Number(col));
+        if (!(r >= 0 && r < this.data.rows && c >= 0 && c < this.data.cols)) return;
+        this.live = true;
+        this.marked[r][c] = true;
+        const cell = this.cells[r]?.[c];
+        const pop = this.data.dab;
+        if (cell && animate !== false && pop.popMs > 0 && pop.popScale !== 1) {
+            this.pops.set(cell, 0);
+            cell.dab.scale.set(pop.popScale);
+        }
+        this.apply();
+    }
+
+    public setWinningRows(rows: number[]): void {
+        if (this.disposed) return;
+        this.live = true;
+        this.winning = new Set((Array.isArray(rows) ? rows : [])
+            .map((r) => Math.trunc(Number(r)))
+            .filter((r) => r >= 0 && r < this.data.rows));
+        this.apply();
+    }
+
+    public setToGo(n: number | null): void {
+        if (this.disposed) return;
+        this.live = true;
+        const value = n === null || n === undefined ? null : Math.floor(Number(n));
+        this.toGo = value === null || !Number.isFinite(value) ? null : Math.max(0, value);
+        this.apply();
+    }
+
+    public clear(): void {
+        if (this.disposed) return;
+        this.live = true;
+        this.grid = this.emptyGrid();
+        this.marked = this.emptyMask();
+        this.called.clear();
+        this.winning.clear();
+        this.toGo = null;
+        this.stopPops();
+        this.apply();
+    }
+
+    public redraw(): void {
+        if (this.disposed) return;
+        this.build();
+    }
+
+    // ── SceneManager-side ───────────────────────────────────────────────────
+
+    /** Re-apply each Text's family (a font file just loaded). */
+    public refreshFonts(): void {
+        if (this.disposed) return;
+        let cleared = false;
+        for (const { text, raw } of this.texts) {
+            if (text.destroyed) continue;
+            const family = this.deps.font(raw);
+            if (text.style.fontFamily === family) continue;
+            if (!cleared) {
+                // Drop the fallback font's cached metrics before re-measuring.
+                Pixi.CanvasTextMetrics.clearMetrics();
+                cleared = true;
+            }
+            text.style.fontFamily = family;
+        }
+    }
+
+    /** Advance the dab pops. */
+    public tick(deltaMs: number): void {
+        if (this.disposed || this.pops.size === 0) return;
+        const { popMs, popScale } = this.data.dab;
+        for (const [cell, elapsed] of Array.from(this.pops)) {
+            if (cell.dab.destroyed) {
+                this.pops.delete(cell);
+                continue;
+            }
+            const next = elapsed + deltaMs;
+            const k = popMs > 0 ? Math.min(1, next / popMs) : 1;
+            const eased = 1 - (1 - k) * (1 - k);
+            cell.dab.scale.set(popScale + (1 - popScale) * eased);
+            if (k >= 1) {
+                cell.dab.scale.set(1);
+                this.pops.delete(cell);
+            } else {
+                this.pops.set(cell, next);
+            }
+        }
+    }
+
+    public dispose(): void {
+        if (this.disposed) return;
+        this.disposed = true;
+        this.pops.clear();
+        this.detachTextureListeners();
+        this.texts = [];
+        this.cells = [];
+        this.body = null;
+        this.badge = null;
+    }
+
+    // ── Build ───────────────────────────────────────────────────────────────
+
+    private build(): void {
+        const drawing = this.drawing;
+        if (drawing.destroyed) return;
+        this.pops.clear();
+        this.detachTextureListeners();
+        for (const child of drawing.removeChildren()) child.destroy({ children: true });
+        this.texts = [];
+        this.cells = [];
+        this.body = null;
+        this.badge = null;
+        const t = this.data;
+
+        if (t.background.enabled) {
+            this.body = this.makeSurface();
+            const rect = bingoTicketBodyRect(t);
+            const r = Math.min(t.background.radius, rect.width / 2, rect.height / 2);
+            this.paintSurface(this.body, t.background, rect, [r, r, r, r]);
+        }
+
+        if (t.header.enabled) {
+            for (let col = 0; col < t.cols; col += 1) {
+                const rect = bingoTicketHeaderRect(t, col);
+                if (!rect) continue;
+                if (t.header.alpha > 0) {
+                    const g = new Pixi.Graphics();
+                    g.rect(rect.x, rect.y, rect.width, rect.height).fill({ color: t.header.color, alpha: t.header.alpha });
+                    drawing.addChild(g);
+                }
+                const label = this.makeText(t.header.fontFamily, t.header.fontSize, t.header.fill);
+                label.text = t.header.labels[col] ?? '';
+                label.position.set(rect.x + rect.width / 2, rect.y + rect.height / 2);
+            }
+        }
+
+        const dabRadius = bingoTicketDabRadius(t);
+        const dabTexture = t.dab.enabled && t.dab.texture ? this.deps.texture(t.dab.texture) : null;
+        for (let row = 0; row < t.rows; row += 1) {
+            const line: OrcaBingoCellView[] = [];
+            for (let col = 0; col < t.cols; col += 1) {
+                const rect = bingoTicketCellRect(t, row, col);
+                const surface = this.makeSurface();
+                const dab = new Pixi.Container();
+                dab.position.set(rect.x + rect.width / 2, rect.y + rect.height / 2);
+                dab.alpha = t.dab.alpha;
+                dab.visible = false;
+                if (dabTexture) {
+                    const sprite = new Pixi.Sprite(dabTexture);
+                    sprite.anchor.set(0.5);
+                    dab.addChild(sprite);
+                    this.fitSprite(sprite, dabRadius * 2, dabRadius * 2);
+                } else if (dabRadius > 0) {
+                    const g = new Pixi.Graphics();
+                    g.circle(0, 0, dabRadius).fill({ color: t.dab.color, alpha: 1 });
+                    dab.addChild(g);
+                }
+                this.drawing.addChild(dab);
+                const label = this.makeText(t.numberStyle.fontFamily, t.numberStyle.fontSize, t.numberStyle.fill);
+                label.position.set(rect.x + rect.width / 2, rect.y + rect.height / 2 + t.numberStyle.offsetY);
+                line.push({ row, col, rect, radii: bingoTicketCellRadii(t, row, col), surface, dab, label });
+            }
+            this.cells.push(line);
+        }
+
+        const badgeRect = bingoTicketToGoRect(t);
+        if (badgeRect) {
+            const graphics = new Pixi.Graphics();
+            drawing.addChild(graphics);
+            const label = this.makeText(t.toGo.fontFamily, t.toGo.fontSize, t.toGo.fill);
+            label.position.set(badgeRect.x + badgeRect.width / 2, badgeRect.y + badgeRect.height / 2);
+            this.badge = { graphics, label, rect: badgeRect, key: '' };
+        }
+        this.apply();
+    }
+
+    /** Push the state onto the built display objects (only what changed is re-drawn). */
+    private apply(): void {
+        if (this.disposed || this.drawing.destroyed) return;
+        const t = this.data;
+        const dabOn = t.dab.enabled && t.dab.alpha > 0 && bingoTicketDabRadius(t) > 0;
+        for (const line of this.cells) {
+            for (const cell of line) {
+                const value = this.grid[cell.row]?.[cell.col] ?? 0;
+                const isFree = this.free[cell.row][cell.col];
+                const daubed = this.marked[cell.row]?.[cell.col] === true;
+                const state = bingoTicketCellState(t, value, value > 0 && this.called.has(value), daubed, this.winning.has(cell.row), isFree);
+                this.paintSurface(cell.surface, t.cellStates[state], cell.rect, cell.radii);
+                const isMarked = isFree || (daubed && value > 0);
+                const showDab = isMarked && dabOn;
+                if (!showDab && this.pops.delete(cell)) cell.dab.scale.set(1);
+                cell.dab.visible = showDab;
+                const text = isFree ? t.freeLabel : value > 0 ? String(value) : '';
+                if (cell.label.text !== text) cell.label.text = text;
+                const fill = isMarked ? t.numberStyle.daubedFill : t.numberStyle.fill;
+                if (cell.label.style.fill !== fill) cell.label.style.fill = fill;
+            }
+        }
+        const badge = this.badge;
+        if (badge) {
+            const shown = this.toGo !== null;
+            badge.graphics.visible = shown;
+            badge.label.visible = shown;
+            if (shown) {
+                const toGo = this.toGo as number;
+                const color = bingoTicketToGoColor(t, toGo);
+                const key = String(color);
+                if (badge.key !== key) {
+                    badge.key = key;
+                    const r = Math.min(t.toGo.radius, badge.rect.width / 2, badge.rect.height / 2);
+                    badge.graphics.clear();
+                    badge.graphics.roundRect(badge.rect.x, badge.rect.y, badge.rect.width, badge.rect.height, r).fill({ color, alpha: 1 });
+                }
+                const text = bingoTicketToGoLabel(t, toGo);
+                if (badge.label.text !== text) badge.label.text = text;
+            }
+        }
+    }
+
+    private makeSurface(): OrcaBingoSurfaceSlot {
+        const container = new Pixi.Container();
+        this.drawing.addChild(container);
+        return { container, sprite: null, graphics: null, key: '' };
+    }
+
+    private paintSurface(slot: OrcaBingoSurfaceSlot, visual: BingoTicketVisual, rect: BingoTicketRect, radii: [number, number, number, number]): void {
+        const key = `${visual.texture}|${visual.color}|${visual.alpha}`;
+        if (slot.key === key) return;
+        slot.key = key;
+        if (visual.alpha <= 0 || rect.width <= 0 || rect.height <= 0) {
+            slot.container.visible = false;
+            return;
+        }
+        slot.container.visible = true;
+        const texture = visual.texture ? this.deps.texture(visual.texture) : null;
+        if (texture) {
+            if (!slot.sprite) {
+                slot.sprite = new Pixi.Sprite(texture);
+                slot.container.addChild(slot.sprite);
+            } else if (slot.sprite.texture !== texture) {
+                slot.sprite.texture = texture;
+            }
+            slot.sprite.position.set(rect.x, rect.y);
+            slot.sprite.alpha = visual.alpha;
+            slot.sprite.visible = true;
+            this.fitSprite(slot.sprite, rect.width, rect.height);
+            if (slot.graphics) slot.graphics.visible = false;
+            return;
+        }
+        if (!slot.graphics) {
+            slot.graphics = new Pixi.Graphics();
+            slot.container.addChild(slot.graphics);
+        }
+        slot.graphics.clear();
+        bingoTicketCornerRectPath(slot.graphics, rect, radii).fill({ color: visual.color, alpha: visual.alpha });
+        slot.graphics.visible = true;
+        if (slot.sprite) slot.sprite.visible = false;
+    }
+
+    /** Size a sprite to `width` × `height`, re-asserted when an on-demand image lands with its real extent. */
+    private fitSprite(sprite: Pixi.Sprite, width: number, height: number): void {
+        const texture = sprite.texture;
+        const apply = (): void => {
+            if (sprite.destroyed || sprite.texture !== texture) return;
+            sprite.width = width;
+            sprite.height = height;
+        };
+        apply();
+        if (!texture || typeof texture.on !== 'function') return;
+        texture.on('update', apply);
+        this.textureListeners.push(() => {
+            try { texture.off('update', apply); } catch { /* no-op */ }
+        });
+    }
+
+    private detachTextureListeners(): void {
+        for (const detach of this.textureListeners) detach();
+        this.textureListeners = [];
+    }
+
+    private makeText(raw: string, fontSize: number, fill: number): Pixi.Text {
+        const text = new Pixi.Text({
+            text: '',
+            style: { fontFamily: this.deps.font(raw), fontSize, fill, align: 'center', lineHeight: fontSize * 1.05 },
+        });
+        text.anchor.set(0.5);
+        this.drawing.addChild(text);
+        this.texts.push({ text, raw });
+        return text;
+    }
+
+    private stopPops(): void {
+        for (const cell of this.pops.keys()) if (!cell.dab.destroyed) cell.dab.scale.set(1);
+        this.pops.clear();
+    }
+
+    private emptyGrid(): number[][] {
+        return Array.from({ length: this.data.rows }, () => new Array<number>(this.data.cols).fill(0));
+    }
+
+    private emptyMask(): boolean[][] {
+        return Array.from({ length: this.data.rows }, () => new Array<boolean>(this.data.cols).fill(false));
+    }
+
+    private gridFromRows(rows: unknown[]): number[][] {
+        return this.emptyGrid().map((line, r) => line.map((_, c) => {
+            const raw = Array.isArray(rows[r]) ? (rows[r] as unknown[])[c] : 0;
+            const value = Math.floor(Number(raw));
+            return Number.isFinite(value) && value > 0 && !this.free[r][c] ? value : 0;
+        }));
+    }
+
+    private sameGrid(a: number[][], b: number[][]): boolean {
+        return a.length === b.length && a.every((row, r) => row.length === b[r].length && row.every((v, c) => v === b[r][c]));
+    }
+}
+
+// ── Bingo ticket holder ─────────────────────────────────────────────────────
+
+/** The holder's baked ticket prefab root (`ticketTemplate[0]`), or null when absent / malformed. */
+function bingoTicketHolderTemplate(node: OrcaSceneNode): OrcaSceneNode | null {
+    const list = node.ticketTemplate;
+    const root = Array.isArray(list) ? (list[0] as unknown) : null;
+    return root && typeof root === 'object' && typeof (root as OrcaSceneNode).type === 'string' ? (root as OrcaSceneNode) : null;
+}
+
+/**
+ * A node's children for a STATIC data walk (the preload collectors): plus a
+ * ticket holder's baked template, whose copies are built at scene build — so
+ * their images / descriptors / atlases / spines / audio load before first draw.
+ */
+function sceneDataChildren(node: OrcaSceneNode): OrcaSceneNode[] {
+    const children = Array.isArray(node.children) ? node.children : [];
+    const template = node.type === 'bingoTicketHolder' ? bingoTicketHolderTemplate(node) : null;
+    return template ? [...children, template] : children;
+}
+
+/** Every node in a subtree (depth-first, root first) passing `test`. */
+function collectSceneNodes(root: OrcaSceneNode, test: (node: OrcaSceneNode) => boolean, out: OrcaSceneNode[] = []): OrcaSceneNode[] {
+    if (!root || typeof root !== 'object') return out;
+    if (test(root)) out.push(root);
+    for (const child of Array.isArray(root.children) ? root.children : []) collectSceneNodes(child, test, out);
+    return out;
+}
+
+/**
+ * Re-id one holder copy of a ticket template: copy `index` of holder
+ * `holderId`. Every node id becomes `<holderId>::t<index>::<localId>` and every
+ * id the copy carries is remapped the same way — the editor's
+ * `sceneNodeClone.ts` list: `mask.sourceNodeId` (cleared when it leaves the
+ * copy), `ik.chain` and a skinned mesh's `skinning.bones[].id` (cleared), and
+ * the entry keys of `layoutManager.modes[*]`, `advancedLayoutManager.profiles[*]`
+ * and `localizationManager.locales[*]` (dropped). Each `bingoTicket` is bound
+ * to ticket `index` of `source` (autoBind) with a per-copy sample seed — so the
+ * handle is constructed already bound; the root's x / y are zeroed (the slot
+ * places it, as the editor preview does); `dontDestroyOnLoad` is stripped (a
+ * copy lives and dies with its holder). Pure: the template is never written.
+ */
+export function bingoTicketHolderCopyNode(
+    template: OrcaSceneNode,
+    holderId: string,
+    index: number,
+    source: BingoTicketSource,
+): { root: OrcaSceneNode; ids: string[] } | null {
+    let root: OrcaSceneNode;
+    try {
+        root = JSON.parse(JSON.stringify(template)) as OrcaSceneNode;
+    } catch {
+        return null;
+    }
+    if (!root || typeof root !== 'object' || typeof root.type !== 'string') return null;
+    const prefix = `${holderId}::t${index}::`;
+    const idMap = new Map<string, string>();
+    const nodes: OrcaSceneNode[] = [];
+    const reId = (node: OrcaSceneNode): void => {
+        node.children = (Array.isArray(node.children) ? node.children : []).filter((child) => !!child && typeof child === 'object');
+        const local = typeof node.id === 'string' && node.id ? node.id : `#${nodes.length}`;
+        node.id = `${prefix}${local}`;
+        if (!idMap.has(local)) idMap.set(local, node.id);
+        nodes.push(node);
+        for (const child of node.children) reId(child);
+    };
+    reId(root);
+
+    const remapId = (value: unknown): string => (typeof value === 'string' && idMap.get(value)) || '';
+    const rekey = <T>(entries: unknown): Record<string, T> => {
+        const out: Record<string, T> = {};
+        if (!entries || typeof entries !== 'object' || Array.isArray(entries)) return out;
+        for (const [key, entry] of Object.entries(entries as Record<string, T>)) {
+            const id = idMap.get(key);
+            if (id) out[id] = entry;
+        }
+        return out;
+    };
+    const record = (value: unknown): Record<string, unknown> | null =>
+        (value && typeof value === 'object' && !Array.isArray(value) ? (value as Record<string, unknown>) : null);
+
+    for (const node of nodes) {
+        delete node.dontDestroyOnLoad;
+        const mask = record(node.mask);
+        if (mask && typeof mask.sourceNodeId === 'string' && mask.sourceNodeId) {
+            const id = idMap.get(mask.sourceNodeId);
+            if (id) mask.sourceNodeId = id;
+            else delete mask.sourceNodeId;
+        }
+        const ik = record(node.ik);
+        if (ik && Array.isArray(ik.chain)) ik.chain = ik.chain.map(remapId);
+        const skinning = record(node.skinning);
+        if (node.type === 'skinnedMesh' && skinning && Array.isArray(skinning.bones)) {
+            for (const bone of skinning.bones) {
+                const b = record(bone);
+                if (b) b.id = remapId(b.id);
+            }
+        }
+        const modes = record(record(node.layoutManager)?.modes);
+        if (modes) {
+            for (const mode of Object.values(modes)) {
+                const m = record(mode);
+                if (m) m.entries = rekey(m.entries);
+            }
+        }
+        const profiles = record(node.advancedLayoutManager)?.profiles;
+        if (Array.isArray(profiles)) {
+            for (const profile of profiles) {
+                const p = record(profile);
+                if (p) p.entries = rekey(p.entries);
+            }
+        }
+        const locales = record(record(node.localizationManager)?.locales);
+        if (locales) {
+            for (const bucket of Object.values(locales)) {
+                const l = record(bucket);
+                if (l) l.entries = rekey(l.entries);
+            }
+        }
+        // Every ticket in the copy shows this copy's game ticket.
+        if (node.type !== 'bingoTicket') continue;
+        const seed = typeof node.previewSeed === 'number' && Number.isFinite(node.previewSeed) ? node.previewSeed : 1;
+        node.source = source;
+        node.ticketIndex = index;
+        node.autoBind = true;
+        node.previewSeed = ((Math.round(seed) + index * 7919) % BINGO_TICKET_MAX_SEED) || 1;
+    }
+    root.transform = { ...IDENTITY_TRANSFORM, ...(record(root.transform) ?? {}), x: 0, y: 0 } as OrcaTransform;
+    return { root, ids: nodes.map((node) => node.id) };
+}
+
+interface OrcaBingoTicketHolderTween {
+    fromX: number;
+    fromY: number;
+    toX: number;
+    toY: number;
+    elapsed: number;
+    duration: number;
+}
+
+/** One built copy: its slot (positioned by the holder), the copy root inside it, and what the holder reads. */
+interface OrcaBingoTicketHolderCopyView {
+    ticketIndex: number;
+    slot: PixiContainer;
+    root: PixiDisplayObject;
+    /** The re-id'd copy data (the per-draw layout walks descend into it). */
+    node: OrcaSceneNode;
+    /** Every id the copy registered, with what it registered — re-registered when a DDOL holder is rebound. */
+    registered: Array<{ id: string; displayObject: PixiDisplayObject; node: OrcaSceneNode }>;
+    /** The copy's first bingo ticket (sort key + visibility), null when it has none. */
+    ticket: OrcaBingoTicketHandle | null;
+    ticketObject: PixiDisplayObject | null;
+    /** Every bingo ticket in the copy (re-bound by `setSource`). */
+    tickets: OrcaBingoTicketHandle[];
+    /** The `bestChildName` children (never the copy root or its ticket). */
+    best: PixiDisplayObject[];
+    /** The `nextChildName` children (never the copy root or its ticket). */
+    next: PixiDisplayObject[];
+    /** Slot shown in, -1 = hidden. */
+    rank: number;
+    tween: OrcaBingoTicketHolderTween | null;
+}
+
+function easeOutCubic(p: number): number {
+    const q = 1 - Math.min(1, Math.max(0, p));
+    return 1 - q * q * q;
+}
+
+/** A press inside a holder's viewport: where (along the scroll axis, holder-local), the scroll then, and whether it became a drag. */
+interface OrcaBingoTicketHolderDrag {
+    pointerId: number;
+    startAlong: number;
+    startScroll: number;
+    /** Past `dragThreshold`: the copies follow the pointer and the press is no longer a tap. */
+    dragging: boolean;
+    /** The live fractional scroll while dragging. */
+    live: number;
+}
+
+/**
+ * The live behaviour of one `bingoTicketHolder`: orders the copies by their
+ * ticket's to-go (the `bingo-ticket-holder.ts` twin, so it matches the editor),
+ * slides each to its slot, keeps the "best" child on slot 0 only, shows the
+ * "next" child on every copy while the source is 'next' (applied after "best",
+ * so it wins when both name the same child — as the editor preview does) and
+ * scrolls the viewport. Ticked by `SceneManager.update`; generic (no bingo imports) —
+ * a copy is "shown" while its root and its first ticket are visible, so the
+ * bingo binding hiding a ticket past the game's count hides the whole copy.
+ * The viewport (slot count, clip, max scroll) follows `mode`, the LayoutManager
+ * override bucket `drawScene` last picked (`setLayoutMode`). A linked
+ * `scrollBar` (`scrollBarId`, `linkScrollBar`) is pushed the holder's range on
+ * every layout / scroll / count / mode change and scrolls the holder when the
+ * user moves it. With a viewport, `input` (the copies' container, hit-tested
+ * against the viewport rect) takes the gestures: `dragScroll` — a press past
+ * `dragThreshold` px drags the copies live (no longer a tap: `isTapSuppressed`
+ * until the next press; re-sort slides wait for the release), the release
+ * snaps to the nearest slot over `reorderMs`; `wheelScroll` — wheel deltas
+ * accumulate into whole-slot `scrollBy` steps.
+ */
+class OrcaBingoTicketHolderView implements OrcaBingoTicketHolderHandle {
+    /** DOM WheelEvent.deltaMode 1 (lines) → px. */
+    private static readonly WHEEL_LINE_PX = 40;
+    private order: number[] = [];
+    private signature: string | null = null;
+    private scroll = 0;
+    private scrollTween: OrcaBingoTicketHolderTween | null = null;
+    private laidOut = false;
+    private disposed = false;
+    /** The linked `scrollBar` (`scrollBarId`, resolved by the scene manager once the scene is built). */
+    private scrollBar: OrcaScrollBarHandle | null = null;
+    private offScrollBar: (() => void) | null = null;
+    /** The press in progress (drag-to-scroll), null when none. */
+    private drag: OrcaBingoTicketHolderDrag | null = null;
+    /** The last press became a drag: the copies' tap must not fire (cleared by the next press). */
+    private tapSuppressed = false;
+    /** A re-sort landed mid-drag: the copies slide to their slots on release. */
+    private slidesDeferred = false;
+    /** Wheel px not yet worth a whole step (`bingoTicketHolderWheelScroll`). */
+    private wheelAccumulator = 0;
+    private inputAttached = false;
+
+    constructor(
+        public nodeId: string,
+        private readonly data: NormalizedBingoTicketHolder,
+        public readonly root: PixiContainer,
+        private readonly scroller: PixiContainer,
+        public readonly copies: OrcaBingoTicketHolderCopyView[],
+        /** Tells the bingo binding these tickets were re-bound (so it re-pushes now). */
+        private readonly onRebound: (handles: OrcaBingoTicketHandle[]) => void = () => {},
+        /** The LayoutManager override bucket the viewport is sized for. */
+        private mode: BingoTicketHolderLayoutMode = 'landscape',
+        /** (Re)builds the viewport bounds + clip mask for a mode (the scene manager owns the Pixi side). */
+        private readonly applyViewport: (mode: BingoTicketHolderLayoutMode) => void = () => {},
+        /** The interactive copies' container (viewport hit area) that takes drag / wheel input; null = none. */
+        private readonly input: PixiContainer | null = null,
+    ) {
+        this.applyViewport(this.mode);
+        this.layout(this.computeOrder(), false);
+        if (this.input && (this.data.dragScroll || this.data.wheelScroll)) {
+            if (this.data.dragScroll) this.input.on('pointerdown', this.onPointerDown);
+            if (this.data.wheelScroll) this.input.on('wheel', this.onWheel);
+            this.inputAttached = true;
+        }
+    }
+
+    // ── Handle API ──────────────────────────────────────────────────────────
+
+    public getConfig(): NormalizedBingoTicketHolder { return JSON.parse(JSON.stringify(this.data)) as NormalizedBingoTicketHolder; }
+    public getOrder(): number[] { return this.isDisposed() ? [] : this.order.slice(); }
+    public getVisibleCount(): number { return this.isDisposed() ? 0 : this.order.length; }
+    public getVisibleSlots(): number { return bingoTicketHolderVisibleCount(this.data, this.mode); }
+    public getLayoutMode(): BingoTicketHolderLayoutMode { return this.mode; }
+    public getScroll(): number { return this.scroll; }
+    public getSource(): BingoTicketSource { return this.data.source; }
+    public isDisposed(): boolean { return this.disposed || this.root.destroyed; }
+
+    public setSource(source: BingoTicketSource): void {
+        if (this.isDisposed()) return;
+        if (source !== 'current' && source !== 'next') {
+            console.warn(`[SceneManager] Bingo ticket holder: unknown source "${String(source)}" (use 'current' or 'next') — ignored.`);
+            return;
+        }
+        this.data.source = source;
+        const rebound: OrcaBingoTicketHandle[] = [];
+        for (const copy of this.copies) {
+            // Keep the copy's node data in step (a redraw / layout walk reads it).
+            for (const ticketNode of collectSceneNodes(copy.node, (n) => n.type === 'bingoTicket')) ticketNode.source = source;
+            for (const handle of copy.tickets) {
+                if (handle.isDisposed()) continue;
+                handle.binding = { source, ticketIndex: copy.ticketIndex, autoBind: true };
+                rebound.push(handle);
+            }
+        }
+        // Re-sort now (applies the Next rule); the binding's push lands next microtask and the tick re-sorts on the new to-go.
+        this.layout(this.computeOrder(), true);
+        try {
+            this.onRebound(rebound);
+        } catch (err) {
+            console.warn('[SceneManager] bingo ticket holder rebind listener failed', err);
+        }
+    }
+
+    public scrollTo(index: number, animate = true): void {
+        if (this.isDisposed()) return;
+        // An API / bar / wheel scroll wins over a drag in progress (it slides on from where the drag left the copies).
+        this.abortDrag();
+        this.scroll = bingoTicketHolderClampScroll(this.data, this.order.length, Number(index), this.mode);
+        this.placeScroller(animate !== false);
+        this.syncScrollBar();
+    }
+
+    public scrollBy(delta: number, animate = true): void {
+        if (this.isDisposed()) return;
+        const step = Math.round(Number(delta));
+        this.scrollTo(this.scroll + (Number.isFinite(step) ? step : 0), animate);
+    }
+
+    public refresh(): void {
+        if (this.isDisposed()) return;
+        this.layout(this.computeOrder(), true);
+    }
+
+    public getCopies(): OrcaBingoTicketHolderCopy[] {
+        if (this.isDisposed()) return [];
+        return this.copies.map((copy) => ({ ticketIndex: copy.ticketIndex, displayObject: copy.slot }));
+    }
+
+    // ── Scene manager side ──────────────────────────────────────────────────
+
+    /**
+     * The draw's LayoutManager override bucket. When it changes the viewport's
+     * slot count, rebuild the viewport / clip, re-clamp the scroll and re-lay
+     * out — snapped (an orientation change is no time for a slide). Never throws.
+     */
+    public setLayoutMode(mode: BingoTicketHolderLayoutMode): void {
+        if (this.isDisposed() || mode === this.mode) return;
+        const before = bingoTicketHolderVisibleCount(this.data, this.mode);
+        this.mode = mode;
+        if (bingoTicketHolderVisibleCount(this.data, mode) === before) return;
+        this.abortDrag();
+        this.wheelAccumulator = 0;
+        try {
+            this.applyViewport(mode);
+        } catch (err) {
+            console.warn('[SceneManager] bingo ticket holder viewport rebuild failed', err);
+        }
+        // Snap: drop in-flight slides, re-lay out (re-clamps the scroll for the new mode), then place the scroller.
+        this.scrollTween = null;
+        for (const copy of this.copies) copy.tween = null;
+        this.layout(this.computeOrder(), false);
+        this.placeScroller(false);
+        this.syncScrollBar();
+    }
+
+    /** The authored `scrollBarId` ('' = none). */
+    public getScrollBarId(): string { return this.data.scrollBarId; }
+
+    /**
+     * Link (or, with null, unlink) the holder's scroll bar: from now on every
+     * layout / scroll / count / mode change pushes `scrollBarRange()` into it,
+     * and the user moving it scrolls the holder. Relinking the same bar just
+     * re-pushes. Never throws.
+     */
+    public linkScrollBar(bar: OrcaScrollBarHandle | null): void {
+        if (bar && bar === this.scrollBar && !bar.isDisposed()) {
+            this.syncScrollBar();
+            return;
+        }
+        this.unlinkScrollBar();
+        if (!bar || this.isDisposed() || bar.isDisposed()) return;
+        this.scrollBar = bar;
+        try {
+            this.offScrollBar = bar.onUserChange((change) => this.onScrollBarChange(change));
+        } catch (err) {
+            console.warn('[SceneManager] bingo ticket holder could not listen to its scroll bar', err);
+        }
+        this.syncScrollBar();
+    }
+
+    public getLinkedScrollBar(): OrcaScrollBarHandle | null {
+        return this.scrollBar && !this.scrollBar.isDisposed() ? this.scrollBar : null;
+    }
+
+    /**
+     * What the linked bar shows, in the units the holder scrolls by: shown
+     * tickets / visible slots (0 = every slot shows → all of them) — rows of
+     * `columns` for a grid, so the bar's end is the holder's max scroll.
+     */
+    public scrollBarRange(): OrcaScrollBarRange {
+        // The twin's maths — the editor's linked-bar preview uses the same helper.
+        const { total, visible } = bingoTicketHolderScrollBarRange(this.data, this.order.length, this.mode);
+        return { total, visible, position: this.scroll };
+    }
+
+    /** The copies' node data, for the per-draw layout walks. */
+    public copyNodes(): OrcaSceneNode[] {
+        return this.isDisposed() ? [] : this.copies.map((copy) => copy.node);
+    }
+
+    /** Re-sort when a to-go / visibility changed, then advance the slides. Never throws. */
+    public tick(deltaMs: number): void {
+        if (this.isDisposed()) return;
+        const order = this.computeOrder();
+        if (order.join(',') !== this.signature) this.layout(order, true);
+        for (const copy of this.copies) {
+            if (!copy.tween) continue;
+            if (copy.slot.destroyed) {
+                copy.tween = null;
+                continue;
+            }
+            copy.tween = this.advance(copy.tween, deltaMs, (x, y) => copy.slot.position.set(x, y));
+        }
+        if (this.scrollTween && !this.scroller.destroyed) {
+            this.scrollTween = this.advance(this.scrollTween, deltaMs, (x, y) => this.scroller.position.set(x, y));
+        }
+    }
+
+    public dispose(): void {
+        this.disposed = true;
+        this.scrollTween = null;
+        for (const copy of this.copies) copy.tween = null;
+        this.drag = null;
+        this.detachDragListeners();
+        this.detachInput();
+        this.unlinkScrollBar();
+    }
+
+    private detachInput(): void {
+        const input = this.input;
+        if (this.inputAttached && input && !input.destroyed) {
+            input.off('pointerdown', this.onPointerDown);
+            input.off('wheel', this.onWheel);
+        }
+        this.inputAttached = false;
+    }
+
+    /** The last press became a drag-to-scroll: the copy under it must not fire `tapEvent`. */
+    public isTapSuppressed(): boolean { return this.tapSuppressed; }
+
+    /** A drag-to-scroll is moving the copies right now. */
+    public isDragging(): boolean { return this.drag?.dragging === true; }
+
+    // ── Drag / wheel input (on `input`, hit-tested against the viewport) ────
+
+    private maxScroll(): number {
+        return bingoTicketHolderMaxScroll(this.data, this.order.length, this.mode);
+    }
+
+    /** The pointer's position along the scroll axis, in the holder's local space. */
+    private along(e: Pixi.FederatedPointerEvent): number {
+        const local = this.root.toLocal(e.global);
+        return bingoTicketHolderScrollAxis(this.data) === 'x' ? local.x : local.y;
+    }
+
+    /** Where the scroller is drawn now, as a (fractional) scroll — mid-slide included. */
+    private visualScroll(): number {
+        const axis = bingoTicketHolderScrollAxis(this.data);
+        const raw = axis === 'x' ? this.data.layout.pitchX : this.data.layout.pitchY;
+        const pitch = Number.isFinite(raw) && raw !== 0 ? raw : 1;
+        const at = this.scroller.destroyed ? NaN : -(axis === 'x' ? this.scroller.position.x : this.scroller.position.y) / pitch;
+        const max = this.maxScroll();
+        return Number.isFinite(at) ? Math.min(max, Math.max(0, at)) : this.scroll;
+    }
+
+    private readonly onPointerDown = (e: Pixi.FederatedPointerEvent): void => {
+        if (this.drag) return; // a second pointer while one is pressed: ignored
+        this.tapSuppressed = false;
+        if (this.isDisposed() || !this.data.dragScroll) return;
+        if (typeof e.button === 'number' && e.button > 0) return; // primary button / touch / pen only
+        if (this.maxScroll() <= 0) return; // nothing to scroll: a plain tap
+        const startScroll = this.visualScroll();
+        this.drag = { pointerId: e.pointerId, startAlong: this.along(e), startScroll, dragging: false, live: startScroll };
+        const input = this.input;
+        if (!input || input.destroyed) return;
+        input.on('globalpointermove', this.onDragMove);
+        for (const release of ['pointerup', 'pointerupoutside', 'pointercancel'] as const) input.on(release, this.onDragEnd);
+    };
+
+    private readonly onDragMove = (e: Pixi.FederatedPointerEvent): void => {
+        const drag = this.drag;
+        if (!drag || e.pointerId !== drag.pointerId) return;
+        if (this.isDisposed()) {
+            this.abortDrag();
+            return;
+        }
+        const delta = this.along(e) - drag.startAlong;
+        if (!Number.isFinite(delta)) return;
+        if (!drag.dragging) {
+            if (delta === 0 || Math.abs(delta) < this.data.dragThreshold) return;
+            // Now a drag: no tap on release, and the copies follow the pointer (any scroll slide stops).
+            drag.dragging = true;
+            this.tapSuppressed = true;
+            this.scrollTween = null;
+        }
+        const max = this.maxScroll();
+        drag.live = bingoTicketHolderDragScroll(this.data, drag.startScroll, delta, max);
+        const offset = bingoTicketHolderScrollOffset(this.data, drag.live);
+        if (!this.scroller.destroyed) this.scroller.position.set(offset.x, offset.y);
+        const rounded = bingoTicketHolderSnapScroll(drag.live, max);
+        if (rounded !== this.scroll) {
+            this.scroll = rounded;
+            // setRange only — never the bar's user change (no loop back into scrollTo).
+            this.syncScrollBar();
+        }
+    };
+
+    private readonly onDragEnd = (e?: Pixi.FederatedPointerEvent): void => {
+        const drag = this.drag;
+        if (!drag || (e && typeof e.pointerId === 'number' && e.pointerId !== drag.pointerId)) return;
+        this.drag = null;
+        this.detachDragListeners();
+        if (!drag.dragging || this.isDisposed()) return;
+        // Settle on the nearest slot: slide there from where the pointer left the copies.
+        this.scroll = bingoTicketHolderSnapScroll(drag.live, this.maxScroll());
+        this.placeScroller(true);
+        this.flushDeferredSlides();
+        this.syncScrollBar();
+    };
+
+    private readonly onWheel = (e: Pixi.FederatedWheelEvent): void => {
+        if (this.isDisposed() || !this.data.wheelScroll || this.maxScroll() <= 0) return;
+        const dx = Number(e.deltaX) || 0;
+        const dy = Number(e.deltaY) || 0;
+        // A horizontal holder takes a sideways swipe, else the usual vertical wheel.
+        let delta = bingoTicketHolderScrollAxis(this.data) === 'x' && Math.abs(dx) > Math.abs(dy) ? dx : dy;
+        if (e.deltaMode === 1) delta *= OrcaBingoTicketHolderView.WHEEL_LINE_PX;
+        else if (e.deltaMode === 2) delta *= this.viewportLength();
+        // A reversed wheel starts afresh (the twin helper just adds, so drop a carry pointing the other way).
+        if (delta !== 0 && this.wheelAccumulator !== 0 && Math.sign(delta) !== Math.sign(this.wheelAccumulator)) this.wheelAccumulator = 0;
+        const { steps, accumulator } = bingoTicketHolderWheelScroll(this.data, this.wheelAccumulator, delta);
+        this.wheelAccumulator = accumulator;
+        try {
+            // Best effort: Pixi 8 listens to `wheel` passively, so the page may still see it.
+            e.preventDefault();
+        } catch { /* ignore */ }
+        if (steps !== 0) this.scrollBy(steps, true);
+    };
+
+    /** The viewport's length along the scroll axis, in px (a wheel "page"). */
+    private viewportLength(): number {
+        const { visible } = bingoTicketHolderScrollBarRange(this.data, this.order.length, this.mode);
+        return Math.max(1, visible) * bingoTicketHolderScrollPitch(this.data);
+    }
+
+    private detachDragListeners(): void {
+        const input = this.input;
+        if (!input || input.destroyed) return;
+        input.off('globalpointermove', this.onDragMove);
+        for (const release of ['pointerup', 'pointerupoutside', 'pointercancel'] as const) input.off(release, this.onDragEnd);
+    }
+
+    /** Drop a press in progress without snapping (the caller places the scroller); deferred slides run now. */
+    private abortDrag(): void {
+        const drag = this.drag;
+        if (!drag) return;
+        this.drag = null;
+        this.detachDragListeners();
+        if (drag.dragging && !this.isDisposed()) this.flushDeferredSlides();
+    }
+
+    /** The re-sorts that landed mid-drag: slide the copies to their slots now. */
+    private flushDeferredSlides(): void {
+        if (!this.slidesDeferred) return;
+        this.slidesDeferred = false;
+        this.layout(this.computeOrder(), true);
+    }
+
+    private unlinkScrollBar(): void {
+        const off = this.offScrollBar;
+        this.offScrollBar = null;
+        this.scrollBar = null;
+        if (!off) return;
+        try {
+            off();
+        } catch (err) {
+            console.warn('[SceneManager] bingo ticket holder scroll bar unsubscribe failed', err);
+        }
+    }
+
+    /** Push the holder's content into the linked bar (a gone bar is dropped). */
+    private syncScrollBar(): void {
+        const bar = this.scrollBar;
+        if (!bar) return;
+        if (bar.isDisposed() || this.isDisposed()) {
+            this.unlinkScrollBar();
+            return;
+        }
+        const range = this.scrollBarRange();
+        try {
+            bar.setRange(range.total, range.visible, range.position);
+        } catch (err) {
+            console.warn('[SceneManager] bingo ticket holder scroll bar update failed', err);
+        }
+    }
+
+    /** The user moved the bar: scroll to the nearest whole slot (row) — snapped while dragging, else slid over `reorderMs`. */
+    private onScrollBarChange(change: OrcaScrollBarUserChange): void {
+        if (this.isDisposed()) return;
+        const position = Number(change?.position);
+        if (!Number.isFinite(position)) return;
+        // scrollTo re-pushes, so a continuous bar settles on the whole slot the holder shows.
+        this.scrollTo(Math.round(position), change.dragging !== true);
+    }
+
+    private computeOrder(): number[] {
+        const entries: BingoTicketHolderEntry[] = this.copies.map((copy) => {
+            const ticketShown = !copy.ticketObject || (!copy.ticketObject.destroyed && copy.ticketObject.visible);
+            const toGo = copy.ticket && !copy.ticket.isDisposed() ? copy.ticket.getToGo() : null;
+            return {
+                ticketIndex: copy.ticketIndex,
+                toGo: typeof toGo === 'number' ? toGo : -1,
+                visible: !copy.root.destroyed && copy.root.visible && ticketShown,
+            };
+        });
+        return bingoTicketHolderOrder(entries, this.data.sortByToGo);
+    }
+
+    /** Give each shown copy its slot (sliding when `animate` and it was already shown), hide the rest. */
+    private layout(order: number[], animate: boolean): void {
+        const slide = animate && this.laidOut;
+        this.order = order;
+        this.signature = order.join(',');
+        const ranks = new Map<number, number>();
+        order.forEach((ticketIndex, rank) => ranks.set(ticketIndex, rank));
+        const nextShown = bingoTicketHolderNextChildVisible(this.data);
+        // Mid-drag the order / visibility bookkeeping is kept, but already-shown copies wait for the release to slide.
+        const dragging = this.drag?.dragging === true;
+        for (const copy of this.copies) {
+            if (copy.slot.destroyed) continue;
+            const rank = ranks.get(copy.ticketIndex) ?? -1;
+            const wasShown = copy.rank >= 0;
+            copy.rank = rank;
+            copy.slot.visible = rank >= 0;
+            copy.slot.zIndex = rank;
+            if (this.data.bestChildName) {
+                for (const best of copy.best) if (!best.destroyed) best.visible = rank === 0;
+            }
+            // After Best: a child named by both follows the Next rule. Empty name = the prefab's own visibility.
+            if (this.data.nextChildName) {
+                for (const next of copy.next) if (!next.destroyed) next.visible = nextShown;
+            }
+            if (rank < 0) {
+                copy.tween = null;
+                continue;
+            }
+            const at = bingoTicketHolderSlot(this.data, rank);
+            if (dragging && wasShown) {
+                const goalX = copy.tween ? copy.tween.toX : copy.slot.position.x;
+                const goalY = copy.tween ? copy.tween.toY : copy.slot.position.y;
+                if (goalX !== at.x || goalY !== at.y) this.slidesDeferred = true;
+                continue;
+            }
+            copy.tween = this.retarget(copy.slot, copy.tween, at, slide && wasShown);
+        }
+        const clamped = bingoTicketHolderClampScroll(this.data, order.length, this.scroll, this.mode);
+        if (clamped !== this.scroll || !this.laidOut) {
+            this.scroll = clamped;
+            // Mid-drag the pointer owns the scroller (the next move re-clamps to the new max).
+            if (!dragging) this.placeScroller(slide);
+        }
+        this.laidOut = true;
+        this.syncScrollBar();
+    }
+
+    private placeScroller(animate: boolean): void {
+        if (this.scroller.destroyed) return;
+        const offset = bingoTicketHolderScrollOffset(this.data, this.scroll);
+        this.scrollTween = this.retarget(this.scroller, this.scrollTween, offset, animate);
+    }
+
+    /** Jump to `at`, or start a slide there (a slide already heading there is kept). */
+    private retarget(
+        target: PixiContainer,
+        tween: OrcaBingoTicketHolderTween | null,
+        at: BingoTicketHolderPoint,
+        animate: boolean,
+    ): OrcaBingoTicketHolderTween | null {
+        if (!animate || this.data.reorderMs <= 0) {
+            target.position.set(at.x, at.y);
+            return null;
+        }
+        const goalX = tween ? tween.toX : target.position.x;
+        const goalY = tween ? tween.toY : target.position.y;
+        if (goalX === at.x && goalY === at.y) return tween;
+        return { fromX: target.position.x, fromY: target.position.y, toX: at.x, toY: at.y, elapsed: 0, duration: this.data.reorderMs };
+    }
+
+    private advance(
+        tween: OrcaBingoTicketHolderTween,
+        deltaMs: number,
+        write: (x: number, y: number) => void,
+    ): OrcaBingoTicketHolderTween | null {
+        tween.elapsed += Math.max(0, deltaMs);
+        const p = tween.duration > 0 ? tween.elapsed / tween.duration : 1;
+        const e = easeOutCubic(p);
+        write(tween.fromX + (tween.toX - tween.fromX) * e, tween.fromY + (tween.toY - tween.fromY) * e);
+        return p >= 1 ? null : tween;
+    }
+}
+
+/** A finite, non-negative count / position from untrusted input (numeric strings allowed), else null. */
+function scrollBarNumber(value: unknown): number | null {
+    const n = typeof value === 'string' && value.trim() !== '' ? Number(value) : value;
+    return typeof n === 'number' && Number.isFinite(n) ? Math.max(0, n) : null;
+}
+
+/**
+ * The live state of one `scrollBar`: its content (total / visible / position,
+ * in items) and its user-change listeners. Pixi-free — the scene manager
+ * passes `render` (redraws the track / thumb) and `emitChange` (the authored
+ * `changeEvent`). Only `userChange` (drag / track paging) notifies listeners;
+ * `setRange` / `setPosition` never do, so a linked holder pushing its range
+ * cannot loop.
+ */
+class OrcaScrollBarView implements OrcaScrollBarHandle {
+    private total: number;
+    private visible: number;
+    private position: number;
+    private readonly listeners = new Set<(change: OrcaScrollBarUserChange) => void>();
+    private disposed = false;
+
+    constructor(
+        public nodeId: string,
+        private readonly data: NormalizedScrollBar,
+        public readonly root: PixiContainer,
+        private readonly render: (view: OrcaScrollBarView) => void = () => {},
+        private readonly emitChange: (position: number) => void = () => {},
+    ) {
+        this.total = data.previewTotal;
+        this.visible = data.previewVisible;
+        this.position = scrollBarClampPosition(data, this.total, this.visible, data.previewPosition);
+        this.redraw();
+    }
+
+    // ── Handle API ──────────────────────────────────────────────────────────
+
+    public getConfig(): NormalizedScrollBar { return JSON.parse(JSON.stringify(this.data)) as NormalizedScrollBar; }
+    public getPosition(): number { return this.position; }
+    public getRange(): OrcaScrollBarRange { return { total: this.total, visible: this.visible, position: this.position }; }
+    public isDisposed(): boolean { return this.disposed || !!(this.root as { destroyed?: boolean }).destroyed; }
+
+    public setRange(total: number, visible: number, position?: number): void {
+        if (this.isDisposed()) return;
+        const t = scrollBarNumber(total) ?? this.total;
+        const v = scrollBarNumber(visible) ?? this.visible;
+        const p = scrollBarClampPosition(this.data, t, v, scrollBarNumber(position) ?? this.position);
+        if (t === this.total && v === this.visible && p === this.position) return;
+        this.total = t;
+        this.visible = v;
+        this.position = p;
+        this.redraw();
+    }
+
+    public setPosition(position: number): void {
+        if (this.isDisposed()) return;
+        const raw = scrollBarNumber(position);
+        if (raw === null) return;
+        const p = scrollBarClampPosition(this.data, this.total, this.visible, raw);
+        if (p === this.position) return;
+        this.position = p;
+        this.redraw();
+    }
+
+    public onUserChange(fn: (change: OrcaScrollBarUserChange) => void): () => void {
+        if (typeof fn !== 'function' || this.isDisposed()) return () => {};
+        this.listeners.add(fn);
+        return () => { this.listeners.delete(fn); };
+    }
+
+    // ── Scene manager side ──────────────────────────────────────────────────
+
+    public shouldShow(): boolean { return scrollBarShouldShow(this.data, this.total, this.visible); }
+    public thumbRect(): ScrollBarRect { return scrollBarThumbRect(this.data, this.total, this.visible, this.position); }
+    /** The position a drag to `along` (px along the bar, node space) lands on, grabbed `grabOffset` past the thumb's start. */
+    public positionFromPointer(along: number, grabOffset: number): number {
+        return scrollBarPositionFromPointer(this.data, this.total, this.visible, along, grabOffset);
+    }
+    /** The position a track click at `along` pages to. */
+    public pageFromTrackClick(along: number): number {
+        return scrollBarPageFromTrackClick(this.data, this.total, this.visible, this.position, along);
+    }
+
+    /**
+     * The USER moved the bar to `position`: clamp, redraw, tell the
+     * `onUserChange` listeners, then emit the authored `changeEvent`. A no-op
+     * (nothing fires) when the position does not change. Never throws.
+     */
+    public userChange(position: number, dragging: boolean): boolean {
+        if (this.isDisposed()) return false;
+        const raw = scrollBarNumber(position);
+        if (raw === null) return false;
+        const p = scrollBarClampPosition(this.data, this.total, this.visible, raw);
+        if (p === this.position) return false;
+        const before = this.position;
+        this.position = p;
+        this.redraw();
+        for (const listener of Array.from(this.listeners)) {
+            try {
+                listener({ position: p, dragging });
+            } catch (err) {
+                console.warn('[SceneManager] scroll bar listener failed', err);
+            }
+        }
+        // A listener (a linked holder) may have re-pushed a settled position — emit that, and nothing if it settled back.
+        if (this.isDisposed() || this.position === before) return true;
+        try {
+            this.emitChange(this.position);
+        } catch (err) {
+            console.warn('[SceneManager] scroll bar change event failed', err);
+        }
+        return true;
+    }
+
+    public dispose(): void {
+        this.disposed = true;
+        this.listeners.clear();
+    }
+
+    private redraw(): void {
+        try {
+            this.render(this);
+        } catch (err) {
+            console.warn('[SceneManager] scroll bar redraw failed', err);
+        }
+    }
+}
+
+/** One drawn surface of a scroll bar (track / thumb): its image stretched over a rect, else a rounded fill in its colour. */
+interface OrcaScrollBarSurface {
+    draw(rect: ScrollBarRect): void;
+    destroy(): void;
+}
+
+function createScrollBarSurface(
+    layer: PixiContainer,
+    visual: { color: number; alpha: number; radius: number },
+    texture: PixiTexture | null,
+): OrcaScrollBarSurface {
+    let rect: ScrollBarRect = { x: 0, y: 0, width: 0, height: 0 };
+    if (texture) {
+        const sprite = new Pixi.Sprite(texture);
+        sprite.alpha = visual.alpha;
+        layer.addChild(sprite);
+        // Re-asserted when an on-demand image lands with its real extent.
+        const fit = (): void => {
+            if (sprite.destroyed) return;
+            sprite.position.set(rect.x, rect.y);
+            sprite.width = rect.width;
+            sprite.height = rect.height;
+        };
+        if (typeof texture.on === 'function') texture.on('update', fit);
+        return {
+            draw(next) {
+                rect = next;
+                if (sprite.destroyed) return;
+                sprite.visible = visual.alpha > 0 && next.width > 0 && next.height > 0;
+                fit();
+            },
+            destroy() {
+                try { texture.off('update', fit); } catch { /* no-op */ }
+            },
+        };
+    }
+    const graphics = new Pixi.Graphics();
+    layer.addChild(graphics);
+    let key = '';
+    return {
+        draw(next) {
+            const k = `${next.x},${next.y},${next.width},${next.height}`;
+            if (k === key || graphics.destroyed) return;
+            key = k;
+            graphics.clear();
+            if (visual.alpha <= 0 || next.width <= 0 || next.height <= 0) return;
+            const r = Math.min(visual.radius, next.width / 2, next.height / 2);
+            (r > 0 ? graphics.roundRect(next.x, next.y, next.width, next.height, r) : graphics.rect(next.x, next.y, next.width, next.height))
+                .fill({ color: visual.color, alpha: visual.alpha });
+        },
+        destroy() {},
+    };
 }
 
 /** Read by `components/scratchable-item.ts`, which declares the same shape itself (no shared import). */
@@ -831,6 +2357,68 @@ export interface OrcaSceneNode {
     direction?: string;
     layers?: unknown;
 
+    // bingoTicket (`bingo-ticket.ts`; also `rows` / `cols` / `background`,
+    // declared above for other types). Untrusted: always read through
+    // `normalizeBingoTicket`.
+    numberMax?: unknown;
+    cellLayout?: unknown;
+    numbersPerTicket?: unknown;
+    cellWidth?: unknown;
+    cellHeight?: unknown;
+    gapX?: unknown;
+    gapY?: unknown;
+    paddingX?: unknown;
+    paddingY?: unknown;
+    cornerRadius?: unknown;
+    cellStates?: unknown;
+    dab?: unknown;
+    numberStyle?: unknown;
+    header?: unknown;
+    freeCells?: unknown;
+    freeLabel?: unknown;
+    toGo?: unknown;
+    source?: unknown;
+    ticketIndex?: unknown;
+    autoBind?: unknown;
+    previewSeed?: unknown;
+    previewCalled?: unknown;
+    previewToGo?: unknown;
+
+    // bingoTicketHolder (`bingo-ticket-holder.ts`; also `source`, declared
+    // above). Untrusted: always read through `normalizeBingoTicketHolder`.
+    // `ticketTemplate` is the editor-baked ticket prefab (ONE root, full
+    // scene nodes, template-local ids) the holder copies per ticket.
+    ticketPrefab?: unknown;
+    maxTickets?: unknown;
+    layout?: unknown;
+    visibleCount?: unknown;
+    portraitVisibleCount?: unknown;
+    clip?: unknown;
+    sortByToGo?: unknown;
+    reorderMs?: unknown;
+    bestChildName?: unknown;
+    nextChildName?: unknown;
+    tapEvent?: unknown;
+    previewCount?: unknown;
+    previewSort?: unknown;
+    ticketTemplate?: unknown;
+    scrollBarId?: unknown;
+
+    // scrollBar (`scroll-bar.ts`). Untrusted: always read through
+    // `normalizeScrollBar`.
+    orientation?: unknown;
+    length?: unknown;
+    thickness?: unknown;
+    track?: unknown;
+    thumb?: unknown;
+    autoHide?: unknown;
+    interactive?: unknown;
+    step?: unknown;
+    changeEvent?: unknown;
+    previewTotal?: unknown;
+    previewVisible?: unknown;
+    previewPosition?: unknown;
+
     // animatedSprite
     textures?: string[];
     animationSpeed?: number;
@@ -1305,6 +2893,22 @@ class SceneManager {
 
     /** Built parallax backgrounds; a destroyed one is dropped on the next tick, a DDOL survivor keeps scrolling. */
     private parallaxViews: Set<OrcaParallaxView> = new Set();
+    /** Live bingo tickets; an entry leaves when its node is destroyed (scene unload), a DDOL survivor stays. */
+    private bingoTickets: Set<OrcaBingoTicketEntry & { view: OrcaBingoTicketView }> = new Set();
+    private bingoTicketBuiltListeners: Set<(entry: OrcaBingoTicketEntry) => void> = new Set();
+    private bingoTicketReboundListeners: Set<(handles: OrcaBingoTicketHandle[]) => void> = new Set();
+    /** Live bingo ticket holders, keyed by holder node id (a DDOL survivor is re-keyed when rebound). */
+    private bingoTicketHolders: Map<string, OrcaBingoTicketHolderView> = new Map();
+    /**
+     * The LayoutManager override bucket the last `drawScene` built its
+     * override map with (`resolveChatBandLayoutMode` included). Holders size
+     * their viewport for it; a holder built between draws starts on it.
+     */
+    private bingoTicketHolderLayoutMode: OrcaActiveLayoutMode = 'landscape';
+    /** Live scroll bars, keyed by node id (a DDOL survivor is re-keyed when rebound). */
+    private scrollBars: Map<string, OrcaScrollBarView> = new Map();
+    /** `holderId → scrollBarId` links already warned about (missing / not a scroll bar) — once each. */
+    private warnedScrollBarLinks: Set<string> = new Set();
     private afterDrawHooks: Set<() => void> = new Set();
     // Tracks canvas-baked linear-gradient fill textures per Graphics object so
     // they can be destroyed on rebuild / teardown (avoids GPU texture leaks).
@@ -1826,9 +3430,7 @@ class SceneManager {
                         if (normalized) out.add(this.scopeQualifyRef(normalized, origin));
                     }
                 }
-                if (Array.isArray(node.children)) {
-                    for (const child of node.children) visit(child);
-                }
+                for (const child of sceneDataChildren(node)) visit(child);
             };
             for (const node of scene.nodes ?? []) visit(node);
         }
@@ -2261,6 +3863,10 @@ class SceneManager {
             fallback.sortableChildren = true;
             this.currentContainer = fallback;
         }
+
+        // Every holder (this scene's + DDOL survivors) finds its scroll bar now
+        // the whole tree is built — the bar may come after the holder in it.
+        this.linkBingoTicketHolderScrollBars();
 
         // Auto-mount onto the host stage so flow-driven loadScene calls don't
         // orphan the new container. Re-add the DDOL container on top so DDOL
@@ -2809,6 +4415,7 @@ class SceneManager {
             const layoutOverrides = this.buildLayoutOverrideMap(
                 this.currentScene.nodes, activeMode, portraitChatOpen, this.resolveLayoutProfileEnvironment(viewportWidth, viewportHeight),
             );
+            this.applyBingoTicketHolderLayoutMode(activeMode);
             this.currentContainer.position.set(0, 0);
             this.currentContainer.scale.set(1);
             // Reset counter-scale to identity when there's no camera state.
@@ -2860,6 +4467,8 @@ class SceneManager {
         const layoutOverrides = this.buildLayoutOverrideMap(
             this.currentScene.nodes, overrideMode, portraitChatOpen, this.resolveLayoutProfileEnvironment(viewportWidth, viewportHeight),
         );
+        // Holders follow the override bucket (not the frame mode): a landscape chat band is 'landscape'.
+        this.applyBingoTicketHolderLayoutMode(overrideMode);
 
         // Resolve effective camera transform (LayoutManager override merges
         // shallowly over the camera's own transform).
@@ -3295,6 +4904,8 @@ class SceneManager {
         this.solveIkHandles();
         this.updateSkinnedMeshes();
         this.updateParallaxes(deltaSeconds);
+        this.updateBingoTickets(deltaSeconds);
+        this.updateBingoTicketHolders(deltaSeconds);
         if (this.flexLayoutFallback && this.hostStage) {
             this.flexLayoutFallback.update(this.hostStage);
         }
@@ -3544,6 +5155,577 @@ class SceneManager {
                 this.layoutParallax(view);
             } catch (err) {
                 console.warn('[SceneManager] parallax update failed', err);
+            }
+        }
+    }
+
+    /**
+     * A bingo ticket (`bingo-ticket.ts`, the parity twin of the editor's): the
+     * ticket's own drawing in a holder added FIRST and below every scene child
+     * (authored children draw on top), in a root whose bounds are the ticket's
+     * whole size. Starts on the editor's sample preview; the runtime handle
+     * `__orcaBingoTicket` takes real data. Images are resolved here, while
+     * `activeBuildOrigin` is this scene's bucket; font files load like a Text
+     * node's (hashed family) and restyle the ticket when they land.
+     */
+    private buildBingoTicket(node: OrcaSceneNode): PixiContainer {
+        const data = normalizeBingoTicket(node);
+        const size = bingoTicketSize(data);
+        const root = new Pixi.Container();
+        root.sortableChildren = true;
+        const drawing = new Pixi.Container();
+        drawing.label = '__orcaBingoTicket';
+        drawing.boundsArea = new Pixi.Rectangle(0, 0, size.width, size.height);
+        drawing.zIndex = -1;
+        root.addChild(drawing);
+
+        const textures = new Map<string, PixiTexture>();
+        for (const ref of bingoTicketTextureRefs(data)) {
+            try {
+                const texture = this.resolveStaticNodeTextureFromPath(ref);
+                if (texture && texture !== Pixi.Texture.WHITE && texture !== Pixi.Texture.EMPTY) textures.set(ref, texture);
+            } catch (err) {
+                console.warn(`[SceneManager] Bingo ticket "${node.name}": image "${ref}" could not be resolved; its colour is drawn instead.`, err);
+            }
+        }
+        const families = new Map<string, string>();
+        const fontFor = (raw: string): string => {
+            const loaded = families.get(raw);
+            if (loaded) return loaded;
+            const family = this.getSceneFontFamily(raw);
+            // Distinct family list until the face is usable (Pixi caches text by style key).
+            return this.isSceneFontFamilyReady(raw, family) ? family : `${family}, sans-serif`;
+        };
+
+        const view = new OrcaBingoTicketView(node.id, data, drawing, {
+            texture: (ref) => textures.get(ref) ?? null,
+            font: fontFor,
+        });
+        const scope = this.activeBuildOrigin;
+        for (const raw of bingoTicketFontRefs(data)) {
+            const family = this.getSceneFontFamily(raw);
+            if (this.isSceneFontFamilyReady(raw, family)) continue;
+            this.ensureSceneFontLoaded(raw, scope)
+                .then((loaded) => {
+                    if (!loaded || view.isDisposed()) return;
+                    families.set(raw, loaded);
+                    view.refreshFonts();
+                })
+                .catch(() => {
+                    // Keep the fallback list when the font fails to load.
+                });
+        }
+
+        (root as PixiContainer & { __orcaBingoTicket?: OrcaBingoTicketHandle }).__orcaBingoTicket = view;
+        const entry = { id: node.id, displayObject: root, handle: view as OrcaBingoTicketHandle, view };
+        this.bingoTickets.add(entry);
+        root.once('destroyed', () => {
+            view.dispose();
+            this.bingoTickets.delete(entry);
+        });
+        for (const listener of Array.from(this.bingoTicketBuiltListeners)) {
+            try { listener({ id: entry.id, displayObject: root, handle: view }); } catch (err) { console.warn('[SceneManager] bingo ticket listener threw', err); }
+        }
+        return root;
+    }
+
+    /** Advance every live ticket's dab pops and drop the destroyed ones. Never throws. */
+    private updateBingoTickets(deltaSeconds: number): void {
+        if (this.bingoTickets.size === 0) return;
+        for (const entry of Array.from(this.bingoTickets)) {
+            if (entry.displayObject.destroyed || entry.view.isDisposed()) {
+                entry.view.dispose();
+                this.bingoTickets.delete(entry);
+                continue;
+            }
+            try {
+                entry.view.tick(deltaSeconds * 1000);
+            } catch (err) {
+                console.warn('[SceneManager] bingo ticket update failed', err);
+            }
+        }
+    }
+
+    /**
+     * Every live `bingoTicket` node (current scene + DDOL), in build order. The
+     * handle is the node's `__orcaBingoTicket`. Data binding lives outside the
+     * scene manager (the bingo template's `bingo-ticket-binding.ts`).
+     */
+    public getBingoTickets(): OrcaBingoTicketEntry[] {
+        const out: OrcaBingoTicketEntry[] = [];
+        for (const entry of Array.from(this.bingoTickets)) {
+            if (entry.displayObject.destroyed || entry.view.isDisposed()) {
+                this.bingoTickets.delete(entry);
+                continue;
+            }
+            out.push({ id: entry.id, displayObject: entry.displayObject, handle: entry.handle });
+        }
+        return out;
+    }
+
+    /** Run `fn` whenever a `bingoTicket` node is built (before it is attached). Returns an unsubscribe. */
+    public onBingoTicketBuilt(fn: (entry: OrcaBingoTicketEntry) => void): () => void {
+        this.bingoTicketBuiltListeners.add(fn);
+        return () => { this.bingoTicketBuiltListeners.delete(fn); };
+    }
+
+    /**
+     * Run `fn` whenever live `bingoTicket` handles are re-bound to another game
+     * ticket by the runtime (a holder's `setSource`), so a data binding can
+     * re-push them now. Returns an unsubscribe.
+     */
+    public onBingoTicketRebound(fn: (handles: OrcaBingoTicketHandle[]) => void): () => void {
+        this.bingoTicketReboundListeners.add(fn);
+        return () => { this.bingoTicketReboundListeners.delete(fn); };
+    }
+
+    private emitBingoTicketRebound(handles: OrcaBingoTicketHandle[]): void {
+        for (const listener of Array.from(this.bingoTicketReboundListeners)) {
+            try {
+                listener(handles.slice());
+            } catch (err) {
+                console.warn('[SceneManager] bingo ticket rebound listener failed', err);
+            }
+        }
+    }
+
+    /**
+     * A bingo ticket holder (`bingo-ticket-holder.ts`, the parity twin of the
+     * editor's): `maxTickets` copies of the editor-baked ticket prefab
+     * (`ticketTemplate[0]`), each built through the NORMAL `buildNode` path (so
+     * every node type, component, mask, layout / localization manager and
+     * nested `bingoTicket` behaves as authored) after re-id-ing it
+     * (`bingoTicketHolderCopyNode`: ids `<holderId>::t<i>::<localId>`,
+     * registered like any node, so `getDisplayObjectById` finds them). Each copy
+     * sits in a slot container the holder places; the copies live in a content
+     * container added FIRST and below every authored child (the editor
+     * preview's convention), clipped to the viewport when `visibleCount > 0`
+     * and `clip`. `__orcaBingoTicketHolder` is the runtime handle.
+     */
+    private buildBingoTicketHolder(node: OrcaSceneNode): PixiContainer {
+        const data = normalizeBingoTicketHolder(node);
+        const root = new Pixi.Container();
+        root.sortableChildren = true;
+        const content = new Pixi.Container();
+        content.label = '__orcaBingoTicketHolderCopies';
+        content.zIndex = -1;
+        const scroller = new Pixi.Container();
+        scroller.label = '__orcaBingoTicketHolderScroller';
+        scroller.sortableChildren = true;
+        content.addChild(scroller);
+        root.addChild(content);
+
+        const template = bingoTicketHolderTemplate(node);
+        if (!template && data.ticketPrefab) {
+            console.warn(`[SceneManager] Bingo ticket holder "${node.name}": no baked ticket template for "${data.ticketPrefab.path}" — it shows no tickets. Re-save the scene in the editor.`);
+        }
+        const copies: OrcaBingoTicketHolderCopyView[] = [];
+        // A copy's tap fires unless that press became a drag-to-scroll (set once the view exists).
+        let tapGate: () => boolean = () => true;
+        if (template) {
+            for (let index = 0; index < data.maxTickets; index += 1) {
+                const copy = this.buildBingoTicketHolderCopy(node, data, template, index, () => tapGate());
+                if (copy) {
+                    copies.push(copy);
+                    scroller.addChild(copy.slot);
+                }
+            }
+        }
+
+        // Slots / viewport are measured with the template's first bingo ticket, else the first copy's bounds.
+        const templateTicket = template ? collectSceneNodes(template, (n) => n.type === 'bingoTicket')[0] : undefined;
+        let size: BingoTicketHolderSize | null = templateTicket ? bingoTicketSize(normalizeBingoTicket(templateTicket)) : null;
+        if (!size) {
+            const bounds = copies[0] ? copies[0].root.getLocalBounds() : null;
+            size = bounds && bounds.width > 0 && bounds.height > 0 ? { width: bounds.maxX, height: bounds.maxY } : { width: 360, height: 120 };
+        }
+        const viewSize: BingoTicketHolderSize = size;
+        let clip: PixiGraphics | null = null;
+        // Rebuilt by the view whenever the override bucket changes its slot count.
+        const applyViewport = (mode: BingoTicketHolderLayoutMode): void => {
+            if (content.destroyed) return;
+            if (clip) {
+                content.mask = null;
+                if (!clip.destroyed) clip.destroy();
+                clip = null;
+            }
+            const viewport = bingoTicketHolderViewport(data, viewSize, mode);
+            (content as { boundsArea?: Pixi.Rectangle }).boundsArea = viewport
+                ? new Pixi.Rectangle(viewport.x, viewport.y, viewport.width, viewport.height)
+                : undefined;
+            // Drag / wheel scrolling: the copies' container takes input over the viewport rect (the view
+            // only starts a drag / steps the wheel while there is something to scroll). No viewport = no
+            // scrolling: passive again, so only the copies' own taps hit-test.
+            if (data.dragScroll || data.wheelScroll) {
+                content.eventMode = viewport ? 'static' : 'passive';
+                content.hitArea = viewport ? new Pixi.Rectangle(viewport.x, viewport.y, viewport.width, viewport.height) : null;
+            }
+            if (viewport && data.clip) {
+                clip = new Pixi.Graphics().rect(viewport.x, viewport.y, viewport.width, viewport.height).fill({ color: 0xffffff });
+                clip.label = '__orcaBingoTicketHolderClip';
+                content.addChild(clip);
+                content.mask = clip;
+            }
+        };
+
+        const view = new OrcaBingoTicketHolderView(
+            node.id, data, root, scroller, copies, (handles) => this.emitBingoTicketRebound(handles),
+            this.bingoTicketHolderLayoutMode, applyViewport, content,
+        );
+        tapGate = () => !view.isTapSuppressed();
+        (root as PixiContainer & { __orcaBingoTicketHolder?: OrcaBingoTicketHolderHandle }).__orcaBingoTicketHolder = view;
+        this.bingoTicketHolders.set(node.id, view);
+        root.once('destroyed', () => this.disposeBingoTicketHolder(view, content));
+        return root;
+    }
+
+    /** Build copy `index` of a holder's template, or null (warned) when it fails. */
+    private buildBingoTicketHolderCopy(
+        holder: OrcaSceneNode,
+        data: NormalizedBingoTicketHolder,
+        template: OrcaSceneNode,
+        index: number,
+        /** False while the press that ended was a drag-to-scroll (no tap then). */
+        tapAllowed: () => boolean = () => true,
+    ): OrcaBingoTicketHolderCopyView | null {
+        const made = bingoTicketHolderCopyNode(template, holder.id, index, data.source);
+        if (!made) return null;
+        const copyNode = made.root;
+        // The copy's own locale overrides (its LocalizationManager entries now carry the copy's ids).
+        for (const [id, entry] of this.buildLocalizationOverrideMap([copyNode])) this.localizationOverrides.set(id, entry);
+        let built: PixiDisplayObject | null = null;
+        try {
+            built = this.buildNode(copyNode);
+        } catch (err) {
+            console.warn(`[SceneManager] Bingo ticket holder "${holder.name}": ticket copy ${index} failed to build — skipped.`, err);
+        }
+        if (!built) return null;
+
+        const slot = new Pixi.Container();
+        slot.label = `__orcaBingoTicketHolderSlot${index}`;
+        slot.addChild(built);
+
+        const registered: OrcaBingoTicketHolderCopyView['registered'] = [];
+        for (const node of collectSceneNodes(copyNode, () => true)) {
+            const displayObject = this.nodeDisplayObjects.get(node.id);
+            if (displayObject && this.nodeDataById.get(node.id) === node) registered.push({ id: node.id, displayObject, node });
+        }
+        let ticket: OrcaBingoTicketHandle | null = null;
+        let ticketObject: PixiDisplayObject | null = null;
+        const tickets: OrcaBingoTicketHandle[] = [];
+        for (const ticketNode of collectSceneNodes(copyNode, (n) => n.type === 'bingoTicket')) {
+            const obj = this.nodeDisplayObjects.get(ticketNode.id);
+            const handle = (obj as (PixiContainer & { __orcaBingoTicket?: OrcaBingoTicketHandle }) | undefined)?.__orcaBingoTicket;
+            if (!obj || !handle) continue;
+            // Already bound through the copy's data (so the binding's first refresh sees it); kept explicit.
+            handle.binding = { source: data.source, ticketIndex: index, autoBind: true };
+            tickets.push(handle);
+            if (!ticket) {
+                ticket = handle;
+                ticketObject = obj;
+            }
+        }
+        const best: PixiDisplayObject[] = [];
+        if (data.bestChildName) {
+            for (const named of collectSceneNodes(copyNode, (n) => n.name === data.bestChildName)) {
+                const obj = this.nodeDisplayObjects.get(named.id);
+                if (obj && obj !== built && obj !== ticketObject) best.push(obj);
+            }
+        }
+        const next: PixiDisplayObject[] = [];
+        if (data.nextChildName) {
+            for (const named of collectSceneNodes(copyNode, (n) => n.name === data.nextChildName)) {
+                const obj = this.nodeDisplayObjects.get(named.id);
+                if (obj && obj !== built && obj !== ticketObject) next.push(obj);
+            }
+        }
+        if (data.tapEvent) {
+            const eventName = data.tapEvent;
+            slot.eventMode = 'static';
+            slot.cursor = 'pointer';
+            // No stopPropagation: the press must bubble to the copies' container (drag-to-scroll).
+            slot.on('pointertap', () => {
+                if (!tapAllowed()) return;
+                try {
+                    eventEmitter.emit(eventName as any, { ticketIndex: index } as any);
+                } catch (err) {
+                    console.warn(`[SceneManager] Bingo ticket holder "${holder.name}" failed to emit "${eventName}":`, err);
+                }
+            });
+        }
+        return { ticketIndex: index, slot, root: built, node: copyNode, registered, ticket, ticketObject, tickets, best, next, rank: -1, tween: null };
+    }
+
+    /** A holder's copies' node data, appended to its children by the per-draw layout walks. */
+    private liveChildNodes(node: OrcaSceneNode): OrcaSceneNode[] {
+        const children = Array.isArray(node.children) ? node.children : [];
+        if (node.type !== 'bingoTicketHolder') return children;
+        const view = this.bingoTicketHolders.get(node.id);
+        if (!view || view.isDisposed()) return children;
+        return [...children, ...view.copyNodes()];
+    }
+
+    /** A DDOL holder rebound into a new scene: re-key it and re-register its copies (the registry was cleared). */
+    private rebindBingoTicketHolder(reused: PixiDisplayObject, node: OrcaSceneNode): void {
+        const view = (reused as PixiContainer & { __orcaBingoTicketHolder?: OrcaBingoTicketHolderView }).__orcaBingoTicketHolder;
+        if (!view || view.isDisposed()) return;
+        if (this.bingoTicketHolders.get(view.nodeId) === view) this.bingoTicketHolders.delete(view.nodeId);
+        view.nodeId = node.id;
+        this.bingoTicketHolders.set(node.id, view);
+        for (const copy of view.copies) {
+            for (const entry of copy.registered) {
+                if (entry.displayObject.destroyed) continue;
+                this.nodeDisplayObjects.set(entry.id, entry.displayObject);
+                this.nodeDataById.set(entry.id, entry.node);
+                if (entry.node.ik) this.ikHandleIds.add(entry.id);
+                if (entry.node.type === 'skinnedMesh') this.skinnedMeshIds.add(entry.id);
+            }
+        }
+    }
+
+    /** Tear a holder down: its copies (and their bingo ticket registrations) and their registry entries. */
+    private disposeBingoTicketHolder(view: OrcaBingoTicketHolderView, content: PixiContainer): void {
+        view.dispose();
+        for (const [id, live] of Array.from(this.bingoTicketHolders)) {
+            if (live === view) this.bingoTicketHolders.delete(id);
+        }
+        // A holder destroyed without `children` would strand its copies; their own handlers drop their tickets.
+        if (!content.destroyed) content.destroy({ children: true });
+        for (const copy of view.copies) {
+            for (const entry of copy.registered) {
+                if (this.nodeDisplayObjects.get(entry.id) === entry.displayObject) this.nodeDisplayObjects.delete(entry.id);
+                if (this.nodeDataById.get(entry.id) === entry.node) {
+                    this.nodeDataById.delete(entry.id);
+                    this.ikHandleIds.delete(entry.id);
+                    this.skinnedMeshIds.delete(entry.id);
+                    this.localizationOverrides.delete(entry.id);
+                }
+            }
+        }
+    }
+
+    /**
+     * Hand every live holder the draw's LayoutManager override bucket (the
+     * mode `buildLayoutOverrideMap` was just given — never re-derived here).
+     * A holder whose slot count changes rebuilds its clip and re-clamps. Never throws.
+     */
+    private applyBingoTicketHolderLayoutMode(mode: OrcaActiveLayoutMode): void {
+        this.bingoTicketHolderLayoutMode = mode;
+        if (this.bingoTicketHolders.size === 0) return;
+        for (const view of Array.from(this.bingoTicketHolders.values())) {
+            try {
+                view.setLayoutMode(mode);
+            } catch (err) {
+                console.warn('[SceneManager] bingo ticket holder layout mode change failed', err);
+            }
+        }
+    }
+
+    /** Re-sort / slide every live holder and drop the destroyed ones. Never throws. */
+    private updateBingoTicketHolders(deltaSeconds: number): void {
+        if (this.bingoTicketHolders.size === 0) return;
+        for (const [id, view] of Array.from(this.bingoTicketHolders)) {
+            if (view.isDisposed()) {
+                this.bingoTicketHolders.delete(id);
+                continue;
+            }
+            try {
+                view.tick(deltaSeconds * 1000);
+            } catch (err) {
+                console.warn('[SceneManager] bingo ticket holder update failed', err);
+            }
+        }
+    }
+
+    /** Every live `bingoTicketHolder` node (current scene + DDOL). The handle is the node's `__orcaBingoTicketHolder`. */
+    public getBingoTicketHolders(): OrcaBingoTicketHolderEntry[] {
+        const out: OrcaBingoTicketHolderEntry[] = [];
+        for (const [id, view] of Array.from(this.bingoTicketHolders)) {
+            if (view.isDisposed()) {
+                this.bingoTicketHolders.delete(id);
+                continue;
+            }
+            out.push({ id, displayObject: view.root, handle: view });
+        }
+        return out;
+    }
+
+    /**
+     * A scroll bar (`scroll-bar.ts`, the parity twin of the editor's): the
+     * track and the thumb in a drawing holder added FIRST and below every
+     * scene child, whose bounds are the track. Starts on the node's preview
+     * content; `__orcaScrollBar` is the runtime handle (a linked
+     * `bingoTicketHolder` drives it). Images are resolved here, while
+     * `activeBuildOrigin` is this scene's bucket. While `interactive`, the
+     * thumb drags (stage-wide moves while held) and a track click pages; only
+     * those USER moves fire `onUserChange` and the authored `changeEvent`
+     * (`{ position }`, on the same emitter as Button / holder tap events).
+     */
+    private buildScrollBar(node: OrcaSceneNode): PixiContainer {
+        const data = normalizeScrollBar(node);
+        const size = scrollBarSize(data);
+        const horizontal = data.orientation === 'horizontal';
+        const root = new Pixi.Container();
+        root.sortableChildren = true;
+        const drawing = new Pixi.Container();
+        drawing.label = '__orcaScrollBar';
+        drawing.boundsArea = new Pixi.Rectangle(0, 0, size.width, size.height);
+        drawing.zIndex = -1;
+        root.addChild(drawing);
+        const trackLayer = new Pixi.Container();
+        trackLayer.label = '__orcaScrollBarTrack';
+        trackLayer.eventMode = 'none';
+        const thumbLayer = new Pixi.Container();
+        thumbLayer.label = '__orcaScrollBarThumb';
+        drawing.addChild(trackLayer, thumbLayer);
+
+        const texture = (ref: string): PixiTexture | null => {
+            if (!ref) return null;
+            try {
+                const resolved = this.resolveStaticNodeTextureFromPath(ref);
+                if (resolved && resolved !== Pixi.Texture.WHITE && resolved !== Pixi.Texture.EMPTY) return resolved;
+            } catch (err) {
+                console.warn(`[SceneManager] Scroll bar "${node.name}": image "${ref}" could not be resolved; its colour is drawn instead.`, err);
+            }
+            return null;
+        };
+        const track = data.track.enabled ? createScrollBarSurface(trackLayer, data.track, texture(data.track.texture)) : null;
+        const thumb = createScrollBarSurface(thumbLayer, data.thumb, texture(data.thumb.texture));
+
+        let view: OrcaScrollBarView | null = null;
+        let drag: { grab: number } | null = null;
+        const along = (e: Pixi.FederatedPointerEvent): number => {
+            const local = root.toLocal(e.global);
+            return horizontal ? local.x : local.y;
+        };
+        const onDragMove = (e: Pixi.FederatedPointerEvent): void => {
+            if (!drag || !view || view.isDisposed()) return;
+            view.userChange(view.positionFromPointer(along(e), drag.grab), true);
+        };
+        const endDrag = (): void => {
+            if (!drag) return;
+            drag = null;
+            if (!thumbLayer.destroyed) thumbLayer.off('globalpointermove', onDragMove);
+        };
+
+        const render = (bar: OrcaScrollBarView): void => {
+            if (drawing.destroyed) return;
+            const shown = bar.shouldShow();
+            drawing.visible = shown;
+            if (!shown) {
+                endDrag();
+                return;
+            }
+            track?.draw({ x: 0, y: 0, width: size.width, height: size.height });
+            thumb.draw(bar.thumbRect());
+        };
+        const emitChange = (position: number): void => {
+            if (!data.changeEvent) return;
+            try {
+                eventEmitter.emit(data.changeEvent as any, { position } as any);
+            } catch (err) {
+                console.warn(`[SceneManager] Scroll bar "${node.name}" failed to emit "${data.changeEvent}":`, err);
+            }
+        };
+        view = new OrcaScrollBarView(node.id, data, root, render, emitChange);
+        const bar = view;
+
+        if (data.interactive) {
+            drawing.eventMode = 'static';
+            drawing.hitArea = new Pixi.Rectangle(0, 0, size.width, size.height);
+            thumbLayer.eventMode = 'static';
+            thumbLayer.cursor = 'pointer';
+            // Thumb: grab it where it was pressed; moves anywhere on the stage drag it until release.
+            thumbLayer.on('pointerdown', (e: Pixi.FederatedPointerEvent) => {
+                if (bar.isDisposed()) return;
+                e.stopPropagation();
+                const rect = bar.thumbRect();
+                endDrag();
+                drag = { grab: along(e) - (horizontal ? rect.x : rect.y) };
+                thumbLayer.on('globalpointermove', onDragMove);
+            });
+            for (const release of ['pointerup', 'pointerupoutside', 'pointercancel'] as const) thumbLayer.on(release, endDrag);
+            // Track (off the thumb): page toward the press.
+            drawing.on('pointerdown', (e: Pixi.FederatedPointerEvent) => {
+                if (drag || bar.isDisposed()) return;
+                bar.userChange(bar.pageFromTrackClick(along(e)), false);
+            });
+        } else {
+            drawing.eventMode = 'none';
+        }
+
+        (root as PixiContainer & { __orcaScrollBar?: OrcaScrollBarHandle }).__orcaScrollBar = bar;
+        this.scrollBars.set(node.id, bar);
+        root.once('destroyed', () => {
+            endDrag();
+            track?.destroy();
+            thumb.destroy();
+            bar.dispose();
+            for (const [id, live] of Array.from(this.scrollBars)) {
+                if (live === bar) this.scrollBars.delete(id);
+            }
+        });
+        return root;
+    }
+
+    /** A DDOL scroll bar rebound into a new scene: re-key it (the holder link pass runs after the build). */
+    private rebindScrollBar(reused: PixiDisplayObject, node: OrcaSceneNode): void {
+        const view = (reused as PixiContainer & { __orcaScrollBar?: OrcaScrollBarView }).__orcaScrollBar;
+        if (!view || view.isDisposed()) return;
+        if (this.scrollBars.get(view.nodeId) === view) this.scrollBars.delete(view.nodeId);
+        view.nodeId = node.id;
+        this.scrollBars.set(node.id, view);
+    }
+
+    /** Every live `scrollBar` node (current scene + DDOL). The handle is the node's `__orcaScrollBar`. */
+    public getScrollBars(): OrcaScrollBarEntry[] {
+        const out: OrcaScrollBarEntry[] = [];
+        for (const [id, view] of Array.from(this.scrollBars)) {
+            if (view.isDisposed()) {
+                this.scrollBars.delete(id);
+                continue;
+            }
+            out.push({ id, displayObject: view.root, handle: view });
+        }
+        return out;
+    }
+
+    /** The live scroll bar with node id `id`, or null. */
+    public getScrollBar(id: string): OrcaScrollBarHandle | null {
+        const view = this.scrollBars.get(id);
+        if (!view) return null;
+        if (view.isDisposed()) {
+            this.scrollBars.delete(id);
+            return null;
+        }
+        return view;
+    }
+
+    /**
+     * Link every live holder to its `scrollBarId` bar (or unlink it). Run once
+     * the whole scene is built, so a bar later in the tree — or a DDOL
+     * survivor on either side — is found. A missing id, or one that is not a
+     * scroll bar, warns once per holder / id and leaves the holder unlinked.
+     * Never throws.
+     */
+    private linkBingoTicketHolderScrollBars(): void {
+        if (this.bingoTicketHolders.size === 0) return;
+        for (const [id, view] of Array.from(this.bingoTicketHolders)) {
+            if (view.isDisposed()) continue;
+            try {
+                const barId = view.getScrollBarId();
+                const bar = barId ? this.getScrollBar(barId) : null;
+                view.linkScrollBar(bar);
+                if (!barId || bar) continue;
+                const key = `${id}\u0000${barId}`;
+                if (this.warnedScrollBarLinks.has(key)) continue;
+                this.warnedScrollBarLinks.add(key);
+                const other = this.nodeDataById.get(barId);
+                console.warn(other
+                    ? `[SceneManager] Bingo ticket holder "${id}": scrollBarId "${barId}" is a "${other.type}" node, not a scroll bar — no scroll bar linked.`
+                    : `[SceneManager] Bingo ticket holder "${id}": no scroll bar with id "${barId}" in the scene — no scroll bar linked.`);
+            } catch (err) {
+                console.warn('[SceneManager] bingo ticket holder scroll bar link failed', err);
             }
         }
     }
@@ -4215,9 +6397,7 @@ class SceneManager {
                 const entry = nextActiveEntries[node.id];
                 if (entry && typeof entry === 'object') overrides.set(node.id, entry);
             }
-            if (Array.isArray(node.children) && node.children.length > 0) {
-                for (const child of node.children) walk(child, nextActiveEntries);
-            }
+            for (const child of sceneDataChildren(node)) walk(child, nextActiveEntries);
         };
 
         for (const root of roots) walk(root, null);
@@ -4519,6 +6699,8 @@ class SceneManager {
                     this.nodeDataById.set(node.id, node);
                     if (node.ik) this.ikHandleIds.add(node.id);
                     if (node.type === 'skinnedMesh') this.skinnedMeshIds.add(node.id);
+                    if (node.type === 'bingoTicketHolder') this.rebindBingoTicketHolder(reused, node);
+                    if (node.type === 'scrollBar') this.rebindScrollBar(reused, node);
                     this.rescueDdolScratchBehaviour(reused, node);
                     return reused;
                 }
@@ -4822,6 +7004,18 @@ class SceneManager {
             }
             case 'parallax': {
                 displayObject = this.buildParallax(node);
+                break;
+            }
+            case 'bingoTicket': {
+                displayObject = this.buildBingoTicket(node);
+                break;
+            }
+            case 'bingoTicketHolder': {
+                displayObject = this.buildBingoTicketHolder(node);
+                break;
+            }
+            case 'scrollBar': {
+                displayObject = this.buildScrollBar(node);
                 break;
             }
             case 'skinnedMesh': {
@@ -5837,9 +8031,7 @@ class SceneManager {
                 const entry = nextActiveEntries[node.id];
                 if (entry) overrides.set(node.id, entry);
             }
-            if (node.children.length > 0) {
-                for (const child of node.children) walk(child, nextActiveEntries);
-            }
+            for (const child of this.liveChildNodes(node)) walk(child, nextActiveEntries);
         };
 
         for (const root of roots) walk(root, null);
@@ -5943,7 +8135,8 @@ class SceneManager {
                         this.assertLayoutAlpha(displayObject, node.alpha);
                     }
                 }
-                if (node.children.length > 0) walk(node.children);
+                const children = this.liveChildNodes(node);
+                if (children.length > 0) walk(children);
             }
         };
         walk(this.currentScene.nodes);
@@ -6038,8 +8231,9 @@ class SceneManager {
 
                 this.applyResponsiveScalerToNode(node, availableWidth, availableHeight, layoutOverrides?.get(node.id), screenRect);
 
-                if (node.children.length > 0) {
-                    applyRecursive(node.children, nextCanvas);
+                const children = this.liveChildNodes(node);
+                if (children.length > 0) {
+                    applyRecursive(children, nextCanvas);
                 }
             }
         };
@@ -6520,8 +8714,9 @@ class SceneManager {
                     };
                 }
 
-                if (node.children.length > 0) {
-                    walk(node.children, childBox, this.resolveChildAnchorRect(node, childBox, layoutOverrides.get(node.id)));
+                const children = this.liveChildNodes(node);
+                if (children.length > 0) {
+                    walk(children, childBox, this.resolveChildAnchorRect(node, childBox, layoutOverrides.get(node.id)));
                 }
             }
         };
@@ -7110,6 +9305,14 @@ class SceneManager {
             if (node.type === 'parallax' && Array.isArray(node.layers)) {
                 for (const layer of node.layers) addIfDescriptor((layer as { texture?: unknown } | null)?.texture);
             }
+            // So is every bingo ticket image.
+            if (node.type === 'bingoTicket') {
+                for (const ref of bingoTicketTextureRefs(normalizeBingoTicket(node))) addIfDescriptor(ref);
+            }
+            // And a scroll bar's track / thumb images.
+            if (node.type === 'scrollBar') {
+                for (const ref of scrollBarTextureRefs(normalizeScrollBar(node))) addIfDescriptor(ref);
+            }
             if (node.type === 'reels') {
                 const entries: Array<string | undefined> = Array.isArray(node.symbolEntries) && node.symbolEntries.length > 0
                     ? node.symbolEntries.map((e) => e?.sprite)
@@ -7123,9 +9326,7 @@ class SceneManager {
                     }
                 }
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7162,9 +9363,7 @@ class SceneManager {
                     }
                 }
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7212,9 +9411,7 @@ class SceneManager {
             if (mask && mask.enabled !== false && mask.source === 'texture') {
                 add(mask.texture);
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7240,9 +9437,7 @@ class SceneManager {
                 const normalized = this.normalizeSceneAssetPath(brushRef);
                 if (normalized && !paths.includes(normalized)) paths.push(normalized);
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7273,9 +9468,7 @@ class SceneManager {
                     if (normalized && !paths.includes(normalized)) paths.push(normalized);
                 }
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7312,10 +9505,14 @@ class SceneManager {
             if (node.type === 'parallax' && Array.isArray(node.layers)) {
                 for (const layer of node.layers) add((layer as { texture?: unknown } | null)?.texture);
             }
-            add((node.mask as { texture?: unknown } | null | undefined)?.texture);
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
+            if (node.type === 'bingoTicket') {
+                for (const ref of bingoTicketTextureRefs(normalizeBingoTicket(node))) add(ref);
             }
+            if (node.type === 'scrollBar') {
+                for (const ref of scrollBarTextureRefs(normalizeScrollBar(node))) add(ref);
+            }
+            add((node.mask as { texture?: unknown } | null | undefined)?.texture);
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -7353,9 +9550,7 @@ class SceneManager {
                     }
                 }
             }
-            if (Array.isArray(node.children)) {
-                for (const child of node.children) visit(child);
-            }
+            for (const child of sceneDataChildren(node)) visit(child);
         };
 
         if (Array.isArray(nodes)) {
@@ -8614,9 +10809,7 @@ class SceneManager {
                     }
                 }
 
-                if (node.children.length > 0) {
-                    walk(node.children);
-                }
+                walk(sceneDataChildren(node));
             }
         };
 
