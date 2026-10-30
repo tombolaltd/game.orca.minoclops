@@ -1216,8 +1216,7 @@
                   "skin": "1",
                   "winAnimation": "win1",
                   "landAnimation": "land",
-                  "landAnimationEnabled": true,
-                  "landAnimationLoop": true
+                  "landAnimationEnabled": true
                 },
                 {
                   "sprite": "",
