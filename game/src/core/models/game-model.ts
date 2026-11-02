@@ -6,6 +6,7 @@ import { IBonusRound, IOutcome, IScatterResult, ISplitSymbolDetail, IGameMessage
 
 //model
 export class GameModel implements IBaseGameModel {
+    public roundsWithoutWin: number = 0;
     public hotSpotPlayed: boolean = false;
     public static get Instance(): GameModel {
         return this._instance || (this._instance = new GameModel());

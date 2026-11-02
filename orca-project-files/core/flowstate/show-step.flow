@@ -151,7 +151,8 @@
             "name": "b",
             "type": "float"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "ne35vfca",
@@ -192,7 +193,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nrc6dlvf",
@@ -241,7 +243,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nmn2eyvc",
@@ -276,7 +279,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "nx5kazgi",
@@ -323,7 +328,8 @@
             "name": "amount",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "ntr1bb0u",
@@ -338,7 +344,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "njyp4t5x",
@@ -403,7 +411,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       }
     ],
     "links": [

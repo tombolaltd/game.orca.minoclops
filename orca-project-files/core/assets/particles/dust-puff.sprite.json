@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "texture": "assets/particles/dust-puff.png",
+  "processing": {
+    "sourceImagePath": "assets/particles/.orca-sources/dust-puff-1793473188033.cutout.png",
+    "outputTexturePath": "assets/particles/dust-puff.png",
+    "longEdgePx": 0,
+    "sourceLongEdgePx": 576
+  },
+  "alphaClip": {
+    "enabled": false,
+    "matteHex": "#ff00ff",
+    "matteLow": 18,
+    "matteHigh": 70,
+    "edgeShift": 0,
+    "edgeFeather": 0,
+    "autoDetect": true
+  },
+  "background": {
+    "method": "leonardo-remove-bg",
+    "matteHex": "#ff00ff",
+    "rawImagePath": "assets/particles/.orca-sources/dust-puff-1793473188033.jpg",
+    "refined": true
+  },
+  "source": {
+    "kind": "ai-generated",
+    "modelId": "ideogram/ideogram-4.5",
+    "prompt": "a single small round puff of dust made of three or four soft rounded bumps, drawn in exactly the same flat 2D cartoon style as the dust clouds in the reference pictures: warm light grey-beige puff colour with soft darker taupe-grey shading crescents inside the bumps, clean cel shading, soft rounded edges, no black outline, no glow, centred, isolated, nothing else, no text. Isolated subject on a perfectly flat, uniform pure magenta chroma-key (#ff00ff) background that fills the whole canvas edge to edge — one solid colour, no gradient, vignette, texture, pattern, scenery, sky, ground, floor, horizon, shadow, reflection or glow, nothing else in the image, a clear margin between the subject and every canvas edge, no text; the background casts no coloured light, rim light or reflection onto the subject, and the subject itself contains no pure magenta or similar tones so it can be cleanly separated from the background",
+    "imageId": "95c7c240-49f1-4fed-b1c0-0f308d0f1a5d",
+    "createdAt": "2026-10-31T18:59:48.033Z"
+  }
+}

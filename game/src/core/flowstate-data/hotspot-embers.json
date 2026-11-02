@@ -1,0 +1,120 @@
+{
+  "nodes": [
+    {
+      "id": "hotspo_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Embers burst from the hotspot fire on frame 28 of hotspotON. round-start fires hotspotOn the moment hotspotON starts; the animation runs at 30 fps, so frame 28 is 28/30 = 0.933 s later. The emitters are HotSpot › Ember Burst, so they burst wherever the hotspot landed."
+    },
+    {
+      "id": "hotspo_001",
+      "title": "getChildNodes",
+      "rootType": "getters",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793527625745_tfethuaii",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "hotspo_002",
+      "title": "loop",
+      "rootType": "loop",
+      "properties": [
+        {
+          "name": "items",
+          "type": "TArray",
+          "sourceNodeId": "hotspo_001"
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "hotspo_003",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "hotspotOn"
+        }
+      ]
+    },
+    {
+      "id": "hotspo_004",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.9333
+        }
+      ]
+    },
+    {
+      "id": "hotspo_005",
+      "title": "emitParticleBurst",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "sourceNodeId": "hotspo_002",
+          "sourceOutputName": "item"
+        },
+        {
+          "name": "count",
+          "type": "int",
+          "value": 30
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_hotspo_1",
+      "from": "hotspo_001",
+      "to": "hotspo_002",
+      "propertyType": "TArray",
+      "propertyName": "items"
+    },
+    {
+      "id": "l_hotspo_2",
+      "from": "hotspo_002",
+      "to": "hotspo_005",
+      "propertyType": "nodeRef",
+      "propertyName": "target",
+      "sourceOutputName": "item"
+    },
+    {
+      "id": "l_hotspo_3",
+      "from": "hotspo_004",
+      "to": "hotspo_002"
+    },
+    {
+      "id": "l_hotspo_4",
+      "from": "hotspo_002",
+      "to": "hotspo_005",
+      "outIdx": 0
+    },
+    {
+      "id": "l_hotspo_5",
+      "from": "hotspo_003",
+      "to": "hotspo_004"
+    }
+  ]
+}

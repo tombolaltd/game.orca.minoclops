@@ -1,0 +1,474 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "charac_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Each win step (cascadeStep, base game and free spins): ways pay from the left reel, so a winning symbol on the 4th reel means a win of 4 or 5 symbols. Then the minotaur plays bigWin, blended in from his split slam or idle, and goes back to his idle.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "charac_001",
+        "title": "cascadeLocations",
+        "x": 442,
+        "y": 204,
+        "rootType": "custom",
+        "friendlyTitle": "Return Cascade Locations",
+        "color": "#8e44ad",
+        "icon": "🧩",
+        "outputs": [
+          {
+            "name": "locations",
+            "type": "any"
+          },
+          {
+            "name": "outcomes",
+            "type": "any"
+          }
+        ],
+        "overrideNodeType": "property",
+        "properties": [],
+        "propertyValues": {}
+      },
+      {
+        "id": "charac_002",
+        "title": "at",
+        "x": 804,
+        "y": 204,
+        "rootType": "array",
+        "friendlyTitle": "Get",
+        "color": "#2980b9",
+        "icon": "🎯",
+        "properties": [
+          {
+            "name": "array",
+            "type": "TArray"
+          },
+          {
+            "name": "index",
+            "type": "int"
+          }
+        ],
+        "propertyValues": {
+          "index": 3
+        }
+      },
+      {
+        "id": "charac_003",
+        "title": "getLength",
+        "x": 1166,
+        "y": 204,
+        "rootType": "util",
+        "color": "#7f8c8d",
+        "icon": "📏",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "charac_004",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "cascadeStep"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "charac_005",
+        "title": "greaterThan",
+        "x": 1528,
+        "y": 204,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "b": 0
+        }
+      },
+      {
+        "id": "charac_006",
+        "title": "branch",
+        "x": 1890,
+        "y": 120,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "Win of 4 or 5 symbols?"
+      },
+      {
+        "id": "charac_007",
+        "title": "setAnimationMix",
+        "x": 2252,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ],
+        "propertyValues": {
+          "duration": 0.2,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "fromAnimation": "split/splitSTART",
+          "toAnimation": "bigWin"
+        },
+        "displayName": "Blend from the split slam"
+      },
+      {
+        "id": "charac_008",
+        "title": "setAnimationMix",
+        "x": 2614,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ],
+        "propertyValues": {
+          "duration": 0.2,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "fromAnimation": "idle",
+          "toAnimation": "bigWin"
+        },
+        "displayName": "Blend from idle"
+      },
+      {
+        "id": "charac_009",
+        "title": "setAnimationMix",
+        "x": 2976,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ],
+        "propertyValues": {
+          "duration": 0.2,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "fromAnimation": "bigWin",
+          "toAnimation": "split/splitSTART"
+        },
+        "displayName": "Blend back into the split slam"
+      },
+      {
+        "id": "charac_010",
+        "title": "playAnimation",
+        "x": 3338,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 1,
+          "sequenceNodeOn": "onComplete",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "bigWin"
+        },
+        "displayName": "Big win"
+      },
+      {
+        "id": "charac_011",
+        "title": "addAnimation",
+        "x": 3700,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "delay",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": true,
+          "delay": 0,
+          "trackIndex": 1,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "idle"
+        },
+        "displayName": "Back to idle"
+      }
+    ],
+    "links": [
+      {
+        "id": "l_charac_1",
+        "from": "charac_001",
+        "to": "charac_002",
+        "propertyType": "TArray",
+        "propertyName": "array",
+        "sourceOutputName": "locations"
+      },
+      {
+        "id": "l_charac_2",
+        "from": "charac_002",
+        "to": "charac_003",
+        "propertyType": "T",
+        "propertyName": "value"
+      },
+      {
+        "id": "l_charac_3",
+        "from": "charac_003",
+        "to": "charac_005",
+        "propertyType": "float",
+        "propertyName": "a"
+      },
+      {
+        "id": "l_charac_4",
+        "from": "charac_005",
+        "to": "charac_006",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_charac_5",
+        "from": "charac_007",
+        "to": "charac_008"
+      },
+      {
+        "id": "l_charac_6",
+        "from": "charac_008",
+        "to": "charac_009"
+      },
+      {
+        "id": "l_charac_7",
+        "from": "charac_009",
+        "to": "charac_010"
+      },
+      {
+        "id": "l_charac_8",
+        "from": "charac_010",
+        "to": "charac_011"
+      },
+      {
+        "id": "l_charac_9",
+        "from": "charac_006",
+        "to": "charac_007",
+        "outIdx": 0
+      },
+      {
+        "id": "l_charac_10",
+        "from": "charac_004",
+        "to": "charac_006"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

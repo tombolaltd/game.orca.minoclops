@@ -1,0 +1,1255 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "dustsw_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Swirling dust particles while the crumble dust plays. ReelArea › Dust Swirl has a group per reel (Dust Swirl 1-5) at the floor, each with three emitters that move differently: Curl and Counter Curl swirl up in opposite curls, Settle kicks dust up that sinks back. Every emitter puffs a random amount and keeps trickling at random, so no two puffs match. The whole board crumbling (Buy, free spin) puffs every reel; winning symbols crumbling puff only the reels they are on, more for more winners.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "dustsw_001",
+        "title": "getChildNodes",
+        "x": 1166,
+        "y": 204,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793473424520_ta4t4fpg2",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "dustsw_002",
+        "title": "loop",
+        "x": 1528,
+        "y": 120,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_003",
+        "title": "getChildNodes",
+        "x": 1890,
+        "y": 512,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_004",
+        "title": "loop",
+        "x": 2252,
+        "y": 428,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_005",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "boardCrumbling"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "dustsw_006",
+        "title": "delay",
+        "x": 804,
+        "y": 120,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.27
+        },
+        "displayName": "Wait for the dust"
+      },
+      {
+        "id": "dustsw_007",
+        "title": "randomRange",
+        "x": 2614,
+        "y": 820,
+        "rootType": "math",
+        "friendlyTitle": "Random Range",
+        "color": "#16a085",
+        "icon": "🎲",
+        "properties": [
+          {
+            "name": "min",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "max",
+            "type": "float",
+            "default": 1
+          },
+          {
+            "name": "numberType",
+            "type": "string",
+            "default": "float",
+            "options": [
+              {
+                "value": "float",
+                "label": "Float"
+              },
+              {
+                "value": "integer",
+                "label": "Integer"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "min": 3,
+          "max": 6,
+          "numberType": "integer"
+        }
+      },
+      {
+        "id": "dustsw_008",
+        "title": "toInt",
+        "x": 2976,
+        "y": 820,
+        "rootType": "cast",
+        "friendlyTitle": "To Whole Number",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_009",
+        "title": "emitParticleBurst",
+        "x": 3338,
+        "y": 736,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 10
+          }
+        ],
+        "propertyValues": {
+          "count": 10
+        },
+        "displayName": "Puff a random amount"
+      },
+      {
+        "id": "dustsw_010",
+        "title": "startParticles",
+        "x": 4424,
+        "y": 736,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          }
+        ],
+        "propertyValues": {},
+        "displayName": "Keep it swirling"
+      },
+      {
+        "id": "dustsw_011",
+        "title": "delay",
+        "x": 5872,
+        "y": 120,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.3
+        },
+        "displayName": "While the dust plays"
+      },
+      {
+        "id": "dustsw_012",
+        "title": "getChildNodes",
+        "x": 6234,
+        "y": 204,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793473424520_ta4t4fpg2",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "dustsw_013",
+        "title": "loop",
+        "x": 6596,
+        "y": 120,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_014",
+        "title": "getChildNodes",
+        "x": 6958,
+        "y": 512,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_015",
+        "title": "loop",
+        "x": 7320,
+        "y": 428,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_016",
+        "title": "stopParticles",
+        "x": 8044,
+        "y": 736,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          }
+        ],
+        "propertyValues": {},
+        "displayName": "Let the last ones settle"
+      },
+      {
+        "id": "dustsw_017",
+        "title": "getVariable",
+        "x": 1890,
+        "y": 1165,
+        "rootType": "variables",
+        "friendlyTitle": "Get Variable",
+        "color": "#cf3d8f",
+        "icon": "🔖",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          }
+        ],
+        "overrideNodeType": "property",
+        "propertyValues": {
+          "variableName": "winners"
+        }
+      },
+      {
+        "id": "dustsw_018",
+        "title": "loop",
+        "x": 2252,
+        "y": 1081,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_019",
+        "title": "getChildNode",
+        "x": 3700,
+        "y": 1473,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Node",
+        "color": "#0e7c86",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "parent",
+            "type": "nodeRef"
+          },
+          {
+            "name": "index",
+            "type": "int",
+            "default": 0
+          }
+        ],
+        "propertyValues": {
+          "index": 0,
+          "parent": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793473424520_ta4t4fpg2",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "dustsw_020",
+        "title": "getChildNodes",
+        "x": 4062,
+        "y": 1473,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_021",
+        "title": "loop",
+        "x": 4424,
+        "y": 1389,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_022",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 1081,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "winnersCrumbling"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "dustsw_023",
+        "title": "cascadeLocations",
+        "x": 442,
+        "y": 1165,
+        "rootType": "custom",
+        "friendlyTitle": "Return Cascade Locations",
+        "color": "#8e44ad",
+        "icon": "🧩",
+        "outputs": [
+          {
+            "name": "locations",
+            "type": "any"
+          },
+          {
+            "name": "outcomes",
+            "type": "any"
+          }
+        ],
+        "overrideNodeType": "property",
+        "properties": [],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_024",
+        "title": "setVariable",
+        "x": 804,
+        "y": 1081,
+        "rootType": "variables",
+        "friendlyTitle": "Set Variable",
+        "color": "#cf3d8f",
+        "icon": "📝",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          },
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {
+          "variableName": "winners"
+        },
+        "displayName": "Remember the winning cells"
+      },
+      {
+        "id": "dustsw_025",
+        "title": "delay",
+        "x": 1528,
+        "y": 1081,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.47
+        },
+        "displayName": "Wait for the dust"
+      },
+      {
+        "id": "dustsw_026",
+        "title": "getLength",
+        "x": 2614,
+        "y": 1473,
+        "rootType": "util",
+        "color": "#7f8c8d",
+        "icon": "📏",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_027",
+        "title": "greaterThan",
+        "x": 2976,
+        "y": 1473,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "b": 0
+        }
+      },
+      {
+        "id": "dustsw_028",
+        "title": "branch",
+        "x": 3338,
+        "y": 1389,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "Winner on this reel?"
+      },
+      {
+        "id": "dustsw_029",
+        "title": "getLength",
+        "x": 4786,
+        "y": 1792,
+        "rootType": "util",
+        "color": "#7f8c8d",
+        "icon": "📏",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_030",
+        "title": "randomRange",
+        "x": 4786,
+        "y": 1927,
+        "rootType": "math",
+        "friendlyTitle": "Random Range",
+        "color": "#16a085",
+        "icon": "🎲",
+        "properties": [
+          {
+            "name": "min",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "max",
+            "type": "float",
+            "default": 1
+          },
+          {
+            "name": "numberType",
+            "type": "string",
+            "default": "float",
+            "options": [
+              {
+                "value": "float",
+                "label": "Float"
+              },
+              {
+                "value": "integer",
+                "label": "Integer"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "min": 1,
+          "max": 3,
+          "numberType": "integer"
+        }
+      },
+      {
+        "id": "dustsw_031",
+        "title": "add",
+        "x": 5148,
+        "y": 1792,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_032",
+        "title": "toInt",
+        "x": 5510,
+        "y": 1792,
+        "rootType": "cast",
+        "friendlyTitle": "To Whole Number",
+        "color": "#6c5ce7",
+        "icon": "🔢",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_033",
+        "title": "emitParticleBurst",
+        "x": 5872,
+        "y": 1708,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 10
+          }
+        ],
+        "propertyValues": {
+          "count": 10
+        },
+        "displayName": "Puff more for more winners"
+      },
+      {
+        "id": "dustsw_034",
+        "title": "startParticles",
+        "x": 6596,
+        "y": 1708,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          }
+        ],
+        "propertyValues": {},
+        "displayName": "Keep it swirling"
+      },
+      {
+        "id": "dustsw_035",
+        "title": "delay",
+        "x": 7320,
+        "y": 1081,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.3
+        },
+        "displayName": "While the dust plays"
+      },
+      {
+        "id": "dustsw_036",
+        "title": "getChildNodes",
+        "x": 7682,
+        "y": 1165,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793473424520_ta4t4fpg2",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "dustsw_037",
+        "title": "loop",
+        "x": 8044,
+        "y": 1081,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_038",
+        "title": "getChildNodes",
+        "x": 8406,
+        "y": 1473,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {}
+      },
+      {
+        "id": "dustsw_039",
+        "title": "loop",
+        "x": 8768,
+        "y": 1389,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "dustsw_040",
+        "title": "stopParticles",
+        "x": 9130,
+        "y": 1708,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          }
+        ],
+        "propertyValues": {},
+        "displayName": "Let the last ones settle"
+      }
+    ],
+    "links": [
+      {
+        "id": "l_dustsw_1",
+        "from": "dustsw_001",
+        "to": "dustsw_002",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_2",
+        "from": "dustsw_002",
+        "to": "dustsw_003",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_3",
+        "from": "dustsw_003",
+        "to": "dustsw_004",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_4",
+        "from": "dustsw_007",
+        "to": "dustsw_008",
+        "propertyType": "T",
+        "propertyName": "value"
+      },
+      {
+        "id": "l_dustsw_5",
+        "from": "dustsw_004",
+        "to": "dustsw_009",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_6",
+        "from": "dustsw_008",
+        "to": "dustsw_009",
+        "propertyType": "int",
+        "propertyName": "count"
+      },
+      {
+        "id": "l_dustsw_7",
+        "from": "dustsw_004",
+        "to": "dustsw_010",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_8",
+        "from": "dustsw_012",
+        "to": "dustsw_013",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_9",
+        "from": "dustsw_013",
+        "to": "dustsw_014",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_10",
+        "from": "dustsw_014",
+        "to": "dustsw_015",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_11",
+        "from": "dustsw_015",
+        "to": "dustsw_016",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_12",
+        "from": "dustsw_009",
+        "to": "dustsw_010"
+      },
+      {
+        "id": "l_dustsw_13",
+        "from": "dustsw_004",
+        "to": "dustsw_009",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_14",
+        "from": "dustsw_006",
+        "to": "dustsw_002"
+      },
+      {
+        "id": "l_dustsw_15",
+        "from": "dustsw_002",
+        "to": "dustsw_004",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_16",
+        "from": "dustsw_002",
+        "to": "dustsw_011",
+        "outIdx": 1
+      },
+      {
+        "id": "l_dustsw_17",
+        "from": "dustsw_015",
+        "to": "dustsw_016",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_18",
+        "from": "dustsw_011",
+        "to": "dustsw_013"
+      },
+      {
+        "id": "l_dustsw_19",
+        "from": "dustsw_013",
+        "to": "dustsw_015",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_20",
+        "from": "dustsw_005",
+        "to": "dustsw_006"
+      },
+      {
+        "id": "l_dustsw_21",
+        "from": "dustsw_017",
+        "to": "dustsw_018",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_22",
+        "from": "dustsw_018",
+        "to": "dustsw_019",
+        "propertyType": "int",
+        "propertyName": "index",
+        "sourceOutputName": "index"
+      },
+      {
+        "id": "l_dustsw_23",
+        "from": "dustsw_019",
+        "to": "dustsw_020",
+        "propertyType": "nodeRef",
+        "propertyName": "target"
+      },
+      {
+        "id": "l_dustsw_24",
+        "from": "dustsw_020",
+        "to": "dustsw_021",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_25",
+        "from": "dustsw_023",
+        "to": "dustsw_024",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "locations"
+      },
+      {
+        "id": "l_dustsw_26",
+        "from": "dustsw_018",
+        "to": "dustsw_026",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_27",
+        "from": "dustsw_026",
+        "to": "dustsw_027",
+        "propertyType": "float",
+        "propertyName": "a"
+      },
+      {
+        "id": "l_dustsw_28",
+        "from": "dustsw_027",
+        "to": "dustsw_028",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_dustsw_29",
+        "from": "dustsw_018",
+        "to": "dustsw_029",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_30",
+        "from": "dustsw_029",
+        "to": "dustsw_031",
+        "propertyType": "T",
+        "propertyName": "a"
+      },
+      {
+        "id": "l_dustsw_31",
+        "from": "dustsw_030",
+        "to": "dustsw_031",
+        "propertyType": "T",
+        "propertyName": "b"
+      },
+      {
+        "id": "l_dustsw_32",
+        "from": "dustsw_031",
+        "to": "dustsw_032",
+        "propertyType": "T",
+        "propertyName": "value"
+      },
+      {
+        "id": "l_dustsw_33",
+        "from": "dustsw_021",
+        "to": "dustsw_033",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_34",
+        "from": "dustsw_032",
+        "to": "dustsw_033",
+        "propertyType": "int",
+        "propertyName": "count"
+      },
+      {
+        "id": "l_dustsw_35",
+        "from": "dustsw_021",
+        "to": "dustsw_034",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_36",
+        "from": "dustsw_036",
+        "to": "dustsw_037",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_37",
+        "from": "dustsw_037",
+        "to": "dustsw_038",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_38",
+        "from": "dustsw_038",
+        "to": "dustsw_039",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_dustsw_39",
+        "from": "dustsw_039",
+        "to": "dustsw_040",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_dustsw_40",
+        "from": "dustsw_024",
+        "to": "dustsw_025"
+      },
+      {
+        "id": "l_dustsw_41",
+        "from": "dustsw_033",
+        "to": "dustsw_034"
+      },
+      {
+        "id": "l_dustsw_42",
+        "from": "dustsw_021",
+        "to": "dustsw_033",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_43",
+        "from": "dustsw_028",
+        "to": "dustsw_021",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_44",
+        "from": "dustsw_025",
+        "to": "dustsw_018"
+      },
+      {
+        "id": "l_dustsw_45",
+        "from": "dustsw_018",
+        "to": "dustsw_028",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_46",
+        "from": "dustsw_018",
+        "to": "dustsw_035",
+        "outIdx": 1
+      },
+      {
+        "id": "l_dustsw_47",
+        "from": "dustsw_039",
+        "to": "dustsw_040",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_48",
+        "from": "dustsw_035",
+        "to": "dustsw_037"
+      },
+      {
+        "id": "l_dustsw_49",
+        "from": "dustsw_037",
+        "to": "dustsw_039",
+        "outIdx": 0
+      },
+      {
+        "id": "l_dustsw_50",
+        "from": "dustsw_022",
+        "to": "dustsw_024"
+      }
+    ],
+    "variables": [
+      {
+        "name": "winners",
+        "type": "ObjectArray",
+        "defaultValue": [],
+        "description": "The rows crumbling on each reel this cascade."
+      }
+    ],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

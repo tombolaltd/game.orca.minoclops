@@ -1,0 +1,32 @@
+{
+  "version": 1,
+  "texture": "assets/particles/ember-streak.png",
+  "processing": {
+    "sourceImagePath": "assets/particles/.orca-sources/ember-streak-1793527476487.cutout.png",
+    "outputTexturePath": "assets/particles/ember-streak.png",
+    "longEdgePx": 0,
+    "sourceLongEdgePx": 367
+  },
+  "alphaClip": {
+    "enabled": false,
+    "matteHex": "#00ff00",
+    "matteLow": 18,
+    "matteHigh": 70,
+    "edgeShift": 0,
+    "edgeFeather": 0,
+    "autoDetect": true
+  },
+  "background": {
+    "method": "leonardo-remove-bg",
+    "matteHex": "#00ff00",
+    "rawImagePath": "assets/particles/.orca-sources/ember-streak-1793527476487.jpg",
+    "refined": true
+  },
+  "source": {
+    "kind": "ai-generated",
+    "modelId": "ideogram/ideogram-4.5",
+    "prompt": "a single short flying fire spark: one solid tapered teardrop-shaped stroke lying horizontally, a bright pale-yellow white-hot rounded head on the right and a solid orange-pink tail tapering to a sharp point on the left, crisp clean edges, flat cel-shaded cartoon style like the pink fire in the reference pictures, centred, isolated, nothing else, no soft glow, no halo, no flames, no skulls, no text. Isolated subject on a perfectly flat, uniform pure chroma-key green (#00ff00) background that fills the whole canvas edge to edge — one solid colour, no gradient, vignette, texture, pattern, scenery, sky, ground, floor, horizon, shadow, reflection or glow, nothing else in the image, a clear margin between the subject and every canvas edge, no text; the background casts no coloured light, rim light or reflection onto the subject, and the subject itself contains no pure chroma-key green or similar tones so it can be cleanly separated from the background",
+    "imageId": "edf1c4cd-e973-477d-8410-fda253031cf7",
+    "createdAt": "2026-11-01T10:04:36.487Z"
+  }
+}

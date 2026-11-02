@@ -402,6 +402,23 @@
                 }
               }
             ]
+          },
+          {
+            "id": "nu9by70w",
+            "title": "fireCustomEvent",
+            "rootType": "fireEvent",
+            "properties": [
+              {
+                "name": "eventName",
+                "type": "customEventRef",
+                "value": "boardCrumbling"
+              },
+              {
+                "name": "propertyNames",
+                "type": "TArray",
+                "value": []
+              }
+            ]
           }
         ],
         "links": [
@@ -420,7 +437,7 @@
           {
             "id": "lkeqbeap",
             "from": "nnu5km0b",
-            "to": "n2gt7hvh"
+            "to": "nu9by70w"
           },
           {
             "id": "l6y0xp0p",
@@ -441,6 +458,11 @@
             "id": "lt70h9ru",
             "from": "numb55o0",
             "to": "nxnpr19r"
+          },
+          {
+            "id": "lrc48fg0",
+            "from": "nu9by70w",
+            "to": "n2gt7hvh"
           }
         ]
       }
@@ -819,7 +841,24 @@
               {
                 "name": "sequenceNodeOn",
                 "type": "string",
-                "value": "onComplete"
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "nhwn7pb2",
+            "title": "fireCustomEvent",
+            "rootType": "fireEvent",
+            "properties": [
+              {
+                "name": "eventName",
+                "type": "customEventRef",
+                "value": "hotspotOn"
+              },
+              {
+                "name": "propertyNames",
+                "type": "TArray",
+                "value": []
               }
             ]
           }
@@ -924,8 +963,13 @@
           },
           {
             "id": "l1folnt1",
-            "from": "njxog5cb",
+            "from": "nhwn7pb2",
             "to": "nz9cvwlt"
+          },
+          {
+            "id": "lf3yxt0o",
+            "from": "njxog5cb",
+            "to": "nhwn7pb2"
           }
         ]
       }

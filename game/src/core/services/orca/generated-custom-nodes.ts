@@ -4,12 +4,14 @@ import * as s_0 from './custom-scripts/cascadeLocations';
 import * as s_1 from './custom-scripts/formatPrize';
 import * as s_2 from './custom-scripts/playAllOffAnimations';
 import * as s_3 from './custom-scripts/playSplitSymbols';
-import * as s_4 from './custom-scripts/playWinAnimations';
+import * as s_4 from './custom-scripts/playVideoToEnd';
+import * as s_5 from './custom-scripts/playWinAnimations';
 
 export const customNodes: Record<string, (...args: any[]) => any> = {
   'cascadeLocations': (...args: any[]) => (s_0 as any).run(...args),
   'formatPrize': (...args: any[]) => (s_1 as any).run(...args),
   'playAllOffAnimations': (...args: any[]) => (s_2 as any).run(...args),
   'playSplitSymbols': (...args: any[]) => (s_3 as any).run(...args),
-  'playWinAnimations': (...args: any[]) => (s_4 as any).run(...args),
+  'playVideoToEnd': (...args: any[]) => (s_4 as any).run(...args),
+  'playWinAnimations': (...args: any[]) => (s_5 as any).run(...args),
 };

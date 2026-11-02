@@ -2,7 +2,20 @@
   "version": 2,
   "kind": "core",
   "graph": {
-    "nodes": [],
-    "links": []
+    "nodes": [
+      {
+        "id": "bonuswin_note",
+        "title": "Note",
+        "x": 80,
+        "y": 80,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Placeholder: the bonus win flow goes here (not built yet).",
+        "width": 420,
+        "height": 120
+      }
+    ],
+    "links": [],
+    "variables": []
   }
 }

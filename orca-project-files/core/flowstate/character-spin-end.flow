@@ -53,7 +53,7 @@
       {
         "id": "nb7v7o09",
         "title": "addAnimation",
-        "x": 291.46091584928473,
+        "x": 1820,
         "y": 70.5839985274195,
         "rootType": "Action",
         "color": "#3b6ef5",
@@ -118,13 +118,469 @@
           },
           "animationName": "idle"
         }
+      },
+      {
+        "id": "cse_won_get",
+        "title": "getGameModelProperty",
+        "x": -330,
+        "y": 270,
+        "propertyValues": {
+          "propertyName": "payout"
+        },
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ]
+      },
+      {
+        "id": "cse_won",
+        "title": "greaterThan",
+        "x": -80,
+        "y": 260,
+        "propertyValues": {
+          "b": 0
+        },
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ]
+      },
+      {
+        "id": "cse_branch_won",
+        "title": "branch",
+        "displayName": "Round won?",
+        "x": 120,
+        "y": 70,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "id": "cse_reset",
+        "title": "setGameModelProperty",
+        "displayName": "No losses in a row",
+        "x": 440,
+        "y": -70,
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin",
+          "value": 0
+        },
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ]
+      },
+      {
+        "id": "cse_count_get",
+        "title": "getGameModelProperty",
+        "x": -60,
+        "y": 430,
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        },
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ]
+      },
+      {
+        "id": "cse_count_add",
+        "title": "add",
+        "x": 190,
+        "y": 400,
+        "propertyValues": {
+          "b": 1
+        },
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "cse_count",
+        "title": "setGameModelProperty",
+        "displayName": "One more loss in a row",
+        "x": 440,
+        "y": 200,
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        },
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "✏️",
+        "overrideNodeType": "sequence",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          },
+          {
+            "name": "value",
+            "type": "dynamic",
+            "propertyValue": "gameModel"
+          }
+        ]
+      },
+      {
+        "id": "cse_streak_get",
+        "title": "getGameModelProperty",
+        "x": 260,
+        "y": 560,
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        },
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ]
+      },
+      {
+        "id": "cse_streak",
+        "title": "greaterThanOrEqual",
+        "x": 520,
+        "y": 430,
+        "propertyValues": {
+          "b": 3
+        },
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "▶️",
+        "properties": [
+          {
+            "name": "a",
+            "type": "float"
+          },
+          {
+            "name": "b",
+            "type": "float"
+          }
+        ]
+      },
+      {
+        "id": "cse_branch_streak",
+        "title": "branch",
+        "displayName": "3 or more in a row?",
+        "x": 740,
+        "y": 200,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "id": "cse_mix_in",
+        "title": "setAnimationMix",
+        "displayName": "Blend from the split slam",
+        "x": 1000,
+        "y": 150,
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "fromAnimation": "split/splitSTART",
+          "toAnimation": "frustration",
+          "duration": 0.3
+        },
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ]
+      },
+      {
+        "id": "cse_mix_out",
+        "title": "setAnimationMix",
+        "displayName": "Blend back into the split slam",
+        "x": 1270,
+        "y": 150,
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "fromAnimation": "frustration",
+          "toAnimation": "split/splitSTART",
+          "duration": 0.3
+        },
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ]
+      },
+      {
+        "id": "cse_frustration",
+        "title": "playAnimation",
+        "displayName": "Frustrated",
+        "x": 1540,
+        "y": 150,
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "frustration",
+          "loop": false,
+          "trackIndex": 1,
+          "sequenceNodeOn": "onComplete"
+        },
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ]
       }
     ],
     "links": [
       {
-        "id": "ll9ee9dn",
+        "id": "cse_l01",
         "from": "nvbp6ycl",
+        "to": "cse_branch_won"
+      },
+      {
+        "id": "cse_l02",
+        "from": "cse_branch_won",
+        "to": "cse_reset",
+        "outIdx": 0
+      },
+      {
+        "id": "cse_l03",
+        "from": "cse_reset",
         "to": "nb7v7o09"
+      },
+      {
+        "id": "cse_l04",
+        "from": "cse_branch_won",
+        "to": "cse_count",
+        "outIdx": 1
+      },
+      {
+        "id": "cse_l05",
+        "from": "cse_count",
+        "to": "cse_branch_streak"
+      },
+      {
+        "id": "cse_l06",
+        "from": "cse_branch_streak",
+        "to": "cse_mix_in",
+        "outIdx": 0
+      },
+      {
+        "id": "cse_l09",
+        "from": "cse_mix_in",
+        "to": "cse_mix_out"
+      },
+      {
+        "id": "cse_l10",
+        "from": "cse_mix_out",
+        "to": "cse_frustration"
+      },
+      {
+        "id": "cse_l07",
+        "from": "cse_frustration",
+        "to": "nb7v7o09"
+      },
+      {
+        "id": "cse_l08",
+        "from": "cse_branch_streak",
+        "to": "nb7v7o09",
+        "outIdx": 1
+      },
+      {
+        "id": "cse_v01",
+        "from": "cse_won_get",
+        "to": "cse_won",
+        "propertyName": "a",
+        "propertyType": "float"
+      },
+      {
+        "id": "cse_v02",
+        "from": "cse_won",
+        "to": "cse_branch_won",
+        "propertyName": "condition",
+        "propertyType": "bool"
+      },
+      {
+        "id": "cse_v03",
+        "from": "cse_count_get",
+        "to": "cse_count_add",
+        "propertyName": "a",
+        "propertyType": "T"
+      },
+      {
+        "id": "cse_v04",
+        "from": "cse_count_add",
+        "to": "cse_count",
+        "propertyName": "value",
+        "propertyType": "dynamic"
+      },
+      {
+        "id": "cse_v05",
+        "from": "cse_streak_get",
+        "to": "cse_streak",
+        "propertyName": "a",
+        "propertyType": "float"
+      },
+      {
+        "id": "cse_v06",
+        "from": "cse_streak",
+        "to": "cse_branch_streak",
+        "propertyName": "condition",
+        "propertyType": "bool"
       }
     ],
     "groups": [],

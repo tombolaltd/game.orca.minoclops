@@ -265,6 +265,23 @@
                 }
               }
             ]
+          },
+          {
+            "id": "n2u3lfym",
+            "title": "fireCustomEvent",
+            "rootType": "fireEvent",
+            "properties": [
+              {
+                "name": "eventName",
+                "type": "customEventRef",
+                "value": "boardCrumbling"
+              },
+              {
+                "name": "propertyNames",
+                "type": "TArray",
+                "value": []
+              }
+            ]
           }
         ],
         "links": [
@@ -283,7 +300,7 @@
           {
             "id": "l338kbd7",
             "from": "nckl179j",
-            "to": "niy065uh"
+            "to": "n2u3lfym"
           },
           {
             "id": "lrrdf371",
@@ -304,6 +321,11 @@
             "id": "l16kifvz",
             "from": "nxyuus62",
             "to": "nckl179j"
+          },
+          {
+            "id": "l7etisnc",
+            "from": "n2u3lfym",
+            "to": "niy065uh"
           }
         ]
       }

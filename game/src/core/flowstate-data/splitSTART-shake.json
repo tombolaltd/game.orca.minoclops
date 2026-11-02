@@ -1,0 +1,368 @@
+{
+  "nodes": [
+    {
+      "id": "splits_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Shakes the reels on frame 12 of the character's split/splitSTART. Character-split plays that animation the moment symbols split (symbolsSplitting), and it runs at 30 fps, so frame 12 is 0.4 s later. ReelArea holds the frame, its WIN/WAYS texts and the symbols, so they shake together and spring back to where the layout put them."
+    },
+    {
+      "id": "splits_001",
+      "title": "getNodePosition",
+      "rootType": "getters",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "splits_002",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "symbolsSplitting"
+        }
+      ]
+    },
+    {
+      "id": "splits_003",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.4
+        }
+      ]
+    },
+    {
+      "id": "splits_004",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restX"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "splits_001",
+          "sourceOutputName": "x"
+        }
+      ]
+    },
+    {
+      "id": "splits_005",
+      "title": "setVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restY"
+        },
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "splits_001",
+          "sourceOutputName": "y"
+        }
+      ]
+    },
+    {
+      "id": "splits_006",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restX"
+        }
+      ]
+    },
+    {
+      "id": "splits_007",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "splits_006"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "id": "splits_008",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restY"
+        }
+      ]
+    },
+    {
+      "id": "splits_009",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "splits_008"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "value": 14
+        }
+      ]
+    },
+    {
+      "id": "splits_010",
+      "title": "setNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "splits_007"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "splits_009"
+        }
+      ]
+    },
+    {
+      "id": "splits_011",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restX"
+        }
+      ]
+    },
+    {
+      "id": "splits_012",
+      "title": "getVariable",
+      "rootType": "variables",
+      "properties": [
+        {
+          "name": "variableName",
+          "type": "variableRef",
+          "value": "restY"
+        }
+      ]
+    },
+    {
+      "id": "splits_013",
+      "title": "tweenNodePosition",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "x",
+          "type": "float",
+          "sourceNodeId": "splits_011"
+        },
+        {
+          "name": "y",
+          "type": "float",
+          "sourceNodeId": "splits_012"
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "elastic.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 2
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "splits_014",
+      "title": "onApplicationResize",
+      "rootType": "StarterNodes"
+    },
+    {
+      "id": "splits_015",
+      "title": "killTweensOfNode",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_splits_1",
+      "from": "splits_001",
+      "to": "splits_004",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "x"
+    },
+    {
+      "id": "l_splits_2",
+      "from": "splits_001",
+      "to": "splits_005",
+      "propertyType": "T",
+      "propertyName": "value",
+      "sourceOutputName": "y"
+    },
+    {
+      "id": "l_splits_3",
+      "from": "splits_006",
+      "to": "splits_007",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_splits_4",
+      "from": "splits_008",
+      "to": "splits_009",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_splits_5",
+      "from": "splits_007",
+      "to": "splits_010",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_splits_6",
+      "from": "splits_009",
+      "to": "splits_010",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_splits_7",
+      "from": "splits_011",
+      "to": "splits_013",
+      "propertyType": "float",
+      "propertyName": "x"
+    },
+    {
+      "id": "l_splits_8",
+      "from": "splits_012",
+      "to": "splits_013",
+      "propertyType": "float",
+      "propertyName": "y"
+    },
+    {
+      "id": "l_splits_9",
+      "from": "splits_003",
+      "to": "splits_004"
+    },
+    {
+      "id": "l_splits_10",
+      "from": "splits_004",
+      "to": "splits_005"
+    },
+    {
+      "id": "l_splits_11",
+      "from": "splits_005",
+      "to": "splits_010"
+    },
+    {
+      "id": "l_splits_12",
+      "from": "splits_010",
+      "to": "splits_013"
+    },
+    {
+      "id": "l_splits_13",
+      "from": "splits_002",
+      "to": "splits_003"
+    },
+    {
+      "id": "l_splits_14",
+      "from": "splits_014",
+      "to": "splits_015"
+    }
+  ],
+  "variables": [
+    {
+      "name": "restX",
+      "type": "float",
+      "defaultValue": 0
+    },
+    {
+      "name": "restY",
+      "type": "float",
+      "defaultValue": 0
+    }
+  ]
+}

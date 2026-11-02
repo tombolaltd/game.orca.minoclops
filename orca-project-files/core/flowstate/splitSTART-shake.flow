@@ -1,0 +1,635 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "splits_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Shakes the reels on frame 12 of the character's split/splitSTART. Character-split plays that animation the moment symbols split (symbolsSplitting), and it runs at 30 fps, so frame 12 is 0.4 s later. ReelArea holds the frame, its WIN/WAYS texts and the symbols, so they shake together and spring back to where the layout put them.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "splits_001",
+        "title": "getNodePosition",
+        "x": 804,
+        "y": 204,
+        "rootType": "getters",
+        "friendlyTitle": "Get Position",
+        "color": "#0e7c86",
+        "icon": "📐",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "outputs": [
+          {
+            "name": "x",
+            "type": "float"
+          },
+          {
+            "name": "y",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "splits_002",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "symbolsSplitting"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent",
+        "displayName": "Symbols split: character starts splitSTART"
+      },
+      {
+        "id": "splits_003",
+        "title": "delay",
+        "x": 442,
+        "y": 120,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.4
+        },
+        "displayName": "Wait for frame 12 (0.4 s)"
+      },
+      {
+        "id": "splits_004",
+        "title": "setVariable",
+        "x": 1166,
+        "y": 120,
+        "rootType": "variables",
+        "friendlyTitle": "Set Variable",
+        "color": "#cf3d8f",
+        "icon": "📝",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          },
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {
+          "variableName": "restX"
+        },
+        "displayName": "Remember reels x"
+      },
+      {
+        "id": "splits_005",
+        "title": "setVariable",
+        "x": 1528,
+        "y": 120,
+        "rootType": "variables",
+        "friendlyTitle": "Set Variable",
+        "color": "#cf3d8f",
+        "icon": "📝",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          },
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {
+          "variableName": "restY"
+        },
+        "displayName": "Remember reels y"
+      },
+      {
+        "id": "splits_006",
+        "title": "getVariable",
+        "x": 1890,
+        "y": 204,
+        "rootType": "variables",
+        "friendlyTitle": "Get Variable",
+        "color": "#cf3d8f",
+        "icon": "🔖",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          }
+        ],
+        "overrideNodeType": "property",
+        "propertyValues": {
+          "variableName": "restX"
+        }
+      },
+      {
+        "id": "splits_007",
+        "title": "add",
+        "x": 2252,
+        "y": 204,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {
+          "b": 2
+        }
+      },
+      {
+        "id": "splits_008",
+        "title": "getVariable",
+        "x": 1890,
+        "y": 365,
+        "rootType": "variables",
+        "friendlyTitle": "Get Variable",
+        "color": "#cf3d8f",
+        "icon": "🔖",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          }
+        ],
+        "overrideNodeType": "property",
+        "propertyValues": {
+          "variableName": "restY"
+        }
+      },
+      {
+        "id": "splits_009",
+        "title": "add",
+        "x": 2252,
+        "y": 365,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ],
+        "propertyValues": {
+          "b": 14
+        }
+      },
+      {
+        "id": "splits_010",
+        "title": "setNodePosition",
+        "x": 2614,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "x",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "y",
+            "type": "float",
+            "default": 0
+          }
+        ],
+        "propertyValues": {
+          "x": 0,
+          "y": 0,
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        "displayName": "Jolt the reels"
+      },
+      {
+        "id": "splits_011",
+        "title": "getVariable",
+        "x": 2976,
+        "y": 204,
+        "rootType": "variables",
+        "friendlyTitle": "Get Variable",
+        "color": "#cf3d8f",
+        "icon": "🔖",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          }
+        ],
+        "overrideNodeType": "property",
+        "propertyValues": {
+          "variableName": "restX"
+        }
+      },
+      {
+        "id": "splits_012",
+        "title": "getVariable",
+        "x": 2976,
+        "y": 339,
+        "rootType": "variables",
+        "friendlyTitle": "Get Variable",
+        "color": "#cf3d8f",
+        "icon": "🔖",
+        "properties": [
+          {
+            "name": "variableName",
+            "type": "variableRef"
+          }
+        ],
+        "overrideNodeType": "property",
+        "propertyValues": {
+          "variableName": "restY"
+        }
+      },
+      {
+        "id": "splits_013",
+        "title": "tweenNodePosition",
+        "x": 3338,
+        "y": 120,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          },
+          {
+            "name": "x",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "y",
+            "type": "float",
+            "default": 0
+          },
+          {
+            "name": "durationMS",
+            "type": "int",
+            "default": 500
+          },
+          {
+            "name": "ease",
+            "type": "string",
+            "default": "power2.out",
+            "options": [
+              {
+                "value": "none",
+                "label": "None (linear)"
+              },
+              {
+                "value": "power1.in",
+                "label": "Power1 In"
+              },
+              {
+                "value": "power1.out",
+                "label": "Power1 Out"
+              },
+              {
+                "value": "power1.inOut",
+                "label": "Power1 In/Out"
+              },
+              {
+                "value": "power2.in",
+                "label": "Power2 In"
+              },
+              {
+                "value": "power2.out",
+                "label": "Power2 Out"
+              },
+              {
+                "value": "power2.inOut",
+                "label": "Power2 In/Out"
+              },
+              {
+                "value": "power3.in",
+                "label": "Power3 In"
+              },
+              {
+                "value": "power3.out",
+                "label": "Power3 Out"
+              },
+              {
+                "value": "power3.inOut",
+                "label": "Power3 In/Out"
+              },
+              {
+                "value": "sine.in",
+                "label": "Sine In"
+              },
+              {
+                "value": "sine.out",
+                "label": "Sine Out"
+              },
+              {
+                "value": "sine.inOut",
+                "label": "Sine In/Out"
+              },
+              {
+                "value": "expo.in",
+                "label": "Expo In"
+              },
+              {
+                "value": "expo.out",
+                "label": "Expo Out"
+              },
+              {
+                "value": "expo.inOut",
+                "label": "Expo In/Out"
+              },
+              {
+                "value": "back.in",
+                "label": "Back In"
+              },
+              {
+                "value": "back.out",
+                "label": "Back Out"
+              },
+              {
+                "value": "back.inOut",
+                "label": "Back In/Out"
+              },
+              {
+                "value": "elastic.in",
+                "label": "Elastic In"
+              },
+              {
+                "value": "elastic.out",
+                "label": "Elastic Out"
+              },
+              {
+                "value": "elastic.inOut",
+                "label": "Elastic In/Out"
+              },
+              {
+                "value": "bounce.in",
+                "label": "Bounce In"
+              },
+              {
+                "value": "bounce.out",
+                "label": "Bounce Out"
+              },
+              {
+                "value": "bounce.inOut",
+                "label": "Bounce In/Out"
+              }
+            ]
+          },
+          {
+            "name": "easeStrength",
+            "type": "float",
+            "default": 1,
+            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for tween)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "x": 0,
+          "y": 0,
+          "durationMS": 500,
+          "ease": "elastic.out",
+          "easeStrength": 2,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        "displayName": "Shake back to rest"
+      },
+      {
+        "id": "splits_014",
+        "title": "onApplicationResize",
+        "x": 80,
+        "y": 640,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Screen Resize",
+        "color": "#ff6b35",
+        "icon": "▶️",
+        "outputs": [
+          {
+            "name": "width",
+            "type": "int"
+          },
+          {
+            "name": "height",
+            "type": "int"
+          }
+        ],
+        "isStarter": true,
+        "starterNodeType": "application",
+        "properties": [],
+        "propertyValues": {},
+        "displayName": "Screen resized"
+      },
+      {
+        "id": "splits_015",
+        "title": "killTweensOfNode",
+        "x": 442,
+        "y": 640,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reel_area",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        "displayName": "Stop a shake in progress"
+      }
+    ],
+    "links": [
+      {
+        "id": "l_splits_1",
+        "from": "splits_001",
+        "to": "splits_004",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "x"
+      },
+      {
+        "id": "l_splits_2",
+        "from": "splits_001",
+        "to": "splits_005",
+        "propertyType": "T",
+        "propertyName": "value",
+        "sourceOutputName": "y"
+      },
+      {
+        "id": "l_splits_3",
+        "from": "splits_006",
+        "to": "splits_007",
+        "propertyType": "T",
+        "propertyName": "a"
+      },
+      {
+        "id": "l_splits_4",
+        "from": "splits_008",
+        "to": "splits_009",
+        "propertyType": "T",
+        "propertyName": "a"
+      },
+      {
+        "id": "l_splits_5",
+        "from": "splits_007",
+        "to": "splits_010",
+        "propertyType": "float",
+        "propertyName": "x"
+      },
+      {
+        "id": "l_splits_6",
+        "from": "splits_009",
+        "to": "splits_010",
+        "propertyType": "float",
+        "propertyName": "y"
+      },
+      {
+        "id": "l_splits_7",
+        "from": "splits_011",
+        "to": "splits_013",
+        "propertyType": "float",
+        "propertyName": "x"
+      },
+      {
+        "id": "l_splits_8",
+        "from": "splits_012",
+        "to": "splits_013",
+        "propertyType": "float",
+        "propertyName": "y"
+      },
+      {
+        "id": "l_splits_9",
+        "from": "splits_003",
+        "to": "splits_004"
+      },
+      {
+        "id": "l_splits_10",
+        "from": "splits_004",
+        "to": "splits_005"
+      },
+      {
+        "id": "l_splits_11",
+        "from": "splits_005",
+        "to": "splits_010"
+      },
+      {
+        "id": "l_splits_12",
+        "from": "splits_010",
+        "to": "splits_013"
+      },
+      {
+        "id": "l_splits_13",
+        "from": "splits_002",
+        "to": "splits_003"
+      },
+      {
+        "id": "l_splits_14",
+        "from": "splits_014",
+        "to": "splits_015"
+      }
+    ],
+    "variables": [
+      {
+        "name": "restX",
+        "type": "float",
+        "defaultValue": 0,
+        "description": "Where the layout put the reels (x), so the shake ends exactly there."
+      },
+      {
+        "name": "restY",
+        "type": "float",
+        "defaultValue": 0,
+        "description": "Where the layout put the reels (y), so the shake ends exactly there."
+      }
+    ],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

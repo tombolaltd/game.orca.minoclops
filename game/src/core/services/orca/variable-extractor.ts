@@ -22,6 +22,7 @@ export interface IFlowstateVariable {
  * Add or remove properties here to control what the editor can access.
  */
 export const gameModelVariables: IFlowstateVariable[] = [
+    { name: "roundsWithoutWin", type: 'number' },
     { name: "hotSpotPlayed", type: 'boolean' },
     { name: "engineGameId", type: 'number' },
     { name: "realGame", type: 'object' },

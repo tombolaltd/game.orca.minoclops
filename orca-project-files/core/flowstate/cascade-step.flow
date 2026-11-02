@@ -209,7 +209,8 @@
                   "type": "T",
                   "propertyValue": 1
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nqbuiglb",
@@ -220,7 +221,9 @@
               "color": "#e67e22",
               "icon": "🔢",
               "isStarter": false,
-              "propertyValue": 1
+              "propertyValue": 1,
+              "properties": [],
+              "propertyValues": {}
             },
             {
               "id": "nnqo51iy",
@@ -242,7 +245,9 @@
                   "name": "outcomes",
                   "type": "any"
                 }
-              ]
+              ],
+              "properties": [],
+              "propertyValues": {}
             },
             {
               "id": "nst8icqa",
@@ -271,6 +276,31 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
+              }
+            },
+            {
+              "id": "ng52j14f",
+              "title": "fireCustomEvent",
+              "displayName": "Dust swirl",
+              "x": 920.4101902244315,
+              "y": 213.10228414069275,
+              "rootType": "fireEvent",
+              "color": "#d94848",
+              "icon": "📣",
+              "properties": [
+                {
+                  "name": "eventName",
+                  "type": "customEventRef",
+                  "default": ""
+                },
+                {
+                  "name": "propertyNames",
+                  "type": "TArray"
+                }
+              ],
+              "propertyValues": {
+                "eventName": "winnersCrumbling",
+                "propertyNames": []
               }
             }
           ],
@@ -322,7 +352,7 @@
             {
               "id": "lu8ziho3",
               "from": "cascad_029",
-              "to": "nst8icqa"
+              "to": "ng52j14f"
             },
             {
               "id": "ldklzvh8",
@@ -339,6 +369,11 @@
               "propertyType": "string",
               "propertyName": "locations",
               "sourceOutputName": "locations"
+            },
+            {
+              "id": "lktf80m5",
+              "from": "ng52j14f",
+              "to": "nst8icqa"
             }
           ],
           "groups": []
@@ -403,7 +438,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n7tjxefy",
@@ -452,7 +488,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nefve23b",
@@ -513,7 +550,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       }
     ],
     "links": [

@@ -145,7 +145,8 @@
                   "type": "T",
                   "propertyValue": 1
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nqof5i54",
@@ -156,7 +157,9 @@
               "color": "#e67e22",
               "icon": "🔢",
               "isStarter": false,
-              "propertyValue": 1
+              "propertyValue": 1,
+              "properties": [],
+              "propertyValues": {}
             }
           ],
           "links": [
@@ -413,6 +416,31 @@
                   "sceneName": "main"
                 }
               }
+            },
+            {
+              "id": "n2u3lfym",
+              "title": "fireCustomEvent",
+              "displayName": "Dust swirl",
+              "x": 1980.774315948667,
+              "y": 467.08175467925633,
+              "rootType": "fireEvent",
+              "color": "#d94848",
+              "icon": "📣",
+              "properties": [
+                {
+                  "name": "eventName",
+                  "type": "customEventRef",
+                  "default": ""
+                },
+                {
+                  "name": "propertyNames",
+                  "type": "TArray"
+                }
+              ],
+              "propertyValues": {
+                "eventName": "boardCrumbling",
+                "propertyNames": []
+              }
             }
           ],
           "links": [
@@ -431,7 +459,7 @@
             {
               "id": "l338kbd7",
               "from": "nckl179j",
-              "to": "niy065uh"
+              "to": "n2u3lfym"
             },
             {
               "id": "lrrdf371",
@@ -452,6 +480,11 @@
               "id": "l16kifvz",
               "from": "nxyuus62",
               "to": "nckl179j"
+            },
+            {
+              "id": "l7etisnc",
+              "from": "n2u3lfym",
+              "to": "niy065uh"
             }
           ],
           "groups": []
@@ -538,7 +571,8 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "n0rr0cdn",
@@ -559,7 +593,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nvchlnr9",
@@ -588,7 +623,8 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nyfiant1",
@@ -609,7 +645,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "njdk8z3k",
@@ -624,7 +661,9 @@
                   "name": "value",
                   "type": "T"
                 }
-              ]
+              ],
+              "friendlyTitle": "To Whole Number",
+              "propertyValues": {}
             },
             {
               "id": "nsm0vnrw",
@@ -1488,7 +1527,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nu5ndst9",
@@ -1537,7 +1577,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nxlqjjc9",
@@ -1910,7 +1951,8 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nrd6pgp3",
@@ -1931,7 +1973,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nc6cd3iy",
@@ -1960,7 +2003,8 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nw2wtgdc",
@@ -1981,7 +2025,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "nt9ktx82",
@@ -1996,7 +2041,9 @@
                   "name": "value",
                   "type": "T"
                 }
-              ]
+              ],
+              "friendlyTitle": "To Whole Number",
+              "propertyValues": {}
             },
             {
               "id": "nucmxilf",

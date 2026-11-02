@@ -70,13 +70,350 @@
           "value": "immediate"
         }
       ]
+    },
+    {
+      "id": "cse_won_get",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "payout"
+        }
+      ]
+    },
+    {
+      "id": "cse_won",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "cse_won_get"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "cse_branch_won",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "cse_won"
+        }
+      ]
+    },
+    {
+      "id": "cse_reset",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundsWithoutWin"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "cse_count_get",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundsWithoutWin"
+        }
+      ]
+    },
+    {
+      "id": "cse_count_add",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "cse_count_get"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "cse_count",
+      "title": "setGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundsWithoutWin"
+        },
+        {
+          "name": "value",
+          "type": "dynamic",
+          "sourceNodeId": "cse_count_add"
+        }
+      ]
+    },
+    {
+      "id": "cse_streak_get",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "roundsWithoutWin"
+        }
+      ]
+    },
+    {
+      "id": "cse_streak",
+      "title": "greaterThanOrEqual",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "cse_streak_get"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "cse_branch_streak",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "cse_streak"
+        }
+      ]
+    },
+    {
+      "id": "cse_mix_in",
+      "title": "setAnimationMix",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "fromAnimation",
+          "type": "string",
+          "value": "split/splitSTART"
+        },
+        {
+          "name": "toAnimation",
+          "type": "string",
+          "value": "frustration"
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "id": "cse_mix_out",
+      "title": "setAnimationMix",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "fromAnimation",
+          "type": "string",
+          "value": "frustration"
+        },
+        {
+          "name": "toAnimation",
+          "type": "string",
+          "value": "split/splitSTART"
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "value": 0.3
+        }
+      ]
+    },
+    {
+      "id": "cse_frustration",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "frustration"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
     }
   ],
   "links": [
     {
-      "id": "ll9ee9dn",
+      "id": "cse_l01",
       "from": "nvbp6ycl",
+      "to": "cse_branch_won"
+    },
+    {
+      "id": "cse_l02",
+      "from": "cse_branch_won",
+      "to": "cse_reset",
+      "outIdx": 0
+    },
+    {
+      "id": "cse_l03",
+      "from": "cse_reset",
       "to": "nb7v7o09"
+    },
+    {
+      "id": "cse_l04",
+      "from": "cse_branch_won",
+      "to": "cse_count",
+      "outIdx": 1
+    },
+    {
+      "id": "cse_l05",
+      "from": "cse_count",
+      "to": "cse_branch_streak"
+    },
+    {
+      "id": "cse_l06",
+      "from": "cse_branch_streak",
+      "to": "cse_mix_in",
+      "outIdx": 0
+    },
+    {
+      "id": "cse_l09",
+      "from": "cse_mix_in",
+      "to": "cse_mix_out"
+    },
+    {
+      "id": "cse_l10",
+      "from": "cse_mix_out",
+      "to": "cse_frustration"
+    },
+    {
+      "id": "cse_l07",
+      "from": "cse_frustration",
+      "to": "nb7v7o09"
+    },
+    {
+      "id": "cse_l08",
+      "from": "cse_branch_streak",
+      "to": "nb7v7o09",
+      "outIdx": 1
+    },
+    {
+      "id": "cse_v01",
+      "from": "cse_won_get",
+      "to": "cse_won",
+      "propertyName": "a",
+      "propertyType": "float"
+    },
+    {
+      "id": "cse_v02",
+      "from": "cse_won",
+      "to": "cse_branch_won",
+      "propertyName": "condition",
+      "propertyType": "bool"
+    },
+    {
+      "id": "cse_v03",
+      "from": "cse_count_get",
+      "to": "cse_count_add",
+      "propertyName": "a",
+      "propertyType": "T"
+    },
+    {
+      "id": "cse_v04",
+      "from": "cse_count_add",
+      "to": "cse_count",
+      "propertyName": "value",
+      "propertyType": "dynamic"
+    },
+    {
+      "id": "cse_v05",
+      "from": "cse_streak_get",
+      "to": "cse_streak",
+      "propertyName": "a",
+      "propertyType": "float"
+    },
+    {
+      "id": "cse_v06",
+      "from": "cse_streak",
+      "to": "cse_branch_streak",
+      "propertyName": "condition",
+      "propertyType": "bool"
     }
   ]
 }

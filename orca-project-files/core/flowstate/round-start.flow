@@ -596,6 +596,31 @@
                   "sceneName": "main"
                 }
               }
+            },
+            {
+              "id": "nu9by70w",
+              "title": "fireCustomEvent",
+              "displayName": "Dust swirl",
+              "x": 760.8813378726122,
+              "y": 121.78775052928778,
+              "rootType": "fireEvent",
+              "color": "#d94848",
+              "icon": "📣",
+              "properties": [
+                {
+                  "name": "eventName",
+                  "type": "customEventRef",
+                  "default": ""
+                },
+                {
+                  "name": "propertyNames",
+                  "type": "TArray"
+                }
+              ],
+              "propertyValues": {
+                "eventName": "boardCrumbling",
+                "propertyNames": []
+              }
             }
           ],
           "links": [
@@ -614,7 +639,7 @@
             {
               "id": "lkeqbeap",
               "from": "nnu5km0b",
-              "to": "n2gt7hvh"
+              "to": "nu9by70w"
             },
             {
               "id": "l6y0xp0p",
@@ -635,6 +660,11 @@
               "id": "lt70h9ru",
               "from": "numb55o0",
               "to": "nxnpr19r"
+            },
+            {
+              "id": "lrc48fg0",
+              "from": "nu9by70w",
+              "to": "n2gt7hvh"
             }
           ],
           "groups": []
@@ -706,7 +736,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nzwcgg7r",
@@ -755,7 +786,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nldhipxk",
@@ -863,7 +895,8 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "n1gt7vrh",
@@ -884,7 +917,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "n1b7mecl",
@@ -913,7 +947,8 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "no9j2w3y",
@@ -934,7 +969,8 @@
                   "name": "index",
                   "type": "int"
                 }
-              ]
+              ],
+              "propertyValues": {}
             },
             {
               "id": "njsaw2qo",
@@ -949,7 +985,9 @@
                   "name": "value",
                   "type": "T"
                 }
-              ]
+              ],
+              "friendlyTitle": "To Whole Number",
+              "propertyValues": {}
             },
             {
               "id": "npibfg0c",
@@ -964,7 +1002,9 @@
                   "name": "value",
                   "type": "T"
                 }
-              ]
+              ],
+              "friendlyTitle": "To Whole Number",
+              "propertyValues": {}
             },
             {
               "id": "nqcblx6w",
@@ -1087,7 +1127,18 @@
                   "name": "target",
                   "type": "nodeRef"
                 }
-              ]
+              ],
+              "outputs": [
+                {
+                  "name": "x",
+                  "type": "float"
+                },
+                {
+                  "name": "y",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {}
             },
             {
               "id": "njxog5cb",
@@ -1142,7 +1193,7 @@
               "propertyValues": {
                 "loop": false,
                 "trackIndex": 0,
-                "sequenceNodeOn": "onComplete",
+                "sequenceNodeOn": "immediate",
                 "target": {
                   "kind": "nodeRef",
                   "nodeId": "node_1792499758800_4pkgdglr6",
@@ -1150,6 +1201,31 @@
                   "sceneName": "main"
                 },
                 "animationName": "hotspotON"
+              }
+            },
+            {
+              "id": "nhwn7pb2",
+              "title": "fireCustomEvent",
+              "displayName": "Ember burst",
+              "x": -441.2313777219774,
+              "y": 678.1222909431838,
+              "rootType": "fireEvent",
+              "color": "#d94848",
+              "icon": "📣",
+              "properties": [
+                {
+                  "name": "eventName",
+                  "type": "customEventRef",
+                  "default": ""
+                },
+                {
+                  "name": "propertyNames",
+                  "type": "TArray"
+                }
+              ],
+              "propertyValues": {
+                "eventName": "hotspotOn",
+                "propertyNames": []
               }
             }
           ],
@@ -1253,8 +1329,13 @@
             },
             {
               "id": "l1folnt1",
-              "from": "njxog5cb",
+              "from": "nhwn7pb2",
               "to": "nz9cvwlt"
+            },
+            {
+              "id": "lf3yxt0o",
+              "from": "njxog5cb",
+              "to": "nhwn7pb2"
             }
           ],
           "groups": []

@@ -1,0 +1,324 @@
+{
+  "nodes": [
+    {
+      "id": "charac_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Each win step (cascadeStep, base game and free spins): ways pay from the left reel, so a winning symbol on the 4th reel means a win of 4 or 5 symbols. Then the minotaur plays bigWin, blended in from his split slam or idle, and goes back to his idle."
+    },
+    {
+      "id": "charac_001",
+      "title": "cascadeLocations",
+      "rootType": "custom"
+    },
+    {
+      "id": "charac_002",
+      "title": "at",
+      "rootType": "array",
+      "properties": [
+        {
+          "name": "array",
+          "type": "TArray",
+          "sourceNodeId": "charac_001",
+          "sourceOutputName": "locations"
+        },
+        {
+          "name": "index",
+          "type": "int",
+          "value": 3
+        }
+      ]
+    },
+    {
+      "id": "charac_003",
+      "title": "getLength",
+      "rootType": "util",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "charac_002"
+        }
+      ]
+    },
+    {
+      "id": "charac_004",
+      "title": "onCustomEvent",
+      "rootType": "StarterNodes",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "cascadeStep"
+        }
+      ]
+    },
+    {
+      "id": "charac_005",
+      "title": "greaterThan",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "float",
+          "sourceNodeId": "charac_003"
+        },
+        {
+          "name": "b",
+          "type": "float",
+          "value": 0
+        }
+      ]
+    },
+    {
+      "id": "charac_006",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "charac_005"
+        }
+      ]
+    },
+    {
+      "id": "charac_007",
+      "title": "setAnimationMix",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "fromAnimation",
+          "type": "string",
+          "value": "split/splitSTART"
+        },
+        {
+          "name": "toAnimation",
+          "type": "string",
+          "value": "bigWin"
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "charac_008",
+      "title": "setAnimationMix",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "fromAnimation",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "toAnimation",
+          "type": "string",
+          "value": "bigWin"
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "charac_009",
+      "title": "setAnimationMix",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "fromAnimation",
+          "type": "string",
+          "value": "bigWin"
+        },
+        {
+          "name": "toAnimation",
+          "type": "string",
+          "value": "split/splitSTART"
+        },
+        {
+          "name": "duration",
+          "type": "float",
+          "value": 0.2
+        }
+      ]
+    },
+    {
+      "id": "charac_010",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "bigWin"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "charac_011",
+      "title": "addAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "idle"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": true
+        },
+        {
+          "name": "delay",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_charac_1",
+      "from": "charac_001",
+      "to": "charac_002",
+      "propertyType": "TArray",
+      "propertyName": "array",
+      "sourceOutputName": "locations"
+    },
+    {
+      "id": "l_charac_2",
+      "from": "charac_002",
+      "to": "charac_003",
+      "propertyType": "T",
+      "propertyName": "value"
+    },
+    {
+      "id": "l_charac_3",
+      "from": "charac_003",
+      "to": "charac_005",
+      "propertyType": "float",
+      "propertyName": "a"
+    },
+    {
+      "id": "l_charac_4",
+      "from": "charac_005",
+      "to": "charac_006",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_charac_5",
+      "from": "charac_007",
+      "to": "charac_008"
+    },
+    {
+      "id": "l_charac_6",
+      "from": "charac_008",
+      "to": "charac_009"
+    },
+    {
+      "id": "l_charac_7",
+      "from": "charac_009",
+      "to": "charac_010"
+    },
+    {
+      "id": "l_charac_8",
+      "from": "charac_010",
+      "to": "charac_011"
+    },
+    {
+      "id": "l_charac_9",
+      "from": "charac_006",
+      "to": "charac_007",
+      "outIdx": 0
+    },
+    {
+      "id": "l_charac_10",
+      "from": "charac_004",
+      "to": "charac_006"
+    }
+  ]
+}

@@ -1,0 +1,580 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "introv_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "The Tidepool intro video plays over the game when it starts, then fades to the game. Pressing Buy during it cuts straight to the round; a game resumed into free spins goes straight back to the bonus.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "introv_001",
+        "title": "onApplicationInit",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Application Start",
+        "color": "#ff6b35",
+        "icon": "▶️",
+        "isStarter": true,
+        "starterNodeType": "application",
+        "properties": [],
+        "propertyValues": {},
+        "displayName": "Game loaded"
+      },
+      {
+        "id": "introv_002",
+        "title": "getGameModelProperty",
+        "x": 378,
+        "y": 204,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "bonusOnResume"
+        }
+      },
+      {
+        "id": "introv_003",
+        "title": "branch",
+        "x": 740,
+        "y": 120,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        },
+        "displayName": "Resuming free spins?"
+      },
+      {
+        "id": "introv_009",
+        "x": 1234,
+        "y": 413,
+        "title": "State",
+        "displayName": "Play intro",
+        "isState": true,
+        "entryTargetId": "introv_004",
+        "exitSourceId": "introv_005",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "introv_010",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "introv_004",
+              "title": "showNode",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Show the intro"
+            },
+            {
+              "id": "introv_005",
+              "title": "playVideoToEnd",
+              "x": 672,
+              "y": 120,
+              "rootType": "custom",
+              "friendlyTitle": "Play video to end",
+              "color": "#2c3e50",
+              "icon": "🎬",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "maxWait",
+                  "type": "float",
+                  "default": 10
+                }
+              ],
+              "propertyValues": {
+                "maxWait": 10,
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro_video",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Play the intro video to its end"
+            },
+            {
+              "id": "introv_011",
+              "x": 1034,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_introv_2",
+              "from": "introv_004",
+              "to": "introv_005"
+            },
+            {
+              "id": "l_introv_3",
+              "from": "introv_010",
+              "to": "introv_004"
+            },
+            {
+              "id": "l_introv_4",
+              "from": "introv_005",
+              "to": "introv_011"
+            }
+          ]
+        }
+      },
+      {
+        "id": "introv_012",
+        "x": 1596,
+        "y": 413,
+        "title": "State",
+        "displayName": "Fade to game",
+        "isState": true,
+        "entryTargetId": "introv_006",
+        "exitSourceId": "introv_008",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "introv_013",
+              "x": 80,
+              "y": 120,
+              "title": "Entry",
+              "isEntry": true,
+              "icon": "⭣",
+              "color": "#4CAF50"
+            },
+            {
+              "id": "introv_006",
+              "title": "tweenNodeAlpha",
+              "x": 310,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 400,
+                "ease": "sine.inOut",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Fade to the game"
+            },
+            {
+              "id": "introv_007",
+              "title": "hideNode",
+              "x": 672,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Hide the intro"
+            },
+            {
+              "id": "introv_008",
+              "title": "stopVideo",
+              "x": 1034,
+              "y": 120,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "video"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro_video",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              "displayName": "Stop the video"
+            },
+            {
+              "id": "introv_014",
+              "x": 1396,
+              "y": 120,
+              "title": "Exit",
+              "isExit": true,
+              "icon": "⭡",
+              "color": "#FF5722"
+            }
+          ],
+          "links": [
+            {
+              "id": "l_introv_6",
+              "from": "introv_006",
+              "to": "introv_007"
+            },
+            {
+              "id": "l_introv_7",
+              "from": "introv_007",
+              "to": "introv_008"
+            },
+            {
+              "id": "l_introv_8",
+              "from": "introv_013",
+              "to": "introv_006"
+            },
+            {
+              "id": "l_introv_9",
+              "from": "introv_008",
+              "to": "introv_014"
+            }
+          ]
+        }
+      },
+      {
+        "id": "introv_015",
+        "title": "onBeginGame",
+        "x": 144,
+        "y": 625,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Buy In",
+        "color": "#ff6b35",
+        "icon": "▶️",
+        "isStarter": true,
+        "starterNodeType": "application",
+        "properties": [],
+        "propertyValues": {},
+        "displayName": "BUY pressed"
+      },
+      {
+        "id": "introv_016",
+        "title": "killTweensOfNode",
+        "x": 740,
+        "y": 625,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "introv_017",
+        "title": "hideNode",
+        "x": 1102,
+        "y": 625,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        "displayName": "Cut the intro short"
+      },
+      {
+        "id": "introv_018",
+        "title": "stopVideo",
+        "x": 1464,
+        "y": 625,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "video"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro_video",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        "displayName": "Stop the video"
+      }
+    ],
+    "links": [
+      {
+        "id": "l_introv_1",
+        "from": "introv_002",
+        "to": "introv_003",
+        "propertyType": "bool",
+        "propertyName": "condition"
+      },
+      {
+        "id": "l_introv_5",
+        "from": "introv_009",
+        "to": "introv_012"
+      },
+      {
+        "id": "l_introv_10",
+        "from": "introv_003",
+        "to": "introv_009",
+        "outIdx": 1
+      },
+      {
+        "id": "l_introv_11",
+        "from": "introv_001",
+        "to": "introv_003"
+      },
+      {
+        "id": "l_introv_12",
+        "from": "introv_016",
+        "to": "introv_017"
+      },
+      {
+        "id": "l_introv_13",
+        "from": "introv_017",
+        "to": "introv_018"
+      },
+      {
+        "id": "l_introv_14",
+        "from": "introv_015",
+        "to": "introv_016"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "nodes": [
+    {
+      "id": "introv_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "The Tidepool intro video plays over the game when it starts, then fades to the game. Pressing Buy during it cuts straight to the round; a game resumed into free spins goes straight back to the bonus."
+    },
+    {
+      "id": "introv_001",
+      "title": "onApplicationInit",
+      "rootType": "StarterNodes"
+    },
+    {
+      "id": "introv_002",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "bonusOnResume"
+        }
+      ]
+    },
+    {
+      "id": "introv_003",
+      "title": "branch",
+      "rootType": "branch",
+      "properties": [
+        {
+          "name": "condition",
+          "type": "bool",
+          "sourceNodeId": "introv_002"
+        }
+      ]
+    },
+    {
+      "id": "introv_009",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "introv_004",
+      "exitSourceId": "introv_005",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "introv_010",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "introv_004",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "introv_005",
+            "title": "playVideoToEnd",
+            "rootType": "custom",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro_video",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "maxWait",
+                "type": "float",
+                "value": 10
+              }
+            ]
+          },
+          {
+            "id": "introv_011",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_introv_2",
+            "from": "introv_004",
+            "to": "introv_005"
+          },
+          {
+            "id": "l_introv_3",
+            "from": "introv_010",
+            "to": "introv_004"
+          },
+          {
+            "id": "l_introv_4",
+            "from": "introv_005",
+            "to": "introv_011"
+          }
+        ]
+      }
+    },
+    {
+      "id": "introv_012",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "introv_006",
+      "exitSourceId": "introv_008",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "introv_013",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "introv_006",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 400
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "sine.inOut"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "introv_007",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "introv_008",
+            "title": "stopVideo",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_intro_video",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "introv_014",
+            "title": "Exit",
+            "isExit": true
+          }
+        ],
+        "links": [
+          {
+            "id": "l_introv_6",
+            "from": "introv_006",
+            "to": "introv_007"
+          },
+          {
+            "id": "l_introv_7",
+            "from": "introv_007",
+            "to": "introv_008"
+          },
+          {
+            "id": "l_introv_8",
+            "from": "introv_013",
+            "to": "introv_006"
+          },
+          {
+            "id": "l_introv_9",
+            "from": "introv_008",
+            "to": "introv_014"
+          }
+        ]
+      }
+    },
+    {
+      "id": "introv_015",
+      "title": "onBeginGame",
+      "rootType": "StarterNodes"
+    },
+    {
+      "id": "introv_016",
+      "title": "killTweensOfNode",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "introv_017",
+      "title": "hideNode",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    },
+    {
+      "id": "introv_018",
+      "title": "stopVideo",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_intro_video",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
+    }
+  ],
+  "links": [
+    {
+      "id": "l_introv_1",
+      "from": "introv_002",
+      "to": "introv_003",
+      "propertyType": "bool",
+      "propertyName": "condition"
+    },
+    {
+      "id": "l_introv_5",
+      "from": "introv_009",
+      "to": "introv_012"
+    },
+    {
+      "id": "l_introv_10",
+      "from": "introv_003",
+      "to": "introv_009",
+      "outIdx": 1
+    },
+    {
+      "id": "l_introv_11",
+      "from": "introv_001",
+      "to": "introv_003"
+    },
+    {
+      "id": "l_introv_12",
+      "from": "introv_016",
+      "to": "introv_017"
+    },
+    {
+      "id": "l_introv_13",
+      "from": "introv_017",
+      "to": "introv_018"
+    },
+    {
+      "id": "l_introv_14",
+      "from": "introv_015",
+      "to": "introv_016"
+    }
+  ]
+}

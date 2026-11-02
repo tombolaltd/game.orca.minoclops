@@ -1,0 +1,173 @@
+{
+  "version": 2,
+  "kind": "core",
+  "graph": {
+    "nodes": [
+      {
+        "id": "hotspo_note",
+        "title": "Note",
+        "x": 80,
+        "y": -164,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Embers burst from the hotspot fire on frame 28 of hotspotON. round-start fires hotspotOn the moment hotspotON starts; the animation runs at 30 fps, so frame 28 is 28/30 = 0.933 s later. The emitters are HotSpot › Ember Burst, so they burst wherever the hotspot landed.",
+        "width": 620,
+        "height": 210
+      },
+      {
+        "id": "hotspo_001",
+        "title": "getChildNodes",
+        "x": 804,
+        "y": 204,
+        "rootType": "getters",
+        "friendlyTitle": "Get Child Nodes",
+        "color": "#0e7c86",
+        "icon": "🌳",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793527625745_tfethuaii",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      },
+      {
+        "id": "hotspo_002",
+        "title": "loop",
+        "x": 1166,
+        "y": 120,
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ],
+        "propertyValues": {
+          "count": 1
+        }
+      },
+      {
+        "id": "hotspo_003",
+        "title": "onCustomEvent",
+        "x": 80,
+        "y": 120,
+        "rootType": "StarterNodes",
+        "friendlyTitle": "On Custom Event",
+        "color": "#ff6b35",
+        "icon": "📣",
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          }
+        ],
+        "propertyValues": {
+          "eventName": "hotspotOn"
+        },
+        "isStarter": true,
+        "starterNodeType": "customEvent"
+      },
+      {
+        "id": "hotspo_004",
+        "title": "delay",
+        "x": 442,
+        "y": 120,
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.9333
+        },
+        "displayName": "Frame 28 of hotspotON"
+      },
+      {
+        "id": "hotspo_005",
+        "title": "emitParticleBurst",
+        "x": 1528,
+        "y": 428,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "particles"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 10
+          }
+        ],
+        "propertyValues": {
+          "count": 30
+        },
+        "displayName": "Burst embers"
+      }
+    ],
+    "links": [
+      {
+        "id": "l_hotspo_1",
+        "from": "hotspo_001",
+        "to": "hotspo_002",
+        "propertyType": "TArray",
+        "propertyName": "items"
+      },
+      {
+        "id": "l_hotspo_2",
+        "from": "hotspo_002",
+        "to": "hotspo_005",
+        "propertyType": "nodeRef",
+        "propertyName": "target",
+        "sourceOutputName": "item"
+      },
+      {
+        "id": "l_hotspo_3",
+        "from": "hotspo_004",
+        "to": "hotspo_002"
+      },
+      {
+        "id": "l_hotspo_4",
+        "from": "hotspo_002",
+        "to": "hotspo_005",
+        "outIdx": 0
+      },
+      {
+        "id": "l_hotspo_5",
+        "from": "hotspo_003",
+        "to": "hotspo_004"
+      }
+    ],
+    "variables": [],
+    "viewState": {
+      "panX": 40,
+      "panY": 220,
+      "scale": 0.6
+    }
+  }
+}

@@ -43,7 +43,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "n152ds7e",
@@ -53,7 +55,9 @@
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "⚡",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       }
     ],
     "links": [

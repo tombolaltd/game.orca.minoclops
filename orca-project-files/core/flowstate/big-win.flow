@@ -2,7 +2,19 @@
   "version": 2,
   "kind": "core",
   "graph": {
-    "nodes": [],
+    "nodes": [
+      {
+        "id": "bigwin_note",
+        "title": "Note",
+        "x": 80,
+        "y": 80,
+        "rootType": "note",
+        "isNote": true,
+        "noteText": "Placeholder: the big win flow goes here (not built yet).",
+        "width": 420,
+        "height": 120
+      }
+    ],
     "links": [],
     "groups": [],
     "variables": [],

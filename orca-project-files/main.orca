@@ -20,7 +20,11 @@
     "gameHeightRatio": 0.67,
     "enable3D": false,
     "cabinetMode": "standard",
-    "portraitChatCrop": true
+    "portraitChatCrop": true,
+    "mockEngine": {
+      "enabled": false,
+      "mechanic": "ways-slot"
+    }
   },
   "coreGraphOrder": [
     "game-boot",
@@ -40,7 +44,12 @@
     "Character-bonus-transition",
     "Character-main-transition-copy",
     "big-win",
-    "bonus-win"
+    "bonus-win",
+    "splitSTART-shake",
+    "dust-swirl",
+    "hotspot-embers",
+    "intro-video",
+    "character-big-win"
   ],
   "skinGraphOrder": {
     "samsplit": []
@@ -125,6 +134,18 @@
           "type": "int"
         }
       ]
+    },
+    {
+      "name": "boardCrumbling",
+      "description": "The whole board starts to crumble (Buy, free spin): swirl dust particles on every reel."
+    },
+    {
+      "name": "winnersCrumbling",
+      "description": "Winning symbols start to crumble: swirl dust particles on the reels they are on."
+    },
+    {
+      "name": "hotspotOn",
+      "description": "The hotspot fire (hotspotON) starts on the chosen symbol: embers burst from it on frame 28."
     }
   ],
   "serverConnectionMapping": {
@@ -218,9 +239,11 @@
       "name": "Base round",
       "graphs": [
         "round-start",
+        "hotspot-embers",
         "split-reveal",
         "show-step",
         "cascade-step",
+        "dust-swirl",
         "steps-done",
         "settle-round"
       ],
@@ -242,6 +265,7 @@
       "name": "Character",
       "graphs": [
         "Character-split",
+        "splitSTART-shake",
         "character-spin-end",
         "Character-bonus-transition",
         "Character-main-transition-copy"

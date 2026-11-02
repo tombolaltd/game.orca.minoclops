@@ -1,4 +1,12 @@
 {
-  "nodes": [],
+  "nodes": [
+    {
+      "id": "bigwin_note",
+      "title": "Note",
+      "rootType": "note",
+      "isNote": true,
+      "noteText": "Placeholder: the big win flow goes here (not built yet)."
+    }
+  ],
   "links": []
 }

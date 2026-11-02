@@ -131,14 +131,19 @@
           "value": "split"
         },
         {
-          "name": "loop",
-          "type": "bool",
-          "value": false
+          "name": "stateAnimationName",
+          "type": "string",
+          "value": "state"
+        },
+        {
+          "name": "stateBlend",
+          "type": "float",
+          "value": 0.2
         },
         {
           "name": "idleAnimationName",
           "type": "string",
-          "value": ""
+          "value": "idle"
         }
       ]
     },

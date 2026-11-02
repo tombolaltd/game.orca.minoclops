@@ -400,7 +400,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "n3473a3p",
@@ -410,7 +412,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nesw0bts",
@@ -556,13 +560,385 @@
           },
           "animationName": "BaseToBonus"
         }
+      },
+      {
+        "id": "spoolwin_reels1",
+        "title": "loop",
+        "displayName": "Each reel",
+        "x": -1900,
+        "y": 700,
+        "propertyValues": {
+          "count": 5
+        },
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_rows1",
+        "title": "loop",
+        "displayName": "Each row",
+        "x": -1640,
+        "y": 700,
+        "propertyValues": {
+          "count": 3
+        },
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_at1",
+        "title": "getReelSymbolAt",
+        "x": -1640,
+        "y": 960,
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "reelIndex": 0,
+          "rowIndex": 0
+        },
+        "rootType": "getters",
+        "friendlyTitle": "Get Reel Symbol At",
+        "color": "#0e7c86",
+        "icon": "🎰",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "reelIndex",
+            "type": "int",
+            "default": 0,
+            "linkable": true
+          },
+          {
+            "name": "rowIndex",
+            "type": "int",
+            "default": 0,
+            "linkable": true
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_is1",
+        "title": "equals",
+        "x": -1380,
+        "y": 960,
+        "propertyValues": {
+          "b": 0
+        },
+        "rootType": "math",
+        "friendlyTitle": "Equal",
+        "color": "#16a085",
+        "icon": "🟰",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_branch1",
+        "title": "branch",
+        "displayName": "Bonus spool here?",
+        "x": -1380,
+        "y": 700,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "title": "playSymbolAnimation",
+        "displayName": "Spool plays its win",
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "",
+          "loop": false,
+          "reelIndex": 0,
+          "rowIndex": 0
+        },
+        "id": "spoolwin_act1",
+        "x": -1120,
+        "y": 660,
+        "rootType": "Action",
+        "friendlyTitle": "Play Symbol Animation",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "reelIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "rowIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "default": ""
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_wait",
+        "title": "delay",
+        "displayName": "Spools win (1 s)",
+        "x": -1050,
+        "y": 560,
+        "propertyValues": {
+          "seconds": 1.1
+        },
+        "rootType": "delay",
+        "friendlyTitle": "Wait",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_reels2",
+        "title": "loop",
+        "displayName": "Each reel",
+        "x": -800,
+        "y": 700,
+        "propertyValues": {
+          "count": 5
+        },
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_rows2",
+        "title": "loop",
+        "displayName": "Each row",
+        "x": -540,
+        "y": 700,
+        "propertyValues": {
+          "count": 3
+        },
+        "rootType": "loop",
+        "friendlyTitle": "Repeat For Each",
+        "color": "#9b59b6",
+        "icon": "🔁",
+        "properties": [
+          {
+            "name": "items",
+            "type": "TArray"
+          },
+          {
+            "name": "count",
+            "type": "int",
+            "default": 1
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_at2",
+        "title": "getReelSymbolAt",
+        "x": -540,
+        "y": 960,
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "reelIndex": 0,
+          "rowIndex": 0
+        },
+        "rootType": "getters",
+        "friendlyTitle": "Get Reel Symbol At",
+        "color": "#0e7c86",
+        "icon": "🎰",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "reelIndex",
+            "type": "int",
+            "default": 0,
+            "linkable": true
+          },
+          {
+            "name": "rowIndex",
+            "type": "int",
+            "default": 0,
+            "linkable": true
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_is2",
+        "title": "equals",
+        "x": -280,
+        "y": 960,
+        "propertyValues": {
+          "b": 0
+        },
+        "rootType": "math",
+        "friendlyTitle": "Equal",
+        "color": "#16a085",
+        "icon": "🟰",
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "spoolwin_branch2",
+        "title": "branch",
+        "displayName": "Bonus spool here?",
+        "x": -280,
+        "y": 700,
+        "rootType": "branch",
+        "color": "#d4a72c",
+        "icon": "🔀",
+        "properties": [
+          {
+            "name": "condition",
+            "type": "bool",
+            "default": false
+          }
+        ],
+        "propertyValues": {
+          "condition": false
+        }
+      },
+      {
+        "title": "stopSymbolAnimation",
+        "displayName": "Back to its idle",
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "reelIndex": 0,
+          "rowIndex": 0
+        },
+        "id": "spoolwin_act2",
+        "x": -20,
+        "y": 660,
+        "rootType": "Action",
+        "friendlyTitle": "Stop Symbol Animation",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "reels"
+          },
+          {
+            "name": "reelIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "rowIndex",
+            "type": "int",
+            "default": 0
+          }
+        ]
       }
     ],
     "links": [
       {
         "id": "ljol3aqz",
         "from": "bonust_005",
-        "to": "bonust_033"
+        "to": "spoolwin_reels1"
       },
       {
         "id": "lctcmlm8",
@@ -628,6 +1004,151 @@
         "id": "l3gwmxzf",
         "from": "nn1b6vey",
         "to": "n73y7a6t"
+      },
+      {
+        "id": "spoolwin_l11",
+        "from": "spoolwin_reels1",
+        "to": "spoolwin_rows1",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_l21",
+        "from": "spoolwin_rows1",
+        "to": "spoolwin_branch1",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_l31",
+        "from": "spoolwin_branch1",
+        "to": "spoolwin_act1",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_v11",
+        "from": "spoolwin_reels1",
+        "to": "spoolwin_at1",
+        "propertyName": "reelIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v21",
+        "from": "spoolwin_rows1",
+        "to": "spoolwin_at1",
+        "propertyName": "rowIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v31",
+        "from": "spoolwin_at1",
+        "to": "spoolwin_is1",
+        "propertyName": "a",
+        "propertyType": "T"
+      },
+      {
+        "id": "spoolwin_v41",
+        "from": "spoolwin_is1",
+        "to": "spoolwin_branch1",
+        "propertyName": "condition",
+        "propertyType": "bool"
+      },
+      {
+        "id": "spoolwin_v51",
+        "from": "spoolwin_reels1",
+        "to": "spoolwin_act1",
+        "propertyName": "reelIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v61",
+        "from": "spoolwin_rows1",
+        "to": "spoolwin_act1",
+        "propertyName": "rowIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_l12",
+        "from": "spoolwin_reels2",
+        "to": "spoolwin_rows2",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_l22",
+        "from": "spoolwin_rows2",
+        "to": "spoolwin_branch2",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_l32",
+        "from": "spoolwin_branch2",
+        "to": "spoolwin_act2",
+        "outIdx": 0
+      },
+      {
+        "id": "spoolwin_v12",
+        "from": "spoolwin_reels2",
+        "to": "spoolwin_at2",
+        "propertyName": "reelIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v22",
+        "from": "spoolwin_rows2",
+        "to": "spoolwin_at2",
+        "propertyName": "rowIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v32",
+        "from": "spoolwin_at2",
+        "to": "spoolwin_is2",
+        "propertyName": "a",
+        "propertyType": "T"
+      },
+      {
+        "id": "spoolwin_v42",
+        "from": "spoolwin_is2",
+        "to": "spoolwin_branch2",
+        "propertyName": "condition",
+        "propertyType": "bool"
+      },
+      {
+        "id": "spoolwin_v52",
+        "from": "spoolwin_reels2",
+        "to": "spoolwin_act2",
+        "propertyName": "reelIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_v62",
+        "from": "spoolwin_rows2",
+        "to": "spoolwin_act2",
+        "propertyName": "rowIndex",
+        "sourceOutputName": "index",
+        "propertyType": "int"
+      },
+      {
+        "id": "spoolwin_l01",
+        "from": "spoolwin_reels1",
+        "to": "spoolwin_wait",
+        "outIdx": 1
+      },
+      {
+        "id": "spoolwin_l02",
+        "from": "spoolwin_wait",
+        "to": "spoolwin_reels2"
+      },
+      {
+        "id": "spoolwin_l03",
+        "from": "spoolwin_reels2",
+        "to": "bonust_033",
+        "outIdx": 1
       }
     ],
     "groups": [],

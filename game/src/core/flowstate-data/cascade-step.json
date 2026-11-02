@@ -154,6 +154,23 @@
                 }
               }
             ]
+          },
+          {
+            "id": "ng52j14f",
+            "title": "fireCustomEvent",
+            "rootType": "fireEvent",
+            "properties": [
+              {
+                "name": "eventName",
+                "type": "customEventRef",
+                "value": "winnersCrumbling"
+              },
+              {
+                "name": "propertyNames",
+                "type": "TArray",
+                "value": []
+              }
+            ]
           }
         ],
         "links": [
@@ -197,7 +214,7 @@
           {
             "id": "lu8ziho3",
             "from": "cascad_029",
-            "to": "nst8icqa"
+            "to": "ng52j14f"
           },
           {
             "id": "ldklzvh8",
@@ -214,6 +231,11 @@
             "propertyType": "string",
             "propertyName": "locations",
             "sourceOutputName": "locations"
+          },
+          {
+            "id": "lktf80m5",
+            "from": "ng52j14f",
+            "to": "nst8icqa"
           }
         ]
       }

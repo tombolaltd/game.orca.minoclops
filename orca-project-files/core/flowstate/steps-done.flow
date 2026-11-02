@@ -252,7 +252,8 @@
             "name": "index",
             "type": "int"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n0twjmvb",
@@ -301,7 +302,8 @@
             "type": "float",
             "path": "WinWays"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nt62glx5",
@@ -336,7 +338,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       }
     ],
     "links": [

@@ -146,7 +146,8 @@
             "type": "float",
             "path": "Symbol"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n10e0ksf",
@@ -177,9 +178,14 @@
             "default": ""
           },
           {
-            "name": "loop",
-            "type": "bool",
-            "default": false
+            "name": "stateAnimationName",
+            "type": "string",
+            "default": "state"
+          },
+          {
+            "name": "stateBlend",
+            "type": "float",
+            "default": 0.2
           },
           {
             "name": "idleAnimationName",
@@ -189,13 +195,15 @@
         ],
         "propertyValues": {
           "animationName": "split",
-          "loop": false,
           "reels": {
             "kind": "nodeRef",
             "nodeId": "node_ss_reels",
             "sceneScope": "core",
             "sceneName": "main"
-          }
+          },
+          "stateAnimationName": "state",
+          "stateBlend": 0.2,
+          "idleAnimationName": "idle"
         }
       },
       {
@@ -211,7 +219,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "nvu1cf10",
@@ -226,7 +236,9 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "friendlyTitle": "To Whole Number",
+        "propertyValues": {}
       },
       {
         "id": "n8gf47cf",
@@ -291,7 +303,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nyfqvsq8",
@@ -394,7 +407,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nafzlx51",
@@ -415,7 +429,8 @@
             "type": "T",
             "propertyValue": 1
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nvfslstu",
@@ -426,7 +441,9 @@
         "color": "#e67e22",
         "icon": "🔢",
         "isStarter": false,
-        "propertyValue": 1
+        "propertyValue": 1,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nltcs3cr",
@@ -648,7 +665,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n3je7mbr",
@@ -659,7 +677,9 @@
         "color": "#3498db",
         "icon": "🔤",
         "isStarter": false,
-        "propertyValue": "x"
+        "propertyValue": "x",
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nlbirw7n",
@@ -680,7 +700,8 @@
             "name": "b",
             "type": "string"
           }
-        ]
+        ],
+        "propertyValues": {}
       }
     ],
     "links": [
