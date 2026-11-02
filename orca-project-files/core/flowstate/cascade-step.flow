@@ -63,8 +63,8 @@
             {
               "id": "cascad_029",
               "title": "Entry",
-              "x": 822.0208758845217,
-              "y": 69.45305326482959,
+              "x": 453.18486517210835,
+              "y": 64.16508178508172,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -221,8 +221,8 @@
               "color": "#e67e22",
               "icon": "🔢",
               "isStarter": false,
-              "propertyValue": 1,
               "properties": [],
+              "propertyValue": 1,
               "propertyValues": {}
             },
             {
@@ -236,6 +236,8 @@
               "icon": "🧩",
               "isStarter": false,
               "overrideNodeType": "property",
+              "properties": [],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "locations",
@@ -245,9 +247,7 @@
                   "name": "outcomes",
                   "type": "any"
                 }
-              ],
-              "properties": [],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "nst8icqa",
@@ -282,8 +282,8 @@
               "id": "ng52j14f",
               "title": "fireCustomEvent",
               "displayName": "Dust swirl",
-              "x": 920.4101902244315,
-              "y": 213.10228414069275,
+              "x": 667.9095520664712,
+              "y": 55.78513261819387,
               "rootType": "fireEvent",
               "color": "#d94848",
               "icon": "📣",
@@ -457,6 +457,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "DisplayReels",
@@ -488,8 +489,7 @@
             "type": "float",
             "path": "WinWays"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "nefve23b",
@@ -540,6 +540,7 @@
       {
         "id": "n8axj3zo",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": -289.2708683048718,
         "y": 359.68383303527526,
         "rootType": "cast",
@@ -551,7 +552,6 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       }
     ],
@@ -622,9 +622,9 @@
       }
     ],
     "viewState": {
-      "panX": 486.8359614809226,
-      "panY": 115.8110988106447,
-      "scale": 0.727476979634571
+      "panX": -165.3876304722346,
+      "panY": 60.29210041678141,
+      "scale": 0.756433731785317
     }
   }
 }

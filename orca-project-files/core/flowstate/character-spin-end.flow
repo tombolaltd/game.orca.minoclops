@@ -7,8 +7,8 @@
         "id": "nvbp6ycl",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -176.03483343780198,
-        "y": 70.09728850805647,
+        "x": -228.65791759290096,
+        "y": 51.52443527684507,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -53,8 +53,8 @@
       {
         "id": "nb7v7o09",
         "title": "addAnimation",
-        "x": 1820,
-        "y": 70.5839985274195,
+        "x": 2419.276507793002,
+        "y": 215.57025041282338,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -122,11 +122,8 @@
       {
         "id": "cse_won_get",
         "title": "getGameModelProperty",
-        "x": -330,
-        "y": 270,
-        "propertyValues": {
-          "propertyName": "payout"
-        },
+        "x": -571.0864900508922,
+        "y": 238.85558285960366,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -136,16 +133,16 @@
             "type": "modelProperty",
             "propertyValue": "gameModel"
           }
-        ]
+        ],
+        "propertyValues": {
+          "propertyName": "payout"
+        }
       },
       {
         "id": "cse_won",
         "title": "greaterThan",
-        "x": -80,
-        "y": 260,
-        "propertyValues": {
-          "b": 0
-        },
+        "x": -227.7632913716833,
+        "y": 233.60884890938655,
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -158,13 +155,16 @@
             "name": "b",
             "type": "float"
           }
-        ]
+        ],
+        "propertyValues": {
+          "b": 0
+        }
       },
       {
         "id": "cse_branch_won",
         "title": "branch",
         "displayName": "Round won?",
-        "x": 120,
+        "x": 165.91231309704455,
         "y": 70,
         "rootType": "branch",
         "color": "#d4a72c",
@@ -184,12 +184,8 @@
         "id": "cse_reset",
         "title": "setGameModelProperty",
         "displayName": "No losses in a row",
-        "x": 440,
-        "y": -70,
-        "propertyValues": {
-          "propertyName": "roundsWithoutWin",
-          "value": 0
-        },
+        "x": 563.8190215414094,
+        "y": -94.76380430828186,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -205,16 +201,17 @@
             "type": "dynamic",
             "propertyValue": "gameModel"
           }
-        ]
+        ],
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin",
+          "value": 0
+        }
       },
       {
         "id": "cse_count_get",
         "title": "getGameModelProperty",
-        "x": -60,
-        "y": 430,
-        "propertyValues": {
-          "propertyName": "roundsWithoutWin"
-        },
+        "x": -262.75364777405787,
+        "y": 406.78393346098574,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -224,16 +221,16 @@
             "type": "modelProperty",
             "propertyValue": "gameModel"
           }
-        ]
+        ],
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        }
       },
       {
         "id": "cse_count_add",
         "title": "add",
-        "x": 190,
-        "y": 400,
-        "propertyValues": {
-          "b": 1
-        },
+        "x": 92.49252053614015,
+        "y": 382.9748845380562,
         "rootType": "math",
         "color": "#16a085",
         "icon": "➕",
@@ -246,17 +243,17 @@
             "name": "b",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {
+          "b": 1
+        }
       },
       {
         "id": "cse_count",
         "title": "setGameModelProperty",
         "displayName": "One more loss in a row",
-        "x": 440,
-        "y": 200,
-        "propertyValues": {
-          "propertyName": "roundsWithoutWin"
-        },
+        "x": 502.8273758170084,
+        "y": 168.5863120914958,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -272,16 +269,16 @@
             "type": "dynamic",
             "propertyValue": "gameModel"
           }
-        ]
+        ],
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        }
       },
       {
         "id": "cse_streak_get",
         "title": "getGameModelProperty",
-        "x": 260,
-        "y": 560,
-        "propertyValues": {
-          "propertyName": "roundsWithoutWin"
-        },
+        "x": 108.32169861177351,
+        "y": 550.7135733843943,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -291,16 +288,16 @@
             "type": "modelProperty",
             "propertyValue": "gameModel"
           }
-        ]
+        ],
+        "propertyValues": {
+          "propertyName": "roundsWithoutWin"
+        }
       },
       {
         "id": "cse_streak",
         "title": "greaterThanOrEqual",
         "x": 520,
         "y": 430,
-        "propertyValues": {
-          "b": 3
-        },
         "rootType": "math",
         "color": "#16a085",
         "icon": "▶️",
@@ -313,14 +310,17 @@
             "name": "b",
             "type": "float"
           }
-        ]
+        ],
+        "propertyValues": {
+          "b": 3
+        }
       },
       {
         "id": "cse_branch_streak",
         "title": "branch",
         "displayName": "3 or more in a row?",
-        "x": 740,
-        "y": 200,
+        "x": 892.2355644796742,
+        "y": 113.00824886875765,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -339,8 +339,33 @@
         "id": "cse_mix_in",
         "title": "setAnimationMix",
         "displayName": "Blend from the split slam",
-        "x": 1000,
-        "y": 150,
+        "x": 1287.556066239384,
+        "y": -110.97525339372699,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "fromAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "toAnimation",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "duration",
+            "type": "float",
+            "default": 0.2
+          }
+        ],
         "propertyValues": {
           "target": {
             "kind": "nodeRef",
@@ -351,7 +376,14 @@
           "fromAnimation": "split/splitSTART",
           "toAnimation": "frustration",
           "duration": 0.3
-        },
+        }
+      },
+      {
+        "id": "cse_mix_out",
+        "title": "setAnimationMix",
+        "displayName": "Blend back into the split slam",
+        "x": 1637.2985047763564,
+        "y": -125.47387858226733,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -376,14 +408,7 @@
             "type": "float",
             "default": 0.2
           }
-        ]
-      },
-      {
-        "id": "cse_mix_out",
-        "title": "setAnimationMix",
-        "displayName": "Blend back into the split slam",
-        "x": 1270,
-        "y": 150,
+        ],
         "propertyValues": {
           "target": {
             "kind": "nodeRef",
@@ -394,51 +419,14 @@
           "fromAnimation": "frustration",
           "toAnimation": "split/splitSTART",
           "duration": 0.3
-        },
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "fromAnimation",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "toAnimation",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "duration",
-            "type": "float",
-            "default": 0.2
-          }
-        ]
+        }
       },
       {
         "id": "cse_frustration",
         "title": "playAnimation",
         "displayName": "Frustrated",
-        "x": 1540,
-        "y": 150,
-        "propertyValues": {
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791296555660_uqk9no210",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "frustration",
-          "loop": false,
-          "trackIndex": 1,
-          "sequenceNodeOn": "onComplete"
-        },
+        "x": 1984.6245057819049,
+        "y": -125.4738785822673,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -482,7 +470,19 @@
               }
             ]
           }
-        ]
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "frustration",
+          "loop": false,
+          "trackIndex": 1,
+          "sequenceNodeOn": "onComplete"
+        }
       }
     ],
     "links": [
@@ -500,7 +500,17 @@
       {
         "id": "cse_l03",
         "from": "cse_reset",
-        "to": "nb7v7o09"
+        "to": "nb7v7o09",
+        "points": [
+          {
+            "x": 1014.8902278502161,
+            "y": -237.306945458295
+          },
+          {
+            "x": 2305.2678696303105,
+            "y": -201.060382486944
+          }
+        ]
       },
       {
         "id": "cse_l04",
@@ -586,9 +596,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 201.7466641008681,
-      "panY": 187.8164390400775,
-      "scale": 0.784628939788221
+      "panX": 214.00560136458523,
+      "panY": 117.40841372455884,
+      "scale": 0.4138323407892742
     }
   }
 }

@@ -271,6 +271,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "DisplayReels",
@@ -302,8 +303,7 @@
             "type": "float",
             "path": "WinWays"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "nt62glx5",
@@ -328,6 +328,7 @@
       {
         "id": "nl5477v2",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": -876.9913397896178,
         "y": 303.33128443308243,
         "rootType": "cast",
@@ -339,7 +340,6 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       }
     ],
@@ -432,9 +432,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 294.82881593189563,
-      "panY": 30.883617639567007,
-      "scale": 0.788167726315253
+      "panX": 396.00206853154316,
+      "panY": 215.41895111138595,
+      "scale": 0.6991241158353312
     }
   }
 }

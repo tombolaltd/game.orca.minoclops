@@ -17,10 +17,10 @@
       {
         "id": "hotspo_001",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 804,
         "y": 204,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -41,10 +41,10 @@
       {
         "id": "hotspo_002",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 1166,
         "y": 120,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -65,12 +65,14 @@
       {
         "id": "hotspo_003",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -80,17 +82,16 @@
         ],
         "propertyValues": {
           "eventName": "hotspotOn"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "hotspo_004",
         "title": "delay",
+        "displayName": "Frame 28 of hotspotON",
+        "friendlyTitle": "Wait",
         "x": 442,
         "y": 120,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -101,14 +102,14 @@
         ],
         "propertyValues": {
           "seconds": 0.9333
-        },
-        "displayName": "Frame 28 of hotspotON"
+        }
       },
       {
         "id": "hotspo_005",
         "title": "emitParticleBurst",
-        "x": 1528,
-        "y": 428,
+        "displayName": "Burst embers",
+        "x": 1589.6666666666667,
+        "y": 134.66666666666663,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -126,8 +127,7 @@
         ],
         "propertyValues": {
           "count": 30
-        },
-        "displayName": "Burst embers"
+        }
       }
     ],
     "links": [
@@ -163,10 +163,11 @@
         "to": "hotspo_004"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
+      "panX": 54,
+      "panY": 224,
       "scale": 0.6
     }
   }

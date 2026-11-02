@@ -17,26 +17,16 @@
       {
         "id": "splits_001",
         "title": "getNodePosition",
-        "x": 804,
-        "y": 204,
-        "rootType": "getters",
         "friendlyTitle": "Get Position",
+        "x": 627.1653569535496,
+        "y": 323.865521626802,
+        "rootType": "getters",
         "color": "#0e7c86",
         "icon": "📐",
         "properties": [
           {
             "name": "target",
             "type": "nodeRef"
-          }
-        ],
-        "outputs": [
-          {
-            "name": "x",
-            "type": "float"
-          },
-          {
-            "name": "y",
-            "type": "float"
           }
         ],
         "propertyValues": {
@@ -46,17 +36,30 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        }
+        },
+        "outputs": [
+          {
+            "name": "x",
+            "type": "float"
+          },
+          {
+            "name": "y",
+            "type": "float"
+          }
+        ]
       },
       {
         "id": "splits_002",
         "title": "onCustomEvent",
-        "x": 80,
-        "y": 120,
-        "rootType": "StarterNodes",
+        "displayName": "Symbols split: character starts splitSTART",
         "friendlyTitle": "On Custom Event",
+        "x": 302.4755852891333,
+        "y": 84.77469899588723,
+        "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -67,17 +70,21 @@
         "propertyValues": {
           "eventName": "symbolsSplitting"
         },
-        "isStarter": true,
-        "starterNodeType": "customEvent",
-        "displayName": "Symbols split: character starts splitSTART"
+        "outputs": [
+          {
+            "name": "splitAmount",
+            "type": "int"
+          }
+        ]
       },
       {
         "id": "splits_003",
         "title": "delay",
-        "x": 442,
-        "y": 120,
-        "rootType": "delay",
+        "displayName": "Wait for frame 12 (0.4 s)",
         "friendlyTitle": "Wait",
+        "x": 655.2057692354193,
+        "y": 79.21280936365895,
+        "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -88,16 +95,16 @@
         ],
         "propertyValues": {
           "seconds": 0.4
-        },
-        "displayName": "Wait for frame 12 (0.4 s)"
+        }
       },
       {
         "id": "splits_004",
         "title": "setVariable",
-        "x": 1166,
-        "y": 120,
-        "rootType": "variables",
+        "displayName": "Remember reels x",
         "friendlyTitle": "Set Variable",
+        "x": 1006.6520729272618,
+        "y": 78.50467133777235,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "📝",
         "properties": [
@@ -112,16 +119,16 @@
         ],
         "propertyValues": {
           "variableName": "restX"
-        },
-        "displayName": "Remember reels x"
+        }
       },
       {
         "id": "splits_005",
         "title": "setVariable",
-        "x": 1528,
-        "y": 120,
-        "rootType": "variables",
+        "displayName": "Remember reels y",
         "friendlyTitle": "Set Variable",
+        "x": 1347.2026317702912,
+        "y": 164.40637114413903,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "📝",
         "properties": [
@@ -136,25 +143,24 @@
         ],
         "propertyValues": {
           "variableName": "restY"
-        },
-        "displayName": "Remember reels y"
+        }
       },
       {
         "id": "splits_006",
         "title": "getVariable",
-        "x": 1890,
-        "y": 204,
-        "rootType": "variables",
         "friendlyTitle": "Get Variable",
+        "x": 1709.2026317702912,
+        "y": 248.40637114413903,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "🔖",
+        "overrideNodeType": "property",
         "properties": [
           {
             "name": "variableName",
             "type": "variableRef"
           }
         ],
-        "overrideNodeType": "property",
         "propertyValues": {
           "variableName": "restX"
         }
@@ -162,8 +168,8 @@
       {
         "id": "splits_007",
         "title": "add",
-        "x": 2252,
-        "y": 204,
+        "x": 2071.202631770291,
+        "y": 248.40637114413903,
         "rootType": "math",
         "color": "#16a085",
         "icon": "➕",
@@ -184,19 +190,19 @@
       {
         "id": "splits_008",
         "title": "getVariable",
-        "x": 1890,
-        "y": 365,
-        "rootType": "variables",
         "friendlyTitle": "Get Variable",
+        "x": 1709.2026317702912,
+        "y": 409.40637114413903,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "🔖",
+        "overrideNodeType": "property",
         "properties": [
           {
             "name": "variableName",
             "type": "variableRef"
           }
         ],
-        "overrideNodeType": "property",
         "propertyValues": {
           "variableName": "restY"
         }
@@ -204,8 +210,8 @@
       {
         "id": "splits_009",
         "title": "add",
-        "x": 2252,
-        "y": 365,
+        "x": 2071.202631770291,
+        "y": 409.40637114413903,
         "rootType": "math",
         "color": "#16a085",
         "icon": "➕",
@@ -226,8 +232,9 @@
       {
         "id": "splits_010",
         "title": "setNodePosition",
-        "x": 2614,
-        "y": 120,
+        "displayName": "Jolt the reels",
+        "x": 2433.202631770291,
+        "y": 164.40637114413903,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -256,25 +263,24 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        },
-        "displayName": "Jolt the reels"
+        }
       },
       {
         "id": "splits_011",
         "title": "getVariable",
-        "x": 2976,
-        "y": 204,
-        "rootType": "variables",
         "friendlyTitle": "Get Variable",
+        "x": 2795.202631770291,
+        "y": 248.40637114413903,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "🔖",
+        "overrideNodeType": "property",
         "properties": [
           {
             "name": "variableName",
             "type": "variableRef"
           }
         ],
-        "overrideNodeType": "property",
         "propertyValues": {
           "variableName": "restX"
         }
@@ -282,19 +288,19 @@
       {
         "id": "splits_012",
         "title": "getVariable",
-        "x": 2976,
-        "y": 339,
-        "rootType": "variables",
         "friendlyTitle": "Get Variable",
+        "x": 2795.202631770291,
+        "y": 383.40637114413903,
+        "rootType": "variables",
         "color": "#cf3d8f",
         "icon": "🔖",
+        "overrideNodeType": "property",
         "properties": [
           {
             "name": "variableName",
             "type": "variableRef"
           }
         ],
-        "overrideNodeType": "property",
         "propertyValues": {
           "variableName": "restY"
         }
@@ -302,8 +308,9 @@
       {
         "id": "splits_013",
         "title": "tweenNodePosition",
-        "x": 3338,
-        "y": 120,
+        "displayName": "Shake back to rest",
+        "x": 3157.202631770291,
+        "y": 164.40637114413903,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -469,18 +476,22 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        },
-        "displayName": "Shake back to rest"
+        }
       },
       {
         "id": "splits_014",
         "title": "onApplicationResize",
-        "x": 80,
-        "y": 640,
-        "rootType": "StarterNodes",
+        "displayName": "Screen resized",
         "friendlyTitle": "On Screen Resize",
+        "x": 298.7676588676477,
+        "y": 538.0320234091473,
+        "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
+        "isStarter": true,
+        "starterNodeType": "application",
+        "properties": [],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "width",
@@ -490,18 +501,14 @@
             "name": "height",
             "type": "int"
           }
-        ],
-        "isStarter": true,
-        "starterNodeType": "application",
-        "properties": [],
-        "propertyValues": {},
-        "displayName": "Screen resized"
+        ]
       },
       {
         "id": "splits_015",
         "title": "killTweensOfNode",
-        "x": 442,
-        "y": 640,
+        "displayName": "Stop a shake in progress",
+        "x": 660.7676588676477,
+        "y": 538.0320234091473,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -518,8 +525,7 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        },
-        "displayName": "Stop a shake in progress"
+        }
       }
     ],
     "links": [
@@ -612,6 +618,7 @@
         "to": "splits_015"
       }
     ],
+    "groups": [],
     "variables": [
       {
         "name": "restX",
@@ -627,9 +634,9 @@
       }
     ],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": 179.8627738987928,
+      "panY": 267.60541586461284,
+      "scale": 0.31527007587621325
     }
   }
 }

@@ -398,8 +398,8 @@
             {
               "id": "ng1arby3",
               "title": "Entry",
-              "x": 86.65618114874167,
-              "y": -37.647238880587594,
+              "x": -231.2583514303987,
+              "y": -39.53958728879675,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -408,8 +408,8 @@
               "id": "nmcxhd6c",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 276.4546443133398,
-              "y": -27.7666465321808,
+              "x": -41.459888265800544,
+              "y": -29.65899494038996,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -483,8 +483,8 @@
             {
               "id": "nh47ncan",
               "title": "getGameModelProperty",
-              "x": -50.53164482674754,
-              "y": 257.08439269755877,
+              "x": -368.4461774058879,
+              "y": 255.1920442893496,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -532,8 +532,8 @@
             {
               "id": "nnu5km0b",
               "title": "showNode",
-              "x": 601.7412438771038,
-              "y": -18.41937812470418,
+              "x": 283.8267112979634,
+              "y": -20.31172653291334,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -601,8 +601,8 @@
               "id": "nu9by70w",
               "title": "fireCustomEvent",
               "displayName": "Dust swirl",
-              "x": 760.8813378726122,
-              "y": 121.78775052928778,
+              "x": 603.8164199912511,
+              "y": -22.03072849460905,
               "rootType": "fireEvent",
               "color": "#d94848",
               "icon": "📣",
@@ -755,6 +755,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "DisplayReels",
@@ -786,8 +787,7 @@
             "type": "float",
             "path": "WinWays"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "nldhipxk",
@@ -837,8 +837,8 @@
             {
               "id": "nz9cvwlt",
               "title": "Exit",
-              "x": -387.3946067620024,
-              "y": 542.5196197269955,
+              "x": -47.75877866662745,
+              "y": 530.5324728530412,
               "color": "#FF5722",
               "icon": "⭡",
               "isExit": true
@@ -879,6 +879,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "HighlightedPosition",
@@ -895,8 +896,7 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "n1gt7vrh",
@@ -936,6 +936,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "Reel",
@@ -947,8 +948,7 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "no9j2w3y",
@@ -975,6 +975,7 @@
             {
               "id": "njsaw2qo",
               "title": "toInt",
+              "friendlyTitle": "To Whole Number",
               "x": -1957.6856879476497,
               "y": 700.0392922031867,
               "rootType": "cast",
@@ -986,12 +987,12 @@
                   "type": "T"
                 }
               ],
-              "friendlyTitle": "To Whole Number",
               "propertyValues": {}
             },
             {
               "id": "npibfg0c",
               "title": "toInt",
+              "friendlyTitle": "To Whole Number",
               "x": -1963.0209738410742,
               "y": 830.1326603195705,
               "rootType": "cast",
@@ -1003,7 +1004,6 @@
                   "type": "T"
                 }
               ],
-              "friendlyTitle": "To Whole Number",
               "propertyValues": {}
             },
             {
@@ -1128,6 +1128,7 @@
                   "type": "nodeRef"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "x",
@@ -1137,8 +1138,7 @@
                   "name": "y",
                   "type": "float"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "njxog5cb",
@@ -1207,8 +1207,8 @@
               "id": "nhwn7pb2",
               "title": "fireCustomEvent",
               "displayName": "Ember burst",
-              "x": -441.2313777219774,
-              "y": 678.1222909431838,
+              "x": -377.29992772755384,
+              "y": 536.2743862680566,
               "rootType": "fireEvent",
               "color": "#d94848",
               "icon": "📣",
@@ -1409,9 +1409,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -203.06455673485095,
-      "panY": 219.35800576367058,
-      "scale": 0.8353159745074396
+      "panX": -45.607416568296,
+      "panY": 216.55161476531822,
+      "scale": 0.7402431804145033
     }
   }
 }

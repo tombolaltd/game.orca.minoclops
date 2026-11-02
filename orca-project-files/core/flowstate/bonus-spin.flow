@@ -157,8 +157,8 @@
               "color": "#e67e22",
               "icon": "🔢",
               "isStarter": false,
-              "propertyValue": 1,
               "properties": [],
+              "propertyValue": 1,
               "propertyValues": {}
             }
           ],
@@ -218,8 +218,8 @@
             {
               "id": "ngoj25r0",
               "title": "Entry",
-              "x": 1213.189074992054,
-              "y": 283.3055396838442,
+              "x": 847.6176938182027,
+              "y": 294.45100862207136,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -228,8 +228,8 @@
               "id": "nxyuus62",
               "title": "runCascade",
               "displayName": "Cascade",
-              "x": 1431.2102330340972,
-              "y": 266.2671605928946,
+              "x": 1065.638851860246,
+              "y": 277.41262953112175,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -303,8 +303,8 @@
             {
               "id": "niebzplq",
               "title": "getGameModelProperty",
-              "x": 828.4664498125965,
-              "y": 556.8918666764575,
+              "x": 462.8950686387452,
+              "y": 568.0373356146847,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -352,8 +352,8 @@
             {
               "id": "nckl179j",
               "title": "showNode",
-              "x": 1808.4797414745622,
-              "y": 312.30252657707484,
+              "x": 1442.908360300711,
+              "y": 323.447995515302,
               "rootType": "Action",
               "color": "#3b6ef5",
               "icon": "⚙️",
@@ -421,8 +421,8 @@
               "id": "n2u3lfym",
               "title": "fireCustomEvent",
               "displayName": "Dust swirl",
-              "x": 1980.774315948667,
-              "y": 467.08175467925633,
+              "x": 1804.6759067246776,
+              "y": 328.8779398452393,
               "rootType": "fireEvent",
               "color": "#d94848",
               "icon": "📣",
@@ -555,6 +555,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "HighlightedPosition",
@@ -571,8 +572,7 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "n0rr0cdn",
@@ -612,6 +612,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "Reel",
@@ -623,8 +624,7 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "nyfiant1",
@@ -651,6 +651,7 @@
             {
               "id": "njdk8z3k",
               "title": "toInt",
+              "friendlyTitle": "To Whole Number",
               "x": -208.91759682388005,
               "y": -173.7392343648822,
               "rootType": "cast",
@@ -662,7 +663,6 @@
                   "type": "T"
                 }
               ],
-              "friendlyTitle": "To Whole Number",
               "propertyValues": {}
             },
             {
@@ -1546,6 +1546,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "DisplayReels",
@@ -1577,8 +1578,7 @@
             "type": "float",
             "path": "WinWays"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "nxlqjjc9",
@@ -1935,6 +1935,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "HighlightedPosition",
@@ -1951,8 +1952,7 @@
                   "type": "float",
                   "path": "Symbol"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "nrd6pgp3",
@@ -1992,6 +1992,7 @@
                   "type": "object"
                 }
               ],
+              "propertyValues": {},
               "outputs": [
                 {
                   "name": "Reel",
@@ -2003,8 +2004,7 @@
                   "type": "float",
                   "path": "Row"
                 }
-              ],
-              "propertyValues": {}
+              ]
             },
             {
               "id": "nw2wtgdc",
@@ -2031,6 +2031,7 @@
             {
               "id": "nt9ktx82",
               "title": "toInt",
+              "friendlyTitle": "To Whole Number",
               "x": -208.91759682388005,
               "y": -173.7392343648822,
               "rootType": "cast",
@@ -2042,7 +2043,6 @@
                   "type": "T"
                 }
               ],
-              "friendlyTitle": "To Whole Number",
               "propertyValues": {}
             },
             {
@@ -2574,9 +2574,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -1033.7830089355098,
-      "panY": 95.87093749950276,
-      "scale": 0.7188445525883796
+      "panX": 2.40596008106985,
+      "panY": 172.02457885281024,
+      "scale": 0.5400010828708103
     }
   }
 }

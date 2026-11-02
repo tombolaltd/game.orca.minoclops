@@ -17,17 +17,17 @@
       {
         "id": "introv_001",
         "title": "onApplicationInit",
+        "displayName": "Game loaded",
+        "friendlyTitle": "On Application Start",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Application Start",
         "color": "#ff6b35",
         "icon": "▶️",
         "isStarter": true,
         "starterNodeType": "application",
         "properties": [],
-        "propertyValues": {},
-        "displayName": "Game loaded"
+        "propertyValues": {}
       },
       {
         "id": "introv_002",
@@ -51,6 +51,7 @@
       {
         "id": "introv_003",
         "title": "branch",
+        "displayName": "Resuming free spins?",
         "x": 740,
         "y": 120,
         "rootType": "branch",
@@ -65,15 +66,14 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Resuming free spins?"
+        }
       },
       {
         "id": "introv_009",
-        "x": 1234,
-        "y": 413,
         "title": "State",
         "displayName": "Play intro",
+        "x": 1234,
+        "y": 413,
         "isState": true,
         "entryTargetId": "introv_004",
         "exitSourceId": "introv_005",
@@ -81,16 +81,17 @@
           "nodes": [
             {
               "id": "introv_010",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "introv_004",
               "title": "showNode",
+              "displayName": "Show the intro",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -109,16 +110,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Show the intro"
+              }
             },
             {
               "id": "introv_005",
               "title": "playVideoToEnd",
+              "displayName": "Play the intro video to its end",
+              "friendlyTitle": "Play video to end",
               "x": 672,
               "y": 120,
               "rootType": "custom",
-              "friendlyTitle": "Play video to end",
               "color": "#2c3e50",
               "icon": "🎬",
               "properties": [
@@ -140,17 +141,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Play the intro video to its end"
+              }
             },
             {
               "id": "introv_011",
+              "title": "Exit",
               "x": 1034,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -169,15 +169,16 @@
               "from": "introv_005",
               "to": "introv_011"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "introv_012",
-        "x": 1596,
-        "y": 413,
         "title": "State",
         "displayName": "Fade to game",
+        "x": 1596,
+        "y": 413,
         "isState": true,
         "entryTargetId": "introv_006",
         "exitSourceId": "introv_008",
@@ -185,16 +186,17 @@
           "nodes": [
             {
               "id": "introv_013",
+              "title": "Entry",
               "x": 80,
               "y": 120,
-              "title": "Entry",
-              "isEntry": true,
+              "color": "#4CAF50",
               "icon": "⭣",
-              "color": "#4CAF50"
+              "isEntry": true
             },
             {
               "id": "introv_006",
               "title": "tweenNodeAlpha",
+              "displayName": "Fade to the game",
               "x": 310,
               "y": 120,
               "rootType": "Action",
@@ -356,12 +358,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Fade to the game"
+              }
             },
             {
               "id": "introv_007",
               "title": "hideNode",
+              "displayName": "Hide the intro",
               "x": 672,
               "y": 120,
               "rootType": "Action",
@@ -380,12 +382,12 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Hide the intro"
+              }
             },
             {
               "id": "introv_008",
               "title": "stopVideo",
+              "displayName": "Stop the video",
               "x": 1034,
               "y": 120,
               "rootType": "Action",
@@ -405,17 +407,16 @@
                   "sceneScope": "core",
                   "sceneName": "main"
                 }
-              },
-              "displayName": "Stop the video"
+              }
             },
             {
               "id": "introv_014",
+              "title": "Exit",
               "x": 1396,
               "y": 120,
-              "title": "Exit",
-              "isExit": true,
+              "color": "#FF5722",
               "icon": "⭡",
-              "color": "#FF5722"
+              "isExit": true
             }
           ],
           "links": [
@@ -439,23 +440,24 @@
               "from": "introv_008",
               "to": "introv_014"
             }
-          ]
+          ],
+          "groups": []
         }
       },
       {
         "id": "introv_015",
         "title": "onBeginGame",
+        "displayName": "BUY pressed",
+        "friendlyTitle": "On Buy In",
         "x": 144,
         "y": 625,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Buy In",
         "color": "#ff6b35",
         "icon": "▶️",
         "isStarter": true,
         "starterNodeType": "application",
         "properties": [],
-        "propertyValues": {},
-        "displayName": "BUY pressed"
+        "propertyValues": {}
       },
       {
         "id": "introv_016",
@@ -483,6 +485,7 @@
       {
         "id": "introv_017",
         "title": "hideNode",
+        "displayName": "Cut the intro short",
         "x": 1102,
         "y": 625,
         "rootType": "Action",
@@ -501,12 +504,12 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        },
-        "displayName": "Cut the intro short"
+        }
       },
       {
         "id": "introv_018",
         "title": "stopVideo",
+        "displayName": "Stop the video",
         "x": 1464,
         "y": 625,
         "rootType": "Action",
@@ -526,8 +529,7 @@
             "sceneScope": "core",
             "sceneName": "main"
           }
-        },
-        "displayName": "Stop the video"
+        }
       }
     ],
     "links": [
@@ -570,11 +572,12 @@
         "to": "introv_016"
       }
     ],
+    "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": 208.46508585691197,
+      "panY": 239.97348218448627,
+      "scale": 0.5064520526882266
     }
   }
 }

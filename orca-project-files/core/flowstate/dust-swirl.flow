@@ -17,10 +17,10 @@
       {
         "id": "dustsw_001",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 1166,
         "y": 204,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -41,10 +41,10 @@
       {
         "id": "dustsw_002",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 1528,
         "y": 120,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -65,10 +65,10 @@
       {
         "id": "dustsw_003",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 1890,
         "y": 512,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -82,10 +82,10 @@
       {
         "id": "dustsw_004",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 2252,
         "y": 428,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -106,12 +106,14 @@
       {
         "id": "dustsw_005",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 120,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -121,17 +123,16 @@
         ],
         "propertyValues": {
           "eventName": "boardCrumbling"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "dustsw_006",
         "title": "delay",
+        "displayName": "Wait for the dust",
+        "friendlyTitle": "Wait",
         "x": 804,
         "y": 120,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -142,16 +143,15 @@
         ],
         "propertyValues": {
           "seconds": 0.27
-        },
-        "displayName": "Wait for the dust"
+        }
       },
       {
         "id": "dustsw_007",
         "title": "randomRange",
+        "friendlyTitle": "Random Range",
         "x": 2614,
         "y": 820,
         "rootType": "math",
-        "friendlyTitle": "Random Range",
         "color": "#16a085",
         "icon": "🎲",
         "properties": [
@@ -190,10 +190,10 @@
       {
         "id": "dustsw_008",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 2976,
         "y": 820,
         "rootType": "cast",
-        "friendlyTitle": "To Whole Number",
         "color": "#6c5ce7",
         "icon": "🔢",
         "properties": [
@@ -207,6 +207,7 @@
       {
         "id": "dustsw_009",
         "title": "emitParticleBurst",
+        "displayName": "Puff a random amount",
         "x": 3338,
         "y": 736,
         "rootType": "Action",
@@ -226,12 +227,12 @@
         ],
         "propertyValues": {
           "count": 10
-        },
-        "displayName": "Puff a random amount"
+        }
       },
       {
         "id": "dustsw_010",
         "title": "startParticles",
+        "displayName": "Keep it swirling",
         "x": 4424,
         "y": 736,
         "rootType": "Action",
@@ -244,16 +245,16 @@
             "sceneNodeType": "particles"
           }
         ],
-        "propertyValues": {},
-        "displayName": "Keep it swirling"
+        "propertyValues": {}
       },
       {
         "id": "dustsw_011",
         "title": "delay",
+        "displayName": "While the dust plays",
+        "friendlyTitle": "Wait",
         "x": 5872,
         "y": 120,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -264,16 +265,15 @@
         ],
         "propertyValues": {
           "seconds": 0.3
-        },
-        "displayName": "While the dust plays"
+        }
       },
       {
         "id": "dustsw_012",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 6234,
         "y": 204,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -294,10 +294,10 @@
       {
         "id": "dustsw_013",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 6596,
         "y": 120,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -318,10 +318,10 @@
       {
         "id": "dustsw_014",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 6958,
         "y": 512,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -335,10 +335,10 @@
       {
         "id": "dustsw_015",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 7320,
         "y": 428,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -359,6 +359,7 @@
       {
         "id": "dustsw_016",
         "title": "stopParticles",
+        "displayName": "Let the last ones settle",
         "x": 8044,
         "y": 736,
         "rootType": "Action",
@@ -371,25 +372,24 @@
             "sceneNodeType": "particles"
           }
         ],
-        "propertyValues": {},
-        "displayName": "Let the last ones settle"
+        "propertyValues": {}
       },
       {
         "id": "dustsw_017",
         "title": "getVariable",
+        "friendlyTitle": "Get Variable",
         "x": 1890,
         "y": 1165,
         "rootType": "variables",
-        "friendlyTitle": "Get Variable",
         "color": "#cf3d8f",
         "icon": "🔖",
+        "overrideNodeType": "property",
         "properties": [
           {
             "name": "variableName",
             "type": "variableRef"
           }
         ],
-        "overrideNodeType": "property",
         "propertyValues": {
           "variableName": "winners"
         }
@@ -397,10 +397,10 @@
       {
         "id": "dustsw_018",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 2252,
         "y": 1081,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -421,10 +421,10 @@
       {
         "id": "dustsw_019",
         "title": "getChildNode",
+        "friendlyTitle": "Get Child Node",
         "x": 3700,
         "y": 1473,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Node",
         "color": "#0e7c86",
         "icon": "🔢",
         "properties": [
@@ -451,10 +451,10 @@
       {
         "id": "dustsw_020",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 4062,
         "y": 1473,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -468,10 +468,10 @@
       {
         "id": "dustsw_021",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 4424,
         "y": 1389,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -492,12 +492,14 @@
       {
         "id": "dustsw_022",
         "title": "onCustomEvent",
+        "friendlyTitle": "On Custom Event",
         "x": 80,
         "y": 1081,
         "rootType": "StarterNodes",
-        "friendlyTitle": "On Custom Event",
         "color": "#ff6b35",
         "icon": "📣",
+        "isStarter": true,
+        "starterNodeType": "customEvent",
         "properties": [
           {
             "name": "eventName",
@@ -507,19 +509,20 @@
         ],
         "propertyValues": {
           "eventName": "winnersCrumbling"
-        },
-        "isStarter": true,
-        "starterNodeType": "customEvent"
+        }
       },
       {
         "id": "dustsw_023",
         "title": "cascadeLocations",
+        "friendlyTitle": "Return Cascade Locations",
         "x": 442,
         "y": 1165,
         "rootType": "custom",
-        "friendlyTitle": "Return Cascade Locations",
         "color": "#8e44ad",
         "icon": "🧩",
+        "overrideNodeType": "property",
+        "properties": [],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "locations",
@@ -529,18 +532,16 @@
             "name": "outcomes",
             "type": "any"
           }
-        ],
-        "overrideNodeType": "property",
-        "properties": [],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "dustsw_024",
         "title": "setVariable",
+        "displayName": "Remember the winning cells",
+        "friendlyTitle": "Set Variable",
         "x": 804,
         "y": 1081,
         "rootType": "variables",
-        "friendlyTitle": "Set Variable",
         "color": "#cf3d8f",
         "icon": "📝",
         "properties": [
@@ -555,16 +556,16 @@
         ],
         "propertyValues": {
           "variableName": "winners"
-        },
-        "displayName": "Remember the winning cells"
+        }
       },
       {
         "id": "dustsw_025",
         "title": "delay",
+        "displayName": "Wait for the dust",
+        "friendlyTitle": "Wait",
         "x": 1528,
         "y": 1081,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -575,8 +576,7 @@
         ],
         "propertyValues": {
           "seconds": 0.47
-        },
-        "displayName": "Wait for the dust"
+        }
       },
       {
         "id": "dustsw_026",
@@ -619,6 +619,7 @@
       {
         "id": "dustsw_028",
         "title": "branch",
+        "displayName": "Winner on this reel?",
         "x": 3338,
         "y": 1389,
         "rootType": "branch",
@@ -633,8 +634,7 @@
         ],
         "propertyValues": {
           "condition": false
-        },
-        "displayName": "Winner on this reel?"
+        }
       },
       {
         "id": "dustsw_029",
@@ -655,10 +655,10 @@
       {
         "id": "dustsw_030",
         "title": "randomRange",
+        "friendlyTitle": "Random Range",
         "x": 4786,
         "y": 1927,
         "rootType": "math",
-        "friendlyTitle": "Random Range",
         "color": "#16a085",
         "icon": "🎲",
         "properties": [
@@ -717,10 +717,10 @@
       {
         "id": "dustsw_032",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 5510,
         "y": 1792,
         "rootType": "cast",
-        "friendlyTitle": "To Whole Number",
         "color": "#6c5ce7",
         "icon": "🔢",
         "properties": [
@@ -734,6 +734,7 @@
       {
         "id": "dustsw_033",
         "title": "emitParticleBurst",
+        "displayName": "Puff more for more winners",
         "x": 5872,
         "y": 1708,
         "rootType": "Action",
@@ -753,12 +754,12 @@
         ],
         "propertyValues": {
           "count": 10
-        },
-        "displayName": "Puff more for more winners"
+        }
       },
       {
         "id": "dustsw_034",
         "title": "startParticles",
+        "displayName": "Keep it swirling",
         "x": 6596,
         "y": 1708,
         "rootType": "Action",
@@ -771,16 +772,16 @@
             "sceneNodeType": "particles"
           }
         ],
-        "propertyValues": {},
-        "displayName": "Keep it swirling"
+        "propertyValues": {}
       },
       {
         "id": "dustsw_035",
         "title": "delay",
+        "displayName": "While the dust plays",
+        "friendlyTitle": "Wait",
         "x": 7320,
         "y": 1081,
         "rootType": "delay",
-        "friendlyTitle": "Wait",
         "color": "#8e44ad",
         "icon": "⏱️",
         "properties": [
@@ -791,16 +792,15 @@
         ],
         "propertyValues": {
           "seconds": 0.3
-        },
-        "displayName": "While the dust plays"
+        }
       },
       {
         "id": "dustsw_036",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 7682,
         "y": 1165,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -821,10 +821,10 @@
       {
         "id": "dustsw_037",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 8044,
         "y": 1081,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -845,10 +845,10 @@
       {
         "id": "dustsw_038",
         "title": "getChildNodes",
+        "friendlyTitle": "Get Child Nodes",
         "x": 8406,
         "y": 1473,
         "rootType": "getters",
-        "friendlyTitle": "Get Child Nodes",
         "color": "#0e7c86",
         "icon": "🌳",
         "properties": [
@@ -862,10 +862,10 @@
       {
         "id": "dustsw_039",
         "title": "loop",
+        "friendlyTitle": "Repeat For Each",
         "x": 8768,
         "y": 1389,
         "rootType": "loop",
-        "friendlyTitle": "Repeat For Each",
         "color": "#9b59b6",
         "icon": "🔁",
         "properties": [
@@ -886,6 +886,7 @@
       {
         "id": "dustsw_040",
         "title": "stopParticles",
+        "displayName": "Let the last ones settle",
         "x": 9130,
         "y": 1708,
         "rootType": "Action",
@@ -898,8 +899,7 @@
             "sceneNodeType": "particles"
           }
         ],
-        "propertyValues": {},
-        "displayName": "Let the last ones settle"
+        "propertyValues": {}
       }
     ],
     "links": [
@@ -1238,6 +1238,7 @@
         "to": "dustsw_024"
       }
     ],
+    "groups": [],
     "variables": [
       {
         "name": "winners",
@@ -1247,9 +1248,9 @@
       }
     ],
     "viewState": {
-      "panX": 40,
-      "panY": 220,
-      "scale": 0.6
+      "panX": -3873.880260019161,
+      "panY": -626.3254835259461,
+      "scale": 0.5682047532048768
     }
   }
 }

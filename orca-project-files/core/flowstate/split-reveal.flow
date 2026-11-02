@@ -130,6 +130,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "HighlightedPosition",
@@ -146,8 +147,7 @@
             "type": "float",
             "path": "Symbol"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "n10e0ksf",
@@ -209,6 +209,7 @@
       {
         "id": "nw34zng2",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 284.50469719074385,
         "y": 529.6188453466942,
         "rootType": "cast",
@@ -220,12 +221,12 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       },
       {
         "id": "nvu1cf10",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 285.2742379576673,
         "y": 648.5148755378877,
         "rootType": "cast",
@@ -237,7 +238,6 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       },
       {
@@ -441,8 +441,8 @@
         "color": "#e67e22",
         "icon": "🔢",
         "isStarter": false,
-        "propertyValue": 1,
         "properties": [],
+        "propertyValue": 1,
         "propertyValues": {}
       },
       {
@@ -677,8 +677,8 @@
         "color": "#3498db",
         "icon": "🔤",
         "isStarter": false,
-        "propertyValue": "x",
         "properties": [],
+        "propertyValue": "x",
         "propertyValues": {}
       },
       {
@@ -986,9 +986,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 491.3621583654467,
-      "panY": 105.17699186188575,
-      "scale": 0.7262983769029827
+      "panX": 464.5328330055885,
+      "panY": 74.47116352495624,
+      "scale": 0.25
     }
   }
 }

@@ -212,6 +212,7 @@
             "type": "object"
           }
         ],
+        "propertyValues": {},
         "outputs": [
           {
             "name": "DisplayReels",
@@ -243,8 +244,7 @@
             "type": "float",
             "path": "WinWays"
           }
-        ],
-        "propertyValues": {}
+        ]
       },
       {
         "id": "nmn2eyvc",
@@ -269,6 +269,7 @@
       {
         "id": "nsau775g",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 208.68820623915298,
         "y": 161.2474012382829,
         "rootType": "cast",
@@ -280,7 +281,6 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       },
       {
@@ -334,6 +334,7 @@
       {
         "id": "ntr1bb0u",
         "title": "toInt",
+        "friendlyTitle": "To Whole Number",
         "x": 1199.1613505998819,
         "y": 96.10518545014611,
         "rootType": "cast",
@@ -345,7 +346,6 @@
             "type": "T"
           }
         ],
-        "friendlyTitle": "To Whole Number",
         "propertyValues": {}
       },
       {
@@ -532,8 +532,8 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -510.83768881525134,
-      "panY": 306.118759283068,
+      "panX": -119.83768881525134,
+      "panY": 284.118759283068,
       "scale": 0.6922453051064354
     }
   }
