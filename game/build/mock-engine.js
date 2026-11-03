@@ -705,4 +705,10 @@ module.exports = {
   readMechanicSettingsCached,
   listMechanicKeys,
   createMockEngineDevMiddleware,
+  // Shared with the DEMO build (`build/mock-build-plan.js`), which computes the
+  // same engine options at BUILD time instead of per request, so the two can
+  // never disagree on how a project's config becomes an engine.
+  loadMockEngineModule,
+  applySettingsOverrides,
+  buildJackpotOptions,
 };

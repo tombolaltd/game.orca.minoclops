@@ -209,6 +209,41 @@ export interface OrcaTexture {
   [key: string]: any;
 }
 
+/**
+ * Playback control of a node's Simple Animation component (Flash-style keyframe
+ * clips) — what "this.orca.getSimpleAnimation()" returns. Frame numbers are
+ * 1-BASED, like Flash. Typed structurally so this file can stay import-free.
+ *
+ *   const simpleAnim = this.orca.getSimpleAnimation();
+ *   simpleAnim?.play('Idle', { loop: true });
+ *   simpleAnim?.on('label', (info) => { if (info.label === 'hit') this.shake(); });
+ *
+ * Every call is a no-op once the node is destroyed ("isDisposed()" is true).
+ */
+export interface OrcaSimpleAnimation {
+  /** Play a clip from frame 1. No name = the current, else the autoPlay, else the first clip. False when there is no such clip. */
+  play(name?: string, opts?: { loop?: boolean; onComplete?: () => void }): boolean;
+  /** Pause at the current frame. */
+  stop(): void;
+  /** Jump to a 1-based frame number or a frame label's name, then play. */
+  gotoAndPlay(frameOrLabel: number | string, name?: string): boolean;
+  /** Jump to a 1-based frame number or a frame label's name, then hold there. */
+  gotoAndStop(frameOrLabel: number | string, name?: string): boolean;
+  /** Playback-rate multiplier: 1 = authored speed, 0 = frozen. */
+  setSpeed(multiplier: number): void;
+  /** The clip on the playhead, or null before anything has played. */
+  readonly currentAnimation: string | null;
+  /** 1-based; 0 when no clip is on the playhead. */
+  readonly currentFrame: number;
+  readonly totalFrames: number;
+  readonly isPlaying: boolean;
+  /** Every clip name, in authored order. */
+  animations(): string[];
+  /** 'complete' = a non-looping clip ended; 'label' = a labelled frame was entered. Returns an unsubscribe. */
+  on(event: 'complete' | 'label', cb: (info: { animation: string; label?: string; frame: number }) => void): () => void;
+  isDisposed(): boolean;
+}
+
 /** Serialized scene-node data backing this component's node. */
 export interface OrcaComponentNode {
   id: string;
@@ -230,6 +265,12 @@ export interface OrcaComponentContext {
   emit(eventName: string, payload?: Record<string, unknown>): void;
   /** Resolve another scene node's live display object by its node id. */
   getDisplayObjectById(nodeId: string): OrcaDisplayObject | null;
+  /**
+   * The Simple Animation player of a node: this component's own node when
+   * "target" is omitted, else a node id or a live display object. Null when
+   * that node has no Simple Animation component (or is gone).
+   */
+  getSimpleAnimation(target?: string | OrcaDisplayObject): OrcaSimpleAnimation | null;
   /** Resolve another 3D scene node's live Object3D by its node id. 3D hosts only. */
   getObject3DById?(nodeId: string): OrcaObject3D | null;
   /** The loaded THREE namespace (this folder cannot import three). 3D hosts only. */

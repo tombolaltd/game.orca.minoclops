@@ -12,6 +12,7 @@
  * - Core utilities: `debug`, `delay`
  * - Game actions: `actions.{ transform | spine | animatedSprite | video |
  *                            videoSequencer | particles | scratchableItem | scrollBar |
+ *                            simpleAnimation |
  *                            text | cabinet | casinoCabinet | audio | mixer |
  *                            reels | bigwin | scene | animation | jackpots |
  *                            continueRequest | network | scene3d | settings }`
@@ -48,6 +49,7 @@ import { delay } from "./delay";
 import { deviceInfo } from "./device";
 import { extensions } from "./extensions";
 import { cabinetFireEvents, casinoCabinetFireEvents, chatFireEvents, customFireEvents, gameFireEvents, globalFireEvents, popupFireEvents } from "./fireEvent";
+import { simpleAnimation } from "./simple-animation";
 import { gamePreferences } from "./game-preferences";
 import { gameState } from "./game-state";
 import { reels } from "./generic-reels";
@@ -94,6 +96,8 @@ const buildActions = () => ({
     scratchableItem,
     /** Scroll bar content + thumb position (setScrollBarRange / setScrollBarPosition / getScrollBarPosition). */
     scrollBar,
+    /** Simple Animation (Flash-style keyframe clips) playback — play / stop / gotoAnd* / speed + frame getters. */
+    simpleAnimation,
     /** Text node content + style control. */
     text,
     /** Generic cabinet/chrome control (visibility, messages, buttons). */

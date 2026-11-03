@@ -207,18 +207,6 @@
       ]
     },
     {
-      "id": "n1vlv51b",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 2
-        }
-      ]
-    },
-    {
       "id": "np0dck1y",
       "title": "setGameModelProperty",
       "rootType": "properties",
@@ -374,6 +362,250 @@
           "value": false
         }
       ]
+    },
+    {
+      "id": "nrirkj8s",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "n1vlv51b",
+      "exitSourceId": "nimwnbkw",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "entryl6he7on",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "n1vlv51b",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1
+              }
+            ]
+          },
+          {
+            "id": "exitgvln2ge",
+            "title": "Exit",
+            "isExit": true
+          },
+          {
+            "id": "nv0pplf2",
+            "title": "showNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793116075833_ynzvhp186",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "nin115ao",
+            "title": "hideNode",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793116075833_ynzvhp186",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            ]
+          },
+          {
+            "id": "n0qye6td",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705042982_14hvriwsk",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "on"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "n2ts3g3w",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705042982_14hvriwsk",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "off"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "n5c15qqb",
+            "title": "countUpText",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705131740_yygb42cz7",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "from",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "to",
+                "type": "float",
+                "sourceNodeId": "ntprq7hn"
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 1500
+              },
+              {
+                "name": "format",
+                "type": "string",
+                "value": "currency"
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power1.out"
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "ntprq7hn",
+            "title": "getGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "totalBonusPayout"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "l8kaytnw",
+            "from": "n0qye6td",
+            "to": "n5c15qqb"
+          },
+          {
+            "id": "lhoabjfa",
+            "from": "n2ts3g3w",
+            "to": "nin115ao"
+          },
+          {
+            "id": "lglc8tes",
+            "from": "entryl6he7on",
+            "to": "nv0pplf2"
+          },
+          {
+            "id": "l7kn30lt",
+            "from": "n5c15qqb",
+            "to": "n1vlv51b"
+          },
+          {
+            "id": "lkxjo7mf",
+            "from": "n1vlv51b",
+            "to": "n2ts3g3w"
+          },
+          {
+            "id": "l2blj2ny",
+            "from": "nin115ao",
+            "to": "exitgvln2ge"
+          },
+          {
+            "id": "l5mkp1rx",
+            "from": "ntprq7hn",
+            "to": "n5c15qqb",
+            "propertyType": "float",
+            "propertyName": "to"
+          },
+          {
+            "id": "lo584uq5",
+            "from": "nv0pplf2",
+            "to": "n0qye6td"
+          }
+        ]
+      }
     }
   ],
   "links": [
@@ -395,11 +627,11 @@
     {
       "id": "lahj8adf",
       "from": "bonuse_003",
-      "to": "n1vlv51b"
+      "to": "nrirkj8s"
     },
     {
       "id": "laohu8jy",
-      "from": "n1vlv51b",
+      "from": "nrirkj8s",
       "to": "n8048a23"
     },
     {

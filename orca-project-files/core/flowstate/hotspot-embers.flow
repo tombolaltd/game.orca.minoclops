@@ -108,8 +108,8 @@
         "id": "hotspo_005",
         "title": "emitParticleBurst",
         "displayName": "Burst embers",
-        "x": 1589.6666666666667,
-        "y": 134.66666666666663,
+        "x": 1549.0316792672218,
+        "y": 138.05291561662037,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -166,9 +166,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 54,
-      "panY": 224,
-      "scale": 0.6
+      "panX": 69.31408501099588,
+      "panY": 223.55000225326424,
+      "scale": 0.5906240295851045
     }
   }
 }

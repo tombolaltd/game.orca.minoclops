@@ -343,26 +343,6 @@
         }
       },
       {
-        "id": "n1vlv51b",
-        "title": "delay",
-        "friendlyTitle": "Wait",
-        "x": 432.83608517843254,
-        "y": 113.16597483864427,
-        "rootType": "delay",
-        "color": "#8e44ad",
-        "icon": "⏱️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "seconds",
-            "type": "float"
-          }
-        ],
-        "propertyValues": {
-          "seconds": 2
-        }
-      },
-      {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
         "x": 3930.7501889733453,
@@ -604,6 +584,417 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "nrirkj8s",
+        "title": "State",
+        "displayName": "Bonus win Show",
+        "x": 498,
+        "y": 158,
+        "isState": true,
+        "entryTargetId": "n1vlv51b",
+        "exitSourceId": "nimwnbkw",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "entryl6he7on",
+              "title": "Entry",
+              "x": -603.1423896722292,
+              "y": 48.48782926949157,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "n1vlv51b",
+              "title": "delay",
+              "friendlyTitle": "Wait",
+              "x": 726.7497189756319,
+              "y": 43.7584796992881,
+              "rootType": "delay",
+              "color": "#8e44ad",
+              "icon": "⏱️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "seconds",
+                  "type": "float"
+                }
+              ],
+              "propertyValues": {
+                "seconds": 1
+              }
+            },
+            {
+              "id": "exitgvln2ge",
+              "title": "Exit",
+              "x": 1834.5921344922133,
+              "y": 86.96460145121699,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            },
+            {
+              "id": "nv0pplf2",
+              "title": "showNode",
+              "x": -403.60068989281035,
+              "y": 27.203950042448653,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793116075833_ynzvhp186",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nin115ao",
+              "title": "hideNode",
+              "x": 1472.9229237295358,
+              "y": 27.299201027011918,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                }
+              ],
+              "propertyValues": {
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793116075833_ynzvhp186",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n0qye6td",
+              "title": "playAnimation",
+              "x": -50.097859711604585,
+              "y": 30.60698428165746,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705042982_14hvriwsk",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "on"
+              }
+            },
+            {
+              "id": "n2ts3g3w",
+              "title": "playAnimation",
+              "x": 1117.5144814186604,
+              "y": -2.4431920385670765,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705042982_14hvriwsk",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "off"
+              }
+            },
+            {
+              "id": "n5c15qqb",
+              "title": "countUpText",
+              "friendlyTitle": "Count Up Text",
+              "x": 388.74410675324134,
+              "y": 56.1229559789507,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "text"
+                },
+                {
+                  "name": "from",
+                  "type": "float",
+                  "default": 0
+                },
+                {
+                  "name": "to",
+                  "type": "float",
+                  "default": 100
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 1000
+                },
+                {
+                  "name": "format",
+                  "type": "string",
+                  "default": "currency",
+                  "options": [
+                    {
+                      "value": "currency",
+                      "label": "Currency (minor units)"
+                    },
+                    {
+                      "value": "currencyRounded",
+                      "label": "Currency, whole units"
+                    },
+                    {
+                      "value": "integer",
+                      "label": "Whole number"
+                    },
+                    {
+                      "value": "multiplier",
+                      "label": "Multiplier (x5)"
+                    },
+                    {
+                      "value": "decimal",
+                      "label": "Two decimals"
+                    }
+                  ]
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power1.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "onComplete",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for the count)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "from": 0,
+                "to": 100,
+                "durationMS": 1500,
+                "format": "currency",
+                "ease": "power1.out",
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793705131740_yygb42cz7",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "ntprq7hn",
+              "title": "getGameModelProperty",
+              "x": -174.38421327790343,
+              "y": 394.31045201932574,
+              "rootType": "properties",
+              "color": "#3498db",
+              "icon": "📖",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "propertyName",
+                  "type": "modelProperty",
+                  "propertyValue": "gameModel"
+                }
+              ],
+              "propertyValues": {
+                "propertyName": "totalBonusPayout"
+              }
+            }
+          ],
+          "links": [
+            {
+              "id": "l8kaytnw",
+              "from": "n0qye6td",
+              "to": "n5c15qqb"
+            },
+            {
+              "id": "lhoabjfa",
+              "from": "n2ts3g3w",
+              "to": "nin115ao"
+            },
+            {
+              "id": "lglc8tes",
+              "from": "entryl6he7on",
+              "to": "nv0pplf2"
+            },
+            {
+              "id": "l7kn30lt",
+              "from": "n5c15qqb",
+              "to": "n1vlv51b"
+            },
+            {
+              "id": "lkxjo7mf",
+              "from": "n1vlv51b",
+              "to": "n2ts3g3w"
+            },
+            {
+              "id": "l2blj2ny",
+              "from": "nin115ao",
+              "to": "exitgvln2ge"
+            },
+            {
+              "id": "l5mkp1rx",
+              "from": "ntprq7hn",
+              "to": "n5c15qqb",
+              "propertyType": "float",
+              "propertyName": "to"
+            },
+            {
+              "id": "lo584uq5",
+              "from": "nv0pplf2",
+              "to": "n0qye6td"
+            }
+          ],
+          "groups": []
+        }
       }
     ],
     "links": [
@@ -625,11 +1016,11 @@
       {
         "id": "lahj8adf",
         "from": "bonuse_003",
-        "to": "n1vlv51b"
+        "to": "nrirkj8s"
       },
       {
         "id": "laohu8jy",
-        "from": "n1vlv51b",
+        "from": "nrirkj8s",
         "to": "n8048a23"
       },
       {
@@ -676,9 +1067,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -726.3713883296796,
-      "panY": 281.72152602232563,
-      "scale": 0.45110986722026036
+      "panX": 187.416207923623,
+      "panY": 188.31319721707564,
+      "scale": 0.632650623648814
     }
   }
 }

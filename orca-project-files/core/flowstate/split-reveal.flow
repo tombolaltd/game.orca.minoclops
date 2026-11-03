@@ -154,7 +154,7 @@
         "title": "playSplitSymbols",
         "friendlyTitle": "Play split symbols",
         "x": 697.0399634425579,
-        "y": 118.08400219125477,
+        "y": 77.03021525830633,
         "rootType": "custom",
         "color": "#8e44ad",
         "icon": "🧩",
@@ -986,9 +986,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 464.5328330055885,
-      "panY": 74.47116352495624,
-      "scale": 0.25
+      "panX": 437.83771496659944,
+      "panY": 60.8073873969289,
+      "scale": 0.39178409808215053
     }
   }
 }

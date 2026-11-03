@@ -1,16 +1,76 @@
-BonusWin.webp
-size: 106, 765
+BonusWin-1.webp
+size: 4082, 2371
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 pma: false
+BonusWin/ArmL
+  bounds: 1174, 2123, 218, 453
+  rotate: 90
+BonusWin/Aura/Flames
+  bounds: 2703, 3, 1372, 1326
+  offsets: 0, 2, 1372, 1328
+BonusWin/back
+  bounds: 1379, 3, 1320, 1399
 BonusWin/BONUS WIN
-  bounds: 3, 3, 641, 88
+  bounds: 1275, 2005, 449, 62
+BonusWin/bonus
+  bounds: 3, 2123, 712, 234
+BonusWin/Brow
+  bounds: 2045, 1894, 192, 104
+BonusWin/Ear L
+  bounds: 1631, 2071, 139, 81
+  rotate: 90
+BonusWin/Ear R
+  bounds: 3360, 2239, 152, 128
+BonusWin/Forearm
+  bounds: 719, 2123, 230, 451
+  rotate: 90
+BonusWin/Layer 53
+  bounds: 3360, 1857, 378, 307
+  rotate: 90
+BonusWin/Layer 55
+  bounds: 3519, 1333, 329, 337
+BonusWin/Layer 58
+  bounds: 2045, 1406, 812, 484
+BonusWin/Layer 60
+  bounds: 3, 3, 1441, 1372
   rotate: 90
 BonusWin/placeholder
-  bounds: 3, 752, 10, 10
+  bounds: 719, 2357, 10, 10
+BonusWin/Plinth
+  bounds: 1728, 2005, 1084, 363
+BonusWin/pupil
+  bounds: 1631, 2288, 71, 64
+  rotate: 90
+BonusWin/Shinn
+  bounds: 3852, 1520, 144, 193
+  rotate: 90
+BonusWin/ShinR
+  bounds: 3858, 2079, 144, 193
+  rotate: 90
+BonusWin/Shoulder
+  bounds: 3671, 1820, 352, 255
+BonusWin/ShoulderR
+  bounds: 2861, 1333, 393, 449
+BonusWin/skull
+  bounds: 1275, 1448, 766, 553
+BonusWin/slab
+  bounds: 3, 1448, 1268, 671
 BonusWin/solid
-  bounds: 3, 648, 100, 100
+  bounds: 1631, 2214, 70, 70
+BonusWin/Tail
+  bounds: 3519, 1674, 475, 142
+BonusWin/Thi
+  bounds: 3852, 1333, 183, 227
+  rotate: 90
+BonusWin/ThiR
+  bounds: 3671, 2079, 183, 227
+BonusWin/torso
+  bounds: 2816, 1894, 540, 440
 BonusWin/VALUE
-  bounds: 95, 3, 3, 3
-  offsets: 0, 43, 193, 46
+  bounds: 3, 2361, 3, 3
+  offsets: 0, 29, 135, 32
+BonusWin/win
+  bounds: 3258, 1333, 520, 257
+  rotate: 90

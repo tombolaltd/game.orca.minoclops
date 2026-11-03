@@ -7,8 +7,8 @@
         "id": "settle_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -185.00947801280762,
-        "y": 101.10934283379933,
+        "x": 51.628348395611056,
+        "y": 109.89738240665564,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -38,8 +38,8 @@
       {
         "id": "n88iott5",
         "title": "endCabinetGame",
-        "x": 217.2455755028078,
-        "y": 107.82264616357824,
+        "x": 480.3798246479015,
+        "y": 118.14163632613094,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -50,8 +50,8 @@
       {
         "id": "n152ds7e",
         "title": "GAME_COMPLETE",
-        "x": 443.9114348741384,
-        "y": 107.82264616357821,
+        "x": 707.0456840192321,
+        "y": 118.14163632613091,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "⚡",
@@ -62,12 +62,12 @@
     ],
     "links": [
       {
-        "id": "lsvfnlxi",
+        "id": "l52r9pax",
         "from": "n88iott5",
         "to": "n152ds7e"
       },
       {
-        "id": "lockx5ul",
+        "id": "l73gzbfj",
         "from": "settle_003",
         "to": "n88iott5"
       }
@@ -75,9 +75,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 312.256065410035,
-      "panY": 140.6110148726489,
-      "scale": 0.7752696604975706
+      "panX": 345.4095424324062,
+      "panY": 186.35333488210927,
+      "scale": 0.5623986375121717
     }
   }
 }

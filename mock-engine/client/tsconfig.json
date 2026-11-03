@@ -1,0 +1,17 @@
+{
+  // The MOCK BUILD browser client. Kept apart from ../tsconfig.json on purpose: the engine core
+  // stays host-agnostic (ES2019, no DOM, no Node), while this folder runs in a page and needs DOM.
+  // Used for `tsc --noEmit` and as ts-loader's configFile in game/build/webpack.demo.conf.js
+  // (transpileOnly), never by the game's own build.
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["ES2019", "DOM"],
+    "types": [],
+    "rootDir": "..",
+    "noEmit": true,
+    "declaration": false,
+    "declarationMap": false
+  },
+  "include": ["./**/*.ts", "../src/**/*.ts"],
+  "exclude": ["../src/sim/**", "../src/http/**", "../src/index.ts"]
+}

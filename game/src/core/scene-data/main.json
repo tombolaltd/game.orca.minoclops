@@ -349,7 +349,89 @@
               "alpha": 1,
               "interactive": false,
               "zIndex": 0,
-              "children": [],
+              "children": [
+                {
+                  "id": "node_1793705042982_14hvriwsk",
+                  "name": "Spine",
+                  "type": "spine",
+                  "transform": {
+                    "x": 0,
+                    "y": 0,
+                    "scaleX": 1,
+                    "scaleY": 1,
+                    "rotation": 0,
+                    "pivotX": 0.5,
+                    "pivotY": 0.5,
+                    "skewX": 0,
+                    "skewY": 0
+                  },
+                  "visible": true,
+                  "alpha": 1,
+                  "interactive": false,
+                  "zIndex": 0,
+                  "children": [
+                    {
+                      "id": "node_1793705131740_yygb42cz7",
+                      "name": "Text",
+                      "type": "text",
+                      "transform": {
+                        "x": 0,
+                        "y": 0,
+                        "scaleX": 1,
+                        "scaleY": 1,
+                        "rotation": 0,
+                        "pivotX": 0.5,
+                        "pivotY": 0.5,
+                        "skewX": 0,
+                        "skewY": 0
+                      },
+                      "visible": true,
+                      "alpha": 1,
+                      "interactive": false,
+                      "zIndex": 0,
+                      "children": [],
+                      "customProperties": {},
+                      "locked": false,
+                      "expanded": false,
+                      "text": "Text",
+                      "fontFamily": "Arial",
+                      "fontSize": 24,
+                      "fill": 16777215,
+                      "fontWeight": "normal",
+                      "fontStyle": "normal",
+                      "align": "left",
+                      "wordWrap": false,
+                      "wordWrapWidth": 200,
+                      "stroke": 0,
+                      "strokeThickness": 0,
+                      "dropShadow": false,
+                      "dropShadowOptions": {
+                        "color": 0,
+                        "blur": 4,
+                        "angle": 45,
+                        "distance": 4,
+                        "alpha": 0.5
+                      },
+                      "rectTransform": null,
+                      "spineAttachment": {
+                        "enabled": true,
+                        "slotName": "value"
+                      }
+                    }
+                  ],
+                  "customProperties": {},
+                  "locked": false,
+                  "expanded": true,
+                  "skeleton": "assets/Popups/BonusWin.json",
+                  "atlas": "assets/Popups/BonusWin.atlas",
+                  "animation": "off",
+                  "playOnLoad": false,
+                  "loop": false,
+                  "skin": "default",
+                  "timeScale": 1,
+                  "rectTransform": null
+                }
+              ],
               "customProperties": {},
               "locked": false,
               "expanded": true,
@@ -359,7 +441,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": false,
+          "expanded": true,
           "dontDestroyOnLoad": false,
           "responsiveScaler": null,
           "layoutManager": null,
@@ -954,14 +1036,14 @@
                   ],
                   "customProperties": {},
                   "locked": false,
-                  "expanded": true,
+                  "expanded": false,
                   "dontDestroyOnLoad": false,
                   "rectTransform": null
                 }
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": true,
+              "expanded": false,
               "texture": {
                 "guid": "fd2a187c-9c4c-48da-ad0d-52103b6cd95e"
               },
@@ -1322,13 +1404,13 @@
                   ],
                   "customProperties": {},
                   "locked": false,
-                  "expanded": true,
+                  "expanded": false,
                   "rectTransform": null
                 }
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": true,
+              "expanded": false,
               "skeleton": "assets/reel/hotspot.json",
               "atlas": "assets/reel/hotspot.atlas",
               "animation": "hotspotON",
@@ -3716,7 +3798,7 @@
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": true,
+              "expanded": false,
               "rectTransform": null,
               "mask": {
                 "enabled": true,
@@ -4350,7 +4432,7 @@
           ],
           "customProperties": {},
           "locked": false,
-          "expanded": true,
+          "expanded": false,
           "dontDestroyOnLoad": false,
           "responsiveScaler": null,
           "layoutManager": null,
@@ -5085,6 +5167,23 @@
                   "scaleX": 3.716747880037086,
                   "scaleY": 3.716747880037086
                 }
+              },
+              "node_1793705042982_14hvriwsk": {
+                "transform": {
+                  "y": -8.029170141751536,
+                  "x": -6.269082362435427
+                }
+              },
+              "node_1793705131740_yygb42cz7": {
+                "transform": {
+                  "x": 14.888842714111501,
+                  "y": -33.123272879864345,
+                  "scaleX": 11.203538469918069,
+                  "scaleY": 9.692487325354527
+                }
+              },
+              "node_1793116075833_ynzvhp186": {
+                "visible": false
               }
             }
           }

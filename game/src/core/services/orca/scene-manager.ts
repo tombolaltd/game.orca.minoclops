@@ -165,6 +165,9 @@ import { isParentAnchorPoint, resolveAnchorOffset } from './scene-parent-anchor'
 import type { AnchorRect } from './scene-parent-anchor';
 import { parseAnimationChannel, type AnimationChannel } from './animation-channels';
 import { applyIkHandles, normalizeIkComponent, type IkComponentLike, type IkDisplayObjectLike, type NormalizedIk } from './animation-ik';
+// Simple Animation playhead (pure; its sampler is the `simple-animation.ts` parity twin).
+import { SimpleAnimPlayer, type OrcaSimpleAnimationHandle } from './simple-animation-player';
+export type { OrcaSimpleAnimationHandle, OrcaSimpleAnimationEvent, OrcaSimpleAnimationEventInfo, OrcaSimpleAnimationPlayOptions } from './simple-animation-player';
 import { prepareSkinnedMesh, updateSkinnedMesh, type PreparedSkinnedMesh } from './skinned-mesh';
 import {
     advanceParallaxTravel,
@@ -2246,6 +2249,10 @@ export interface OrcaSceneNode {
     // IK handle of a two-bone chain (`animation-ik.ts`). Untrusted, like button.
     ik?: IkComponentLike | null;
 
+    // Simple Animation (Flash-style keyframe clips, `simple-animation.ts`). Fully
+    // untrusted — only `normalizeSimpleAnimation` may turn it into a component.
+    simpleAnimation?: unknown;
+
     // Flex Layout (`@pixi/layout`). Untrusted — only `resolveFlexLayoutStyle`
     // may turn it into a `container.layout` value.
     flexLayout?: { enabled?: boolean; style?: Record<string, unknown> } | null;
@@ -2909,6 +2916,10 @@ class SceneManager {
     private scrollBars: Map<string, OrcaScrollBarView> = new Map();
     /** `holderId → scrollBarId` links already warned about (missing / not a scroll bar) — once each. */
     private warnedScrollBarLinks: Set<string> = new Set();
+    /** Live Simple Animation players, keyed by host node id (a DDOL survivor is re-keyed when rebound). */
+    private simpleAnimations: Map<string, SimpleAnimPlayer> = new Map();
+    /** The after-draw re-pose of every Simple Animation, registered with the first player. */
+    private simpleAnimationAfterDraw: (() => void) | null = null;
     private afterDrawHooks: Set<() => void> = new Set();
     // Tracks canvas-baked linear-gradient fill textures per Graphics object so
     // they can be destroyed on rebuild / teardown (avoids GPU texture leaks).
@@ -4901,6 +4912,7 @@ class SceneManager {
         this.updateCustomComponents(deltaSeconds * 1000);
         this.updateParticleEmitters(deltaSeconds);
         this.sweepInjectedChildDrawOrder();
+        this.updateSimpleAnimations(deltaSeconds);
         this.solveIkHandles();
         this.updateSkinnedMeshes();
         this.updateParallaxes(deltaSeconds);
@@ -5702,6 +5714,107 @@ class SceneManager {
     }
 
     /**
+     * Give a node its `simpleAnimation` component's runtime player: stashed on the
+     * display object as `__orcaSimpleAnimation`, ticked from `update`, re-posed
+     * after every draw, retired when the node is destroyed. Layer targets
+     * resolve by node id through `applyAnimatedValues` (the host or any built
+     * node), so the clip writes with the Animation Timeline's channel
+     * semantics. The authored autoPlay clip starts here — the subtree is
+     * built, so its first frame lands before the first render. A missing /
+     * junk component builds nothing. Never throws.
+     */
+    private attachSimpleAnimation(displayObject: PixiDisplayObject, node: OrcaSceneNode): void {
+        if (node.simpleAnimation === undefined || node.simpleAnimation === null) return;
+        try {
+            const player = new SimpleAnimPlayer(node.simpleAnimation, {
+                write: (targetId, writes) => this.applyAnimatedValues(targetId, writes),
+                emit: (event, info, source) => this.dispatchSimpleAnimationStarter(event, info, source),
+                warn: (message) => console.warn(`[SceneManager] ${message}`),
+            }, { id: node.id, name: node.name });
+            (displayObject as PixiDisplayObject & { __orcaSimpleAnimation?: OrcaSimpleAnimationHandle }).__orcaSimpleAnimation = player;
+            this.simpleAnimations.set(node.id, player);
+            if (!this.simpleAnimationAfterDraw) {
+                this.simpleAnimationAfterDraw = this.onAfterDraw(() => this.reapplySimpleAnimations());
+            }
+            displayObject.once('destroyed', () => {
+                player.dispose();
+                for (const [id, live] of Array.from(this.simpleAnimations)) {
+                    if (live === player) this.simpleAnimations.delete(id);
+                }
+            });
+            player.startAutoPlay();
+        } catch (err) {
+            console.warn(`[SceneManager] Simple Animation on "${node.name}" (id "${node.id}") could not be set up:`, err);
+        }
+    }
+
+    /** A DDOL host rebound into a new scene keeps its player (and playhead): re-key it. */
+    private rebindSimpleAnimation(reused: PixiDisplayObject, node: OrcaSceneNode): void {
+        const player = (reused as PixiDisplayObject & { __orcaSimpleAnimation?: OrcaSimpleAnimationHandle }).__orcaSimpleAnimation;
+        if (!(player instanceof SimpleAnimPlayer) || player.isDisposed()) return;
+        if (this.simpleAnimations.get(player.nodeId) === player) this.simpleAnimations.delete(player.nodeId);
+        player.nodeId = node.id;
+        player.nodeName = node.name;
+        this.simpleAnimations.set(node.id, player);
+    }
+
+    private updateSimpleAnimations(deltaSeconds: number): void {
+        if (this.simpleAnimations.size === 0) return;
+        for (const [id, player] of Array.from(this.simpleAnimations)) {
+            if (player.isDisposed()) {
+                this.simpleAnimations.delete(id);
+                continue;
+            }
+            player.tick(deltaSeconds);
+        }
+    }
+
+    /** Re-pose every Simple Animation's current frame — a layout pass may have overwritten it. */
+    private reapplySimpleAnimations(): void {
+        for (const player of Array.from(this.simpleAnimations.values())) player.reapply();
+    }
+
+    /**
+     * FlowState starters for Simple Animation events: `simpleAnimationComplete`
+     * `{ nodeName, animationName }` when a non-looping clip ends and
+     * `simpleAnimationLabel` `{ nodeName, animationName, label }` when a labelled
+     * frame is entered. Title-indexed starters need no binder — any graph with
+     * one is fanned out to by `runFlowsByStarterType`. Lazily required: the
+     * module graph runs flowstate → methods → node-ref → scene-manager.
+     */
+    private dispatchSimpleAnimationStarter(
+        event: 'complete' | 'label',
+        info: { animation: string; label?: string; frame: number },
+        player: SimpleAnimPlayer,
+    ): void {
+        const title = event === 'complete' ? 'simpleAnimationComplete' : 'simpleAnimationLabel';
+        const args: Record<string, unknown> = event === 'complete'
+            ? { nodeName: player.nodeName, animationName: info.animation }
+            : { nodeName: player.nodeName, animationName: info.animation, label: info.label ?? '' };
+        try {
+            const { Flowstate } = require('./flowstate') as {
+                Flowstate: { runFlowsByStarterType(type: string, args?: Record<string, unknown>): Promise<void> };
+            };
+            void Flowstate.runFlowsByStarterType(title, args).catch((err: unknown) => {
+                console.warn(`[SceneManager] ${title} flow failed for "${player.nodeName}"`, err);
+            });
+        } catch (err) {
+            console.warn(`[SceneManager] ${title} dispatch failed for "${player.nodeName}"`, err);
+        }
+    }
+
+    /** The live Simple Animation handle of the node with id `id`, or null (none / destroyed). */
+    public getSimpleAnimation(id: string): OrcaSimpleAnimationHandle | null {
+        const player = this.simpleAnimations.get(id);
+        if (!player) return null;
+        if (player.isDisposed()) {
+            this.simpleAnimations.delete(id);
+            return null;
+        }
+        return player;
+    }
+
+    /**
      * Link every live holder to its `scrollBarId` bar (or unlink it). Run once
      * the whole scene is built, so a bar later in the tree — or a DDOL
      * survivor on either side — is found. A missing id, or one that is not a
@@ -6264,6 +6377,23 @@ class SceneManager {
 
             getDisplayObjectById: (nodeId: string) => manager.getDisplayObjectById(nodeId) ?? null,
 
+            // Default target = this component's host. A string is a node id;
+            // anything else is read as a display object.
+            getSimpleAnimation: (target?: string | object) => {
+                try {
+                    if (target === undefined || target === null) {
+                        const own = registration.displayObject as { __orcaSimpleAnimation?: OrcaSimpleAnimationHandle } | null;
+                        const handle = own?.__orcaSimpleAnimation ?? (registration.node?.id ? manager.getSimpleAnimation(registration.node.id) : null);
+                        return handle && !handle.isDisposed() ? handle : null;
+                    }
+                    if (typeof target === 'string') return manager.getSimpleAnimation(target);
+                    const handle = (target as { __orcaSimpleAnimation?: OrcaSimpleAnimationHandle }).__orcaSimpleAnimation;
+                    return handle && !handle.isDisposed() ? handle : null;
+                } catch {
+                    return null;
+                }
+            },
+
             loadScene: (name: string, scope?: 'core' | 'skin'): void => {
                 try {
                     manager.loadScene(name, scope);
@@ -6701,6 +6831,7 @@ class SceneManager {
                     if (node.type === 'skinnedMesh') this.skinnedMeshIds.add(node.id);
                     if (node.type === 'bingoTicketHolder') this.rebindBingoTicketHolder(reused, node);
                     if (node.type === 'scrollBar') this.rebindScrollBar(reused, node);
+                    this.rebindSimpleAnimation(reused, node);
                     this.rescueDdolScratchBehaviour(reused, node);
                     return reused;
                 }
@@ -7195,6 +7326,11 @@ class SceneManager {
         if (node.type === 'canvas' && node.scaler) {
             this.applyCanvasScalerTransform(displayObject as PixiContainer, node);
         }
+
+        // Simple Animation — after the children (its layers target descendants by
+        // id, all registered by now) and before custom components, so a
+        // component's onCreate already reaches the handle.
+        this.attachSimpleAnimation(displayObject, node);
 
         // Button component — before custom components so a component's
         // onCreate already sees the node interactive.
