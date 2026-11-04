@@ -60,10 +60,10 @@
       "showSessionData": true,
       "sessionDataJustification": "default",
       "mode": "custom",
-      "frameWidth": 1080,
-      "frameHeight": 2340,
+      "frameWidth": 1920,
+      "frameHeight": 1080,
       "rectTransform": null,
-      "deviceName": "Samsung Galaxy S24"
+      "deviceName": "Desktop 1920×1080"
     },
     {
       "id": "node_intro",
@@ -126,8 +126,8 @@
           "transform": {
             "x": 0,
             "y": 0,
-            "scaleX": 1.1,
-            "scaleY": 4,
+            "scaleX": 1,
+            "scaleY": 1,
             "rotation": 0,
             "pivotX": 0,
             "pivotY": 0,
@@ -159,7 +159,7 @@
       "locked": false,
       "expanded": true,
       "responsiveScaler": {
-        "mode": "fitWidth",
+        "mode": "bestFit",
         "referenceWidth": 1920,
         "referenceHeight": 1080
       },
@@ -4514,7 +4514,7 @@
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": false,
+              "expanded": true,
               "texture": {
                 "guid": "d7427617-86c4-4755-98df-3dc355135751"
               },
@@ -4579,7 +4579,7 @@
               ],
               "customProperties": {},
               "locked": false,
-              "expanded": false,
+              "expanded": true,
               "texture": "",
               "tint": 16777215,
               "blendMode": "normal",
@@ -4796,7 +4796,8 @@
                   "y": 160.24059479834153
                 }
               }
-            }
+            },
+            "enabled": false
           },
           {
             "id": "profile_mvky0r0o_wj6funu",
@@ -4812,12 +4813,18 @@
             "entries": {
               "node_1791298947613_fe3k1nuxq": {
                 "transform": {
-                  "y": -72.39511709139997
+                  "y": -129.23029056171765
                 },
                 "responsiveScaler": {
                   "mode": "bestFitShrink",
                   "referenceWidth": 1920,
-                  "referenceHeight": 1080
+                  "referenceHeight": 1080,
+                  "content": {
+                    "x": -960,
+                    "y": -540,
+                    "width": 1920,
+                    "height": 1080
+                  }
                 }
               },
               "node_ss_hud": {
@@ -4846,10 +4853,10 @@
               },
               "node_1791296555660_uqk9no210": {
                 "transform": {
-                  "x": -116.48508896057906,
-                  "y": -633.9720567099292,
-                  "scaleX": 0.9924193743278172,
-                  "scaleY": 1.0276184855111723
+                  "x": -145.55162960407932,
+                  "y": -662.1805938417175,
+                  "scaleX": 1.2767739467773234,
+                  "scaleY": 1.3220585404392171
                 }
               },
               "node_1791295520191_9uj0li4ny": {
@@ -4870,10 +4877,10 @@
               },
               "node_1791293688069_efpsdyk4c": {
                 "transform": {
-                  "x": -122.18929367499493,
-                  "y": 189.6033257206975,
-                  "scaleX": 0.5554619931015492,
-                  "scaleY": 0.536428557152358
+                  "x": -155.73757605535894,
+                  "y": -120.56768305494467,
+                  "scaleX": 1.9751086208508797,
+                  "scaleY": 1.9074296366997754
                 }
               },
               "node_ss_reel_area": {
@@ -4971,13 +4978,13 @@
                   "scaleY": 3.358555102677707
                 }
               },
-              "node_1793116075833_ynzvhp186": {
-                "visible": false
-              },
               "node_ss_popups": {
                 "transform": {
                   "y": 160.24059479834153
                 }
+              },
+              "node_1793116075833_ynzvhp186": {
+                "visible": false
               }
             }
           },
@@ -5002,10 +5009,10 @@
               },
               "node_1791296555660_uqk9no210": {
                 "transform": {
-                  "x": -746.956275860761,
-                  "y": 9.85686600551071,
-                  "scaleX": 0.5787582702116523,
-                  "scaleY": 0.6067494377899547
+                  "x": -738.1619281191818,
+                  "y": -28.317994592264313,
+                  "scaleX": 0.6619896759723103,
+                  "scaleY": 0.6940062620134405
                 }
               },
               "node_ss_hud": {
@@ -5050,8 +5057,10 @@
               },
               "node_1791293688069_efpsdyk4c": {
                 "transform": {
-                  "scaleX": 1,
-                  "scaleY": 1
+                  "scaleX": 1.112446768599675,
+                  "scaleY": 1.112446768599675,
+                  "x": -31.351972751841174,
+                  "y": -110.72054274460402
                 }
               },
               "node_1791295520191_9uj0li4ny": {
