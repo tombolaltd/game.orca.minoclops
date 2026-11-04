@@ -7,7 +7,7 @@
         "id": "n1p0g3rz",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 61.16535132104872,
+        "x": 59.522099673931564,
         "y": 66.47220955623638,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
@@ -22,14 +22,97 @@
           }
         ],
         "propertyValues": {
-          "eventName": "bonusEnd"
+          "eventName": "characterBonustransition"
         }
       },
       {
-        "id": "nlsc464h",
+        "id": "n6jki6rp",
+        "title": "playAnimation",
+        "x": 407.40647174541095,
+        "y": 33.50511612808859,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          },
+          {
+            "name": "animationName",
+            "type": "string",
+            "optionsFrom": "target.spine.animations"
+          },
+          {
+            "name": "loop",
+            "type": "bool",
+            "default": false
+          },
+          {
+            "name": "trackIndex",
+            "type": "int",
+            "default": 0
+          },
+          {
+            "name": "sequenceNodeOn",
+            "type": "string",
+            "default": "immediate",
+            "showWhen": {
+              "property": "loop",
+              "equals": false
+            },
+            "options": [
+              {
+                "value": "immediate",
+                "label": "Immediate (continue right away)"
+              },
+              {
+                "value": "onComplete",
+                "label": "On Complete (wait for animation)"
+              }
+            ]
+          }
+        ],
+        "propertyValues": {
+          "loop": false,
+          "trackIndex": 2,
+          "sequenceNodeOn": "immediate",
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          },
+          "animationName": "transition/BonusToBase"
+        }
+      },
+      {
+        "id": "njkmhwad",
+        "title": "delay",
+        "friendlyTitle": "Wait",
+        "x": 742.1496597117967,
+        "y": 43.35050400945292,
+        "rootType": "delay",
+        "color": "#8e44ad",
+        "icon": "⏱️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "seconds",
+            "type": "float"
+          }
+        ],
+        "propertyValues": {
+          "seconds": 0.25
+        }
+      },
+      {
+        "id": "n3uxexoi",
         "title": "setSkin",
-        "x": 731.1360265400103,
-        "y": 66.42729782473874,
+        "x": 1067.0474597968187,
+        "y": 43.35050400945292,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -55,46 +138,31 @@
           },
           "skinName": "base"
         }
-      },
-      {
-        "id": "n91xt96d",
-        "title": "delay",
-        "friendlyTitle": "Wait",
-        "x": 399.50376076094784,
-        "y": 78.23774790549709,
-        "rootType": "delay",
-        "color": "#8e44ad",
-        "icon": "⏱️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "seconds",
-            "type": "float"
-          }
-        ],
-        "propertyValues": {
-          "seconds": 1.5
-        }
       }
     ],
     "links": [
       {
-        "id": "l4l5rcq0",
-        "from": "n1p0g3rz",
-        "to": "n91xt96d"
+        "id": "led4vp3a",
+        "from": "n6jki6rp",
+        "to": "njkmhwad"
       },
       {
-        "id": "lpf3le5m",
-        "from": "n91xt96d",
-        "to": "nlsc464h"
+        "id": "lq0dp0ib",
+        "from": "njkmhwad",
+        "to": "n3uxexoi"
+      },
+      {
+        "id": "l9rn0j7h",
+        "from": "n1p0g3rz",
+        "to": "n6jki6rp"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 142.99023635300216,
-      "panY": 168.46593920557876,
-      "scale": 0.7672619653324045
+      "panX": 260.05331531948286,
+      "panY": 182.4237680692057,
+      "scale": 0.6085495193352436
     }
   }
 }

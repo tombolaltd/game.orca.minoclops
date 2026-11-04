@@ -202,11 +202,6 @@
       "rootType": "Action"
     },
     {
-      "id": "n3473a3p",
-      "title": "showCabinet",
-      "rootType": "Action"
-    },
-    {
       "id": "nesw0bts",
       "title": "delay",
       "rootType": "delay",
@@ -840,6 +835,45 @@
           "value": "immediate"
         }
       ]
+    },
+    {
+      "id": "nxu7gsso",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "characterBaseToBonus"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "nzvbo3zo",
+      "title": "showCabinet",
+      "rootType": "Action"
+    },
+    {
+      "id": "nxtc7k1b",
+      "title": "enterCabinetBonusState",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "stateName",
+          "type": "string",
+          "value": "Bonus"
+        },
+        {
+          "name": "buttonText",
+          "type": "string",
+          "value": "Free Spins"
+        }
+      ]
     }
   ],
   "links": [
@@ -867,16 +901,6 @@
       "id": "loitjohz",
       "from": "n8qlbhx4",
       "to": "nwf68o3c"
-    },
-    {
-      "id": "l8as1qqo",
-      "from": "bonust_033",
-      "to": "nwf68o3c"
-    },
-    {
-      "id": "l9quskbv",
-      "from": "n3473a3p",
-      "to": "nesw0bts"
     },
     {
       "id": "lfmcu9jn",
@@ -1054,19 +1078,9 @@
       "to": "n57rdar3"
     },
     {
-      "id": "l7a2hwoc",
-      "from": "ns2839kn",
-      "to": "n3473a3p"
-    },
-    {
       "id": "lyxmfcx7",
       "from": "nkfakbi2",
       "to": "ndxq59ej"
-    },
-    {
-      "id": "lqtth824",
-      "from": "nwf68o3c",
-      "to": "n01n5lvk"
     },
     {
       "id": "lpjm6dm6",
@@ -1087,6 +1101,31 @@
       "id": "lm48ml8e",
       "from": "n878lndk",
       "to": "ns2839kn"
+    },
+    {
+      "id": "l4kx5i37",
+      "from": "bonust_033",
+      "to": "nwf68o3c"
+    },
+    {
+      "id": "l16ykk8b",
+      "from": "nwf68o3c",
+      "to": "nxu7gsso"
+    },
+    {
+      "id": "l1xznw8e",
+      "from": "nxu7gsso",
+      "to": "n01n5lvk"
+    },
+    {
+      "id": "l19xbmbm",
+      "from": "ns2839kn",
+      "to": "nzvbo3zo"
+    },
+    {
+      "id": "lyw7qga2",
+      "from": "nzvbo3zo",
+      "to": "nxtc7k1b"
     }
   ]
 }

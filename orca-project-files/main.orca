@@ -146,6 +146,12 @@
     {
       "name": "hotspotOn",
       "description": "The hotspot fire (hotspotON) starts on the chosen symbol: embers burst from it on frame 28."
+    },
+    {
+      "name": "characterBonusToBase"
+    },
+    {
+      "name": "characterBaseToBonus"
     }
   ],
   "serverConnectionMapping": {

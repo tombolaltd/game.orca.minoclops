@@ -8,12 +8,61 @@
         {
           "name": "eventName",
           "type": "customEventRef",
-          "value": "bonusEnd"
+          "value": "characterBonustransition"
         }
       ]
     },
     {
-      "id": "nlsc464h",
+      "id": "n6jki6rp",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "transition/BonusToBase"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "njkmhwad",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 0.25
+        }
+      ]
+    },
+    {
+      "id": "n3uxexoi",
       "title": "setSkin",
       "rootType": "Action",
       "properties": [
@@ -33,30 +82,23 @@
           "value": "base"
         }
       ]
-    },
-    {
-      "id": "n91xt96d",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 1.5
-        }
-      ]
     }
   ],
   "links": [
     {
-      "id": "l4l5rcq0",
-      "from": "n1p0g3rz",
-      "to": "n91xt96d"
+      "id": "led4vp3a",
+      "from": "n6jki6rp",
+      "to": "njkmhwad"
     },
     {
-      "id": "lpf3le5m",
-      "from": "n91xt96d",
-      "to": "nlsc464h"
+      "id": "lq0dp0ib",
+      "from": "njkmhwad",
+      "to": "n3uxexoi"
+    },
+    {
+      "id": "l9rn0j7h",
+      "from": "n1p0g3rz",
+      "to": "n6jki6rp"
     }
   ]
 }

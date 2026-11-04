@@ -50,26 +50,61 @@
       {
         "id": "n152ds7e",
         "title": "GAME_COMPLETE",
-        "x": 707.0456840192321,
-        "y": 118.14163632613091,
+        "x": 959.5356271459646,
+        "y": 125.25402909026423,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "⚡",
         "isStarter": false,
         "properties": [],
         "propertyValues": {}
+      },
+      {
+        "id": "nrz0dn5x",
+        "title": "log",
+        "friendlyTitle": "Debug Log",
+        "x": 678.5197209130175,
+        "y": 278.8972117918785,
+        "rootType": "debug",
+        "color": "#f39c12",
+        "icon": "🐛",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "message",
+            "type": "any"
+          },
+          {
+            "name": "color",
+            "type": "color",
+            "default": ""
+          },
+          {
+            "name": "message2",
+            "type": "any"
+          }
+        ],
+        "propertyValues": {
+          "color": "",
+          "message": "ended game"
+        }
       }
     ],
     "links": [
       {
-        "id": "l52r9pax",
-        "from": "n88iott5",
-        "to": "n152ds7e"
-      },
-      {
         "id": "l73gzbfj",
         "from": "settle_003",
         "to": "n88iott5"
+      },
+      {
+        "id": "lczhelwp",
+        "from": "n88iott5",
+        "to": "nrz0dn5x"
+      },
+      {
+        "id": "lqp3ojah",
+        "from": "nrz0dn5x",
+        "to": "n152ds7e"
       }
     ],
     "groups": [],

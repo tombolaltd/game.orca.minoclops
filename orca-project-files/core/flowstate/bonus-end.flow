@@ -4,22 +4,11 @@
   "graph": {
     "nodes": [
       {
-        "id": "bonuse_note",
-        "title": "Note",
-        "x": 845.2927465777404,
-        "y": -164.63999899302937,
-        "rootType": "note",
-        "isNote": true,
-        "noteText": "TODO: add more here",
-        "width": 620,
-        "height": 210
-      },
-      {
         "id": "bonuse_003",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -1098.3202591712047,
-        "y": 140.55221000895796,
+        "x": -1413.8684428025292,
+        "y": 151.70795387471182,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -589,8 +578,8 @@
         "id": "nrirkj8s",
         "title": "State",
         "displayName": "Bonus win Show",
-        "x": -720.9159443060248,
-        "y": 188.0915749497738,
+        "x": -1095.4302026563341,
+        "y": 183.31054186445067,
         "isState": true,
         "entryTargetId": "n1vlv51b",
         "exitSourceId": "nfaie7eh",
@@ -2013,12 +2002,37 @@
       {
         "id": "n8w72gdi",
         "title": "hideCabinet",
-        "x": -522.8462171913557,
-        "y": 160.92488766722343,
+        "x": -906.9225417123113,
+        "y": 168.89327614276195,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
         "isStarter": false
+      },
+      {
+        "id": "nxfhlucl",
+        "title": "fireCustomEvent",
+        "x": -667.566226997684,
+        "y": 165.45117323364317,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "characterBonustransition",
+          "propertyNames": []
+        }
       }
     ],
     "links": [
@@ -2123,17 +2137,22 @@
         "to": "n8w72gdi"
       },
       {
-        "id": "l8o7xz87",
+        "id": "lqhsd4h5",
         "from": "n8w72gdi",
+        "to": "nxfhlucl"
+      },
+      {
+        "id": "lgp5fw01",
+        "from": "nxfhlucl",
         "to": "nq3k812a"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 796.5984709041247,
-      "panY": 141.62009843558099,
-      "scale": 0.48515135667096015
+      "panX": 931.3336108206696,
+      "panY": -6.436954185378966,
+      "scale": 0.6274794477389112
     }
   }
 }

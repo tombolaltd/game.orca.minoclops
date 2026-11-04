@@ -29,8 +29,8 @@
         "id": "bonust_033",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": -1130.6558086058433,
-        "y": 439.5027413772329,
+        "x": -1293.2111175669897,
+        "y": 417.06949739552243,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -47,8 +47,8 @@
       {
         "id": "bonust_034",
         "title": "fireCustomEvent",
-        "x": 5050.802410697934,
-        "y": 347.5858337862486,
+        "x": 5512.967265268024,
+        "y": 438.8653177834647,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -73,8 +73,8 @@
         "title": "onEnterBonusRound",
         "displayName": "Resumed in free spins",
         "friendlyTitle": "On Bonus Start",
-        "x": -1163.037336822832,
-        "y": 167.10557782570308,
+        "x": -1576.6516172931174,
+        "y": 86.99846421683353,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "▶️",
@@ -332,20 +332,8 @@
       {
         "id": "nwf68o3c",
         "title": "hideCabinet",
-        "x": -775.510470108738,
-        "y": 213.45845476049834,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [],
-        "propertyValues": {}
-      },
-      {
-        "id": "n3473a3p",
-        "title": "showCabinet",
-        "x": 4531.6992090508265,
-        "y": 333.44806522450784,
+        "x": -1189.1247505790234,
+        "y": 133.3513411516288,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -357,8 +345,8 @@
         "id": "nesw0bts",
         "title": "delay",
         "friendlyTitle": "Wait",
-        "x": 4731.215517925222,
-        "y": 344.5150366976525,
+        "x": 5168.031232548942,
+        "y": 439.91535746294807,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -635,8 +623,8 @@
         "title": "playSymbolAnimation",
         "displayName": "Spool plays its win",
         "friendlyTitle": "Play Symbol Animation",
-        "x": -1574.9713955377606,
-        "y": 299.323194210998,
+        "x": -1708.622672229231,
+        "y": 317.54836830528944,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -685,8 +673,8 @@
         "title": "delay",
         "displayName": "Spools win (1 s)",
         "friendlyTitle": "Wait",
-        "x": -2016.5195449247767,
-        "y": 684.9403314171054,
+        "x": -2071.195067207651,
+        "y": 630.2648091342311,
         "rootType": "delay",
         "color": "#8e44ad",
         "icon": "⏱️",
@@ -730,8 +718,8 @@
         "title": "loop",
         "displayName": "Each row",
         "friendlyTitle": "Repeat For Each",
-        "x": -896.4613134340311,
-        "y": 631.9018692337573,
+        "x": -1172.876453864118,
+        "y": 641.014456280903,
         "rootType": "loop",
         "color": "#9b59b6",
         "icon": "🔁",
@@ -754,8 +742,8 @@
         "id": "spoolwin_at2",
         "title": "getReelSymbolAt",
         "friendlyTitle": "Get Reel Symbol At",
-        "x": -525.3203385878301,
-        "y": 975.7325907497118,
+        "x": -914.1240525993808,
+        "y": 914.982010435407,
         "rootType": "getters",
         "color": "#0e7c86",
         "icon": "🎰",
@@ -793,8 +781,8 @@
         "id": "spoolwin_is2",
         "title": "equals",
         "friendlyTitle": "Equal",
-        "x": -162.48614640136157,
-        "y": 1001.2111238643254,
+        "x": -551.2898604129123,
+        "y": 940.4605435500206,
         "rootType": "math",
         "color": "#16a085",
         "icon": "🟰",
@@ -816,8 +804,8 @@
         "id": "spoolwin_branch2",
         "title": "branch",
         "displayName": "Bonus spool here?",
-        "x": 183.44913831387447,
-        "y": 707.9151927021511,
+        "x": -475.6946580963326,
+        "y": 628.9394382935548,
         "rootType": "branch",
         "color": "#d4a72c",
         "icon": "🔀",
@@ -837,8 +825,8 @@
         "title": "stopSymbolAnimation",
         "displayName": "Back to its idle",
         "friendlyTitle": "Stop Symbol Animation",
-        "x": 562.5676482508401,
-        "y": 888.3370736775366,
+        "x": -96.576148159367,
+        "y": 809.3613192689403,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -1103,7 +1091,7 @@
       {
         "id": "ns2839kn",
         "title": "tweenNodeAlpha",
-        "x": 4065.0995814513085,
+        "x": 4067.1438588179885,
         "y": 421.78140436648164,
         "rootType": "Action",
         "color": "#3b6ef5",
@@ -1934,6 +1922,65 @@
             "sceneName": "main"
           }
         }
+      },
+      {
+        "id": "nxu7gsso",
+        "title": "fireCustomEvent",
+        "x": -957.9570895186661,
+        "y": 136.29944570932116,
+        "rootType": "fireEvent",
+        "color": "#d94848",
+        "icon": "📣",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "eventName",
+            "type": "customEventRef",
+            "default": ""
+          },
+          {
+            "name": "propertyNames",
+            "type": "TArray"
+          }
+        ],
+        "propertyValues": {
+          "eventName": "characterBaseToBonus",
+          "propertyNames": []
+        }
+      },
+      {
+        "id": "nzvbo3zo",
+        "title": "showCabinet",
+        "x": 4544.893975396848,
+        "y": 445.2633527747894,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
+      },
+      {
+        "id": "nxtc7k1b",
+        "title": "enterCabinetBonusState",
+        "x": 4778.8662256707075,
+        "y": 466.22047586076314,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "stateName",
+            "type": "string"
+          },
+          {
+            "name": "buttonText",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "buttonText": "Free Spins",
+          "stateName": "Bonus"
+        }
       }
     ],
     "links": [
@@ -1961,16 +2008,6 @@
         "id": "loitjohz",
         "from": "n8qlbhx4",
         "to": "nwf68o3c"
-      },
-      {
-        "id": "l8as1qqo",
-        "from": "bonust_033",
-        "to": "nwf68o3c"
-      },
-      {
-        "id": "l9quskbv",
-        "from": "n3473a3p",
-        "to": "nesw0bts"
       },
       {
         "id": "lfmcu9jn",
@@ -2148,19 +2185,9 @@
         "to": "n57rdar3"
       },
       {
-        "id": "l7a2hwoc",
-        "from": "ns2839kn",
-        "to": "n3473a3p"
-      },
-      {
         "id": "lyxmfcx7",
         "from": "nkfakbi2",
         "to": "ndxq59ej"
-      },
-      {
-        "id": "lqtth824",
-        "from": "nwf68o3c",
-        "to": "n01n5lvk"
       },
       {
         "id": "lpjm6dm6",
@@ -2181,14 +2208,49 @@
         "id": "lm48ml8e",
         "from": "n878lndk",
         "to": "ns2839kn"
+      },
+      {
+        "id": "l4kx5i37",
+        "from": "bonust_033",
+        "to": "nwf68o3c",
+        "points": [
+          {
+            "x": -971.0011994614855,
+            "y": 404.6781635960879
+          },
+          {
+            "x": -1226.1536367815656,
+            "y": 261.91429985747163
+          }
+        ]
+      },
+      {
+        "id": "l16ykk8b",
+        "from": "nwf68o3c",
+        "to": "nxu7gsso"
+      },
+      {
+        "id": "l1xznw8e",
+        "from": "nxu7gsso",
+        "to": "n01n5lvk"
+      },
+      {
+        "id": "l19xbmbm",
+        "from": "ns2839kn",
+        "to": "nzvbo3zo"
+      },
+      {
+        "id": "lyw7qga2",
+        "from": "nzvbo3zo",
+        "to": "nxtc7k1b"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -371.1059455689166,
-      "panY": 72.9028738562979,
-      "scale": 0.3192456655560845
+      "panX": -2340.8690002708227,
+      "panY": -90.55801864337172,
+      "scale": 0.6071105610370306
     }
   }
 }
