@@ -59,10 +59,11 @@
       "zoom": 1,
       "showSessionData": true,
       "sessionDataJustification": "default",
-      "mode": "landscape16x9",
-      "frameWidth": 1920,
-      "frameHeight": 1080,
-      "rectTransform": null
+      "mode": "custom",
+      "frameWidth": 1080,
+      "frameHeight": 2340,
+      "rectTransform": null,
+      "deviceName": "Samsung Galaxy S24"
     },
     {
       "id": "node_intro",
@@ -125,8 +126,8 @@
           "transform": {
             "x": 0,
             "y": 0,
-            "scaleX": 1,
-            "scaleY": 1,
+            "scaleX": 1.1,
+            "scaleY": 4,
             "rotation": 0,
             "pivotX": 0,
             "pivotY": 0,
@@ -158,7 +159,7 @@
       "locked": false,
       "expanded": true,
       "responsiveScaler": {
-        "mode": "bestFit",
+        "mode": "fitWidth",
         "referenceWidth": 1920,
         "referenceHeight": 1080
       },
@@ -1004,7 +1005,7 @@
                   ],
                   "customProperties": {},
                   "locked": false,
-                  "expanded": false,
+                  "expanded": true,
                   "dontDestroyOnLoad": false,
                   "rectTransform": null
                 }
@@ -4609,20 +4610,26 @@
       "advancedLayoutManager": {
         "profiles": [
           {
-            "id": "profile_mvky0r0o_wj6funu",
-            "name": "portrait",
+            "id": "profile_mw2a2qbh_p902h7r",
+            "name": "portrait Chat Open",
             "conditions": [
               {
-                "id": "cond_mvky0ync_vkz1hqs",
+                "id": "cond_mw2a2qbh_orni5ur",
                 "field": "orientation",
                 "op": "eq",
                 "value": "portrait"
+              },
+              {
+                "id": "cond_mw2a2zt6_1igup0a",
+                "field": "aspectRatio",
+                "op": "lte",
+                "value": 1
               }
             ],
             "entries": {
               "node_1791298947613_fe3k1nuxq": {
                 "transform": {
-                  "y": 40.66357350083271
+                  "y": -72.39511709139997
                 },
                 "responsiveScaler": {
                   "mode": "bestFitShrink",
@@ -4648,18 +4655,18 @@
               },
               "node_1791292732465_cieppe22a": {
                 "transform": {
-                  "x": 61.156391282457164,
-                  "y": -922.9097393552968,
-                  "scaleX": 1.5422475370238506,
-                  "scaleY": 1.681552470535155
+                  "x": 52.04224600043432,
+                  "y": -979.2551679972124,
+                  "scaleX": 2.9773241452505963,
+                  "scaleY": 3.2462536991250097
                 }
               },
               "node_1791296555660_uqk9no210": {
                 "transform": {
-                  "x": -800.3111361477017,
-                  "y": 156.5660416735184,
-                  "scaleX": 0.528082340840572,
-                  "scaleY": 0.5468123550966961
+                  "x": -116.48508896057906,
+                  "y": -633.9720567099292,
+                  "scaleX": 0.9924193743278172,
+                  "scaleY": 1.0276184855111723
                 }
               },
               "node_1791295520191_9uj0li4ny": {
@@ -4688,10 +4695,10 @@
               },
               "node_ss_reel_area": {
                 "transform": {
-                  "x": 36.71840577631008,
-                  "y": 43.65399016835438,
-                  "scaleX": 1.3648709236704026,
-                  "scaleY": 1.3744965087849466
+                  "x": -2.78041613579893,
+                  "y": 216.91633086981497,
+                  "scaleX": 1.9191093394347105,
+                  "scaleY": 1.9326436231317863
                 }
               },
               "node_ss_background": {
@@ -4733,7 +4740,7 @@
               "node_1793296072486_udhkkhjds": {
                 "transform": {
                   "y": -247.7016766893113,
-                  "x": -205.5260152105518,
+                  "x": -88.25325193589299,
                   "scaleX": 0.2589189980415297,
                   "scaleY": 0.2589189980415297
                 },
@@ -4750,7 +4757,7 @@
               "node_1793296220293_41gc6usix": {
                 "transform": {
                   "y": -246.6671206324695,
-                  "x": -88.97440377652799,
+                  "x": -196.09904559688962,
                   "scaleX": 0.2496073130244479,
                   "scaleY": 0.2496073130244479
                 },
@@ -4783,6 +4790,194 @@
               },
               "node_1793116075833_ynzvhp186": {
                 "visible": false
+              },
+              "node_ss_popups": {
+                "transform": {
+                  "y": 160.24059479834153
+                }
+              }
+            }
+          },
+          {
+            "id": "profile_mvky0r0o_wj6funu",
+            "name": "portrait",
+            "conditions": [
+              {
+                "id": "cond_mvky0ync_vkz1hqs",
+                "field": "orientation",
+                "op": "eq",
+                "value": "portrait"
+              }
+            ],
+            "entries": {
+              "node_1791298947613_fe3k1nuxq": {
+                "transform": {
+                  "y": -72.39511709139997
+                },
+                "responsiveScaler": {
+                  "mode": "bestFitShrink",
+                  "referenceWidth": 1920,
+                  "referenceHeight": 1080
+                }
+              },
+              "node_ss_hud": {
+                "transform": {
+                  "y": 50.19897246867565,
+                  "x": -113.25877271438085,
+                  "scaleX": 0.6747421655824404,
+                  "scaleY": 0.6747421655824404
+                }
+              },
+              "node_1791298581468_z4rigcjll": {
+                "transform": {
+                  "x": -17.14966138839833,
+                  "y": -41.86704365181102,
+                  "scaleX": 0.9902123744878729,
+                  "scaleY": 0.888040143699643
+                }
+              },
+              "node_1791292732465_cieppe22a": {
+                "transform": {
+                  "x": 52.04224600043432,
+                  "y": -979.2551679972124,
+                  "scaleX": 2.9773241452505963,
+                  "scaleY": 3.2462536991250097
+                }
+              },
+              "node_1791296555660_uqk9no210": {
+                "transform": {
+                  "x": -116.48508896057906,
+                  "y": -633.9720567099292,
+                  "scaleX": 0.9924193743278172,
+                  "scaleY": 1.0276184855111723
+                }
+              },
+              "node_1791295520191_9uj0li4ny": {
+                "transform": {
+                  "x": -4.815757025778012,
+                  "y": 5.799465562862409,
+                  "scaleX": 0.990846418805981,
+                  "scaleY": 0.8497409866907856
+                }
+              },
+              "node_ss_reel_frame": {
+                "transform": {
+                  "y": -54.2990581923798,
+                  "x": 102.39330881140057,
+                  "scaleX": 1.1923813756059218,
+                  "scaleY": 1.2712248867900944
+                }
+              },
+              "node_1791293688069_efpsdyk4c": {
+                "transform": {
+                  "x": -122.18929367499493,
+                  "y": 189.6033257206975,
+                  "scaleX": 0.5554619931015492,
+                  "scaleY": 0.536428557152358
+                }
+              },
+              "node_ss_reel_area": {
+                "transform": {
+                  "x": -2.78041613579893,
+                  "y": 216.91633086981497,
+                  "scaleX": 1.9191093394347105,
+                  "scaleY": 1.9326436231317863
+                }
+              },
+              "node_ss_background": {
+                "transform": {
+                  "x": -25.849164895724698,
+                  "y": 7.601724584492075,
+                  "scaleX": 1.1709559461160264,
+                  "scaleY": 1.2161119773302798
+                }
+              },
+              "node_ss_bonus_bg": {
+                "transform": {
+                  "x": 115.9713410479635,
+                  "y": -152.39179466486735,
+                  "scaleX": 0.865612765931694,
+                  "scaleY": 0.8412075088416103
+                }
+              },
+              "node_1793271562350_onrurgfcq": {
+                "transform": {
+                  "x": -448.3118767798903,
+                  "y": -261.39232095997454
+                }
+              },
+              "node_1793281709637_xjkk041qq": {
+                "transform": {
+                  "y": -261.12539299517294,
+                  "x": -448.49382815084215
+                }
+              },
+              "node_1791297984204_qg9p9detx": {
+                "transform": {
+                  "y": 48.05987571055765,
+                  "scaleY": 0.7141826004033358,
+                  "x": -86.02552538592116,
+                  "scaleX": 0.8153844994277764
+                }
+              },
+              "node_1793296072486_udhkkhjds": {
+                "transform": {
+                  "y": -247.7016766893113,
+                  "x": -88.25325193589299,
+                  "scaleX": 0.2589189980415297,
+                  "scaleY": 0.2589189980415297
+                },
+                "visible": false
+              },
+              "node_1793370057374_fr7kaqqrk": {
+                "transform": {
+                  "y": 63.815095789964246,
+                  "x": 82.8742339312222,
+                  "scaleX": 2.7835355972554554,
+                  "scaleY": 2.7835355972554554
+                }
+              },
+              "node_1793296220293_41gc6usix": {
+                "transform": {
+                  "y": -246.6671206324695,
+                  "x": -196.09904559688962,
+                  "scaleX": 0.2496073130244479,
+                  "scaleY": 0.2496073130244479
+                },
+                "visible": false
+              },
+              "node_1793370158987_rqwugo96n": {
+                "transform": {
+                  "x": 75.04465129213067,
+                  "y": 61.30727620113953,
+                  "scaleX": 3.173794374260115,
+                  "scaleY": 3.173794374260115
+                }
+              },
+              "node_1793296223016_0wj250trj": {
+                "transform": {
+                  "y": -245.64543649532538,
+                  "x": 23.116718048418583,
+                  "scaleX": 0.24441018779212365,
+                  "scaleY": 0.24441018779212365
+                },
+                "visible": false
+              },
+              "node_1793370190708_j7qz6cpiv": {
+                "transform": {
+                  "x": 74.71703370678281,
+                  "y": 53.69731052529622,
+                  "scaleX": 3.358555102677707,
+                  "scaleY": 3.358555102677707
+                }
+              },
+              "node_1793116075833_ynzvhp186": {
+                "visible": false
+              },
+              "node_ss_popups": {
+                "transform": {
+                  "y": 160.24059479834153
+                }
               }
             }
           },

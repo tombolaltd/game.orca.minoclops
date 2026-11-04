@@ -97,13 +97,6 @@ class SpineMethods {
         start: (spine: Spine, loop: boolean) => unknown,
     ): Promise<void> | void {
         const awaitCompletion = sequenceNodeOn === 'onComplete';
-        if (awaitCompletion && loop) {
-            emitFlowConsole(
-                'warn',
-                `[FlowState] ${method} '${animationName}' has loop=true and sequenceNodeOn='onComplete'; a looping animation will never complete. Falling through to immediate.`,
-                { code: 'spine-loop-on-complete' },
-            );
-        }
         if (!awaitCompletion || loop) {
             resolveNodeDeferred<Spine>(target, Spine, (spine) => {
                 if (!this.hasAnimationOrReport(spine, target, animationName, method)) return;

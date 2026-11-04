@@ -12,6 +12,7 @@ import { engineName } from './config/engine-name';
 import { ACTIVE_SKIN } from '@/src/core/services/orca/active-skin';
 import { installDevChatPlaceholder } from './core/dev/chat-placeholder';
 import { getOrcaAdditionalSettings, getOrcaGamePreferences } from '@/src/core/services/orca/game-preferences';
+import { installOrcaEngineServer } from './core/services/orca/engine-server';
 import { orcaLoadingScreenPlugin } from '@/src/core/services/orca/loading-screen';
 
 // Dev-only: replace arcade-base's chat iframe `src` with an inline placeholder
@@ -19,6 +20,9 @@ import { orcaLoadingScreenPlugin } from '@/src/core/services/orca/loading-screen
 // editor's embedded game-emulator <webview>, where the real chat URL is
 // unreachable. No-op in production builds.
 installDevChatPlaceholder();
+
+// Orca Engine server URL override (Project Settings): must run before game.initialise().
+installOrcaEngineServer();
 
 const region = queryStringParams.locale as SupportedLocale;
 

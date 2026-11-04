@@ -69,7 +69,7 @@
     "package-lock.json": "4fdb913ed1c5246b6772da223fd1740b065cadaa3f2c3a570aef988cead01bc8",
     "package.json": "80a2f001230851f69b08ef7ea709f3749cd675f17ffdc7a467e0398ab130e4a3",
     "src/config/features.ts": "dc88ccb22e2d7f7d315b63c5332c983a0f71e154ff78558b3a603906b817ccc7",
-    "src/main.ts": "10bff340193e963b3ea21ddc25c5b237adc72e89c5cf903368058c03f00e9637"
+    "src/main.ts": "1d91e1b50520081961f5908bde79acd6a82446919ba8d79849579a4beab2aeb8"
   },
   "deleted": []
 }

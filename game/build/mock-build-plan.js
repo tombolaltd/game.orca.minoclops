@@ -88,12 +88,21 @@ function assertMockEngineTree() {
     MOCK_CLIENT_TSCONFIG,
   ];
   const missing = required.filter((file) => !fs.existsSync(file));
-  if (missing.length > 0) {
+  if (missing.length === 0) return;
+  if (missing.length === required.length) {
+    // The whole folder is absent: almost always a CI checkout of a project
+    // whose mock-engine/ was never committed (older Orca git-ignored it).
     throw fail(
-      `"Use mock engine" is on, but the bundled mock engine is missing or out of date — ${missing.map((file) => path.relative(PROJECT_ROOT, file)).join(', ')} ` +
-        'not found. Open the project in Orca to restore mock-engine/, or turn "Use mock engine" off for a build that talks to the real engine.'
+      '"Use mock engine" is on, but the mock-engine/ folder is not in this checkout. ' +
+        'It was most likely never committed to git (older versions of Orca git-ignored it). ' +
+        'Commit the project\'s mock-engine/ folder (git add mock-engine) and push, ' +
+        'or turn "Use mock engine" off in Orca for a build that talks to the real engine.'
     );
   }
+  throw fail(
+    `"Use mock engine" is on, but the bundled mock engine is missing or out of date — ${missing.map((file) => path.relative(PROJECT_ROOT, file)).join(', ')} ` +
+      'not found. Open the project in Orca to restore mock-engine/ (then commit it), or turn "Use mock engine" off for a build that talks to the real engine.'
+  );
 }
 
 /**
