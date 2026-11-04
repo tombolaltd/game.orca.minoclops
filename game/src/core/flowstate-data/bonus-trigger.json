@@ -81,7 +81,7 @@
         {
           "name": "newText",
           "type": "string",
-          "sourceNodeId": "n61qzhxg"
+          "value": "4"
         }
       ]
     },
@@ -1252,13 +1252,6 @@
       "to": "n61qzhxg",
       "propertyType": "float",
       "propertyName": "value"
-    },
-    {
-      "id": "l4cc2w6m",
-      "from": "n61qzhxg",
-      "to": "n3dmglkr",
-      "propertyType": "string",
-      "propertyName": "newText"
     },
     {
       "id": "lfzxzmp9",

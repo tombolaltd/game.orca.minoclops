@@ -2528,8 +2528,8 @@
       {
         "id": "natbjw4j",
         "title": "getGameModelProperty",
-        "x": -1254.873820642669,
-        "y": 143.5312044201605,
+        "x": -917.3968551522725,
+        "y": 135.39922934810275,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -2559,41 +2559,6 @@
             "type": "T"
           }
         ],
-        "propertyValues": {}
-      },
-      {
-        "id": "nb8dmaxf",
-        "title": "add",
-        "x": -905.3645306584061,
-        "y": 130.2662183604924,
-        "rootType": "math",
-        "color": "#16a085",
-        "icon": "➕",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "a",
-            "type": "T"
-          },
-          {
-            "name": "b",
-            "type": "T",
-            "propertyValue": 1
-          }
-        ],
-        "propertyValues": {}
-      },
-      {
-        "id": "nqvchjbk",
-        "title": "int",
-        "x": -1145.1530510206835,
-        "y": 271.42304908359836,
-        "rootType": "properties",
-        "color": "#e67e22",
-        "icon": "🔢",
-        "isStarter": false,
-        "properties": [],
-        "propertyValue": 1,
         "propertyValues": {}
       }
     ],
@@ -2673,22 +2638,8 @@
         "to": "nzelkdw4"
       },
       {
-        "id": "ldf51jpj",
-        "from": "nqvchjbk",
-        "to": "nb8dmaxf",
-        "propertyType": "T",
-        "propertyName": "b"
-      },
-      {
-        "id": "l6e0y005",
+        "id": "lbqf03ud",
         "from": "natbjw4j",
-        "to": "nb8dmaxf",
-        "propertyType": "T",
-        "propertyName": "a"
-      },
-      {
-        "id": "lo0jfl43",
-        "from": "nb8dmaxf",
         "to": "nlgv7hz8",
         "propertyType": "T",
         "propertyName": "value"
@@ -2697,9 +2648,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 179.53397710455556,
-      "panY": 172.87922409381991,
-      "scale": 0.38220645390512226
+      "panX": 739.3665849883918,
+      "panY": 193.50091106565367,
+      "scale": 0.5544412876978749
     }
   }
 }

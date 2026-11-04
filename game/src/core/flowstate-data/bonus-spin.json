@@ -1778,24 +1778,7 @@
         {
           "name": "value",
           "type": "T",
-          "sourceNodeId": "nb8dmaxf"
-        }
-      ]
-    },
-    {
-      "id": "nb8dmaxf",
-      "title": "add",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "T",
           "sourceNodeId": "natbjw4j"
-        },
-        {
-          "name": "b",
-          "type": "T",
-          "value": 1
         }
       ]
     }
@@ -1876,15 +1859,8 @@
       "to": "nzelkdw4"
     },
     {
-      "id": "l6e0y005",
+      "id": "lbqf03ud",
       "from": "natbjw4j",
-      "to": "nb8dmaxf",
-      "propertyType": "T",
-      "propertyName": "a"
-    },
-    {
-      "id": "lo0jfl43",
-      "from": "nb8dmaxf",
       "to": "nlgv7hz8",
       "propertyType": "T",
       "propertyName": "value"

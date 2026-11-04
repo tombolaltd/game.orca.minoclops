@@ -123,7 +123,58 @@
           },
           {
             "name": "buttonText",
-            "type": "string"
+            "type": "string",
+            "default": "spin",
+            "options": [
+              {
+                "value": "buy",
+                "label": "Buy"
+              },
+              {
+                "value": "reveal",
+                "label": "Reveal"
+              },
+              {
+                "value": "revealAll",
+                "label": "Reveal All"
+              },
+              {
+                "value": "stop",
+                "label": "Stop"
+              },
+              {
+                "value": "spin",
+                "label": "Spin"
+              },
+              {
+                "value": "holdToPop",
+                "label": "Hold To Pop"
+              },
+              {
+                "value": "freeSpins",
+                "label": "Free Spins"
+              },
+              {
+                "value": "freePlay",
+                "label": "Free Play"
+              },
+              {
+                "value": "freeGames",
+                "label": "Free Games"
+              },
+              {
+                "value": "drop",
+                "label": "Drop"
+              },
+              {
+                "value": "flipAll",
+                "label": "Flip All"
+              },
+              {
+                "value": "scratchAll",
+                "label": "Scratch All"
+              }
+            ]
           }
         ],
         "propertyValues": {
@@ -147,14 +198,14 @@
           }
         ],
         "propertyValues": {
-          "newText": "5"
+          "newText": "4"
         }
       },
       {
         "id": "nkucoqkz",
         "title": "getGameModelProperty",
-        "x": -1001.2676061712876,
-        "y": 262.3909208934723,
+        "x": -1095.2586127639088,
+        "y": 255.270390091001,
         "rootType": "properties",
         "color": "#3498db",
         "icon": "📖",
@@ -173,8 +224,8 @@
       {
         "id": "n61qzhxg",
         "title": "toString",
-        "x": -665.0588689144126,
-        "y": 255.0940540830049,
+        "x": -693.5409921242979,
+        "y": 286.42438961387865,
         "rootType": "string",
         "color": "#c0392b",
         "icon": "🔤",
@@ -827,8 +878,8 @@
             {
               "id": "entryketaf4i",
               "title": "Entry",
-              "x": 100,
-              "y": 460,
+              "x": 130,
+              "y": 346.66666666666663,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -2273,8 +2324,8 @@
             {
               "id": "nxu7gsso",
               "title": "fireCustomEvent",
-              "x": 320.04291048133393,
-              "y": 160.29944570932116,
+              "x": 380.042910481334,
+              "y": 313.6327790426545,
               "rootType": "fireEvent",
               "color": "#d94848",
               "icon": "📣",
@@ -2437,13 +2488,6 @@
         "propertyName": "value"
       },
       {
-        "id": "l4cc2w6m",
-        "from": "n61qzhxg",
-        "to": "n3dmglkr",
-        "propertyType": "string",
-        "propertyName": "newText"
-      },
-      {
         "id": "lfzxzmp9",
         "from": "nk88yvf0",
         "to": "nesw0bts"
@@ -2482,9 +2526,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 875.9284232033013,
-      "panY": 299.205932592296,
-      "scale": 0.4450608070388337
+      "panX": 944.1950950111337,
+      "panY": 158.45113965981704,
+      "scale": 0.7021948417475655
     }
   }
 }
