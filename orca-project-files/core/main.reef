@@ -4450,9 +4450,7 @@
             "locked": false,
             "expanded": false,
             "skeleton": "assets/character/character.json",
-            "atlas": {
-              "guid": "0830c705-35d9-4d17-ad88-41c42242112e"
-            },
+            "atlas": null,
             "animation": "idle",
             "playOnLoad": true,
             "loop": false,

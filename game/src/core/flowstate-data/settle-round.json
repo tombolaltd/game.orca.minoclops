@@ -27,18 +27,44 @@
       "id": "n152ds7e",
       "title": "GAME_COMPLETE",
       "rootType": "fireEvent"
+    },
+    {
+      "id": "nrz0dn5x",
+      "title": "log",
+      "rootType": "debug",
+      "properties": [
+        {
+          "name": "message",
+          "type": "any",
+          "value": "ended game"
+        },
+        {
+          "name": "color",
+          "type": "color",
+          "value": ""
+        },
+        {
+          "name": "message2",
+          "type": "any"
+        }
+      ]
     }
   ],
   "links": [
     {
-      "id": "l52r9pax",
-      "from": "n88iott5",
-      "to": "n152ds7e"
-    },
-    {
       "id": "l73gzbfj",
       "from": "settle_003",
       "to": "n88iott5"
+    },
+    {
+      "id": "lczhelwp",
+      "from": "n88iott5",
+      "to": "nrz0dn5x"
+    },
+    {
+      "id": "lqp3ojah",
+      "from": "nrz0dn5x",
+      "to": "n152ds7e"
     }
   ]
 }

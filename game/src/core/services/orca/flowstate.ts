@@ -8,6 +8,7 @@ import { FlowstateApplicationEventTriggers } from "./event-triggers/application-
 import { bindPixiStarters, detachAllPixiStarters } from "./event-triggers/pixi-events";
 import { bindCustomEventStarters, detachAllCustomEventStarters } from "./event-triggers/custom-events";
 import { bindGamePreferenceStarters, detachAllGamePreferenceStarters } from "./event-triggers/game-preferences";
+import { bindPhysicsStarters, detachAllPhysicsStarters } from "./event-triggers/physics-events";
 import { initFlowstateHandshake } from "./editor-integration";
 import { ACTIVE_SKIN, ACTIVE_SKIN_NAME } from "./active-skin";
 import { SKIN_FLOWSTATE_GRAPHS } from "./generated-skin-flows";
@@ -267,6 +268,9 @@ export abstract class Flowstate {
         // bind successfully here; re-binds on (un)loadScene are harmless.
         this.bindCustomEventStarters();
         this.bindGamePreferenceStarters();
+        // Physics collision / trigger starters: one global subscription whose
+        // targets resolve lazily per event, so binding at init serves every scene.
+        this.bindPhysicsStarters();
     }
 
     /** Every audio file the registered graphs play (preloaded while the game loads). */
@@ -325,6 +329,22 @@ export abstract class Flowstate {
         detachAllGamePreferenceStarters();
     }
 
+    /**
+     * Subscribe once to physics-runtime collisions and dispatch the eight
+     * `onPhysics{Collision|Trigger}{Enter|Exit}{2D|3D}` starters (see
+     * event-triggers/physics-events.ts). Idempotent.
+     */
+    public static bindPhysicsStarters(): void {
+        bindPhysicsStarters(
+            this.graphs.map(g => ({ id: g.id, starterNodes: g.starterIds.map(id => g.nodeMap.get(id)!).filter(Boolean) as any })),
+            (graphId, nodeId, args) => { void this.runFlowsByStarterId(graphId, nodeId, args); }
+        );
+    }
+
+    public static detachPhysicsStarters(): void {
+        detachAllPhysicsStarters();
+    }
+
     private static registerGraph(loaded: LoadedGraph): RegisteredGraph {
         const nodeMap = new Map<string, IFlowstateNode>();
         const addNodes = (nodes: IFlowstateNode[]) => {
@@ -363,6 +383,8 @@ export abstract class Flowstate {
             if (CUSTOM_EVENT_STARTER_TITLES.has(node.title)) continue;
             // Game-preference starters dispatch via event-triggers/game-preferences.ts.
             if (GAME_PREFERENCE_STARTER_TITLES.has(node.title)) continue;
+            // Physics starters dispatch via event-triggers/physics-events.ts.
+            if (PHYSICS_STARTER_TITLES.has(node.title)) continue;
 
             const list = this.starterNodeFlowsByTitle.get(node.title) ?? [];
             list.push({ graphId: loaded.id, starterNodeId: id });
@@ -1052,6 +1074,14 @@ const GAME_PREFERENCE_STARTER_TITLES = new Set([
     'onGamePreferenceChanged',
 ]);
 
+// Physics collision / trigger starters — dispatched per collision event by
+// event-triggers/physics-events.ts (its PHYSICS_STARTER_TITLES), never by title
+// fan-out. Literal so no imported binding is read at module-eval time.
+const PHYSICS_STARTER_TITLES = new Set([
+    'onPhysicsCollisionEnter2D', 'onPhysicsCollisionExit2D', 'onPhysicsTriggerEnter2D', 'onPhysicsTriggerExit2D',
+    'onPhysicsCollisionEnter3D', 'onPhysicsCollisionExit3D', 'onPhysicsTriggerEnter3D', 'onPhysicsTriggerExit3D',
+]);
+
 // Per-graph local variable node titles (immutable runtime method keys). These
 // are WALKER-INTRINSIC special cases, never entries in `flowstateMethods` —
 // executeNode dispatches `method(...params)` with no ctx and no graphId, so a
@@ -1073,6 +1103,12 @@ const REFERENCE_INPUT_TYPES = new Set([
 ]);
 
 const reportedMissingInputs = new Set<string>();
+
+// Reference inputs that are OPTIONAL by design (empty ⇒ "any"), keyed `${title}\u0000${input}`.
+const OPTIONAL_REFERENCE_INPUTS = new Set([
+    'physicsIsTouching2D\u0000other',
+    'physicsIsTouching3D\u0000other',
+]);
 
 function isMissingReference(value: unknown): boolean {
     if (value === null || value === undefined) return true;
@@ -1101,6 +1137,7 @@ function reportMissingReferenceInputs(node: IFlowstateNode, params: unknown[], n
     let audioMissing: string[] = [];
     props.forEach((prop, i) => {
         if (!prop || !REFERENCE_INPUT_TYPES.has(prop.type)) return;
+        if (OPTIONAL_REFERENCE_INPUTS.has(`${node.title}\u0000${prop.name}`)) return;
         if (prop.type === 'audioRef') {
             audioCount++;
             if (isMissingReference(params[i])) audioMissing.push(prop.name);

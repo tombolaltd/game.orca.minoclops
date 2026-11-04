@@ -8,12 +8,61 @@
         {
           "name": "eventName",
           "type": "customEventRef",
-          "value": "bonusTrigger"
+          "value": "characterBaseToBonus"
         }
       ]
     },
     {
-      "id": "nlsc464h",
+      "id": "ngr1im3a",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "transition/BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 2
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "nxrfa63y",
+      "title": "delay",
+      "rootType": "delay",
+      "properties": [
+        {
+          "name": "seconds",
+          "type": "float",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "id": "nspwiogl",
       "title": "setSkin",
       "rootType": "Action",
       "properties": [
@@ -33,30 +82,23 @@
           "value": "bonus"
         }
       ]
-    },
-    {
-      "id": "n1l6sjlf",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 1.5
-        }
-      ]
     }
   ],
   "links": [
     {
-      "id": "lkm0v6im",
+      "id": "lobxjwlj",
       "from": "n1p0g3rz",
-      "to": "n1l6sjlf"
+      "to": "ngr1im3a"
     },
     {
-      "id": "lsjt1n0c",
-      "from": "n1l6sjlf",
-      "to": "nlsc464h"
+      "id": "lhcfyfyo",
+      "from": "ngr1im3a",
+      "to": "nxrfa63y"
+    },
+    {
+      "id": "ly79l50k",
+      "from": "nxrfa63y",
+      "to": "nspwiogl"
     }
   ]
 }

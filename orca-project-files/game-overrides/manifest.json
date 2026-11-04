@@ -17,7 +17,6 @@
     "build/copy-jackpots-assets.js": "5d1466c929aa2f0881cc7c583a95985f9d02d31db0ce1945df14d29c2181c88e",
     "build/utils.js": "3667535317dcd331d0d9df59709b91cbccf128c92df5f459bf238d7339f809d2",
     "build/vue-loader.conf.js": "52d47b3720dd964da64b6066f382ae84de83cc8f75e14bb8357bf3870dfedce3",
-    "build/webpack.base.conf.js": "0792eb5905fbbc98970d6c474ec0011c15640fb6e0218b3bbcd3ebf947b92960",
     "build/webpack.dev.conf.js": "f9b8e5e90bcdc4c9ca0e36a891996d3bb780234424374a5b42830461942f74a4",
     "config.json": "3f9027d4e19207dca113517afa09f06942690e9d3d2aec1809ea54cbb063862a",
     "index.html": "3460cfda2abf6e3f9a142d5c6a08c260850cb046435e4a4512b288d99bc3e500",
@@ -69,7 +68,7 @@
     "build/webpack.demo.conf.js": "b7b10c9cfb6f7f0045f31bcca8bcc241d2e29c8d049b54f67ca3484fb83a385a",
     "build/webpack.prod.conf.js": "a52c4552fea8a5d7fe581dd0f8e27fa9650e57a3fe3a23ce340f2e41f426a879",
     "package-lock.json": "4fdb913ed1c5246b6772da223fd1740b065cadaa3f2c3a570aef988cead01bc8",
-    "package.json": "5f5821b50eda492667b8ad0ce80a26e3d77a8291b52e59c90a9a09c289b4a818",
+    "package.json": "80a2f001230851f69b08ef7ea709f3749cd675f17ffdc7a467e0398ab130e4a3",
     "src/config/features.ts": "dc88ccb22e2d7f7d315b63c5332c983a0f71e154ff78558b3a603906b817ccc7",
     "src/main.ts": "10bff340193e963b3ea21ddc25c5b237adc72e89c5cf903368058c03f00e9637"
   },

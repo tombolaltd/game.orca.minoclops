@@ -31,6 +31,8 @@ module.exports = {
       '@': resolve('')
     },
     fallback: {
+      '@dimforge/rapier2d-compat': false,
+      '@dimforge/rapier3d-compat': false,
       setimmediate: false,
       dgram: false,
       fs: false,

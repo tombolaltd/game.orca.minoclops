@@ -13,18 +13,6 @@
       ]
     },
     {
-      "id": "bonust_033",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 0.5
-        }
-      ]
-    },
-    {
       "id": "bonust_034",
       "title": "fireCustomEvent",
       "rootType": "fireEvent",
@@ -47,163 +35,8 @@
       "rootType": "StarterNodes"
     },
     {
-      "id": "nfif4ycm",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791296555660_uqk9no210",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "transition/BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "nimumjxz",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791292732465_cieppe22a",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "ngherq9m",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791293688069_efpsdyk4c",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "nmkr6ov8",
-      "title": "setNodeVisible",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_bonus_bg",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "visible",
-          "type": "bool",
-          "value": true
-        }
-      ]
-    },
-    {
-      "id": "n73y7a6t",
-      "title": "setGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "isInBonusRound"
-        },
-        {
-          "name": "value",
-          "type": "dynamic",
-          "value": true
-        }
-      ]
-    },
-    {
       "id": "nwf68o3c",
       "title": "hideCabinet",
-      "rootType": "Action"
-    },
-    {
-      "id": "n3473a3p",
-      "title": "showCabinet",
       "rootType": "Action"
     },
     {
@@ -214,879 +47,1253 @@
         {
           "name": "seconds",
           "type": "float",
-          "value": 4
+          "value": 0.25
         }
       ]
     },
     {
-      "id": "nmqqadkr",
-      "title": "playAnimation",
+      "id": "nzvbo3zo",
+      "title": "showCabinet",
+      "rootType": "Action"
+    },
+    {
+      "id": "nxtc7k1b",
+      "title": "enterCabinetBonusState",
       "rootType": "Action",
       "properties": [
         {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791293688069_efpsdyk4c",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
+          "name": "stateName",
           "type": "string",
-          "value": "idle"
+          "value": "Bonus"
         },
         {
-          "name": "loop",
-          "type": "bool",
-          "value": true
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
+          "name": "buttonText",
           "type": "string",
-          "value": "onComplete"
+          "value": "freeSpins"
         }
       ]
     },
     {
-      "id": "nn1b6vey",
-      "title": "playAnimation",
+      "id": "n3dmglkr",
+      "title": "updateCabinetPurchaseText",
       "rootType": "Action",
       "properties": [
         {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791297984204_qg9p9detx",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
+          "name": "newText",
           "type": "string",
-          "value": "BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "onComplete"
+          "sourceNodeId": "n61qzhxg"
         }
       ]
     },
     {
-      "id": "spoolwin_reels1",
-      "title": "loop",
-      "rootType": "loop",
+      "id": "nkucoqkz",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
       "properties": [
         {
-          "name": "items",
-          "type": "TArray"
-        },
-        {
-          "name": "count",
-          "type": "int",
-          "value": 5
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "bonusSpinsRemaining"
         }
       ]
     },
     {
-      "id": "spoolwin_rows1",
-      "title": "loop",
-      "rootType": "loop",
+      "id": "n61qzhxg",
+      "title": "toString",
+      "rootType": "string",
       "properties": [
         {
-          "name": "items",
-          "type": "TArray"
-        },
-        {
-          "name": "count",
-          "type": "int",
-          "value": 3
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_at1",
-      "title": "getReelSymbolAt",
-      "rootType": "getters",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "reelIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_reels1",
-          "sourceOutputName": "index"
-        },
-        {
-          "name": "rowIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_rows1",
-          "sourceOutputName": "index"
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_is1",
-      "title": "equals",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
+          "name": "value",
           "type": "T",
-          "sourceNodeId": "spoolwin_at1"
-        },
-        {
-          "name": "b",
-          "type": "T",
-          "value": 0
+          "sourceNodeId": "nkucoqkz"
         }
       ]
     },
     {
-      "id": "spoolwin_branch1",
-      "title": "branch",
-      "rootType": "branch",
+      "id": "n6i3yb39",
+      "title": "onEventFire",
+      "rootType": "StarterNodes",
       "properties": [
         {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "spoolwin_is1"
+          "name": "eventName",
+          "type": "builtInEventRef",
+          "value": "CABINET_BONUS_ACTION"
         }
       ]
     },
     {
-      "id": "spoolwin_act1",
-      "title": "playSymbolAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
+      "id": "nk88yvf0",
+      "title": "disableCabinetPurchaseButtonInteractivity",
+      "rootType": "Action"
+    },
+    {
+      "id": "nx0x0iom",
+      "title": "hideCabinetStakeButtons",
+      "rootType": "Action"
+    },
+    {
+      "id": "nk6saksi",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "spoolwin_reels1",
+      "exitSourceId": "bonust_033",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "entry6l4m3n1",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "bonust_033",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 0.5
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_reels1",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_rows1",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_at1",
+            "title": "getReelSymbolAt",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_reels1",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_rows1",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_is1",
+            "title": "equals",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "sourceNodeId": "spoolwin_at1"
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_branch1",
+            "title": "branch",
+            "rootType": "branch",
+            "properties": [
+              {
+                "name": "condition",
+                "type": "bool",
+                "sourceNodeId": "spoolwin_is1"
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_act1",
+            "title": "playSymbolAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_reels1",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_rows1",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": ""
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_wait",
+            "title": "delay",
+            "rootType": "delay",
+            "properties": [
+              {
+                "name": "seconds",
+                "type": "float",
+                "value": 1.1
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_reels2",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 5
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_rows2",
+            "title": "loop",
+            "rootType": "loop",
+            "properties": [
+              {
+                "name": "items",
+                "type": "TArray"
+              },
+              {
+                "name": "count",
+                "type": "int",
+                "value": 3
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_at2",
+            "title": "getReelSymbolAt",
+            "rootType": "getters",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_reels2",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_rows2",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_is2",
+            "title": "equals",
+            "rootType": "math",
+            "properties": [
+              {
+                "name": "a",
+                "type": "T",
+                "sourceNodeId": "spoolwin_at2"
+              },
+              {
+                "name": "b",
+                "type": "T",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_branch2",
+            "title": "branch",
+            "rootType": "branch",
+            "properties": [
+              {
+                "name": "condition",
+                "type": "bool",
+                "sourceNodeId": "spoolwin_is2"
+              }
+            ]
+          },
+          {
+            "id": "spoolwin_act2",
+            "title": "stopSymbolAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reelIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_reels2",
+                "sourceOutputName": "index"
+              },
+              {
+                "name": "rowIndex",
+                "type": "int",
+                "sourceNodeId": "spoolwin_rows2",
+                "sourceOutputName": "index"
+              }
+            ]
+          },
+          {
+            "id": "exitwty6r4a",
+            "title": "Exit",
+            "isExit": true
           }
-        },
-        {
-          "name": "reelIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_reels1",
-          "sourceOutputName": "index"
-        },
-        {
-          "name": "rowIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_rows1",
-          "sourceOutputName": "index"
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": ""
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_wait",
-      "title": "delay",
-      "rootType": "delay",
-      "properties": [
-        {
-          "name": "seconds",
-          "type": "float",
-          "value": 1.1
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_reels2",
-      "title": "loop",
-      "rootType": "loop",
-      "properties": [
-        {
-          "name": "items",
-          "type": "TArray"
-        },
-        {
-          "name": "count",
-          "type": "int",
-          "value": 5
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_rows2",
-      "title": "loop",
-      "rootType": "loop",
-      "properties": [
-        {
-          "name": "items",
-          "type": "TArray"
-        },
-        {
-          "name": "count",
-          "type": "int",
-          "value": 3
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_at2",
-      "title": "getReelSymbolAt",
-      "rootType": "getters",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
+        ],
+        "links": [
+          {
+            "id": "lcd30wkn",
+            "from": "entry6l4m3n1",
+            "to": "spoolwin_reels1"
+          },
+          {
+            "id": "spoolwin_l11",
+            "from": "spoolwin_reels1",
+            "to": "spoolwin_rows1",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_l21",
+            "from": "spoolwin_rows1",
+            "to": "spoolwin_branch1",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_l31",
+            "from": "spoolwin_branch1",
+            "to": "spoolwin_act1",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_v11",
+            "from": "spoolwin_reels1",
+            "to": "spoolwin_at1",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v21",
+            "from": "spoolwin_rows1",
+            "to": "spoolwin_at1",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v31",
+            "from": "spoolwin_at1",
+            "to": "spoolwin_is1",
+            "propertyName": "a",
+            "propertyType": "T"
+          },
+          {
+            "id": "spoolwin_v41",
+            "from": "spoolwin_is1",
+            "to": "spoolwin_branch1",
+            "propertyName": "condition",
+            "propertyType": "bool"
+          },
+          {
+            "id": "spoolwin_v51",
+            "from": "spoolwin_reels1",
+            "to": "spoolwin_act1",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v61",
+            "from": "spoolwin_rows1",
+            "to": "spoolwin_act1",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_l12",
+            "from": "spoolwin_reels2",
+            "to": "spoolwin_rows2",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_l22",
+            "from": "spoolwin_rows2",
+            "to": "spoolwin_branch2",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_l32",
+            "from": "spoolwin_branch2",
+            "to": "spoolwin_act2",
+            "outIdx": 0
+          },
+          {
+            "id": "spoolwin_v12",
+            "from": "spoolwin_reels2",
+            "to": "spoolwin_at2",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v22",
+            "from": "spoolwin_rows2",
+            "to": "spoolwin_at2",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v32",
+            "from": "spoolwin_at2",
+            "to": "spoolwin_is2",
+            "propertyName": "a",
+            "propertyType": "T"
+          },
+          {
+            "id": "spoolwin_v42",
+            "from": "spoolwin_is2",
+            "to": "spoolwin_branch2",
+            "propertyName": "condition",
+            "propertyType": "bool"
+          },
+          {
+            "id": "spoolwin_v52",
+            "from": "spoolwin_reels2",
+            "to": "spoolwin_act2",
+            "propertyName": "reelIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_v62",
+            "from": "spoolwin_rows2",
+            "to": "spoolwin_act2",
+            "propertyName": "rowIndex",
+            "sourceOutputName": "index",
+            "propertyType": "int"
+          },
+          {
+            "id": "spoolwin_l01",
+            "from": "spoolwin_reels1",
+            "to": "spoolwin_wait",
+            "outIdx": 1
+          },
+          {
+            "id": "spoolwin_l02",
+            "from": "spoolwin_wait",
+            "to": "spoolwin_reels2"
+          },
+          {
+            "id": "spoolwin_l03",
+            "from": "spoolwin_reels2",
+            "to": "bonust_033",
+            "outIdx": 1
+          },
+          {
+            "id": "lm1fer25",
+            "from": "bonust_033",
+            "to": "exitwty6r4a"
           }
-        },
-        {
-          "name": "reelIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_reels2",
-          "sourceOutputName": "index"
-        },
-        {
-          "name": "rowIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_rows2",
-          "sourceOutputName": "index"
-        }
-      ]
+        ]
+      }
     },
     {
-      "id": "spoolwin_is2",
-      "title": "equals",
-      "rootType": "math",
-      "properties": [
-        {
-          "name": "a",
-          "type": "T",
-          "sourceNodeId": "spoolwin_at2"
-        },
-        {
-          "name": "b",
-          "type": "T",
-          "value": 0
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_branch2",
-      "title": "branch",
-      "rootType": "branch",
-      "properties": [
-        {
-          "name": "condition",
-          "type": "bool",
-          "sourceNodeId": "spoolwin_is2"
-        }
-      ]
-    },
-    {
-      "id": "spoolwin_act2",
-      "title": "stopSymbolAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
+      "id": "n7vblw33",
+      "title": "State",
+      "isState": true,
+      "entryTargetId": "nxu7gsso",
+      "exitSourceId": "ns2839kn",
+      "subgraph": {
+        "nodes": [
+          {
+            "id": "entryketaf4i",
+            "title": "Entry",
+            "isEntry": true
+          },
+          {
+            "id": "nfif4ycm",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791296555660_uqk9no210",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "transition/BaseToBonus"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "nimumjxz",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791292732465_cieppe22a",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "BaseToBonus"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "ngherq9m",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791293688069_efpsdyk4c",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "BaseToBonus"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "nmkr6ov8",
+            "title": "setNodeVisible",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_bonus_bg",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "visible",
+                "type": "bool",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "n73y7a6t",
+            "title": "setGameModelProperty",
+            "rootType": "properties",
+            "properties": [
+              {
+                "name": "propertyName",
+                "type": "modelProperty",
+                "value": "isInBonusRound"
+              },
+              {
+                "name": "value",
+                "type": "dynamic",
+                "value": true
+              }
+            ]
+          },
+          {
+            "id": "nmqqadkr",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791293688069_efpsdyk4c",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "idle"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": true
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "nn1b6vey",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "BaseToBonus"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "n57rdar3",
+            "title": "playAnimation",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791295520191_9uj0li4ny",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "animationName",
+                "type": "string",
+                "value": "BaseToBonus"
+              },
+              {
+                "name": "loop",
+                "type": "bool",
+                "value": false
+              },
+              {
+                "name": "trackIndex",
+                "type": "int",
+                "value": 0
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "ndxq59ej",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "onComplete"
+              }
+            ]
+          },
+          {
+            "id": "ns2839kn",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "nkfakbi2",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hud",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "n01n5lvk",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296199027_80b3nmg8h",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 0
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "n878lndk",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hud",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "n99daxga",
+            "title": "tweenNodeAlpha",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296199027_80b3nmg8h",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "alpha",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "durationMS",
+                "type": "int",
+                "value": 500
+              },
+              {
+                "name": "ease",
+                "type": "string",
+                "value": "power2.out"
+              },
+              {
+                "name": "easeStrength",
+                "type": "float",
+                "value": 1
+              },
+              {
+                "name": "sequenceNodeOn",
+                "type": "string",
+                "value": "immediate"
+              }
+            ]
+          },
+          {
+            "id": "nxu7gsso",
+            "title": "fireCustomEvent",
+            "rootType": "fireEvent",
+            "properties": [
+              {
+                "name": "eventName",
+                "type": "customEventRef",
+                "value": "characterBaseToBonus"
+              },
+              {
+                "name": "propertyNames",
+                "type": "TArray",
+                "value": []
+              }
+            ]
+          },
+          {
+            "id": "exitloh7ell",
+            "title": "Exit",
+            "isExit": true
           }
-        },
-        {
-          "name": "reelIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_reels2",
-          "sourceOutputName": "index"
-        },
-        {
-          "name": "rowIndex",
-          "type": "int",
-          "sourceNodeId": "spoolwin_rows2",
-          "sourceOutputName": "index"
-        }
-      ]
+        ],
+        "links": [
+          {
+            "id": "ln4qndu7",
+            "from": "entryketaf4i",
+            "to": "nxu7gsso"
+          },
+          {
+            "id": "lpucz67m",
+            "from": "nfif4ycm",
+            "to": "nimumjxz"
+          },
+          {
+            "id": "lkpdfkyp",
+            "from": "nimumjxz",
+            "to": "nmkr6ov8"
+          },
+          {
+            "id": "lzzzerze",
+            "from": "nmkr6ov8",
+            "to": "ngherq9m"
+          },
+          {
+            "id": "ljtjjmek",
+            "from": "ngherq9m",
+            "to": "nmqqadkr"
+          },
+          {
+            "id": "lwyj6min",
+            "from": "nmqqadkr",
+            "to": "nn1b6vey"
+          },
+          {
+            "id": "l3gwmxzf",
+            "from": "nn1b6vey",
+            "to": "n73y7a6t"
+          },
+          {
+            "id": "l1o3ck63",
+            "from": "n57rdar3",
+            "to": "nfif4ycm"
+          },
+          {
+            "id": "l7v8e1ag",
+            "from": "ndxq59ej",
+            "to": "n57rdar3"
+          },
+          {
+            "id": "lyxmfcx7",
+            "from": "nkfakbi2",
+            "to": "ndxq59ej"
+          },
+          {
+            "id": "lpjm6dm6",
+            "from": "n01n5lvk",
+            "to": "nkfakbi2"
+          },
+          {
+            "id": "lgzvokgi",
+            "from": "n99daxga",
+            "to": "n878lndk"
+          },
+          {
+            "id": "l09lqc1d",
+            "from": "n73y7a6t",
+            "to": "n99daxga"
+          },
+          {
+            "id": "lm48ml8e",
+            "from": "n878lndk",
+            "to": "ns2839kn"
+          },
+          {
+            "id": "l1xznw8e",
+            "from": "nxu7gsso",
+            "to": "n01n5lvk"
+          },
+          {
+            "id": "lc3s9ow3",
+            "from": "ns2839kn",
+            "to": "exitloh7ell"
+          }
+        ]
+      }
     },
     {
-      "id": "n57rdar3",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791295520191_9uj0li4ny",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "ndxq59ej",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 0
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "onComplete"
-        }
-      ]
-    },
-    {
-      "id": "ns2839kn",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "nkfakbi2",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_hud",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 0
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "n01n5lvk",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1793296199027_80b3nmg8h",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 0
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "n878lndk",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_hud",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
-      "id": "n99daxga",
-      "title": "tweenNodeAlpha",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1793296199027_80b3nmg8h",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "alpha",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "durationMS",
-          "type": "int",
-          "value": 500
-        },
-        {
-          "name": "ease",
-          "type": "string",
-          "value": "power2.out"
-        },
-        {
-          "name": "easeStrength",
-          "type": "float",
-          "value": 1
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
+      "id": "nfaz0iqs",
+      "title": "endCabinetGame",
+      "rootType": "Action"
     }
   ],
   "links": [
-    {
-      "id": "ljol3aqz",
-      "from": "bonust_005",
-      "to": "spoolwin_reels1"
-    },
-    {
-      "id": "lpucz67m",
-      "from": "nfif4ycm",
-      "to": "nimumjxz"
-    },
-    {
-      "id": "lkpdfkyp",
-      "from": "nimumjxz",
-      "to": "nmkr6ov8"
-    },
-    {
-      "id": "lzzzerze",
-      "from": "nmkr6ov8",
-      "to": "ngherq9m"
-    },
     {
       "id": "loitjohz",
       "from": "n8qlbhx4",
       "to": "nwf68o3c"
     },
     {
-      "id": "l8as1qqo",
-      "from": "bonust_033",
-      "to": "nwf68o3c"
+      "id": "l16ykk8b",
+      "from": "nwf68o3c",
+      "to": "n7vblw33"
     },
     {
-      "id": "l9quskbv",
-      "from": "n3473a3p",
+      "id": "l19xbmbm",
+      "from": "n7vblw33",
+      "to": "nzvbo3zo"
+    },
+    {
+      "id": "lyw7qga2",
+      "from": "nzvbo3zo",
+      "to": "nxtc7k1b"
+    },
+    {
+      "id": "lqj6r6vg",
+      "from": "nxtc7k1b",
+      "to": "n3dmglkr"
+    },
+    {
+      "id": "l6sizdgo",
+      "from": "nkucoqkz",
+      "to": "n61qzhxg",
+      "propertyType": "float",
+      "propertyName": "value"
+    },
+    {
+      "id": "l4cc2w6m",
+      "from": "n61qzhxg",
+      "to": "n3dmglkr",
+      "propertyType": "string",
+      "propertyName": "newText"
+    },
+    {
+      "id": "lfzxzmp9",
+      "from": "nk88yvf0",
       "to": "nesw0bts"
     },
     {
-      "id": "lfmcu9jn",
+      "id": "l2s7t89h",
       "from": "nesw0bts",
       "to": "bonust_034"
     },
     {
-      "id": "ljtjjmek",
-      "from": "ngherq9m",
-      "to": "nmqqadkr"
+      "id": "lkwhb5ba",
+      "from": "n6i3yb39",
+      "to": "nk88yvf0"
     },
     {
-      "id": "lwyj6min",
-      "from": "nmqqadkr",
-      "to": "nn1b6vey"
+      "id": "lk9468wt",
+      "from": "n3dmglkr",
+      "to": "nx0x0iom"
     },
     {
-      "id": "l3gwmxzf",
-      "from": "nn1b6vey",
-      "to": "n73y7a6t"
+      "id": "l30vu05r",
+      "from": "bonust_005",
+      "to": "nk6saksi"
     },
     {
-      "id": "spoolwin_l11",
-      "from": "spoolwin_reels1",
-      "to": "spoolwin_rows1",
-      "outIdx": 0
+      "id": "les8hzc8",
+      "from": "nk6saksi",
+      "to": "nfaz0iqs"
     },
     {
-      "id": "spoolwin_l21",
-      "from": "spoolwin_rows1",
-      "to": "spoolwin_branch1",
-      "outIdx": 0
-    },
-    {
-      "id": "spoolwin_l31",
-      "from": "spoolwin_branch1",
-      "to": "spoolwin_act1",
-      "outIdx": 0
-    },
-    {
-      "id": "spoolwin_v11",
-      "from": "spoolwin_reels1",
-      "to": "spoolwin_at1",
-      "propertyName": "reelIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v21",
-      "from": "spoolwin_rows1",
-      "to": "spoolwin_at1",
-      "propertyName": "rowIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v31",
-      "from": "spoolwin_at1",
-      "to": "spoolwin_is1",
-      "propertyName": "a",
-      "propertyType": "T"
-    },
-    {
-      "id": "spoolwin_v41",
-      "from": "spoolwin_is1",
-      "to": "spoolwin_branch1",
-      "propertyName": "condition",
-      "propertyType": "bool"
-    },
-    {
-      "id": "spoolwin_v51",
-      "from": "spoolwin_reels1",
-      "to": "spoolwin_act1",
-      "propertyName": "reelIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v61",
-      "from": "spoolwin_rows1",
-      "to": "spoolwin_act1",
-      "propertyName": "rowIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_l12",
-      "from": "spoolwin_reels2",
-      "to": "spoolwin_rows2",
-      "outIdx": 0
-    },
-    {
-      "id": "spoolwin_l22",
-      "from": "spoolwin_rows2",
-      "to": "spoolwin_branch2",
-      "outIdx": 0
-    },
-    {
-      "id": "spoolwin_l32",
-      "from": "spoolwin_branch2",
-      "to": "spoolwin_act2",
-      "outIdx": 0
-    },
-    {
-      "id": "spoolwin_v12",
-      "from": "spoolwin_reels2",
-      "to": "spoolwin_at2",
-      "propertyName": "reelIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v22",
-      "from": "spoolwin_rows2",
-      "to": "spoolwin_at2",
-      "propertyName": "rowIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v32",
-      "from": "spoolwin_at2",
-      "to": "spoolwin_is2",
-      "propertyName": "a",
-      "propertyType": "T"
-    },
-    {
-      "id": "spoolwin_v42",
-      "from": "spoolwin_is2",
-      "to": "spoolwin_branch2",
-      "propertyName": "condition",
-      "propertyType": "bool"
-    },
-    {
-      "id": "spoolwin_v52",
-      "from": "spoolwin_reels2",
-      "to": "spoolwin_act2",
-      "propertyName": "reelIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_v62",
-      "from": "spoolwin_rows2",
-      "to": "spoolwin_act2",
-      "propertyName": "rowIndex",
-      "sourceOutputName": "index",
-      "propertyType": "int"
-    },
-    {
-      "id": "spoolwin_l01",
-      "from": "spoolwin_reels1",
-      "to": "spoolwin_wait",
-      "outIdx": 1
-    },
-    {
-      "id": "spoolwin_l02",
-      "from": "spoolwin_wait",
-      "to": "spoolwin_reels2"
-    },
-    {
-      "id": "spoolwin_l03",
-      "from": "spoolwin_reels2",
-      "to": "bonust_033",
-      "outIdx": 1
-    },
-    {
-      "id": "l1o3ck63",
-      "from": "n57rdar3",
-      "to": "nfif4ycm"
-    },
-    {
-      "id": "l7v8e1ag",
-      "from": "ndxq59ej",
-      "to": "n57rdar3"
-    },
-    {
-      "id": "l7a2hwoc",
-      "from": "ns2839kn",
-      "to": "n3473a3p"
-    },
-    {
-      "id": "lyxmfcx7",
-      "from": "nkfakbi2",
-      "to": "ndxq59ej"
-    },
-    {
-      "id": "lqtth824",
-      "from": "nwf68o3c",
-      "to": "n01n5lvk"
-    },
-    {
-      "id": "lpjm6dm6",
-      "from": "n01n5lvk",
-      "to": "nkfakbi2"
-    },
-    {
-      "id": "lgzvokgi",
-      "from": "n99daxga",
-      "to": "n878lndk"
-    },
-    {
-      "id": "l09lqc1d",
-      "from": "n73y7a6t",
-      "to": "n99daxga"
-    },
-    {
-      "id": "lm48ml8e",
-      "from": "n878lndk",
-      "to": "ns2839kn"
+      "id": "l1wbdb2j",
+      "from": "nfaz0iqs",
+      "to": "nwf68o3c"
     }
   ]
 }

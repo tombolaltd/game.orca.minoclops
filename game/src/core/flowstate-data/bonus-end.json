@@ -1,13 +1,6 @@
 {
   "nodes": [
     {
-      "id": "bonuse_note",
-      "title": "Note",
-      "rootType": "note",
-      "isNote": true,
-      "noteText": "TODO: add more here"
-    },
-    {
       "id": "bonuse_003",
       "title": "onCustomEvent",
       "rootType": "StarterNodes",
@@ -868,6 +861,33 @@
       "id": "n8w72gdi",
       "title": "hideCabinet",
       "rootType": "Action"
+    },
+    {
+      "id": "nxfhlucl",
+      "title": "fireCustomEvent",
+      "rootType": "fireEvent",
+      "properties": [
+        {
+          "name": "eventName",
+          "type": "customEventRef",
+          "value": "characterBonustransition"
+        },
+        {
+          "name": "propertyNames",
+          "type": "TArray",
+          "value": []
+        }
+      ]
+    },
+    {
+      "id": "nayj3j9b",
+      "title": "enableCabinetPurchaseButtonInteractivity",
+      "rootType": "Action"
+    },
+    {
+      "id": "n2o3gyn5",
+      "title": "showCabinetStakeButtons",
+      "rootType": "Action"
     }
   ],
   "links": [
@@ -962,19 +982,34 @@
       "to": "nbawxrlb"
     },
     {
-      "id": "l6ywvaop",
-      "from": "nbawxrlb",
-      "to": "nstnudyn"
-    },
-    {
       "id": "lfcd4kr0",
       "from": "nrirkj8s",
       "to": "n8w72gdi"
     },
     {
-      "id": "l8o7xz87",
+      "id": "lqhsd4h5",
       "from": "n8w72gdi",
+      "to": "nxfhlucl"
+    },
+    {
+      "id": "lgp5fw01",
+      "from": "nxfhlucl",
       "to": "nq3k812a"
+    },
+    {
+      "id": "lk74fhhg",
+      "from": "nayj3j9b",
+      "to": "nstnudyn"
+    },
+    {
+      "id": "l1s2j98y",
+      "from": "nbawxrlb",
+      "to": "n2o3gyn5"
+    },
+    {
+      "id": "liv5lc87",
+      "from": "n2o3gyn5",
+      "to": "nayj3j9b"
     }
   ]
 }
