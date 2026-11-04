@@ -26,7 +26,7 @@
               {
                 "name": "musicName",
                 "type": "audioRef",
-                "value": "core/assets/audio/music/base-loop.mp3"
+                "value": "core/assets/Mus_Main_100bpm.mp3"
               },
               {
                 "name": "volume",

@@ -64,7 +64,8 @@ export const ORCA_DEBUG_EVENT_BUTTONS: OrcaDebugEventButton[] = [];
 export const ORCA_DEBUG_MODEL_PROPERTY_SETTINGS: OrcaDebugModelPropertySetting[] = [];
 
 export const ORCA_DEBUG_SERVER_SETTINGS: OrcaDebugServerSettingsGroup[] = [
-    { id: 'splitting-symbols-debug', name: 'Bonus', base: { DebugInfo: { ReelStops: '91,33,35,1,0', SplittingSymbolDetails: [{ Symbol: 11, Split: 2, Position: [1, 1] }] } }, settings: [{ id: '6bdb63ce-2e7a-41d4-8e15-ffc56ae2160b', name: 'setting', control: 'enum', choices: [{ id: '626bef20-18bb-49d1-b22f-dc906065ac30', label: 'Bonus', patches: [] }] }] }
+    { id: 'splitting-symbols-debug', name: 'Bonus', base: { DebugInfo: { ReelStops: '91,33,35,1,0', SplittingSymbolDetails: [{ Symbol: 11, Split: 2, Position: [1, 1] }] } }, settings: [{ id: '6bdb63ce-2e7a-41d4-8e15-ffc56ae2160b', name: 'setting', control: 'enum', choices: [{ id: '626bef20-18bb-49d1-b22f-dc906065ac30', label: 'Bonus', patches: [] }] }] },
+    { id: 'bonus-round-debug', name: 'Bonus Round', base: { DebugInfo: { ReelStops: '91,38,77,41,25' } }, settings: [{ id: 'bonus-round-scatters', name: 'Bonus Round', control: 'enum', choices: [{ id: 'bonus-round-3-scatters', label: '3 Scatters - 4 Free Spins', patches: [{ op: 'set', path: 'DebugInfo.ReelStops', value: '91,33,77,1,0' }] }, { id: 'bonus-round-4-scatters', label: '4 Scatters - 5 Free Spins', patches: [{ op: 'set', path: 'DebugInfo.ReelStops', value: '91,38,77,41,25' }] }, { id: 'bonus-round-5-scatters', label: '5 Scatters - 5 Free Spins', patches: [{ op: 'set', path: 'DebugInfo.ReelStops', value: '91,33,77,41,25' }] }] }] }
 ];
 
 /**

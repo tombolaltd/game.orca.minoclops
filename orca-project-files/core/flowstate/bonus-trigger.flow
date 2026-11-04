@@ -103,7 +103,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nxtc7k1b",
@@ -181,7 +183,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "n6i3yb39",
@@ -213,7 +216,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nx0x0iom",
@@ -223,7 +228,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nk6saksi",
@@ -2391,7 +2398,9 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       }
     ],
     "links": [
@@ -2473,9 +2482,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 1233.0288764691622,
-      "panY": 345.7621513552623,
-      "scale": 0.5304421573318999
+      "panX": 875.9284232033013,
+      "panY": 299.205932592296,
+      "scale": 0.4450608070388337
     }
   }
 }

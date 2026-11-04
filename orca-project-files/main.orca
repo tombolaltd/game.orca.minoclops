@@ -227,6 +227,58 @@
           ]
         }
       ]
+    },
+    {
+      "id": "bonus-round-debug",
+      "name": "Bonus Round",
+      "kind": "serverSettings",
+      "base": {
+        "DebugInfo": {
+          "ReelStops": "91,38,77,41,25"
+        }
+      },
+      "settings": [
+        {
+          "id": "bonus-round-scatters",
+          "name": "Bonus Round",
+          "control": "enum",
+          "choices": [
+            {
+              "id": "bonus-round-3-scatters",
+              "label": "3 Scatters - 4 Free Spins",
+              "patches": [
+                {
+                  "op": "set",
+                  "path": "DebugInfo.ReelStops",
+                  "value": "91,33,77,1,0"
+                }
+              ]
+            },
+            {
+              "id": "bonus-round-4-scatters",
+              "label": "4 Scatters - 5 Free Spins",
+              "patches": [
+                {
+                  "op": "set",
+                  "path": "DebugInfo.ReelStops",
+                  "value": "91,38,77,41,25"
+                }
+              ]
+            },
+            {
+              "id": "bonus-round-5-scatters",
+              "label": "5 Scatters - 5 Free Spins",
+              "patches": [
+                {
+                  "op": "set",
+                  "path": "DebugInfo.ReelStops",
+                  "value": "91,33,77,41,25"
+                }
+              ]
+            }
+          ]
+        }
+      ]
     }
   ],
   "coreGraphFolders": [

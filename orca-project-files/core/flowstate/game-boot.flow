@@ -87,7 +87,7 @@
                 "bus": "",
                 "musicName": {
                   "kind": "audioRef",
-                  "path": "assets/audio/music/base-loop.mp3"
+                  "path": "assets/Mus_Main_100bpm.mp3"
                 }
               }
             },
@@ -1176,9 +1176,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 168.22663757442103,
-      "panY": 119.38461960861508,
-      "scale": 0.5304421573318999
+      "panX": -171.89248682296113,
+      "panY": 119.08969768651315,
+      "scale": 0.4744345318705406
     }
   }
 }

@@ -28,8 +28,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 5854.728610864166,
-        "y": 154.53704499169118,
+        "x": 1798.7286108641656,
+        "y": 194.53704499169118,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -50,262 +50,10 @@
         }
       },
       {
-        "id": "n8048a23",
-        "title": "playAnimation",
-        "x": 740.5531199769273,
-        "y": 113.01703606669912,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": false,
-          "trackIndex": 0,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791295520191_9uj0li4ny",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "BonusToBase"
-        }
-      },
-      {
-        "id": "nval7u32",
-        "title": "playAnimation",
-        "x": 1057.595860362754,
-        "y": 112.90081795655617,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": false,
-          "trackIndex": 0,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791296555660_uqk9no210",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "transition/BonusToBase"
-        }
-      },
-      {
-        "id": "n0oum3nj",
-        "title": "playAnimation",
-        "x": 1374.6756863598264,
-        "y": 113.42698761994257,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": false,
-          "trackIndex": 0,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791292732465_cieppe22a",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "BonusToBase"
-        }
-      },
-      {
-        "id": "nv07dskb",
-        "title": "playAnimation",
-        "x": 1685.0156438266893,
-        "y": 114.57903662223248,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": false,
-          "trackIndex": 0,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791293688069_efpsdyk4c",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "BonusToBase"
-        }
-      },
-      {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 5239.278423657337,
-        "y": 151.60904785853455,
+        "x": 1163.278423657337,
+        "y": 191.60904785853455,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -334,8 +82,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 5545.2430743936075,
-        "y": 154.5999962991619,
+        "x": 1469.2430743936075,
+        "y": 194.5999962991619,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -359,136 +107,10 @@
         }
       },
       {
-        "id": "n9d42r4t",
-        "title": "playAnimation",
-        "x": 2022.2615016216878,
-        "y": 114.37484808079165,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": true,
-          "trackIndex": 0,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791292732465_cieppe22a",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "idle"
-        }
-      },
-      {
-        "id": "nve6gtd3",
-        "title": "playAnimation",
-        "x": 2347.890551227389,
-        "y": 116.46794629298319,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef",
-            "sceneNodeType": "spine"
-          },
-          {
-            "name": "animationName",
-            "type": "string",
-            "optionsFrom": "target.spine.animations"
-          },
-          {
-            "name": "loop",
-            "type": "bool",
-            "default": false
-          },
-          {
-            "name": "trackIndex",
-            "type": "int",
-            "default": 0
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "showWhen": {
-              "property": "loop",
-              "equals": false
-            },
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for animation)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "loop": false,
-          "trackIndex": 0,
-          "sequenceNodeOn": "onComplete",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791297984204_qg9p9detx",
-            "sceneScope": "core",
-            "sceneName": "main"
-          },
-          "animationName": "BonusToBase"
-        }
-      },
-      {
         "id": "nstnudyn",
         "title": "setNodeVisible",
-        "x": 4295.676626052395,
-        "y": 151.6068258959783,
+        "x": 219.67662605239457,
+        "y": 191.6068258959783,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -517,8 +139,8 @@
       {
         "id": "nuj0zzk6",
         "title": "setNodeVisible",
-        "x": 4626.172784966482,
-        "y": 155.69246884087545,
+        "x": 550.1727849664821,
+        "y": 195.69246884087545,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -547,8 +169,8 @@
       {
         "id": "ni0pjyu9",
         "title": "setNodeVisible",
-        "x": 4924.379775497317,
-        "y": 155.47196286557022,
+        "x": 848.3797754973166,
+        "y": 195.47196286557022,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -986,1012 +608,10 @@
         }
       },
       {
-        "id": "nyd36m0q",
-        "title": "tweenNodeAlpha",
-        "x": 391.6219983590229,
-        "y": 112.49244140045323,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 0,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "onComplete",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "n7kz12f6",
-        "title": "tweenNodeAlpha",
-        "x": 3264.783454839347,
-        "y": 112.16971905939417,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 1,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_reels",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "n33apzut",
-        "title": "tweenNodeAlpha",
-        "x": 2959.5678813404515,
-        "y": 112.35327684379348,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 1,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_hud",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "nzzr1cwe",
-        "title": "tweenNodeAlpha",
-        "x": 2653.9121124968296,
-        "y": 111.90442966941413,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 1,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1793296199027_80b3nmg8h",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "nzetzokx",
-        "title": "tweenNodeAlpha",
-        "x": 30.96735056679566,
-        "y": 143.92625588064288,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 0,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_ss_hud",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
-        "id": "nq3k812a",
-        "title": "tweenNodeAlpha",
-        "x": -307.2731739696766,
-        "y": 154.33899393721356,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "target",
-            "type": "nodeRef"
-          },
-          {
-            "name": "alpha",
-            "type": "float",
-            "default": 1
-          },
-          {
-            "name": "durationMS",
-            "type": "int",
-            "default": 500
-          },
-          {
-            "name": "ease",
-            "type": "string",
-            "default": "power2.out",
-            "options": [
-              {
-                "value": "none",
-                "label": "None (linear)"
-              },
-              {
-                "value": "power1.in",
-                "label": "Power1 In"
-              },
-              {
-                "value": "power1.out",
-                "label": "Power1 Out"
-              },
-              {
-                "value": "power1.inOut",
-                "label": "Power1 In/Out"
-              },
-              {
-                "value": "power2.in",
-                "label": "Power2 In"
-              },
-              {
-                "value": "power2.out",
-                "label": "Power2 Out"
-              },
-              {
-                "value": "power2.inOut",
-                "label": "Power2 In/Out"
-              },
-              {
-                "value": "power3.in",
-                "label": "Power3 In"
-              },
-              {
-                "value": "power3.out",
-                "label": "Power3 Out"
-              },
-              {
-                "value": "power3.inOut",
-                "label": "Power3 In/Out"
-              },
-              {
-                "value": "sine.in",
-                "label": "Sine In"
-              },
-              {
-                "value": "sine.out",
-                "label": "Sine Out"
-              },
-              {
-                "value": "sine.inOut",
-                "label": "Sine In/Out"
-              },
-              {
-                "value": "expo.in",
-                "label": "Expo In"
-              },
-              {
-                "value": "expo.out",
-                "label": "Expo Out"
-              },
-              {
-                "value": "expo.inOut",
-                "label": "Expo In/Out"
-              },
-              {
-                "value": "back.in",
-                "label": "Back In"
-              },
-              {
-                "value": "back.out",
-                "label": "Back Out"
-              },
-              {
-                "value": "back.inOut",
-                "label": "Back In/Out"
-              },
-              {
-                "value": "elastic.in",
-                "label": "Elastic In"
-              },
-              {
-                "value": "elastic.out",
-                "label": "Elastic Out"
-              },
-              {
-                "value": "elastic.inOut",
-                "label": "Elastic In/Out"
-              },
-              {
-                "value": "bounce.in",
-                "label": "Bounce In"
-              },
-              {
-                "value": "bounce.out",
-                "label": "Bounce Out"
-              },
-              {
-                "value": "bounce.inOut",
-                "label": "Bounce In/Out"
-              }
-            ]
-          },
-          {
-            "name": "easeStrength",
-            "type": "float",
-            "default": 1,
-            "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
-          },
-          {
-            "name": "sequenceNodeOn",
-            "type": "string",
-            "default": "immediate",
-            "options": [
-              {
-                "value": "immediate",
-                "label": "Immediate (continue right away)"
-              },
-              {
-                "value": "onComplete",
-                "label": "On Complete (wait for tween)"
-              }
-            ]
-          }
-        ],
-        "propertyValues": {
-          "alpha": 0,
-          "durationMS": 500,
-          "ease": "power2.out",
-          "easeStrength": 1,
-          "sequenceNodeOn": "immediate",
-          "target": {
-            "kind": "nodeRef",
-            "nodeId": "node_1793296199027_80b3nmg8h",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        }
-      },
-      {
         "id": "nbawxrlb",
         "title": "showCabinet",
-        "x": 3588.770497206021,
-        "y": 123.24334261905398,
+        "x": -487.229502793979,
+        "y": 163.24334261905398,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -2007,70 +627,1545 @@
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
-      },
-      {
-        "id": "nxfhlucl",
-        "title": "fireCustomEvent",
-        "x": -667.566226997684,
-        "y": 165.45117323364317,
-        "rootType": "fireEvent",
-        "color": "#d94848",
-        "icon": "📣",
         "isStarter": false,
-        "properties": [
-          {
-            "name": "eventName",
-            "type": "customEventRef",
-            "default": ""
-          },
-          {
-            "name": "propertyNames",
-            "type": "TArray"
-          }
-        ],
-        "propertyValues": {
-          "eventName": "characterBonustransition",
-          "propertyNames": []
-        }
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "nayj3j9b",
         "title": "enableCabinetPurchaseButtonInteractivity",
-        "x": 4039.523831694487,
-        "y": 142.98901717799106,
+        "x": -36.476168305513056,
+        "y": 182.98901717799106,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
       },
       {
         "id": "n2o3gyn5",
         "title": "showCabinetStakeButtons",
-        "x": 3762.4864231325373,
-        "y": 123.77133914128103,
+        "x": -313.5135768674627,
+        "y": 163.77133914128103,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
-        "isStarter": false
+        "isStarter": false,
+        "properties": [],
+        "propertyValues": {}
+      },
+      {
+        "id": "njgzhlp2",
+        "title": "State",
+        "displayName": "Transition animtions",
+        "x": -700,
+        "y": 187,
+        "isState": true,
+        "entryTargetId": "nxfhlucl",
+        "exitSourceId": "n7kz12f6",
+        "subgraph": {
+          "nodes": [
+            {
+              "id": "entryvh86rlq",
+              "title": "Entry",
+              "x": 100,
+              "y": 345,
+              "color": "#4CAF50",
+              "icon": "⭣",
+              "isEntry": true
+            },
+            {
+              "id": "n8048a23",
+              "title": "playAnimation",
+              "x": 1728.5531199769273,
+              "y": 161.01703606669912,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791295520191_9uj0li4ny",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "BonusToBase"
+              }
+            },
+            {
+              "id": "nval7u32",
+              "title": "playAnimation",
+              "x": 2045.595860362754,
+              "y": 160.90081795655618,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791296555660_uqk9no210",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "transition/BonusToBase"
+              }
+            },
+            {
+              "id": "n0oum3nj",
+              "title": "playAnimation",
+              "x": 2362.6756863598266,
+              "y": 161.42698761994257,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791292732465_cieppe22a",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "BonusToBase"
+              }
+            },
+            {
+              "id": "nv07dskb",
+              "title": "playAnimation",
+              "x": 2673.0156438266895,
+              "y": 162.57903662223248,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791293688069_efpsdyk4c",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "BonusToBase"
+              }
+            },
+            {
+              "id": "n9d42r4t",
+              "title": "playAnimation",
+              "x": 3010.261501621688,
+              "y": 162.37484808079165,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": true,
+                "trackIndex": 0,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791292732465_cieppe22a",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "idle"
+              }
+            },
+            {
+              "id": "nve6gtd3",
+              "title": "playAnimation",
+              "x": 3335.890551227389,
+              "y": 164.46794629298319,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "spine"
+                },
+                {
+                  "name": "animationName",
+                  "type": "string",
+                  "optionsFrom": "target.spine.animations"
+                },
+                {
+                  "name": "loop",
+                  "type": "bool",
+                  "default": false
+                },
+                {
+                  "name": "trackIndex",
+                  "type": "int",
+                  "default": 0
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "showWhen": {
+                    "property": "loop",
+                    "equals": false
+                  },
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for animation)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "loop": false,
+                "trackIndex": 0,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1791297984204_qg9p9detx",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                },
+                "animationName": "BonusToBase"
+              }
+            },
+            {
+              "id": "nyd36m0q",
+              "title": "tweenNodeAlpha",
+              "x": 1379.6219983590229,
+              "y": 160.49244140045323,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "onComplete",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n7kz12f6",
+              "title": "tweenNodeAlpha",
+              "x": 4252.7834548393475,
+              "y": 160.16971905939417,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "n33apzut",
+              "title": "tweenNodeAlpha",
+              "x": 3947.5678813404515,
+              "y": 160.35327684379348,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hud",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nzzr1cwe",
+              "title": "tweenNodeAlpha",
+              "x": 3641.9121124968296,
+              "y": 159.90442966941413,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 1,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296199027_80b3nmg8h",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nzetzokx",
+              "title": "tweenNodeAlpha",
+              "x": 1018.9673505667956,
+              "y": 191.92625588064288,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_hud",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nq3k812a",
+              "title": "tweenNodeAlpha",
+              "x": 680.7268260303234,
+              "y": 202.33899393721356,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef"
+                },
+                {
+                  "name": "alpha",
+                  "type": "float",
+                  "default": 1
+                },
+                {
+                  "name": "durationMS",
+                  "type": "int",
+                  "default": 500
+                },
+                {
+                  "name": "ease",
+                  "type": "string",
+                  "default": "power2.out",
+                  "options": [
+                    {
+                      "value": "none",
+                      "label": "None (linear)"
+                    },
+                    {
+                      "value": "power1.in",
+                      "label": "Power1 In"
+                    },
+                    {
+                      "value": "power1.out",
+                      "label": "Power1 Out"
+                    },
+                    {
+                      "value": "power1.inOut",
+                      "label": "Power1 In/Out"
+                    },
+                    {
+                      "value": "power2.in",
+                      "label": "Power2 In"
+                    },
+                    {
+                      "value": "power2.out",
+                      "label": "Power2 Out"
+                    },
+                    {
+                      "value": "power2.inOut",
+                      "label": "Power2 In/Out"
+                    },
+                    {
+                      "value": "power3.in",
+                      "label": "Power3 In"
+                    },
+                    {
+                      "value": "power3.out",
+                      "label": "Power3 Out"
+                    },
+                    {
+                      "value": "power3.inOut",
+                      "label": "Power3 In/Out"
+                    },
+                    {
+                      "value": "sine.in",
+                      "label": "Sine In"
+                    },
+                    {
+                      "value": "sine.out",
+                      "label": "Sine Out"
+                    },
+                    {
+                      "value": "sine.inOut",
+                      "label": "Sine In/Out"
+                    },
+                    {
+                      "value": "expo.in",
+                      "label": "Expo In"
+                    },
+                    {
+                      "value": "expo.out",
+                      "label": "Expo Out"
+                    },
+                    {
+                      "value": "expo.inOut",
+                      "label": "Expo In/Out"
+                    },
+                    {
+                      "value": "back.in",
+                      "label": "Back In"
+                    },
+                    {
+                      "value": "back.out",
+                      "label": "Back Out"
+                    },
+                    {
+                      "value": "back.inOut",
+                      "label": "Back In/Out"
+                    },
+                    {
+                      "value": "elastic.in",
+                      "label": "Elastic In"
+                    },
+                    {
+                      "value": "elastic.out",
+                      "label": "Elastic Out"
+                    },
+                    {
+                      "value": "elastic.inOut",
+                      "label": "Elastic In/Out"
+                    },
+                    {
+                      "value": "bounce.in",
+                      "label": "Bounce In"
+                    },
+                    {
+                      "value": "bounce.out",
+                      "label": "Bounce Out"
+                    },
+                    {
+                      "value": "bounce.inOut",
+                      "label": "Bounce In/Out"
+                    }
+                  ]
+                },
+                {
+                  "name": "easeStrength",
+                  "type": "float",
+                  "default": 1,
+                  "description": "Strength of the easing curve. Mainly affects springy eases such as Back and Elastic."
+                },
+                {
+                  "name": "sequenceNodeOn",
+                  "type": "string",
+                  "default": "immediate",
+                  "options": [
+                    {
+                      "value": "immediate",
+                      "label": "Immediate (continue right away)"
+                    },
+                    {
+                      "value": "onComplete",
+                      "label": "On Complete (wait for tween)"
+                    }
+                  ]
+                }
+              ],
+              "propertyValues": {
+                "alpha": 0,
+                "durationMS": 500,
+                "ease": "power2.out",
+                "easeStrength": 1,
+                "sequenceNodeOn": "immediate",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_1793296199027_80b3nmg8h",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
+            },
+            {
+              "id": "nxfhlucl",
+              "title": "fireCustomEvent",
+              "x": 320.433773002316,
+              "y": 213.45117323364317,
+              "rootType": "fireEvent",
+              "color": "#d94848",
+              "icon": "📣",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "eventName",
+                  "type": "customEventRef",
+                  "default": ""
+                },
+                {
+                  "name": "propertyNames",
+                  "type": "TArray"
+                }
+              ],
+              "propertyValues": {
+                "eventName": "characterBonustransition",
+                "propertyNames": []
+              }
+            },
+            {
+              "id": "exit2ru621f",
+              "title": "Exit",
+              "x": 4662,
+              "y": 345,
+              "color": "#FF5722",
+              "icon": "⭡",
+              "isExit": true
+            }
+          ],
+          "links": [
+            {
+              "id": "lokzmsy4",
+              "from": "entryvh86rlq",
+              "to": "nxfhlucl"
+            },
+            {
+              "id": "ll0sg1gr",
+              "from": "n8048a23",
+              "to": "nval7u32"
+            },
+            {
+              "id": "l72gec55",
+              "from": "nval7u32",
+              "to": "n0oum3nj"
+            },
+            {
+              "id": "lokae73v",
+              "from": "n0oum3nj",
+              "to": "nv07dskb"
+            },
+            {
+              "id": "lbbl0eyh",
+              "from": "nv07dskb",
+              "to": "n9d42r4t"
+            },
+            {
+              "id": "lpj1jrqn",
+              "from": "n9d42r4t",
+              "to": "nve6gtd3"
+            },
+            {
+              "id": "lob6wsb6",
+              "from": "nyd36m0q",
+              "to": "n8048a23"
+            },
+            {
+              "id": "ldbips4g",
+              "from": "nzzr1cwe",
+              "to": "n33apzut"
+            },
+            {
+              "id": "lr6z7kjj",
+              "from": "nve6gtd3",
+              "to": "nzzr1cwe"
+            },
+            {
+              "id": "l5gmxmz4",
+              "from": "n33apzut",
+              "to": "n7kz12f6"
+            },
+            {
+              "id": "l3udvwfe",
+              "from": "nq3k812a",
+              "to": "nzetzokx"
+            },
+            {
+              "id": "l2yefm3v",
+              "from": "nzetzokx",
+              "to": "nyd36m0q"
+            },
+            {
+              "id": "lgp5fw01",
+              "from": "nxfhlucl",
+              "to": "nq3k812a"
+            },
+            {
+              "id": "lhup9cz7",
+              "from": "n7kz12f6",
+              "to": "exit2ru621f"
+            }
+          ]
+        }
       }
     ],
     "links": [
-      {
-        "id": "ll0sg1gr",
-        "from": "n8048a23",
-        "to": "nval7u32"
-      },
-      {
-        "id": "l72gec55",
-        "from": "nval7u32",
-        "to": "n0oum3nj"
-      },
-      {
-        "id": "lokae73v",
-        "from": "n0oum3nj",
-        "to": "nv07dskb"
-      },
       {
         "id": "lhd9zgyt",
         "from": "nbg1mt0t",
@@ -2080,16 +2175,6 @@
         "id": "lh1n7isk",
         "from": "np0dck1y",
         "to": "bonuse_031"
-      },
-      {
-        "id": "lbbl0eyh",
-        "from": "nv07dskb",
-        "to": "n9d42r4t"
-      },
-      {
-        "id": "lpj1jrqn",
-        "from": "n9d42r4t",
-        "to": "nve6gtd3"
       },
       {
         "id": "l2vp84v4",
@@ -2112,38 +2197,8 @@
         "to": "nrirkj8s"
       },
       {
-        "id": "lob6wsb6",
-        "from": "nyd36m0q",
-        "to": "n8048a23"
-      },
-      {
-        "id": "ldbips4g",
-        "from": "nzzr1cwe",
-        "to": "n33apzut"
-      },
-      {
-        "id": "lr6z7kjj",
-        "from": "nve6gtd3",
-        "to": "nzzr1cwe"
-      },
-      {
-        "id": "l5gmxmz4",
-        "from": "n33apzut",
-        "to": "n7kz12f6"
-      },
-      {
-        "id": "l3udvwfe",
-        "from": "nq3k812a",
-        "to": "nzetzokx"
-      },
-      {
-        "id": "l2yefm3v",
-        "from": "nzetzokx",
-        "to": "nyd36m0q"
-      },
-      {
         "id": "lnld2x5m",
-        "from": "n7kz12f6",
+        "from": "njgzhlp2",
         "to": "nbawxrlb"
       },
       {
@@ -2154,12 +2209,7 @@
       {
         "id": "lqhsd4h5",
         "from": "n8w72gdi",
-        "to": "nxfhlucl"
-      },
-      {
-        "id": "lgp5fw01",
-        "from": "nxfhlucl",
-        "to": "nq3k812a"
+        "to": "njgzhlp2"
       },
       {
         "id": "lk74fhhg",
@@ -2180,9 +2230,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": -1501.4714373151123,
-      "panY": 51.12472622781644,
-      "scale": 0.5586152300741845
+      "panX": 883.0608911100373,
+      "panY": 81.27100531838812,
+      "scale": 0.7090747263907428
     }
   }
 }

@@ -1875,8 +1875,8 @@
         "id": "ntrprk5u",
         "title": "State",
         "displayName": "Bonus hotspot Off",
-        "x": 1170.5547794244437,
-        "y": 128.38912189801746,
+        "x": 1181.0496332047408,
+        "y": 128.3891218980174,
         "isState": true,
         "entryTargetId": "nx0oj8i4",
         "subgraph": {
@@ -2558,7 +2558,8 @@
             "name": "value",
             "type": "T"
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nb8dmaxf",
@@ -2579,7 +2580,8 @@
             "type": "T",
             "propertyValue": 1
           }
-        ]
+        ],
+        "propertyValues": {}
       },
       {
         "id": "nqvchjbk",
@@ -2590,7 +2592,9 @@
         "color": "#e67e22",
         "icon": "🔢",
         "isStarter": false,
-        "propertyValue": 1
+        "properties": [],
+        "propertyValue": 1,
+        "propertyValues": {}
       }
     ],
     "links": [
@@ -2693,9 +2697,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 717.4128352892076,
-      "panY": 131.25820063125627,
-      "scale": 0.5820586086869848
+      "panX": 179.53397710455556,
+      "panY": 172.87922409381991,
+      "scale": 0.38220645390512226
     }
   }
 }

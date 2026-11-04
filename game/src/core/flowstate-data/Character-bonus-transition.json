@@ -82,14 +82,26 @@
           "value": "bonus"
         }
       ]
+    },
+    {
+      "id": "ns5jmr83",
+      "title": "setToSetupPose",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
+      ]
     }
   ],
   "links": [
-    {
-      "id": "lobxjwlj",
-      "from": "n1p0g3rz",
-      "to": "ngr1im3a"
-    },
     {
       "id": "lhcfyfyo",
       "from": "ngr1im3a",
@@ -99,6 +111,16 @@
       "id": "ly79l50k",
       "from": "nxrfa63y",
       "to": "nspwiogl"
+    },
+    {
+      "id": "lyu85mzz",
+      "from": "n1p0g3rz",
+      "to": "ns5jmr83"
+    },
+    {
+      "id": "l3ur0xex",
+      "from": "ns5jmr83",
+      "to": "ngr1im3a"
     }
   ]
 }

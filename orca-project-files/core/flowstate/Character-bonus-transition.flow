@@ -7,8 +7,8 @@
         "id": "n1p0g3rz",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": 150.68208449792894,
-        "y": 105.78569012855242,
+        "x": -165.80489270857555,
+        "y": 85.41099202512939,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -138,14 +138,34 @@
           },
           "skinName": "bonus"
         }
+      },
+      {
+        "id": "ns5jmr83",
+        "title": "setToSetupPose",
+        "x": 183.93191499803845,
+        "y": 100.44082190238521,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "target",
+            "type": "nodeRef",
+            "sceneNodeType": "spine"
+          }
+        ],
+        "propertyValues": {
+          "target": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791296555660_uqk9no210",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        }
       }
     ],
     "links": [
-      {
-        "id": "lobxjwlj",
-        "from": "n1p0g3rz",
-        "to": "ngr1im3a"
-      },
       {
         "id": "lhcfyfyo",
         "from": "ngr1im3a",
@@ -155,14 +175,24 @@
         "id": "ly79l50k",
         "from": "nxrfa63y",
         "to": "nspwiogl"
+      },
+      {
+        "id": "lyu85mzz",
+        "from": "n1p0g3rz",
+        "to": "ns5jmr83"
+      },
+      {
+        "id": "l3ur0xex",
+        "from": "ns5jmr83",
+        "to": "ngr1im3a"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 161.69141663475978,
-      "panY": 132.478550350114,
-      "scale": 0.736207227408191
+      "panX": 162.34781016332613,
+      "panY": 161.36012312033986,
+      "scale": 0.5348635341894454
     }
   }
 }

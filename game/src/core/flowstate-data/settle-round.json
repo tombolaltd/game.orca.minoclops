@@ -27,27 +27,6 @@
       "id": "n152ds7e",
       "title": "GAME_COMPLETE",
       "rootType": "fireEvent"
-    },
-    {
-      "id": "nrz0dn5x",
-      "title": "log",
-      "rootType": "debug",
-      "properties": [
-        {
-          "name": "message",
-          "type": "any",
-          "value": "ended game"
-        },
-        {
-          "name": "color",
-          "type": "color",
-          "value": ""
-        },
-        {
-          "name": "message2",
-          "type": "any"
-        }
-      ]
     }
   ],
   "links": [
@@ -57,13 +36,8 @@
       "to": "n88iott5"
     },
     {
-      "id": "lczhelwp",
+      "id": "l67vx5mx",
       "from": "n88iott5",
-      "to": "nrz0dn5x"
-    },
-    {
-      "id": "lqp3ojah",
-      "from": "nrz0dn5x",
       "to": "n152ds7e"
     }
   ]
