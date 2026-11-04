@@ -64,9 +64,8 @@
     "tsconfig.json": "761a529c316843ada6c4ccd52259f6ee3ff345c43811ac4165b847ad5299f2ab"
   },
   "overrides": {
-    "build/build-demo.js": "e307d4e13945b9d593bf8dcab30fa3f30f15cde1fe6a463e2d23f829f2cad964",
-    "build/webpack.demo.conf.js": "b7b10c9cfb6f7f0045f31bcca8bcc241d2e29c8d049b54f67ca3484fb83a385a",
-    "build/webpack.prod.conf.js": "a52c4552fea8a5d7fe581dd0f8e27fa9650e57a3fe3a23ce340f2e41f426a879",
+    "build/webpack.base.conf.js": "9bf996feb30aa6a6b6692d4a507c3843d8469be92798da04ef0b455e4dffa44d",
+    "build/webpack.prod.conf.js": "37df0077dca3e44276579cbc0a357a7b62e751d6376bd71f3b97b27775c772b9",
     "package-lock.json": "4fdb913ed1c5246b6772da223fd1740b065cadaa3f2c3a570aef988cead01bc8",
     "package.json": "80a2f001230851f69b08ef7ea709f3749cd675f17ffdc7a467e0398ab130e4a3",
     "src/config/features.ts": "dc88ccb22e2d7f7d315b63c5332c983a0f71e154ff78558b3a603906b817ccc7",
