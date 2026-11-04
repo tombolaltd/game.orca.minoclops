@@ -28,8 +28,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 1798.7286108641656,
-        "y": 194.53704499169118,
+        "x": 2156.7256539795308,
+        "y": 178.26445212281095,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -52,8 +52,8 @@
       {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 1163.278423657337,
-        "y": 191.60904785853455,
+        "x": 1521.2754667727024,
+        "y": 175.33645498965433,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -82,8 +82,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 1469.2430743936075,
-        "y": 194.5999962991619,
+        "x": 1827.2401175089728,
+        "y": 178.32740343028166,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -109,8 +109,8 @@
       {
         "id": "nstnudyn",
         "title": "setNodeVisible",
-        "x": 219.67662605239457,
-        "y": 191.6068258959783,
+        "x": 577.67366916776,
+        "y": 175.33423302709807,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -139,8 +139,8 @@
       {
         "id": "nuj0zzk6",
         "title": "setNodeVisible",
-        "x": 550.1727849664821,
-        "y": 195.69246884087545,
+        "x": 908.1698280818475,
+        "y": 179.41987597199522,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -169,8 +169,8 @@
       {
         "id": "ni0pjyu9",
         "title": "setNodeVisible",
-        "x": 848.3797754973166,
-        "y": 195.47196286557022,
+        "x": 1206.376818612682,
+        "y": 179.19936999669,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -2161,8 +2161,19 @@
               "from": "n7kz12f6",
               "to": "exit2ru621f"
             }
-          ]
+          ],
+          "groups": []
         }
+      },
+      {
+        "id": "nhnnfd0c",
+        "title": "enableCabinetPurchaseButtonInteractivity",
+        "x": 256.8057148387439,
+        "y": 210.55678050105547,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
       }
     ],
     "links": [
@@ -2212,11 +2223,6 @@
         "to": "njgzhlp2"
       },
       {
-        "id": "lk74fhhg",
-        "from": "nayj3j9b",
-        "to": "nstnudyn"
-      },
-      {
         "id": "l1s2j98y",
         "from": "nbawxrlb",
         "to": "n2o3gyn5"
@@ -2225,14 +2231,24 @@
         "id": "liv5lc87",
         "from": "n2o3gyn5",
         "to": "nayj3j9b"
+      },
+      {
+        "id": "lbpa1zm6",
+        "from": "nayj3j9b",
+        "to": "nhnnfd0c"
+      },
+      {
+        "id": "lwbki1yb",
+        "from": "nhnnfd0c",
+        "to": "nstnudyn"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 883.0608911100373,
-      "panY": 81.27100531838812,
-      "scale": 0.7090747263907428
+      "panX": -130.6155638101759,
+      "panY": 127.60870436298609,
+      "scale": 0.5128384677275241
     }
   }
 }

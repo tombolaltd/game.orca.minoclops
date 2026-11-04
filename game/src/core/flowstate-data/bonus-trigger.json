@@ -86,30 +86,6 @@
       ]
     },
     {
-      "id": "nkucoqkz",
-      "title": "getGameModelProperty",
-      "rootType": "properties",
-      "properties": [
-        {
-          "name": "propertyName",
-          "type": "modelProperty",
-          "value": "bonusSpinsRemaining"
-        }
-      ]
-    },
-    {
-      "id": "n61qzhxg",
-      "title": "toString",
-      "rootType": "string",
-      "properties": [
-        {
-          "name": "value",
-          "type": "T",
-          "sourceNodeId": "nkucoqkz"
-        }
-      ]
-    },
-    {
       "id": "n6i3yb39",
       "title": "onEventFire",
       "rootType": "StarterNodes",
@@ -120,11 +96,6 @@
           "value": "CABINET_BONUS_ACTION"
         }
       ]
-    },
-    {
-      "id": "nk88yvf0",
-      "title": "disableCabinetPurchaseButtonInteractivity",
-      "rootType": "Action"
     },
     {
       "id": "nx0x0iom",
@@ -1218,6 +1189,16 @@
       "id": "nfaz0iqs",
       "title": "endCabinetGame",
       "rootType": "Action"
+    },
+    {
+      "id": "njg6hdx4",
+      "title": "disableCabinetPurchaseButtonInteractivity",
+      "rootType": "Action"
+    },
+    {
+      "id": "nexmeq3p",
+      "title": "disableCabinetPurchaseButton",
+      "rootType": "Action"
     }
   ],
   "links": [
@@ -1247,26 +1228,9 @@
       "to": "n3dmglkr"
     },
     {
-      "id": "l6sizdgo",
-      "from": "nkucoqkz",
-      "to": "n61qzhxg",
-      "propertyType": "float",
-      "propertyName": "value"
-    },
-    {
-      "id": "lfzxzmp9",
-      "from": "nk88yvf0",
-      "to": "nesw0bts"
-    },
-    {
       "id": "l2s7t89h",
       "from": "nesw0bts",
       "to": "bonust_034"
-    },
-    {
-      "id": "lkwhb5ba",
-      "from": "n6i3yb39",
-      "to": "nk88yvf0"
     },
     {
       "id": "lk9468wt",
@@ -1287,6 +1251,21 @@
       "id": "l1wbdb2j",
       "from": "nfaz0iqs",
       "to": "nwf68o3c"
+    },
+    {
+      "id": "lmnxfyz1",
+      "from": "njg6hdx4",
+      "to": "nesw0bts"
+    },
+    {
+      "id": "lnjy8tpd",
+      "from": "n6i3yb39",
+      "to": "nexmeq3p"
+    },
+    {
+      "id": "l7somytz",
+      "from": "nexmeq3p",
+      "to": "njg6hdx4"
     }
   ]
 }

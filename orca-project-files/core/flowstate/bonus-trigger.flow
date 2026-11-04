@@ -98,8 +98,8 @@
       {
         "id": "nzvbo3zo",
         "title": "showCabinet",
-        "x": -866.4999264774405,
-        "y": 16.77998002298507,
+        "x": -919.4732563553632,
+        "y": 0.6576622340520544,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -110,8 +110,8 @@
       {
         "id": "nxtc7k1b",
         "title": "enterCabinetBonusState",
-        "x": -664.8392563229509,
-        "y": 28.803330929219726,
+        "x": -722.4189627119973,
+        "y": 10.377824884724873,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -185,8 +185,8 @@
       {
         "id": "n3dmglkr",
         "title": "updateCabinetPurchaseText",
-        "x": -336.8567790625784,
-        "y": 88.12946260030122,
+        "x": -417.4683680072435,
+        "y": 14.427438422321757,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -202,47 +202,11 @@
         }
       },
       {
-        "id": "nkucoqkz",
-        "title": "getGameModelProperty",
-        "x": -1095.2586127639088,
-        "y": 255.270390091001,
-        "rootType": "properties",
-        "color": "#3498db",
-        "icon": "📖",
-        "isStarter": false,
-        "properties": [
-          {
-            "name": "propertyName",
-            "type": "modelProperty",
-            "propertyValue": "gameModel"
-          }
-        ],
-        "propertyValues": {
-          "propertyName": "bonusSpinsRemaining"
-        }
-      },
-      {
-        "id": "n61qzhxg",
-        "title": "toString",
-        "x": -693.5409921242979,
-        "y": 286.42438961387865,
-        "rootType": "string",
-        "color": "#c0392b",
-        "icon": "🔤",
-        "properties": [
-          {
-            "name": "value",
-            "type": "T"
-          }
-        ],
-        "propertyValues": {}
-      },
-      {
         "id": "n6i3yb39",
         "title": "onEventFire",
         "friendlyTitle": "On Event Fire",
-        "x": -2085.884165933686,
-        "y": -211.13847429365438,
+        "x": -2403.689936875703,
+        "y": -231.0013349775305,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "⚡",
@@ -260,22 +224,10 @@
         }
       },
       {
-        "id": "nk88yvf0",
-        "title": "disableCabinetPurchaseButtonInteractivity",
-        "x": -1733.992543486697,
-        "y": -201.30665359864292,
-        "rootType": "Action",
-        "color": "#3b6ef5",
-        "icon": "⚙️",
-        "isStarter": false,
-        "properties": [],
-        "propertyValues": {}
-      },
-      {
         "id": "nx0x0iom",
         "title": "hideCabinetStakeButtons",
-        "x": -16.94237083085629,
-        "y": 83.92071086643824,
+        "x": -99.8571480310832,
+        "y": 10.218686688458774,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -868,8 +820,8 @@
         "id": "n7vblw33",
         "title": "State",
         "displayName": "Intro Animtions",
-        "x": -1082.5208928713764,
-        "y": 30.751130070648273,
+        "x": -1103.2495871714332,
+        "y": 28.44794181508641,
         "isState": true,
         "entryTargetId": "nxu7gsso",
         "exitSourceId": "ns2839kn",
@@ -2452,6 +2404,26 @@
         "isStarter": false,
         "properties": [],
         "propertyValues": {}
+      },
+      {
+        "id": "njg6hdx4",
+        "title": "disableCabinetPurchaseButtonInteractivity",
+        "x": -1772.5472332494323,
+        "y": -218.332227754866,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
+      },
+      {
+        "id": "nexmeq3p",
+        "title": "disableCabinetPurchaseButton",
+        "x": -2054.0532788875657,
+        "y": -239.7191991243319,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
       }
     ],
     "links": [
@@ -2481,26 +2453,9 @@
         "to": "n3dmglkr"
       },
       {
-        "id": "l6sizdgo",
-        "from": "nkucoqkz",
-        "to": "n61qzhxg",
-        "propertyType": "float",
-        "propertyName": "value"
-      },
-      {
-        "id": "lfzxzmp9",
-        "from": "nk88yvf0",
-        "to": "nesw0bts"
-      },
-      {
         "id": "l2s7t89h",
         "from": "nesw0bts",
         "to": "bonust_034"
-      },
-      {
-        "id": "lkwhb5ba",
-        "from": "n6i3yb39",
-        "to": "nk88yvf0"
       },
       {
         "id": "lk9468wt",
@@ -2521,14 +2476,29 @@
         "id": "l1wbdb2j",
         "from": "nfaz0iqs",
         "to": "nwf68o3c"
+      },
+      {
+        "id": "lmnxfyz1",
+        "from": "njg6hdx4",
+        "to": "nesw0bts"
+      },
+      {
+        "id": "lnjy8tpd",
+        "from": "n6i3yb39",
+        "to": "nexmeq3p"
+      },
+      {
+        "id": "l7somytz",
+        "from": "nexmeq3p",
+        "to": "njg6hdx4"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 944.1950950111337,
-      "panY": 158.45113965981704,
-      "scale": 0.7021948417475655
+      "panX": 1618.8265338177266,
+      "panY": 300.4194541846776,
+      "scale": 0.5865224339183966
     }
   }
 }

@@ -981,6 +981,11 @@
           }
         ]
       }
+    },
+    {
+      "id": "nhnnfd0c",
+      "title": "enableCabinetPurchaseButtonInteractivity",
+      "rootType": "Action"
     }
   ],
   "links": [
@@ -1030,11 +1035,6 @@
       "to": "njgzhlp2"
     },
     {
-      "id": "lk74fhhg",
-      "from": "nayj3j9b",
-      "to": "nstnudyn"
-    },
-    {
       "id": "l1s2j98y",
       "from": "nbawxrlb",
       "to": "n2o3gyn5"
@@ -1043,6 +1043,16 @@
       "id": "liv5lc87",
       "from": "n2o3gyn5",
       "to": "nayj3j9b"
+    },
+    {
+      "id": "lbpa1zm6",
+      "from": "nayj3j9b",
+      "to": "nhnnfd0c"
+    },
+    {
+      "id": "lwbki1yb",
+      "from": "nhnnfd0c",
+      "to": "nstnudyn"
     }
   ]
 }
