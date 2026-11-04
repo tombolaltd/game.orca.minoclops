@@ -1,6 +1,6 @@
-// MOCK BUILD bootstrap — runs FIRST in a demo build's `app` entry (see mock-build-entry.js), before
-// any polyfill or game code. It refuses to start on a live host, shows an always-visible DEMO
-// badge, builds the in-memory MockEngine from the build-time `ORCA_MOCK_BUILD` constant and points
+// MOCK BUILD bootstrap — runs FIRST in the `app` entry of a production build made with "Use mock
+// engine" on (see mock-build-entry.js), before any polyfill or game code. It refuses to start on a
+// live host, shows an always-visible MOCK ENGINE badge, builds the in-memory MockEngine from the build-time `ORCA_MOCK_BUILD` constant and points
 // every axios copy the game uses at it. Nothing is persisted: a page reload is a fresh wallet and
 // session. Pure logic lives in mock-client.ts.
 
@@ -14,12 +14,12 @@ import {
     MockBuildRuntime,
 } from './mock-client';
 
-/** Replaced by webpack.demo.conf.js's DefinePlugin; absent in any other build. */
+/** Replaced by the DefinePlugin game/build/mock-build-plan.js adds to an enabled build; absent in any other. */
 declare const ORCA_MOCK_BUILD: MockBuildConfig | undefined;
 
 export const MOCK_BUILD_BADGE_ID = 'orca-mock-build-badge';
 export const MOCK_BUILD_REFUSAL_ID = 'orca-mock-build-refusal';
-export const MOCK_BUILD_BADGE_TEXT = 'DEMO \u2013 mock engine';
+export const MOCK_BUILD_BADGE_TEXT = 'MOCK ENGINE';
 
 export interface InstallMockClientOptions {
     /** Every axios module copy the game's dependencies resolve to (ESM and CommonJS builds differ). */
@@ -57,8 +57,8 @@ function showRefusal(doc: Document | undefined, reason: string): void {
             'font:16px/1.5 system-ui,sans-serif', 'text-align:center',
         ].join(';');
         panel.textContent =
-            `This is a DEMO build that runs a mock game engine. It refuses to run here because ${reason}. ` +
-            'Deploy a normal build (npm run build) to live.';
+            `This build runs a mock game engine. It refuses to run here because ${reason}. ` +
+            'Turn off "Use mock engine" in Orca (Data Browser > Server Connection) and rebuild before deploying to live.';
         body.appendChild(panel);
     });
 }
@@ -69,7 +69,7 @@ function showBadge(doc: Document | undefined, mechanic: string): void {
         const badge = doc!.createElement('div');
         badge.id = MOCK_BUILD_BADGE_ID;
         badge.textContent = MOCK_BUILD_BADGE_TEXT;
-        badge.title = `Demo build: every round is played by the bundled mock engine ("${mechanic}"). Balance resets on reload.`;
+        badge.title = `Mock engine build: every round is played by the bundled mock engine ("${mechanic}"). Balance resets on reload.`;
         badge.style.cssText = [
             'position:fixed', 'left:6px', 'bottom:6px', 'z-index:2147483647', 'padding:2px 8px',
             'border-radius:4px', 'background:rgba(200,0,0,0.85)', 'color:#fff',
@@ -113,6 +113,6 @@ export function installMockClient(options: InstallMockClientOptions): MockBuildR
     for (const instance of instances) installMockAxiosAdapter(instance, runtime);
 
     showBadge(doc, runtime.mechanic.key);
-    console.warn(`[mock-build] DEMO build: engine calls are answered in-page by the mock engine ("${runtime.mechanic.key}").`);
+    console.warn(`[mock-build] MOCK ENGINE build: engine calls are answered in-page by the mock engine ("${runtime.mechanic.key}").`);
     return runtime;
 }

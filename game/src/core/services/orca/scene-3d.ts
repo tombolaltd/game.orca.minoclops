@@ -15,8 +15,11 @@
  *
  * Custom components on 3D nodes are instantiated by `SceneManager` through the
  * `Scene3DComponentHost` hook. The only static imports are the import-free
- * primitive-geometry, skybox and shadow-quality parity twins, so this module
- * cannot join an import cycle.
+ * primitive-geometry, skybox, shadow-quality and custom-shader parity twins, so
+ * this module cannot join an import cycle. The Custom Shader DEFINITIONS are
+ * handed in by `SceneManager.activate` (it owns the generated module): a
+ * `primitive3d` / `model3d` `customShader` slot swaps its mesh material(s) for
+ * a three `ShaderMaterial` whose `uTime` advances in `render`.
  *
  * Shadows follow the project's `SCENE3D_SHADOW_QUALITY`, read by `SceneManager`
  * and handed to `activate`: directional AND point lights cast, only while some
@@ -27,12 +30,24 @@
  * `whenModelReady`, and a model's glTF clips through `getMixer` / `getClips`.
  * Every queued callback is answered exactly once — `false` when the build
  * fails or the layer deactivates — so a waiting flow can never hang.
+ *
+ * Physics ('3d' mode) plugs in through `setPhysicsHost` (set by SceneManager,
+ * so this module never imports the physics runtime): the built `physicsBody`
+ * nodes are registered once the tree is ready, with the model loader + cache
+ * lent for mesh colliders, and released first thing on `deactivate`.
  */
 
 import { createPrimitiveGeometry, primitiveMaterialParams, primitiveTextureParams } from './scene-3d-primitives';
 import { applySkybox, normalizeSkybox } from './scene-3d-skybox';
 import { applyShadowQuality, DEFAULT_SHADOW_QUALITY, fitDirectionalShadowCamera, normalizeShadowQuality } from './scene-3d-shadows';
 import type { ShadowQuality } from './scene-3d-shadows';
+import {
+    createCustomShaderMaterial,
+    isCustomShaderEnabled,
+    normalizeCustomShaderSlot,
+    resolveCustomShaderDefinition,
+} from './custom-shaders';
+import type { CustomShaderMaterialHandle, OrcaCustomShaderDefinition, OrcaCustomShaderSlot } from './custom-shaders';
 
 export interface OrcaVec3 { x: number; y: number; z: number }
 
@@ -71,6 +86,41 @@ export interface OrcaScene3DNode {
     intensity?: number;
     /** Same instance shape as a 2D node's `customComponents`. */
     customComponents?: unknown[] | null;
+    /**
+     * primitive3d + model3d: a Custom Shader (target '3d') replacing the mesh
+     * material(s). Untrusted — only `normalizeCustomShaderSlot` reads it.
+     */
+    customShader?: OrcaCustomShaderSlot | null;
+    /** Rapier rigid body + collider (physics mode '3d'). Untrusted — `normalizePhysicsBody3D` reads it. */
+    physicsBody?: unknown;
+}
+
+/** A built node carrying a `physicsBody`, handed to the {@link Scene3DPhysicsHost}. */
+export interface Scene3DPhysicsEntry {
+    id: string;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    object3d: any;
+    data: unknown;
+}
+
+/** What the layer lends physics to build 3D colliders. */
+export interface Scene3DPhysicsTools {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    THREE: any;
+    /** The glTF scene for a bare bucket-relative ref, through the model3d loader + cache. */
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    loadModelScene(src: string): Promise<any>;
+    /** True once model3d `id`'s glTF is in its holder; false when it is not a model3d or failed. */
+    whenModelReady(id: string): Promise<boolean>;
+}
+
+/**
+ * Physics hook, set by `SceneManager` only when physics runs in '3d': `register`
+ * once per activation after the tree is built, `unregister` on deactivate.
+ */
+export interface Scene3DPhysicsHost {
+    register(entries: Scene3DPhysicsEntry[], tools: Scene3DPhysicsTools): void;
+    unregister(): void;
 }
 
 /** What a 3D host's components can reach beyond the shared context. */
@@ -195,6 +245,19 @@ export class Scene3DLayer {
     private shadowLights: ThreeAny[] = [];
     /** Model clones and primitive meshes — what directional shadow cameras are fitted to. */
     private shadowContents: ThreeAny[] = [];
+    /** The project's Custom Shader definitions, handed in by `SceneManager` on activate. */
+    private customShaderDefs: Record<string, OrcaCustomShaderDefinition> | null = null;
+    /** Live 3D Custom Shader materials of this activation, ticked by `render`. */
+    private customShaderHandles: CustomShaderMaterialHandle[] = [];
+    /** See {@link Scene3DPhysicsHost}; null unless physics runs in '3d'. */
+    private physicsHost: Scene3DPhysicsHost | null = null;
+    /** The host this activation registered with — the one `deactivate` releases. */
+    private physicsRegisteredWith: Scene3DPhysicsHost | null = null;
+
+    /** Set (or clear) the physics hook used by the NEXT activation. */
+    public setPhysicsHost(host: Scene3DPhysicsHost | null): void {
+        this.physicsHost = host;
+    }
 
     /** The Pixi canvas the 3D canvas sits beneath, and the backing-store resolution to match. */
     public setHost(pixiCanvas: HTMLCanvasElement | null, resolution: number): void {
@@ -262,18 +325,22 @@ export class Scene3DLayer {
 
     /**
      * Build `data` and start rendering it. `resolveUrl` maps a bare model ref to
-     * its scoped `/assets/…` URL; `shadowQuality` is untrusted (invalid ⇒ 'medium').
+     * its scoped `/assets/…` URL; `shadowQuality` is untrusted (invalid ⇒ 'medium');
+     * `customShaders` is the generated definition table (`generated-custom-shaders.ts`)
+     * that `primitive3d` / `model3d` `customShader` slots resolve against.
      */
     public activate(
         data: OrcaScene3DData,
         resolveUrl: (src: string) => string,
         components: Scene3DComponentHost | null = null,
         shadowQuality: unknown = DEFAULT_SHADOW_QUALITY,
+        customShaders: Record<string, OrcaCustomShaderDefinition> | null = null,
     ): void {
         this.deactivate();
         this.active = true;
         this.readyState = 'building';
         this.shadowQuality = normalizeShadowQuality(shadowQuality);
+        this.customShaderDefs = customShaders;
         const generation = this.generation;
         void this.build(generation, data, resolveUrl, components);
     }
@@ -282,6 +349,8 @@ export class Scene3DLayer {
     public deactivate(): void {
         this.generation += 1;
         this.active = false;
+        // Before disposal, so the runtime drops bodies while their objects still exist.
+        this.releasePhysics();
         // Before disposal, so onDestroy still sees live objects.
         this.destroyComponents();
         this.releaseMixers();
@@ -353,6 +422,7 @@ export class Scene3DLayer {
         if (!this.active || !this.scene) return;
         this.sweepDetachedComponents();
         this.updateMixers(deltaSeconds);
+        this.updateCustomShaders(deltaSeconds);
         if (!this.renderer || !this.camera || !this.frame || !this.canvas) return;
         const pixi = this.pixiCanvas;
         if (!pixi || !pixi.parentNode) return;
@@ -382,6 +452,40 @@ export class Scene3DLayer {
             // Nothing advances the mixers any more; let waiting clips complete.
             this.releaseMixers();
         }
+    }
+
+    /** Advance every live Custom Shader's `uTime`. */
+    private updateCustomShaders(deltaSeconds: number): void {
+        if (this.customShaderHandles.length === 0 || !(deltaSeconds > 0) || !Number.isFinite(deltaSeconds)) return;
+        for (const handle of this.customShaderHandles) handle.tick(deltaSeconds);
+    }
+
+    /**
+     * The node's Custom Shader material, or null (no / disabled slot, unknown
+     * or 2D shader, failed compile — each warned once by `custom-shaders.ts`).
+     * The handle is tracked for ticking and released with the scene.
+     */
+    private createCustomShader(THREE: ThreeAny, node: OrcaScene3DNode, baseColor: string, side: 'front' | 'double'): CustomShaderMaterialHandle | null {
+        const slot = normalizeCustomShaderSlot(node.customShader);
+        if (!slot || !isCustomShaderEnabled(slot)) return null;
+        const definition = resolveCustomShaderDefinition(this.customShaderDefs, slot.shader, '3d');
+        if (!definition) return null;
+        let gl: ThreeAny = null;
+        try {
+            gl = this.renderer?.getContext?.() ?? null;
+        } catch {
+            gl = null;
+        }
+        const handle = createCustomShaderMaterial(THREE, definition, slot.uniforms, baseColor, { gl, side });
+        if (handle) this.customShaderHandles.push(handle);
+        return handle;
+    }
+
+    /** Dispose every Custom Shader material of the current activation. */
+    private releaseCustomShaders(): void {
+        const handles = this.customShaderHandles;
+        this.customShaderHandles = [];
+        for (const handle of handles) handle.destroy();
     }
 
     private updateMixers(deltaSeconds: number): void {
@@ -482,6 +586,7 @@ export class Scene3DLayer {
         const objectsById = new Map<string, ThreeAny>();
         const modelStates = new Map<string, ModelLoadState>();
         const handles: Array<{ handle: Scene3DComponentHandle; object: ThreeAny }> = [];
+        const physicsEntries: Scene3DPhysicsEntry[] = [];
         const env: Scene3DComponentEnv = {
             THREE,
             getObject3DById: (nodeId: string) => (typeof nodeId === 'string' ? objectsById.get(nodeId) ?? null : null),
@@ -545,6 +650,9 @@ export class Scene3DLayer {
             this.applyTransform(object, node.transform);
             parent.add(object);
             if (typeof node.id === 'string' && node.id && !objectsById.has(node.id)) objectsById.set(node.id, object);
+            if (this.physicsHost && node.physicsBody && typeof node.id === 'string' && node.id) {
+                physicsEntries.push({ id: node.id, object3d: object, data: node.physicsBody });
+            }
             // A model3d's `object` is the holder Group, so components never wait on the glTF.
             if (components && Array.isArray(node.customComponents) && node.customComponents.length > 0) {
                 try {
@@ -599,6 +707,7 @@ export class Scene3DLayer {
         // After onCreate, so flows queued during the build override component setup.
         if (generation !== this.generation) return;
         this.readyState = 'ready';
+        this.registerPhysics(physicsEntries, modules, resolveUrl);
         const waiters = this.readyWaiters;
         this.readyWaiters = [];
         for (const cb of waiters) {
@@ -691,6 +800,58 @@ export class Scene3DLayer {
         }
     }
 
+    /** The cached glTF load for `url` (one GLTFLoader request per URL per activation). */
+    private requestModel(modules: ThreeModules, url: string): Promise<{ scene: ThreeAny; animations: ThreeAny[] }> {
+        let pending = this.modelCache.get(url);
+        if (!pending) {
+            const loaded: Promise<{ scene: ThreeAny; animations: ThreeAny[] }> = new modules.GLTFLoader()
+                .loadAsync(url)
+                .then((gltf: ThreeAny) => ({ scene: gltf.scene, animations: Array.isArray(gltf.animations) ? gltf.animations : [] }));
+            this.modelCache.set(url, loaded);
+            pending = loaded;
+        }
+        return pending;
+    }
+
+    /** Hand this activation's `physicsBody` nodes to the physics host (see {@link Scene3DPhysicsHost}). */
+    private registerPhysics(entries: Scene3DPhysicsEntry[], modules: ThreeModules, resolveUrl: (src: string) => string): void {
+        const host = this.physicsHost;
+        if (!host || entries.length === 0) return;
+        const generation = this.generation;
+        const tools: Scene3DPhysicsTools = {
+            THREE: modules.THREE,
+            // The cached SOURCE scene (never added to the 3D scene); physics only reads its geometry.
+            loadModelScene: (src: string) => {
+                if (generation !== this.generation) return Promise.reject(new Error('3D layer deactivated'));
+                const ref = typeof src === 'string' ? src.trim() : '';
+                if (!ref) return Promise.reject(new Error('empty model ref'));
+                const request = this.requestModel(modules, resolveUrl(ref));
+                request.catch(() => undefined);
+                return request.then((source) => source.scene);
+            },
+            whenModelReady: (id: string) => new Promise<boolean>((resolve) => {
+                if (generation !== this.generation || !this.whenModelReady(id, resolve)) resolve(false);
+            }),
+        };
+        try {
+            host.register(entries, tools);
+            this.physicsRegisteredWith = host;
+        } catch (err) {
+            this.warnOnce('physics:register', '[Scene3D] Registering physics bodies failed.', err);
+        }
+    }
+
+    private releasePhysics(): void {
+        const host = this.physicsRegisteredWith;
+        this.physicsRegisteredWith = null;
+        if (!host) return;
+        try {
+            host.unregister();
+        } catch (err) {
+            this.warnOnce('physics:unregister', '[Scene3D] Releasing physics bodies failed.', err);
+        }
+    }
+
     private loadModelInto(
         holder: ThreeAny,
         node: OrcaScene3DNode,
@@ -715,22 +876,19 @@ export class Scene3DLayer {
             fail();
             return;
         }
-        let pending = this.modelCache.get(url);
-        if (!pending) {
-            const loaded: Promise<{ scene: ThreeAny; animations: ThreeAny[] }> = new modules.GLTFLoader()
-                .loadAsync(url)
-                .then((gltf: ThreeAny) => ({ scene: gltf.scene, animations: Array.isArray(gltf.animations) ? gltf.animations : [] }));
-            this.modelCache.set(url, loaded);
-            pending = loaded;
-        }
-        const request = pending;
+        const request = this.requestModel(modules, url);
         request.then((source) => {
             if (generation !== this.generation) return;
             const instance = modules.cloneSkinned(source.scene);
+            // The clone SHARES the cached source's materials, so a Custom
+            // Shader replaces them per mesh without disposing them (other
+            // clones may still draw with them; the scene traversal frees ours).
+            const shader = this.createCustomShader(modules.THREE, node, '#ffffff', 'front');
             instance.traverse((child: ThreeAny) => {
                 if (!child.isMesh) return;
                 child.castShadow = node.castShadow === true;
                 child.receiveShadow = node.receiveShadow === true;
+                if (shader) child.material = shader.material;
             });
             holder.add(instance);
             this.shadowContents.push(instance);
@@ -756,13 +914,23 @@ export class Scene3DLayer {
         resolveUrl: (src: string) => string,
     ): ThreeAny {
         const params = primitiveMaterialParams(node);
+        const geometry = createPrimitiveGeometry(THREE, typeof node.shape === 'string' ? node.shape : '');
+        // A Custom Shader replaces the standard material outright; its uBaseColor is the primitive colour.
+        const shader = this.createCustomShader(THREE, node, params.color, params.side === 'double' ? 'double' : 'front');
+        if (shader) {
+            const shaded = new THREE.Mesh(geometry, shader.material);
+            shaded.castShadow = node.castShadow === true;
+            shaded.receiveShadow = node.receiveShadow === true;
+            this.shadowContents.push(shaded);
+            return shaded;
+        }
         const material = new THREE.MeshStandardMaterial({
             color: params.color,
             roughness: params.roughness,
             metalness: params.metalness,
             side: params.side === 'double' ? THREE.DoubleSide : THREE.FrontSide,
         });
-        const mesh = new THREE.Mesh(createPrimitiveGeometry(THREE, typeof node.shape === 'string' ? node.shape : ''), material);
+        const mesh = new THREE.Mesh(geometry, material);
         mesh.castShadow = node.castShadow === true;
         mesh.receiveShadow = node.receiveShadow === true;
         this.shadowContents.push(mesh);
@@ -890,7 +1058,10 @@ export class Scene3DLayer {
         this.anyShadowCaster = false;
         this.shadowLights = [];
         this.shadowContents = [];
-        if (!scene) return;
+        if (!scene) {
+            this.releaseCustomShaders();
+            return;
+        }
         try {
             scene.traverse((object: ThreeAny) => {
                 object.geometry?.dispose?.();
@@ -907,6 +1078,8 @@ export class Scene3DLayer {
         } catch (err) {
             this.warnOnce('dispose', '[Scene3D] Disposing the 3D scene failed.', err);
         }
+        // After the traversal (which already disposed the materials); idempotent.
+        this.releaseCustomShaders();
     }
 
     private warnOnce(key: string, message: string, err?: unknown): void {

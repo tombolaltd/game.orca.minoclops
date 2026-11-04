@@ -1745,14 +1745,62 @@
           }
         ]
       }
+    },
+    {
+      "id": "nzdvu4qr",
+      "title": "updateCabinetPurchaseText",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "newText",
+          "type": "string",
+          "sourceNodeId": "nlgv7hz8"
+        }
+      ]
+    },
+    {
+      "id": "natbjw4j",
+      "title": "getGameModelProperty",
+      "rootType": "properties",
+      "properties": [
+        {
+          "name": "propertyName",
+          "type": "modelProperty",
+          "value": "bonusSpinsRemaining"
+        }
+      ]
+    },
+    {
+      "id": "nlgv7hz8",
+      "title": "toString",
+      "rootType": "string",
+      "properties": [
+        {
+          "name": "value",
+          "type": "T",
+          "sourceNodeId": "nb8dmaxf"
+        }
+      ]
+    },
+    {
+      "id": "nb8dmaxf",
+      "title": "add",
+      "rootType": "math",
+      "properties": [
+        {
+          "name": "a",
+          "type": "T",
+          "sourceNodeId": "natbjw4j"
+        },
+        {
+          "name": "b",
+          "type": "T",
+          "value": 1
+        }
+      ]
     }
   ],
   "links": [
-    {
-      "id": "ll9ucb8w",
-      "from": "bonuss_037",
-      "to": "nzelkdw4"
-    },
     {
       "id": "l3gqbciw",
       "from": "nnos8lwo",
@@ -1806,9 +1854,40 @@
       "to": "nma44hip"
     },
     {
-      "id": "lniiv8bo",
+      "id": "lmmxu74d",
+      "from": "nlgv7hz8",
+      "to": "nzdvu4qr",
+      "propertyType": "string",
+      "propertyName": "newText"
+    },
+    {
+      "id": "lb5eczex",
       "from": "nma44hip",
       "to": "bonuss_037"
+    },
+    {
+      "id": "lxtmdur5",
+      "from": "bonuss_037",
+      "to": "nzdvu4qr"
+    },
+    {
+      "id": "le3tg6d5",
+      "from": "nzdvu4qr",
+      "to": "nzelkdw4"
+    },
+    {
+      "id": "l6e0y005",
+      "from": "natbjw4j",
+      "to": "nb8dmaxf",
+      "propertyType": "T",
+      "propertyName": "a"
+    },
+    {
+      "id": "lo0jfl43",
+      "from": "nb8dmaxf",
+      "to": "nlgv7hz8",
+      "propertyType": "T",
+      "propertyName": "value"
     }
   ]
 }

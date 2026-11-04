@@ -293,7 +293,7 @@
     "sceneAssetRefs": true,
     "reelsSymbolMode": true
   },
-  "schemaVersion": 144,
+  "schemaVersion": 146,
   "skinsConsolidated": true,
   "debugDataSchema": [
     {
@@ -306,5 +306,5 @@
       "type": "int"
     }
   ],
-  "lastOpenedOrcaVersion": "0.6.1"
+  "lastOpenedOrcaVersion": "0.6.2"
 }

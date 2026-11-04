@@ -15,14 +15,16 @@ regulator-approved and makes no fairness or RTP guarantee whatsoever. It exists 
 a designer can prototype a game before a real engine build exists. **Never point a
 production or player-facing build at it.**
 
-## Scope — dev-preview only, by design
+## Scope — the dev preview, plus Dev / Stage builds when switched on
 
 Orca's editor hosts this engine inside the **game dev server** and serves it to the
-editor's game preview. That is the whole of its intended reach. The shipped game
-does **not** consume it and a deployed build must never reach it — an intentional
-boundary, **not an unfinished feature**. Nothing about wiring the live game to this
-mock is pending or planned; the mock's job is to let the client be developed before
-a real engine is available, and it is complete at that job.
+editor's game preview. While `main.orca` `projectSettings.mockEngine.enabled` is
+`true`, the game's normal `npm run build` also bundles it into the client
+(`client/`, wired by `game/build/webpack.prod.conf.js` + `mock-build-plan.js` from
+the Orca-generated `game/build/generated-mock-build.json`): the build shows a
+MOCK ENGINE badge, its wallet resets on reload, it refuses to run on a Live host,
+and Orca refuses a TeamCity Live deploy. With it off, the build never reaches this
+folder. Live / real-money builds must always have it off.
 
 What legitimately crosses over is authoring OUTPUT the user chose to keep — the
 server field mapping generated into the game's model files from a captured

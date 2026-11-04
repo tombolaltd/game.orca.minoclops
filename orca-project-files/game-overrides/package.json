@@ -10,7 +10,6 @@
 		"preserve": "node build/copy-runtime-assets.js",
 		"serve": "cross-env NODE_OPTIONS=--max-old-space-size=8192 webpack-dev-server --progress --config build/webpack.dev.conf.js --stats errors-warnings",
 		"build": "node build/build.js",
-		"build:demo": "node build/build-demo.js",
 		"lint": "npx eslint './build/**/*.js' './src/**/*.ts'",
 		"lint-fix": "npx eslint './src/**/*.ts' --fix",
 		"format": "npx prettier --check 'src/**/*.ts'",

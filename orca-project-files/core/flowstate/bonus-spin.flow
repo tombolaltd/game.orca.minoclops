@@ -31,8 +31,8 @@
         "id": "bonuss_037",
         "title": "State",
         "displayName": "Request spin",
-        "x": -19.16687571518949,
-        "y": 116.65055503267016,
+        "x": -396.4113855780095,
+        "y": 3.1841752487805906,
         "isState": true,
         "entryTargetId": "bonuss_021",
         "exitSourceId": "nqof5i54",
@@ -1470,8 +1470,8 @@
         "id": "nh466c9z",
         "title": "onCustomEvent",
         "friendlyTitle": "On Custom Event",
-        "x": -556.190513814245,
-        "y": 73.493639661013,
+        "x": -927.6683695794363,
+        "y": -48.07257013136059,
         "rootType": "StarterNodes",
         "color": "#ff6b35",
         "icon": "📣",
@@ -1513,7 +1513,7 @@
         "title": "at",
         "friendlyTitle": "Get",
         "x": -322.938522249813,
-        "y": 283.702273949197,
+        "y": 286.75209011309045,
         "rootType": "array",
         "color": "#2980b9",
         "icon": "🎯",
@@ -1610,8 +1610,8 @@
         "id": "nma44hip",
         "title": "State",
         "displayName": "Reset labels",
-        "x": -216.77299580573947,
-        "y": 114.53517311257602,
+        "x": -592.9261660221784,
+        "y": -13.26478928146122,
         "isState": true,
         "exitSourceId": "nocvfvec",
         "subgraph": {
@@ -2505,14 +2505,95 @@
           ],
           "groups": []
         }
+      },
+      {
+        "id": "nzdvu4qr",
+        "title": "updateCabinetPurchaseText",
+        "x": -175.76092878706555,
+        "y": 48.04580184653247,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "newText",
+            "type": "string"
+          }
+        ],
+        "propertyValues": {
+          "newText": "5"
+        }
+      },
+      {
+        "id": "natbjw4j",
+        "title": "getGameModelProperty",
+        "x": -1254.873820642669,
+        "y": 143.5312044201605,
+        "rootType": "properties",
+        "color": "#3498db",
+        "icon": "📖",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "propertyName",
+            "type": "modelProperty",
+            "propertyValue": "gameModel"
+          }
+        ],
+        "propertyValues": {
+          "propertyName": "bonusSpinsRemaining"
+        }
+      },
+      {
+        "id": "nlgv7hz8",
+        "title": "toString",
+        "x": -530.6891394779233,
+        "y": 119.9994526618546,
+        "rootType": "string",
+        "color": "#c0392b",
+        "icon": "🔤",
+        "properties": [
+          {
+            "name": "value",
+            "type": "T"
+          }
+        ]
+      },
+      {
+        "id": "nb8dmaxf",
+        "title": "add",
+        "x": -905.3645306584061,
+        "y": 130.2662183604924,
+        "rootType": "math",
+        "color": "#16a085",
+        "icon": "➕",
+        "isStarter": false,
+        "properties": [
+          {
+            "name": "a",
+            "type": "T"
+          },
+          {
+            "name": "b",
+            "type": "T",
+            "propertyValue": 1
+          }
+        ]
+      },
+      {
+        "id": "nqvchjbk",
+        "title": "int",
+        "x": -1145.1530510206835,
+        "y": 271.42304908359836,
+        "rootType": "properties",
+        "color": "#e67e22",
+        "icon": "🔢",
+        "isStarter": false,
+        "propertyValue": 1
       }
     ],
     "links": [
-      {
-        "id": "ll9ucb8w",
-        "from": "bonuss_037",
-        "to": "nzelkdw4"
-      },
       {
         "id": "l3gqbciw",
         "from": "nnos8lwo",
@@ -2566,17 +2647,55 @@
         "to": "nma44hip"
       },
       {
-        "id": "lniiv8bo",
+        "id": "lmmxu74d",
+        "from": "nlgv7hz8",
+        "to": "nzdvu4qr",
+        "propertyType": "string",
+        "propertyName": "newText"
+      },
+      {
+        "id": "lb5eczex",
         "from": "nma44hip",
         "to": "bonuss_037"
+      },
+      {
+        "id": "lxtmdur5",
+        "from": "bonuss_037",
+        "to": "nzdvu4qr"
+      },
+      {
+        "id": "le3tg6d5",
+        "from": "nzdvu4qr",
+        "to": "nzelkdw4"
+      },
+      {
+        "id": "ldf51jpj",
+        "from": "nqvchjbk",
+        "to": "nb8dmaxf",
+        "propertyType": "T",
+        "propertyName": "b"
+      },
+      {
+        "id": "l6e0y005",
+        "from": "natbjw4j",
+        "to": "nb8dmaxf",
+        "propertyType": "T",
+        "propertyName": "a"
+      },
+      {
+        "id": "lo0jfl43",
+        "from": "nb8dmaxf",
+        "to": "nlgv7hz8",
+        "propertyType": "T",
+        "propertyName": "value"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 2.40596008106985,
-      "panY": 172.02457885281024,
-      "scale": 0.5400010828708103
+      "panX": 717.4128352892076,
+      "panY": 131.25820063125627,
+      "scale": 0.5820586086869848
     }
   }
 }

@@ -28,8 +28,8 @@
       {
         "id": "bonuse_031",
         "title": "fireCustomEvent",
-        "x": 5524.536419843285,
-        "y": 148.02009385312112,
+        "x": 5854.728610864166,
+        "y": 154.53704499169118,
         "rootType": "fireEvent",
         "color": "#d94848",
         "icon": "📣",
@@ -304,8 +304,8 @@
       {
         "id": "nbg1mt0t",
         "title": "setNodeVisible",
-        "x": 4909.086232636457,
-        "y": 145.0920967199645,
+        "x": 5239.278423657337,
+        "y": 151.60904785853455,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -334,8 +334,8 @@
       {
         "id": "np0dck1y",
         "title": "setGameModelProperty",
-        "x": 5215.050883372727,
-        "y": 148.08304516059184,
+        "x": 5545.2430743936075,
+        "y": 154.5999962991619,
         "rootType": "properties",
         "color": "#e67e22",
         "icon": "✏️",
@@ -487,8 +487,8 @@
       {
         "id": "nstnudyn",
         "title": "setNodeVisible",
-        "x": 3958.967483892944,
-        "y": 134.22828952645818,
+        "x": 4295.676626052395,
+        "y": 151.6068258959783,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -517,8 +517,8 @@
       {
         "id": "nuj0zzk6",
         "title": "setNodeVisible",
-        "x": 4295.980593945602,
-        "y": 149.1755177023054,
+        "x": 4626.172784966482,
+        "y": 155.69246884087545,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -547,8 +547,8 @@
       {
         "id": "ni0pjyu9",
         "title": "setNodeVisible",
-        "x": 4594.187584476436,
-        "y": 148.95501172700017,
+        "x": 4924.379775497317,
+        "y": 155.47196286557022,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -1155,8 +1155,8 @@
       {
         "id": "n7kz12f6",
         "title": "tweenNodeAlpha",
-        "x": 3371.2269901026575,
-        "y": 118.68667019796419,
+        "x": 3264.783454839347,
+        "y": 112.16971905939417,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -1322,8 +1322,8 @@
       {
         "id": "n33apzut",
         "title": "tweenNodeAlpha",
-        "x": 3020.392758633772,
-        "y": 123.21486207474351,
+        "x": 2959.5678813404515,
+        "y": 112.35327684379348,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -1489,8 +1489,8 @@
       {
         "id": "nzzr1cwe",
         "title": "tweenNodeAlpha",
-        "x": 2682.1522340972997,
-        "y": 133.62760013131418,
+        "x": 2653.9121124968296,
+        "y": 111.90442966941413,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -1990,8 +1990,8 @@
       {
         "id": "nbawxrlb",
         "title": "showCabinet",
-        "x": 3753.8665927164607,
-        "y": 127.58797671143398,
+        "x": 3588.770497206021,
+        "y": 123.24334261905398,
         "rootType": "Action",
         "color": "#3b6ef5",
         "icon": "⚙️",
@@ -2033,6 +2033,26 @@
           "eventName": "characterBonustransition",
           "propertyNames": []
         }
+      },
+      {
+        "id": "nayj3j9b",
+        "title": "enableCabinetPurchaseButtonInteractivity",
+        "x": 4039.523831694487,
+        "y": 142.98901717799106,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
+      },
+      {
+        "id": "n2o3gyn5",
+        "title": "showCabinetStakeButtons",
+        "x": 3762.4864231325373,
+        "y": 123.77133914128103,
+        "rootType": "Action",
+        "color": "#3b6ef5",
+        "icon": "⚙️",
+        "isStarter": false
       }
     ],
     "links": [
@@ -2127,11 +2147,6 @@
         "to": "nbawxrlb"
       },
       {
-        "id": "l6ywvaop",
-        "from": "nbawxrlb",
-        "to": "nstnudyn"
-      },
-      {
         "id": "lfcd4kr0",
         "from": "nrirkj8s",
         "to": "n8w72gdi"
@@ -2145,14 +2160,29 @@
         "id": "lgp5fw01",
         "from": "nxfhlucl",
         "to": "nq3k812a"
+      },
+      {
+        "id": "lk74fhhg",
+        "from": "nayj3j9b",
+        "to": "nstnudyn"
+      },
+      {
+        "id": "l1s2j98y",
+        "from": "nbawxrlb",
+        "to": "n2o3gyn5"
+      },
+      {
+        "id": "liv5lc87",
+        "from": "n2o3gyn5",
+        "to": "nayj3j9b"
       }
     ],
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 931.3336108206696,
-      "panY": -6.436954185378966,
-      "scale": 0.6274794477389112
+      "panX": -1501.4714373151123,
+      "panY": 51.12472622781644,
+      "scale": 0.5586152300741845
     }
   }
 }

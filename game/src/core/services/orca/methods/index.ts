@@ -23,6 +23,7 @@
  * - Model access: `getGameModelProperty`, `setGameModelProperty`,
  *                 `getSettingsModelProperty`, `setSettingsModelProperty`
  * - Value helpers: `math`, `logic`, `array`, `string`, `cast`, `objectOps`, `network`, `util`
+ * - Rapier physics: `physics` (`physicsApplyImpulse2D` … `physicsIsTouching3D`)
  * - Installed node extensions: `extensions` (generated `ext_*` entries)
  * - Localisation: `translations` (reads the auto-generated
  *   `../generated-translations`)
@@ -62,6 +63,7 @@ import { network, networkActions } from "./network";
 import { getGameModelProperty, setGameModelProperty, getSettingsModelProperty, setSettingsModelProperty } from "./model";
 import { objectOps } from "./object";
 import { particles } from "./particles";
+import { physics } from "./physics";
 import { scene } from "./scene";
 import { sceneQuery } from "./scene-query";
 import { scene3d } from "./scene3d";
@@ -166,6 +168,12 @@ const buildFlowstateMethods = () => ({
     /** HTTP GET returning parsed JSON (`httpGet`). */
     network,
     util,
+    /**
+     * Rapier physics actions + getters (`physicsApplyImpulse2D`,
+     * `physicsGetVelocity3D`, `physicsIsTouching2D`, …). Each no-ops (getters
+     * answer 0 / false) unless the project's physics mode matches the node.
+     */
+    physics,
     /**
      * Translation lookups against this project's authored language table,
      * mirrored by the editor into `../generated-translations.ts`.

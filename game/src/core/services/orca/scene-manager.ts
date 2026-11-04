@@ -248,7 +248,25 @@ import {
 import { OrcaParticleEmitter } from './particle-emitter';
 import { resolveFlexLayoutStyle } from './scene-flex-layout';
 import type { FlexLayoutValue } from './scene-flex-layout';
+import { customShaders } from './generated-custom-shaders';
+import {
+    createCustomShaderFilter,
+    isCustomShaderEnabled,
+    normalizeCustomShaderInstances,
+    resolveCustomShaderDefinition,
+    type CustomShaderFilterHandle,
+    type OrcaCustomShaderInstance,
+} from './custom-shaders';
 import { Scene3DLayer } from './scene-3d';
+import {
+    isPhysicsEnabled,
+    registerScene2D as physicsRegisterScene2D,
+    registerScene3D as physicsRegisterScene3D,
+    step as physicsStep,
+    syncStaticBodies as physicsSyncStaticBodies,
+    unregisterScene as physicsUnregisterScene,
+    type PhysicsEntry2D,
+} from './physics-runtime';
 import type {
     OrcaScene3DData,
     OrcaScene3DNode,
@@ -278,6 +296,9 @@ function guardVideoSourcePlayStart(): void {
 }
 // Before any VideoSource is built: each one binds `_onPlayStart` in its constructor.
 guardVideoSourcePlayStart();
+
+/** Physics registration id of the 3D layer's section (one layer, one section at a time). */
+const SCENE3D_PHYSICS_ID = 'scene3d';
 
 /** Project-global 3D switch, off unless explicitly true; read at call time only (import-cycle safety). */
 function isScene3DEnabled(): boolean {
@@ -2234,6 +2255,10 @@ export interface OrcaSceneNode {
     // dontDestroyContainer so it persists across scene swaps.
     dontDestroyOnLoad?: boolean;
 
+    // Rapier rigid body + collider (Project Settings → Physics, mode '2d').
+    // Untrusted: only `normalizePhysicsBody2D` (physics-shapes.ts) reads it.
+    physicsBody?: unknown;
+
     // User-authored custom components attached to this node. Fully untrusted:
     // may be absent, null, a non-array, or carry unknown types / junk values.
     customComponents?: OrcaAuthoredCustomComponent[] | null;
@@ -2259,6 +2284,9 @@ export interface OrcaSceneNode {
 
     // Optional components
     filters?: OrcaFilterComponent[];
+    // Custom Shaders (`custom-shaders.ts`): user GLSL filters appended AFTER
+    // `filters`. Untrusted — only `normalizeCustomShaderInstances` reads it.
+    customShaders?: OrcaCustomShaderInstance[] | null;
     rectTransform?: OrcaRectTransform;
     // Pins the node to one of its PARENT's nine anchor points; `transform.x/y`
     // then reads as an OFFSET from that point. Untrusted (`point` is typed
@@ -2929,6 +2957,10 @@ class SceneManager {
     // its node container is destroyed; DDOL containers are reparented, not
     // destroyed, so their emitters keep running across scene swaps.
     private activeParticleEmitters: Set<OrcaParticleEmitter> = new Set();
+    // Display objects carrying live Custom Shader filters (`__orcaCustomShaders`),
+    // ticked by update(). One leaves the set when it is destroyed; a DDOL
+    // survivor is not destroyed, so its shaders keep running across scene swaps.
+    private activeCustomShaderHosts: Set<PixiDisplayObject> = new Set();
 
     // Every live custom-component instance (the teardown registry). DDOL
     // instances stay in here across scene swaps; non-DDOL ones are removed by
@@ -2982,6 +3014,8 @@ class SceneManager {
     }
 
     private runAfterDrawHooks(): void {
+        // A layout pass may have moved static physics nodes (resize / orientation).
+        physicsSyncStaticBodies();
         for (const hook of Array.from(this.afterDrawHooks)) {
             try { hook(); } catch (err) { console.warn('[SceneManager] after-draw hook threw', err); }
         }
@@ -3264,6 +3298,9 @@ class SceneManager {
     // Created on first use (keeps imported bindings out of construction time).
     private scene3dLayer: Scene3DLayer | null = null;
     private scene3dDisabledNoticeShown = false;
+    // Physics registration id of the loaded 2D scene (null: none / physics not '2d').
+    private physicsSceneId: string | null = null;
+    private physicsLoadSerial = 0;
     // The host's renderer background RGBA, captured before a camera `background` first overrides it.
     private savedRendererBackground: number[] | null = null;
 
@@ -3904,7 +3941,35 @@ class SceneManager {
 
         this.warnIfLoadedSceneHasNoAuthoredContent();
 
+        this.registerScenePhysics(scene);
+
         return this.currentContainer;
+    }
+
+    /**
+     * Hand the loaded scene's `physicsBody` nodes to the Rapier runtime. Bodies
+     * are created on the next `update` tick (after layout), from the nodes'
+     * transforms in the scene root's space. A no-op unless physics is '2d'.
+     */
+    private registerScenePhysics(scene: OrcaSceneData): void {
+        if (!isPhysicsEnabled('2d') || !this.currentContainer) return;
+        const entries: PhysicsEntry2D[] = [];
+        const visit = (nodes: OrcaSceneNode[] | undefined): void => {
+            if (!Array.isArray(nodes)) return;
+            for (const node of nodes) {
+                if (!node) continue;
+                if (node.physicsBody) {
+                    // A DDOL rebind skips its descendants: those keep their bodies via the runtime's DDOL bucket.
+                    const displayObject = this.nodeDisplayObjects.get(node.id);
+                    if (displayObject) entries.push({ id: node.id, displayObject, data: node.physicsBody });
+                }
+                visit(node.children);
+            }
+        };
+        visit(scene.nodes);
+        this.physicsLoadSerial += 1;
+        this.physicsSceneId = `2d:${this.physicsLoadSerial}`;
+        physicsRegisterScene2D(this.physicsSceneId, this.currentContainer, entries);
     }
 
     /**
@@ -4087,11 +4152,20 @@ class SceneManager {
             const canvas = (this.hostRenderer?.canvas ?? null) as HTMLCanvasElement | null;
             layer.setHost(canvas, Number(this.hostRenderer?.resolution) || 1);
             const origin: SceneOrigin = scene.origin ?? 'core';
+            // `physicsBody` nodes register once the 3D tree is built and leave
+            // with the layer's deactivate. Only when physics is '3d'.
+            layer.setPhysicsHost(isPhysicsEnabled('3d')
+                ? {
+                    register: (entries, tools) => physicsRegisterScene3D(SCENE3D_PHYSICS_ID, entries, tools),
+                    unregister: () => physicsUnregisterScene(SCENE3D_PHYSICS_ID),
+                }
+                : null);
             layer.activate(
                 scene.scene3d,
                 (src) => this.toAbsoluteSceneAssetUrl(src, origin),
                 this.create3DComponentHost(origin),
                 scene3DShadowQuality(),
+                customShaders,
             );
         } else {
             // 3D nodes' custom components live and die with this layer, so they never run in a non-`clear` scene.
@@ -4835,6 +4909,12 @@ class SceneManager {
             this.detachDontDestroySubtrees(this.currentContainer);
             this.currentContainer.destroy({ children: true });
         }
+        // AFTER the destroy: the runtime keeps exactly the bodies whose display
+        // objects survived it (DDOL subtrees), for the next scene to re-adopt.
+        if (this.physicsSceneId !== null) {
+            physicsUnregisterScene(this.physicsSceneId);
+            this.physicsSceneId = null;
+        }
         // The 3D section belongs to the scene being torn down.
         this.scene3dLayer?.deactivate();
         // Mount targets belonged to the now-destroyed scene container.
@@ -4911,6 +4991,7 @@ class SceneManager {
 
         this.updateCustomComponents(deltaSeconds * 1000);
         this.updateParticleEmitters(deltaSeconds);
+        this.updateCustomShaders(deltaSeconds);
         this.sweepInjectedChildDrawOrder();
         this.updateSimpleAnimations(deltaSeconds);
         this.solveIkHandles();
@@ -4921,6 +5002,13 @@ class SceneManager {
         if (this.flexLayoutFallback && this.hostStage) {
             this.flexLayoutFallback.update(this.hostStage);
         }
+        // Physics LAST among the pose passes: kinematic bodies read the final
+        // animated / IK / laid-out transforms, and dynamic bodies write their
+        // nodes after every other pass — physics owns a dynamic node's
+        // position + rotation (a layout pass or tween moving it is overwritten
+        // here). Before the 3D render, so 3D write-backs draw this frame. A
+        // no-op unless physics is on and Rapier has loaded.
+        physicsStep(deltaSeconds);
         this.scene3dLayer?.render(deltaSeconds);
     }
 
@@ -6824,6 +6912,7 @@ class SceneManager {
                     this.resetParentAnchorWrite(reused);
                     reused.label = node.name;
                     this.applyFilters(reused, node.filters);
+                    this.applyCustomShaders(reused, node);
                     (reused as { __ddol?: boolean }).__ddol = true;
                     this.nodeDisplayObjects.set(node.id, reused);
                     this.nodeDataById.set(node.id, node);
@@ -7270,6 +7359,7 @@ class SceneManager {
         this.resetParentAnchorWrite(displayObject);
         displayObject.label   = node.name;
         this.applyFilters(displayObject, node.filters);
+        this.applyCustomShaders(displayObject, node);
         // Before children are added, so each child joins its parent's Yoga tree on `added`.
         this.applyFlexLayout(displayObject, node);
         this.nodeDisplayObjects.set(node.id, displayObject);
@@ -11287,6 +11377,73 @@ class SceneManager {
             // `filters` READS as `readonly Filter[]` in Pixi 8 — it can only be
             // replaced wholesale, never pushed into.
             displayObject.filters = runtimeFilters;
+        }
+    }
+
+    /**
+     * Append the node's Custom Shader filters AFTER its authored `filters`
+     * (`__orcaFiltersByIndex` stays keyed by the authored index, so
+     * `@filter.<i>` channels are unaffected). Re-entrant: a DDOL rebind first
+     * drops the previous build. Skipped, with one warning each: disabled
+     * entries (silently), unknown shaders, 3D shaders, a failed compile and a
+     * non-WebGL renderer. Live handles sit on `__orcaCustomShaders` (for a
+     * FlowState setter) and `uTime` advances from `update()`.
+     */
+    private applyCustomShaders(displayObject: PixiDisplayObject, node: OrcaSceneNode): void {
+        this.releaseCustomShaders(displayObject);
+        const entries = normalizeCustomShaderInstances(node.customShaders);
+        if (entries.length === 0) return;
+
+        const handles: CustomShaderFilterHandle[] = [];
+        for (const entry of entries) {
+            if (!isCustomShaderEnabled(entry)) continue;
+            const definition = resolveCustomShaderDefinition(customShaders, entry.shader, '2d');
+            if (!definition) continue;
+            const handle = createCustomShaderFilter(Pixi, definition, entry.uniforms, { renderer: this.hostRenderer });
+            if (handle) handles.push(handle);
+        }
+        if (handles.length === 0) return;
+
+        const host = displayObject as PixiDisplayObject & { __orcaCustomShaders?: CustomShaderFilterHandle[]; __orcaCustomShaderListener?: boolean };
+        host.__orcaCustomShaders = handles;
+        const authored = displayObject.filters ? Array.from(displayObject.filters as readonly PixiFilter[]) : [];
+        displayObject.filters = [...authored, ...handles.map((handle) => handle.filter as PixiFilter)];
+        this.activeCustomShaderHosts.add(displayObject);
+        if (!host.__orcaCustomShaderListener) {
+            host.__orcaCustomShaderListener = true;
+            displayObject.once('destroyed', () => this.releaseCustomShaders(displayObject));
+        }
+    }
+
+    /** Remove and destroy `displayObject`'s Custom Shader filters, if any. */
+    private releaseCustomShaders(displayObject: PixiDisplayObject): void {
+        this.activeCustomShaderHosts.delete(displayObject);
+        const host = displayObject as PixiDisplayObject & { __orcaCustomShaders?: CustomShaderFilterHandle[] };
+        const handles = host.__orcaCustomShaders;
+        if (!handles || handles.length === 0) return;
+        host.__orcaCustomShaders = undefined;
+        if (!displayObject.destroyed) {
+            const stale = new Set(handles.map((handle) => handle.filter as PixiFilter));
+            const current = displayObject.filters ? Array.from(displayObject.filters as readonly PixiFilter[]) : [];
+            if (current.some((filter) => stale.has(filter))) {
+                displayObject.filters = current.filter((filter) => !stale.has(filter));
+            }
+        }
+        for (const handle of handles) handle.destroy();
+    }
+
+    private updateCustomShaders(deltaSeconds: number): void {
+        for (const displayObject of Array.from(this.activeCustomShaderHosts)) {
+            if (displayObject.destroyed) {
+                this.releaseCustomShaders(displayObject);
+                continue;
+            }
+            const handles = (displayObject as { __orcaCustomShaders?: CustomShaderFilterHandle[] }).__orcaCustomShaders;
+            if (!handles) {
+                this.activeCustomShaderHosts.delete(displayObject);
+                continue;
+            }
+            for (const handle of handles) handle.tick(deltaSeconds);
         }
     }
 

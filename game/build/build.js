@@ -12,11 +12,43 @@ const webpack = require('webpack');
 const config = require('./configuration');
 // Before the prod config loads: it checks the asset folders it will copy.
 reconcileRuntimeAssets();
-const webpackConfig = require('./webpack.prod.conf');
+let webpackConfig;
+try {
+  webpackConfig = require('./webpack.prod.conf');
+} catch (err) {
+  // e.g. "Use mock engine" is on but mock-engine/ is missing: fail loudly,
+  // never fall back to a build that silently talks to the real engine.
+  console.log(chalk.red(`\n  ${err && err.message}\n`));
+  if (!(err && err.mockBuild) && err && err.stack) console.log(err.stack);
+  process.exit(1);
+}
 const { eraseFolder, copyAssets } = require('./copy-assets');
 
-const spinner = ora('building for production...');
+// The mechanic when this build bundles the Orca mock engine (Data Browser ▸
+// Server Connection ▸ "Use mock engine"), read back from the config webpack
+// will actually run; null for a normal build.
+const MOCK_ENGINE_MECHANIC = describeMockEngineBuild(webpackConfig);
+if (MOCK_ENGINE_MECHANIC) {
+  console.log(chalk.bgYellow.black(`  THIS BUILD INCLUDES THE MOCK ENGINE ("${MOCK_ENGINE_MECHANIC}") — dev / stage only.  `) + '\n');
+}
+
+const spinner = ora(MOCK_ENGINE_MECHANIC ? 'building for production (WITH THE MOCK ENGINE)...' : 'building for production...');
 spinner.start();
+
+function describeMockEngineBuild(conf) {
+  const plugins = (conf && Array.isArray(conf.plugins)) ? conf.plugins : [];
+  for (const plugin of plugins) {
+    const defined = plugin && plugin.definitions && plugin.definitions.ORCA_MOCK_BUILD;
+    if (typeof defined !== 'string') continue;
+    try {
+      const plan = JSON.parse(defined);
+      return (plan && typeof plan.mechanic === 'string' && plan.mechanic) || 'unknown mechanic';
+    } catch (err) {
+      return 'unknown mechanic';
+    }
+  }
+  return null;
+}
 
 // Decide whether this production build needs the jackpots assets.
 //
@@ -183,6 +215,14 @@ async function main() {
       if (!verifyBuiltAssets()) process.exit(1);
 
       console.log(chalk.cyan('  Build complete.\n'));
+      if (MOCK_ENGINE_MECHANIC) {
+        console.log(chalk.yellow(
+          `  This build includes the MOCK ENGINE ("${MOCK_ENGINE_MECHANIC}"): every round is played in the\n` +
+          '  browser against a fake wallet that resets on reload, and it refuses to start on a\n' +
+          '  live host. Deploy it to dev / stage only. Turn off "Use mock engine" in Orca\n' +
+          '  (Data Browser > Server Connection) and rebuild for a build that uses the real engine.\n'
+        ));
+      }
       console.log(chalk.yellow(
         '  Tip: built files are meant to be served over an HTTP server.\n' +
         '  Opening index.html over file:// won\'t work.\n'

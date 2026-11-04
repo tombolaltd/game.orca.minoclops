@@ -1,17 +1,18 @@
 // MOCK BUILD — the bundled mock engine running INSIDE the game client.
 //
-// A "demo build" (`npm run build:demo` in game/) bundles the mock engine into the game itself, so
-// a deployed demo plays without any engine behind it. This file is the pure, DOM-free half: the
+// With "Use mock engine" on (Data Browser ▸ Server Connection), the normal `npm run build` in game/
+// bundles the mock engine into the game itself, so a deployed dev / stage build plays without any
+// engine behind it. This file is the pure, DOM-free half: the
 // request matcher, the live-environment test, the engine construction and the axios adapter. The
-// browser side effects (refusal screen, DEMO badge, installing the adapter) live in
+// browser side effects (refusal screen, MOCK ENGINE badge, installing the adapter) live in
 // `install-mock-client.ts`; the webpack entry that hands it the game's axios copies is
 // `mock-build-entry.js`.
 //
-// ⚠️ DISPOSABILITY: nothing under game/src, webpack.base.conf.js, webpack.prod.conf.js or
-// build.js may reach this folder. Only `game/build/webpack.demo.conf.js` does. Checked by the
-// editor's `npm run check:mock-build-isolation`.
+// ⚠️ DISPOSABILITY: nothing under game/src, webpack.base.conf.js, webpack.dev.conf.js or build.js
+// may reach this folder. Only webpack.prod.conf.js's enabled branch does (through
+// `game/build/mock-build-plan.js`). Checked by the editor's `npm run check:mock-build-isolation`.
 //
-// ⚠️ A PROTOTYPING mock: not RNG-certified, not audited. A demo build refuses to start on a live
+// ⚠️ A PROTOTYPING mock: not RNG-certified, not audited. A mock engine build refuses to start on a live
 // host (`describeLiveEnvironment`), and its fake wallet and session live in memory only, so every
 // page reload starts a fresh session.
 
@@ -30,7 +31,8 @@ export const MOCK_BUILD_CONFIG_VERSION = 1;
 
 /**
  * The build-time constant (`ORCA_MOCK_BUILD`), computed in Node by `game/build/mock-build-plan.js`
- * from `main.orca.projectSettings.mockEngine` + `mock-engine/settings/<mechanic>.json` through the
+ * from `game/build/generated-mock-build.json` (Orca's copy of `main.orca.projectSettings.mockEngine`)
+ * + `mock-engine/settings/<mechanic>.json` through the
  * dev-server bridge's own helpers (`game/build/mock-engine.js`).
  */
 export interface MockBuildConfig {
@@ -174,7 +176,7 @@ type MechanicRegistration = MechanicRegistrationOptions & { settings?: GameSetti
  * re-registered under its own skin with the generated settings merged over its defaults (pinned to
  * the default `ActiveVersion`), then under each game id the game will call. Unlike the dev server,
  * a game id first seen at request time (a per-locale EngineName, arcade-base's `unknown` fallback)
- * is registered on demand — a demo bundle carries every skin and only learns which one at boot.
+ * is registered on demand — a bundle carries every skin and only learns which one at boot.
  */
 export function createMockBuildRuntime(
     config: MockBuildConfig,
@@ -182,7 +184,7 @@ export function createMockBuildRuntime(
 ): MockBuildRuntime {
     if (!config || typeof config !== 'object') throw new Error('[mock-build] No mock build config was compiled in');
     if (config.version !== MOCK_BUILD_CONFIG_VERSION) {
-        throw new Error(`[mock-build] Config version ${String(config.version)} is not ${MOCK_BUILD_CONFIG_VERSION}; rebuild with npm run build:demo`);
+        throw new Error(`[mock-build] Config version ${String(config.version)} is not ${MOCK_BUILD_CONFIG_VERSION}; rebuild with npm run build`);
     }
     const entry = catalog.find(candidate => candidate && candidate.key === config.mechanic);
     if (entry === undefined) {
@@ -328,7 +330,7 @@ export function requestUrlOf(config: AxiosRequestConfigLike): string {
 
 /**
  * Engine routes are answered by the mock; any OTHER request to an engine host is refused (the
- * demo must never talk to a real engine — the same fail-closed posture as the editor preview's
+ * mock engine build must never talk to a real engine — the same fail-closed posture as the editor preview's
  * egress guard); everything else goes to the real adapter untouched.
  */
 export function decideMockRequest(config: AxiosRequestConfigLike): MockRequestDecision {

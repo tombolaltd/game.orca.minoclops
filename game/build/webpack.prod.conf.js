@@ -210,4 +210,32 @@ if (config.build.bundleAnalyzerReport) {
   webpackConfig.plugins.push(new BundleAnalyzerPlugin());
 }
 
+// ── Orca mock engine ─────────────────────────────────────────────────────────
+// Orca writes build/generated-mock-build.json from Data Browser ▸ Server
+// Connection ▸ "Use mock engine" (never hand-edit it). ONLY `enabled: true`
+// bundles the project's mock-engine/ into this build: engine calls are then
+// answered in the browser, and the game refuses to start on a live host.
+// Anything else leaves the config above exactly as it is.
+if (isOrcaMockBuildEnabled()) {
+  require('./mock-build-plan').applyMockBuild(webpackConfig);
+}
+
+function isOrcaMockBuildEnabled() {
+  const file = require('path').join(__dirname, 'generated-mock-build.json');
+  let raw;
+  try {
+    raw = require('fs').readFileSync(file, 'utf-8');
+  } catch (err) {
+    if (err && err.code === 'ENOENT') return false;
+    throw err;
+  }
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    throw new Error(`[build] ${file} is not valid JSON (${err.message}); open the project in Orca to regenerate it.`);
+  }
+  return !!parsed && parsed.enabled === true;
+}
+
 module.exports = webpackConfig;
