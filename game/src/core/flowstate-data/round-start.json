@@ -278,7 +278,7 @@
       "title": "State",
       "isState": true,
       "entryTargetId": "nmcxhd6c",
-      "exitSourceId": "nwb5joxm",
+      "exitSourceId": "nv64bdxx",
       "subgraph": {
         "nodes": [
           {
@@ -419,6 +419,28 @@
                 "value": []
               }
             ]
+          },
+          {
+            "id": "nv64bdxx",
+            "title": "setOnScreenReels",
+            "rootType": "Action",
+            "properties": [
+              {
+                "name": "target",
+                "type": "nodeRef",
+                "value": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              },
+              {
+                "name": "reels",
+                "type": "any",
+                "sourceNodeId": "nh47ncan"
+              }
+            ]
           }
         ],
         "links": [
@@ -445,11 +467,6 @@
             "to": "nm8g4ed9"
           },
           {
-            "id": "ld6ll3gn",
-            "from": "ng1arby3",
-            "to": "nmcxhd6c"
-          },
-          {
             "id": "lsxc45ed",
             "from": "nmcxhd6c",
             "to": "nnu5km0b"
@@ -463,6 +480,23 @@
             "id": "lrc48fg0",
             "from": "nu9by70w",
             "to": "n2gt7hvh"
+          },
+          {
+            "id": "l4rwln3y",
+            "from": "ng1arby3",
+            "to": "nv64bdxx"
+          },
+          {
+            "id": "l933jcpe",
+            "from": "nv64bdxx",
+            "to": "nmcxhd6c"
+          },
+          {
+            "id": "lsvkrbyt",
+            "from": "nh47ncan",
+            "to": "nv64bdxx",
+            "propertyType": "any",
+            "propertyName": "reels"
           }
         ]
       }

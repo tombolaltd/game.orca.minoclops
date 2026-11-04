@@ -389,17 +389,17 @@
         "title": "State",
         "displayName": "Drop in first board",
         "x": 516.8203822172568,
-        "y": -26.16309284229546,
+        "y": -26.163092842295455,
         "isState": true,
         "entryTargetId": "nmcxhd6c",
-        "exitSourceId": "nwb5joxm",
+        "exitSourceId": "nv64bdxx",
         "subgraph": {
           "nodes": [
             {
               "id": "ng1arby3",
               "title": "Entry",
-              "x": -231.2583514303987,
-              "y": -39.53958728879675,
+              "x": -762.3117847282583,
+              "y": -114.13483418784253,
               "color": "#4CAF50",
               "icon": "⭣",
               "isEntry": true
@@ -483,8 +483,8 @@
             {
               "id": "nh47ncan",
               "title": "getGameModelProperty",
-              "x": -381.4278166567426,
-              "y": 101.57597982090226,
+              "x": -949.3387052758513,
+              "y": 93.75043608008778,
               "rootType": "properties",
               "color": "#3498db",
               "icon": "📖",
@@ -621,6 +621,44 @@
                 "eventName": "boardCrumbling",
                 "propertyNames": []
               }
+            },
+            {
+              "id": "nv64bdxx",
+              "title": "setOnScreenReels",
+              "x": -450.2101699960417,
+              "y": -103.36315207491336,
+              "rootType": "Action",
+              "color": "#3b6ef5",
+              "icon": "⚙️",
+              "isStarter": false,
+              "properties": [
+                {
+                  "name": "target",
+                  "type": "nodeRef",
+                  "sceneNodeType": "reels"
+                },
+                {
+                  "name": "reels",
+                  "type": "any",
+                  "acceptsTypes": [
+                    "string",
+                    "int[][]",
+                    "float[][]",
+                    "ObjectArray",
+                    "TArray"
+                  ],
+                  "default": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]"
+                }
+              ],
+              "propertyValues": {
+                "reels": "[[0,0,0],[0,0,0],[0,0,0],[0,0,0],[0,0,0]]",
+                "target": {
+                  "kind": "nodeRef",
+                  "nodeId": "node_ss_reels",
+                  "sceneScope": "core",
+                  "sceneName": "main"
+                }
+              }
             }
           ],
           "links": [
@@ -647,11 +685,6 @@
               "to": "nm8g4ed9"
             },
             {
-              "id": "ld6ll3gn",
-              "from": "ng1arby3",
-              "to": "nmcxhd6c"
-            },
-            {
               "id": "lsxc45ed",
               "from": "nmcxhd6c",
               "to": "nnu5km0b"
@@ -665,6 +698,23 @@
               "id": "lrc48fg0",
               "from": "nu9by70w",
               "to": "n2gt7hvh"
+            },
+            {
+              "id": "l4rwln3y",
+              "from": "ng1arby3",
+              "to": "nv64bdxx"
+            },
+            {
+              "id": "l933jcpe",
+              "from": "nv64bdxx",
+              "to": "nmcxhd6c"
+            },
+            {
+              "id": "lsvkrbyt",
+              "from": "nh47ncan",
+              "to": "nv64bdxx",
+              "propertyType": "any",
+              "propertyName": "reels"
             }
           ],
           "groups": []
@@ -1409,9 +1459,9 @@
     "groups": [],
     "variables": [],
     "viewState": {
-      "panX": 321.56081629406947,
-      "panY": 229.49774274762635,
-      "scale": 0.3122264589204271
+      "panX": 974.6123847064721,
+      "panY": 219.5063264214932,
+      "scale": 0.8945065329443082
     }
   }
 }
