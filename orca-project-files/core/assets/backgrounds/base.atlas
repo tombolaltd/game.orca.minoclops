@@ -5,47 +5,58 @@ filter: Linear, Linear
 repeat: none
 pma: false
 base/back
-  bounds: 2537, 2489, 250, 250
-base/cloudBottomTr
-  bounds: 2043, 1574, 1929, 410
-  offsets: 1, 0, 1930, 410
+  bounds: 2632, 2775, 250, 250
 base/cloudMidTr
-  bounds: 2939, 2006, 1075, 334
-  offsets: 7, 0, 1082, 334
+  bounds: 2969, 2223, 1082, 334
 base/dust1
-  bounds: 1410, 2795, 1146, 1110
-  offsets: 19, 90, 1200, 1200
-  rotate: 90
+  bounds: 1410, 2795, 1200, 1200
 base/flame
-  bounds: 3994, 1574, 94, 157
+  bounds: 2224, 2068, 94, 157
+  rotate: 90
 base/Foreground
-  bounds: 2043, 7, 2001, 615
+  bounds: 2043, 937, 2001, 615
+base/gateL
+  bounds: 2632, 1574, 627, 1351
+  rotate: 90
+base/gateLigtUp
+  bounds: 3356, 3480, 719, 375
+base/gatesLight
+  bounds: 2043, 2223, 530, 904
+  rotate: 90
+base/gatesLightHighlight
+  bounds: 2632, 3480, 494, 702
+  rotate: 90
 base/Lamp_body
-  bounds: 2043, 2006, 472, 499
-base/LampLight
-  bounds: 2537, 2006, 461, 380
+  bounds: 2043, 1574, 472, 499
   rotate: 90
 base/LampR
-  bounds: 2939, 2362, 877, 1067
-  offsets: 0, 2, 879, 1069
+  bounds: 2969, 2579, 879, 1069
   rotate: 90
 base/lightHalo
   bounds: 7, 2795, 1239, 1381
   rotate: 90
 base/Middle
-  bounds: 2043, 644, 1990, 908
-  offsets: 3, 0, 2001, 908
+  bounds: 2043, 7, 2001, 908
 base/ReelGuide
-  bounds: 1410, 3963, 159, 121
+  bounds: 2043, 2068, 159, 121
 base/Wall and gate
   bounds: 7, 7, 2014, 2766
 
 base-1.webp
-size: 1024, 2048
+size: 2048, 2048
 format: RGBA8888
 filter: Linear, Linear
 repeat: none
 pma: false
+base/cloudBottomTr
+  bounds: 7, 653, 1930, 410
+base/gateR
+  bounds: 490, 7, 624, 1351
+  rotate: 90
 base/LampL
-  bounds: 7, 7, 880, 1054
-  offsets: 1, 0, 881, 1054
+  bounds: 908, 1085, 881, 1054
+  rotate: 90
+base/LampLight
+  bounds: 7, 7, 461, 380
+base/light
+  bounds: 7, 1085, 879, 772

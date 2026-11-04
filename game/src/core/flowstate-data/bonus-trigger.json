@@ -47,43 +47,6 @@
       "rootType": "StarterNodes"
     },
     {
-      "id": "n5vsn9ck",
-      "title": "playAnimation",
-      "rootType": "Action",
-      "properties": [
-        {
-          "name": "target",
-          "type": "nodeRef",
-          "value": {
-            "kind": "nodeRef",
-            "nodeId": "node_1791298581468_z4rigcjll",
-            "sceneScope": "core",
-            "sceneName": "main"
-          }
-        },
-        {
-          "name": "animationName",
-          "type": "string",
-          "value": "BaseToBonus"
-        },
-        {
-          "name": "loop",
-          "type": "bool",
-          "value": false
-        },
-        {
-          "name": "trackIndex",
-          "type": "int",
-          "value": 0
-        },
-        {
-          "name": "sequenceNodeOn",
-          "type": "string",
-          "value": "immediate"
-        }
-      ]
-    },
-    {
       "id": "nfif4ycm",
       "title": "playAnimation",
       "rootType": "Action",
@@ -325,7 +288,7 @@
         {
           "name": "sequenceNodeOn",
           "type": "string",
-          "value": "immediate"
+          "value": "onComplete"
         }
       ]
     },
@@ -588,6 +551,295 @@
           "sourceOutputName": "index"
         }
       ]
+    },
+    {
+      "id": "n57rdar3",
+      "title": "playAnimation",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1791295520191_9uj0li4ny",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "animationName",
+          "type": "string",
+          "value": "BaseToBonus"
+        },
+        {
+          "name": "loop",
+          "type": "bool",
+          "value": false
+        },
+        {
+          "name": "trackIndex",
+          "type": "int",
+          "value": 0
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "ndxq59ej",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "onComplete"
+        }
+      ]
+    },
+    {
+      "id": "ns2839kn",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_reels",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "nkfakbi2",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_hud",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "n01n5lvk",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296199027_80b3nmg8h",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 0
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "n878lndk",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_ss_hud",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
+    },
+    {
+      "id": "n99daxga",
+      "title": "tweenNodeAlpha",
+      "rootType": "Action",
+      "properties": [
+        {
+          "name": "target",
+          "type": "nodeRef",
+          "value": {
+            "kind": "nodeRef",
+            "nodeId": "node_1793296199027_80b3nmg8h",
+            "sceneScope": "core",
+            "sceneName": "main"
+          }
+        },
+        {
+          "name": "alpha",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "durationMS",
+          "type": "int",
+          "value": 500
+        },
+        {
+          "name": "ease",
+          "type": "string",
+          "value": "power2.out"
+        },
+        {
+          "name": "easeStrength",
+          "type": "float",
+          "value": 1
+        },
+        {
+          "name": "sequenceNodeOn",
+          "type": "string",
+          "value": "immediate"
+        }
+      ]
     }
   ],
   "links": [
@@ -595,11 +847,6 @@
       "id": "ljol3aqz",
       "from": "bonust_005",
       "to": "spoolwin_reels1"
-    },
-    {
-      "id": "lctcmlm8",
-      "from": "n5vsn9ck",
-      "to": "nfif4ycm"
     },
     {
       "id": "lpucz67m",
@@ -617,11 +864,6 @@
       "to": "ngherq9m"
     },
     {
-      "id": "lm8zr8ds",
-      "from": "n73y7a6t",
-      "to": "n3473a3p"
-    },
-    {
       "id": "loitjohz",
       "from": "n8qlbhx4",
       "to": "nwf68o3c"
@@ -630,11 +872,6 @@
       "id": "l8as1qqo",
       "from": "bonust_033",
       "to": "nwf68o3c"
-    },
-    {
-      "id": "lmiizt9p",
-      "from": "nwf68o3c",
-      "to": "n5vsn9ck"
     },
     {
       "id": "l9quskbv",
@@ -805,6 +1042,51 @@
       "from": "spoolwin_reels2",
       "to": "bonust_033",
       "outIdx": 1
+    },
+    {
+      "id": "l1o3ck63",
+      "from": "n57rdar3",
+      "to": "nfif4ycm"
+    },
+    {
+      "id": "l7v8e1ag",
+      "from": "ndxq59ej",
+      "to": "n57rdar3"
+    },
+    {
+      "id": "l7a2hwoc",
+      "from": "ns2839kn",
+      "to": "n3473a3p"
+    },
+    {
+      "id": "lyxmfcx7",
+      "from": "nkfakbi2",
+      "to": "ndxq59ej"
+    },
+    {
+      "id": "lqtth824",
+      "from": "nwf68o3c",
+      "to": "n01n5lvk"
+    },
+    {
+      "id": "lpjm6dm6",
+      "from": "n01n5lvk",
+      "to": "nkfakbi2"
+    },
+    {
+      "id": "lgzvokgi",
+      "from": "n99daxga",
+      "to": "n878lndk"
+    },
+    {
+      "id": "l09lqc1d",
+      "from": "n73y7a6t",
+      "to": "n99daxga"
+    },
+    {
+      "id": "lm48ml8e",
+      "from": "n878lndk",
+      "to": "ns2839kn"
     }
   ]
 }
